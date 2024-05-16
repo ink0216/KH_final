@@ -3,7 +3,7 @@ package kh.em.albaya.message.service;
 import org.springframework.beans.factory.annotation.Value;
 
 public class MessageService {
-    private final SmsCertification smsCertification;
+    private final SmsCertification   smsCertification;
 
     @Value("${coolsms.apikey}")
     private String apiKey;

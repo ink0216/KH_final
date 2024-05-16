@@ -1,10 +1,95 @@
-#container{
+body{
+    background-color: rgb(228, 242, 238);
+}
+
+h1{
+    font-family: 'TheJamsil5Bold';
+    margin-top:70px;
+    margin-left:30%;
+}
+
+#containers{
     display:flex;
     flex-direction: column;
-    margin:auto; 
-    width:25%;
-    height:300px;
+    margin:auto;
+    margin-top:40px;
+    width:600px;
+    height:70%;
     border:1px solid black;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:20px;
+    padding-bottom:20px;
+    background-color: white;
+    border:1px solid white;
+    border-top:2px solid black;
+    
+}
+
+#inputGender>input{
+    width:100px;
+}
+#inputEmail{
+    margin-left:30px;
+    width:200px;
+}
+#inputPw{
+    margin-left:15px;
+    width:200px;
+}
+#inputTel{
+    margin-left: 16px;
+}
+#inputName{
+    margin-left: 43px;
+}
+
+#inputAddress{
+    margin-left:49px;
+}
+
+#containers>span{
+    margin-left:40px;
+}
+
+#containers>div>span{
+    font-family: 'TheJamsil5Bold';
+}
+button{
+    border-radius:10px;
+    border:1px solid lightgray;
+    background:lightgray;
+    width:90px;
+    height:35px;
+}
+#addressSearch{
+    margin-left:5px;
+}
+#inputGender{
+    display: flex;
+    
+}
+
+#inputGender>div{
+    margin-left:50px;
+}
+#inputGender>div>span:nth-child(2){
+    margin-left: 200px;
+}
+#containers>div>input{
+    padding-left:20px;
+    border-radius:20px;
+    border:1px solid gray;
+    height:30px;
+    width:400px;  
+ }
+
+/* 전체 폰트 */
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
 }
 
 
