@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공고문 등록</title>
+
+    <link rel="stylesheet" href="../../static/css/hire/hrie-wirte.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <img src="../../static/images/logo.png" alt="logo" id="logo">
+        <h3>공고문 등록</h3>
+    </div>
+
+    <hr>
+
+    <div class="container">
+
+
+        <div class="hireContent">
+
+            <h3> 모집 내용</h3>
+
+            <hr>
+
+            <div class="hireContent-input">
+
+                <dl class="titleInput">
+                    <dt>공고제목</dt>
+                    <dd>
+                        <input type="text" placeholder="공고문을 입력해주세요" name="hrieTitle">
+                    </dd>
+                    <dd>
+                        <p>
+                            * 0/40(최소 2자)
+                        </p>
+                    </dd>
+                </dl>
+
+                <div class="typeInput">
+                    <dl>
+                        <dt>
+                            업직종
+                        </dt>
+
+                        <dd>
+                            <input type="text" placeholder="업직종을 선택해 주세요" name="typeName">
+                            <button id="typeBtn">선택</button>
+                        </dd>
+                    </dl>
+                </div>
+
+                <dl class="countInput">
+                    <dt>
+                        모집인원
+                    </dt>
+                    <dd>
+                        <input type="text" name="hireCount" placeholder="모집인원을 등록해주세요">
+                    </dd>
+                </dl>
+
+                <dl class="endInput">
+                    <dt>
+                        모집종료
+                    </dt>
+                    <dd>
+                        <input type="date" name="hireEnd" id="hireEnd">
+                    </dd>
+                </dl>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="hireTitleImg">
+
+            <img src="../../static/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
+
+            <textarea placeholder="공고문 제목을 입력하세요" cols="20" rows="2"></textarea>
+
+        </div>
+
+        <hr>
+
+    </div>
+</body>
+
+</html>
