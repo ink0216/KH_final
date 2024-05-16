@@ -25,6 +25,7 @@
 .header{
     display: flex;
     margin: 0px 20px;
+    user-select: none;
 }
 
 #logo{
@@ -43,6 +44,7 @@
 .hireContent>h3{
     margin-top: 30px;
     margin-bottom: 5px;
+    user-select: none;
 }
 
 .hireContent-input{
@@ -61,10 +63,13 @@
     width: 80px;
     font-size: 13px;
     font-weight: bold;
+    user-select: none;
 }
 
 .hireContent-input dd input{
     font-size: 10px;
+    user-select: none;
+    width: 300px;
 }
 
 .hireContent-input dd p{
@@ -122,4 +127,85 @@
 }
 
 
+/* --------------------------------------------------------------- */
+/* 근무 조건 */
+.hireCondition>h3{
+    margin-top: 30px;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.hireCondition-input{
+    background-color: #f2f7f7;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.hireCondition-input dl{
+    display:  flex;
+    margin: 10px;
+}
+
+.hireCondition-input dt{
+    width: 80px;
+    font-size: 13px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.hireCondition-input dd input{
+    font-size: 10px;
+    user-select: none;
+}
+
+.hireCondition-input dd p{
+    margin: 5px 0px;
+    font-size: 10px;
+    color: rgb(251, 4, 4);
+
+}
+
+/* 근무 기간 */
+.termCheckbox{
+    display: flex;
+}
+
+
+.termCheckbox div label{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    font-size: 10px;
+    background-color: linen;
+    user-select: none;
+}
+.termCheckbox div input{
+   display: none;
+}
+
+.termCheckbox [name='hireTerm']:checked + label{
+    background-color: darksalmon
+}
+
+
+
+
+/* 근무 요일 */
+.dayCheckbox{display: flex;}
+
+.dayCheckbox div label{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    font-size: 10px;
+    background-color: linen;
+    user-select: none;
+}
+
+.dayCheckbox [name='workDay']{display: none;}
+
+.dayCheckbox [name='workDay']:checked + label{
+    background-color: darksalmon
+}
 /* --------------------------------------------------------------- */
