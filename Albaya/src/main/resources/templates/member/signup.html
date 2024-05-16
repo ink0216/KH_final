@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="/css/member/register.css">
+    <!-- <link rel="stylesheet" href="/css/member/register.css"> -->
 </head>
 <body>
     <h1>회원 가입 페이지</h1>
@@ -13,8 +13,8 @@
             이메일:<input type="text" name="memberEmail" id="inputEmail">
             비밀번호:<input type="text" name="memberPw" id="inputEmail">
             <div id="telNo">
-                전화번호:<input type="text" name="memberPhoneNumber" id="inputEmail">
-                <button>인증번호</button>
+                전화번호:<input type="text" name="memberPhoneNumber" id="inputTel">
+                <button id="memberAuth">인증번호</button>
             </div>
             이름: <input type="text" name="memberName" id="">
             성별:     
@@ -25,4 +25,6 @@
         </div>
     </form>  
 </body>
+
+<script src="/js/member/signup.js"></script>
 </html>
