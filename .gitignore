@@ -5,7 +5,7 @@ MANIFEST.MF
 settings.json
 *.log 
 config.properties
-
+.gradle/
 
 driver.xml
 
