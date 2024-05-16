@@ -2,6 +2,7 @@ package kh.em.albaya.message.service;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import lombok.RequiredArgsConstructor;
 public class MessageService {
     private final SmsCertification smsCertification;
 
