@@ -37,7 +37,7 @@ public class MemberController {
 			return "redirect:/";
 		}else {
 			message = "가입 실패";
-			return "board/signup";
+			return "redirect:/";
 		}
 		
 	}
