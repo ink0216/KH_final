@@ -1,9 +1,5 @@
-
 body{
     background-color: rgb(228, 242, 238);
-    button:hover{
-    cursor: pointer;
-
 }
 
 h1{
@@ -17,7 +13,7 @@ h1{
     flex-direction: column;
     margin:auto;
     margin-top:40px;
-    width:600px;
+    width:620px;
     height:70%;
     border:1px solid black;
     padding-left:20px;
@@ -34,18 +30,18 @@ h1{
     width:100px;
 }
 #inputEmail{
-    margin-left:30px;
+    margin-left:25px;
     width:200px;
 }
 #inputPw{
-    margin-left:15px;
+    margin-left:10px;
     width:200px;
 }
 #inputTel{
     margin-left: 16px;
 }
 #inputName{
-    margin-left: 43px;
+    margin-left: 38px;
 }
 
 #inputAddress{
@@ -59,6 +55,7 @@ h1{
 #containers>div>span{
     font-family: 'TheJamsil5Bold';
 }
+
 button{
     border-radius:10px;
     border:1px solid lightgray;
@@ -66,12 +63,16 @@ button{
     width:90px;
     height:35px;
 }
+
 #addressSearch{
     margin-left:5px;
 }
 #inputGender{
     display: flex;
     
+}
+#inputGender>span:nth-child(2){
+    margin-left:50px;
 }
 
 #inputGender>div{
@@ -80,20 +81,81 @@ button{
 #inputGender>div>span:nth-child(2){
     margin-left: 200px;
 }
-#containers>div>input{
+div>input[type=text]{
     padding-left:20px;
-    border-radius:20px;
+    border-radius:10px;
     border:1px solid gray;
     height:30px;
     width:400px;  
- }
+}
+div>input[type=password]{
+    padding-left:20px;
+    border-radius:10px;
+    border:1px solid gray;
+    height:30px;
+    width:400px;  
+}
 
+#addressContainer{
+    margin-left: 85px;
+}
+#inputAuth{
+    display:flex;
+    margin-left:81px;
+  
+}
+.authButton{
+    margin-left:8px;
+}
+.required{
+    color:red;
+}
+
+.fail{
+    color:red;
+}
+
+.success{
+    color:green;
+}
 /* 전체 폰트 */
 @font-face {
-    font-family: 'TheJamsil5Bold';
+    font-family:'TheJamsil5Bold';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
+}
+
+
+
+button:hover{
+    cursor:pointer;
+    background-color: darkgray;
+}
+
+
+#emailVerify{
+    margin-left:80px;
+}
+#passwordVerify{
+    margin-left:80px;
+}
+
+#nameVerify{
+    margin-left:80px;
+}
+
+
+#register{
+    margin:auto;
+    margin-top:30px;
+    width:200px;
+    height:50px;
+    background:rgb(94, 126, 232);
+    color:white;
+}
+#register:hover{
+    background:rgb(54, 94, 227);
 }
 
 

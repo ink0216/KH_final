@@ -53,3 +53,162 @@ document.querySelector('#memberAuth').addEventListener('click', function(event) 
         alert('인증번호 요청에 실패했습니다.');
     });
 });
+
+//--------------유효성 검사
+const memberAuth = document.querySelector("#memberAuth");
+const inputAuth = document.querySelector("#inputAuth");
+
+const inputEmail = document.querySelector("#inputEmail");
+const emailVerify = document.querySelector("#emailVerify");
+
+const inputPw = document.querySelector("#inputPw");
+const passwordVerify = document.querySelector("#passwordVerify");
+
+const inputTel = document.querySelector("#inputTel");
+
+const inputName = document.querySelector("#inputName");
+const nameVerify = document.querySelector("#nameVerify");
+
+const inputGender = document.querySelectorAll(".inputGender");
+
+const addressVerifyOne = document.querySelector("#addressVerifyOne");
+const addressVerifyTwo = document.querySelector("#addressVerifyTwo");
+const addressVerifyThree = document.querySelector("#addressVerifyThree");
+
+
+let count = 0;
+
+
+const obj = {
+    "memberEmail":false,
+    "memberPw":false,
+    "memberPhoneNumber":false,
+    "memberName":false,
+    "memberGender":false,
+    "memberAddress":false,
+};
+memberAuth.addEventListener("click", () => {
+    count++;
+    if(count > 1){
+        return;
+    }
+   
+        const inputAuthField = document.createElement("input");
+        inputAuthField.classList.add("inputAuthField");
+        inputAuthField.setAttribute("type","text");
+        inputAuth.append(inputAuthField);
+
+        const authButton = document.createElement("button");
+        authButton.classList.add("authButton");
+        authButton.setAttribute("type","button");
+        inputAuth.append(authButton);
+        authButton.textContent = "인증확인";
+});
+
+/* 이메일 유효검사 */
+
+inputEmail.addEventListener("input", () => {
+    const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+    if(inputEmail.value.trim().length === 0){
+        obj.memberEmail= false;
+        inputEmail.value = "";
+        return;
+    }
+    if(!regExp.test(inputEmail.value)){
+        emailVerify.classList.add("fail");
+        emailVerify.classList.remove("success");
+        emailVerify.innerText = "올바른 이메일 형식이 아닙니다";
+        obj.memberEmail = false;
+        return;
+    }
+    emailVerify.classList.add("success");
+    emailVerify.classList.remove("fail");
+    emailVerify.innerText = "올바른 이메일 형식입니다";
+    obj.memberEmail = true;
+
+});
+
+/* 비밀번호 유효검사 */
+inputPw.addEventListener("input", () => {
+    const regExp = /^[a-zA-Z0-9!@#_-]{8,20}$/;
+    if(inputPw.value.trim().length === 0){
+        obj.memberPw= false;
+        inputPw.value = "";
+       
+    }
+    if(!regExp.test(inputPw.value)){
+        passwordVerify.classList.add("fail");
+        passwordVerify.classList.remove("success");
+        passwordVerify.innerText = "올바른 비밀번호 형식이 아닙니다";
+        obj.memberPw = false;
+        return;
+    }
+    passwordVerify.classList.add("success");
+    passwordVerify.classList.remove("fail");
+    passwordVerify.innerText = "올바른 비밀번호 형식입니다";
+    obj.memberPw = true;
+})
+
+/*전화번호 유효검사*/
+inputTel.addEventListener("input", () => {
+    const regexp = /^01[0-9]{1}[0-9]{3,4}[0-9]{4}$/;
+    if(inputTel.value.trim().length===0){
+        inputAuth.classList.remove("success");
+        obj.memberPhoneNumber=false;
+        inputTel.value="";
+
+    }
+    if(!regexp.test(inputTel.value)){
+        inputAuth.classList.add("fail");
+        inputAuth.classList.remove("success");
+        inputAuth.innerText = "올바른 전화번호 형식이 아닙니다";
+        obj.memberPhoneNumber = false;
+        return;
+    }
+    inputAuth.classList.add("success");
+    inputAuth.classList.remove("fail");
+    inputAuth.innerText = "올바른 전화번호 형식입니다";
+    obj.memberPhoneNumber = true;
+});
+
+/* 이름 유효검사 */
+inputName.addEventListener("input", () => {
+    const regExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,5}$/;
+    if(inputName.value.trim().length === 0){
+        obj.memberName=false;
+        inputName.value="";
+    }
+    if(!inputName.focus()==true){
+        nameVerify.innerHTML = "";
+    }
+
+    if(!regExp.test(inputName.value)){
+        nameVerify.classList.add("fail");
+        nameVerify.classList.remove("success");
+        nameVerify.innerText = "올바른 이름 형식이 아닙니다";
+        obj.memberName = false;
+        return;
+    }
+   
+    nameVerify.classList.add("success");
+    nameVerify.classList.remove("fail");
+    nameVerify.innerText = "올바른 이름 형식입니다";
+    obj.memberName = true;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

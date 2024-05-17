@@ -29,3 +29,4 @@ public class HireController {
 		//일단 메인페이지로 리다이렉트(나중에 작성된 공고 상세조회 페이지로 변경예정)
 	}
 }
+

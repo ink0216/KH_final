@@ -10,39 +10,56 @@
 <body>
     
     <h1>개인 회원 가입 페이지</h1>
+
     <form action="/member/signup" method="POST">
         <div id = "containers">
-
             
-            <div> <span id="email">이메일</span> <input type="text" name="memberEmail" id="inputEmail"></div><br>
-            <div> <span id="pw">비밀번호</span> <input type="text" name="memberPw" id="inputPw"></div><br>
-            <div id="telNo">
-                <span>전화번호</span>:<input type="text" name="memberPhoneNumber" id="inputTel">
-                <button id = "memberAuth" type="button">인증번호</button>
-            </div><br>
-            <div>
-                <span>이름</span> <input type="text" name="memberName" id="inputName">
-                <br>
-            </div>
-            <br>
-            <div>
-                <span>주소</span>
-                <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">
-                <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address">
-                <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
-                <button id = "searchAddress" type="button">
-                    검색
-                </button>
-            </div>
-            <br>
-            <div id = "inputGender">
-                <span>M</span> <input type="radio" name="memberGender" id="inputGender1" value="1">
-                <span>F</span> <input type="radio" name="memberGender" id="inputGender2" value="2">
-            </div>                
+           <div> 
+                <span id="email">이메일<span class="required">*</span></span> <input type="text" name="memberEmail" id="inputEmail" required>
+           </div><br>
+           <div id = "emailVerify"></div><br>
+            
 
+           <div> <span id="pw">비밀번호<span class="required">*</span></span> <input type="password" name="memberPw" id="inputPw" required></div><br>
+           <div id = "passwordVerify"></div><br>
+           
+           <div id="telNo">
+                <span>전화번호<span class="required">*</span></span><input type="text" name="memberPhoneNumber" id="inputTel" required>
+                <button id = "memberAuth" type = "button">인증번호</button><br><br>
+                <div id = "inputAuth"></div>
+            </div><br>
+            <div><span>이름<span class="required">*</span></span> <input type="text" name="memberName" id="inputName" required><br></div><br>
+            <div id = "nameVerify"></div><br>
+           
+            <div id = "inputGender">
+                <span>성별<span class="required">*</span></span>
+                <span>남자</span><input type="radio" name="memberGender" class="inputGender" value="1"  checked="checked">
+                <span>여자</span><input type="radio" name="memberGender" class="inputGender" value="2"  >
+
+            </div><br>
+            
+            <div>
+                <span>주소<span class="required">*</span></span>
+               <div id ="addressContainer">
+                    <div>
+                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">
+                        <button id = "searchAddress" type="button">검색</button><br><br>
+                    </div>
+                    <div id = "addressVerifyOne"></div>
+
+                    <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address"><br><br>
+                    <div id = "addressVerifyTwo"></div>
+
+                    <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
+                   
+                    
+                    <div id = "addressVerifyThree"></div>
+               </div>
+            </div>
+            
+           <button id="register"><b>회원가입</b></button>
         </div>
     </form>  
+    <script src = "/js/member/signup.js"></script>
 </body>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="/js/member/signup.js"></script>
 </html>
