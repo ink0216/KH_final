@@ -27,7 +27,6 @@ public class ReviewBoard {
 	private String reviewBoardUpdateDate;
 	private int reviewBoardCode;
 	
-	// 특정 게시글에 작성된 댓글 목록 조회
-	private List<Comment> commentList;
+	
 
 }
