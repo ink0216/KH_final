@@ -47,13 +47,13 @@
         <section class="board-detail" th:object="${board}">
             <div id="boardDetailBox">
                 <div id="boardTitle">
-                    <h1 th:text="|*{boardTitle} - ${boardName}|">  게시글 제목  </h1>
+                    <h1 th:text="|*{boardTitle} - ${boardName}|" style = "font-size:45px;">  게시글 제목  </h1>
                 </div>
                 <div id="boardWriteDate">
-                    <p>
-                        <span>작성일</span> 2024-05-16
+                    
+                        <p style="font-family:Arial, Helvetica, sans-serif; font-size: 16px;" >2024-05-17 12:00:00</p>   
                         <!-- [[*{boardWriteDate}]] -->
-                    </p>
+                    
                 </div>
                 <div id="memberNickname"> 
                     <!-- id 명칭은 나중에 수정해야함 -->
@@ -64,16 +64,18 @@
                 </div>
                 <div id="readCount">
                     <p>
-                        <span>조회수</span> 0
+                        <i class="fa-solid fa-eye"></i> 0
                         <!-- [[*{readCount}]]     -->
                     </p>
                 </div>
                 <div id="declare-area"> 
                     <!-- 신고 아이콘 -->
-                    <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i>
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"> 신고하기</i>
                 </div>
             </div>
         </section>
+
+        <th:block th:replace="~{board/comment}"></th:block>
     </main>
     <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
 </body>
