@@ -1,26 +1,24 @@
-/* 급여 입력하기*/
-
-
 /* 급여 확인 버튼 */
 const payConfirmBtn = document.getElementById('payConfirmBtn');
-/* 선택한 요일 얻어오기 */
-const workDays = document.querySelectorAll('input[name="workDay"'); //근무 요일 checkbox요소 얻어오기
-
-/* 급여 종류 얻어오기 */
-const payNoArea = document.querySelector('#payNo');
-const payNoOption = payNoArea.options[payNoArea.selectedIndex]; //option 얻어오기
-const value = payNoOption.value; //option의 value값 얻어오기
-
-
-const payInput = document.getElementById('payInput') // 급여 입력
 
 
 payConfirmBtn.addEventListener("click",()=>{
 
+    /* 급여 종류 얻어오기 */
+    const payNoArea = document.querySelector('#payNo');
+    const value = payNoArea.value; //option의 value값 얻어오기
+
+    /* 급여 입력 */
+    const payInput = document.getElementById('payInput') 
+
     /* 선택된 요일 얻어오기 */
     const workDays = document.querySelectorAll('input[name="workDay"]:checked'); 
 
-    let dayCount=0;
+
+
+    //-----------------------------------------------------------------
+    /* 일하는 요일 수 얻어오기 */
+    let dayCount=0;//일하는 요일 수
 
     workDays.forEach(day=>{
         dayCount++;
@@ -31,27 +29,107 @@ payConfirmBtn.addEventListener("click",()=>{
 
     }) //workDat.forEach
 
-    console.log(dayCount); //일하는 요일 수
+    console.log(`근무 요일 수 : ${dayCount}`); 
+    //----------------------------------------------------------------------
 
+
+
+
+    //----------------------------------------------------------------------
     /* 시간 얻어오기 */
     const workStart = document.getElementById('workStart'); // 알바 시작 시간
     const workEnd = document.getElementById('workEnd'); // 알바 종료 시간
 
-    const [hours, minutes] = workStart.split(":"); //시작 시간,분 나누기
-    const [eHours, eMinutes] = workEnd.split(":"); //종료 시간,분 나누기
+    const diffMSec =  new Date(0+' '+workEnd.value) - new Date(0+' '+workStart.value)
+    const workTime = diffMSec / (60 * 60 * 1000);
+    console.log(`근무 시간:  ${workTime}`);
+    console.log(value);
 
-    const startHour = parseInt(hours,10); 
-    const startMin = parseInt(minutes,10);
+    const weekWorkTime = dayCount * workTime;
+    let weekPay = 0;
+    let monthPay =0;
+    let yearPay =0;
 
-    const endHour = parseInt(eHours,10);
-    const endMinutes = parseInt(eMinutes,10);
+    console.log("weekWorkTime : ", weekWorkTime);
 
-    const start = (startHour * 60) + startMin ; 
-    const end = (endHour * 60) + endMinutes;
+    //----------------------------------------------------------------------
 
-    const workTime = (end - start)/60;
+
+
+    //----------------------------------------------------------------------
+    /* 급여의 종류에 따라 급여 계산 */
+    switch(value){
+        
+        case '1' : // 시급
+            if(payInput.value<9860)
+                {alert("최저 시급 이상 입력해 주세요");
+                payInput.value='';}
+            break;
+
+
+        case '2': //주급
+
+            if(weekWorkTime>48){
+                weekPay = (9860 * workTime * dayCount)*1.2;
+            }
+            else{
+                weekPay = 9860 * workTime * dayCount;
+            }
+
+            console.log("weekPay : ", weekPay);
+            if(payInput.value<weekPay){
+                alert("최저 주급 이상 입력하세요");
+                payInput.value='';
+            }
+            break;
+
+        case '3': //월급
+            if(weekWorkTime>48){
+                weekPay =  (9860 * workTime * dayCount)*1.2;
+            }
+            else{
+                weekPay = 9860 * workTime * dayCount;
+            }
+
+            monthPay = weekPay * 4;
+            console.log("monthPay : ", monthPay);
+
+            if(payInput.value<monthPay){
+                alert("최저 월급 이상 입력하세요");
+                payInput.value='';
+            }
+            break;
+
+        case '4': //연봉
+            if(weekWorkTime>48){
+                weekPay =  (9860 * workTime * dayCount)*1.2;
+            }
+            else{
+                weekPay = 9860 * workTime * dayCount;
+            }
+
+            monthPay = weekPay * 4;
+            yearPay = monthPay*365; 
+            console.log("monthPay : ", monthPay);
+
+            if(payInput.value<yearPay){
+                alert("최저 연봉 이상 입력하세요");
+                payInput.value='';
+            }
+            break;
+
+        case '5': //일급
+        if(payInput.value<(9860*workTime)){
+            alert("최저 일급 이상 입력하세요");
+            payInput.value='';
+        }
+
+        
+    }
+    //----------------------------------------------------------------------
+
     
-    console.log(workTime);
+
 
 })//payConfirmBtn.addEventListener
 
