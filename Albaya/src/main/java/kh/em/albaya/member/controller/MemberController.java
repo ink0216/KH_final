@@ -46,8 +46,9 @@ public class MemberController {
    @PostMapping("signup")
    public String signup(
          Member member,
+         @RequestParam("memberAddress") String[] memberAddress,
          RedirectAttributes ra) {
-      int result = service.signup(member);
+      int result = service.signup(member, memberAddress);
       
       String message = null;
       

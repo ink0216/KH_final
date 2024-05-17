@@ -18,15 +18,21 @@ public class MemberServiceImpl implements MemberService{
 	private final BCryptPasswordEncoder bcrypt;
 	
 	@Override
-	public int signup(Member member) {
+	public int signup(Member member, String[] memberAddress) {
 		String encPw = bcrypt.encode(member.getMemberPw());
 		
-		member.setMemberEmail(member.getMemberEmail());
-		member.setMemberPhoneNumber(member.getMemberPhoneNumber());
 		member.setMemberPw(encPw);
-		member.setMemberName(member.getMemberName());
-		member.setMemberAddress(member.getMemberAddress());
-		member.setMemberGender(member.getMemberGender());
+		
+		
+		if(!member.getMemberAddress().equals(",,")) {
+		
+			String address = String.join("^^^", memberAddress);
+			
+			member.setMemberAddress(address);
+		}
+		else {
+			member.setMemberAddress(null);
+		}
 		
 		return mapper.signup(member);
 	}
