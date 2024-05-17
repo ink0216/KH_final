@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공고문 등록</title>
 
-    <link rel="stylesheet" href="../../static/css/hire/hrie-wirte.css">
+    <link rel="stylesheet" href="/css/hire/hrie-wirte.css">
 </head>
 
 <body>
 
     <div class="header">
-        <img src="../../static/images/logo.png" alt="logo" id="logo">
+        <img src="/images/logo.png" alt="logo" id="logo">
         <h3>공고문 등록</h3>
     </div>
 
@@ -20,7 +20,7 @@
 
     <div class="container">
 
-        <form action="/hire/">
+        <form action="/hire/hireWrite" method="POST">
         <div class="hireContent">
 
             <h3> 모집 내용</h3>
@@ -79,7 +79,7 @@
 
         <div class="hireTitleImg">
 
-            <img src="../../static/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
+            <img src="/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
 
             <textarea placeholder="공고문 제목을 입력하세요" cols="20" rows="2"></textarea>
 
