@@ -20,6 +20,8 @@ public class BoardController {
    
    private final BoardService service;
    
+   
+   
 
 	// 게시글 조회
 	/**
