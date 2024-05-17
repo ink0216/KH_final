@@ -203,10 +203,23 @@
 
 
         <div class="address">
+            <!-- 주소를 입력 받은 input -->
+            <input type="text" id="sample5_address" placeholder="주소">
+            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 
+            <!-- 지도를 담을 영역 -->
+            <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
         </div>
 
     </div>
+
+
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- 실제 지도를 그리는 JS API 불러오기 -->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b"></script>
+    <script src="../../static/js/hire/hire-write.js"></script>
 </body>
 
 </html>
