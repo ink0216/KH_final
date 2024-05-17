@@ -12,12 +12,9 @@ body{
     width: 101.8%;
     margin:-10px;
     background-color: white;
-  
-    
-  
 }
 #logo{
-    background-image: url(albaya.png);
+    background-image: url('/images/logo.png');
     width:25%;
     background-position: center;
     background-size: 45%;

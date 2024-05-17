@@ -18,6 +18,7 @@ public class Hire {
 	//HIRE 테이블 컬럼
 	private int hireNo; //공고문 번호
 	private int shopNo; //상점 번호
+	private int typeNo; //직종 번호
 	private String hireContent; //주요 사업 내용
 	private String hireEnd; //모집 마감 날짜
 	private int hireTerm; //근무 기간(일 단위)
@@ -28,4 +29,22 @@ public class Hire {
 	private int hireCount; //모집인원
 	private String hireStart; //모집 시작 날짜
 	private String hireGender; //모집 성별
+	 /* CAREER
+	 * EDUCATION_STATUS
+	 * RESUME
+	 * RESUME_LOCATION
+	 * RESUME_EDUCATION
+	 * EDUCATION
+	 * LICENSE
+	 * DOSI
+	 * SIGUNGU
+	 * DONG
+	 * RESUME_WORK***********
+	 * WORK_TYPE
+	 * SHOP
+	 * HIRE_PERIOD
+	 * SCRAP
+	 * HIRE
+	 * PAY_TYPE*****
+	 * */
 }
