@@ -14,25 +14,34 @@
     <form action="/member/signup" method="POST">
         <div id = "containers">
             
-           <div> <span id="email">이메일</span> <input type="text" name="memberEmail" id="inputEmail"></div><br>
-           <div> <span id="pw">비밀번호</span> <input type="text" name="memberPw" id="inputPw"></div><br>
-           <div id="telNo">
+            <div> <span id="email">이메일</span> <input type="text" name="memberEmail" id="inputEmail"></div><br>
+            <div> <span id="pw">비밀번호</span> <input type="text" name="memberPw" id="inputPw"></div><br>
+            <div id="telNo">
                 <span>전화번호</span>:<input type="text" name="memberPhoneNumber" id="inputTel">
-                <button id = "memberAuth">인증번호</button>
+                <button id = "memberAuth" type="button">인증번호</button>
             </div><br>
-            <div><span>이름</span> <input type="text" name="memberName" id="inputName"><br></div><br>
-            
-            <div><span>주소</span><input type="text" name="memberAddress" id="inputAddress"><button id = "addressSearch">search</button></div><br>
+            <div>
+                <span>이름</span> <input type="text" name="memberName" id="inputName">
+                <br>
+            </div>
+            <br>
+            <div>
+                <span>주소</span>
+                <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">
+                <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address">
+                <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
+                <button id = "searchAddress" type="button">
+                    검색
+                </button>
+            </div>
+            <br>
             <div id = "inputGender">
-                
                 <span>M</span> <input type="radio" name="memberGender" id="inputGender1" value="1">
                 <span>F</span> <input type="radio" name="memberGender" id="inputGender2" value="2">
-
-            </div>
-           
+            </div>                
         </div>
     </form>  
 </body>
-
-<script src="/js/member/signup.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/js/member/signup.js"></script>
 </html>
