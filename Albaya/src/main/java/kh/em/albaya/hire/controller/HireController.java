@@ -10,6 +10,7 @@ import kh.em.albaya.hire.model.dto.Hire;
 @Controller
 @RequestMapping("hire")
 public class HireController {
+
 	/**공고 등록 페이지로 이동
 	 * @return
 	 */

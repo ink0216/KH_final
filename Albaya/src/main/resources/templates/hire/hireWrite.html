@@ -166,8 +166,8 @@
                             </div>
 
                             <div>
-                                <input type="checkbox" name="workDay" id="mon" value="mom">
-                                <label for="mon">협의가능</label>
+                                <input type="checkbox" name="workDay" id="aa" value="aa">
+                                <label for="aa">협의가능</label>
                             </div>
 
                         </div>
@@ -179,22 +179,33 @@
                     <dt>근무 시간</dt>
 
                     <dd>
-                        <input type="time" placeholder="시작 시간" id="workStart">
-                        <input type="time" placeholder="종료 시간" id="workEnd">
+                        <input type="time" placeholder="시작 시간" id="workStart" name="workStart">
+                        <input type="time" placeholder="종료 시간" id="workEnd" name="workEnd">
                     </dd>
 
                 </dl>
 
 
                 <dl class="payInput">
-                    <dt>급여(시급)</dt>
+
+                    <dt>급여</dt>
+
                     <dd>
-                        <input type="text" placeholder="급여를 입력해주세요">
+                        <select name="payNo" id="payNo">
+                            <option value=1>시급</option>
+                            <option value=2>주급</option>
+                            <option value=3>월급</option>
+                            <option value=4>연봉</option>
+                            <option value=5>일급</option>
+                        </select>
+
+                        <input type="text" id="payInput" placeholder="급여">
                     </dd>
 
                     <dd>
-                        <p>*최저 시급 : 9860원</p>
+                        <button id="payConfirmBtn">확인</button>
                     </dd>
+
                 </dl>
 
             </div>
@@ -203,9 +214,60 @@
 
         <div class="address">
 
+            <h3>근무지 정보</h3>
+            <hr>
+
+            <div class="address-input">
+
+                <dl>
+                    <dt>근무지 주소</dt>
+                    <dd>
+                        <!-- 주소를 입력 받은 input -->
+                        <input type="text" id="address" placeholder="주소">
+                        <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>세부주소</dt>
+                    <dd>
+                        <input type="text" id="addressDetail" placeholder="상세 주소">
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt></dt>
+                    <dd>
+                        <!-- 지도를 담을 영역 -->
+                        <div id="map"></div>
+                    </dd>
+                </dl>
+
+
+                <dl>
+                    <dt>근무 회사명</dt>
+                    <dd>
+                        <input type="text" id="shopName" name="shopName" placeholder="회사명">
+                    </dd>
+                </dl>
+
+
+            </div>
+
+
+
         </div>
     </form>
     </div>
+
+
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- 실제 지도를 그리는 JS API 불러오기 -->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b&libraries=services"></script>
+    <script src="/js/hire/hire-write.js"></script>
+
 </body>
 
 </html>
