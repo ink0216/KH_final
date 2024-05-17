@@ -209,3 +209,49 @@
     background-color: darksalmon
 }
 /* --------------------------------------------------------------- */
+/* 주소, 지도 영역 */
+#address{
+    width: 300px;
+}
+
+.address>h3{
+    margin-top: 30px;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.address-input{
+    background-color: #f2f7f7;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.address-input dl{
+    display:  flex;
+    margin: 10px;
+}
+
+.address-input dt{
+    width: 80px;
+    font-size: 13px;
+    font-weight: bold;
+    user-select: none;
+}
+
+
+#map{
+    width: 500px;
+    height: 300px;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+/* --------------------------------------------------------------- */
+#pay{
+    width: 100px;
+}
