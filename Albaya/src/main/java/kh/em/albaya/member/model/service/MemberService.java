@@ -8,6 +8,6 @@ public interface MemberService {
 	 * @param member
 	 * @return result
 	 */
-	int signup(Member member);
+	int signup(Member member, String[] memberAddress);
 
 }
