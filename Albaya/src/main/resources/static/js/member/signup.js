@@ -197,6 +197,8 @@ inputName.addEventListener("input", () => {
     obj.memberName = true;
 });
 
+/*  */
+
 
 
 

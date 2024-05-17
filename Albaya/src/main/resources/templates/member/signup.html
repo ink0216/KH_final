@@ -13,17 +13,14 @@
 
     <form action="/member/signup" method="POST">
         <div id = "containers">
-            
            <div> 
-                <span id="email">이메일<span class="required">*</span></span> <input type="text" name="memberEmail" id="inputEmail" required>
+                <span id="email">이메일<span class="required">*</span></span> <input type="text" name="memberEmail" maxlength = "20" id="inputEmail" required>
            </div><br>
            <div id = "emailVerify"></div><br>
             
 
-           <div> <span id="pw">비밀번호<span class="required">*</span></span> <input type="password" name="memberPw" id="inputPw" required></div><br>
+           <div> <span id="pw">비밀번호<span class="required">*</span></span> <input type="password" name="memberPw" maxlength = "20" id="inputPw" required></div><br>
            <div id = "passwordVerify"></div><br>
-           
-
 
            <div id="telNo">
                 <span>전화번호<span class="required">*</span></span><input type="text" name="memberPhoneNumber" id="inputTel" required>
@@ -40,13 +37,12 @@
             </div><br>
             
             <div>
-                <span>주소<span class="required">*</span></span>
+               <span>주소<span class="required">*</span></span>
                <div id ="addressContainer">
                     <div>
                         <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">
                         <button id = "searchAddress" type="button">검색</button><br><br>
                     </div>
-
                     <div id = "addressVerifyOne"></div>
 
                     <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address"><br><br>
@@ -55,7 +51,6 @@
                     <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
                     <div id = "addressVerifyThree"></div>
 
-                    
                </div>
             </div>
             
