@@ -14,7 +14,7 @@ import kh.em.albaya.board.model.service.BoardService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("board")
+@RequestMapping("reviewBoard")
 @RequiredArgsConstructor
 public class BoardController {
 	
@@ -37,9 +37,7 @@ public class BoardController {
 		
 		Map<String , Object> map = null;
 		
-		
 		service.selectBoardList(reviewBoardCode,cp);
-		
 		
 		return null;
 	}
