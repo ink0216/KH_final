@@ -6,7 +6,9 @@
 
 body{
     background-color: rgb(228, 242, 238);
+    font-family: 'TheJamsil5Bold';
 }
+
 
 /* 전체 폰트 */
 @font-face {
@@ -14,6 +16,14 @@ body{
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
+}
+
+button{
+    font-family: 'TheJamsil5Bold';
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 /* 선택됐을때 배경색 바꾸는 코드 */
@@ -96,6 +106,7 @@ body{
     width: 100%;
     background-color: white;
     border: none;
+    font-size: 15px;
 
 }
 
@@ -130,7 +141,7 @@ body{
     height: 800%;
     margin: 10px;
     border-radius: 5px;
-    border: 1px solid black; /* 원하는 두께로 설정 */
+    border: 1px solid black;
 
 }
 
@@ -145,4 +156,50 @@ body{
 .login-button-area > button{
     width: 80%;
     height: 100%;
+    font-size: 15px;
+    background-color: #014C73;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.login-footer-wrapper{
+    display: flex;
+    height: 25%;
+    justify-content: center;
+}
+
+.login-footer-area{
+    display: flex;
+    width: 80%;
+}
+
+.login-saveId-area{
+    display: flex;
+    width: 30%;
+    align-items: center;
+}
+
+.login-member-area{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.login-member-area > a{
+    margin: 15px;
+}
+
+#saveIdChkbox{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#saveIdChkbox{
+    cursor: pointer;
+}
+
+.saveIdChkboxLable{
+    cursor: pointer;
 }

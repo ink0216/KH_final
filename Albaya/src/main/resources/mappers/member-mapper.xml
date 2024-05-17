@@ -9,4 +9,13 @@
 		#{memberGender}, #{memberAddress})
 	</insert>
 	
+	<select id="login" resultType="Member">
+		SELECT MEMBER_NO, AUTHORITY_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_PHONE_NUMBER,
+		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE,
+		MEMBER_NAME, MEMBER_STATUS, MEMBER_GENDER, MEMBER_ADDRESS
+		FROM "MEMBER"
+		WHERE "MEMBER_EMAIL" = #{memberEmail}
+		AND MEMBER_STATUS != 5
+	</select>
+	
 </mapper>

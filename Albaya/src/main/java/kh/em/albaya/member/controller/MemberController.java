@@ -3,17 +3,21 @@ package kh.em.albaya.member.controller;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.member.model.service.MemberService;
 import kh.em.albaya.sms.config.SMSConfig;
@@ -25,9 +29,10 @@ import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Controller
-@RequestMapping("member")
 @RequiredArgsConstructor
+@RequestMapping("member")
 @PropertySource("classpath:/config.properties")
+@SessionAttributes({"loginMember"})
 @Slf4j
 public class MemberController {
    
@@ -84,8 +89,42 @@ public class MemberController {
     	return "/member/login";
     }
     
-//    @PostMapping("login")
-//    public String login() {
-//    	return "/member/login";
-//    }
+    @PostMapping("login")
+    public String login(
+    		Member inputMember,
+    		Model model,
+			@RequestParam(value = "saveId", required = false) String saveId,
+			HttpServletResponse resp,	
+    		RedirectAttributes ra) {
+    	
+		Member loginMember = service.login(inputMember);
+    	
+		String message = null;
+		
+		if(loginMember == null) {
+			message = "아이디 또는 비밀번호가 일치하지 않습니다";
+			return "redirect:/member/login";
+		}
+
+
+		if(loginMember != null) {
+			message = "";
+			model.addAttribute("loginMember", loginMember);
+			
+			Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
+	
+			cookie.setPath("/");
+			
+			if(saveId != null) {
+				cookie.setMaxAge(30 * 24 * 60 * 60);
+			}
+			else {
+				cookie.setMaxAge(0);
+			}
+			resp.addCookie(cookie);
+			
+		}
+		ra.addFlashAttribute("message", message);
+		return "redirect:/member/login";
+    }
 }

@@ -1,14 +1,41 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const personalMemberButton = document.getElementById('personalMember');
-    const coparationMemberButton = document.getElementById('coparationMember');
+const personalMember = document.querySelector('#personalMember');
+const coparationMember = document.querySelector('#coparationMember');
 
-    personalMemberButton.addEventListener('click', function () {
-        this.classList.add('selected');
-        coparationMemberButton.classList.remove('selected');
-    });
+personalMember.addEventListener("click", () => {
+    personalMember.style.backgroundColor = "grey";
+    coparationMember.style.backgroundColor = "white"
+    document.querySelector('.login-form').action = '/member/login';
+})
 
-    coparationMemberButton.addEventListener('click', function () {
-        this.classList.add('selected');
-        personalMemberButton.classList.remove('selected');
-    });
-});
+coparationMember.addEventListener("click", () => {
+    coparationMember.style.backgroundColor = "grey";
+    personalMember.style.backgroundColor = "white"
+    document.querySelector('.login-form').action = '/shop/login';
+})
+
+const getCookie = (key) => {
+    const cookies = document.cookie;
+    
+    const cookieList = cookies.split("; ").map(el => el.split("="));
+
+    const obj = {};
+
+    for(let i=0; i<cookieList.length; i++){
+        const k = cookieList[i][0];
+        const v = cookieList[i][1];
+        obj[k] = v;
+    }
+    return obj[key]; 
+}
+const loginEmail = document.querySelector("#loginForm input[name='memberEmail']");
+const loginPw = document.querySelector("#loginForm input[name='memberPw']");
+
+if(loginEmail != null){
+    const saveId = getCookie("saveId");
+
+    if(saveId != undefined){
+        loginEmail.value = saveId;
+
+        document.querySelector("input[name='saveId']").checked = true;
+    }
+}

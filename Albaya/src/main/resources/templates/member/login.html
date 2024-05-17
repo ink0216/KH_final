@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/member/header.css">
 </head>
 <body>
-    <th:block th:replace="~{member/header}"></th:block>
+    <th:block th:replace="~{common/header}"></th:block>
     <main>
         <div class="wrapper-container">
             <div class="login-container">
@@ -20,8 +20,7 @@
 
                 <div class="login-wrapper">
                     <div class="login-area">
-                        <form action="/member/login" method="POST" class="login-form">
-                            
+                        <form action="/member/login" method="POST" class="login-form" id="loginForm">
                             <div class="select-member">
                                 <div class="selected-member">
                                     <button id="personalMember" type="button">일반회원</button>
@@ -34,11 +33,25 @@
                             <div class="login-middle-wrapper">
                                 <div class="login-area-wrapper">
                                     <div class="login-input-area">
-                                        <input type="text" placeholder="아이디">
-                                        <input type="password" placeholder="비밀번호">
+                                        <input type="text" placeholder="아이디" name="memberEmail">
+                                        <input type="password" placeholder="비밀번호" name="memberPw">
                                     </div>
                                     <div class="login-button-area">
                                         <button>로그인</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="login-footer-wrapper">
+                                <div class="login-footer-area">
+                                    <div class="login-saveId-area">
+                                        <input id="saveIdChkbox" type="checkbox" name="saveId">
+                                        <label for="saveIdChkbox" class="saveIdChkboxLable">아이디 저장</label>
+                                    </div>
+                                    <div class="login-member-area">
+                                        <a href="">아이디 찾기</a> |
+                                        <a href="">비밀번호 찾기</a> | 
+                                        <a href="/member/signup">회원가입</a> 
                                     </div>
                                 </div>
                             </div>
@@ -51,4 +64,10 @@
 </body>
 
 <script src="/js/member/login.js"></script>
+<script th:inline="javascript">
+    const message =  /*[[${message}]]*/ "전달 받은 message";
+    // message가 없다면 null
+
+    if (message != null) alert(message);
+  </script>
 </html>
