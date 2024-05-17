@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" href="/css/member/signup.css">
-    <link rel="stylesheet" href="header.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -13,23 +12,23 @@
     <h1>개인 회원 가입 페이지</h1>
     <form action="/member/signup" method="POST">
         <div id = "containers">
-            
            <div> <span id="email">이메일</span> <input type="text" name="memberEmail" id="inputEmail"></div><br>
            <div> <span id="pw">비밀번호</span> <input type="text" name="memberPw" id="inputPw"></div><br>
            <div id="telNo">
                 <span>전화번호</span>:<input type="text" name="memberPhoneNumber" id="inputTel">
-                <button id = "memberAuth">인증번호</button>
+                <button  id = "memberAuth" type = "button">인증번호</button>
             </div><br>
             <div><span>이름</span> <input type="text" name="memberName" id="inputName"><br></div><br>
-            
-            <div><span>주소</span><input type="text" name="memberAddress" id="inputAddress"><button id = "addressSearch">search</button></div><br>
             <div id = "inputGender">
-                
-                <span>M</span> <input type="radio" name="memberGender" id="inputGender1" value="1">
-                <span>F</span> <input type="radio" name="memberGender" id="inputGender2" value="2">
+                <span>성별</span>
+                <div id="genderDropdown">
 
-            </div>
-           
+                    남자<input type="radio" name="memberGender" value="1" checked="checked">
+                    여자<input type="radio" name="memberGender" value="2" checked="checked">
+                </div>
+            </div><br>
+            <div><span>주소</span><input type="text" name="memberAddress" id="inputAddress"><button id = "addressSearch">search</button></div><br>
+
         </div>
     </form>  
 </body>
