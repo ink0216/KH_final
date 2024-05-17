@@ -14,5 +14,7 @@ public class Pagination {
 	
 	private int prevPage;			// 이전 페이지 모음의 마지막 번호 
 	private int nextPage;			// 다음 페이지 모음의 시작 번호 
+	
+	
 
 }
