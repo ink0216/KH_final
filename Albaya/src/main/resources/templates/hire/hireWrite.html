@@ -21,243 +21,243 @@
     <div class="container">
 
         <form action="/hire/hireWrite" method="POST">
-        <div class="hireContent">
+            <div class="hireContent">
 
-            <h3> 모집 내용</h3>
+                <h3> 모집 내용</h3>
 
-            <hr>
-        
-            <div class="hireContent-input">
+                <hr>
 
-                <dl class="titleInput">
-                    <dt>공고제목</dt>
-                    <dd>
-                        <input type="text" placeholder="공고문을 입력해주세요" name="hireTitle">
-                    </dd>
-                    <dd>
-                        <p>
-                            * 0/40(최소 2자)
-                        </p>
-                    </dd>
-                </dl>
+                <div class="hireContent-input">
 
-                <div class="typeInput">
-                    <dl>
-                        <dt>
-                            업직종
-                        </dt>
-
+                    <dl class="titleInput">
+                        <dt>공고제목</dt>
                         <dd>
-                            <input type="text" placeholder="업직종을 선택해 주세요" name="typeName">
-                            <button id="typeBtn">선택</button>
+                            <input type="text" placeholder="공고문을 입력해주세요" name="hireTitle">
+                        </dd>
+                        <dd>
+                            <p>
+                                * 0/40(최소 2자)
+                            </p>
                         </dd>
                     </dl>
+
+                    <div class="typeInput">
+                        <dl>
+                            <dt>
+                                업직종
+                            </dt>
+
+                            <dd>
+                                <input type="text" placeholder="업직종을 선택해 주세요" name="typeName">
+                                <button id="typeBtn">선택</button>
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <dl class="countInput">
+                        <dt>
+                            모집인원
+                        </dt>
+                        <dd>
+                            <input type="text" name="hireCount" placeholder="모집인원을 등록해주세요">
+                        </dd>
+                    </dl>
+
+                    <dl class="endInput">
+                        <dt>
+                            모집종료
+                        </dt>
+                        <dd>
+                            <input type="date" name="hireEnd" id="hireEnd">
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="hireTitleImg">
+
+                <img src="/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
+
+                <textarea placeholder="공고문 제목을 입력하세요" cols="20" rows="2"></textarea>
+
+            </div>
+
+            <hr>
+
+            <div class="hireCondition">
+                <h3>근무 조건</h3>
+                <hr>
+
+                <div class="hireCondition-input">
+                    <dl class="termInput">
+                        <dt>근무 기간</dt>
+                        <dd>
+                            <div class="termCheckbox">
+                                <div>
+                                    <input type="radio" name="hireTerm" id="oneDay" value="1">
+                                    <label for="oneDay">하루</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="hireTerm" id="oneWeek" value="7">
+                                    <label for="oneWeek">일주일</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="hireTerm" id="3months" value="3">
+                                    <label for="3months">1-3개월</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="hireTerm" id="6months" value="6">
+                                    <label for="6months">3-6개월</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" name="hireTerm" id="years" value="365">
+                                    <label for="years">1년 이상</label>
+                                </div>
+
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="datInput">
+                        <dt>근무 요일</dt>
+
+                        <dd>
+                            <div class="dayCheckbox">
+                                <div>
+                                    <input type="checkbox" name="workDay" id="mon" value="mom">
+                                    <label for="mon">월요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="tue" value="tue">
+                                    <label for="tue">화요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="wed" value="wed">
+                                    <label for="wed">수요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="thu" value="thu">
+                                    <label for="thu">목요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="fri" value="fri">
+                                    <label for="fri">금요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="sat" value="sat">
+                                    <label for="sat">토요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="sun" value="sun">
+                                    <label for="sun">일요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="aa" value="aa">
+                                    <label for="aa">협의가능</label>
+                                </div>
+
+                            </div>
+                        </dd>
+                    </dl>
+
+
+                    <dl class="timeInput">
+                        <dt>근무 시간</dt>
+
+                        <dd>
+                            <input type="time" placeholder="시작 시간" step="1800" id="workStart" name="workStart">
+                            <input type="time" placeholder="종료 시간" step="1800" id="workEnd" name="workEnd">
+                        </dd>
+
+                    </dl>
+
+
+                    <dl class="payInput">
+
+                        <dt>급여</dt>
+
+                        <dd>
+                            <select name="payNo" id="payNo">
+                                <option value=1>시급</option>
+                                <option value=2>주급</option>
+                                <option value=3>월급</option>
+                                <option value=4>연봉</option>
+                                <option value=5>일급</option>
+                            </select>
+
+                            <input type="text" id="payInput" placeholder="급여">
+                        </dd>
+
+                        <dd>
+                            <button id="payConfirmBtn" type="button">확인</button>
+                        </dd>
+
+                    </dl>
+
+                </div>
+            </div>
+
+
+            <div class="address">
+
+                <h3>근무지 정보</h3>
+                <hr>
+
+                <div class="address-input">
+
+                    <dl>
+                        <dt>근무지 주소</dt>
+                        <dd>
+                            <!-- 주소를 입력 받은 input -->
+                            <input type="text" id="address" placeholder="주소">
+                            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>세부주소</dt>
+                        <dd>
+                            <input type="text" id="addressDetail" placeholder="상세 주소">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt></dt>
+                        <dd>
+                            <!-- 지도를 담을 영역 -->
+                            <div id="map"></div>
+                        </dd>
+                    </dl>
+
+
+                    <dl>
+                        <dt>근무 회사명</dt>
+                        <dd>
+                            <input type="text" id="shopName" name="shopName" placeholder="회사명">
+                        </dd>
+                    </dl>
+
+
                 </div>
 
-                <dl class="countInput">
-                    <dt>
-                        모집인원
-                    </dt>
-                    <dd>
-                        <input type="text" name="hireCount" placeholder="모집인원을 등록해주세요">
-                    </dd>
-                </dl>
-
-                <dl class="endInput">
-                    <dt>
-                        모집종료
-                    </dt>
-                    <dd>
-                        <input type="date" name="hireEnd" id="hireEnd">
-                    </dd>
-                </dl>
-
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="hireTitleImg">
-
-            <img src="/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
-
-            <textarea placeholder="공고문 제목을 입력하세요" cols="20" rows="2"></textarea>
-
-        </div>
-
-        <hr>
-
-        <div class="hireCondition">
-            <h3>근무 조건</h3>
-            <hr>
-
-            <div class="hireCondition-input">
-                <dl class="termInput">
-                    <dt>근무 기간</dt>
-                    <dd>
-                        <div class="termCheckbox">
-                            <div>
-                                <input type="radio" name="hireTerm" id="oneDay" value="1">
-                                <label for="oneDay">하루</label>
-                            </div>
-
-                            <div>
-                                <input type="radio" name="hireTerm" id="oneWeek" value="7">
-                                <label for="oneWeek">일주일</label>
-                            </div>
-
-                            <div>
-                                <input type="radio" name="hireTerm" id="3months" value="3">
-                                <label for="3months">1-3개월</label>
-                            </div>
-
-                            <div>
-                                <input type="radio" name="hireTerm" id="6months" value="6">
-                                <label for="6months">3-6개월</label>
-                            </div>
-
-                            <div>
-                                <input type="radio" name="hireTerm" id="years" value="365">
-                                <label for="years">1년 이상</label>
-                            </div>
-
-                        </div>
-                    </dd>
-                </dl>
-
-                <dl class="datInput">
-                    <dt>근무 요일</dt>
-
-                    <dd>
-                        <div class="dayCheckbox">
-                            <div>
-                                <input type="checkbox" name="workDay" id="mon" value="mom">
-                                <label for="mon">월요일</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="workDay" id="tue" value="tue">
-                                <label for="tue">화요일</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="workDay" id="wed" value="wed">
-                                <label for="wed">수요일</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="workDay" id="thu" value="thu">
-                                <label for="thu">목요일</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="workDay" id="fri" value="fri">
-                                <label for="fri">금요일</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="workDay" id="sat" value="sat">
-                                <label for="sat">토요일</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="workDay" id="sun" value="sun">
-                                <label for="sun">일요일</label>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="workDay" id="aa" value="aa">
-                                <label for="aa">협의가능</label>
-                            </div>
-
-                        </div>
-                    </dd>
-                </dl>
-
-
-                <dl class="timeInput">
-                    <dt>근무 시간</dt>
-
-                    <dd>
-                        <input type="time" placeholder="시작 시간" id="workStart" name="workStart">
-                        <input type="time" placeholder="종료 시간" id="workEnd" name="workEnd">
-                    </dd>
-
-                </dl>
-
-
-                <dl class="payInput">
-
-                    <dt>급여</dt>
-
-                    <dd>
-                        <select name="payNo" id="payNo">
-                            <option value=1>시급</option>
-                            <option value=2>주급</option>
-                            <option value=3>월급</option>
-                            <option value=4>연봉</option>
-                            <option value=5>일급</option>
-                        </select>
-
-                        <input type="text" id="payInput" placeholder="급여">
-                    </dd>
-
-                    <dd>
-                        <button id="payConfirmBtn">확인</button>
-                    </dd>
-
-                </dl>
-
-            </div>
-        </div>
-
-
-        <div class="address">
-
-            <h3>근무지 정보</h3>
-            <hr>
-
-            <div class="address-input">
-
-                <dl>
-                    <dt>근무지 주소</dt>
-                    <dd>
-                        <!-- 주소를 입력 받은 input -->
-                        <input type="text" id="address" placeholder="주소">
-                        <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt>세부주소</dt>
-                    <dd>
-                        <input type="text" id="addressDetail" placeholder="상세 주소">
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt></dt>
-                    <dd>
-                        <!-- 지도를 담을 영역 -->
-                        <div id="map"></div>
-                    </dd>
-                </dl>
-
-
-                <dl>
-                    <dt>근무 회사명</dt>
-                    <dd>
-                        <input type="text" id="shopName" name="shopName" placeholder="회사명">
-                    </dd>
-                </dl>
 
 
             </div>
-
-
-
-        </div>
-    </form>
+        </form>
     </div>
 
 
