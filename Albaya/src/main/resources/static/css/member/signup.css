@@ -1,3 +1,7 @@
+button:hover{
+    cursor: pointer;
+}
+
 h1{
     font-family: 'TheJamsil5Bold';
     margin-top:70px;
