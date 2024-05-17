@@ -40,7 +40,7 @@ public class MemberController {
 
    @GetMapping("signup")
    public String signup() {
-      return "member/signup";
+      return "/member/signup";
    }
    
    @PostMapping("signup")
@@ -77,5 +77,14 @@ public class MemberController {
 
         return response;
     }
-
+    
+    @GetMapping("login")
+    public String login() {
+    	return "/member/login";
+    }
+    
+//    @PostMapping("login")
+//    public String login() {
+//    	return "/member/login";
+//    }
 }
