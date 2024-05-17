@@ -1,3 +1,7 @@
+body{
+    background-color: rgb(228, 242, 238);
+}
+
 h1{
     font-family: 'TheJamsil5Bold';
     margin-top:70px;
@@ -9,13 +13,14 @@ h1{
     flex-direction: column;
     margin:auto;
     margin-top:40px;
-    width:590px;
+    width:600px;
     height:70%;
     border:1px solid black;
     padding-left:20px;
+    padding-right:20px;
     padding-top:20px;
     padding-bottom:20px;
-    background-color: rgb(233, 222, 208);
+    background-color: white;
     border:1px solid white;
     border-top:2px solid black;
     
@@ -29,11 +34,11 @@ h1{
     width:200px;
 }
 #inputPw{
-    margin-left:13px;
+    margin-left:15px;
     width:200px;
 }
 #inputTel{
-    margin-left: 14px;
+    margin-left: 16px;
 }
 #inputName{
     margin-left: 43px;
@@ -46,10 +51,7 @@ h1{
 #containers>span{
     margin-left:40px;
 }
-#containers>div>input{
-   height:30px;
-   width:400px;  
-}
+
 #containers>div>span{
     font-family: 'TheJamsil5Bold';
 }
@@ -57,18 +59,30 @@ button{
     border-radius:10px;
     border:1px solid lightgray;
     background:lightgray;
+    width:90px;
     height:35px;
 }
 #addressSearch{
     margin-left:5px;
 }
 #inputGender{
-    display:flex;
-}
-#inputGender>input{
-    width:20px;
+    display: flex;
+    
 }
 
+#inputGender>div{
+    margin-left:50px;
+}
+#inputGender>div>span:nth-child(2){
+    margin-left: 200px;
+}
+#containers>div>input{
+    padding-left:20px;
+    border-radius:20px;
+    border:1px solid gray;
+    height:30px;
+    width:400px;  
+ }
 
 /* 전체 폰트 */
 @font-face {
@@ -77,5 +91,6 @@ button{
     font-weight: 700;
     font-style: normal;
 }
+
 
 
