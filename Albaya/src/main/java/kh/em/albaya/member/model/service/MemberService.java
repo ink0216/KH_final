@@ -10,4 +10,10 @@ public interface MemberService {
 	 */
 	int signup(Member member, String[] memberAddress);
 
+	/** 로그인
+	 * @param inputMember
+	 * @return 
+	 */
+	Member login(Member inputMember);
+
 }
