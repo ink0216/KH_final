@@ -34,6 +34,8 @@ public class BoardController {
 		@RequestParam(value="cp", required=false, defaultValue = "1")int cp,
 		Model model
 		) {
+		// 일반, 비회원, 기업 전부 다 조회 가능
+		
 		
 		Map<String , Object> map = null;
 		
@@ -50,6 +52,7 @@ public class BoardController {
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
 			Model model) {
+		// 일반,비회원,기업 전부 상세 조회 가능
 		
 		return null;
 	}
