@@ -30,36 +30,36 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 @PropertySource("classpath:/config.properties")
 @Slf4j
 public class MemberController {
-	
-	private final MemberService service;
-	
+   
+   private final MemberService service;
+   
     final DefaultMessageService messageService;
     
-	private final SMSConfig smsConfig;
+   private final SMSConfig smsConfig;
 
 
-	@GetMapping("signup")
-	public String signup() {
-		return "member/signup";
-	}
-	
-	@PostMapping("signup")
-	public String signup(
-			Member member,
-			RedirectAttributes ra) {
-		int result = service.signup(member);
-		
-		String message = null;
-		
-		if(result > 0) {
-			message = "가입 성공!";
-			ra.addFlashAttribute("message", message);
-			return "redirect:/";
-		}else {
-			message = "가입 실패";
-			return "redirect:/";
-		}
-	}
+   @GetMapping("signup")
+   public String signup() {
+      return "member/signup";
+   }
+   
+   @PostMapping("signup")
+   public String signup(
+         Member member,
+         RedirectAttributes ra) {
+      int result = service.signup(member);
+      
+      String message = null;
+      
+      if(result > 0) {
+         message = "가입 성공!";
+         ra.addFlashAttribute("message", message);
+         return "redirect:/";
+      }else {
+         message = "가입 실패";
+         return "redirect:/";
+      }
+   }
 
     @PostMapping("send-one")
     @ResponseBody
