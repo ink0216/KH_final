@@ -25,7 +25,7 @@
             border:1px solid black;
         }
 
-        #boardTitle-area{
+        #reviewBoardTitle-area{
             font-size:30px;
             justify-content: space-evenly;
             display: flex;
@@ -33,7 +33,7 @@
             
         }
 
-        #boardTitle{
+        #reviewBoardTitle{
             width:800px;
             height:35px;
             border-radius:10px;
@@ -41,7 +41,7 @@
             font-family : "inherit";
         }
 
-        #boardContent-area{
+        #reviewBoardContent-area{
             font-size:30px;
             justify-content: space-evenly;
             display: flex;
@@ -100,14 +100,14 @@
         <h1>알바 후기 작성 페이지</h1>
     </div>
     <div id="writeBox">
-        <form action="write" method="POST" class="board-write" id="boardWriteFrm">
+        <form action="write" method="POST" class="reviewBoard-write" id="reviewBoardWriteFrm">
 
             
-            <div id="boardTitle-area">
-                제목 <textarea name="boardTitle" id="boardTitle" placeholder="제목을 입력하세요."></textarea>
+            <div id="reviewBoardTitle-area">
+                제목 <textarea name="reviewBoardTitle" id="reviewBoardTitle" placeholder="제목을 입력하세요."></textarea>
             </div>
-            <div id="boardContent-area">
-                내용 <textarea name="boardContent" id="boardContent" maxlength="4000">
+            <div id="reviewBoardContent-area">
+                내용 <textarea name="reviewBoardContent" id="reviewBoardContent" maxlength="4000">
                  </textarea>
             </div>
 
