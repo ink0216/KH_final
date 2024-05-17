@@ -3,9 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>알바 후기 글쓰기</title>
+
+    <style>
+
+        body{
+            font-family:'TheJamsil5Bold';
+
+        }
+        @font-face {
+            font-family: 'TheJamsil5Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+
+        #writeBox{
+            width:1100px;
+            height:600px;
+            border:1px solid black;
+        }
+
+        #boardTitle-area{
+            font-size:30px;
+            justify-content: space-evenly;
+            display: flex;
+            margin:40px;
+            
+        }
+
+        #boardTitle{
+            width:800px;
+            height:35px;
+            border-radius:10px;
+            border-color:rgb(184, 171, 171);
+            font-family : "inherit";
+        }
+
+        #boardContent-area{
+            font-size:30px;
+            justify-content: space-evenly;
+            display: flex;
+            margin:40px;
+            border-top : 1px solid grey;
+            padding-top:40px;
+        }
+
+       textarea {
+            width:800px;
+            height:380px;
+            border-radius:10px;
+            border-color:rgb(184, 171, 171);
+            resize:none;
+        }
+
+      
+
+
+        #writeBtn{
+            width:120px;
+            height:40px;
+            background-color:hsl(229, 97%, 48%);
+            font-size:18px;
+            color:white;
+            font-weight:bold;
+            border:none;
+            margin-left:960px;
+            margin-top:20px;
+            border-radius:15px;
+
+        }
+        #cancelBtn{
+            width:120px;
+            height:40px;
+            background-color:rgb(236, 129, 6);
+            font-size:18px;
+            color:white;
+            font-weight:bold;
+            border:none;
+            margin-left:960px;
+            margin-top:20px;
+            border-radius:15px;
+        }
+
+        
+
+    </style>
+
+
+ 
+
 </head>
 <body>
-    
+    <div id="alba">
+        <h1>알바 후기 작성 페이지</h1>
+    </div>
+    <div id="writeBox">
+        <form action="write" method="POST" class="board-write" id="boardWriteFrm">
+
+            
+            <div id="boardTitle-area">
+                제목 <textarea name="boardTitle" id="boardTitle" placeholder="제목을 입력하세요."></textarea>
+            </div>
+            <div id="boardContent-area">
+                내용 <textarea name="boardContent" id="boardContent" maxlength="4000">
+                 </textarea>
+            </div>
+
+        </form>
+    </div>
+    <div class="writeBtn-area">
+        <button id="writeBtn">작성하기</button>
+    </div>
+    <div class="cancelBtn-area">
+        <button id="cancelBtn">뒤로가기</button>
+    </div>
 </body>
 </html>

@@ -3,157 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albaya 알바 후기 게시판</title>
+    <title>게시판 상세</title>
+
     <style>
 
-/* *{
+        body{
+            
+            font-family:'TheJamsil5Bold';
 
-   
-    padding: 0;
-    margin: 0;
-  } */
-  /* 배경 색상 및 중앙 정렬 */
-body {
-    background-color: white;
+            }
 
-    min-height: 100vh;
-}
+        @font-face {
+            font-family: 'TheJamsil5Bold';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        #boardDetailBox{
+            width:1100px;
+            height:800px;
+            border:1px solid black;
+        }
 
-/* 게시판 컨테이너 스타일 */
-.list-table {
+
+        /* #readCount{
+           
+           
+        }
+        #boardWriteDate{
+            
+           
+        }
+        #memberNickName{
+          
     
-    max-width: 1100px;
-    background-color:white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
+        } */
 
-.list-table tr > *:nth-of-type(1){
-    width:8%;
-}
-
-
-.list-table tr > *:nth-of-type(2){
-     width: 40%; 
-     text-align: center;
-     padding-left: 50px;
-     text-decoration: none;
-}
-
-.list-table tr > *:nth-of-type(3){
-    width:15%;
-
-}
-.list-table tr > *:nth-of-type(4){
-    width:15%;
-}
-.list-table tr > *:nth-of-type(5){
-    width:8%;
-}
-
-
-.list-table {
-    
-    border-collapse: collapse;
-}
-
-/* 테이블 헤더 스타일 */
-.list-table th {
-    background-color: #41FF3A;
-    color: #333;
-    font-weight: bold;
-    padding: 10px;
-    border-bottom: none;
-    height:40px;
- 
-}
-
-/* 테이블 바디 스타일 */
-.list-table td {
-    padding: 15px;
-    border-bottom: 1px solid #BDBDBD;
-    text-align: center;
-}
-
-/* 테이블 행 스타일 */
-.list-table tr:hover {
-    background-color: #EAEAEA
-}
-
-@media (min-width: 768px) {
-    .container {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .main {
-        width: 70%;
-        order: 1;
-    }
-
-    .sidebar {
-        width: 30%;
-        order: 2;
-    }
-}
-
-
-
-#insertBtn{
-    width:100px;
-
-}
-  
     </style>
+
 </head>
-
-
-
-
-
-
-
-
-
-
 <body>
     <main>
-        <section class="reviewBoard-List">
-            <div class="list-wrapper">
-                <table class="list-table">
-                    <thead>
-                        <tr>
-                            <th>글번호</th>
-                            <th>글제목</th>
-                            <th>작성자</th>
-                            <th>글 쓴 날짜</th>
-                            <th>조회수</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>샘플 제목 1</td>
-                        <td>작성자1</td>
-                        <td>2024-01-01</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>샘플 제목 2</td>
-                        <td>작성자2</td>
-                        <td>2024-01-01</td>
-                        <td>1</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="btn-area">
-                <button id="insertBtn">작성하기</button> 
-                <!-- 로그인한 일반 회원만 작성할 수 있도록 th:if 걸어둘 예정 -->
+        <section class="board-detail" th:object="${board}">
+            <div id="boardDetailBox">
+                <div id="boardTitle">
+                    <h1 th:text="|*{boardTitle} - ${boardName}|" style = "font-size:45px;">  게시글 제목  </h1>
+                </div>
+                <div id="boardWriteDate">
+                    
+                        <p style="font-family:Arial, Helvetica, sans-serif; font-size: 16px;" >2024-05-17 12:00:00</p>   
+                        <!-- [[*{boardWriteDate}]] -->
+                    
+                </div>
+                <div id="memberNickname"> 
+                    <!-- id 명칭은 나중에 수정해야함 -->
+                    <p>
+                        <span th:text="*{memberNickname}">작성자</span> 홍길동
+                        <!-- [[*{boardWriteDate}]] -->
+                    </p>
+                </div>
+                <div id="readCount">
+                    <p>
+                        <i class="fa-solid fa-eye"></i> 0
+                        <!-- [[*{readCount}]]     -->
+                    </p>
+                </div>
+                <div id="declare-area"> 
+                    <!-- 신고 아이콘 -->
+                    <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"> 신고하기</i>
+                </div>
             </div>
         </section>
+
+        <th:block th:replace="~{board/comment}"></th:block>
     </main>
+    <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
 </body>
 </html>
