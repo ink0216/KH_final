@@ -37,8 +37,21 @@ payConfirmBtn.addEventListener("click",()=>{
     const workStart = document.getElementById('workStart'); // 알바 시작 시간
     const workEnd = document.getElementById('workEnd'); // 알바 종료 시간
 
-    
+    const [hours, minutes] = workStart.split(":"); //시작 시간,분 나누기
+    const [eHours, eMinutes] = workEnd.split(":"); //종료 시간,분 나누기
 
+    const startHour = parseInt(hours,10); 
+    const startMin = parseInt(minutes,10);
+
+    const endHour = parseInt(eHours,10);
+    const endMinutes = parseInt(eMinutes,10);
+
+    const start = (startHour * 60) + startMin ; 
+    const end = (endHour * 60) + endMinutes;
+
+    const workTime = (end - start)/60;
+    
+    console.log(workTime);
 
 })//payConfirmBtn.addEventListener
 
