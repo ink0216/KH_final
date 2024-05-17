@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" href="/css/member/signup.css">
-    <link rel="stylesheet" href="header.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
     
     <h1>개인 회원 가입 페이지</h1>
 
-    
-    
     <form action="/member/signup" method="POST">
         <div id = "containers">
             
@@ -44,7 +41,10 @@
             <div>
                 <span>주소<span class="required">*</span></span>
                <div id ="addressContainer">
-                    <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode"><br><br>
+                    <div>
+                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">
+                        <button id = "searchAddress" type="button">검색</button><br><br>
+                    </div>
                     <div id = "addressVerifyOne"></div>
 
                     <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address"><br><br>
@@ -52,12 +52,12 @@
 
                     <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
                    
-                    <button id = "searchAddress" type="button">검색</button><br><br>
+                    
                     <div id = "addressVerifyThree"></div>
                </div>
             </div>
             
-           
+           <button id="register"><b>회원가입</b></button>
         </div>
     </form>  
     <script src = "/js/member/signup.js"></script>
