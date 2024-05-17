@@ -4,10 +4,17 @@ siren.addEventListener("click",() =>{
 
     function openPopup(){
         window.open('declarePopup.html', 'popupWindow', 'width=700 ,height=750, resizable=no, scrollbars=yes');
-        window.resizeTo(400,750);
     }
     openPopup();
 
 
 
+});
+
+const goToListBtn = document.querySelector("#goToListBtn");
+
+
+goToListBtn.addEventListener("click", () =>{
+
+    location.href="/reviewBoardList";
 });
