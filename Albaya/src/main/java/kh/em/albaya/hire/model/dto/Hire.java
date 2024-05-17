@@ -29,22 +29,5 @@ public class Hire {
 	private int hireCount; //모집인원
 	private String hireStart; //모집 시작 날짜
 	private String hireGender; //모집 성별
-	 /* CAREER
-	 * EDUCATION_STATUS
-	 * RESUME
-	 * RESUME_LOCATION
-	 * RESUME_EDUCATION
-	 * EDUCATION
-	 * LICENSE
-	 * DOSI
-	 * SIGUNGU
-	 * DONG
-	 * RESUME_WORK***********
-	 * WORK_TYPE
-	 * SHOP
-	 * HIRE_PERIOD
-	 * SCRAP
-	 * HIRE
-	 * PAY_TYPE*****
-	 * */
+
 }
