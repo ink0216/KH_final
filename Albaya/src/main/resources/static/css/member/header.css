@@ -1,0 +1,87 @@
+body{
+    overflow-x: hidden;
+}
+#container{
+    padding-left:20%;
+    padding-right:20%;
+}
+#menuBar{
+    display:flex;
+    border:1px solid lightgray;
+    height:80px;
+    width: 101.8%;
+    margin:-10px;
+    background-color: white;
+  
+    
+  
+}
+#logo{
+    background-image: url(albaya.png);
+    width:25%;
+    background-position: center;
+    background-size: 45%;
+    background-repeat: no-repeat;
+    
+}
+ul{
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center;
+    width:50%;
+    height:100%;    
+    margin-top:-1px; 
+}
+
+ul>a{
+
+    text-decoration: none;
+    padding-top:29px;
+    padding-bottom:29px;
+    margin-right:-10%;
+    margin-left:-15%;
+}
+
+
+
+
+#buttons{
+    display:flex;
+    align-items:center;
+  
+}
+#buttons > button{
+    height:32px;
+    width: 40px;
+    margin-left:2%;
+   margin-right:5%;
+    border-radius:100%;
+    border: 1px solid white;
+    background:white;
+}
+#buttons > button:nth-child(1){
+    border-radius: 20px;
+    width:180px;
+    border:1px solid lightgray;
+    border: 1px solid white;
+}   
+
+#buttons > button:hover{
+    background: lightgray;
+    cursor: pointer;
+}
+
+@keyframes animate{
+    from{
+        width: 5px;
+    }
+    to{
+        width:48px;    
+    }
+}
+
+
+
+
+
+

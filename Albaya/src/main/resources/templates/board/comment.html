@@ -1,121 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판</title>
-    <style>
-        /* 기본적인 스타일 초기화 */
-body, h1, h2, h3, h4, h5, h6, p, table, th, td {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
+<div id="commentArea">
+    <div class="comment-list-area">
+        <ul id="commentList">
 
-/* 배경 색상 및 중앙 정렬 */
-body {
-    background-color: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+            <!-- 여기에 있는 li 가 댓글 하나인데 이걸 js로 만들기 -->
+            <!-- 대댓글(자식 댓글)인 경우 child-comment 클래스 추가 -->
+            <li class="comment-row" 
+            th:classappend="${comment.parentCommentNo} != 0 ? child-comment" 
+            th:each="comment : ${board.commentList}" 
+            th:object="${comment}">
+            <!-- 댓글의 parentCommentNo를 조회했는데 
+            null
+        자바에서 null인 것을 parent_comment_no는 null이면 int타입이라 0으로 들어감
+    자식에게 저 클래스를 추가하면 오른쪽으로 살짝 들여쓰기 됨-->
 
-/* 게시판 컨테이너 스타일 */
-.board-container {
-    width: 80%;
-    max-width: 1200px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
+        <th:block th:if="*{commentDelFl}=='Y'">
+                    삭제된 댓글 입니다.
+        </th:block>
 
-/* 게시판 제목 스타일 */
-.board-title {
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
+        <th:block th:if="*{commentDelFl}=='N'"> 
+            <!-- N일 때 실행할 구문 -->
+        
+            <p class="comment-writer">
+                <!-- 프로필 이미지 없을 경우 -->
+                <img th:unless="*{profileImg}" th:src="#{user.default.image}">
+                <!-- 프로필 이미지 있을 경우 -->
+                <img th:if="*{profileImg}" th:src="*{profileImg}">
 
-/* 게시판 테이블 스타일 */
-.board-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+                <span th:text="*{memberNickname}">닉네임</span>
+                <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
+            </p>
 
-/* 테이블 헤더 스타일 */
-.board-table th {
-    background-color: #f4f4f4;
-    color: #333;
-    font-weight: bold;
-    padding: 10px;
-    border-bottom: 2px solid #ddd;
-}
+            <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
 
-.board-table tr >td:nth-of-type(1){
-    width:10%;
-}
+            <!-- 버튼 영역 -->
+            <div class="comment-btn-area">
+                <button th:onclick="|showInsertComment(*{commentNo}, this)|">답글</button>   
+                    <!-- onclick하면 showInsertComment 함수 호출
+                    commentNo : 답글 남기려는 댓글 번호
+                this : 클릭이벤트가 발생한 버튼 자체 -->
+                
+                <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
+                    <!-- 로그인한 사람과 댓글 쓴 사람의 회원 번호가 같을 때만 수정 삭제 버튼 보이게 하기 -->
+                    <button th:onclick="|showUpdateComment(*{commentNo}, this)|">수정</button>     
+                    <button th:onclick="|deleteComment(*{commentNo})|">삭제</button>
+                    <!-- 클릭 시 각각의 함수 호출 -->
+                </th:block>
+                <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->  
 
+            </div>
+        </th:block>
 
-.board-table tr > td:nth-of-type(2){
-     width: 50%; 
-     text-align: left;
-     padding-left: 50px;
-     text-decoration: none;
-}
-
-
-/* 테이블 바디 스타일 */
-.board-table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-}
-
-/* 테이블 행 스타일 */
-.board-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .board-container {
-        width: 95%;
-    }
-
-    .board-table th, .board-table td {
-        padding: 8px;
-    }
-}
-    </style>
-</head>
-<body>
-    <div class="board-container">
-        <h1 class="board-title">게시판</h1>
-        <table class="board-table">
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>조회수</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>첫 번째 게시글</td>
-                    <td>관리자</td>
-                    <td>2024-05-16</td>
-                    <td>10</td>
-                </tr>
-                <!-- More rows here -->
-            </tbody>
-        </table>
+            </li>
+            
+        </ul>
     </div>
-</body>
-</html>
+</div>
