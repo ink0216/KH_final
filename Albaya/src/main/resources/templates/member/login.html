@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/css/member/login.css">
+    <link rel="stylesheet" href="/css/member/header.css">
+</head>
+<body>
+    <th:block th:replace="~{member/header}"></th:block>
+    <main>
+        <div class="wrapper-container">
+            <div class="login-container">
+                <div class="login-image-conatiner">
+                    <div class="login-image">
+                        <img src="/images/logo.png" class="logo-img">
+                    </div>
+                </div>
+
+                <div class="login-wrapper">
+                    <div class="login-area">
+                        <form action="/member/login" method="POST" class="login-form">
+                            
+                            <div class="select-member">
+                                <div class="selected-member">
+                                    <button id="personalMember" type="button">일반회원</button>
+                                </div>
+                                <div class="selected-member">
+                                    <button id="coparationMember" type="button">기업회원</button>
+                                </div>
+                            </div>
+
+                            <div class="login-middle-wrapper">
+                                <div class="login-area-wrapper">
+                                    <div class="login-input-area">
+                                        <input type="text" placeholder="아이디">
+                                        <input type="password" placeholder="비밀번호">
+                                    </div>
+                                    <div class="login-button-area">
+                                        <button>로그인</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="/js/member/login.js"></script>
+</html>

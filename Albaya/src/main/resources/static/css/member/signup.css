@@ -1,5 +1,10 @@
 body{
     background-color: rgb(228, 242, 238);
+
+    
+}
+button:hover{
+  cursor: pointer;
 }
 
 h1{
