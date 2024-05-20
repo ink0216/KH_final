@@ -42,6 +42,9 @@ ul>a{
     padding-bottom:-6px;
 }
 
+.member-area>a{
+    width: 30px;
+}
 ul>a::after{
     content:'';
     position:absolute;
@@ -68,9 +71,13 @@ ul>a:hover::after{
 #buttons{
     display:flex;
     align-items:center;
-  
+    width: 400px;
 }
-#buttons > button{
+#buttons a{
+    text-decoration: none;
+    margin : 0 10px;
+}
+#buttons  button{
     height:32px;
     width: 35px;
     margin-left:2%;
@@ -79,7 +86,7 @@ ul>a:hover::after{
     border: 1px solid white;
     background:white;
 }
-#buttons > button:nth-child(1){
+#buttons  button:nth-child(1){
     border-radius: 20px;
     width:100px;
     border:1px solid lightgray;
@@ -89,7 +96,7 @@ ul>a:hover::after{
     margin-right:5px;
 }   
 
-#buttons > button:hover{
+#buttons  button:hover{
     background: lightgray;
     cursor: pointer;
 }

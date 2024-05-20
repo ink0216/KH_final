@@ -32,7 +32,7 @@
                     <dl class="titleInput">
                         <dt>공고제목</dt>
                         <dd>
-                            <input type="text" placeholder="공고문을 입력해주세요" name="hireTitle">
+                            <input type="text" placeholder="공고문 제목을 입력해주세요" name="hireTitle">
                         </dd>
                         <dd>
                             <p>
@@ -81,7 +81,7 @@
 
                 <img src="/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
 
-                <textarea placeholder="공고문 제목을 입력하세요" cols="20" rows="2"></textarea>
+                <textarea placeholder="상세 내용을 입력하세요" cols="20" rows="2" name="hireContent"></textarea>
 
             </div>
 
@@ -223,16 +223,15 @@
                         <dt>근무지 주소</dt>
                         <dd>
                             <!-- 주소를 입력 받은 input -->
-                            <input type="text" id="address" placeholder="주소">
-                            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"
-                                id="addSearchBtn"><br>
+                            <input type="text" id="address" placeholder="주소" name="address">
+                            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" id="addSearchBtn"><br>
                         </dd>
                     </dl>
 
                     <dl>
                         <dt>세부주소</dt>
                         <dd>
-                            <input type="text" id="addressDetail" placeholder="상세 주소">
+                            <input type="text" id="addressDetail" placeholder="상세 주소" name="addressDetail">
                         </dd>
                     </dl>
 
