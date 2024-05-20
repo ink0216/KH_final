@@ -14,7 +14,7 @@ body{
     background-color: white;
 }
 #logo{
-    background-image: url('/images/logo.png');
+    background-image: url('../../images/logo.png');
     width:25%;
     background-position: center;
     background-size: 45%;
@@ -28,20 +28,43 @@ ul{
     width:50%;
     height:100%;    
     margin-top:-1px; 
+    padding-left:100px;
 }
 
 ul>a{
-
+    
     text-decoration: none;
     padding-top:29px;
     padding-bottom:29px;
     margin-right:-10%;
-    margin-left:-15%;
+    margin-left:-35%;
+    position:relative;
+    padding-bottom:-6px;
+}
+
+ul>a::after{
+    content:'';
+    position:absolute;
+    width:100%;
+    bottom:0;
+    left:0;
+    transform:scaleX(0);
+    transform-origin:center;
+    height:5px;
+    background-color:lightgray;
+    transition:transform 0.25s ease-out;
 }
 
 
+ul>a:hover::after{
+    cursor:pointer;
+    transform:scaleX(1);
+    transform-origin:center;
+}
 
-
+.selectedList::after{
+    position:absolute;
+}
 #buttons{
     display:flex;
     align-items:center;
@@ -49,33 +72,32 @@ ul>a{
 }
 #buttons > button{
     height:32px;
-    width: 40px;
+    width: 35px;
     margin-left:2%;
-   margin-right:5%;
+    margin-right: 5px;
     border-radius:100%;
     border: 1px solid white;
     background:white;
 }
 #buttons > button:nth-child(1){
     border-radius: 20px;
-    width:180px;
+    width:100px;
     border:1px solid lightgray;
     border: 1px solid white;
+}   
+#buttons > button:last-child{
+    margin-right:5px;
 }   
 
 #buttons > button:hover{
     background: lightgray;
     cursor: pointer;
 }
-
-@keyframes animate{
-    from{
-        width: 5px;
-    }
-    to{
-        width:48px;    
-    }
+.modified{
+    background: blue;
 }
+
+
 
 
 
