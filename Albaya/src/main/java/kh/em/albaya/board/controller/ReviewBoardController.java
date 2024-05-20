@@ -31,9 +31,9 @@ public class ReviewBoardController {
 	 * @param model : request scope로 값 전달 객체
 	 * @return
 	 */
-	@GetMapping("reviewBoardList")
+	@GetMapping("reviewBoardCode:[12]")
 	public String selectBoardList(
-		@RequestParam("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
+		@PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
 		@RequestParam(value="cp", required=false, defaultValue = "1")int cp,// 현재페이지
 		Model model,
 		@RequestParam Map<String, Object> paramMap
@@ -45,12 +45,13 @@ public class ReviewBoardController {
 		
 		//검색 아닐때
 		if(paramMap.get("key")==null) {
-//			map = service.selectBoardTypeList(reviewBoardCode, cp);
+			map = service.selectBoardTypeList(reviewBoardCode, cp);
 		}else { //검색일때
 			
-//			paramMap.put("reviewBoardCode", reviewBoardCode); -> 공지를 검색이 되게 한것인가..?
+			paramMap.put("reviewBoardCode", reviewBoardCode); 
 			
-//			map = service.searchList(paramMap,cp);
+			
+			map = service.searchList(paramMap,cp);
 		}
 		
 		
@@ -64,9 +65,9 @@ public class ReviewBoardController {
 	
 	
 	// 게시글 상세 조회 
-	@GetMapping("reviewBoardList/{reviewBoardNo:[0-9]+}")
+	@GetMapping("reviewBoardCode:[12]/{reviewBoardNo:[0-9]+}")
 	public String boardDetail(
-			@RequestParam("reviewBoardCode") int reviewBoardCode,
+			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
 			Model model) {
 		// 일반,비회원,기업 전부 상세 조회 가능
