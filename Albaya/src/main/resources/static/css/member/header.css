@@ -31,9 +31,11 @@ ul{
     padding-left:100px;
 }
 
+
 ul>li{
     color : #014C73;
     list-style: none;
+
     text-decoration: none;
     padding-top:29px;
     padding-bottom:29px;
@@ -43,7 +45,9 @@ ul>li{
     padding-bottom:-6px;
 }
 
+
 ul>li::after{
+
     content:'';
     position:absolute;
     width:100%;
@@ -76,9 +80,13 @@ ul>li>a:hover{
 #buttons{
     display:flex;
     align-items:center;
-  
+    width: 400px;
 }
-#buttons > button{
+#buttons a{
+    text-decoration: none;
+    margin : 0 10px;
+}
+#buttons  button{
     height:32px;
     width: 35px;
     margin-left:2%;
@@ -87,7 +95,7 @@ ul>li>a:hover{
     border: 1px solid white;
     background:white;
 }
-#buttons > button:nth-child(1){
+#buttons  button:nth-child(1){
     border-radius: 20px;
     width:100px;
     border:1px solid lightgray;
@@ -97,10 +105,12 @@ ul>li>a:hover{
     margin-right:5px;
 }   
 
-#buttons > button:hover{
+#buttons  button:hover{
     background: lightgray;
     cursor: pointer;
 }
+
+
 .modified{
     background: blue;
 }

@@ -1,6 +1,7 @@
 package kh.em.albaya.board.controller;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -10,15 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kh.em.albaya.board.model.service.BoardService;
+import kh.em.albaya.board.model.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("reviewBoard")
 @RequiredArgsConstructor
-public class BoardController {
+public class ReviewBoardController {
    
-   private final BoardService service;
+   private final ReviewBoardService service;
    
    
    
@@ -30,33 +31,52 @@ public class BoardController {
 	 * @param model : request scope로 값 전달 객체
 	 * @return
 	 */
-	@GetMapping("{reviewBoardCode:[12]}")
+	@GetMapping("reviewBoardCode:[12]")
 	public String selectBoardList(
-		@PathVariable("reviewBoardCode") int reviewBoardCode,
-		@RequestParam(value="cp", required=false, defaultValue = "1")int cp,
-		Model model
+		@PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
+		@RequestParam(value="cp", required=false, defaultValue = "1")int cp,// 현재페이지
+		Model model,
+		@RequestParam Map<String, Object> paramMap
 		) {
 		// 일반, 비회원, 기업 전부 다 조회 가능
 		
 		
 		Map<String , Object> map = null;
 		
-		service.selectBoardList(reviewBoardCode,cp);
+		//검색 아닐때
+		if(paramMap.get("key")==null) {
+			map = service.selectBoardTypeList(reviewBoardCode, cp);
+		}else { //검색일때
+			
+			paramMap.put("reviewBoardCode", reviewBoardCode); 
+			
+			
+			map = service.searchList(paramMap,cp);
+		}
 		
-		return null;
+		
+		model.addAttribute("pagination",map.get("pagination"));
+		model.addAttribute("reviewBoardList",map.get("reviewBoardList"));
+		
+		
+		return "reviewBoard/reviewBoardList";
 	}
 	
 	
 	
 	// 게시글 상세 조회 
-	@GetMapping("{reviewBoardCode:[12]}/{reviewBoardNo:[0-9]+}")
+	@GetMapping("reviewBoardCode:[12]/{reviewBoardNo:[0-9]+}")
 	public String boardDetail(
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
 			Model model) {
 		// 일반,비회원,기업 전부 상세 조회 가능
 		
-		return null;
+		Map<String, Object> map = new HashMap<>();
+		map.put("reviewBoardCode", reviewBoardCode);
+		map.put("reviewBoardNo", reviewBoardNo);
+		
+		return "reviewBoard/reviewBoardDetail";
 	}
 
 

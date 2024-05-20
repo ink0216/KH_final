@@ -1,6 +1,7 @@
 
 body{
     font-family:'TheJamsil5Bold';
+    
 
 }
 @font-face {
@@ -11,8 +12,9 @@ body{
 }        
 
 
+
 body {
-background-color: white;
+background-color: rgb(228, 242, 238);
 
 min-height: 100vh;
 }
@@ -103,5 +105,51 @@ margin-left:460px;
 .btn-area > button:hover{
 cursor:pointer;
 }
+
+
+
+@media screen and (max-width: 800px){
+    /* 화면 너비가 0~800px 사이일 때 적용할 CSS 코드 작성 */
+ 
+   .card-item{
+     width: 50%;
+   }
+ }
+
+
+ #reviewBoardSearch{
+    display:flex;
+    justify-content: center;
+    margin-top:25px;
+ }
+
+ #reviewBoardSearch > * {
+    margin:10px;
+ }
+
+
+ #searchQuery {
+
+    width:550px;
+    height:40px;
+    border-radius: 15px;
+    border:3px solid #014C73;
+ }
+
+ #searchBtn {
+    width:85px;
+    height:40px;
+    background-color: #014C73;
+    border:none;
+    font-family:'TheJamsil5Bold';
+    font-size:20px;
+    color:white;
+    border-radius:10px;
+ }
+
+ #searchBtn:hover {
+    cursor:pointer;
+
+ }
 
 
