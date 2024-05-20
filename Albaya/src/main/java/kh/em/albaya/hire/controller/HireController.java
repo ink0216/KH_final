@@ -52,5 +52,10 @@ public class HireController {
 		return "redirect:/"; 
 		//일단 메인페이지로 리다이렉트(나중에 작성된 공고 상세조회 페이지로 변경예정)
 	}
+	
+	@GetMapping("hirePopup")
+	public String hirePopup() { //업직종 선택 팝업창으로 이동
+		return "/hire/hirePopup";
+	}
 }
 

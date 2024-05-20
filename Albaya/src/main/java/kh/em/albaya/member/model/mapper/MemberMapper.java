@@ -19,4 +19,12 @@ public interface MemberMapper {
 	 */
 	Member login(String memberEmail);
 
+	/** 아이디 찾기
+	 * @param member
+	 * @return
+	 */
+	int memberCount(Member member);
+
+	String findMemberId(Member member);
+
 }
