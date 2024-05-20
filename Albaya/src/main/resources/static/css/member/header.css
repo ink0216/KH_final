@@ -32,7 +32,6 @@ ul{
 }
 
 ul>a{
-    
     text-decoration: none;
     padding-top:29px;
     padding-bottom:29px;
@@ -100,6 +99,8 @@ ul>a:hover::after{
     background: lightgray;
     cursor: pointer;
 }
+
+
 .modified{
     background: blue;
 }

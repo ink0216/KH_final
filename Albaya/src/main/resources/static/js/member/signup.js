@@ -71,9 +71,12 @@ const nameVerify = document.querySelector("#nameVerify");
 
 const inputGender = document.querySelectorAll(".inputGender");
 
-const addressVerifyOne = document.querySelector("#addressVerifyOne");
-const addressVerifyTwo = document.querySelector("#addressVerifyTwo");
-const addressVerifyThree = document.querySelector("#addressVerifyThree");
+
+const postcode = document.querySelector("#postcode");
+const address = document.querySelector("#address");
+const detailAddress = document.querySelector("#detailAddress");
+const addressVerify = document.querySelector("#addressVerify");
+
 
 
 let count = 0;
@@ -122,6 +125,12 @@ inputEmail.addEventListener("input", () => {
         obj.memberEmail = false;
         return;
     }
+
+    fetch("member/signup")
+    .then(resp => resp.text())
+    .then(result => {
+        
+    })
     emailVerify.classList.add("success");
     emailVerify.classList.remove("fail");
     emailVerify.innerText = "올바른 이메일 형식입니다";
@@ -196,6 +205,75 @@ inputName.addEventListener("input", () => {
     nameVerify.innerText = "올바른 이름 형식입니다";
     obj.memberName = true;
 });
+
+/* 주소 유효성 검사 1*/
+
+
+const restriction = () => {
+    addressVerify.classList.add("fail");
+    addressVerify.classList.remove("success");
+    addressVerify.innerText = "올바른 주소 형식이 아닙니다";
+    obj.memberAddress = false;
+}
+
+const validation = () => {
+    addressVerify.classList.add("success");
+    addressVerify.classList.remove("fail");
+    addressVerify.innerText = "올바른 주소 형식입니다";
+    obj.memberAddress  = true;
+}
+
+postcode.addEventListener("input", () => {
+    const regExp = /^[0-9]{2,5}$/;
+   
+  if(postcode.value.trim().length === 0){
+    obj.memberAddress = false;
+    postcode.value = "";
+  }
+  if(!regExp.test(postcode.value)){
+    restriction();
+    return;
+  }
+  validation();
+});
+
+/* 주소 유효성 검사 2 */
+address.addEventListener("input", () => {
+    const regExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{2,5}$/;
+
+    if(address.value.trim().length === 0){
+        
+        address.value = "";
+        obj.memberAddress =false;
+    }
+    if(!regExp.test(address.value)){
+       restriction();
+       return;
+    }
+    validation();
+
+});
+
+/* 주소 유효성 검사 3 */
+detailAddress.addEventListener("input", () => {
+    const regExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{2,5}$/;
+    if(detailAddress.value.trim().length === 0){
+        detailAddress.value = "";
+        obj.memberAddress =false;
+    }
+    if(!regExp.test(address.value)){
+       restriction();
+       return;
+    }
+    validation();
+});
+
+
+
+
+
+
+
 
 
 
