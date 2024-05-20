@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.member.model.service.MemberService;
 import kh.em.albaya.sms.config.SMSConfig;
@@ -127,4 +128,42 @@ public class MemberController {
 		ra.addFlashAttribute("message", message);
 		return "redirect:/member/login";
     }
+    
+    @GetMapping("findId")
+    public String findId() {
+    	return "/member/findId";
+    }
+    
+    @PostMapping("findId")
+    @ResponseBody
+    public int findId(
+    		@RequestBody Member member,
+    		Model model,
+    		HttpSession session) {
+    	int result = service.findId(member);
+
+    	String memberEmail = service.findMemberId(member);
+    	session.setAttribute("result", result);
+    	session.setAttribute("memberEmail", maskEmail(memberEmail));
+    	
+    	return result;
+    }
+    
+    @PostMapping("findIdResult")
+    public String findIdResult(HttpSession session) {
+    	return "/member/findIdResult";
+    }
+    
+    /** 이메일 일부 자리 "*"표시
+     * @param email
+     * @return
+     */
+    private String maskEmail(String email) {
+        int atIndex = email.indexOf("@");
+        if (atIndex > 1) {
+           return email.substring(0, 2) + "*" + email.substring(atIndex);
+        }
+        return email;
+     }
+    
 }

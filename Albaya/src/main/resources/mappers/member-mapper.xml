@@ -18,4 +18,17 @@
 		AND MEMBER_STATUS != 5
 	</select>
 	
+	<select id="memberCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
+	</select>
+	
+	<select id="findMemberId">
+		SELECT MEMBER_EMAIL
+		FROM "MEMBER"
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
+	</select>
 </mapper>

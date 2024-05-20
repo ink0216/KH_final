@@ -54,4 +54,18 @@ public class MemberServiceImpl implements MemberService{
 		
 		return loginMember;
 	}
+	
+	@Override
+	public int findId(Member member) {
+		int memberCount = mapper.memberCount(member);
+		
+		return memberCount;
+	}
+	
+	@Override
+	public String findMemberId(Member member) {
+		String memberEmail = mapper.findMemberId(member);
+		
+		return memberEmail;
+	}
 }
