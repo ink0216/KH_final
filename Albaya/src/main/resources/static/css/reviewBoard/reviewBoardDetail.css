@@ -1,6 +1,7 @@
 body{
             
     font-family:'TheJamsil5Bold';
+    background-color:rgb(228, 242, 238);
 
     }
 
@@ -84,8 +85,15 @@ body{
     cursor:pointer;
 }
 
+#siren{
+    background-color:white;
+    border : none;
+}
 
 #siren:hover{
 
     cursor:pointer;
+    
 }
+
+

@@ -16,4 +16,14 @@ public interface MemberService {
 	 */
 	Member login(Member inputMember);
 
+	/** 아이디 찾기
+	 * @param member
+	 * @return
+	 */
+	int findId(Member member);
+
+	String findMemberId(Member member);
+
+
+
 }

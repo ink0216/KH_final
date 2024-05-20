@@ -43,7 +43,7 @@
                 </div>
                 <div id="declare-area"> 
                     <!-- 신고 아이콘 -->
-                    <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren" style="color: #ff0000;"></i>
+                    <button id="siren" onclick="openPopup()"><i class="fa-solid fa-triangle-exclamation fa-xl" style="color: #ff0000;"></i></button>
                 </div>
             </div>
                 <div id="reviewBoardContent-area" ><!-- th:text="*{reviewBoardContent}" -->
@@ -70,8 +70,14 @@
     </main>
     <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
     <script src="/js/reviewBoard/reviewBoardDetail.js"></script> 
-
     
+    <script>
+        function openPopup(){
+        
+        window.open('declarePopup.html', 'popupWindow', 'width=600,height=400,resizable=no');
+    }
+
+    </script>
     
 </body>
 </html>
