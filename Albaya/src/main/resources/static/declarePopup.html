@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신고 사유 작성</title>
     <link rel="stylesheet" href="/css/reviewBoard/declarePopup.css">
-  
+
   
 </head>
 <body>
@@ -17,7 +17,6 @@
         <p>후기 게시판에 작성된 내용이 부적합하다고 판단될 경우 신고 사유 작성과 함께 신고해주세요.
             신고 사유에 해당하는 내용 신고 규칙은 다음과 같습니다.
         </p><br>
-        <div id="declare-explain">
         <p style="color:rgb(36, 35, 35); font-family:Arial, Helvetica, sans-serif">
         1. 명예훼손, 허위 사실을 근거로 한 비난, 욕설이 포함된 내용 <br><br>
         2. 지적 재산권을 침해하는 내용 <br><br>
@@ -26,17 +25,18 @@
         5. 광고 목적으로 작성된 내용 <br><br>
         6. 갈등을 조장하는 내용 <br><br>
         7. 기타 상대방이 불쾌하다고 느껴지는 주제를 다루는 내용</p>
-        </div>
     </div>
     <div id="declarePopup-explain2">
         <p>신고 처리는 관리자에 의해 최대한 빠른 시간 내에 처리할 예정입니다. 규정에 따라 <br>
-        신고 처리가 반려당할 수 있으며 허위 신고임이 밝혀질 경우 신고자가 경고/활동 정지 처분을 <br>
+        신고 처리가 반려당할 수 있으며 허위 신고임이 확실해질 경우 신고자가 경고/활동 정지 처분을 <br>
         받을 수도 있습니다. </p>
     </div>
 
-    <div id="declarePopup-Content">
-        <textarea name="declarePopupContent" id="declarePopupContent" maxlength="1500" placeholder="신고 사유를 입력하세요(최대 1500자)"></textarea>
-    </div>
+    <form action="declareContent" method="POST" id="declareContent" class="declareContent">
+        <div id="declarePopup-Content">
+            <textarea name="declarePopupContent" id="declarePopupContent" maxlength="1500" placeholder="신고 사유를 입력하세요(최대 1500자)"></textarea>
+        </div>
+    </form>
     
     <div id="declareBtn-area">
         <button id="declareBtn">신고하기</button>
