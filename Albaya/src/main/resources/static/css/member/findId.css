@@ -1,7 +1,7 @@
 * {
-   margin: 0px;
-   padding: 0px;
-   box-sizing: border-box; 
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; 
 }
 
 body{
@@ -47,29 +47,29 @@ button:hover{
     height: 500px;
     flex-direction: column;
     background-color: white;
+    align-items: center;
 }
 
-.login-image-conatiner{
+
+.findId-text-conatiner{
     display: flex;
-    width: 100%;
+    width: 70%;
     height: 17%;
     align-items: center;
-    justify-content: center;
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-left: 50px;
 }
 
-.login-image{
-    width: 50%;
-    height: 100%;
+
+.login-image > h1{
+    text-align: left;
+}
+
+.h1-place{
     display: flex;
-    background-size: cover;
+    width: 85%;
+    margin-bottom: 15px;
 }
-
-.logo-img{
-    width:100%;
-    height:100%;
-}
-
 .login-wrapper{
     display: flex;
     width: 100%;
@@ -129,80 +129,103 @@ button:hover{
     align-items: center;
 }
 
-.login-input-area{
-    display: flex;
-    width: 70%;
-    height: 70%;
-    flex-direction: column;
-}
-
-.login-input-area > input{
-    height: 800%;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid black;
-
-}
-
-.login-button-area{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    height: 60%;
-}
-
-.login-button-area > button{
-    width: 80%;
-    height: 100%;
-    font-size: 15px;
-    background-color: #014C73;
-    border: none;
-    border-radius: 5px;
-    color: white;
-}
-
-.login-footer-wrapper{
-    display: flex;
-    height: 25%;
-    justify-content: center;
-}
-
-.login-footer-area{
-    display: flex;
-    width: 80%;
-}
-
-.login-saveId-area{
-    display: flex;
-    width: 30%;
-    align-items: center;
-}
-
-.login-member-area{
-    display: flex;
-    width: 70%;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.login-member-area > a{
-    margin: 15px;
-}
-
-#saveIdChkbox{
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#saveIdChkbox{
-    cursor: pointer;
-}
-
-.saveIdChkboxLable{
-    cursor: pointer;
-}
 
 #personalMember{
     background-color: grey;
+}
+
+.findId-middle-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 90%;
+    flex-direction: column;
+}
+
+.findId-input-area{
+    display: flex;
+    width: 80%;
+    height: 33%;
+    margin-bottom: 30px;
+}
+
+.findId{
+    display: flex;
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.findId-text-area{
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.findId-area{
+    display: flex;
+    width: 70%;
+}
+
+.findId-area-pNum{
+    display: flex;
+    width: 70%;
+}
+
+.findId-area > input{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.findId-area-pNum > input{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.findId-footer-wrapper{
+    display: flex;
+    height: 15%;
+    align-items: center;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.findId-footer-button{
+    width: 10%;
+    height: 100%;
+}
+
+.findId-footer-button > button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #014C73;
+    color: white;
+    font-size: 14px;
+}
+
+.authKey-area{
+    display: flex;
+    width: 20%;
+}
+
+.authKey-area > button{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #014C73;
+    color: white;
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.authKey-wrapper{
+    display: flex;
+    width: 80%;
+    height: 33%;
+    margin-bottom: 30px;
 }

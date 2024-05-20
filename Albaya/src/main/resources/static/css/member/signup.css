@@ -148,17 +148,17 @@ button:hover{
     margin-left:80px;
 }
 
-
 #register{
     margin:auto;
     margin-top:30px;
     width:200px;
     height:50px;
-    background:rgb(94, 126, 232);
+    background:#014C73;
     color:white;
 }
+
 #register:hover{
-    background:rgb(54, 94, 227);
+    cursor:pointer;
 }
 
 

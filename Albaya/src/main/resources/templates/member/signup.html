@@ -23,11 +23,11 @@
            <div id = "passwordVerify"></div><br>
 
            <div id="telNo">
-                <span>전화번호<span class="required">*</span></span><input type="text" name="memberPhoneNumber" id="inputTel" required>
+                <span>전화번호<span class="required">*</span></span><input type="text" name="memberPhoneNumber" maxlength = "11" id="inputTel" required>
                 <button id = "memberAuth" type = "button">인증번호</button><br><br>
                 <div id = "inputAuth"></div>
             </div><br>
-            <div><span>이름<span class="required">*</span></span> <input type="text" name="memberName" id="inputName" required><br></div><br>
+            <div><span>이름<span class="required">*</span></span> <input type="text" name="memberName" id="inputName" maxlength = "20" required><br></div><br>
             <div id = "nameVerify"></div><br>
            
             <div id = "inputGender">
@@ -43,13 +43,13 @@
                         <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">
                         <button id = "searchAddress" type="button">검색</button><br><br>
                     </div>
-                    <div id = "addressVerifyOne"></div>
+                    
 
-                    <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address"><br><br>
-                    <div id = "addressVerifyTwo"></div>
+                    <input type="text" name="memberAddress" placeholder="도로명/지번 주소" maxlength="40" id="address"><br><br>
+                   
 
-                    <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
-                    <div id = "addressVerifyThree"></div>
+                    <input type="text" name="memberAddress" placeholder="상세 주소" maxlength="50" id="detailAddress"><br><br>
+                    <div id = "addressVerify"></div>
 
                </div>
             </div>

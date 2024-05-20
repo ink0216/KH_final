@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.member.model.service.MemberService;
 import kh.em.albaya.sms.config.SMSConfig;
@@ -126,5 +127,49 @@ public class MemberController {
 		}
 		ra.addFlashAttribute("message", message);
 		return "redirect:/member/login";
+    }
+    
+    @GetMapping("findId")
+    public String findId() {
+    	return "/member/findId";
+    }
+    
+    @PostMapping("findId")
+    @ResponseBody
+    public int findId(
+    		@RequestBody Member member,
+    		Model model,
+    		HttpSession session) {
+    	int result = service.findId(member);
+
+    	String memberEmail = service.findMemberId(member);
+    	session.setAttribute("result", result);
+    	session.setAttribute("memberEmail", memberEmail);
+    	
+    	return result;
+    }
+    
+    @PostMapping("findIdResult")
+    public String findIdResult(HttpSession session) {
+    	return "/member/findIdResult";
+    }      
+    
+    @GetMapping("findPw")
+    public String findPw() {
+    	return "/member/findPw";
+    }
+    
+    @PostMapping("findPw")
+    @ResponseBody
+    public int findPw(@RequestBody Member member) {
+    	int result = service.findPw(member);
+    	
+    	return result;
+
+    }
+    
+    @PostMapping("findPwResult")
+    public String findPwResult() {
+    	return "/member/findPwResult";
     }
 }

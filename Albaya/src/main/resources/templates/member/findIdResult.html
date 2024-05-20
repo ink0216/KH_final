@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/css/member/findIdResult.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+    <main>
+        <div class="wrapper-container">
+            <div class="login-container">
+                <div class="findId-text-conatiner">
+                    <div class="login-text">
+                        <div class="h1-place">
+                            <h1>아이디 찾기 결과</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login-wrapper">
+                    <div class="login-area">
+                        <div class="login-area-top">
+                            입력하신 정보와 일치하는 아이디가 <span th:text="${session.result}"></span>개 있습니다.
+                        </div>
+                        <span id="maskedEmail" th:attr="data-email=${session.memberEmail}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="/js/member/findIdResult.js"></script>
+<script th:inline="javascript">
+    const message =  /*[[${message}]]*/ "전달 받은 message";
+    // message가 없다면 null
+
+    if (message != null) alert(message);
+</script>
+</html>

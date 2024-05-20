@@ -1,16 +1,23 @@
 const siren = document.querySelector("#siren");
 
-siren.addEventListener("click",() =>{
+/* 신고 아이콘 클릭시 신고 팝업창 */
+
 
     function openPopup(){
-        window.open('declarePopup.html', 'popupWindow', 'width=700 ,height=750, resizable=no, scrollbars=yes');
+  
+        window.open('/declarePopup.html', 'popupWindow', 'width=770, height=1200, left=150, resizable = no');
     }
-    openPopup();
 
 
 
-});
 
+    
+
+
+
+
+
+/* 목록으로 버튼 */
 const goToListBtn = document.querySelector("#goToListBtn");
 
 

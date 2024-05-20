@@ -1,20 +1,39 @@
+/* 제목용 글꼴 : 'TheJamsil5Bold' */
+/* 일반 글꼴 : 'SUIT-Regular' */
+
 
 body{
-    font-family:'TheJamsil5Bold';
+    /* font-family:'TheJamsil5Bold'; */  
+    font-family:'SUIT-Regular';
 
 }
 @font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}        
+   font-family: 'TheJamsil5Bold';
+   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+   font-weight: 700;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'SUIT-Regular';
+   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+   font-weight: normal;
+   font-style: normal;
+}  
+
 
 
 body {
-background-color: white;
+background-color: rgb(228, 242, 238);
 
 min-height: 100vh;
+}
+
+.list-wrapper{
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-top : 150px;
+   align-items: center;
 }
 
 /* 게시판 컨테이너 스타일 */
@@ -23,8 +42,11 @@ max-width: 1300px;
 background-color:white;
 padding: 20px;
 border-radius: 8px;
-margin-top: 80px;
-margin-left:460px;
+/* margin-top: 80px;
+margin-left:460px; */
+
+border-collapse: collapse;
+
 }
 
 .list-table tr > *:nth-of-type(1){
@@ -51,10 +73,7 @@ width:8%;
 }
 
 
-.list-table {
 
-border-collapse: collapse;
-}
 
 /* 테이블 헤더 스타일 */
 .list-table th {
@@ -64,6 +83,7 @@ font-weight: bold;
 padding: 10px;
 border-bottom: none;
 height:40px;
+font-family:'TheJamsil5Bold';
 
 
 }
@@ -103,5 +123,51 @@ margin-left:460px;
 .btn-area > button:hover{
 cursor:pointer;
 }
+
+
+
+@media screen and (max-width: 800px){
+    /* 화면 너비가 0~800px 사이일 때 적용할 CSS 코드 작성 */
+ 
+   .card-item{
+     width: 50%;
+   }
+ }
+
+
+ #reviewBoardSearch{
+    display:flex;
+    justify-content: center;
+    margin-top:25px;
+ }
+
+ #reviewBoardSearch > * {
+    margin:10px;
+ }
+
+
+ #searchQuery {
+
+    width:550px;
+    height:40px;
+    border-radius: 15px;
+    border:3px solid #014C73;
+ }
+
+ #searchBtn {
+    width:85px;
+    height:40px;
+    background-color: #014C73;
+    border:none;
+    font-family:'TheJamsil5Bold';
+    font-size:20px;
+    color:white;
+    border-radius:10px;
+ }
+
+ #searchBtn:hover {
+    cursor:pointer;
+
+ }
 
 

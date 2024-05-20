@@ -187,3 +187,24 @@ new daum.Postcode({
 }
 
 
+/* -------------------------------------------------------------- */
+/* 업직종 선택 popup창 */
+const typeBtn = document.querySelector("#typeBtn"); //업직종 선택 버튼
+
+typeBtn.addEventListener("click",()=>{
+
+    const options=[];
+    options.push("width=500");
+    options.push("height=300");
+    options.push("left=300");
+    options.push("top=100");
+
+    window.open("/hire/hirePopup","_blank",options.toString());
+})
+
+
+function setType(type) {
+    document.getElementById('selectedType').value = type;
+}
+
+/* -------------------------------------------------------------- */
