@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
     <link rel="stylesheet" href="/css/member/findIdResult.css">
-    <link rel="stylesheet" href="/css/member/header.css">
+    <link rel="stylesheet" href="/css/common/header.css">
 </head>
 <body>
     <th:block th:replace="~{common/header}"></th:block>
@@ -25,7 +25,7 @@
                         <div class="login-area-top">
                             입력하신 정보와 일치하는 아이디가 <span th:text="${session.result}"></span>개 있습니다.
                         </div>
-                        <span th:text="${session.memberEmail}"></span>
+                        <span id="maskedEmail" th:attr="data-email=${session.memberEmail}"></span>
                     </div>
                 </div>
             </div>
@@ -33,6 +33,7 @@
     </main>
 </body>
 
+<script src="/js/member/findIdResult.js"></script>
 <script th:inline="javascript">
     const message =  /*[[${message}]]*/ "전달 받은 message";
     // message가 없다면 null
