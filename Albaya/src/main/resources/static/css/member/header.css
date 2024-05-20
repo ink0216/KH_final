@@ -64,6 +64,14 @@ ul>a:hover::after{
 
 .selectedList::after{
     position:absolute;
+    width:100%;
+    bottom:0;
+    left:0;
+    transform:scaleX(1);
+    transform-origin:center;
+    height:5px;
+    background-color:blue;
+    
 }
 #buttons{
     display:flex;
