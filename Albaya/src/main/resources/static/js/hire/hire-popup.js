@@ -4,11 +4,17 @@ typeSelect.addEventListener("click",()=>{
     window.close();
 })
 
-function selectType(button) {
-    const typeText = button.innerText;
-    if (window.opener && !window.opener.closed) {
-        window.opener.setType(typeText);
-    } else {
-        alert('부모 창이 닫혔거나 열려 있지 않습니다.');
-    }
-}
+const types = document.querySelectorAll(".type");
+
+types.forEach(item=>{
+    item.addEventListener("click",(e)=>{
+        const typeText = e.target.innerText;
+
+        if (window.opener && !window.opener.closed) {
+            window.opener.setType(typeText);
+            window.opener.document.getElementById("typeNo").value = e.target.dataset.typeNo;
+        } else {
+            alert('부모 창이 닫혔거나 열려 있지 않습니다.');
+        }
+    })
+})

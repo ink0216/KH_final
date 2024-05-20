@@ -225,6 +225,13 @@
 .dayCheckbox [name='workDay']:checked + label{
     background-color: darksalmon
 }
+
+
+/* 성별 */
+.gender-input{
+font-size: 13px;
+font-weight: bold;
+}
 /* --------------------------------------------------------------- */
 /* 주소, 지도 영역 */
 #address{
