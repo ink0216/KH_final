@@ -31,18 +31,19 @@ ul{
     padding-left:100px;
 }
 
-ul>a{
-    
+ul>li{
+    color : #014C73;
+    list-style: none;
     text-decoration: none;
     padding-top:29px;
     padding-bottom:29px;
-    margin-right:-10%;
+    margin-right:-5%;
     margin-left:-35%;
     position:relative;
     padding-bottom:-6px;
 }
 
-ul>a::after{
+ul>li::after{
     content:'';
     position:absolute;
     width:100%;
@@ -56,22 +57,21 @@ ul>a::after{
 }
 
 
-ul>a:hover::after{
+ul>li:hover::after{
     cursor:pointer;
     transform:scaleX(1);
     transform-origin:center;
 }
-
+ul>li>a:hover{
+    cursor:pointer;
+}
 .selectedList::after{
-  
     width:100%;
     bottom:0;
     left:0;
     height:5px;
-    background-color:blue;
-    transition:transform 0.25s ease-in;
-  
-    
+    background-color:#014C73;
+    transition:transform 360000s ease-in;
 }
 #buttons{
     display:flex;

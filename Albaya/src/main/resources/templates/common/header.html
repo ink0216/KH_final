@@ -13,10 +13,10 @@
               
         </div>  
         <ul>
-            <a href=""><b>이력서 관리</b></a>
-            <a href=""><b>채용정보</b></a>
-            <a href=""><b>알바정보</b></a>
-            <a href=""><b>알바토크</b></a>
+            <li><a><b>이력서 관리</b></a></li>
+            <li><a><b>채용정보</b></a></li>
+            <li><a><b>알바정보</b></a></li>
+            <li><a><b>알바토크</b></a></li>
         </ul>
         <div id = "buttons">
             <button id = "search"><i class="fa-solid fa-magnifying-glass"></i>   search</button>
@@ -28,11 +28,14 @@
     <div id="container"></div>
 </header>
 <script>
-    const ulaafter = document.querySelector("ul>a")
+    const ulaafter = document.querySelectorAll("ul>li")
 
-    ulaafter.addEventListener("click", () => {
-        ulaafter.classList.add("selectedList")
-    });
+    for(let i =0; i<ulaafter.length;i++){
+        ulaafter[i].addEventListener("click", () => {
+            ulaafter[i].classList.add("selectedList");
+        });
+    }
+    
 
 </script>
 </html>
