@@ -27,4 +27,7 @@ public interface MemberMapper {
 
 	String findMemberId(Member member);
 
+	int memberPwCount(Member member);
+	
+	
 }

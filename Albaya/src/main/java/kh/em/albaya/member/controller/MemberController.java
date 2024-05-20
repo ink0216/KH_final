@@ -144,7 +144,7 @@ public class MemberController {
 
     	String memberEmail = service.findMemberId(member);
     	session.setAttribute("result", result);
-    	session.setAttribute("memberEmail", maskEmail(memberEmail));
+    	session.setAttribute("memberEmail", memberEmail);
     	
     	return result;
     }
@@ -152,18 +152,24 @@ public class MemberController {
     @PostMapping("findIdResult")
     public String findIdResult(HttpSession session) {
     	return "/member/findIdResult";
+    }      
+    
+    @GetMapping("findPw")
+    public String findPw() {
+    	return "/member/findPw";
     }
     
-    /** 이메일 일부 자리 "*"표시
-     * @param email
-     * @return
-     */
-    private String maskEmail(String email) {
-        int atIndex = email.indexOf("@");
-        if (atIndex > 1) {
-           return email.substring(0, 2) + "*" + email.substring(atIndex);
-        }
-        return email;
-     }
+    @PostMapping("findPw")
+    @ResponseBody
+    public int findPw(@RequestBody Member member) {
+    	int result = service.findPw(member);
+    	
+    	return result;
+
+    }
     
+    @PostMapping("findPwResult")
+    public String findPwResult() {
+    	return "/member/findPwResult";
+    }
 }

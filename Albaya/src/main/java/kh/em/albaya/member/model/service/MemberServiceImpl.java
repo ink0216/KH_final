@@ -68,4 +68,10 @@ public class MemberServiceImpl implements MemberService{
 		
 		return memberEmail;
 	}
+	
+	@Override
+	public int findPw(Member member) {
+		int memberCount = mapper.memberPwCount(member);
+		return memberCount;
+	}
 }
