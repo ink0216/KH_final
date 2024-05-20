@@ -4,14 +4,14 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import kh.em.albaya.board.model.mapper.BoardMapper;
+import kh.em.albaya.board.model.mapper.ReviewBoardMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class ReviewBoardServiceImpl implements ReviewBoardService{
 
-	private final BoardMapper mapper;
+	private final ReviewBoardMapper mapper;
 	
 	@Override
 	public Map<String, Object> selectBoardList(int reviewBoardCode, int cp) {
