@@ -1,12 +1,13 @@
-// const siren = document.querySelector("#siren");
+const siren = document.querySelector("#siren");
 
 /* 신고 아이콘 클릭시 신고 팝업창 */
 
 
     function openPopup(){
-        
-        window.open('declarePopup.html', 'popupWindow', 'width=600,height=400,resizable=no');
+  
+        window.open('/declarePopup.html', 'popupWindow', 'width=770, height=1200, left=150, resizable = no');
     }
+
 
 
 
