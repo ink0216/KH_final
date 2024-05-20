@@ -1,7 +1,5 @@
 package kh.em.albaya.hire.model.dto;
 
-import java.util.Set;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
