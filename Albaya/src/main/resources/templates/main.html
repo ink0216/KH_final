@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALBAYA</title>
     <style>
-        a{
+        body>a{
             font-size: 30px;
         }
     </style>
+    <link rel="stylesheet" href="/css/member/header.css">
 </head>
-
-
-    메인페이지 입니다. <hr>
+<body>
+    메인페이지 입니다. <br>
     <a href="/hire/hireWrite">공고 작성 페이지로 이동</a>
-    <hr>
+    <br>
     <a href="/reviewBoardList">알바 후기 게시판으로 이동</a>
-    
+    <!-- ------------------------------------------------------------------------------------------------- -->
+    <br><br>
+    <th:block th:replace="~{common/header}"></th:block>
+    <section>
+        <pre>
 
+            공고 리스트 나열 영역
+        </pre>
+    </section>
+
+
+
+
+    <script src="/js/common/header.js"></script>
 </body>
 
 </html>
