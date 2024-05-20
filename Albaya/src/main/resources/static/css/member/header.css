@@ -14,7 +14,7 @@ body{
     background-color: white;
 }
 #logo{
-    background-image: url('/images/logo.png');
+    background-image: url('../../images/logo.png');
     width:25%;
     background-position: center;
     background-size: 45%;
@@ -31,16 +31,12 @@ ul{
 }
 
 ul>a{
-
     text-decoration: none;
     padding-top:29px;
     padding-bottom:29px;
     margin-right:-10%;
     margin-left:-15%;
 }
-
-
-
 
 #buttons{
     display:flex;
@@ -68,14 +64,7 @@ ul>a{
     cursor: pointer;
 }
 
-@keyframes animate{
-    from{
-        width: 5px;
-    }
-    to{
-        width:48px;    
-    }
-}
+
 
 
 
