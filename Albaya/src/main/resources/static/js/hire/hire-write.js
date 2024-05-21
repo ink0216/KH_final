@@ -208,3 +208,8 @@ function setType(type) {
 }
 
 /* -------------------------------------------------------------- */
+/* 유효성 검사 */
+const checkObj={
+    "hireTitle" : false,
+    "selected"
+}
