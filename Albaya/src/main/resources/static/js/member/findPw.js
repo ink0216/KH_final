@@ -25,7 +25,7 @@ document.querySelector('#memberAuth').addEventListener('click', e => {
     const randomNumber = Math.floor(100000 + Math.random() * 900000);
     const msg = randomNumber.toString();
 
-    const findIdObj = {
+    const findPwObj = {
         "memberPhoneNumber" : inputTel,
         "memberName" : memberName,
         "memberEmail" : memberEmail
@@ -41,7 +41,7 @@ document.querySelector('#memberAuth').addEventListener('click', e => {
         headers : {
             'Content-Type': 'application/json'
         },
-        body : JSON.stringify(findIdObj)
+        body : JSON.stringify(findPwObj)
     })
     .then(resp => resp.json())
     .then(result => {
@@ -57,6 +57,12 @@ document.querySelector('#memberAuth').addEventListener('click', e => {
             .then(resp => {
                 alert('인증번호가 전송되었습니다.');
                 authBtn.addEventListener("click", () => {
+                    console.log(authKey.value.trim().length)
+                    if(authKey.value.trim().length <= 0){
+                        alert("인증번호를 입력해주세요.");
+                        return;
+                    }
+                
                     if(authKey.value != obj.msg){
                         alert("인증번호가 일치하지 않습니다.");
                         authState = false;
