@@ -33,7 +33,19 @@
     for(let i =0; i<ulaafter.length;i++){
         ulaafter[i].addEventListener("click", () => {
             ulaafter[i].classList.add("selectedList");
+        if(i == 0){
+            ulaafter[i].nextElementSibling.classList.remove("selectedList");
+        }
+        // if(i == ulaafter.length-1){
+        //     ulaafter[i].nextElementSibling =  ulaafter[0];
+        //     ulaafter[i].nextElementSibling.classList.remove("selectedList");
+        // }
+        if(i > 0 &&   ulaafter[i].previousElementSibling.classList.contains("selectedList") || ulaafter[i].nextElementSibling.classList.contains("selectedList")){
+                ulaafter[i].previousElementSibling.classList.remove("selectedList");
+                ulaafter[i].nextElementSibling.classList.remove("selectedList");
+        }
         });
+       
     }
     
 
