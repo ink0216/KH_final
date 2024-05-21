@@ -1,15 +1,18 @@
 /* 급여 확인 버튼 */
 const payConfirmBtn = document.getElementById('payConfirmBtn');
+const payInput = document.getElementById('payInput') 
 
+payInput.addEventListener("input",e=>{
 
-payConfirmBtn.addEventListener("click",()=>{
+    const pay= e.target.value;
 
     /* 급여 종류 얻어오기 */
     const payNoArea = document.querySelector('#payNo');
     const value = payNoArea.value; //option의 value값 얻어오기
 
     /* 급여 입력 */
-    const payInput = document.getElementById('payInput') 
+    // const payInput = document.getElementById('payInput');
+    const payMessage = document.getElementById('payMessage');
 
     /* 선택된 요일 얻어오기 */
     const workDays = document.querySelectorAll('input[name="workDay"]:checked'); 
@@ -61,9 +64,17 @@ payConfirmBtn.addEventListener("click",()=>{
     switch(value){
         
         case '1' : // 시급
-            if(payInput.value<9860)
-                {alert("최저 시급 이상 입력해 주세요");
-                payInput.value='';}
+            if(pay<9860)
+                {
+                payMessage.innerHTML="최저 시급 이상 입력하세요";
+                payMessage.classList.add("red");
+                checkObj.payInput=false;
+                return;
+            }
+            checkObj.payInput=true;
+            payMessage.innerHTML="급여 입력 완료";
+            payMessage.classList.remove("red");
+            payMessage.classList.add("blue");
             break;
 
 
@@ -75,12 +86,18 @@ payConfirmBtn.addEventListener("click",()=>{
             else{
                 weekPay = 9860 * workTime * dayCount;
             }
-
+            console.log(Number(pay)<weekPay);
             console.log("weekPay : ", weekPay);
-            if(payInput.value<weekPay){
-                alert("최저 주급 이상 입력하세요");
-                payInput.value='';
+            if(Number(pay)<weekPay){
+                payMessage.innerHTML="최저 주급 이상 입력하세요";
+                payMessage.classList.add("red");
+                checkObj.payInput=false;
+                return;
             }
+                checkObj.payInput=true;
+                payMessage.innerHTML="급여 입력 완료";
+                payMessage.classList.remove("red");
+                payMessage.classList.add("blue");
             break;
 
         case '3': //월급
@@ -94,10 +111,17 @@ payConfirmBtn.addEventListener("click",()=>{
             monthPay = weekPay * 4;
             console.log("monthPay : ", monthPay);
 
-            if(payInput.value<monthPay){
-                alert("최저 월급 이상 입력하세요");
-                payInput.value='';
+            if(pay<monthPay){
+                // alert("최저 월급 이상 입력하세요");
+                payMessage.innerHTML="최저 월급 이상 입력하세요";
+                payMessage.classList.add("red");
+                checkObj.payInput=false;
+                return;
             }
+            checkObj.payInput=true;
+            payMessage.innerHTML="급여 입력 완료";
+            payMessage.classList.remove("red");
+            payMessage.classList.add("blue");
             break;
 
         case '4': //연봉
@@ -112,17 +136,33 @@ payConfirmBtn.addEventListener("click",()=>{
             yearPay = monthPay*365; 
             console.log("monthPay : ", monthPay);
 
-            if(payInput.value<yearPay){
-                alert("최저 연봉 이상 입력하세요");
-                payInput.value='';
+            if(pay<yearPay){
+                // alert("최저 연봉 이상 입력하세요");
+                payMessage.innerHTML="최저 연봉 이상 입력하세요";
+                payMessage.classList.add("red");
+                checkObj.payInput=false;
+                return;
             }
+            checkObj.payInput=true;
+            payMessage.innerHTML="급여 입력 완료";
+            payMessage.classList.remove("red");
+            payMessage.classList.add("blue");
             break;
 
         case '5': //일급
-        if(payInput.value<(9860*workTime)){
-            alert("최저 일급 이상 입력하세요");
-            payInput.value='';
+        if(pay<(9860*workTime)){
+            // alert("최저 일급 이상 입력하세요");
+            payMessage.innerHTML="최저 일급 이상 입력하세요";
+            payMessage.classList.add("red");
+            checkObj.payInput=false;
+            return;
         }
+        
+        checkObj.payInput=true;
+        payMessage.innerHTML="급여 입력 완료";
+        payMessage.classList.remove("red");
+        payMessage.classList.add("blue");
+        break;
 
         
     }
@@ -216,8 +256,9 @@ const checkObj={
     "hrieCount" : false, //모집인원
     "hireEnd"   : false, //모집 종료
     "shopTel"   : false, //연락처
-    "shopEmail" : false  //이메일 
-}
+    "shopEmail" : false,  //이메일 
+    "payInput"  : false //급여
+    }
 
 /* 공고문 제목 유효성 검사 */
 const hireTitle = document.getElementById("hireTitle");
@@ -228,23 +269,28 @@ hireTitle.addEventListener("input",e=>{
 
     if(inputTitle.trim().length===0){
         titleMessage.innerHTML="공고 제목을 입력해주세요";
+        titleMessage.classList.add("red");
         checkObj.hireTitle=false;
         return;
     }
 
     if(inputTitle.trim().length<2){
         titleMessage.innerHTML="2자 이상으로 입력해주세요";
+        titleMessage.classList.add("red");
         checkObj.hireTitle=false;
         return;
     }
 
     if(inputTitle.trim().length>40){
         titleMessage.innerHTML="40자 이하로 입력해주세요";
+        titleMessage.classList.add("red");
         checkObj.hireTitle=false;
         return;
     }
 
-    titleMessage.innerHTML="유효한 공고 제목입니다.";
+    titleMessage.innerHTML="제목 입력 완료";
+    titleMessage.classList.remove("red");
+    titleMessage.classList.add("blue");
     checkObj.hireTitle=true;
 })
 
@@ -260,17 +306,21 @@ hireCount.addEventListener("input",e=>{
 
     if(inputCount.trim().length===0){
         countMessage.innerHTML="모집 인원 수를 입력해주세요";
+        countMessage.classList.add("red");
         checkObj.hrieCount=false;
         return;
     }
 
     if(!regExp.test(inputCount)){
         countMessage.innerHTML="숫자만 입력해주세요";
+        countMessage.classList.add("red");
         checkObj.hrieCount=false;
         return;
     }
 
     countMessage.innerHTML="모집 인원 작성 완료";
+    countMessage.classList.remove("red");
+    countMessage.classList.add("blue");
     checkObj.hrieCount=true;
 })
 
@@ -285,17 +335,21 @@ hireEnd.addEventListener("change",e=>{
 
     if(inputEnd.value==''){
         endMessage.innerHTML="모집 종료 날짜를 입력하세요";
+        endMessage.classList.add("red");
         checkObj.hireEnd=false;
         return;
     }
 
     if(now>=inputEnd){
         endMessage.innerHTML="현재 날짜 이상의 날짜를 선택하세요";
+        endMessage.classList.add("red");
         checkObj.hireEnd=false;
         return;
     }
 
     endMessage.innerHTML="모집 종료 날짜 입력 완료";
+    endMessage.classList.remove("red");
+    endMessage.classList.add("blue");
     checkObj.hireEnd=true;
 })
 
@@ -310,17 +364,21 @@ shopTel.addEventListener("input",e=>{
 
     if(inputTel.trim().length===0){
         telMessage.innerHTML="연락처를 입력해주세요";
+        telMessage.classList.add("red");
         checkObj.shopTel=false;
         return;
     }
 
     if(!regExp.test(inputTel)){
         telMessage.innerHTML='올바른 번호를 입력하세요';
+        telMessage.classList.add("red");
         checkObj.shopTel=false;
         return;
     }
 
-    telMessage.innerHTML="연락처 입력 완성";
+    telMessage.innerHTML="연락처 입력 완료";
+    telMessage.classList.remove("red");
+    telMessage.classList.add("blue");
     checkObj.shopTel=true;
 })
 
@@ -341,11 +399,14 @@ shopEmail.addEventListener("input",e=>{
 
     if(!regExp.test(inputEmail)){
         emailMessage.innerHTML="올바른 이메일 형식으로 입력해주세요";
+        emailMessage.classList.add("red");
         checkObj.shopEmail=false;
         return;
     }
 
     emailMessage.innerHTML="이메일 입력 완료";
+    emailMessage.classList.remove("red");
+    emailMessage.classList.add("blue");
     checkObj.shopEmail=true;
 
 })
@@ -381,6 +442,9 @@ hireWrtieForm.addEventListener("submit",e=>{
 
                 case "shopEmail":
                     str="이메일이 유효하지 않습니다."; break;
+                    
+                case "payInput":
+                    str="급여 검사를 해주세요"; break;
             }
 
             alert(str);
@@ -425,7 +489,7 @@ hireWrtieForm.addEventListener("submit",e=>{
      }
 
 
-     /* 근무 시간 */
+     /* 근무 시간 유효성 검사*/
      const workStart = document.getElementById("workStart"); //시작 시간
      const workEnd = document.getElementById("workEnd"); //시작 시간
 
@@ -439,22 +503,22 @@ hireWrtieForm.addEventListener("submit",e=>{
         return;
      }
 
-     else if(workEnd.value==''){
+    if(workEnd.value==''){
         alert("종료 시간을 입력하세요");
         e.preventDefault();
         return;
      }
 
-     if(startTime-endTime>0){
+    if(startTime-endTime>0){
         alert('올바른 시간을 입력하세요');
         e.preventDefault();
+        return;
      }
 
 
 
 
-     /* 모집 성별 유효성 검사 */
-         /* 근무 기간 유효성 검사 */
+ /* 모집 성별 유효성 검사 */
     const hireGender = document.querySelectorAll(".hireGender");
 
     let genderCount =0;
@@ -471,7 +535,58 @@ hireWrtieForm.addEventListener("submit",e=>{
         return;
     }
 
-     
+
+
+    /* 급여 유효성 검사 */
+    const payInput = document.getElementById("payInput");
+
+    if(payInput.value.trim().length===0){
+        alert("급여를 입력해주세요.");
+        e.preventDefault();
+        return;
+    }
+
+
+    /* 근무지 주소 유효성 검사 */
+    const address = document.getElementById("address");
+    const addressDetail = document.getElementById("addressDetail");
+    const shopName = document.getElementById("shopName");
+
+    if(address.value.trim().length===0){
+        alert("주소를 입력해주세요.");
+        e.preventDefault();
+        return;
+    }
+    if(addressDetail.value.trim().length===0){
+        alert("세부 주소를 입력해주세요.");
+        e.preventDefault();
+        return;
+    }
+    if(shopName.value.trim().length===0){
+        alert("회사명를 입력해주세요.");
+        e.preventDefault();
+        return;
+    }
+
+
+    /* 담당자명 유효성 검사 */
+
+    const shopOwner = document.getElementById("shopOwner");
+
+    if(shopOwner.value.trim().length===0){
+        alert("담당자명을 입력해주세요.");
+        e.preventDefault();
+        return;
+    }
+
+    /* 약관 동의 유효성 검사 */
+    const agree = document.getElementById("agree");
+
+    if(!agree.checked){
+        alert("약관에 동의해주세요");
+        e.preventDefault();
+        return;
+    }
 
 })
 
