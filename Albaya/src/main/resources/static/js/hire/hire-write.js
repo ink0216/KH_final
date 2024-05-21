@@ -205,6 +205,274 @@ typeBtn.addEventListener("click",()=>{
 
 function setType(type) {
     document.getElementById('selectedType').value = type;
+    checkObj.selectedType=true;
 }
 
 /* -------------------------------------------------------------- */
+/* 유효성 검사 */
+const checkObj={
+    "hireTitle" : false, //공고문 제목
+    "selectedType" : false, //업직종 선택
+    "hrieCount" : false, //모집인원
+    "hireEnd"   : false, //모집 종료
+    "shopTel"   : false, //연락처
+    "shopEmail" : false  //이메일 
+}
+
+/* 공고문 제목 유효성 검사 */
+const hireTitle = document.getElementById("hireTitle");
+const titleMessage = document.getElementById("titleMessage");
+
+hireTitle.addEventListener("input",e=>{
+    const inputTitle = e.target.value;
+
+    if(inputTitle.trim().length===0){
+        titleMessage.innerHTML="공고 제목을 입력해주세요";
+        checkObj.hireTitle=false;
+        return;
+    }
+
+    if(inputTitle.trim().length<2){
+        titleMessage.innerHTML="2자 이상으로 입력해주세요";
+        checkObj.hireTitle=false;
+        return;
+    }
+
+    if(inputTitle.trim().length>40){
+        titleMessage.innerHTML="40자 이하로 입력해주세요";
+        checkObj.hireTitle=false;
+        return;
+    }
+
+    titleMessage.innerHTML="유효한 공고 제목입니다.";
+    checkObj.hireTitle=true;
+})
+
+/* 업직종 선택 유효성 검사 */
+
+/* 모집 인원 유효성 검사 */
+const hireCount = document.getElementById("hireCount");//모집 인원
+const countMessage = document.getElementById("countMessage");
+
+hireCount.addEventListener("input",e=>{
+    const inputCount = e.target.value;
+    const regExp = /^\d+$/;
+
+    if(inputCount.trim().length===0){
+        countMessage.innerHTML="모집 인원 수를 입력해주세요";
+        checkObj.hrieCount=false;
+        return;
+    }
+
+    if(!regExp.test(inputCount)){
+        countMessage.innerHTML="숫자만 입력해주세요";
+        checkObj.hrieCount=false;
+        return;
+    }
+
+    countMessage.innerHTML="모집 인원 작성 완료";
+    checkObj.hrieCount=true;
+})
+
+
+/* 모집 종료일 유효성 검사 */
+const hireEnd = document.getElementById("hireEnd")//모집 종료
+const endMessage = document.getElementById("endMessage");
+
+hireEnd.addEventListener("change",e=>{
+    const now = new Date(); //현재 날짜
+    const inputEnd = new Date(hireEnd.value); //입력된 날짜
+
+    if(inputEnd.value==''){
+        endMessage.innerHTML="모집 종료 날짜를 입력하세요";
+        checkObj.hireEnd=false;
+        return;
+    }
+
+    if(now>=inputEnd){
+        endMessage.innerHTML="현재 날짜 이상의 날짜를 선택하세요";
+        checkObj.hireEnd=false;
+        return;
+    }
+
+    endMessage.innerHTML="모집 종료 날짜 입력 완료";
+    checkObj.hireEnd=true;
+})
+
+
+/* 연락처 유효성 검사 */
+const shopTel = document.getElementById("shopTel");
+const telMessage = document.getElementById("telMessage");
+
+shopTel.addEventListener("input",e=>{
+    const inputTel = e.target.value;
+    const regExp=/^\d{9,11}$/;
+
+    if(inputTel.trim().length===0){
+        telMessage.innerHTML="연락처를 입력해주세요";
+        checkObj.shopTel=false;
+        return;
+    }
+
+    if(!regExp.test(inputTel)){
+        telMessage.innerHTML='올바른 번호를 입력하세요';
+        checkObj.shopTel=false;
+        return;
+    }
+
+    telMessage.innerHTML="연락처 입력 완성";
+    checkObj.shopTel=true;
+})
+
+
+/* 이메일 유효성 검사 */
+const shopEmail= document.getElementById("shopEmail");
+const emailMessage = document.getElementById("emailMessage");
+
+shopEmail.addEventListener("input",e=>{
+    const inputEmail = e.target.value;
+    const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if(inputEmail.trim().length===0){
+        emailMessage.innerHTML="이메일을 입력해주세요";
+        checkObj.shopEmail=false;
+        return;
+    }
+
+    if(!regExp.test(inputEmail)){
+        emailMessage.innerHTML="올바른 이메일 형식으로 입력해주세요";
+        checkObj.shopEmail=false;
+        return;
+    }
+
+    emailMessage.innerHTML="이메일 입력 완료";
+    checkObj.shopEmail=true;
+
+})
+
+
+
+/* ---------------------------------------------------------------------- */
+/* (공고문 등록) */
+const hireWrtieForm = document.getElementById("hireWrtieForm"); //form
+
+hireWrtieForm.addEventListener("submit",e=>{
+
+    for(let key in checkObj){
+        if(!checkObj[key]){
+            let str;
+
+            switch(key){
+
+                case "hireTitle":
+                    str="공고문 제목이 유효하지 않습니다."; break;
+
+                case "selectedType":
+                    str="업직종을 선택하세요"; break;
+
+                case "hrieCount":
+                    str="모집인원이 유효하지 않습니다."; break;
+
+                case "hireEnd":
+                    str="모집 마감일이 유효하지 않습니다."; break;
+
+                case "shopTel":
+                    str="연락처가 유효하지 않습니다."; break;
+
+                case "shopEmail":
+                    str="이메일이 유효하지 않습니다."; break;
+            }
+
+            alert(str);
+            document.getElementById(key).focus();
+            e.preventDefault();
+            return;
+        }
+    }
+
+    /* 근무 기간 유효성 검사 */
+    const hireTerm = document.querySelectorAll(".hireTerm");
+
+    let termCount =0;
+    hireTerm.forEach(item=>{
+
+        if(item.checked){
+            termCount++;
+        }
+    })
+
+    if(termCount==0){
+        alert("근무 기간을 체크하세요.");
+        e.preventDefault();
+    }
+
+
+    /* 근무 요일 유효성 검사 */
+    const hireDays = document.querySelectorAll(".hireDays"); 
+
+    let dayCount=0;
+
+     hireDays.forEach(day=>{
+        if(day.checked){
+            dayCount++
+        }
+     })
+
+     if(dayCount==0){
+        alert("근무 요일을 하나 이상 체크하세요.");
+        e.preventDefault();
+        return;
+     }
+
+
+     /* 근무 시간 */
+     const workStart = document.getElementById("workStart"); //시작 시간
+     const workEnd = document.getElementById("workEnd"); //시작 시간
+
+     const startTime = Number(workStart.value.replace(":",""));
+     const endTime = Number(workEnd.value.replace(":",""))
+
+
+     if(workStart.value==''){
+        alert("시작 시간을 입력하세요");
+        e.preventDefault();
+        return;
+     }
+
+     else if(workEnd.value==''){
+        alert("종료 시간을 입력하세요");
+        e.preventDefault();
+        return;
+     }
+
+     if(startTime-endTime>0){
+        alert('올바른 시간을 입력하세요');
+        e.preventDefault();
+     }
+
+
+
+
+     /* 모집 성별 유효성 검사 */
+         /* 근무 기간 유효성 검사 */
+    const hireGender = document.querySelectorAll(".hireGender");
+
+    let genderCount =0;
+    hireGender.forEach(item=>{
+
+        if(item.checked){
+            genderCount++;
+        }
+    })
+
+    if(genderCount==0){
+        alert("모집 성별를 체크하세요.");
+        e.preventDefault();
+        return;
+    }
+
+     
+
+})
+
+
