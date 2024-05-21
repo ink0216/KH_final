@@ -3,7 +3,7 @@ function maskEmail(email) {
     var localPart = email.slice(0, atIndex);
     var domainPart = email.slice(atIndex);
 
-    if (localPart.length <= 3) {
+    if (localPart.length < 3) {
         return localPart.charAt(0) + '*'.repeat(localPart.length - 1) + domainPart;
     } 
     else {

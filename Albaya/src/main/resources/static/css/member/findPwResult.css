@@ -68,14 +68,15 @@ button:hover{
     display: flex;
     width: 100%;
     margin-bottom: 15px;
+    flex-direction: column;
 }
 .login-wrapper{
     display: flex;
-    width: 70%;
+    width: 100%;
     height: 90%;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .findPw-area{
@@ -87,14 +88,14 @@ button:hover{
 .text-area{
     display: flex;
     height: 90%;
-    width: 30%;
+    width: 50%;
     flex-direction: column;
 }
 
 .input-area{
     display: flex;
     height: 90%;
-    width: 70%;
+    width: 100%;
     flex-direction: column;
 }
 
@@ -121,7 +122,7 @@ button:hover{
 
 .btn-area{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: 30%;
     width: 100%;
@@ -140,30 +141,4 @@ button:hover{
 .changePwForm{
     display: flex;
     width: 100%;
-}
-
-.btnArea{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.btnArea > form{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content:center;
-    align-items: flex-end;
-}
-
-.btnArea > form > button{
-    width: 30%;
-    height: 20%;
-    font-size: 15px;
-    background-color: #014C73;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    margin-bottom: 80px;
 }
