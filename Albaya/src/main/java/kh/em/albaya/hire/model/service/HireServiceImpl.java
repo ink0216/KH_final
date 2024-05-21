@@ -21,6 +21,14 @@ public class HireServiceImpl implements HireService{
 		if(result ==0) {
 			return 0;
 		}
+		//HIRE테이블에는 INSERT 성공한거다
+		//HIRE_PERIOD 테이블에 INSERT하기
+		
+		
+		
+		
+		
+		
 		int hireNo = hire.getHireNo(); //삽입 성공한 공고 번호
 		
 		return 0;
