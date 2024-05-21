@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.em.albaya.hire.model.mapper.HireMapper">
-
+<!-- 
+	<insert id="boardInsert" useGeneratedKeys="true" parameterType="Board">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+		SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO "BOARD" 
+		VALUES(#{boardNo}, 
+				#{boardTitle},
+				#{boardContent},
+				DEFAULT,
+				DEFAULT,
+				DEFAULT,
+				DEFAULT,
+				#{boardCode},
+				#{memberNo}
+				)
+	</insert>
+ -->
 	
 	
 
