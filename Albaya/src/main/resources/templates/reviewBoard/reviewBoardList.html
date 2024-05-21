@@ -12,9 +12,17 @@
 
 <body>
     <main>
-        
+        <!-- reviewBoard Code 1번이 공지 2번이 토크(일반) -->
         <section class="reviewBoard-List">
             <div class="list-wrapper">
+                <div id="reviewBoardType">
+                    <div id="notice">
+                        공지
+                    </div>
+                    <div id="talk">
+                        토크
+                    </div>
+                </div>
                 <table class="list-table">
                     <thead>
                         <tr>
@@ -43,7 +51,7 @@
                     </tbody>
                 </table>
                 <div class="btn-area">
-                    <button id="insertBtn">작성하기</button>  
+                    <button id="insertBtn">글쓰기</button>  
                     <!-- 로그인한 일반 회원만 작성할 수 있도록 th:if 걸어둘 예정 --> 
                     <!-- th:if="${session.loginMember} -->
                 </div>
