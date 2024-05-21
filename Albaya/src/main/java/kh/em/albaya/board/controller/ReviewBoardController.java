@@ -21,6 +21,10 @@ public class ReviewBoardController {
    
    private final ReviewBoardService service;
    
+//   @GetMapping("reviewBoardList")
+//   public String boardList() {
+//	   return "reviewBoard/reviewBoardList";
+//   }
    
    
 
