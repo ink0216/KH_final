@@ -1,0 +1,92 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; 
+}
+
+body{
+    background-color: rgb(228, 242, 238);
+    font-family: 'SUIT-Regular';
+    height: 1080px;
+}
+
+/* 전체 폰트
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+} */
+
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+div{
+    border: 1px solid black;
+}
+
+button{
+    font-family: 'TheJamsil5Bold';
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.main-layout-wrapper{
+    display: flex;
+    width: 100%;
+    height: 1080px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-container-wrapper{
+    display: flex;
+    width: 35%;
+    height: 80%;
+    flex-direction: column;
+    background-color: white;
+}
+
+.h1-wrapper{
+    display: flex;
+    width: 100%;
+    height: 10%;
+}
+
+.main-content-wrapper{
+    display: flex;
+    height: 90%;
+    flex-direction: column;
+}
+
+.member-info-container{
+    display: flex;
+    height: 25%;
+    padding: 15px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.member-info-header{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 30%;
+    margin-bottom: 15px;
+}
+
+.member-info-header > button{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 10%;
+    height: 80%;
+    background-color: white;
+}
