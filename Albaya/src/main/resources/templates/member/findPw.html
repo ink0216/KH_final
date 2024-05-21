@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 찾기</title>
+    <link rel="stylesheet" href="/css/member/findId.css">
+    <link rel="stylesheet" href="/css/member/header.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+    <main>
+        <div class="wrapper-container">
+            <div class="login-container">
+                <div class="findId-text-conatiner">
+                    <div class="login-text">
+                        <div class="h1-place">
+                            <h1>비밀번호 찾기</h1>
+                        </div>
+                        <p>등록된 연락처로 비밀번호를 찾을 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="login-wrapper">
+                    <div class="login-area">
+                        <form action="/member/findPwResult" method="POST" class="login-form" id="loginForm">
+                            <div class="select-member">
+                                <div class="selected-member">
+                                    <button id="personalMember" type="button">일반회원</button>
+                                </div>
+                                <div class="selected-member">
+                                    <button id="coparationMember" type="button">기업회원</button>
+                                </div>
+                            </div>
+                            <div class="findId-middle-wrapper">
+                                <div class="findId">
+                                    <div class="findId-input-area">
+                                        <div class="findId-text-area">
+                                            <span>이름</span>
+                                        </div>
+                                        <div class="findId-area">
+                                            <input type="text" name="memberName" id="memberName">
+                                        </div>
+                                    </div>
+                                    <div class="findId-input-area">
+                                        <div class="findId-text-area">
+                                            <span>아이디</span>
+                                        </div>
+                                        <div class="findId-area">
+                                            <input type="text" name="memberEmail" id="memberEmail">
+                                        </div>
+                                    </div>
+                                    <div class="findId-input-area">
+                                        <div class="findId-text-area">
+                                            <span>연락처</span>
+                                        </div>
+                                        <div class="findId-area-pNum">
+                                            <input type="text" placeholder="-제외 입력" id="inputTel" name="memberPhoneNumber">
+                                            <div class="authKey-area">
+                                                <button type="button" id="memberAuth">인증번호 전송</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="authKey-wrapper">
+                                        <div class="findId-text-area">
+                                            <span>인증 번호</span>
+                                        </div>
+                                        <div class="findId-area-pNum">
+                                            <input type="text" id="authKey">
+                                            <div class="authKey-area">
+                                                <button type="button" id="authBtn">인증하기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="findId-footer-wrapper">
+                                <div class="findId-footer-button">
+                                    <button id="nextBtn">다음</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="/js/member/findPw.js"></script>
+<script th:inline="javascript">
+    const message =  /*[[${message}]]*/ "전달 받은 message";
+    // message가 없다면 null
+
+    if (message != null) alert(message);
+  </script>
+</html>

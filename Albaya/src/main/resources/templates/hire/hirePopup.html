@@ -5,32 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>업직종 선택</title>
+    <link rel="stylesheet" href="/css/hire/hire-popup.css">
 </head>
 
 <body>
     <h3>업직종 선택</h3>
 
+    <hr>
+
     <div class="typeContainer">
 
         <div class="typeArea">
-            <div class="type1">
-                <ul class="type1List">
-                    <li><button type="button" name="typeNo" value="1" onclick="selectType(this)">외식/음료</button></li>
-                    <li><button type="button" name="typeNo" value="2" onclick="selectType(this)">매장관리/판매</button></li>
-                    <li><button type="button" name="typeNo" value="3" onclick="selectType(this)">서비스</button></li>
-                    <li><button type="button" name="typeNo" value="4" onclick="selectType(this)">사무직</button></li>
-                    <li><button type="button" name="typeNo" value="5" onclick="selectType(this)">고객상담</button></li>
-                    <li><button type="button" name="typeNo" value="6" onclick="selectType(this)">생산/건설</button></li>
-                    <li><button type="button" name="typeNo" value="7" onclick="selectType(this)">운전/배달</button></li>
-                    <li><button type="button" name="typeNo" value="8" onclick="selectType(this)">병원/간호/연구</button></li>
-                    <li><button type="button" name="typeNo" value="9" onclick="selectType(this)">교육/강사</button></li>
-                </ul>
-            </div>
+            <ul class="type1List">
+                <li class="type" data-type-no="1">외식/음료</button></li>
+                <li class="type" data-type-no="2">매장관리/판매</button></li>
+                <li class="type" data-type-no="3">서비스</button></li>
+                <li class="type" data-type-no="4">사무직</button></li>
+                <li class="type" data-type-no="5">고객상담</button></li>
+                <li class="type" data-type-no="6">생산/건설</button></li>
+                <li class="type" data-type-no="7">운전/배달</button></li>
+                <li class="type" data-type-no="8">병원/간호/연구</button></li>
+                <li class="type" data-type-no="9">교육/강사</button></li>
+            </ul>
         </div>
 
-        <button id="typeSelect">선택하기</button>
+        <div class="btnArea">
+            <button id="typeSelect">선택하기</button>
+        </div>
+
     </div>
-    
+
 
     <script src="/js/hire/hire-popup.js"></script>
 </body>

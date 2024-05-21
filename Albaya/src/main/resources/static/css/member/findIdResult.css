@@ -30,9 +30,9 @@ button:hover{
     background-color: green;
 }
 
-/* div{
+div{
     border: 1px solid black;
-} */
+}
 
 .wrapper-container{
     display: flex;
@@ -57,7 +57,6 @@ button:hover{
     height: 17%;
     align-items: center;
     margin-top: 40px;
-    margin-left: 50px;
 }
 
 
@@ -75,162 +74,43 @@ button:hover{
     width: 100%;
     height: 90%;
     justify-content: center;
-    align-items: center;
 }
 
-.login-area{
+.findPw-area{
+    display: flex;
     width: 70%;
-    height: 80%;
-    margin-left: 50px;
-
-}
-
-.login-form{
-    height: 100%;
-}
-
-.select-member{
-    display: flex;
-    width: 100%;
-    height: 15%;
-    justify-content: center;
-}
-
-.selected-member{
-    display:flex;
-    width: 40%;
-    height: 100%;
-    border-bottom: 1px solid black;
-}
-
-.selected-member > button{
-    width: 100%;
-    background-color: white;
-    border: none;
-    font-size: 15px;
-
-}
-
-.selected-member > button:hover{
-    cursor: pointer;
-}
-
-#personalMember{
-    border-right: 1px solid black;
-}
-
-.login-middle-wrapper{
-    display: flex;
-    justify-content: center;
-    height: 60%;
-}
-
-.login-area-wrapper{
-    display: flex;
-    width: 80%; 
-    align-items: center;
-}
-
-
-#personalMember{
-    background-color: grey;
-}
-
-.findId-middle-wrapper{
-    display: flex;
-    justify-content: center;
-    height: 70%;
-    flex-direction: column;
-}
-
-.findId-input-area{
-    display: flex;
-    width: 80%;
-    height: 33%;
-    margin-bottom: 30px;
-}
-
-.findId{
-    display: flex;
-    width: 100%;
     height: 90%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-.findId-text-area{
+.text-area{
     display: flex;
-    align-items: center;
     width: 30%;
+    flex-direction: column;
 }
 
-.findId-area{
+.input-area{
     display: flex;
     width: 70%;
+    flex-direction: column;
 }
 
-.findId-area-pNum{
+.text-span-area{
     display: flex;
-    width: 70%;
-}
-
-.findId-area > input{
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-.findId-area-pNum > input{
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-.findId-footer-wrapper{
-    display: flex;
-    height: 15%;
-    align-items: center;
-    justify-content: center;
-}
-
-.findId-footer-button{
-    width: 10%;
-    height: 100%;
-}
-
-.findId-footer-button > button{
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 5px;
-    background-color: #014C73;
-    color: white;
-    font-size: 14px;
-}
-
-.authKey-area{
-    display: flex;
-    width: 20%;
-}
-
-.authKey-area > button{
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    background-color: #014C73;
-    color: white;
-    margin-left: 5px;
-    font-size: 14px;
-}
-
-.authKey-wrapper{
-    display: flex;
-    width: 80%;
     height: 33%;
-    margin-bottom: 30px;
+    width: 100%;
+    align-items: center;
 }
 
-.login-area-top{
-    height: 20%;
+.text-input-area{
+    display: flex;
+    height: 33%;
+    width: 100%;
+    align-items: center;
+}
+
+.inputPassword{
+    width: 100%;
+    height: 33%;
+    border: 1px solid black;
+    border-radius: 5px;
 }

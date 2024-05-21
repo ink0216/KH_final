@@ -195,7 +195,7 @@ typeBtn.addEventListener("click",()=>{
 
     const options=[];
     options.push("width=500");
-    options.push("height=400");
+    options.push("height=300");
     options.push("left=300");
     options.push("top=100");
 

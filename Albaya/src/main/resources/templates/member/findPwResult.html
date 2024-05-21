@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="/css/member/findIdResult.css">
+    <link rel="stylesheet" href="/css/common/header.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+    <main>
+        <div class="wrapper-container">
+            <div class="login-container">
+                <div class="findId-text-conatiner">
+                    <div class="login-text">
+                        <div class="h1-place">
+                            <h1>비밀번호 변경하기</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login-wrapper">
+                    <div class="findPw-area">
+                        <div class="text-area">
+                         
+                            <div class="text-span-area">
+                                현재 비밀번호
+                            </div>
+                            <div class="text-span-area">
+                                변경할 비밀번호
+                            </div>
+                            <div class="text-span-area">
+                                변경할 비밀번호 확인
+                            </div>
+                
+                        </div>
+                        <div class="input-area">
+                  
+                            <div class="text-input-area">
+                                <input type="password" name="currentPassword" class="inputPassword">
+                            </div>
+                            <div class="text-input-area">
+                                <input type="password" name="newPassword" class="inputPassword">
+                            </div>
+                            <div class="text-input-area">
+                                <input type="password" name="checkNewPassword" class="inputPassword">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script src="/js/member/findIdResult.js"></script>
+<script th:inline="javascript">
+    const message =  /*[[${message}]]*/ "전달 받은 message";
+    // message가 없다면 null
+
+    if (message != null) alert(message);
+</script>
+</html>
