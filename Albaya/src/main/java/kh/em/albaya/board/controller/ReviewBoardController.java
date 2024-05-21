@@ -1,6 +1,7 @@
 package kh.em.albaya.board.controller;
 
 
+import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kh.em.albaya.board.model.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,11 @@ public class ReviewBoardController {
    
    private final ReviewBoardService service;
    
+   // 헤더 연결...?
+//   @GetMapping("reviewBoardList")
+//   public String boardList() {
+//	   return "reviewBoard/reviewBoardList";
+//   }
    
    
 
@@ -31,9 +38,9 @@ public class ReviewBoardController {
 	 * @param model : request scope로 값 전달 객체
 	 * @return
 	 */
-	@GetMapping("reviewBoardList")
+	@GetMapping("reviewBoardCode:[12]")
 	public String selectBoardList(
-		@RequestParam("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
+		@PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
 		@RequestParam(value="cp", required=false, defaultValue = "1")int cp,// 현재페이지
 		Model model,
 		@RequestParam Map<String, Object> paramMap
@@ -45,18 +52,16 @@ public class ReviewBoardController {
 		
 		//검색 아닐때
 		if(paramMap.get("key")==null) {
-//			map = service.selectBoardTypeList(reviewBoardCode, cp);
+			map = service.selectBoardTypeList(reviewBoardCode, cp); // 게시글 목록 조회
 		}else { //검색일때
 			
-//			paramMap.put("reviewBoardCode", reviewBoardCode); -> 공지를 검색이 되게 한것인가..?
+			paramMap.put("reviewBoardCode", reviewBoardCode); 
 			
-//			map = service.searchList(paramMap,cp);
+			map = service.searchList(paramMap,cp); // 검색 서비스
 		}
-		
 		
 		model.addAttribute("pagination",map.get("pagination"));
 		model.addAttribute("reviewBoardList",map.get("reviewBoardList"));
-		
 		
 		return "reviewBoard/reviewBoardList";
 	}
@@ -64,11 +69,13 @@ public class ReviewBoardController {
 	
 	
 	// 게시글 상세 조회 
-	@GetMapping("reviewBoardList/{reviewBoardNo:[0-9]+}")
+	@GetMapping("reviewBoardCode:[12]/{reviewBoardNo:[0-9]+}")
 	public String boardDetail(
-			@RequestParam("reviewBoardCode") int reviewBoardCode,
+			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
-			Model model) {
+			Model model,
+			@SessionAttribute(value="loginMember", required=false) Member loginMember
+			) {
 		// 일반,비회원,기업 전부 상세 조회 가능
 		
 		Map<String, Object> map = new HashMap<>();

@@ -27,6 +27,15 @@ public class ReviewBoard {
 	private String reviewBoardUpdateDate;
 	private int reviewBoardCode;
 	
+	// MEMBER 테이블 조인
+	private String memberEmail;
+	
+	private int commentCount;
+	
+	// 특정 게시글에 작성된 댓글 목록
+	private List<Comment> commentList;
+	
+	
 	
 
 }

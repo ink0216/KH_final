@@ -1,13 +1,11 @@
 package kh.em.albaya.member.controller;
 
-
 import java.util.Map;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,7 +60,8 @@ public class MemberController {
          message = "가입 성공!";
          ra.addFlashAttribute("message", message);
          return "redirect:/";
-      }else {
+      }
+      else {
          message = "가입 실패";
          return "redirect:/";
       }
@@ -104,12 +103,12 @@ public class MemberController {
 		
 		if(loginMember == null) {
 			message = "아이디 또는 비밀번호가 일치하지 않습니다";
+			ra.addFlashAttribute("message", message);
+			ra.addFlashAttribute("message", message);
 			return "redirect:/member/login";
 		}
 
-
 		if(loginMember != null) {
-			message = "";
 			model.addAttribute("loginMember", loginMember);
 			
 			Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
@@ -125,8 +124,7 @@ public class MemberController {
 			resp.addCookie(cookie);
 			
 		}
-		ra.addFlashAttribute("message", message);
-		return "redirect:/member/login";
+		return "redirect:/";
     }
     
     @GetMapping("findId")
@@ -144,7 +142,7 @@ public class MemberController {
 
     	String memberEmail = service.findMemberId(member);
     	session.setAttribute("result", result);
-    	session.setAttribute("memberEmail", maskEmail(memberEmail));
+    	session.setAttribute("memberEmail", memberEmail);
     	
     	return result;
     }
@@ -152,18 +150,59 @@ public class MemberController {
     @PostMapping("findIdResult")
     public String findIdResult(HttpSession session) {
     	return "/member/findIdResult";
+    }      
+    
+    @GetMapping("findPw")
+    public String findPw() {
+    	return "/member/findPw";
     }
     
-    /** 이메일 일부 자리 "*"표시
-     * @param email
-     * @return
-     */
-    private String maskEmail(String email) {
-        int atIndex = email.indexOf("@");
-        if (atIndex > 1) {
-           return email.substring(0, 2) + "*" + email.substring(atIndex);
-        }
-        return email;
-     }
+    @PostMapping("findPw")
+    @ResponseBody
+    public int findPw(
+    		@RequestBody Member member,
+    		Model model) {
+    	int memberCount = service.memberPwCount(member);
+   
+    	String memberEmail = member.getMemberEmail();
+    	
+    	model.addAttribute("memberEmail", memberEmail);
+    	
+    	if(memberCount > 0) {
+    		return memberCount;
+    	}
+    	return 0;
+    }
     
+    @GetMapping("findPwResult")
+    public String changePw() {
+    	return "/member/findPwResult";
+    }
+    
+    @PostMapping("findPwResult")
+    public String findPwResult() {
+    	return "/member/findPwResult";
+    }
+    
+    @PostMapping("chagePw")
+    public String chagePw(
+    		@RequestParam("newPassword") String newPassword,
+    		@RequestParam("checkNewPassword") String checkNewPassword,
+    		@RequestParam("memberEmail") String memberEmail, 
+    		RedirectAttributes ra,
+    		HttpSession session
+    		) {
+    	
+    	int result = service.changePw(newPassword, memberEmail);
+
+    	String message = null;
+    	
+    	if (result == 1) {
+    		message = "비밀번호가 변경되었습니다.";
+    		ra.addFlashAttribute("message", message);
+    		return "redirect:/";
+    	}
+    	
+    	return "redirect:/";
+    }
 }

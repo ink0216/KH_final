@@ -204,7 +204,7 @@
                                 <option value=5>일급</option>
                             </select>
 
-                            <input type="text" id="payInput" placeholder="급여">
+                            <input type="number" id="payInput" name="payInput" placeholder="급여">
                         </dd>
 
                         <dd>
@@ -227,6 +227,7 @@
                             </div>
                             <div class="gender-input">
                                 <input type="radio" name="hireGender" id="gender2" value="2" class="hireGender">
+
                                 <label for="gender2">여</label>
                             </div>
                         </dd>
@@ -339,7 +340,7 @@
     <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b&libraries=services"></script>
     <script src="/js/hire/hire-write.js"></script>
-
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 
 </html>
