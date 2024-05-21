@@ -1,6 +1,7 @@
 package kh.em.albaya.board.controller;
 
 
+import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kh.em.albaya.board.model.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
@@ -71,7 +73,9 @@ public class ReviewBoardController {
 	public String boardDetail(
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
-			Model model) {
+			Model model,
+			@SessionAttribute(value="loginMember", required=false) Member loginMember
+			) {
 		// 일반,비회원,기업 전부 상세 조회 가능
 		
 		Map<String, Object> map = new HashMap<>();
