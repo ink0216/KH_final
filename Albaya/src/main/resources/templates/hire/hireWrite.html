@@ -53,7 +53,6 @@
                                     readonly>
                                 <input type="hidden" name="typeNo" id="typeNo">
                                 <button id="typeBtn" type="button">선택</button>
-                                <span class="inputConfirm" id="typeMessage">제목</span>
                             </dd>
                         </dl>
                     </div>
@@ -184,8 +183,8 @@
                         <dt>근무 시간</dt>
 
                         <dd>
-                            <input type="time" placeholder="시작 시간" step="1800" id="workStart" name="workStart">
-                            <input type="time" placeholder="종료 시간" step="1800" id="workEnd" name="workEnd">
+                            <input type="time" placeholder="시작 시간" id="workStart" name="workStart">
+                            <input type="time" placeholder="종료 시간" id="workEnd" name="workEnd">
                         </dd>
 
                     </dl>
@@ -205,11 +204,12 @@
                             </select>
 
                             <input type="text" id="payInput" placeholder="급여">
+                            <span class="inputConfirm" id="payMessage"></span>
                         </dd>
 
-                        <dd>
+                        <!--                         <dd>
                             <button id="payConfirmBtn" type="button">확인</button>
-                        </dd>
+                        </dd> -->
 
                     </dl>
 

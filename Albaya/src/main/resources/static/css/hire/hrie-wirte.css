@@ -380,3 +380,18 @@ font-weight: bold;
     background-color: #046298;
 }
 
+/* ------------------------------------------------------------------ */
+
+/* 유효성 검사 */
+.inputConfirm{
+    font-size: 10px;
+}
+
+.red{
+    color: red;
+}
+
+.blue{
+    color: #014C73 ;
+}
+
