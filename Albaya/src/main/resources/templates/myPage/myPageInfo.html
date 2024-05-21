@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 정보</title>
+    <link rel="stylesheet" href="/css/myPage/myPageInfo.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <main class="main-layout-wrapper">
+        <div class="main-container-wrapper">
+            <div class="h1-wrapper">
+                <h2><span th:text="${session.loginMember.memberName}"></span>님의<br>
+                Albaya 개인 회원 정보</h2>
+            </div>
+            <div class="main-content-wrapper">
+                <div class="member-info-container">
+                    <div class="member-info-header">
+                        <h3>회원 정보</h3>
+                        <button id="editBtn">수정</button>
+                    </div>
+
+                    <div class="member-p-area">
+                        <p>하이하이</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
