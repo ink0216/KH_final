@@ -21,6 +21,7 @@ public class ReviewBoardController {
    
    private final ReviewBoardService service;
    
+   // 헤더 연결...?
 //   @GetMapping("reviewBoardList")
 //   public String boardList() {
 //	   return "reviewBoard/reviewBoardList";
@@ -49,19 +50,16 @@ public class ReviewBoardController {
 		
 		//검색 아닐때
 		if(paramMap.get("key")==null) {
-			map = service.selectBoardTypeList(reviewBoardCode, cp);
+			map = service.selectBoardTypeList(reviewBoardCode, cp); // 게시글 목록 조회
 		}else { //검색일때
 			
 			paramMap.put("reviewBoardCode", reviewBoardCode); 
 			
-			
-			map = service.searchList(paramMap,cp);
+			map = service.searchList(paramMap,cp); // 검색 서비스
 		}
-		
 		
 		model.addAttribute("pagination",map.get("pagination"));
 		model.addAttribute("reviewBoardList",map.get("reviewBoardList"));
-		
 		
 		return "reviewBoard/reviewBoardList";
 	}
