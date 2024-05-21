@@ -39,6 +39,7 @@ public class HireController {
 			) { //SEQUENCE : 공고 번호 시퀀스만 생성했다
 		//HIRE 테이블에 INSERT하는 서비스 호출
 		int hireNo = service.hireWrite(hire);
+		hire.setShopNo(loginMember.get)
 		String message=null;
 		String path = null;
 		if(hireNo>0) {
