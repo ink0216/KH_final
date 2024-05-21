@@ -3,6 +3,8 @@ package kh.em.albaya.board.model.service;
 import java.util.List;
 import java.util.Map;
 
+import kh.em.albaya.board.model.dto.ReviewBoard;
+
 public interface ReviewBoardService {
 	
 	/** 게시판 종류 조회
@@ -24,6 +26,13 @@ public interface ReviewBoardService {
 	 * @return
 	 */
 	Map<String, Object> searchList(Map<String, Object> paramMap, int cp);
+
+
+	/** 게시글 상세 조회
+	 * @param map
+	 * @return
+	 */
+	ReviewBoard selectOne(Map<String, Object> map);
 
 
 

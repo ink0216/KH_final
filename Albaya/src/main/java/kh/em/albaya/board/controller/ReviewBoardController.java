@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
 
@@ -81,6 +82,8 @@ public class ReviewBoardController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("reviewBoardCode", reviewBoardCode);
 		map.put("reviewBoardNo", reviewBoardNo);
+		
+//		ReviewBoard reviewBoard = service.selectOne(map);
 		
 		return "reviewBoard/reviewBoardDetail";
 	}
