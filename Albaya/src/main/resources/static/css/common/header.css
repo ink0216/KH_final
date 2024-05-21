@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+#button a{
+    font-family: 'TheJamsil5Bold';
+}
 body{
     overflow-x: hidden;
 }
@@ -31,20 +41,19 @@ ul{
     padding-left:100px;
 }
 
-ul>a{
+ul>li{
+    color : #014C73;
+    list-style: none;
     text-decoration: none;
     padding-top:29px;
     padding-bottom:29px;
-    margin-right:-10%;
+    margin-right:-5%;
     margin-left:-35%;
     position:relative;
     padding-bottom:-6px;
 }
 
-.member-area>a{
-    width: 30px;
-}
-ul>a::after{
+ul>li::after{
     content:'';
     position:absolute;
     width:100%;
@@ -58,25 +67,28 @@ ul>a::after{
 }
 
 
-ul>a:hover::after{
+ul>li:hover::after{
     cursor:pointer;
     transform:scaleX(1);
     transform-origin:center;
 }
-
+ul>li>a:hover{
+    cursor:pointer;
+}
 .selectedList::after{
-    position:absolute;
+    width:100%;
+    bottom:0;
+    left:0;
+    height:5px;
+    background-color:#014C73;
+    transition:transform 360000s ease-in;
 }
 #buttons{
     display:flex;
     align-items:center;
-    width: 400px;
+  
 }
-#buttons a{
-    text-decoration: none;
-    margin : 0 10px;
-}
-#buttons  button{
+#buttons > button{
     height:32px;
     width: 35px;
     margin-left:2%;
@@ -85,7 +97,7 @@ ul>a:hover::after{
     border: 1px solid white;
     background:white;
 }
-#buttons  button:nth-child(1){
+#buttons > button:nth-child(1){
     border-radius: 20px;
     width:100px;
     border:1px solid lightgray;
@@ -95,12 +107,15 @@ ul>a:hover::after{
     margin-right:5px;
 }   
 
-#buttons  button:hover{
+#buttons > button:hover{
     background: lightgray;
     cursor: pointer;
 }
-
-
+#buttons a{
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+}
 .modified{
     background: blue;
 }

@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Toggle Box Color</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: lightgray;
+            display: inline-block;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+
+    <script>
+        // JavaScript 코드
+        const box1 = document.getElementById('box1');
+        const box2 = document.getElementById('box2');
+
+        box1.addEventListener('click', () => {
+            box1.classList.add('highlight');
+            box2.classList.remove('highlight');
+        });
+
+        box2.addEventListener('click', () => {
+            box2.classList.add('highlight');
+            box1.classList.remove('highlight');
+        });
+    </script>
 </body>
 </html>

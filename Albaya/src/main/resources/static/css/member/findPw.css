@@ -1,0 +1,231 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; 
+}
+
+body{
+    background-color: rgb(228, 242, 238);
+    font-family: 'TheJamsil5Bold';
+}
+
+/* 전체 폰트 */
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+button{
+    font-family: 'TheJamsil5Bold';
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+/* 선택됐을때 배경색 바꾸는 코드 */
+.selected{
+    background-color: green;
+}
+
+/* div{
+    border: 1px solid black;
+} */
+
+.wrapper-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.login-container{
+    display: flex;
+    width: 50%;
+    height: 500px;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+}
+
+
+.findId-text-conatiner{
+    display: flex;
+    width: 70%;
+    height: 17%;
+    align-items: center;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+
+.login-image > h1{
+    text-align: left;
+}
+
+.h1-place{
+    display: flex;
+    width: 85%;
+    margin-bottom: 15px;
+}
+.login-wrapper{
+    display: flex;
+    width: 100%;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-area{
+    width: 80%;
+    height: 80%;
+}
+
+.login-form{
+    height: 100%;
+}
+
+.select-member{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: center;
+}
+
+.selected-member{
+    display:flex;
+    width: 40%;
+    height: 100%;
+    border-bottom: 1px solid black;
+}
+
+.selected-member > button{
+    width: 100%;
+    background-color: white;
+    border: none;
+    font-size: 15px;
+
+}
+
+.selected-member > button:hover{
+    cursor: pointer;
+}
+
+#personalMember{
+    border-right: 1px solid black;
+}
+
+.login-middle-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 60%;
+}
+
+.login-area-wrapper{
+    display: flex;
+    width: 80%; 
+    align-items: center;
+}
+
+
+#personalMember{
+    background-color: grey;
+}
+
+.findId-middle-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 90%;
+    flex-direction: column;
+}
+
+.findId-input-area{
+    display: flex;
+    width: 80%;
+    height: 33%;
+    margin-bottom: 30px;
+}
+
+.findId{
+    display: flex;
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.findId-text-area{
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.findId-area{
+    display: flex;
+    width: 70%;
+}
+
+.findId-area-pNum{
+    display: flex;
+    width: 70%;
+}
+
+.findId-area > input{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.findId-area-pNum > input{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.findId-footer-wrapper {
+    display: flex;
+    height: 15%;
+    align-items: center;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.findId-footer-button{
+    width: 10%;
+    height: 100%;
+}
+
+.findId-footer-button > button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #014C73;
+    color: white;
+    font-size: 14px;
+}
+
+.authKey-area{
+    display: flex;
+    width: 20%;
+}
+
+.authKey-area > button{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #014C73;
+    color: white;
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.authKey-wrapper{
+    display: flex;
+    width: 80%;
+    height: 33%;
+    margin-bottom: 30px;
+}

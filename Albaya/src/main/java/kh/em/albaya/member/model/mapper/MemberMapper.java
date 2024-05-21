@@ -1,5 +1,8 @@
 package kh.em.albaya.member.model.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import kh.em.albaya.member.model.dto.Member;
@@ -27,4 +30,11 @@ public interface MemberMapper {
 
 	String findMemberId(Member member);
 
+	int memberPwCount(Member member);
+
+	int changePw(Map<String, Object> map);
+
+
+	
+	
 }

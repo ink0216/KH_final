@@ -1,5 +1,8 @@
 package kh.em.albaya.member.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import kh.em.albaya.member.model.dto.Member;
 
 public interface MemberService {
@@ -24,6 +27,7 @@ public interface MemberService {
 
 	String findMemberId(Member member);
 
+	int memberPwCount(Member member);
 
-
+	int changePw(String newPassword, String memberEmail);
 }

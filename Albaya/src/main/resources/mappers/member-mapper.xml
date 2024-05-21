@@ -31,4 +31,19 @@
 		WHERE MEMBER_NAME = #{memberName}
 		AND MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
 	</select>
+	
+	<select id="memberPwCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_NAME = #{memberName}
+		AND MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
+	</select>
+	
+	<update id="changePw">
+		UPDATE "MEMBER"
+		SET MEMBER_PW = #{encPw}
+		WHERE MEMBER_EMAIL = #{memberEmail}
+	</update>
+	
 </mapper>
