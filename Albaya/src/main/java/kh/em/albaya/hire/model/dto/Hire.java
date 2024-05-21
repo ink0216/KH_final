@@ -13,37 +13,40 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class Hire {
-	//HIRE 테이블 컬럼
-	private int hireNo; //공고문 번호
+	// HIRE 테이블 
+	private int hireNo; //공고문 번호 ㅁㅁㅁ
 	private int shopNo; //상점 번호
-	private String typeName; //직종 이름
-	private String hireContent; //주요 사업 내용
-	private String hireEnd; //모집 마감 날짜
-	private int hireTerm; //근무 기간(일 단위)
-	private int hirePay; //급여(월 단위)
+	private int typeNo; //직종 번호
+	private String typeName; //직종 이름(여기도 들어오나 확인해보기)
+	private int payNo; //시급 / 주급ㅁㅁㅁ
+	private String hireTitle; //공고 제목
+	private String hireContent; //주요 근무 내용
+	private String hireStart; //모집 시작 날짜
+	private String hireEnd; //모집 종료 날짜
+	private int hireCount; //모집인원
+	private int hireTerm; //근무 기간 하루 / 일주일 ....
+	private int hireGender; //남 여 성별무관
+	private int applyCount; //지원자 수
+	private int hireStatus; //공고 상태 미저장 저장 임시저장
 	private String workDay; //근무 요일
+	private int payInput; //급여 숫자
+	
+	//HIRE_PERIOD 테이블 JOIN(HIRE_NO컬럼으로)
+	private String workStart; //근무 시작 시간
+	private String workEnd; //근무 종료 시간
+	
+	//SHOP 테이블 조인(SHOP_NO)
+	private String shopName; //상점 이름
+	private String address; //주소
+	private String addressDetail; //상세주소
+	private String shopOwner; //담당자명
+	private String shopTel; //담당자 연락처
+	private String shopEmail; //담당자 이메일
+	
+	//월급 계산용
+	private int hirePay; //급여(월 단위)
+	
 	// 월화수목금토일 name값 같은 checkbox 사용하면 -> String으로 넘어옴('월,화') 이런 식으로
 	//	-> 화면에 뿌리거나 할 때에는 ,를 기준으로 split해서 쪼개면 된다
-	private int hireCount; //모집인원
-	private String hireStart; //모집 시작 날짜
-	private String hireGender; //모집 성별
-	/*hireNo==
-	 * typeName 직종 이름
-	 * payNo --급여 종류
-	 * payInput
-	 * hireTitle
-	 * hireContent
-	 * hireEnd
-	 * hireCount
-	 * address
-	 * addressDetail
-	 * shopName 회사명
-	 * hireTerm -- 근무 기간
-	 * hireGender==
-	 * applyCount==
-	 * workStart
-	 * workEnd
-	 * hireStatus==
-	 * workDay
-	 * */
+
 }

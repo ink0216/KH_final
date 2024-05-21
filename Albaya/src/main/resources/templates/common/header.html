@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <header>  
     <div id = "menuBar">
         <div id ="logo"> 
-              
+            
         </div>  
         <ul>
             <li><a><b>이력서 관리</b></a></li>
@@ -20,8 +20,18 @@
         </ul>
         <div id = "buttons">
             <button id = "search"><i class="fa-solid fa-magnifying-glass"></i>   search</button>
-            <button id = "notification"><i class="fa-regular fa-bell"></i></button>
-            <button id = "account"><i class="fa-solid fa-user"></i></button>
+            <th:block th:if="${session.loginMember ==null}">
+                <!-- 로그인 안 한 경우 -->
+                <a href="/member/login">로그인</a>
+                |
+                <a href="/member/signup">회원가입</a>
+            </th:block>
+            <th:block th:unless="${session.loginMember ==null}">
+                <!-- 로그인 한 경우 -->
+                <button id = "notification"><i class="fa-regular fa-bell"></i></button>
+                <button id = "account"><i class="fa-solid fa-user"></i></button>
+            </th:block>
+            
         </div>
     </div>
 
