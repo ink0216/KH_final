@@ -24,6 +24,7 @@
                     </div>
                 </div>
                 <table class="list-table">
+                 
                     <thead>
                         <tr>
                             <th>글번호</th>
@@ -33,22 +34,27 @@
                             <th>조회수</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="/reviewBoardDetail">샘플 제목 1(테스트용 링크)</a></td> 
-                        <td>작성자1</td>
-                        <td>2024-01-01</td>
-                        <td>1</td>
+                    
+                    
+                    <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
+                        <td th:text="*{reviewBoardNo}">글번호</td>
+                        <td><a th:unless="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="*{reviewBoardTitle}">게시글 제목</a>
+                           
+                            <!-- 검색 기능 구현할 때 주석 풀 문장 -->
+                            <!-- <a th:if="${param.key}" th:href="@{/board/{boardCode}/{boardNo}(boardCode = ${boardCode},boardNo=*{boardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{boardTitle}">게시글 제목</a>
+                            <th:block th:text="|[*{commentCount}]|"></th:block> -->
+                        
+                        </td> 
+                        <td th:text="*{memberNickname}">닉네임</td>
+                        <td th:text="*{reviewBoardWriteDate}">2024-01-01</td>
+                        <td th:text="*{readCount}">0</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>샘플 제목 2</td>
-                        <td>작성자2</td>
-                        <td>2024-01-01</td>
-                        <td>1</td>
-                    </tr>
-                    </tbody>
+                  
+                    
+                </th:block>
+            </tbody>
                 </table>
                 <div class="btn-area">
                     <button id="insertBtn">글쓰기</button>  
