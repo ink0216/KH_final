@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.em.albaya.member.model.mapper.MemberMapper">
 
-	<insert id="signup">
-		INSERT INTO "MEMBER"
-		VALUES(SEQ_MEMBER_NO.NEXTVAL, DEFAULT, #{memberEmail}, #{memberPw}, 
-		#{memberPhoneNumber}, DEFAULT, #{memberName}, DEFAULT,
-		#{memberGender}, #{memberAddress}, NULL, NULL)
-	</insert>
+	   <insert id="signup">
+      INSERT INTO "MEMBER"
+      VALUES(SEQ_MEMBER_NO.NEXTVAL, DEFAULT, #{memberEmail}, #{memberPw}, 
+      #{memberPhoneNumber}, DEFAULT, #{memberName}, DEFAULT,
+      #{memberGender}, #{memberAddress}, NULL, NULL)
+   </insert>
 	
 	<select id="login" resultType="Member">
 		SELECT MEMBER_NO, AUTHORITY_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_PHONE_NUMBER,
