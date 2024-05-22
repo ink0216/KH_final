@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALBAYA</title>
     <style>
-        body>a{
+        body>a {
             font-size: 30px;
         }
     </style>
     <link rel="stylesheet" href="/css/member/header.css">
+    <link rel="stylesheet" href="/css/common/main.css">
 </head>
+
 <body>
     메인페이지 입니다. <br>
     <a href="/hire/hireWrite">공고 작성 페이지로 이동</a>
@@ -20,11 +22,25 @@
     <!-- ------------------------------------------------------------------------------------------------- -->
     <br><br>
     <th:block th:replace="~{common/header}"></th:block>
-    <section>
-        <pre>
 
-            공고 리스트 나열 영역
-        </pre>
+    <section>
+        <div class="imgList">
+            <div class="listCol1">
+                <div class="imgItem">
+                    <img src="" alt="기업 썸네일">
+                    <p id="hireTitle">공고 제목</p>
+                    <div class="payArea">
+                        <p id="payName">급여명</p>
+                        <p id="pay">10000</p>
+                    </div>
+                    <p id="dosiName">지역(도/시)</p>
+                </div>
+            </div>
+
+            <div class="listCol2">
+
+            </div>
+        </div>
     </section>
 
 
@@ -33,7 +49,7 @@
     <script th:inline="javascript">
         const message =  /*[[${message}]]*/ "전달 받은 message";
         // message가 없다면 null
-    
+
         if (message != null) alert(message);
     </script>
     <script src="/js/common/header.js"></script>
