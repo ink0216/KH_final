@@ -83,7 +83,7 @@ public class ReviewBoardController {
 		map.put("reviewBoardCode", reviewBoardCode);
 		map.put("reviewBoardNo", reviewBoardNo);
 		
-//		ReviewBoard reviewBoard = service.selectOne(map);
+		ReviewBoard reviewBoard = service.selectOne(map);
 		
 		return "reviewBoard/reviewBoardDetail";
 	}

@@ -93,7 +93,7 @@
 	
 	
 	<!-- 게시글 상세 조회 -->
-	<select id="">
+	<select id="selectOne">
 		SELECT REVIEW_BOARD_NO , REVIEW_TITLE, REVIEW_BOARD_CONTENT,
 				REVIEW_BOARD_CODE, READ_COUNT, 
 				MEMBER_NO, MEMBER_EMAIL, REVIEW_BOARD_CONTENT,

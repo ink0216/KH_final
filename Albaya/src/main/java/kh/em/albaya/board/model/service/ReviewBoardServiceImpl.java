@@ -74,5 +74,12 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 	
 	
 	
+	// 게시글 상세 조회
+	@Override
+	public ReviewBoard selectOne(Map<String, Object> map) {
+		
+		return mapper.selectOne(map);
+	}
+	
 	
 }

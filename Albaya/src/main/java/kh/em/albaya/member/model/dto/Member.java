@@ -22,4 +22,6 @@ public class Member {
 	private String memberStatus;
 	private int memberGender;
 	private String memberAddress;
+	private String 	lastModifiedDate;
+	private String lastModifiedPwDate;
 }
