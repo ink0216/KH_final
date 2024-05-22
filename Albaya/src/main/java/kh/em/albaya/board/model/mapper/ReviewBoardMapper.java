@@ -27,5 +27,11 @@ public interface ReviewBoardMapper {
 	// 검색 결과 목록 조회
 	List<ReviewBoard> selectSearchList(Map<String, Object> paramMap, RowBounds rowBounds);
 
+	
+	
+	
+	// 게시글 상세조회
+	ReviewBoard selectOne(Map<String, Object> map);
+
 
 }
