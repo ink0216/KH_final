@@ -31,7 +31,12 @@ div{
 }
 
 button{
-    font-family: 'TheJamsil5Bold';
+    font-family: 'SUIT-Regular';
+}
+
+span{
+    font-family: 'SUIT-Regular';
+    color: #6a6a6a;
 }
 
 button:hover{
@@ -69,18 +74,16 @@ button:hover{
 
 .member-info-container{
     display: flex;
-    height: 25%;
+    height: 40%;
     padding: 15px;
-    align-items: center;
     flex-direction: column;
 }
 
 .member-info-header{
     display: flex;
     justify-content: space-between;
-    width: 90%;
-    height: 30%;
-    margin-bottom: 15px;
+    height: 20%;
+    margin-bottom: 10px;
 }
 
 .member-info-header > button{
@@ -89,4 +92,91 @@ button:hover{
     width: 10%;
     height: 80%;
     background-color: white;
+}
+
+.member-p-area{
+    display: flex;
+    height: 15%;
+    margin-bottom: 10px;
+}
+
+.member-info-area{
+    display: flex;
+    height: 65%;
+    background-color: #f8f8f8;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.info-row{
+    display: flex;
+    height: 25%;
+}
+
+.info-row-left{
+    display: flex;
+    width: 30%;
+    align-items: center;
+}
+
+.info-row-right{
+    display: flex;
+    width: 70%;
+    align-items: center;
+}
+
+.member-changePw-container{
+    display: flex;
+    height: 30%;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.member-changePw-header{
+    display: flex;
+    justify-content: space-between;
+    height: 25%;
+    margin-bottom: 10px;
+}
+
+.member-changePw-header > button{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 10%;
+    height: 80%;
+    background-color: white;
+}
+
+.member-changePw-p-area{
+    display: flex;
+    height: 15%;
+    margin-bottom: 10px;
+}
+
+.member-changePw-status-container{
+    display: flex;
+    width: 100%;
+    height: 43%;
+    align-items: center;
+    background-color: #f8f8f8;
+
+    padding: 15px;
+}
+
+.member-changePw-status{
+    display: flex;
+    width: 100%;
+    height: 60%;
+}
+
+.member-changePw-left{
+    display: flex;
+    width: 30%;
+    align-items: center;
+}
+
+.member-changePw-right{
+    display: flex;
+    width: 70%;
+    align-items: center;
 }
