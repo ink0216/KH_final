@@ -16,10 +16,10 @@
         <section class="reviewBoard-List">
             <div class="list-wrapper">
                 <div id="reviewBoardType">
-                    <div id="notice">
+                    <div id="notice" class="box">
                         공지
                     </div>
-                    <div id="talk">
+                    <div id="talk" class="box">
                         토크
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     
                     <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
                         <td th:text="*{reviewBoardNo}">글번호</td>
-                        <td><a th:unless="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="*{reviewBoardTitle}">게시글 제목</a>
+                        <td><a th:unless="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="*{reviewTitle}">게시글 제목</a>
                            
                             <!-- 검색 기능 구현할 때 주석 풀 문장 -->
                             <!-- <a th:if="${param.key}" th:href="@{/board/{boardCode}/{boardNo}(boardCode = ${boardCode},boardNo=*{boardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{boardTitle}">게시글 제목</a>
@@ -57,9 +57,7 @@
             </tbody>
                 </table>
                 <div class="btn-area">
-                    <button id="insertBtn">글쓰기</button>  
-                    <!-- 로그인한 일반 회원만 작성할 수 있도록 th:if 걸어둘 예정 --> 
-                    <!-- th:if="${session.loginMember} -->
+                    <button id="insertBtn" th:if="${session.loginMember}">글쓰기</button>  
                 </div>
             </div>
            

@@ -15,7 +15,7 @@
         <h1>알바 후기 작성 페이지</h1>
     </div>
     <div id="writeBox">
-        <form action="write" method="POST" class="reviewBoard-write" id="reviewBoardWriteFrm">
+        <form action = "insert" th:object="${reviewBoard}" method="POST" class="reviewBoard-write" id="reviewBoardUpdateFrm">
 
             
             <div id="reviewBoardTitle-area">

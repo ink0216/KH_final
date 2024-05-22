@@ -32,7 +32,7 @@ public interface ReviewBoardService {
 	 * @param map
 	 * @return
 	 */
-	ReviewBoard selectOne(Map<String, Object> map);
+//	ReviewBoard selectOne(Map<String, Object> map);
 
 
 
