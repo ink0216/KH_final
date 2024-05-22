@@ -69,18 +69,16 @@ button:hover{
 
 .member-info-container{
     display: flex;
-    height: 25%;
+    height: 40%;
     padding: 15px;
-    align-items: center;
     flex-direction: column;
 }
 
 .member-info-header{
     display: flex;
     justify-content: space-between;
-    width: 90%;
-    height: 30%;
-    margin-bottom: 15px;
+    height: 20%;
+    margin-bottom: 10px;
 }
 
 .member-info-header > button{
@@ -89,4 +87,16 @@ button:hover{
     width: 10%;
     height: 80%;
     background-color: white;
+}
+
+.member-p-area{
+    display: flex;
+    height: 15%;
+    margin-bottom: 10px;
+}
+
+.member-info-area{
+    display: flex;
+    height: 65%;
+    background-color: lightgray;
 }
