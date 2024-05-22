@@ -137,7 +137,7 @@ button:hover{
 .findId-middle-wrapper{
     display: flex;
     justify-content: center;
-    height: 70%;
+    height: 90%;
     flex-direction: column;
 }
 
@@ -185,11 +185,12 @@ button:hover{
     border-radius: 5px;
 }
 
-.findId-footer-wrapper{
+.findId-footer-wrapper {
     display: flex;
     height: 15%;
     align-items: center;
     justify-content: center;
+    margin-top: -30px;
 }
 
 .findId-footer-button{

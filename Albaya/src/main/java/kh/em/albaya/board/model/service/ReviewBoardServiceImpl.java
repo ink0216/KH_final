@@ -18,13 +18,23 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 
 	private final ReviewBoardMapper mapper;
 	
+	// 게시판 종류 조회
+	@Override
+	public List<Map<String, Object>> selectBoardTypeList() {
+		return mapper.selectBoardTypeList();
+	}
+	
+	// 특정 게시판의 지정된 페이지 목록 조회
 	@Override
 	public Map<String, Object> selectBoardTypeList(int reviewBoardCode, int cp) {
 		
 		// 삭제 안된 게시글 조회
 		int listCount = mapper.getListCount(reviewBoardCode);
 		
+		// pagination 객체 생성
 		Pagination pagination = new Pagination(cp, listCount);
+		
+		// 특정게시판 지정된 페이지 목록 조회
 		
 		int limit = pagination.getLimit();
 		int offset = (cp -1)*limit;
@@ -32,6 +42,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 		
 		List<ReviewBoard> reviewBoardList = mapper.selectBoardList(reviewBoardCode,rowBounds);
 		
+		// 목록 조회, map으로 묶기
 		Map<String, Object> map = new HashMap<>();
 		map.put("pagination", pagination);
 		map.put("reviewBoardList", reviewBoardList);
@@ -47,12 +58,28 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 		
 		Pagination pagination = new Pagination(cp, listCount);
 		
+		int limit = pagination.getLimit();
+		int offset = (cp-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
 		
+		List<ReviewBoard> reviewBoardList = mapper.selectSearchList(paramMap,rowBounds);
 		
-		return null;
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("reviewBoardList", reviewBoardList);
+		
+		return map;
 	}
 	
 	
+	
+	// 게시글 상세 조회
+	@Override
+	public ReviewBoard selectOne(Map<String, Object> map) {
+		
+		return mapper.selectOne(map);
+	}
 	
 	
 }

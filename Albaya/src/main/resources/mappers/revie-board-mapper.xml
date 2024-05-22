@@ -3,7 +3,7 @@
 <mapper namespace="kh.em.albaya.board.model.mapper.ReviewBoardMapper;">
 
 	<!-- 게시판 종류 조회 -->
-	<select id="">
+	<select id="selectBoardTypeList">
 	SELECT REVIEW_BOARD_CODE, REVIEW_BOARD_NAME
 	FROM BOARD_TYPE
 	ORDER BY REVIEW_BOARD_CODE
@@ -18,7 +18,8 @@
 	
 	<!-- 특정 게시판 지정된 목록 조회 -->
 	<select id="selectBoardList">
-		SELECT REVIEW_BOARD_NO, REVIEW_TITLE,MEMBER_EMAIL , READ_COUNT 
+		SELECT REVIEW_BOARD_NO, REVIEW_TITLE,
+			   REVIEW_BOARD_WRITE_DATE, READ_COUNT, MEMBER_EMAIL
 		FROM "REVIEW_BOARD" R
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_DEL_FL = 'N'
@@ -29,8 +30,85 @@
 	
 	<!-- 검색 조건이 맞는 게시글 수 조회 -->
 	<select id="getSearchCount">
+		SELECT COUNT(*)
+		FROM REVIEW_BOARD 
+		WHERE BOARD_DEL_FL = 'N'
+		AND REVIEW_BOARD_CODE = #{reviewBoardCode}
+		<choose>
+			<!-- 제목 검색 (key 값이 "t" 인 경우) -->
+			<when test='key == "t"'>
+				AND REVIEW_TITLE LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 내용 검색 (key 값이 "c" 인 경우) -->
+			<when test='key == "c"'>
+				AND REVIEW_BOARD_CONTENT LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 제목 + 내용 검색 (key 값이 "tc" 인 경우) -->
+			<when test='key == "tc"'>
+				AND ( 
+					REVIEW_TITLE   LIKE '%' || #{query} || '%'
+					OR  
+					REVIEW_BOARD_CONTENT LIKE '%' || #{query} || '%'
+				)
+			</when>
+		</choose>
 	</select>
 	
+	
+	<!--  검색 결과 목록 조회 -->
+	<select id="selectSearchList">
+		SELECT REVIEW_BOARD_NO, REVIEW_TITLE,
+			   REVIEW_BOARD_WRITE_DATE, READ_COUNT, MEMBER_EMAIL
+		FROM "REVIEW_BOARD" R
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_DEL_FL = 'N'
+		AND REVIEW_BOARD_CODE = #{reviewBoardCode}
+		<choose>
+			<!-- 제목 검색 (key 값이 "t" 인 경우) -->
+			<when test='key == "t"'>
+				AND REVIEW_TITLE LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 내용 검색 (key 값이 "c" 인 경우) -->
+			<when test='key == "c"'>
+				AND REVIEW_BOARD_CONTENT LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 제목 + 내용 검색 (key 값이 "tc" 인 경우) -->
+			<when test='key == "tc"'>
+				AND ( 
+					REVIEW_TITLE   LIKE '%' || #{query} || '%'
+					OR  
+					REVIEW_BOARD_CONTENT LIKE '%' || #{query} || '%'
+				)
+			</when>
+		</choose>
+		ORDER BY REVIEW_BOARD_NO DESC
+	</select>
+	
+	
+	
+	
+	
+	<!-- 게시글 상세 조회 -->
+	<select id="selectOne">
+		SELECT REVIEW_BOARD_NO , REVIEW_TITLE, REVIEW_BOARD_CONTENT,
+				REVIEW_BOARD_CODE, READ_COUNT, 
+				MEMBER_NO, MEMBER_EMAIL, REVIEW_BOARD_CONTENT,
+				TO_CHAR(
+					REVIEW_BOARD_WRITE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS'
+					) REVIEW_BOARD_WRITE_DATE,  
+				TO_CHAR(
+					REVIEW_BOARD_UPDATE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS'
+					) REVIEW_BOARD_UPDATE_DATE
+		FROM REVIEW_BOARD  
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_DEL_FL = 'N'
+		AND REVIEW_BOARD_CODE = #{reviewBoardCode}
+		AND REVIEW_BOARD_NO = #{reviewBoardNo}
+	</select>
 
 	
 </mapper>

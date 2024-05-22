@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>아이디 찾기 결과</title>
     <link rel="stylesheet" href="/css/member/findIdResult.css">
     <link rel="stylesheet" href="/css/common/header.css">
 </head>
@@ -26,6 +26,11 @@
                             입력하신 정보와 일치하는 아이디가 <span th:text="${session.result}"></span>개 있습니다.
                         </div>
                         <span id="maskedEmail" th:attr="data-email=${session.memberEmail}"></span>
+                    </div>
+                    <div class="btnArea">
+                        <form action="/member/login">
+                            <button>로그인 하러 가기</button>
+                        </form>
                     </div>
                 </div>
             </div>

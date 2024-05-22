@@ -1,6 +1,10 @@
 package kh.em.albaya.member.model.service;
 
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -70,8 +74,23 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public int findPw(Member member) {
-		int memberCount = mapper.memberPwCount(member);
-		return memberCount;
+	public int memberPwCount(Member member) {
+		int memberNo = mapper.memberPwCount(member);
+		
+		return memberNo;
+	}
+	
+	@Override
+	public int changePw(String newPassword, String memberEmail) {
+		
+		String encPw = bcrypt.encode(newPassword);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("memberEmail", memberEmail);
+		map.put("encPw", encPw);
+		
+		int result = mapper.changePw(map);
+		
+		return result;
 	}
 }

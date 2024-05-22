@@ -12,10 +12,19 @@
 
 <body>
     <main>
-        
+        <!-- reviewBoard Code 1번이 공지 2번이 토크(일반) -->
         <section class="reviewBoard-List">
             <div class="list-wrapper">
+                <div id="reviewBoardType">
+                    <div id="notice" class="box">
+                        공지
+                    </div>
+                    <div id="talk" class="box">
+                        토크
+                    </div>
+                </div>
                 <table class="list-table">
+                 
                     <thead>
                         <tr>
                             <th>글번호</th>
@@ -25,27 +34,30 @@
                             <th>조회수</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="/reviewBoardDetail">샘플 제목 1(테스트용 링크)</a></td> 
-                        <td>작성자1</td>
-                        <td>2024-01-01</td>
-                        <td>1</td>
+                    
+                    
+                    <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
+                        <td th:text="*{reviewBoardNo}">글번호</td>
+                        <td><a th:unless="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="*{reviewTitle}">게시글 제목</a>
+                           
+                            <!-- 검색 기능 구현할 때 주석 풀 문장 -->
+                            <!-- <a th:if="${param.key}" th:href="@{/board/{boardCode}/{boardNo}(boardCode = ${boardCode},boardNo=*{boardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{boardTitle}">게시글 제목</a>
+                            <th:block th:text="|[*{commentCount}]|"></th:block> -->
+                        
+                        </td> 
+                        <td th:text="*{memberNickname}">닉네임</td>
+                        <td th:text="*{reviewBoardWriteDate}">2024-01-01</td>
+                        <td th:text="*{readCount}">0</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>샘플 제목 2</td>
-                        <td>작성자2</td>
-                        <td>2024-01-01</td>
-                        <td>1</td>
-                    </tr>
-                    </tbody>
+                  
+                    
+                </th:block>
+            </tbody>
                 </table>
                 <div class="btn-area">
-                    <button id="insertBtn">작성하기</button>  
-                    <!-- 로그인한 일반 회원만 작성할 수 있도록 th:if 걸어둘 예정 --> 
-                    <!-- th:if="${session.loginMember} -->
+                    <button id="insertBtn" th:if="${session.loginMember}">글쓰기</button>  
                 </div>
             </div>
            
@@ -152,7 +164,6 @@
                     <option value="t">제목</option>
                     <option value="c">내용</option>
                     <option value="tc">제목+내용</option>
-                    <option value="w">작성자</option>
                 </select>
     
                 <input type="text" name="query"  id="searchQuery" placeholder="검색어를 입력해주세요.">

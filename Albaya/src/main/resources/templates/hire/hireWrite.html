@@ -20,7 +20,7 @@
 
     <div class="container">
 
-        <form action="/hire/hireWrite" method="POST">
+        <form action="/hire/hireWrite" method="POST" id="hireWrtieForm">
             <div class="hireContent">
 
                 <h3> 모집 내용</h3>
@@ -32,7 +32,8 @@
                     <dl class="titleInput">
                         <dt>공고제목</dt>
                         <dd>
-                            <input type="text" placeholder="공고문 제목을 입력해주세요" name="hireTitle">
+                            <input type="text" placeholder="공고문 제목을 입력해주세요" name="hireTitle" id="hireTitle">
+                            <span class="inputConfirm" id="titleMessage"></span>
                         </dd>
                         <dd>
                             <p>
@@ -48,7 +49,8 @@
                             </dt>
 
                             <dd>
-                                <input type="text" placeholder="업직종을 선택해 주세요" name="typeName" id="selectedType">
+                                <input type="text" placeholder="업직종을 선택해 주세요" name="typeName" id="selectedType"
+                                    readonly>
                                 <input type="hidden" name="typeNo" id="typeNo">
                                 <button id="typeBtn" type="button">선택</button>
                             </dd>
@@ -60,7 +62,8 @@
                             모집인원
                         </dt>
                         <dd>
-                            <input type="text" name="hireCount" placeholder="모집인원을 등록해주세요">
+                            <input type="text" name="hireCount" id="hireCount" placeholder="모집인원을 등록해주세요">
+                            <span class="inputConfirm" id="countMessage"></span>
                         </dd>
                     </dl>
 
@@ -70,6 +73,7 @@
                         </dt>
                         <dd>
                             <input type="date" name="hireEnd" id="hireEnd">
+                            <span class="inputConfirm" id="endMessage"></span>
                         </dd>
                     </dl>
                 </div>
@@ -97,27 +101,27 @@
                         <dd>
                             <div class="termCheckbox">
                                 <div>
-                                    <input type="radio" name="hireTerm" id="oneDay" value="1">
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="oneDay" value="1">
                                     <label for="oneDay">하루</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" name="hireTerm" id="oneWeek" value="7">
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="oneWeek" value="7">
                                     <label for="oneWeek">일주일</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" name="hireTerm" id="3months" value="3">
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="3months" value="3">
                                     <label for="3months">1-3개월</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" name="hireTerm" id="6months" value="6">
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="6months" value="6">
                                     <label for="6months">3-6개월</label>
                                 </div>
 
                                 <div>
-                                    <input type="radio" name="hireTerm" id="years" value="365">
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="years" value="365">
                                     <label for="years">1년 이상</label>
                                 </div>
 
@@ -125,48 +129,48 @@
                         </dd>
                     </dl>
 
-                    <dl class="datInput">
+                    <dl class="dayInput">
                         <dt>근무 요일</dt>
 
                         <dd>
                             <div class="dayCheckbox">
                                 <div>
-                                    <input type="checkbox" name="workDay" id="mon" value="mom">
+                                    <input type="checkbox" name="workDay" id="mon" value="mom" class="hireDays">
                                     <label for="mon">월요일</label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" name="workDay" id="tue" value="tue">
+                                    <input type="checkbox" name="workDay" id="tue" value="tue" class="hireDays">
                                     <label for="tue">화요일</label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" name="workDay" id="wed" value="wed">
+                                    <input type="checkbox" name="workDay" id="wed" value="wed" class="hireDays">
                                     <label for="wed">수요일</label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" name="workDay" id="thu" value="thu">
+                                    <input type="checkbox" name="workDay" id="thu" value="thu" class="hireDays">
                                     <label for="thu">목요일</label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" name="workDay" id="fri" value="fri">
+                                    <input type="checkbox" name="workDay" id="fri" value="fri" class="hireDays">
                                     <label for="fri">금요일</label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" name="workDay" id="sat" value="sat">
+                                    <input type="checkbox" name="workDay" id="sat" value="sat" class="hireDays">
                                     <label for="sat">토요일</label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" name="workDay" id="sun" value="sun">
+                                    <input type="checkbox" name="workDay" id="sun" value="sun" class="hireDays">
                                     <label for="sun">일요일</label>
                                 </div>
 
                                 <div>
-                                    <input type="checkbox" name="workDay" id="aa" value="aa">
+                                    <input type="checkbox" name="workDay" id="aa" value="aa" class="hireDays">
                                     <label for="aa">협의가능</label>
                                 </div>
 
@@ -179,8 +183,8 @@
                         <dt>근무 시간</dt>
 
                         <dd>
-                            <input type="time" placeholder="시작 시간" step="1800" id="workStart" name="workStart">
-                            <input type="time" placeholder="종료 시간" step="1800" id="workEnd" name="workEnd">
+                            <input type="time" placeholder="시작 시간" id="workStart" name="workStart">
+                            <input type="time" placeholder="종료 시간" id="workEnd" name="workEnd">
                         </dd>
 
                     </dl>
@@ -199,12 +203,16 @@
                                 <option value=5>일급</option>
                             </select>
 
+
                             <input type="text" id="payInput" placeholder="급여">
+                            <span class="inputConfirm" id="payMessage"></span>
+
+
                         </dd>
 
-                        <dd>
+                        <!--                         <dd>
                             <button id="payConfirmBtn" type="button">확인</button>
-                        </dd>
+                        </dd> -->
 
                     </dl>
 
@@ -213,15 +221,16 @@
                         <dt>모집 성별</dt>
                         <dd>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender0" value="0">
+                                <input type="radio" name="hireGender" id="gender0" value="0" class="hireGender">
                                 <label for="gender0">성별무관</label>
                             </div>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender1" value="1">
+                                <input type="radio" name="hireGender" id="gender1" value="1" class="hireGender">
                                 <label for="gender1">남</label>
                             </div>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender2" value="2">
+                                <input type="radio" name="hireGender" id="gender2" value="2" class="hireGender">
+
                                 <label for="gender2">여</label>
                             </div>
                         </dd>
@@ -242,8 +251,9 @@
                         <dt>근무지 주소</dt>
                         <dd>
                             <!-- 주소를 입력 받은 input -->
-                            <input type="text" id="address" placeholder="주소" name="address">
-                            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" id="addSearchBtn"><br>
+                            <input type="text" id="address" placeholder="주소" name="address" readonly>
+                            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"
+                                id="addSearchBtn"><br>
                         </dd>
                     </dl>
 
@@ -295,18 +305,16 @@
                     <dl>
                         <dt>연락처</dt>
                         <dd>
-                            <input type="text" name="shopTel" id="shopTel" placeholder="연락처를 입력하세요">
+                            <input type="text" name="shopTel" id="shopTel" placeholder="연락처를 입력하세요(-제외)">
+                            <span class="inputConfirm" id="telMessage"></span>
                         </dd>
-                        <dd>
-                            <button type="button" id="telAddBtn">추가</button>
-                        </dd>
-
                     </dl>
 
                     <dl>
                         <dt>이메일</dt>
                         <dd>
                             <input type="text" name="shopEmail" id="shopEmail" placeholder="이메일을 입력하세요">
+                            <span class="inputConfirm" id="emailMessage"></span>
                         </dd>
                     </dl>
 
@@ -335,7 +343,7 @@
     <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b&libraries=services"></script>
     <script src="/js/hire/hire-write.js"></script>
-
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 
 </html>

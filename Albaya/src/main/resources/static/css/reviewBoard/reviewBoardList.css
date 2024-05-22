@@ -171,3 +171,51 @@ cursor:pointer;
  }
 
 
+
+
+#reviewBoardType {
+   
+   display:flex;
+   flex-direction:row;
+   margin-right:550px;
+   width:250px;
+   height:50px;
+   margin-bottom:10px;
+
+
+}
+
+
+
+
+
+
+
+.box {
+   font-family:'TheJamsil5Bold';
+   border : 2px solid #014C73;
+   width:50%;
+   height:100%;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   font-size:25px;
+   margin-right:20px;
+   border-radius: 10px;
+   background-color: #EAEAEA;
+   color:black;
+}
+
+.box:hover {
+
+   cursor:pointer;
+
+}
+
+ .active {
+
+   background-color: #014C73;
+   color:white;
+}
+
+ 

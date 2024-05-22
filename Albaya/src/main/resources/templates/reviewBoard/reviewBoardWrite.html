@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
         <h1>알바 후기 작성 페이지</h1>
     </div>
     <div id="writeBox">
-        <form action="write" method="POST" class="reviewBoard-write" id="reviewBoardWriteFrm">
+        <form action = "insert" th:object="${reviewBoard}" method="POST" class="reviewBoard-write" id="reviewBoardUpdateFrm">
 
             
             <div id="reviewBoardTitle-area">
@@ -26,13 +26,16 @@
                  </textarea>
             </div>
 
-        </form>
-    </div>
-    <div class="writeBtn-area">
+            <div class="writeBtn-area">
         <button id="writeBtn">작성하기</button>
     </div>
     <div class="cancelBtn-area">
         <button id="cancelBtn">뒤로가기</button>
     </div>
+        </form>
+    </div>
+    
 </body>
+
+<script src="/js/reviewBoard/reviewBoardWrite.js"></script>
 </html>
