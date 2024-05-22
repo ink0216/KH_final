@@ -3,6 +3,7 @@ package kh.em.albaya.board.controller;
 
 import java.lang.reflect.Member;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.ReviewBoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("reviewBoard")
 @RequiredArgsConstructor
@@ -31,6 +34,7 @@ public class ReviewBoardController {
 //   }
    
    
+ 
 
 	// 게시글 조회
 	/**
@@ -39,15 +43,18 @@ public class ReviewBoardController {
 	 * @param model : request scope로 값 전달 객체
 	 * @return
 	 */
-	@GetMapping("reviewBoardCode:[12]")
+   	
+   
+//	@GetMapping("{reviewBoardCode:[0-9]{2}}")
+	@GetMapping("{reviewBoardCode:[0-9]+}")
 	public String selectBoardList(
 		@PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
-		@RequestParam(value="cp", required=false, defaultValue = "1")int cp,// 현재페이지
+		@RequestParam(value="cp", required=false, defaultValue = "1") int cp,// 현재페이지
 		Model model,
 		@RequestParam Map<String, Object> paramMap
 		) {
 		// 일반, 비회원, 기업 전부 다 조회 가능
-		
+
 		
 		Map<String , Object> map = null;
 		
