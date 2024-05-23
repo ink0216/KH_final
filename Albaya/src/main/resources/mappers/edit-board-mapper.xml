@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kh.em.albaya.board.model.mapper.EditBoardMapper">
+
+	<!-- 게시글 작성 -->
+
+
+
+	<!-- 게시글 삭제 -->
+	<update id="reviewBoardDelete">
+		UPDATE REVIEW_BOARD SET 
+		BOARD_DEL_FL = 'Y'
+		WHERE REVIEW_BOARD_CODE = #{reviewBoardCode}
+		AND REVIEW_BOARD_NO = #{reviewBoardNo}
+		AND MEMBER_NO = #{memberNo};
+	</update>
+	
+	<!-- 게시글 수정 -->
+	<update id="">
+		UPDATE REVIEW_BOARD SET 
+		REVIEW_TITLE = #{revieTitle},
+		REVIEW_BOARD_CONTENT = #{reviewBoardContent}
+		WHERE REVIEW_BOARD_CODE = #{reviewBoardCode}
+		AND REVIEW_BOARD_NO = #{reviewBoardNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+	
+	
+</mapper>
