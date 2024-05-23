@@ -51,10 +51,16 @@ numberButton.addEventListener("click",()=>{
     .then(list=>{
             
     const setPageButtons=()=>{
+    const numberButtonWrapper = document.querySelector('.number-button-wrapper');
     numberButtonWrapper.innerHTML=''; 
 
     for(let i=1; i<list.length; i++){
-        numberButtonWrapper.innerHTML += `<span class="number-button">${i}</span>`
+
+        const span = document.createElement('span');
+        span.className='number-button';
+
+        span.textContent=i;
+        numberButtonWrapper.append(span);
     }
 }
 
