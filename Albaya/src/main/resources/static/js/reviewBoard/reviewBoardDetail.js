@@ -17,14 +17,6 @@ const siren = document.querySelector("#siren");
 
 
 
-/* 목록으로 버튼 */
-const goToListBtn = document.querySelector("#goToListBtn");
-
-
-goToListBtn.addEventListener("click", () =>{
-
-    location.href="/reviewBoardList";
-});
 
 
 
@@ -91,3 +83,20 @@ if(updateBtn != null){
     })
 
 }
+
+
+
+/* 목록으로 버튼을 클릭해서 게시판 목록으로 돌아가기 */
+const goToListBtn = document.querySelector("#goToListBtn");
+
+goToListBtn.addEventListener("click", () => {
+
+
+
+  let url = location.pathname;
+  url = url.substring(0, url.lastIndexOf("/"));
+
+  // 쿼리스트링
+  location.href = url + location.search;
+ 
+});

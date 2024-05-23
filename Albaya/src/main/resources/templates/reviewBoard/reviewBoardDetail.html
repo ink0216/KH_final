@@ -15,7 +15,7 @@
         <section class="reviewBoard-detail" th:object="${reviewBoard}"> 
             <div id="reviewBoardDetailBox">
                 <div id="reviewTitle">
-                    <h1 style = "font-size:45px;" th:text="*{reviewTitle}">  게시글 제목  </h1>
+                    <h1 style = "font-size:45px;" th:text="*{reviewTitle}">&nbsp;  게시글 제목  </h1>
                     
                 </div>
                 <div id="reviewBoardInfo">
@@ -29,9 +29,10 @@
                 <div id="memberEmail"> 
                     <!-- id 명칭은 나중에 수정해야함 -->
                     <p>
-                        <span th:text="*{memberEmail}"> 
+                        <!-- <span th:text="*{memberEmail}">  -->
                         
-                            <i class="fa-solid fa-pen" style="color: #000000;"></i></span>&nbsp; 
+                            <i class="fa-solid fa-pen" style="color: #000000;"></i>&nbsp;
+                            [[*{memberEmail}]]
                     </p>
                 </div>
                 <div id="readCount">
@@ -63,8 +64,8 @@
         
             </div>
         </section>
-<!-- 
-        <th:block th:replace="~{reviewBoard/comment}"></th:block> -->
+
+        <!-- <th:block th:replace="~{reviewBoard/comment}"></th:block> -->
         
     </main>
     <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>

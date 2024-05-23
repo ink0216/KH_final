@@ -29,24 +29,24 @@ public class ReviewBoardController {
    private final ReviewBoardService service;
    
 
-	// 게시글 조회
-	/**
-	 * @param reviewBoardCode : 게시판 종류( 공지, 일반후기)
-	 * @param cp : 현재 조회한 요청 페이지
-	 * @param model : request scope로 값 전달 객체
-	 * @return
-	 */
-   	
+   // 게시글 조회
+   /**
+    * @param reviewBoardCode : 게시판 종류( 공지, 일반후기)
+    * @param cp : 현재 조회한 요청 페이지
+    * @param model : request scope로 값 전달 객체
+    * @return
+    */
+      
    
-//	@GetMapping("{reviewBoardCode:[0-9]{2}}")
-	@GetMapping("{reviewBoardCode:[0-9]+}")
-	public String selectBoardList(
-		@PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
-		@RequestParam(value="cp", required=false, defaultValue = "1") int cp,// 현재페이지
-		Model model,
-		@RequestParam Map<String, Object> paramMap
-		) {
-		// 일반, 비회원, 기업 전부 다 조회 가능
+//   @GetMapping("{reviewBoardCode:[0-9]{2}}")
+   @GetMapping("{reviewBoardCode:[0-9]+}")
+   public String selectBoardList(
+      @PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
+      @RequestParam(value="cp", required=false, defaultValue = "1") int cp,// 현재페이지
+      Model model,
+      @RequestParam Map<String, Object> paramMap
+      ) {
+      // 일반, 비회원, 기업 전부 다 조회 가능
 
 		
 		Map<String , Object> map = null;
@@ -99,6 +99,7 @@ public class ReviewBoardController {
 		
 		return path;
 	}
+
 
 
 }

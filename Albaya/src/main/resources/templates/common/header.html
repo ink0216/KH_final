@@ -32,14 +32,21 @@
 
             </div>
             <div id = "buttons">
-                <button id = "search"><i class="fa-solid fa-magnifying-glass"></i>   search</button>
+                    
                 <th:block th:if = "${session.loginMember != null}">
-                    <button id = "notification"><i class="fa-regular fa-bell"></i></button>
-                    <button id = "account"><i class="fa-solid fa-user"></i></button>
+                    <button class = "loginMember"><i class="fa-regular fa-bell"></i></button>
+                    <button class = "loginMember"><i class="fa-solid fa-user"></i></button>
+                   
                 </th:block>
                 <th:block th:if = "${session.loginMember == null}">
-                    <a id = "login">Login</a>  
+                    <a href = "#" class = "login">로그인</a> &nbsp;
+                    |&nbsp;
+                    <a href = "#" class = "login">회원가입</a>  
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button class = "loggedIn">이력서 등록</button>
+                    &nbsp;&nbsp;<button class = "loggedIn">공고 등록</button>
                 </th:block>
+
+                <button></button>
                 
             </div>
         </div>
