@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -33,6 +34,13 @@ public class EditBoardController {
 	
 	
 	// 게시글 작성
+	@PostMapping("{reviewBoardCode:[12]}/insert")
+	public String reviewBoardInsert(
+		@PathVariable("reviewBoardCode") int reviewBoardCode,
+		@SessionAttribute("loginMember") Member loginMember
+			) {
+		return null;
+	}
 	
 	
 	// 게시글 삭제
@@ -61,12 +69,13 @@ public class EditBoardController {
 			path = String.format("/reviewBoard/%d/%d/%d", reviewBoardCode, reviewBoardNo,cp);
 			message = "삭제 실패하였습니다";
 		}
-		
 		ra.addFlashAttribute("message",message);
 		
 		return "redirect:" + path;
 	}
 	
+	
+	// 게시글 수정
 	
 
 }
