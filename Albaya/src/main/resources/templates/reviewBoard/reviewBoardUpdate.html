@@ -1,40 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toggle Box Color</title>
-    <style>
-        .box {
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            background-color: lightgray;
-            display: inline-block;
-        }
-        .highlight {
-            background-color: yellow;
-        }
-    </style>
+    <title>알바 후기 글쓰기</title>
+    <th:block th:replace="~{common/header}"></th:block>
+    
+
+ 
+
 </head>
 <body>
-    <div id="box1" class="box"></div>
-    <div id="box2" class="box"></div>
+    <div id="alba">
+        <h1>알바 후기 작성 페이지</h1>
+    </div>
+    <div id="writeBox">
+        <form th:action="@{update}" th:object="${reviewBoard}" method="POST" class="reviewBoard-write" id="reviewBoardWriteFrm">
 
-    <script>
-        // JavaScript 코드
-        const box1 = document.getElementById('box1');
-        const box2 = document.getElementById('box2');
+            
+            <div id="reviewBoardTitle-area">
+                제목 <textarea name="reviewBoardTitle" id="reviewBoardTitle" placeholder="제목을 입력하세요."></textarea>
+            </div>
+            <div id="reviewBoardContent-area">
+                내용 <textarea name="reviewBoardContent" id="reviewBoardContent" maxlength="4000">
+                 </textarea>
+            </div>
 
-        box1.addEventListener('click', () => {
-            box1.classList.add('highlight');
-            box2.classList.remove('highlight');
-        });
-
-        box2.addEventListener('click', () => {
-            box2.classList.add('highlight');
-            box1.classList.remove('highlight');
-        });
-    </script>
+            <div class="writeBtn-area">
+        <button id="writeBtn">작성하기</button>
+    </div>
+    <div class="cancelBtn-area">
+        <button id="cancelBtn">뒤로가기</button>
+    </div>
+        </form>
+    </div>
+    
 </body>
+
+<script src="/js/reviewBoard/reviewBoardWrite.js"></script>
 </html>

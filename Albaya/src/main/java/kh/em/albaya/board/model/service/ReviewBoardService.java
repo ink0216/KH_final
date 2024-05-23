@@ -28,6 +28,12 @@ public interface ReviewBoardService {
 	Map<String, Object> searchList(Map<String, Object> paramMap, int cp);
 
 
+
+
+
+	
+	
+	
 	/** 게시글 상세 조회
 	 * @param map
 	 * @return

@@ -2,17 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.em.albaya.member.model.mapper.MemberMapper">
 
-	<insert id="signup">
-		INSERT INTO "MEMBER"
-		VALUES(SEQ_MEMBER_NO.NEXTVAL, DEFAULT, #{memberEmail}, #{memberPw}, 
-		#{memberPhoneNumber}, DEFAULT, #{memberName}, DEFAULT,
-		#{memberGender}, #{memberAddress})
-	</insert>
+	   <insert id="signup">
+      INSERT INTO "MEMBER"
+      VALUES(SEQ_MEMBER_NO.NEXTVAL, DEFAULT, #{memberEmail}, #{memberPw}, 
+      #{memberPhoneNumber}, DEFAULT, #{memberName}, DEFAULT,
+      #{memberGender}, #{memberAddress}, NULL, NULL)
+   </insert>
 	
 	<select id="login" resultType="Member">
 		SELECT MEMBER_NO, AUTHORITY_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_PHONE_NUMBER,
 		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE,
-		MEMBER_NAME, MEMBER_STATUS, MEMBER_GENDER, MEMBER_ADDRESS
+		MEMBER_NAME, MEMBER_STATUS, MEMBER_GENDER, MEMBER_ADDRESS,
+		TO_CHAR(LAST_MODIFIED_DATE, 'YYYY-MM-DD') LAST_MODIFIED_DATE,
+		TO_CHAR(LAST_MODIFIED_PW_DATE, 'YYYY-MM-DD') LAST_MODIFIED_PW_DATE
 		FROM "MEMBER"
 		WHERE "MEMBER_EMAIL" = #{memberEmail}
 		AND MEMBER_STATUS != 5

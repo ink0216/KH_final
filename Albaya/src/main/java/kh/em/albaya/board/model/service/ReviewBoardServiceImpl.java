@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.em.albaya.board.model.dto.Pagination;
 import kh.em.albaya.board.model.dto.ReviewBoard;
@@ -13,6 +14,7 @@ import kh.em.albaya.board.model.mapper.ReviewBoardMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class ReviewBoardServiceImpl implements ReviewBoardService{
 
@@ -50,6 +52,12 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 		return map;
 	}
 	
+	
+	
+	
+	
+	
+	
 	// 검색 서비스
 	@Override
 	public Map<String, Object> searchList(Map<String, Object> paramMap, int cp) {
@@ -73,6 +81,13 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 	}
 	
 	
+	
+	// 게시글 상세 조회
+	@Override
+	public ReviewBoard selectOne(Map<String, Object> map) {
+		
+		return mapper.selectOne(map);
+	}
 	
 	
 }
