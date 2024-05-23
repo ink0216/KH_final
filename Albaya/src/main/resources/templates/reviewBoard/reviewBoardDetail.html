@@ -12,10 +12,10 @@
 </head>
 <body>
     <main>
-        <section class="reviewBoard-detail"> <!-- th:object="${reviewBoard}"-->
+        <section class="reviewBoard-detail" th:object="${reviewBoard}"> 
             <div id="reviewBoardDetailBox">
                 <div id="reviewTitle">
-                    <h1 style = "font-size:45px;"><!-- th:text="|*{reviewTitle} - ${reviewBoardName}|" -->  게시글 제목  </h1>
+                    <h1 style = "font-size:45px;" th:text="*{reviewTitle}">  게시글 제목  </h1>
                     
                 </div>
                 <div id="reviewBoardInfo">
@@ -23,22 +23,22 @@
                     <p>
                         <i class="fa-solid fa-calendar-days" style="color: #000000;"></i>
                         &nbsp; 2024-05-17 12:00:00
-                        <!-- [[*{reviewBoardWriteDate}]] -->
+                        [[*{reviewBoardWriteDate}]]
                     </p>
                 </div>
-                <div id="memberNickname"> 
+                <div id="memberEmail"> 
                     <!-- id 명칭은 나중에 수정해야함 -->
                     <p>
-                        <span> <!-- th:text="*{memberNickname}" -->
+                        <span th:text="*{memberEmail}"> 
                         
                             <i class="fa-solid fa-pen" style="color: #000000;"></i></span>&nbsp; 홍길동
-                        <!-- [[*{reviewBoardWriteDate}]] -->
+                        [[*{reviewBoardWriteDate}]]
                     </p>
                 </div>
                 <div id="readCount">
                     <p>
                         <i class="fa-solid fa-eye"></i>&nbsp; 0
-                        <!-- [[*{readCount}]]     -->
+                        [[*{readCount}]]    
                     </p>
                 </div>
                 <div id="declare-area"> 
@@ -46,7 +46,7 @@
                     <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren", onclick="openPopup()" style="color: #ff0000;"></i>
                 </div>
             </div>
-                <div id="reviewBoardContent-area" ><!-- th:text="*{reviewBoardContent}" -->
+                <div id="reviewBoardContent-area" th:text="*{reviewBoardContent}">
                     
                     바인딩 3시간 파트타임 업무 지원했는데 경영지원팀 피부 좀 까무잡잡하고 갈색 긴머리분 면접보면서 웃지마라 어디가서 면접보면서도 웃지마라,꼬리물기식 질문, 훈계 이렇게 무한으로 면접을 40분동안 합니다.
 
@@ -65,7 +65,7 @@
             </div>
         </section>
 
-        <!-- <th:block th:replace="~{reviewBoard/comment}"></th:block> -->
+        <th:block th:replace="~{reviewBoard/comment}"></th:block>
         
     </main>
     <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
