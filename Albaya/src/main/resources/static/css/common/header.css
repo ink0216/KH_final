@@ -17,6 +17,7 @@
     width: 170px;
     height: auto;
 }
+    
 #logo img{
     margin-top:20px;
     width: 170px;
@@ -115,9 +116,10 @@ ul{
 
 
 #innerMenuBar{
-    margin:auto;
+  
     display:flex;
-    width:50%;
+    flex-direction:column;
+    width:900px;
     border: 1px solid black;
 }
 
