@@ -36,7 +36,7 @@ public interface ReviewBoardService {
 	
 	/** 게시글 상세 조회
 	 * @param map
-	 * @return
+	 * @return reviewBoard
 	 */
 	ReviewBoard selectOne(Map<String, Object> map);
 
