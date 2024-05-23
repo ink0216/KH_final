@@ -21,14 +21,15 @@ public class EditBoardController {
 	public String boardInsert(
 		@PathVariable("reviewBoardCode") int reviewBoardCode) {
 		
-		
-		return "board/boardWrite";
+		return "reviewBoard/reviewBoardWrite";
 	}
+	
 	
 	// 게시글 작성
 	
 	
 	// 게시글 삭제
+	
 	
 
 }
