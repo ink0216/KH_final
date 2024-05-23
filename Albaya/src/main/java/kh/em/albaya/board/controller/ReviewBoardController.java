@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.ReviewBoardService;
@@ -27,14 +28,6 @@ public class ReviewBoardController {
    
    private final ReviewBoardService service;
    
-   // 헤더 연결...?
-//   @GetMapping("reviewBoardList")
-//   public String boardList() {
-//	   return "reviewBoard/reviewBoardList";
-//   }
-   
-   
- 
 
 	// 게시글 조회
 	/**
@@ -82,9 +75,10 @@ public class ReviewBoardController {
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
 			Model model,
-			@SessionAttribute(value="loginMember", required=false) Member loginMember
+			RedirectAttributes ra
 			) {
 		// 일반,비회원,기업 전부 상세 조회 가능
+		
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("reviewBoardCode", reviewBoardCode);
@@ -92,7 +86,19 @@ public class ReviewBoardController {
 		
 		ReviewBoard reviewBoard = service.selectOne(map);
 		
-		return "reviewBoard/reviewBoardDetail";
+		String path = null;
+		
+		// 조회 결과 없는 경우
+		if(reviewBoard == null) {
+			path = "redirect:/reviewBoard/" + reviewBoardCode;
+			ra.addFlashAttribute("message", "게시글이 존재하지 않습니다");
+		}else { // 있는 경우
+			path = "reviewBoard/reviewBoardDetail";
+		}
+		
+		// 조회수 관련 백앤드 추후 작성 예정
+		
+		return path;
 	}
 
 

@@ -1,4 +1,6 @@
-
+body{
+    overflow-x:hidden;
+}
 #container{
     padding-left:20%;
     padding-right:20%;
@@ -6,7 +8,7 @@
 #menuBar{
     display:flex;
     border:1px solid lightgray;
-    height:100px;
+    height:200px;
     width: 100%;
     margin:-10px;
     background-color: white;
@@ -16,20 +18,21 @@
     margin: auto;
     width: 170px;
     height: auto;
-    
+}
 #logo img{
-    margin-top:20px;
+    margin:auto;
     width: 170px;
     height:auto; 
 }
-ul{
+
+#menus>ul{
     display:flex;
     justify-content: space-evenly;
     align-items:center;
     width:48%;
     height:100%;    
     margin-top:-1px; 
-    padding-left:100px;
+    
 }
 
 .underline{
@@ -37,11 +40,9 @@ ul{
     list-style: none;
     text-decoration: none;
     padding-top:29px;
-    padding-bottom:29px;
-    margin-right:-5%;
-    margin-left:-35%;
+    padding-bottom:15px;
     position:relative;
-    padding-bottom:-6px;
+    
 }
 
 .underline::after{
@@ -115,17 +116,33 @@ ul{
 
 
 #innerMenuBar{
-    margin:auto;
+  
     display:flex;
-    width:50%;
+
+    width:900px;
     border: 1px solid black;
 }
 
 #searchHeader{
     display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height:90px;
+    width:550px;
+    padding-right:10px;
+    border:1px solid black;
 }
-#searchField{
-    width:20px;
+ #searchField{
+    border-radius:30px;
+    height:40px;
+    width: 600px;
+    margin-left:20px;
+    border:1px solid #014C73;
+    padding-left:10px;
+} 
+#search{
+    margin-left:-50px;
 }
 
 

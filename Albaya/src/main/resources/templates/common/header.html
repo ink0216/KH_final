@@ -5,24 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서</title>
-    <link rel="stylesheet" href="../../static/css/common/header.css">
+    <link rel="stylesheet" href="/css/common/header.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 
 <header>  
     <div id = "menuBar">
         <div id="innerMenuBar">
-            <div id="searchHeader">
-                <div id ="logo"> 
-                      <img src="../../static/images/ALBAYA_LOGO.png">
-                </div>  
-                <input type="text" placeholder="search" id = "searchField">
+
+
+            <div id = "collab">
+                <div id="searchHeader">
+                    <div id ="logo"> 
+                          <img src="/images/ALBAYA_LOGO.png">
+                    </div>  
+                    <input type="text" placeholder="search" id = "searchField">
+                    <button id = "search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div><br><br>
+                <div id = "menus">
+                    <ul>
+                        <li class = "underline"><a><b>업직종별</b></a></li>
+                        <li class = "underline"><a><b>지역별</b></a></li>
+                        <li class = "underline"><a><b>알바토크</b></a></li>
+                    </ul>
+                </div>
+
             </div>
-            <ul>
-                <li class = "underline"><a><b>업직종별</b></a></li>
-                <li class = "underline"><a><b>지역별</b></a></li>
-                <li class = "underline"><a><b>알바토크</b></a></li>
-            </ul>
             <div id = "buttons">
                 <button id = "search"><i class="fa-solid fa-magnifying-glass"></i>   search</button>
                 <th:block th:if = "${session.loginMember != null}">
