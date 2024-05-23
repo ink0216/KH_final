@@ -11,23 +11,27 @@ insertBtn.addEventListener("click", () =>{
 
 }
 
-
+/* 공지버튼 토크버튼 효과 */
 const notice = document.getElementById('notice');
 const talk = document.getElementById('talk');
 
 
 
 notice.addEventListener("click",() => {
-
+    location.href = "/reviewBoard/1";
     notice.classList.add("active");
     talk.classList.remove("active");
+    
 });
 
 talk.addEventListener("click",() => {
-
+    location.href = "/reviewBoard/2";
     talk.classList.add("active");
     notice.classList.remove("active");
+    
 });
+
+
 
 
 
@@ -74,3 +78,6 @@ const options = document.querySelectorAll("#searchKey > option");
     }
 }
 )
+
+
+
