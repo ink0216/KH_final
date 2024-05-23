@@ -54,7 +54,6 @@ public class EditBoardController {
 		String path = null;
 		String message = null;
 		
-		
 		if(result>0) {
 			path = String.format("/reviewBoard/%d",reviewBoardCode);
 			message = "삭제 완료되었습니다";
