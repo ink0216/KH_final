@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace= "kh.em.albaya.myPage.model.mapper.MyPageMapper">
+	
+	<select id="myPageCheckPw" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<select id="findEncPw" resultType="string">
+		SELECT MEMBER_PW
+		FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+</mapper>

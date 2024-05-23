@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보 확인</title>
+    <link rel="stylesheet" href="/css/myPage/myPageCheckPw.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+    <div class="main-layout-wrapper">
+        <div class="container">
+            <div class="h1-area">
+                <h2>회원 정보 수정</h2>
+            </div>
+            <div class="update-area">
+                <div class="notice-area">
+                    <div class="row">
+                        <p>본인 확인을 위해 비밀번호를 한 번 더 입력해주세요.</p>
+                    </div>
+                    <div class="row">
+                        <p>비밀번호가 노출되지 않도록 주의해주세요.</p>
+                    </div>
+                </div>
+
+                <div class="input-area-container">
+                    <form action="/myPage/myPageCheckPw" method="POST">
+                        <div class="input-area-horizontal">
+                            <div class="text-area">
+                                아이디
+                            </div>
+                            <div class="input-area">
+                                <input type="text" name="memberEmail" id="memberEmail" readonly
+                                th:value="${session.loginMember.memberEmail}">
+                            </div>
+                        </div>
+                        <div class="input-area-horizontal">
+                            <div class="text-area">
+                                비밀번호
+                            </div>
+                            <div class="input-area">
+                                <input type="password" name="memberPw">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="btn-area-container">
+                    <button id="calcelBtn" type="button">취소</button>
+                    <button id="okBtn">확인</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="/js/myPage/myPageCheckPw.js"></script>
+</html>
