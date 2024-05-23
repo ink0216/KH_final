@@ -60,11 +60,21 @@ public class MyPageController {
 		
 		if(result == 1) {
 			ra.addFlashAttribute("message", message);
-			return "/";
+			return "/myPage/updateMemberInfo";
 		}
 		else {
 			ra.addFlashAttribute("message", message);
-			return "redirect:/mypage/myPageInfo";
+			return "redirect:/myPage/myPageInfo";
 		}
+	}
+	
+	@GetMapping("updateMemberInfo")
+	public String updateMemberInfo() {
+		return "updateMemberInfo";
+	}
+	
+	@GetMapping("deleteMember")
+	public String deleteMember() {
+		return "/myPage/deleteMember";
 	}
 }
