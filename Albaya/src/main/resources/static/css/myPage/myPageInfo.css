@@ -26,9 +26,9 @@ body{
     font-style: normal;
 }
 
-div{
+/* div{
     border: 1px solid black;
-}
+} */
 
 button{
     font-family: 'SUIT-Regular';
@@ -41,6 +41,7 @@ span{
 
 button:hover{
     cursor: pointer;
+    background-color: #014C73;
 }
 
 .main-layout-wrapper{
@@ -57,13 +58,14 @@ button:hover{
     width: 35%;
     height: 80%;
     flex-direction: column;
-    background-color: white;
 }
 
 .h1-wrapper{
     display: flex;
     width: 100%;
     height: 10%;
+    background-color: white;
+    padding: 15px;
 }
 
 .main-content-wrapper{
@@ -77,6 +79,8 @@ button:hover{
     height: 40%;
     padding: 15px;
     flex-direction: column;
+    background-color: white;
+    
 }
 
 .member-info-header{
@@ -90,7 +94,7 @@ button:hover{
     border: 1px solid black;
     border-radius: 5px;
     width: 10%;
-    height: 80%;
+    height: 70%;
     background-color: white;
 }
 
@@ -106,6 +110,7 @@ button:hover{
     background-color: #f8f8f8;
     flex-direction: column;
     padding: 15px;
+    border-radius: 5px;
 }
 
 .info-row{
@@ -130,6 +135,8 @@ button:hover{
     height: 30%;
     flex-direction: column;
     padding: 15px;
+    background-color: white;
+
 }
 
 .member-changePw-header{
@@ -143,7 +150,7 @@ button:hover{
     border: 1px solid black;
     border-radius: 5px;
     width: 10%;
-    height: 80%;
+    height: 70%;
     background-color: white;
 }
 
@@ -159,6 +166,7 @@ button:hover{
     height: 43%;
     align-items: center;
     background-color: #f8f8f8;
+    border-radius: 5px;
 
     padding: 15px;
 }
@@ -179,4 +187,33 @@ button:hover{
     display: flex;
     width: 70%;
     align-items: center;
+}
+
+.member-withdraw-container{
+    display: flex;
+    height: 30%;
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+}
+
+.member-withdraw-header{
+    display: flex;
+    justify-content: space-between;
+    height: 25%;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.member-withdraw-header > button{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 10%;
+    height: 70%;
+    background-color: white;
+}
+
+.member-withdraw-wrapper{
+    display: flex;
+    width: 100%;
 }
