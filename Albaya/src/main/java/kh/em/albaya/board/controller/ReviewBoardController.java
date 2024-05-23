@@ -70,7 +70,7 @@ public class ReviewBoardController {
 	
 	
 	// 게시글 상세 조회 
-	@GetMapping("reviewBoardCode:[12]/{reviewBoardNo:[0-9]+}")
+	@GetMapping("{reviewBoardCode:[0-9]+}/{reviewBoardNo:[0-9]+}")
 	public String boardDetail(
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
@@ -94,9 +94,8 @@ public class ReviewBoardController {
 			ra.addFlashAttribute("message", "게시글이 존재하지 않습니다");
 		}else { // 있는 경우
 			path = "reviewBoard/reviewBoardDetail";
+			model.addAttribute("reviewBoard",reviewBoard);
 		}
-		
-		// 조회수 관련 백앤드 추후 작성 예정
 		
 		return path;
 	}

@@ -22,7 +22,7 @@
                 <div id="reviewBoardWriteDate">
                     <p>
                         <i class="fa-solid fa-calendar-days" style="color: #000000;"></i>
-                        &nbsp; 2024-05-17 12:00:00
+                        &nbsp; 
                         [[*{reviewBoardWriteDate}]]
                     </p>
                 </div>
@@ -31,13 +31,12 @@
                     <p>
                         <span th:text="*{memberEmail}"> 
                         
-                            <i class="fa-solid fa-pen" style="color: #000000;"></i></span>&nbsp; 홍길동
-                        [[*{reviewBoardWriteDate}]]
+                            <i class="fa-solid fa-pen" style="color: #000000;"></i></span>&nbsp; 
                     </p>
                 </div>
                 <div id="readCount">
                     <p>
-                        <i class="fa-solid fa-eye"></i>&nbsp; 0
+                        <i class="fa-solid fa-eye"></i>&nbsp;
                         [[*{readCount}]]    
                     </p>
                 </div>
@@ -64,8 +63,8 @@
         
             </div>
         </section>
-
-        <th:block th:replace="~{reviewBoard/comment}"></th:block>
+<!-- 
+        <th:block th:replace="~{reviewBoard/comment}"></th:block> -->
         
     </main>
     <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
