@@ -1,0 +1,154 @@
+* {
+    /* border: 1px solid black; */
+    padding: 0px;
+    margin: 0px;
+}
+
+/* 제목 전체 폰트 */
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/* 이미지 버튼 */
+section {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 20px auto;
+}
+
+section * {
+    font-family: 'SUIT-Regular';
+}
+
+.imgList {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start; 
+}
+
+.imgItem{
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 5px;
+    width: 200px;
+    height: 175px;
+    margin: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.imgItem:hover {
+    border: 1px solid lightslategray;
+    box-shadow: 1px 1px 20px #d2d1d1;
+    }
+
+.imgItem img{
+    width: 200px;
+    height: 100px;
+}
+
+#hireTitle{
+    font-weight: bold;
+    padding: 5px;
+    size: 11px;
+    white-space: pre-line;
+}
+
+.itemInfo{
+    display: flex;
+    padding: 5px;
+}
+
+.itemInfo p{
+    font-size: 11px;
+    margin-top: 3px;
+}
+#payName{color: darksalmon;}
+#pay{ margin-left:2px;}
+#sigunguName{
+    color: lightslategray;
+    margin-left:5px;
+}
+
+
+/* --------------------------------------------------- */
+/* 공고 리스트(테이블) */
+
+.tableContainer{
+    margin-top: 100px;
+}
+table{
+    width: 90%;
+    height: auto;
+    margin-bottom: 30px;
+    border-collapse:collapse ;
+}
+
+
+.tableList{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+thead{
+    border-top: 0.5px solid black;
+    border-bottom: 0.5px solid #ddd;
+    margin-bottom: 5px;
+}
+th{
+    font-size: 15px;
+    padding: 10px;
+}
+
+
+.tr td{
+    text-align: center;
+    border-bottom: 0.5px solid #ddd;
+    border-top: 0.5px solid #ddd;
+    font-size: 14px;
+    padding: 10px;
+}
+
+
+
+/* 기업명 */
+tr td:first-child{
+    font-weight: bold;
+    color: #014C73;
+}
+/* 공고제목 */
+tr td:nth-child(2){
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 근무지역 */
+tr td:nth-child(3){
+    color: lightslategray;
+}
+/* 급여 */
+tr td:last-child{
+    font-weight: bold;
+    color: darksalmon;
+}

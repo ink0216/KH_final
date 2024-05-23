@@ -12,6 +12,11 @@
     background-color: white;
     padding-left:25%;
 }
+#logo{
+    margin: auto;
+    width: 170px;
+    height: auto;
+    
 #logo img{
     margin-top:20px;
     width: 170px;
