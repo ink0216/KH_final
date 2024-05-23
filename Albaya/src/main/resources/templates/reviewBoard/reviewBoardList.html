@@ -54,14 +54,17 @@
                         
                     <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
                         <td th:text="*{reviewBoardNo}">글번호</td>
-                        <td><a th:unless="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="*{reviewTitle}">게시글 제목</a></td>
+                        <td><a th:unless="${param.key}" 
+                            th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" 
+                            th:text="*{reviewTitle}">게시글 제목</a></td>
                         <!-- " -->
                             <!-- 검색 기능 구현할 때 주석 풀 문장 -->
                             <!-- <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
                             <th:block th:text="|[*{commentCount}]|"></th:block> -->
                         
                          
-                        <td th:text="*{memberEmail}">이메일</td>
+                        <!-- <td th:text="*{memberEmail}">이메일</td> -->
+                        <td th:text="*{#strings.substringBefore(memberEmail,'@')}">이메일</td>
                         <td th:text="*{reviewBoardWriteDate}">2024-01-01</td>
                         <td th:text="*{readCount}">0</td>
                     </tr>
@@ -93,31 +96,31 @@
 
 					<!-- 특정 페이지로 이동 -->
 					
-					<!-- <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}"> -->
+					<th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
 					<!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
 						
 						<!-- 현재 보고있는 페이지 -->
-						<!-- <li th:if="${i == pagination.currentPage}"> -->
-						<!-- <li th:if="${i} == *{currentPage}"> -->
-							<!-- <a class="current" th:text="${i}">현재 페이지</a> -->
-						<!-- </li> -->
+						<li th:if="${i == pagination.currentPage}">
+						
+							<a class="current" th:text="${i}">현재 페이지</a>
+						</li>
 	
 						<!-- 보고있지 않은 페이지 -->
-						<!-- <li th:unless="${i == pagination.currentPage}">  -->
-						<!-- <li th:unless="${i} == *{currentPage}"> -->
-							<!-- <a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=${i})}"  -->
-								 <!-- th:text="${i}">이동할 페이지</a>  -->
-						<!-- </li> -->
+						<li th:unless="${i == pagination.currentPage}"> 
+						
+							<a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=${i})}" 
+								 th:text="${i}">이동할 페이지</a> 
+						</li>
 
 					</th:block>
 					
 
 
 					<!-- 다음 목록 시작 번호로 이동 -->
-					<!-- <li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{nextPage})}">&gt;</a></li> -->
+					<li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{nextPage})}">&gt;</a></li>
 
 					<!-- 끝 페이지로 이동 -->
-					<!-- <li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li> -->
+					<li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
 				</ul>
 
 
