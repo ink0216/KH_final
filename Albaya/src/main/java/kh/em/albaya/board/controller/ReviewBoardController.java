@@ -28,14 +28,6 @@ public class ReviewBoardController {
    
    private final ReviewBoardService service;
    
-   // 헤더 연결...?
-//   @GetMapping("reviewBoardList")
-//   public String boardList() {
-//	   return "reviewBoard/reviewBoardList";
-//   }
-   
-   
- 
 
 	// 게시글 조회
 	/**
@@ -103,6 +95,8 @@ public class ReviewBoardController {
 		}else { // 있는 경우
 			path = "reviewBoard/reviewBoardDetail";
 		}
+		
+		// 조회수 관련 백앤드 추후 작성 예정
 		
 		return path;
 	}
