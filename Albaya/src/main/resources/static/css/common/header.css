@@ -1,16 +1,4 @@
-@font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
 
-#button a{
-    font-family: 'TheJamsil5Bold';
-}
-body{
-    overflow-x: hidden;
-}
 #container{
     padding-left:20%;
     padding-right:20%;
@@ -18,30 +6,28 @@ body{
 #menuBar{
     display:flex;
     border:1px solid lightgray;
-    height:80px;
-    width: 101.8%;
+    height:100px;
+    width: 100%;
     margin:-10px;
     background-color: white;
+    padding-left:25%;
 }
-#logo{
-    background-image: url('../../images/logo.png');
-    width:25%;
-    background-position: center;
-    background-size: 45%;
-    background-repeat: no-repeat;
-    
+#logo img{
+    margin-top:20px;
+    width: 170px;
+    height:auto; 
 }
 ul{
     display:flex;
     justify-content: space-evenly;
     align-items:center;
-    width:50%;
+    width:48%;
     height:100%;    
     margin-top:-1px; 
     padding-left:100px;
 }
 
-ul>li{
+.underline{
     color : #014C73;
     list-style: none;
     text-decoration: none;
@@ -53,7 +39,7 @@ ul>li{
     padding-bottom:-6px;
 }
 
-ul>li::after{
+.underline::after{
     content:'';
     position:absolute;
     width:100%;
@@ -65,16 +51,16 @@ ul>li::after{
     background-color:lightgray;
     transition:transform 0.25s ease-out;
 }
+.underline:hover{
+    cursor:pointer;
+}
 
-
-ul>li:hover::after{
+.underline:hover::after{
     cursor:pointer;
     transform:scaleX(1);
     transform-origin:center;
 }
-ul>li>a:hover{
-    cursor:pointer;
-}
+
 .selectedList::after{
     width:100%;
     bottom:0;
@@ -82,6 +68,13 @@ ul>li>a:hover{
     height:5px;
     background-color:#014C73;
     transition:transform 360000s ease-in;
+}
+.selectedNextSibling::after{
+    width:100%;
+    bottom:0;
+    left:0;
+    height:5px;
+    background-color:white;
 }
 #buttons{
     display:flex;
@@ -111,17 +104,24 @@ ul>li>a:hover{
     background: lightgray;
     cursor: pointer;
 }
-#buttons a{
-    width: 100px;
-    text-align: center;
-    text-decoration: none;
-}
 .modified{
     background: blue;
 }
 
 
+#innerMenuBar{
+    margin:auto;
+    display:flex;
+    width:50%;
+    border: 1px solid black;
+}
 
+#searchHeader{
+    display:flex;
+}
+#searchField{
+    width:20px;
+}
 
 
 

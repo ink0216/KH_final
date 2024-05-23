@@ -4,61 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서</title>
-    <link rel="stylesheet" href="/css/common/header.css">
+    <link rel="stylesheet" href="../../static/css/common/header.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <header>  
     <div id = "menuBar">
-        <div id ="logo"> 
-            
-        </div>  
-        <ul>
-            <li><a><b>이력서 관리</b></a></li>
-            <li><a><b>채용정보</b></a></li>
-            <li><a><b>알바정보</b></a></li>
-            <li><a><b>알바토크</b></a></li>
-        </ul>
-        <div id = "buttons">
-            <button id = "search"><i class="fa-solid fa-magnifying-glass"></i>   search</button>
-            <th:block th:if="${session.loginMember ==null}">
-                <!-- 로그인 안 한 경우 -->
-                <a href="/member/login">로그인</a>
-                |
-                <a href="/member/signup">회원가입</a>
-            </th:block>
-            <th:block th:if="${session.loginMember !=null}">
-                <!-- 로그인 한 경우 -->
-                <button id = "notification"><i class="fa-regular fa-bell"></i></button>
-                <button id = "account"><i class="fa-solid fa-user"></i></button>
-                <a href="/member/logout">로그아웃</a>
-            </th:block>
-            
+        <div id="innerMenuBar">
+            <div id="searchHeader">
+                <div id ="logo"> 
+                      <img src="../../static/images/ALBAYA_LOGO.png">
+                </div>  
+                <input type="text" placeholder="search" id = "searchField">
+            </div>
+            <ul>
+                <li class = "underline"><a><b>업직종별</b></a></li>
+                <li class = "underline"><a><b>지역별</b></a></li>
+                <li class = "underline"><a><b>알바토크</b></a></li>
+            </ul>
+            <div id = "buttons">
+                <button id = "search"><i class="fa-solid fa-magnifying-glass"></i>   search</button>
+                <th:block th:if = "${session.loginMember != null}">
+                    <button id = "notification"><i class="fa-regular fa-bell"></i></button>
+                    <button id = "account"><i class="fa-solid fa-user"></i></button>
+                </th:block>
+                <th:block th:if = "${session.loginMember == null}">
+                    <a id = "login">Login</a>  
+                </th:block>
+                
+            </div>
         </div>
     </div>
 
     <div id="container"></div>
 </header>
 <script>
-    const ulaafter = document.querySelectorAll("ul>li")
+    const ulaafter = document.querySelectorAll(".underline");
+    for(let i = 0; i < ulaafter.length; i++){
+        ulaafter[i].addEventListener("click",() => {
+            
 
-    for(let i =0; i<ulaafter.length;i++){
-        ulaafter[i].addEventListener("click", () => {
-            ulaafter[i].classList.add("selectedList");
-        if(i == 0){
-            ulaafter[i].nextElementSibling.classList.remove("selectedList");
-        }
-        // if(i == ulaafter.length-1){
-        //     ulaafter[i].nextElementSibling =  ulaafter[0];
-        //     ulaafter[i].nextElementSibling.classList.remove("selectedList");
-        // }
-        if(i > 0 &&   ulaafter[i].previousElementSibling.classList.contains("selectedList") || ulaafter[i].nextElementSibling.classList.contains("selectedList")){
-                ulaafter[i].previousElementSibling.classList.remove("selectedList");
-                ulaafter[i].nextElementSibling.classList.remove("selectedList");
-        }
+            //현재 선택한 요소 뒤에 있는 모든 요소에서 클래스 제거
+            for(let j = i+1; j < ulaafter.length; j++){
+                if(ulaafter[j].classList.contains("selectedList")){
+                    ulaafter[j].classList.remove("selectedList");
+                }
+            }
+
+            //현재 선택한 요소 앞에 있는 모든 요소에서 클래스 제거
+            for(let k = i-1; k >=0; k--){
+                if(ulaafter[k].classList.contains("selectedList")){
+                    ulaafter[k].classList.remove("selectedList");
+                    
+                }
+            }      
+            ulaafter[i].classList.add("selectedList"); 
         });
-       
     }
-    
-
 </script>
 </html>
