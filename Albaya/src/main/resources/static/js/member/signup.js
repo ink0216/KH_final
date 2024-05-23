@@ -94,7 +94,7 @@
             }
             if(inputTel.value.trim().length === 0){
                 event.preventDefault();
-                return;
+                
             }
             const inputAuthField = document.createElement("input");
             inputAuthField.classList.add("inputAuthField");
