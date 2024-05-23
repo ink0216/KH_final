@@ -60,5 +60,18 @@ public class HireController {
 	public String hirePopup() { //업직종 선택 팝업창으로 이동
 		return "/hire/hirePopup";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	//공고문 상세조회 하기
+	@GetMapping("hireDetail")
+	public String hireDetail() {
+		return "/hire/hireDetail";
+	}
 }
 
