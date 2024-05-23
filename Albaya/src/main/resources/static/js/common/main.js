@@ -63,10 +63,11 @@ const setPageButtons=()=>{
 
 
 /* 해당 페이지 */
-const tbody= document.querySelector("tboay");
+const tbody= document.querySelector("tbody");
 let currentPage =1;
 
 const setPageOf=(pageNumber)=>{
+    tbody.innerHTML='';
 
     for(
         let i = countPrePage * (pageNumber -1)+1;
