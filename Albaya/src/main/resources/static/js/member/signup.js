@@ -88,10 +88,13 @@
         .then(resp => resp.json())
         .then(result => {
             count++;
-            if(count > 1){
+          
+            if(count > 1 || inputTel.value.trim().length === 0){
                 alert("휴대폰 인증은 1회만 가능합니다. 새로고침 해주세요.");
+                event.preventDefault();
                 return;
             }
+            
             const inputAuthField = document.createElement("input");
             inputAuthField.classList.add("inputAuthField");
             inputAuthField.setAttribute("type","text");
@@ -144,9 +147,25 @@
             return;
         }
 
-        fetch("member/signup")
+        fetch(url,{
+            method:"POST",
+            headers: {"Content-Type":"application/json"},
+            body: inputEmail.value
+        })
         .then(resp => resp.text())
         .then(result => {
+            if(result == 1){
+                emailVerify.classList.add("fail");
+                emailVerify.classList.remove("success");
+                emailVerify.innerText = "이미 존재하는 이메일 입니다"
+                obj.memberEmail = false;
+                return;
+            }
+            emailVerify.classList.add("success");
+            emailVerify.classList.remove("fail");
+            emailVerify.innerText = "사용 가능한 이메일 입니다"
+            obj.memberEmail = true;
+
             
         })
         emailVerify.classList.add("success");
@@ -171,6 +190,7 @@
             obj.memberPw = false;
             return;
         }
+        
         passwordVerify.classList.add("success");
         passwordVerify.classList.remove("fail");
         passwordVerify.innerText = "올바른 비밀번호 형식입니다";
