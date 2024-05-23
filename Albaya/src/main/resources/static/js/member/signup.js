@@ -92,6 +92,10 @@
                 alert("휴대폰 인증은 1회만 가능합니다. 새로고침 해주세요.");
                 return;
             }
+            if(inputTel.value.trim().length === 0){
+                event.preventDefault();
+                return;
+            }
             const inputAuthField = document.createElement("input");
             inputAuthField.classList.add("inputAuthField");
             inputAuthField.setAttribute("type","text");
