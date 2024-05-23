@@ -133,22 +133,22 @@ th{
 
 
 /* 기업명 */
-tr td:first-child{
+.shopName{
     font-weight: bold;
     color: #014C73;
 }
 /* 공고제목 */
-tr td:nth-child(2){
+.hireTitle{
     font-weight: bold;
     cursor: pointer;
 }
 
 /* 근무지역 */
-tr td:nth-child(3){
+.sigunguName{
     color: lightslategray;
 }
 /* 급여 */
-tr td:last-child{
+.pay{
     font-weight: bold;
     color: darksalmon;
 }
@@ -160,44 +160,8 @@ tbody tr:hover {
 
 /* --------------------------------- */
 /* 페이지네이션 */
-.pagination{
-    list-style: none;
+.pagination-container {
     display: flex;
     justify-content: center;
-    padding: 0;
-}
-
-.pagination li{
-    width: 20px;
-    margin: 0 5px;
-    text-align: center;
-}
-
-.pagination li:first-child{
-    width: 40px;
-    margin: 0 5px;
-    text-align: center;
-}
-
-.pagination li:last-child{
-    width: 40px;
-    margin: 0 5px;
-    text-align: center;
-}
-
-
-.pagination a{
-    display: block;
-    width: 100%;
-    height: auto;
-
-}
-
-.currentPage{
-    font-weight: bold;
-    background-color: #014C73;
-    border-radius: 50%;
-    color: white !important;
-    letter-spacing: 0 !important;
-}
+  }
 /*  ----------------------------------*/
