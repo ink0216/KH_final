@@ -4,7 +4,7 @@
 
 
 	<!-- 게시글 삭제 -->
-	<update id="">
+	<update id="reviewBoardDelete">
 		UPDATE REVIEW_BOARD SET 
 		BOARD_DEL_FL = 'Y'
 		WHERE REVIEW_BOARD_CODE = #{reviewBoardCode}
