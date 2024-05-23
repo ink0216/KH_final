@@ -57,10 +57,10 @@
                         <td><a th:unless="${param.key}" 
                             th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" 
                             th:text="*{reviewTitle}">게시글 제목</a></td>
-                        <!-- " -->
+                        
                             <!-- 검색 기능 구현할 때 주석 풀 문장 -->
-                            <!-- <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
-                            <th:block th:text="|[*{commentCount}]|"></th:block> -->
+                            <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
+                            <!-- <th:block th:text="|[*{commentCount}]|"></th:block> -->
                         
                         <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
                          
@@ -98,19 +98,19 @@
 
 					<!-- 특정 페이지로 이동 -->
 					
-					<!-- <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}"> -->
-					<th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+					<th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+					<!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
 						
 						<!-- 현재 보고있는 페이지 -->
-						<li th:if="${i == pagination.currentPage}">
+						<li th:if="${i} == *{currentPage}">
 						
 							<a class="current" th:text="${i}">현재 페이지</a>
 						</li>
 	
 						<!-- 보고있지 않은 페이지 -->
-						<li th:unless="${i == pagination.currentPage}"> 
+						<li th:unless="${i} == *{currentPage}"> 
 						
-							<a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=${i})}" 
+							<a th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode=${reviewBoardCode}, cp=${i})}" 
 								 th:text="${i}">이동할 페이지</a> 
 						</li>
 
@@ -145,8 +145,9 @@
 						
                     <!-- 현재 보고있는 페이지 -->
                     <li th:if="${i == pagination.currentPage}">
-                    <li th:if="${i} == *{currentPage}">
+                    <!-- <li th:if="${i} == *{currentPage}"> -->
                         <a class="current" th:text="${i}">현재 페이지</a>
+                        
                     </li>
 
                     <!-- 보고있지 않은 페이지 -->
@@ -154,6 +155,7 @@
                     <li th:unless="${i} == *{currentPage}">
                         <a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=${i}, key=${param.key}, query=${param.query})}" 
                              th:text="${i}">이동할 페이지</a> 
+                             
                     </li>
                 </th:block>
 
