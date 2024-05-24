@@ -6,4 +6,6 @@ public interface myPageService {
 
 	int deleteMember(int memberNo, String memberEmail);
 
+	int findMemberPw(int memberNo, String curPassword, String newPassword);
+
 }

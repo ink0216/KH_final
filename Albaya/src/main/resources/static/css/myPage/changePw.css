@@ -1,0 +1,150 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; 
+}
+
+body{
+    background-color: rgb(228, 242, 238);
+    font-family: 'TheJamsil5Bold';
+}
+
+/* 전체 폰트 */
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+button{
+    font-family: 'TheJamsil5Bold';
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+/* 선택됐을때 배경색 바꾸는 코드 */
+.selected{
+    background-color: green;
+}
+
+/* div{
+    border: 1px solid black;
+} */
+
+.wrapper-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.login-container{
+    display: flex;
+    width: 50%;
+    height: 500px;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+}
+
+
+.findId-text-conatiner{
+    display: flex;
+    width: 70%;
+    height: 17%;
+    align-items: center;
+    margin-top: 40px;
+}
+
+
+.login-image > h1{
+    text-align: left;
+}
+
+.h1-place{
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    flex-direction: column;
+}
+.login-wrapper{
+    display: flex;
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.findPw-area{
+    display: flex;
+    width: 70%;
+    height: 80%;
+}
+
+.text-area{
+    display: flex;
+    height: 90%;
+    width: 50%;
+    flex-direction: column;
+}
+
+.input-area{
+    display: flex;
+    height: 90%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.text-span-area{
+    display: flex;
+    height: 33%;
+    width: 100%;
+    align-items: center;
+}
+
+.text-input-area{
+    display: flex;
+    height: 33%;
+    width: 100%;
+    align-items: center;
+}
+
+.inputPassword{
+    width: 100%;
+    height: 33%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.btn-area{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 30%;
+    width: 100%;
+}
+
+.btn-area > button{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #014C73;
+    color: white;
+    font-size: 14px;
+}
+
+.changePwForm{
+    display: flex;
+    width: 100%;
+}
+
+#cancelBtn{
+    background-color: #e8e8e9;
+    margin-right: 15px;
+    color: black;
+}

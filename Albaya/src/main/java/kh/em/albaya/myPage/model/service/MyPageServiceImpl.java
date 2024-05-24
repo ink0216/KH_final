@@ -31,4 +31,36 @@ public class MyPageServiceImpl implements myPageService{
 		
 		return mapper.myPageCheckPw(map);
 	}
+	
+	@Override
+	public int deleteMember(int memberNo, String memberEmail) {
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("memberNo", memberNo);
+		map.put("memberEmail", memberEmail);
+		
+		return mapper.deleteMember(map);
+	}
+	
+	@Override
+	public int findMemberPw(int memberNo, String curPassword, String newPassword) {
+		
+		String memberPw = mapper.findMemberPw(memberNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		String encPw = bcrypt.encode(newPassword);
+		
+		map.put("memberNo", memberNo);
+		map.put("encPw", encPw);
+		
+		if(!bcrypt.matches(curPassword, memberPw)) {
+			return 0;
+		}
+		
+		int result = mapper.updateMemberPw(map);
+		
+		return result;
+	}
 }
