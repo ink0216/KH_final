@@ -19,5 +19,16 @@ public class EditBoardServiceImpl implements EditBoardService {
 	public int reviewBoardDelete(Map<String, Integer> map) {
 		return mapper.reviewBoardDelete(map) ;
 	}
+	
+	
+	// 게시글 수정
+	@Override
+	public int reviewBoardUpdate(Map<String, Integer> map) {
+		int result = mapper.reviewBoardUpdate(map);
+		
+		if(result == 0) return 0;
+		
+		return result;
+	}
 
 }
