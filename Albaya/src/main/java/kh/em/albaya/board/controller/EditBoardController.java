@@ -148,7 +148,8 @@ public class EditBoardController {
 		@PathVariable("reviewBoardCode")int reviewBoardCode,
 		@PathVariable("reviewBoardNo")int reviewBoardNo,
 		@SessionAttribute("loginMember") Member loginMember,
-		@RequestParam(value="querystring", required = false, defaultValue = "") String querystring,
+		@RequestParam(value="querystring", required = false, defaultValue = "") 
+		String querystring,
 		RedirectAttributes ra
 			) {
 		
