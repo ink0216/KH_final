@@ -11,7 +11,7 @@
     
     <h1>개인 회원 가입 페이지</h1>
 
-    <form action="/member/signup" method="POST">
+    <form action="/member/signup" method="POST" id = "signupForm">
         <div id = "containers">
            <div> 
                 <span id="email">이메일<span class="required">*</span></span> <input type="text" name="memberEmail" maxlength = "20" id="inputEmail" required>
@@ -40,15 +40,15 @@
                <span>주소<span class="required">*</span></span>
                <div id ="addressContainer">
                     <div>
-                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">
+                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode" required>
                         <button id = "searchAddress" type="button">검색</button><br><br>
                     </div>
                     
 
-                    <input type="text" name="memberAddress" placeholder="도로명/지번 주소" maxlength="40" id="address"><br><br>
+                    <input type="text" name="memberAddress" placeholder="도로명/지번 주소" maxlength="40" id="address" required><br><br>
                    
 
-                    <input type="text" name="memberAddress" placeholder="상세 주소" maxlength="50" id="detailAddress"><br><br>
+                    <input type="text" name="memberAddress" placeholder="상세 주소" maxlength="50" id="detailAddress" required><br><br>
                     <div id = "addressVerify"></div>
 
                </div>
