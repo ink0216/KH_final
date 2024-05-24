@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/myPage/deleteMember.css">
+
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <main class="main-layout-wrapper">
+        <div class="main-container-wrapper">
+            <div class="h1-wrapper">
+                <h2>Albaya 회원 탈퇴</h2>
+            </div>
+            
+            <div class="main-content-wrapper">
+                <div class="notice-area">
+                    <div class="notice-area-top">
+                        <h4>
+                            탈퇴 안내 및 유의사항
+                        </h4>
+                    </div>
+                    
+                    <div class="notice-area-bottom">
+                        <span>1. 탈퇴한 아이디는 <strong>복구</strong>와 <strong>재사용</strong>이 불가능합니다.</span><br>
+                        <span>2. 이력서 정보, 구직 활동 내역이 모두 삭제되며, <strong>삭제된 데이터는 복구되지 않습니다.</strong></span><br>
+                        <span>3. 회원 탈퇴 시 기존에 작성된 게시물은 삭제되지 않으므로 주의해주세요.</span><br>
+                        <span>4. 탈퇴 이후에는 동일한 명의의 재가입도 <strong>신규 회원</strong>으로 등록됩니다.</span>
+                    </div>
+                </div>
+
+                <div class="notice-area">
+                    <div class="notice-area-top">
+                        <h4>
+                            비밀번호 인증
+                        </h4>
+                    </div>
+                    
+                    <div class="notice-area-bottom">
+                        <form action="/myPage/deleteMember" method="POST">
+                            <div class="input-area-horizontal">
+                                <div class="text-area">
+                                    아이디
+                                </div>
+                                <div class="input-area">
+                                    <input type="text" name="memberEmail" id="memberEmail" readonly
+                                    th:value="${session.loginMember.memberEmail}">
+                                </div>
+                            </div>
+                            <div class="input-area-horizontal">
+                                <div class="text-area">
+                                    비밀번호
+                                </div>
+                                <div class="input-area">
+                                    <input type="password" name="memberPw">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+<script src="/js/myPage/deleteMember.js"></script>
+
+</html>
