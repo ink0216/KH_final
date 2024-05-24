@@ -18,7 +18,6 @@ insertBtn.addEventListener("click", () =>{
 if(insertNoticeBtn != null){
 insertNoticeBtn.addEventListener("click", () =>{
 
-  
     
     location.href = `/editReviewBoard/${reviewBoardCode}/insert`;
 });
