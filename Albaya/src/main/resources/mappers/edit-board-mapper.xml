@@ -16,7 +16,7 @@
 	</update>
 	
 	<!-- 게시글 수정 -->
-	<update id="">
+	<update id="reviewBoardUpdate">
 		UPDATE REVIEW_BOARD SET 
 		REVIEW_TITLE = #{revieTitle},
 		REVIEW_BOARD_CONTENT = #{reviewBoardContent}
