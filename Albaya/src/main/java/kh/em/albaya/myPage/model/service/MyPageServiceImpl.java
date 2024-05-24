@@ -19,8 +19,6 @@ public class MyPageServiceImpl implements myPageService{
 	@Override
 	public int myPageCheckPw(int memberNo, String memberEmail, String memberPw) {
 		
-		
-		
 		Map<String, Object> map = new HashMap<>();
 		map.put("memberNo", memberNo);
 		map.put("memberEmail", memberEmail);

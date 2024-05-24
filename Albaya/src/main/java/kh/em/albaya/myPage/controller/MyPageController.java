@@ -60,7 +60,7 @@ public class MyPageController {
 		
 		if(result == 1) {
 			ra.addFlashAttribute("message", message);
-			return "/myPage/updateMemberInfo";
+			return "/main";
 		}
 		else {
 			ra.addFlashAttribute("message", message);
@@ -76,5 +76,30 @@ public class MyPageController {
 	@GetMapping("deleteMember")
 	public String deleteMember() {
 		return "/myPage/deleteMember";
+	}
+	
+	@PostMapping("deleteMember")
+	public String deleteMember(
+			Member member,
+	        @SessionAttribute(value = "loginMember", required = false) Member loginMember,
+			RedirectAttributes ra) {
+		
+		int memberNo = loginMember.getMemberNo();
+		String memberEmail = member.getMemberEmail();
+		String memberPw = member.getMemberPw();
+		
+		String message = null;
+		
+		int result = service.myPageCheckPw(memberNo, memberEmail, memberPw);
+		
+		if(result == 1) {
+			int deleteMember = service.deleteMember(memberNo, memberEmail);
+			ra.addFlashAttribute("message", message);
+			return "redirect:/";
+		}
+		else {
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/myPageInfo";
+		}
 	}
 }
