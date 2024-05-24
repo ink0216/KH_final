@@ -265,6 +265,10 @@ font-weight: bold;
     user-select: none;
 }
 
+.hidden{
+    display: none;
+}
+
 
 #map{
     width: 500px;
