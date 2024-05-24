@@ -55,6 +55,11 @@
     display: flex;
     justify-content: center;
     margin: auto;
+    width: 100%;
+}
+
+#hireDetailForm{
+    width: 90%;
 }
 .container{
     border: 1px solid lightgray;
@@ -119,9 +124,10 @@
 
 /* 지도 */
 #map{
-    width: 500px;
+    width: 95%;
     height: 300px;
-    margin-top: 10px;
+    margin-top: 15px;
+    margin: auto;
 }
 
 
