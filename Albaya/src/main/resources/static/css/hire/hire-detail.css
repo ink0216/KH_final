@@ -34,6 +34,7 @@
 
     display: flex;
     margin: 0px 20px;
+    align-items: center;
     user-select: none;
 }
 .header h3{    font-family: 'GongGothicMedium';}
@@ -75,11 +76,12 @@ hr{
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: 10px 0;
 }
 
 .div1{
     display: flex;
-    margin: 0 30px;
+    margin: 20px 30px;
     height: auto;
 }
 
