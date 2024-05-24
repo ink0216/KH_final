@@ -1,13 +1,28 @@
-
+/* 글쓰기 버튼 동작 */
 const insertBtn = document.querySelector("#insertBtn");
+const insertNoticeBtn = document.querySelector("#insertNoticeBtn");
 
 if(insertBtn != null){
 insertBtn.addEventListener("click", () =>{
-
-    alert("테스트");
     
-    location.href="/editReviewBoard/reviewBoardWrite?reviewBoardCode="+reviewBoardCode;
+  
+    
+    location.href = `/editReviewBoard/${reviewBoardCode}/insert`;
 });
+
+
+}
+
+
+/* 관리자전용 공지작성 버튼 동작 */
+if(insertNoticeBtn != null){
+insertNoticeBtn.addEventListener("click", () =>{
+
+  
+    
+    location.href = `/editReviewBoard/${reviewBoardCode}/insert`;
+});
+
 
 }
 
@@ -17,19 +32,59 @@ const talk = document.getElementById('talk');
 
 
 
-notice.addEventListener("click",() => {
-    location.href = "/reviewBoard/1";
-    notice.classList.add("active");
-    talk.classList.remove("active");
+// notice.addEventListener("click",() => {
     
-});
+//     location.href = "/reviewBoard/1";
+//     notice.classList.add("active");
+//     talk.classList.remove("active");
+   
+    
+    
+    
+// });
 
-talk.addEventListener("click",() => {
-    location.href = "/reviewBoard/2";
-    talk.classList.add("active");
-    notice.classList.remove("active");
+// talk.addEventListener("click",() => {
     
-});
+//     location.href = "/reviewBoard/2";
+//     talk.classList.add("active");
+//     notice.classList.remove("active");
+    
+  
+    
+// });
+
+
+
+/* 현재 게시판 위치에 따라 버튼 효과 넣기  */
+
+
+function toggleColor(boxId,url){
+    var box = document.getElementById(boxId);
+    var otherBoxId = boxId === 'talk' ? 'notice' : 'talk';
+    var otherBox = document.getElementById(otherBoxId);
+
+    if(!box.classList.contains('active')){
+        box.classList.add('active');
+        otherBox.classList.remove('active');
+    }
+
+    localStorage.setItem('highlightedBox', boxId);
+
+    window.location.href = url;
+
+}
+    function restoreColor() {
+        var highlightedBox = localStorage.getItem('highlightedBox');
+        if (highlightedBox) {
+            document.getElementById(highlightedBox).classList.add('active');
+        }
+    }
+window.onload = restoreColor;
+
+
+
+
+
 
 
 

@@ -12,7 +12,7 @@
 		BOARD_DEL_FL = 'Y'
 		WHERE REVIEW_BOARD_CODE = #{reviewBoardCode}
 		AND REVIEW_BOARD_NO = #{reviewBoardNo}
-		AND MEMBER_NO = #{memberNo};
+		AND MEMBER_NO = #{memberNo}
 	</update>
 	
 	<!-- 게시글 수정 -->

@@ -20,7 +20,7 @@ import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("editBoard")
+@RequestMapping("editReviewBoard")
 @RequiredArgsConstructor
 public class EditBoardController {
 	
