@@ -215,14 +215,18 @@ new daum.Postcode({
 
         var addr;
 
-        if(data.jibunAddress!=undefined){ //지번주소가 있는 경우
+        if(data.jibunAddress!=''){ //지번주소가 있는 경우
             addr = data.jibunAddress; // 최종 주소 변수(지번주소)
         } 
-        if(data.jibunAddress=undefined){  //지번 주소가 없는 경우
+        if(data.autoJibunAddress!=''){  //지번 주소가 없는 경우
             addr = data.autoJibunAddress; 
         }
 
-        console.log(addr);
+
+        console.log(data);
+        console.log("data.autoJibunAddress : ",data.autoJibunAddress);
+        console.log("addr : ",addr);
+
 
         //-----------------------------------------------------------------------
         //input 요소 추가        

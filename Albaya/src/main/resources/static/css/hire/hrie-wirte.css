@@ -378,6 +378,7 @@ font-weight: bold;
     background-color: #014C73 ;
     color: white;
     cursor: pointer;
+    width: 100px;
 }
 
 .btnArea button:hover{

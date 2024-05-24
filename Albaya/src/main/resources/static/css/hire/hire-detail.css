@@ -156,6 +156,28 @@ hr{
     margin: auto;
 }
 
+/* 버튼 */
+.btnArea{
+    display: flex;
+    align-content: flex-end;
+    justify-content: center;
+}
+
+.btnArea button{
+    padding: 10px;
+    margin: 20px;
+    font-size: 15px;
+    border: none;
+    background-color: #014C73 ;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+}
+
+.btnArea button:hover{
+    background-color: #046298;
+}
+
 
 
 
