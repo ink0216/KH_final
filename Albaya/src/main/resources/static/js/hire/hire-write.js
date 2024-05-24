@@ -200,7 +200,7 @@ map: map
 function sample5_execDaumPostcode() {
 new daum.Postcode({
     oncomplete: function(data) {
-        var addr = data.address; // 최종 주소 변수
+        var addr = data.jibunAddress; // 최종 주소 변수(지번주소)
 
         // 주소 정보를 해당 필드에 넣는다.
         document.getElementById("address").value = addr;
