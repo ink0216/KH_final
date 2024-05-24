@@ -13,4 +13,16 @@ public interface HireMapper {
 	 */
 	public int hireInsert(Hire hire);
 
+	/**typeNo 찾기
+	 * @param hire
+	 * @return
+	 */
+	public int typeNo(Hire hire);
+
+	/**dongNo 찾기
+	 * @param hire
+	 * @return
+	 */
+	public int dongNo(Hire hire);
+
 }
