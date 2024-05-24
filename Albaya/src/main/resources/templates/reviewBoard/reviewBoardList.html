@@ -19,15 +19,16 @@
 
 
             <div class="list-wrapper">
-                <div id="reviewBoardType">
-                    <div id="notice" class="box">
-                        공지
-                    </div>
-                    <div id="talk" class="box">
-                        토크
-                    </div>
-                </div>
+                
                 <table class="list-table">
+                    <div id="reviewBoardType">
+                        <div id="notice" class="box">
+                            공지
+                        </div>
+                        <div id="talk" class="box">
+                            토크
+                        </div>
+                    </div>
                    
                     <th:block th:if="${#lists.isEmpty(reviewBoardList)}">
                     
@@ -62,11 +63,12 @@
                             <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
                             <!-- <th:block th:text="|[*{commentCount}]|"></th:block> -->
                         
-                        <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
-                         
+                            <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
+                            
                             <!-- <td th:text="*{memberEmail}">이메일</td> -->
-                            <td th:text="${temp}">이메일</td>
-                            <td th:text="*{reviewBoardWriteDate}">2024-01-01</td>
+                            <!-- <td th:text="${temp}">이메일</td> -->
+                            <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
+                            <td th:text="*{reviewBoardWriteDate}">작성일</td>
                             <td th:text="*{readCount}">0</td>
                         </th:block>
                     </tr>
