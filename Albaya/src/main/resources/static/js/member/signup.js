@@ -51,6 +51,8 @@
     const detailAddress = document.querySelector("#detailAddress");
     const addressVerify = document.querySelector("#addressVerify");
 
+   
+
     let count = 0;
 
     const obj = {
@@ -303,6 +305,8 @@
         }
         validation();
     });
+
+    
 
 
 
