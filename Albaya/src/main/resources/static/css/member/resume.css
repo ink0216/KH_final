@@ -1,0 +1,156 @@
+#profileInfo{
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height:150px;
+    width: 1000px;
+    border:1px solid black;
+    border-radius: 10px;
+    padding:30px;
+    padding-bottom: 90px;
+}
+h1{
+    text-align: center;
+}
+
+#info{
+    display:flex;
+    flex-direction: column;
+    margin-left:50px;
+    height:150px;
+    width:800px;
+}
+
+#addNtel{
+    display:flex;
+}
+.credentials>span:not(span:nth-child(1)){
+    margin-left:30px;
+}
+#telNo{
+    margin-left:180px;
+}
+#profileImg{
+    width:150px;
+    height:150px;
+    border-radius:100%;
+    border:1px solid black;
+}
+#editProfile{
+    margin-top:65%;
+    margin-left:60%;
+    width:50px;
+    height:50px;
+    border-radius:100%;
+    border:1px solid lightgray;
+    text-align: center;
+    font-size: 30px;
+}
+#editProfile:hover{
+    cursor:pointer;
+}
+#value{
+    margin-left:30px;
+}
+#email{
+    margin-left:17px;
+}
+
+#info>div{
+    margin-top:20px;
+}
+#innerProfileContainer{
+    display:flex;
+   
+}
+#loadResume{
+    display:flex;
+    align-items:center;
+    border:1px solid black;
+    height:80px;
+    padding-right:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius:10px;
+ 
+}
+#loadResume>div:nth-child(1){
+    font-size:30px;
+}
+#loadResume>div{
+    margin-left:20px;
+}
+#loadResume>div>button{
+    height:40px;
+    background-color: #014C73;
+    border-radius:10px;
+    border: 1px solid #014C73;
+    color:white;
+}
+
+#loadResume>div>button:hover{
+    cursor:pointer;
+}
+
+#resume{
+    margin:auto;
+    margin-top:20px;
+    width: 1000px;
+    border:1px solid black;
+    border-radius:10px;
+    padding-bottom:20px;
+}
+#resume>h3{
+    text-align:center;
+}
+#resume>div{
+    margin:40px;
+    margin-left:80px;
+
+}
+#resumeTitle>ul>li{
+    list-style-type: none;
+}
+input{
+    margin:auto;
+    height:30px;
+    width:600px;
+    border-radius:10px;
+    border: 1px solid rgb(183, 181, 181);
+    padding-left: 20px;
+}
+
+hr{
+    width:80%;
+    background:black;
+}
+
+#resumeTitle>hr{
+    margin-top:40px;
+    width:87%;
+    background:black;
+}
+
+.required{
+    color:red;
+}
+
+#tip{
+    display:flex;
+    border:1px solid black;
+    padding-left:10px;
+    width:500px;
+    margin-bottom:30px;
+    border:rgb(76, 112, 124);
+    background-color: rgb(203, 221, 228);
+}
+#tip>p:nth-child(1){
+    width:50px;
+    border:1px solid rgb(11, 146, 110);
+    text-align:center;
+    border-radius:10px;
+    padding-bottom:2px;
+    background:rgb(11, 146, 110);
+    color:white;
+}

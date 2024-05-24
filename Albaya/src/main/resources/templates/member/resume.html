@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이력서</title>
+    <link rel="stylesheet" href="../../static/css/member/resume.css">
+    <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- 이력서  -->
+    <h1>이력서 작성</h1>
+    <div  id = "profileInfo">
+        <div id = "innerProfileContainer">
+            <div id="profileImg">
+                <img src="" alt="">
+                <button id="editProfile"><i class="fa-solid fa-camera"></i></button>
+            </div>
+            <div id="info">
+                <div id="name">
+                    <span id="key">이름</span>
+                    <span id="value"><b>황진관</b></span>
+                </div>
+                <div id="addNtel">
+                    <div class="credentials">
+                        <span>주소</span>
+                        <span id = "address">경기도 파주시 조리읍</span>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class = "credentials">
+                        <span id="telNo">휴대폰</span>
+                        <span>010-5782-3394</span>
+                    </div>
+                </div>
+                <div>
+                    <span>이메일</span>
+                    <span id="email">jkhwang58@gmail.com</span>
+                </div>
+    
+            </div><br><br>
+        </div >
+        <div id="loadResume">
+            <div><i class="fa-solid fa-file"></i></div>
+            <div><b>2024년 05월 22일 13:21:36에</b> 임시저장된 이력서가 있습니다.</div>
+            <div id = "buttons">
+                <button>이력서 불라!!</button>
+                <button>삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이력서 작성 section -->
+    <div id="resume">
+        <h3>나의 이력서</h3>
+        <hr>
+        <div id="resumeTitle">
+            <h3>이력서 제목<span class="required">*</span></h3>
+            <ul>
+                <li><input type="text" id = "title"></li>
+            </ul>
+            
+        </div>
+        <hr>
+        <div id="resumeTitle">
+            <h3>학력 사항<span class="required">*</span></h3>
+            <ul>
+                <li>
+                    <div id = "tip">
+                        <p><b>Tip</b></p>
+                        &nbsp;&nbsp;<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    </div>
+                </li>
+                <li><input type="text" id = "title"></li>
+            </ul>
+            
+        </div>
+        <hr>
+        <div id="resumeTitle">
+            <h3>이력서 제목<span class="required">*</span></h3>
+            <ul>
+                <li><input type="text" id = "title"></li>
+            </ul>
+            
+        </div>
+        <hr>
+
+    </div>
+</body>
+</html>

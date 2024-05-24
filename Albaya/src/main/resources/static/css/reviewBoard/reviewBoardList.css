@@ -219,8 +219,8 @@ cursor:pointer;
 
  .active {
 
-   background-color: #014C73;
-   color:white;
+   background-color: #014C73 !important;
+   color:white !important;
 }
 
 
