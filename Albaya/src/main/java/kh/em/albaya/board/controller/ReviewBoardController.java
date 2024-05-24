@@ -74,7 +74,7 @@ public class ReviewBoardController {
 	public String boardDetail(
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
-			@SessionAttribute("loginMember") Member loginMember,
+//			@SessionAttribute("loginMember") Member loginMember,
 			Model model,
 			RedirectAttributes ra
 			) {
