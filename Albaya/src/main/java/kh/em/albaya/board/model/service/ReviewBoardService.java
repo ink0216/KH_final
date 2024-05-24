@@ -18,7 +18,7 @@ public interface ReviewBoardService {
 	 * @param cp
 	 * @return
 	 */
-	Map<String, Object> selectBoardTypeList(int reviewBoardCode, int cp);
+	Map<String, Object> selectBoardList(int reviewBoardCode, int cp);
 
 	/** 검색 서비스
 	 * @param paramMap
