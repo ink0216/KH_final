@@ -159,8 +159,8 @@ hr{
 /* 버튼 */
 .btnArea{
     display: flex;
-    align-content: flex-end;
     justify-content: center;
+    flex-direction: row;
 }
 
 .btnArea button{
