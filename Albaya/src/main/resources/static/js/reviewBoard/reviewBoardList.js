@@ -4,9 +4,9 @@ const insertBtn = document.querySelector("#insertBtn");
 if(insertBtn != null){
 insertBtn.addEventListener("click", () =>{
 
-    alert("테스트");
+    // alert("테스트");
     
-    location.href="/editReviewBoard/reviewBoardWrite?reviewBoardCode="+reviewBoardCode;
+    location.href = `/editReviewBoard/${reviewBoardCode}/insert`;
 });
 
 }

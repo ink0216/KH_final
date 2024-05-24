@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.mapper.EditBoardMapper;
 import lombok.RequiredArgsConstructor;
 
@@ -13,6 +14,19 @@ public class EditBoardServiceImpl implements EditBoardService {
 	
 	private final EditBoardMapper mapper;
 	
+	
+	//게시글 작성
+	@Override
+	public int reviewBoardInsert(ReviewBoard inputBoard) {
+		
+		int result = mapper.reviewBoardInsert(inputBoard);
+		
+		if(result == 0) return 0;
+		
+		int reviewBoardNo = inputBoard.getReviewBoardNo();
+		
+		return reviewBoardNo;
+	}
 	
 	// 게시글 삭제
 	@Override

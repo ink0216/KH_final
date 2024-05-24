@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("editBoard")
+@RequestMapping("editReviewBoard")
 @RequiredArgsConstructor
 public class EditBoardController {
 	
@@ -37,13 +38,41 @@ public class EditBoardController {
 	}
 	
 	
-	// 게시글 작성
+	
+	/** 게시글 작성
+	 * @param reviewBoardCode : 게시판 구분
+	 * @param inputBoard : 입력값+ 추가데이터
+	 * @param loginMember : 로그인한 회원번호
+	 * @param ra
+	 * @return
+	 */
 	@PostMapping("{reviewBoardCode:[12]}/insert")
 	public String reviewBoardInsert(
 		@PathVariable("reviewBoardCode") int reviewBoardCode,
-		@SessionAttribute("loginMember") Member loginMember
+		@ModelAttribute("inputBoard") ReviewBoard inputBoard,
+		@SessionAttribute("loginMember") Member loginMember,
+		RedirectAttributes ra
 			) {
-		return null;
+		
+		inputBoard.setReviewBoardCode(reviewBoardCode);
+		inputBoard.setMemberNo(loginMember.getMemberNo());
+		
+		int reviewBoardNo = service.reviewBoardInsert(inputBoard);
+		
+		
+		String message = null;
+		String path = null;
+		
+		if(reviewBoardNo>0) {
+			message= "게시글 작성이 완료되었습니다";
+			path = "/reviewBoard/"+reviewBoardCode+ "/" + reviewBoardNo;
+		} else {
+			path = "insert";
+			message = "게시글 작성에 실패했습니다";
+		}
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:"+path;
 	}
 	
 	
