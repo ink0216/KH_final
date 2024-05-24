@@ -15,4 +15,26 @@
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND MEMBER_NO = #{memberNo}
 	</select>
+	
+	<update id="deleteMember">
+		UPDATE "MEMBER"
+		SET MEMBER_STATUS = 5
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+	
+	<update id="updateMemberPw">
+	    UPDATE "MEMBER"
+	    SET MEMBER_PW = #{encPw},
+	    LAST_MODIFIED_PW_DATE = SYSDATE
+	    WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+	
+	<select id="findMemberPw" resultType="string">
+		SELECT "MEMBER_PW"
+		FROM "MEMBER"
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
 </mapper>

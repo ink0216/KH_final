@@ -26,9 +26,9 @@ body{
     font-style: normal;
 }
 
-div{
+/* div{
     border: 1px solid black;
-}
+} */
 
 button{
     font-family: 'SUIT-Regular';
@@ -194,5 +194,5 @@ button:hover{
 }
 
 input[type="checkbox"]:checked {
-    accent-color: #014C73; /* 체크되었을 때 색상 */
+    accent-color: #014C73;
 }
