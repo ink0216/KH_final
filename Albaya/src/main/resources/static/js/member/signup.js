@@ -245,8 +245,6 @@
     });
 
     /* 주소 유효성 검사 1*/
-
-
     const restriction = () => {
         addressVerify.classList.add("fail");
         addressVerify.classList.remove("success");
