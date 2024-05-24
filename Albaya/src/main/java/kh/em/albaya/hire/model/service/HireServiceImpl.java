@@ -17,21 +17,21 @@ public class HireServiceImpl implements HireService{
 	public int hireWrite(Hire hire) {
 		
 		//HIRE테이블에 INSERT하는 매퍼
+		int dongNo = mapper.dongNo(hire);
+		hire.setDongNo(dongNo);
+		
 		int result = mapper.hireInsert(hire);
 		if(result ==0) {
 			return 0;
 		}
 		//HIRE테이블에는 INSERT 성공한거다
 		
-		//HIRE_PERIOD 테이블에 INSERT하기
-		
-		
-		
-		
-		
-		
 		int hireNo = hire.getHireNo(); //삽입 성공한 공고 번호
 		
-		return 0;
+		return hireNo;
+	}
+	@Override
+	public int typeNo(Hire hire) {
+		return mapper.typeNo(hire);
 	}
 }

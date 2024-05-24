@@ -215,10 +215,10 @@ new daum.Postcode({
 
         var addr;
 
-        if(data.jibunAddress!=undefined){ //지번주소가 있는 경우
+        if(data.jibunAddress!=''){ //지번주소가 있는 경우
             addr = data.jibunAddress; // 최종 주소 변수(지번주소)
         } 
-        if(data.jibunAddress=undefined){  //지번 주소가 없는 경우
+        if(data.autoJibunAddress!=''){  //지번 주소가 없는 경우
             addr = data.autoJibunAddress; 
         }
 
@@ -229,7 +229,7 @@ new daum.Postcode({
 
         div.innerHTML='';
 
-        sido.setAttribute("name","sidoName"); 
+        sido.setAttribute("name","dosiName"); 
         sigunsu.setAttribute("name","sigunguName");
         dong.setAttribute("name","dongName");
 
@@ -628,6 +628,16 @@ hireWrtieForm.addEventListener("submit",e=>{
         e.preventDefault();
         return;
     }
+    const submitBtn = document.querySelector("#submitBtn");
+    submitBtn.addEventListener("click", ()=>{
+        const hireStatus = document.createElement("input");
+        hireStatus.classList.add("hidden");
+        hireStatus.setAttribute("name", "hireStatus");
+        //저장 : 1 // 임시저장 : 2
+        hireStatus.value=1;
+        const hireWrtieForm = document.querySelector("#hireWrtieForm");
+        hireWrtieForm.append(hireStatus);
+    });
 
 })
 

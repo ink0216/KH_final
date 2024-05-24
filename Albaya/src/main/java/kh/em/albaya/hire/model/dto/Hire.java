@@ -50,4 +50,9 @@ public class Hire {
 	// 월화수목금토일 name값 같은 checkbox 사용하면 -> String으로 넘어옴('월,화') 이런 식으로
 	//	-> 화면에 뿌리거나 할 때에는 ,를 기준으로 split해서 쪼개면 된다
 
+	//위치정보
+	private String dosiName;
+	private String sigunguName;
+	private String dongName;
+	private int dongNo;
 }
