@@ -31,4 +31,13 @@ public class MyPageServiceImpl implements myPageService{
 		
 		return mapper.myPageCheckPw(map);
 	}
+	
+	@Override
+	public int deleteMember(int memberNo, String memberEmail) {
+		
+		Map<String, Object> map = new HashMap<>();
+
+		
+		return mapper.deleteMember(map);
+	}
 }
