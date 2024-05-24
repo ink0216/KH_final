@@ -1,0 +1,198 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; 
+}
+
+body{
+    background-color: rgb(228, 242, 238);
+    font-family: 'SUIT-Regular';
+    height: 1080px;
+}
+
+/* 전체 폰트
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+} */
+
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+div{
+    border: 1px solid black;
+}
+
+button{
+    font-family: 'SUIT-Regular';
+}
+
+span{
+    font-family: 'SUIT-Regular';
+    color: #6a6a6a;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.main-layout-wrapper{
+    display: flex;
+    width: 100%;
+    height: 1080px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-container-wrapper{
+    display: flex;
+    width: 35%;
+    height: 90%;
+    flex-direction: column;
+}
+
+.h1-wrapper{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    padding: 15px;
+    border: none;
+    border-bottom: 3px solid black;
+    background-color: white;
+}
+
+.main-content-wrapper{
+    display: flex;
+    height: 90%;
+    flex-direction: column;
+    padding: 15px;
+    background-color: white;
+
+}
+
+.notice-area{
+    display: flex;
+    height: 70%;
+    padding: 15px;
+    flex-direction: column;
+}
+
+.notice-area-top{
+    display: flex;
+    height: 15%;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+}
+
+.notice-area-bottom{
+    display: flex;
+    height: 80%;
+    padding: 15px;
+    flex-direction: column;
+    word-break: break-all;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    
+}
+
+.notice-area-bottom > form{
+    width: 100%;
+    height: 100%;
+}
+
+.checkPw-area{
+    display: flex;
+    height: 80%;
+    padding: 15px;
+    flex-direction: column;
+}
+
+.input-area-horizontal{
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+
+.text-area{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    padding: 15px;
+}
+
+.input-area{
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    align-items: center;
+}
+
+.input-area > #memberEmail{
+    pointer-events: none;
+    background-color: #F4F4F4;
+}
+
+.input-area > input{
+    width: 100%;
+    height: 40%;
+    border: 1px solid black;
+    border-radius: 5px;
+    flex-direction: row;
+}
+
+
+.checkPw-area-bottom{
+    display: flex;
+    height: 60%;
+    padding: 15px;
+    flex-direction: column;
+    word-break: break-all;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    
+}
+
+.checkPw-area-bottom > form{
+    width: 100%;
+    height: 100%;
+}
+
+.btn-area-container{
+    display: flex;
+    height: 25%;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 20px;
+}
+
+.btn-area-container > button{
+    width: 13%;
+    height: 70%;
+    border: none;
+    border-radius: 5px;
+}
+
+#okBtn{
+    background-color: red;
+    color: white;
+}
+
+.agreeArea{
+    display: flex;
+    padding: 15px;
+    justify-content: center;
+}
+
+input[type="checkbox"]:checked {
+    accent-color: #014C73; /* 체크되었을 때 색상 */
+}

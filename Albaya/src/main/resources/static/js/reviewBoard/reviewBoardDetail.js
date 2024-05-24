@@ -17,14 +17,6 @@ const siren = document.querySelector("#siren");
 
 
 
-/* 목록으로 버튼 */
-const goToListBtn = document.querySelector("#goToListBtn");
-
-
-goToListBtn.addEventListener("click", () =>{
-
-    location.href="/reviewBoardList";
-});
 
 
 
@@ -42,10 +34,10 @@ deleteBtn.addEventListener("click", () => {
     }
     alert("삭제되었습니다.");
 
-    return; // 임시로 넣은 return; 구문
+    
 
      // /board/AS/21?cp=1 -> /editBoard/AS/21/delete?cp=1 
-     const url = location.pathname.replace("board","editReviewBoard")  + "/delete"; 
+     const url = location.pathname.replace("reviewBoard","editReviewBoard")  + "/delete"; 
 
      // form태그 생성 
      const form = document.createElement("form");
@@ -91,3 +83,20 @@ if(updateBtn != null){
     })
 
 }
+
+
+
+/* 목록으로 버튼을 클릭해서 게시판 목록으로 돌아가기 */
+const goToListBtn = document.querySelector("#goToListBtn");
+
+goToListBtn.addEventListener("click", () => {
+
+
+
+  let url = location.pathname;
+  url = url.substring(0, url.lastIndexOf("/"));
+
+  // 쿼리스트링
+  location.href = url + location.search;
+ 
+});

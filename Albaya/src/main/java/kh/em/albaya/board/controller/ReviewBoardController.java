@@ -1,9 +1,7 @@
 package kh.em.albaya.board.controller;
 
 
-import java.lang.reflect.Member;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -17,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.ReviewBoardService;
+import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,31 +28,32 @@ public class ReviewBoardController {
    private final ReviewBoardService service;
    
 
-	// 게시글 조회
-	/**
-	 * @param reviewBoardCode : 게시판 종류( 공지, 일반후기)
-	 * @param cp : 현재 조회한 요청 페이지
-	 * @param model : request scope로 값 전달 객체
-	 * @return
-	 */
-   	
+   // 게시글 조회
+   /**
+    * @param reviewBoardCode : 게시판 종류( 공지, 일반후기)
+    * @param cp : 현재 조회한 요청 페이지
+    * @param model : request scope로 값 전달 객체
+    * @return
+    */
+      
    
-//	@GetMapping("{reviewBoardCode:[0-9]{2}}")
-	@GetMapping("{reviewBoardCode:[0-9]+}")
-	public String selectBoardList(
-		@PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
-		@RequestParam(value="cp", required=false, defaultValue = "1") int cp,// 현재페이지
-		Model model,
-		@RequestParam Map<String, Object> paramMap
-		) {
-		// 일반, 비회원, 기업 전부 다 조회 가능
+//   @GetMapping("{reviewBoardCode:[0-9]{2}}")
+   @GetMapping("{reviewBoardCode:[0-9]+}")
+   public String selectBoardList(
+      @PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
+      @RequestParam(value="cp", required=false, defaultValue = "1") int cp,// 현재페이지
+      Model model,
+      @RequestParam Map<String, Object> paramMap
+      ) {
+      // 일반, 비회원, 기업 전부 다 조회 가능
+
 
 		
 		Map<String , Object> map = null;
 		
 		//검색 아닐때
 		if(paramMap.get("key")==null) {
-			map = service.selectBoardTypeList(reviewBoardCode, cp); // 게시글 목록 조회
+			map = service.selectBoardList(reviewBoardCode, cp); // 게시글 목록 조회
 		}else { //검색일때
 			
 			paramMap.put("reviewBoardCode", reviewBoardCode); 
@@ -70,10 +70,11 @@ public class ReviewBoardController {
 	
 	
 	// 게시글 상세 조회 
-	@GetMapping("reviewBoardCode:[12]/{reviewBoardNo:[0-9]+}")
+	@GetMapping("{reviewBoardCode:[0-9]+}/{reviewBoardNo:[0-9]+}")
 	public String boardDetail(
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
+			@SessionAttribute("loginMember") Member loginMember,
 			Model model,
 			RedirectAttributes ra
 			) {
@@ -94,12 +95,14 @@ public class ReviewBoardController {
 			ra.addFlashAttribute("message", "게시글이 존재하지 않습니다");
 		}else { // 있는 경우
 			path = "reviewBoard/reviewBoardDetail";
+			model.addAttribute("reviewBoard",reviewBoard);
+			// 조회수 관련 코드 추가예정
 		}
 		
-		// 조회수 관련 백앤드 추후 작성 예정
 		
 		return path;
 	}
+
 
 
 }

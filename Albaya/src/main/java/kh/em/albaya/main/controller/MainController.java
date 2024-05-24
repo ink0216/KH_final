@@ -17,15 +17,7 @@ public class MainController {
    
 
    
-   // 알바 게시판 상세 조회(테스트를 위한 임시 작성)
-   @RequestMapping("reviewBoardDetail")
-   @GetMapping("reviewBoardList")
-   public String reviewBoardList() {
-	   
-	   return "reviewBoard/reviewBoardDetail";
-   }
-   
-  
+
 
    
 }

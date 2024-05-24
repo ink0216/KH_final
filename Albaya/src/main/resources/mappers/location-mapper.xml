@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kh.em.albaya.location.mapper.LocationMapper">
+	<insert id="insertDosi">
+		INSERT INTO "DOSI"
+		VALUES(#{dosiNo}, #{dosiName})
+	</insert>
+
+	<insert id="insertSigungu">
+		INSERT INTO "SIGUNGU"
+		VALUES(#{dosiNo}, #{sigunguNo}, #{sigunguName})
+	</insert>
+	
+	<insert id="insertDong">
+		INSERT INTO "DONG"
+		VALUES(#{dongNo}, #{sigunguNo}, #{dongName})
+	</insert>
+</mapper>

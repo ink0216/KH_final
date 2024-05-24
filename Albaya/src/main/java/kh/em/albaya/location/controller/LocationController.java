@@ -16,6 +16,7 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -24,9 +25,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.location.service.LocationService;
+import lombok.RequiredArgsConstructor;
 @Controller
-public class DosiController {
-
+@RequiredArgsConstructor
+public class LocationController {
+	private final LocationService service;
+	
 //	private String serviceKey = "BTjX5Rqk5SZSwrW687YxxqoqoH7FbYV%2FBKqfde1PPn0jiIoOy6aYAUb1MuK7h9izWzM%2FYX6SVOjBBUMIuwRRIg%3D%3D"; 썜꺼
 	private String serviceKey = "2Kd4kpeZc9Ej66agEoP%2F4%2Bs4nKOzfqtZA94rcXJ1IYkKAEIrWi6favIhgwJvZMFMh8YAXSLrGA3u3v%2FARI7s3g%3D%3D";
 	
@@ -36,15 +41,16 @@ public class DosiController {
     private List<Dong> dongList = new ArrayList<>();
     
     // pk번호
-    private int dosiNo = 1;
-    private int sigunguNo = 1;
-    private int dongNo = 1;
+    private int dosiNo = 0;
+    private int sigunguNo = 0;
+    private int dongNo = 0;
 	
  // localhost/dong?page=5&perPage=10000
 	@GetMapping("dong")
 	public String dong(
 		@RequestParam("page") int page,
-		@RequestParam("perPage") int perPage
+		@RequestParam("perPage") int perPage,
+		RedirectAttributes ra
 		) throws IOException, JSONException {
 		
 		for(int i=1 ; i<=5; i++) {
@@ -57,10 +63,25 @@ public class DosiController {
 			// 전달된 데이터들 중 data를 뽑으면 JSONArray 형태이다. 
 			convertData(data); //그걸 Java에서 사용 가능한 형태로 변환하는 구문
 		}
+		System.out.println(dosiList);
+		System.out.println(sigunguList);
 		System.out.println("dosiList : " + dosiList.size());
 		System.out.println("sigunguList : " + sigunguList.size());
 		System.out.println("dongList : " + dongList.size());
         
+		// 그럼 여기에 dosiList, sigunguList, dongList가 완성돼서 채워진다.
+		int result = service.insertDb(dosiList, sigunguList, dongList);
+		
+		String message=null;
+		if(result>0) {
+			//삽입 성공
+			message="위치 db에 모두 삽입 성공!!!";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/";
+		}
+		
+		message="위치 db에 삽입 실패...";
+		ra.addFlashAttribute("message", message);
 		return "redirect:/";
 	} 
 	
@@ -139,7 +160,7 @@ public class DosiController {
         	
         	// 조회된 데이터에서 도시가 바뀐 경우
         	if(currentDosi == null || !currentDosi.getDosiName().equals(map.get("시도명"))) {
-        		currentDosi = new Dosi(dosiNo++, map.get("시도명"));
+        		currentDosi = new Dosi(++dosiNo, map.get("시도명"));
         		
         		// 필터링 로직 추가!!!
         		
@@ -154,7 +175,7 @@ public class DosiController {
         	// 조회된 데이터에서 시군구가 바뀐 경우
     		if(currentSigungu == null || !currentSigungu.getSigunguName().equals(map.get("시군구명"))) {
     			
-        		currentSigungu = new Sigungu(dosiNo, sigunguNo++, map.get("시군구명"));
+        		currentSigungu = new Sigungu(dosiNo, ++sigunguNo, map.get("시군구명"));
         		
         		sigunguList.add(currentSigungu);
         		
@@ -165,7 +186,7 @@ public class DosiController {
         	
     		// 조회된 데이터에서 읍면동이 바뀐 경우
         	if(currentDong == null || !currentDong.getDongName().equals(map.get("읍면동명"))) {
-        		currentDong = new Dong(dongNo++, sigunguNo, map.get("읍면동명"));
+        		currentDong = new Dong(++dongNo, sigunguNo, map.get("읍면동명"));
         		
         		dongList.add(currentDong);
         	}

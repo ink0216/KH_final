@@ -1,5 +1,10 @@
-// 000-0000-0000
-String.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,2}$/g, "");
- 
-// 00-000-0000
-String.replace(/^(\d{0,2})(\d{0,3})(\d{0,4})$/g, "$1-$2-$3").replace(/\-{1,2}$/g, "");
+const updateMemberInfo = document.querySelector("#updateMemberInfo");
+const deleteBtn = document.querySelector("#deleteBtn");
+
+updateMemberInfo.addEventListener("click", () => {
+    location.href = "/myPage/myPageCheckPw";
+});
+
+deleteBtn.addEventListener("click", () => {
+    location.href = "/myPage/deleteMember"
+})
