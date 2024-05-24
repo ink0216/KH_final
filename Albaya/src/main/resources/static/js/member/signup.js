@@ -51,6 +51,8 @@
     const detailAddress = document.querySelector("#detailAddress");
     const addressVerify = document.querySelector("#addressVerify");
 
+   
+
     let count = 0;
 
     const obj = {
@@ -245,8 +247,6 @@
     });
 
     /* 주소 유효성 검사 1*/
-
-
     const restriction = () => {
         addressVerify.classList.add("fail");
         addressVerify.classList.remove("success");
@@ -305,6 +305,8 @@
         }
         validation();
     });
+
+    
 
 
 

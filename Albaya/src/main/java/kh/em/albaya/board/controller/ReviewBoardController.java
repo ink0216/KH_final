@@ -53,7 +53,7 @@ public class ReviewBoardController {
 		
 		//검색 아닐때
 		if(paramMap.get("key")==null) {
-			map = service.selectBoardTypeList(reviewBoardCode, cp); // 게시글 목록 조회
+			map = service.selectBoardList(reviewBoardCode, cp); // 게시글 목록 조회
 		}else { //검색일때
 			
 			paramMap.put("reviewBoardCode", reviewBoardCode); 
@@ -74,6 +74,7 @@ public class ReviewBoardController {
 	public String boardDetail(
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
+			@SessionAttribute("loginMember") Member loginMember,
 			Model model,
 			RedirectAttributes ra
 			) {

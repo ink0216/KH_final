@@ -42,6 +42,11 @@ public class HireController {
 //		hire.setShopNo(loginMember.get)
 		String message=null;
 		String path = null;
+		/*넘어오는 데이터 :
+		 * String )hireTitle, typeName, hireEnd, hireContent(근무기간), workDay(요일),
+		 * 			workStart, workEnd
+		 * int ) hireCount, hireTerm, payNo, payInput, hireGender
+		 * */
 		if(hireNo>0) {
 			//공고 등록 성공 시
 			message="공고가 성공적으로 등록되었습니다.";

@@ -32,7 +32,9 @@
                         <!-- <span th:text="*{memberEmail}">  -->
                         
                             <i class="fa-solid fa-pen" style="color: #000000;"></i>&nbsp;
-                            [[*{memberEmail}]]
+                            <!-- [[*{memberEmail}]] -->
+                            [[*{#strings.substringBefore(memberEmail,'@')}]]
+                          
                     </p>
                 </div>
                 <div id="readCount">
@@ -55,7 +57,7 @@
                 <div class="reviewBoard-btn-area">
                     
                         <button id="goToListBtn">목록으로</button>
-                        <!-- <th:block th:if="${reviewBoard.memberNo == session.loginMember?.memberNo}">   -->
+                        <th:block th:if="${reviewBoard.memberNo == session.loginMember?.memberNo}">  
                         <!-- th:block 안의 버튼은 로그인한 회원이 게시글의 회원번호와 같다면 활성화됨 백앤드 완성하면 위의 문장 주석 풀 예정임-->
                             <button id="updateBtn">수정하기</button>
                             <button id="deleteBtn">삭제하기</button>

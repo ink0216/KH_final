@@ -11,4 +11,11 @@ public interface EditBoardService {
 	 */
 	int reviewBoardDelete(Map<String, Integer> map);
 
+	
+	/** 게시글 수정
+	 * @param map
+	 * @return
+	 */
+	int reviewBoardUpdate(Map<String, Integer> map);
+
 }
