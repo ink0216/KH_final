@@ -41,9 +41,9 @@ public class LocationController {
     private List<Dong> dongList = new ArrayList<>();
     
     // pk번호
-    private int dosiNo = 1;
-    private int sigunguNo = 1;
-    private int dongNo = 1;
+    private int dosiNo = 0;
+    private int sigunguNo = 0;
+    private int dongNo = 0;
 	
  // localhost/dong?page=5&perPage=10000
 	@GetMapping("dong")
@@ -160,7 +160,7 @@ public class LocationController {
         	
         	// 조회된 데이터에서 도시가 바뀐 경우
         	if(currentDosi == null || !currentDosi.getDosiName().equals(map.get("시도명"))) {
-        		currentDosi = new Dosi(dosiNo++, map.get("시도명"));
+        		currentDosi = new Dosi(++dosiNo, map.get("시도명"));
         		
         		// 필터링 로직 추가!!!
         		
@@ -175,7 +175,7 @@ public class LocationController {
         	// 조회된 데이터에서 시군구가 바뀐 경우
     		if(currentSigungu == null || !currentSigungu.getSigunguName().equals(map.get("시군구명"))) {
     			
-        		currentSigungu = new Sigungu(dosiNo, sigunguNo++, map.get("시군구명"));
+        		currentSigungu = new Sigungu(dosiNo, ++sigunguNo, map.get("시군구명"));
         		
         		sigunguList.add(currentSigungu);
         		
@@ -186,7 +186,7 @@ public class LocationController {
         	
     		// 조회된 데이터에서 읍면동이 바뀐 경우
         	if(currentDong == null || !currentDong.getDongName().equals(map.get("읍면동명"))) {
-        		currentDong = new Dong(dongNo++, sigunguNo, map.get("읍면동명"));
+        		currentDong = new Dong(++dongNo, sigunguNo, map.get("읍면동명"));
         		
         		dongList.add(currentDong);
         	}

@@ -39,9 +39,9 @@
                    
                 </th:block>
                 <th:block th:if = "${session.loginMember == null}">
-                    <a href = "#" class = "login">로그인</a> &nbsp;
+                    <a href = "/member/login" class = "login">로그인</a> &nbsp;
                     |&nbsp;
-                    <a href = "#" class = "login">회원가입</a>  
+                    <a href = "/member/signup" class = "login">회원가입</a>  
                     &nbsp;&nbsp;&nbsp;&nbsp;<button class = "loggedIn">이력서 등록</button>
                     &nbsp;&nbsp;<button class = "loggedIn">공고 등록</button>
                 </th:block>
