@@ -41,10 +41,6 @@ public class HireController {
 		int shopNo = loginMember.getMemberNo();
 		hire.setShopNo(shopNo);
 		
-		//typeNo 조회하는 서비스 호출 후 typeNo에 세팅하기
-		int typeNo = service.typeNo(hire);
-		hire.setTypeNo(typeNo);
-		
 		int hireNo = service.hireWrite(hire);
 //		hire.setShopNo(loginMember.get)
 		String message=null;
@@ -62,7 +58,6 @@ public class HireController {
 			path="/"; //일단 메인페이지
 			//path="/hire/"+hireNo; //등록 성공한 공고 상세조회 페이지로 
 		}else {
-			
 			//공고 등록 실패 시
 			message="공고 등록에 실패하였습니다.";
 			path = "hireWrite";

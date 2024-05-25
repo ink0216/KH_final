@@ -1,5 +1,8 @@
 package kh.em.albaya.hire.model.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,23 +18,48 @@ public class HireServiceImpl implements HireService{
 	//공고 등록
 	@Override
 	public int hireWrite(Hire hire) {
+		/*넘어오는 데이터 :
+		 * String )hireTitle, typeName**, hireEnd, hireContent, workDay(요일),
+		 * 			workStart, workEnd, dosiName, sigunguName, dongName**, addressDetail
+		 * 			,shopName, shopOwner, shopTel, shopEmail 
+		 * int ) hireCount, hireTerm, payNo, payInput, hireGender
+		 * 
+		 * ===============
+		 * DB HIRE 테이블 컬럼
+		 * HIRE_NO, SHOP_NO, TYPE_NO**, PAY_NO,HIRE_TITLE, HIRE_CONTENT, HIRE_END,
+		 *  HIRE_TERM, WORK_DAY, PAY_INPUT, DONG_NO**, WORK_START, WORK_END
+		 * NULL) HIRE_START, HIRE_COUNT, HIRE_GENDER, HIRE_STATUS, ADDRESS_DETAIL
+		 * */
 		
-		//HIRE테이블에 INSERT하는 매퍼
-		int dongNo = mapper.dongNo(hire);
+		//typeNo 세팅
+		String typeName = hire.getTypeName();
+		int typeNo = mapper.hireTypeNo(typeName);
+		hire.setTypeNo(typeNo);
+		
+		String dosiName = hire.getDosiName();
+		String sigunguName = hire.getSigunguName();
+		String dongName=hire.getDongName();
+		
+		Map<String, String> hireLocation = new HashMap<>();
+		
+		hireLocation.put("dosiName", dosiName);
+		hireLocation.put("sigunguName", sigunguName);
+		hireLocation.put("dongName", dongName);
+		
+		
+		
+		//dongNo 세팅
+		int dongNo = mapper.hireDongNo(hireLocation);
 		hire.setDongNo(dongNo);
 		
-		int result = mapper.hireInsert(hire);
-		if(result ==0) {
-			return 0;
+		//INSERT
+		int result = mapper.insertWrite(hire);
+		if(result>0) { //삽입 성공 시
+			int hireNo = hire.getHireNo();
+			return hireNo;
 		}
-		//HIRE테이블에는 INSERT 성공한거다
 		
-		int hireNo = hire.getHireNo(); //삽입 성공한 공고 번호
-		
-		return hireNo;
-	}
-	@Override
-	public int typeNo(Hire hire) {
-		return mapper.typeNo(hire);
+		//삽입 실패 시
+		return 0;
 	}
 }

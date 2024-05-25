@@ -10,10 +10,5 @@ public interface HireService {
 	 */
 	int hireWrite(Hire hire);
 
-	/**typeNo 찾기
-	 * @param hire
-	 * @return
-	 */
-	int typeNo(Hire hire);
-
+	
 }

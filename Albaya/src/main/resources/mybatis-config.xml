@@ -2,24 +2,9 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration> <!-- 설정 두 값 설정 -->
 	<settings>
-		<!-- Java -> DB로 INSERT,UPDATE 시 Java의 null 값(참조하는 객체가 없다는 뜻)을 
-		DB의 NULL(값이 없다는 뜻)로    인식해서 DB에 반영하도록    설정--> 
 		<setting name="jdbcTypeForNull" value="NULL" />
-		<!-- insert나 update할 때 Java의 null이 DB에 들어갈 수 있는데 
-		DB의 null과 의미가 달라서 자바의 null을 DB에 넣을 수 없음
-		->어떻게 할까? 이 문구를 쓰면 된다-->
 		
-		
-		
-		
-		<!-- DB의 UnderScore (_) 표기법 <-> Java의 Camel 표기법 
-		두    표기법이    서로    변환    될    수    있도록    매핑하여
-		Java 필드명(memberId)과 DB 컬럼명(MEMBER_ID)	가    서로    연결되게    함 
-		-->
 		<setting name="mapUnderscoreToCamelCase" value="true" /> 
-		<!-- 언더스코어랑 카멜 표기법을 매핑해준다 자바에서는 카멜표기법 쓰고 DB에서는 대문자+언더스코어 씀 ->모양이 달라도 서로 같게 인식하도록 하는 설정
-		Stirng userName = rs.getString("USER_NAME") ->이거 안써도 되게 하는 설정
-		마이바티스는 컬럼명 필드명 같으면 연결해서 한 행의 데이터를 자동으로 담아줌 -->
 	</settings>
 
 </configuration>

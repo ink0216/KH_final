@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("comment")
 @RequiredArgsConstructor
 public class CommentController {
-	
 	private final CommentService service;
 	
 	// 댓글 작성

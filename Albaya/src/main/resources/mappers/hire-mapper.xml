@@ -20,46 +20,41 @@
 				)
 	</insert>
  -->
-	
-	<!-- HIRE테이블에만 INSERT -->
-	<insert id="hireInsert" useGeneratedKeys="true" parameterType="Hire">
-	<selectKey order="BEFORE" resultType="_int" keyProperty="hireNo">
-		SELECT SEQ_HIRE_NO.NEXTVAL FROM DUAL
-	</selectKey>
-		INSERT INTO "HIRE"
-		VALUES(#{hireNo},
-				#{shopNo},
-				#{typeNo},
-				#{payNo},
-				#{hireTitle},
-				#{hireContent},
-				TO_DATE(SYSDATE, 'YYYY-MM-DD'),
-				TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),
-				#{hireCount},
-				#{hireTerm},
-				#{hireGender},
-				#{hireStatus},
-				#{workDay},
-				#{payInput},
-				#{dongNo},
-				#{addressDetail},
-				#{workStart},
-				#{workEnd}
-				
-		
-		)
-	
-	</insert>
-	<select id="typeNo">
-		SELECT TYPE_NO
-		FROM WORK_TYPE
-		WHERE TYPE_NAME=#{typeName}
+ 
+ 	<!-- typeName에 따른 typeNo 조회 -->
+	<select id="hireTypeNo">
+		SELECT TYPE_NO FROM "WORK_TYPE"
+		WHERE TYPE_NAME = #{typeName}
 	</select>
-
-	<select id="dongNo">
+	
+	
+	
+	<!-- INSERT -->
+	<insert id="insertWrite" useGeneratedKeys="true" parameterType="Hire">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="hireNo">
+		SELECT SEQ_HIRE_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO "HIRE" 
+		VALUES(
+		#{hireNo},#{shopNo},#{typeNo},
+		#{payNo},#{hireTitle},#{hireContent},
+		DEFAULT,TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),#{hireCount},
+		#{hireTerm},#{hireGender},DEFAULT,
+		#{workDay},#{payInput},#{dongNo},
+		#{addressDetail},#{workStart},#{workEnd}
+				)
+	</insert>
+	
+	<!-- 시군구동이 모두 일치하는 동 번호 조회 -->
+	<select id="hireDongNo">
 		SELECT DONG_NO
 		FROM "DONG"
+		JOIN "SIGUNGU" USING (SIGUNGU_NO)
+		JOIN "DOSI" USING (DOSI_NO)
 		WHERE DONG_NAME LIKE '%'||#{dongName}||'%'
+		AND SIGUNGU_NAME LIKE '%'||#{sigunguName}||'%'
+		AND DOSI_NAME LIKE '%'||#{dosiName}||'%'
 	</select>
 	
 </mapper>
