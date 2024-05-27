@@ -38,7 +38,7 @@ public class MemberController {
    
    private final MemberService service;
    
-    final DefaultMessageService messageService;
+   final DefaultMessageService messageService;
     
    private final SMSConfig smsConfig;
 

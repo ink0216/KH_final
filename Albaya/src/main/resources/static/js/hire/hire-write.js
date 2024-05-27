@@ -210,65 +210,65 @@ const dong = document.createElement('input'); //동읍면
 
 
 function sample5_execDaumPostcode() {
-new daum.Postcode({
-    oncomplete: function(data) {
+    new daum.Postcode({
+        oncomplete: function(data) {
 
-        var addr;
+            var addr;
 
-        if(data.jibunAddress!=''){ //지번주소가 있는 경우
-            addr = data.jibunAddress; // 최종 주소 변수(지번주소)
-        } 
-        if(data.autoJibunAddress!=''){  //지번 주소가 없는 경우
-            addr = data.autoJibunAddress; 
-        }
-
-
-        console.log(data);
-        console.log("data.autoJibunAddress : ",data.autoJibunAddress);
-        console.log("addr : ",addr);
-
-
-        //-----------------------------------------------------------------------
-        //input 요소 추가        
-
-        div.innerHTML='';
-
-        sido.setAttribute("name","dosiName"); 
-        sigunsu.setAttribute("name","sigunguName");
-        dong.setAttribute("name","dongName");
-
-        sido.value=data.sido;
-        sigunsu.value=data.sigungu;
-        dong.value=data.bname;
-
-        div.append(sido,sigunsu,dong);
-        dd.append(div);
-
-        //---------------------------------------------------------------------------
-
-         // 주소 정보를 해당 필드에 넣는다.
-         document.getElementById("address").value = addr;
-  
-        // 주소로 상세 정보를 검색
-        geocoder.addressSearch(data.address, function(results, status) {
-            // 정상적으로 검색이 완료됐으면
-            if (status === daum.maps.services.Status.OK) {
-
-                var result = results[0]; //첫번째 결과의 값을 활용
-
-                // 해당 주소에 대한 좌표를 받아서
-                var coords = new daum.maps.LatLng(result.y, result.x);
-                // 지도를 보여준다.
-                mapContainer.style.display = "block";
-                map.relayout();
-                // 지도 중심을 변경한다.
-                map.setCenter(coords);
-                // 마커를 결과값으로 받은 위치로 옮긴다.
-                marker.setPosition(coords)
+            if(data.jibunAddress!=''){ //지번주소가 있는 경우
+                addr = data.jibunAddress; // 최종 주소 변수(지번주소)
+            } 
+            if(data.autoJibunAddress!=''){  //지번 주소가 없는 경우
+                addr = data.autoJibunAddress; 
             }
-        });
-    }
-}).open();
+
+
+            console.log(data);
+            console.log("data.autoJibunAddress : ",data.autoJibunAddress);
+            console.log("addr : ",addr);
+
+
+            //-----------------------------------------------------------------------
+            //input 요소 추가        
+
+            div.innerHTML='';
+
+            sido.setAttribute("name","dosiName"); 
+            sigunsu.setAttribute("name","sigunguName");
+            dong.setAttribute("name","dongName");
+
+            sido.value=data.sido;
+            sigunsu.value=data.sigungu;
+            dong.value=data.bname;
+
+            div.append(sido,sigunsu,dong);
+            dd.append(div);
+
+            //---------------------------------------------------------------------------
+
+            // 주소 정보를 해당 필드에 넣는다.
+            document.getElementById("address").value = addr;
+    
+            // 주소로 상세 정보를 검색
+            geocoder.addressSearch(data.address, function(results, status) {
+                // 정상적으로 검색이 완료됐으면
+                if (status === daum.maps.services.Status.OK) {
+
+                    var result = results[0]; //첫번째 결과의 값을 활용
+
+                    // 해당 주소에 대한 좌표를 받아서
+                    var coords = new daum.maps.LatLng(result.y, result.x);
+                    // 지도를 보여준다.
+                    mapContainer.style.display = "block";
+                    map.relayout();
+                    // 지도 중심을 변경한다.
+                    map.setCenter(coords);
+                    // 마커를 결과값으로 받은 위치로 옮긴다.
+                    marker.setPosition(coords)
+                }
+            });
+        }
+    }).open();
 }
 
 
