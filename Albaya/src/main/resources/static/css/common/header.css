@@ -41,6 +41,17 @@
     position:relative;
     
 }
+.underline:hover::after{
+    cursor:pointer;
+    height:5px;
+    
+    
+    
+    transform:scaleX(1);
+    transform-origin:center;
+    background-color:lightgray;
+    transition:transform 0.25s ease-out;
+}
 
 .underline::after{
     content:'';
@@ -49,20 +60,12 @@
     bottom:0;
     left:0;
     transform:scaleX(0);
-    transform-origin:center;
-    height:5px;
-    background-color:lightgray;
-    transition:transform 0.25s ease-out;
 }
 .underline:hover{
     cursor:pointer;
 }
 
-.underline:hover::after{
-    cursor:pointer;
-    transform:scaleX(1);
-    transform-origin:center;
-}
+
 
 .selectedList::after{
     width:100%;
