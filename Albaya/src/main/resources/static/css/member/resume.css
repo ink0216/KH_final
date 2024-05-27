@@ -1,4 +1,11 @@
-#profileInfo{
+#container{
+    margin:auto;
+    border:1px solid black;
+    width:1500px;
+   padding-bottom:100px;
+   margin-bottom:100px;
+}
+.profileInfo{
     margin:auto;
     display:flex;
     flex-direction: column;
@@ -9,7 +16,9 @@
     border-radius: 10px;
     padding:30px;
     padding-bottom: 90px;
+    
 }
+
 h1{
     text-align: center;
 }
@@ -100,6 +109,7 @@ h1{
     border:1px solid black;
     border-radius:10px;
     padding-bottom:20px;
+   
 }
 #resume>h3{
     text-align:center;
@@ -109,7 +119,7 @@ h1{
     margin-left:80px;
 
 }
-#resumeTitle>ul>li{
+.resumeElement>ul>li{
     list-style-type: none;
 }
 input{
@@ -153,4 +163,71 @@ hr{
     padding-bottom:2px;
     background:rgb(11, 146, 110);
     color:white;
+}
+
+#dropdownContainer{
+    display:flex;
+}
+#dropdownContainer>div:nth-child(2){
+    margin:auto;
+  
+    width:250px;
+}
+
+#dropdownContainer>div:nth-child(1){
+    
+
+    width:250px;
+}
+
+
+
+select{
+    margin-left:20px;
+    width:150px;
+    height:30px;
+    border-radius:10px;
+}
+
+#schoolContainer > div > input{
+    width:500px;
+    margin-left:20px;   
+}
+
+.show{
+    display:block;
+}
+
+.hide{
+    display:none;
+}
+
+input[type="date"]{
+    width:200px;
+}
+
+.term{
+    display:flex;
+}
+
+.term>div{
+    margin:auto;
+}
+#sigungu{
+    margin-left:200px;
+}
+#certificateDetail{
+    display:flex;
+}
+#certificateDetail>div>input[type="text"]{
+    width:300px;
+}
+#issueDetail{
+    margin-left:20px;
+}
+
+#registerBtn{
+    margin:auto;
+    border:1px solid blue;
+    height:40px;
 }
