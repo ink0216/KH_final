@@ -1,4 +1,5 @@
 
+
 #container{
     padding-left:20%;
     padding-right:20%;
@@ -43,9 +44,14 @@
 }
 .underline:hover::after{
     cursor:pointer;
+    height:5px;
+    
+    
+    
     transform:scaleX(1);
     transform-origin:center;
     background-color:lightgray;
+    transition:transform 0.25s ease-out;
 }
 
 .underline::after{
