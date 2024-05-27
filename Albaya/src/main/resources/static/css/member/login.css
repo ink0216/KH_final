@@ -10,13 +10,6 @@ body{
     font-family: 'SUIT-Regular';
 }
 
-/* 두꺼운 */
-@font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
 
 /*  전체 폰트 */
 @font-face {

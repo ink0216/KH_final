@@ -19,7 +19,7 @@ body{
 }
 
 button{
-    font-family: 'TheJamsil5Bold';
+    font-family: 'SUIT-Regular';
 }
 
 button:hover{
@@ -237,7 +237,7 @@ button:hover{
     /* color: white; */
     margin-left: 5px;
     font-size: 14px;
-    font-weight: bold;
+
 }
 
 .authKey-wrapper{
