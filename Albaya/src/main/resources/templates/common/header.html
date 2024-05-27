@@ -10,35 +10,36 @@
 </head>
 
 <header>
-    <div id="menuBar">
-        <div id="innerMenuBar">
+    <div class="menuBar">
+        <div class="innerMenuBar">
 
-
-            <div id="collab">
-                <div id="searchHeader">
-                    <a href="#" id="logo">
-                        <img src="/images/ALBAYA_LOGO.png">
-                    </a>
-                    <input type="text" placeholder="search" id="searchField">
-                    <button id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div><br><br>
-                <div id="menus">
-                    <ul>
-                        <li class="underline"><a><b>업직종별</b></a></li>
-                        <li class="underline"><a><b>지역별</b></a></li>
-                        <li class="underline"><a><b>알바토크</b></a></li>
-                    </ul>
+            <div class="header-left">
+                <div class="collab">
+                    <div class="searchHeader">
+                        <a href="#" id="logo">
+                            <img src="/images/ALBAYA_LOGO.png">
+                        </a>
+                        <input type="text" placeholder="search" id="searchField">
+                        <button id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div><br><br>
+                    <div id="menus">
+                        <ul>
+                            <li class="underline"><a><b>업직종별</b></a></li>
+                            <li class="underline"><a><b>지역별</b></a></li>
+                            <li class="underline"><a><b>알바토크</b></a></li>
+                        </ul>
+                    </div>
                 </div>
-
             </div>
 
-            <div id="buttons">
+
+            <div class="header-buttons">
 
                 <th:block th:if="${session.loginMember != null}">
                     <button class="loginMember"><i class="fa-regular fa-bell"></i></button>
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
-
                 </th:block>
+
                 <th:block th:if="${session.loginMember == null}">
                     <a href="/member/login" class="login">로그인</a> &nbsp;
                     |&nbsp;
@@ -47,9 +48,9 @@
                     &nbsp;&nbsp;<button class="loggedIn">공고 등록</button>
                 </th:block>
 
-                <button></button>
-
+                <!-- <button></button> -->
             </div>
+
         </div>
     </div>
 
