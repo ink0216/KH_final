@@ -6,13 +6,13 @@ const nextBtn = document.querySelector("#nextBtn");
 let authState = false;
 
 personalMember.addEventListener("click", () => {
-    personalMember.style.backgroundColor = "grey";
+    personalMember.style.backgroundColor = "rgb(190, 189, 189)";
     coparationMember.style.backgroundColor = "white"
     document.querySelector('.login-form').action = '/member/login';
 });
 
 coparationMember.addEventListener("click", () => {
-    coparationMember.style.backgroundColor = "grey";
+    coparationMember.style.backgroundColor = "rgb(190, 189, 189)";
     personalMember.style.backgroundColor = "white"
     document.querySelector('.login-form').action = '/shop/login';
 });
