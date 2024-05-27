@@ -146,7 +146,7 @@ button:hover{
     padding: 5px;
     border-radius: 5px;
     border: 1px solid black;
-
+    padding: 15px;
 }
 
 .login-button-area{

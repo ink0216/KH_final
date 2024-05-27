@@ -1,9 +1,13 @@
-const logo = document.querySelector("#logo");
-logo.addEventListener("click", ()=>{
-    location.href="/";
-});
+document.addEventListener("DOMContentLoaded", () => {
+    const logo = document.querySelector("#logo");
+    logo.addEventListener("click", () => {
+        location.href = "/";
+    });
 
-const account = document.querySelector("#account");
-account.addEventListener("click", () => {
-    location.href="/myPage/myPageInfo";
+    const account = document.querySelector("#account");
+    if (account) { 
+        account.addEventListener("click", () => {
+            location.href = "/myPage/myPageInfo";
+        });
+    }
 });

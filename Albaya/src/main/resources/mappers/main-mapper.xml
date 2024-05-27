@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kh.em.albaya.main.model.mapper.MainMapper">
+
+<!--
+SELECT HIRE_TITLE, PAY_NAME, PAY_INPUT, SIGUNGU_NAME, HIRE_NO
+		FROM "HIRE"
+		JOIN "PAY_TYPE" USING (PAY_NO)
+		JOIN "DONG" USING (DONG_NO)
+		JOIN "SIGUNGU" USING (SIGUNGU_NO)
+		WHERE HIRE_END >(SELECT SYSDATE FROM "DUAL")
+		AND HIRE_STATUS = 0
+		ORDER BY HIRE_NO DESC
+		 
+ -->
+	<!-- 공고 전체 리스트 조회 -->
+	<select id="hireList">
+		
+		SELECT HIRE_TITLE, PAY_NAME, PAY_INPUT, SIGUNGU_NAME, HIRE_NO 
+		FROM (
+				SELECT HIRE_TITLE, PAY_NAME, PAY_INPUT, SIGUNGU_NAME, HIRE_NO
+				FROM "HIRE"
+				JOIN "PAY_TYPE" USING (PAY_NO)
+				JOIN "DONG" USING (DONG_NO)
+				JOIN "SIGUNGU" USING (SIGUNGU_NO)
+				WHERE HIRE_STATUS = 0
+				AND  HIRE_END >(SELECT SYSDATE FROM "DUAL")
+				)
+		<![CDATA[
+		WHERE ROWNUM <=22
+		]]>
+		ORDER BY HIRE_NO DESC
+	</select>
+
+	
+</mapper>

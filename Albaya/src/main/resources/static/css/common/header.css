@@ -11,6 +11,7 @@
     font-style: normal;
 }
 
+
 #container{
     padding-left:20%;
     padding-right:20%;
@@ -49,6 +50,17 @@
     position:relative;
     
 }
+.underline:hover::after{
+    cursor:pointer;
+    height:5px;
+    
+    
+    
+    transform:scaleX(1);
+    transform-origin:center;
+    background-color:lightgray;
+    transition:transform 0.25s ease-out;
+}
 
 .underline::after{
     content:'';
@@ -59,18 +71,14 @@
     transform:scaleX(0);
     transform-origin:center;
     height:5px;
-    background-color:lightgray;
+    
     transition:transform 0.25s ease-out;
 }
 .underline:hover{
     cursor:pointer;
 }
 
-.underline:hover::after{
-    cursor:pointer;
-    transform:scaleX(1);
-    transform-origin:center;
-}
+
 
 .selectedList::after{
     width:100%;

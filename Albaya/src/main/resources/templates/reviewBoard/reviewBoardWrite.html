@@ -33,12 +33,12 @@
         <form action = "insert" th:object="${reviewBoard}" method="POST" class="reviewBoard-write" id="reviewBoardUpdateFrm">
 
             
-            <div id="reviewBoardTitle-area">
-                제목 <textarea name="reviewTitle" id="reviewBoardTitle" placeholder="제목을 입력하세요."></textarea>
+            <div id="reviewTitle-area">
+                제목 <textarea name="reviewTitle" id="reviewTitle" placeholder="제목을 입력하세요."></textarea>
             </div>
             <div id="reviewBoardContent-area">
-                내용 <textarea name="reviewBoardContent" id="reviewBoardContent" maxlength="4000">
-                 </textarea>
+                내용 <textarea name="reviewBoardContent" id="reviewBoardContent" maxlength="4000" 
+                placeholder = "내용을 입력하세요.(최대 4000자)&#13;&#10;&#13;&#10;&#13;&#10;게시글 작성 시 위의 주의사항을 반드시 숙지하셔야 합니다."></textarea>
             </div>
 
             <div class="writeBtn-area">

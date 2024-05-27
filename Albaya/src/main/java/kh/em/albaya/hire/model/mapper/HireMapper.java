@@ -31,6 +31,14 @@ public interface HireMapper {
 	 */
 	int hireDongNo(Map<String, String> hireLocation);
 
+
+
+	/**공고 상세 조회
+	 * @param hireNo
+	 * @return
+	 */
+	Hire detailHire(int hireNo);
+
 	
 
 	
