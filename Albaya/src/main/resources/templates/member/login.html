@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/member/login.css">
     <link rel="stylesheet" href="/css/member/header.css">
 </head>
+
 <body>
     <th:block th:replace="~{common/header}"></th:block>
     <main>
@@ -14,7 +16,7 @@
             <div class="login-container">
                 <div class="login-image-conatiner">
                     <div class="login-image">
-                        <img src="/images/logo.png" class="logo-img">
+                        <img src="/images/logo2.png" class="logo-img">
                     </div>
                 </div>
 
@@ -50,8 +52,8 @@
                                     </div>
                                     <div class="login-member-area">
                                         <a href="/member/findId">아이디 찾기</a> |
-                                        <a href="/member/findPw">비밀번호 찾기</a> | 
-                                        <a href="/member/signup">회원가입</a> 
+                                        <a href="/member/findPw">비밀번호 찾기</a> |
+                                        <a href="/member/signup">회원가입</a>
                                     </div>
                                 </div>
                             </div>
@@ -61,14 +63,16 @@
             </div>
         </div>
     </main>
-</body>
 
+
+</body>
 <script src="/js/member/login.js"></script>
 <script th:inline="javascript">
     const message =  /*[[${message}]]*/ "전달 받은 message";
     // message가 없다면 null
 
     if (message != null) alert(message);
-  </script>
-  <script src="/js/common/header.js"></script>
+</script>
+<script src="/js/common/header.js"></script>
+
 </html>

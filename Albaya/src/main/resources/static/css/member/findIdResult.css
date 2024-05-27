@@ -5,20 +5,21 @@
 }
 
 body{
-    background-color: rgb(228, 242, 238);
-    font-family: 'TheJamsil5Bold';
+    background-color: rgb(240 244 243);
+    font-family: 'SUIT-Regular';
 }
 
 /* 전체 폰트 */
+/*  전체 폰트 */
 @font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
 
 button{
-    font-family: 'TheJamsil5Bold';
+    font-family: 'SUIT-Regular';
 }
 
 button:hover{
@@ -43,7 +44,7 @@ button:hover{
 
 .login-container{
     display: flex;
-    width: 50%;
+    width: 920px;
     height: 500px;
     flex-direction: column;
     background-color: white;
@@ -76,6 +77,12 @@ button:hover{
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+#maskedEmail{
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
 }
 
 .findPw-area{
@@ -161,7 +168,7 @@ button:hover{
 
 .btnArea > form > button{
     width: 30%;
-    height: 20%;
+    height: 10%;
     font-size: 15px;
     background-color: #014C73;
     border: none;
