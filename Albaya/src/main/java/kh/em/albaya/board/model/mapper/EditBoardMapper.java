@@ -17,7 +17,7 @@ public interface EditBoardMapper {
 	int reviewBoardDelete(Map<String, Integer> map);
 
 	// 게시글 수정
-	int reviewBoardUpdate(Map<String, Integer> map);
+	int reviewBoardUpdate(ReviewBoard inputBoard);
 
 
 }

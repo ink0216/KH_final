@@ -80,7 +80,7 @@ if(updateBtn != null){
 
 
        
-        location.href = location.pathname.replace('board','editReviewBoard') + "/update" + location.search;
+        location.href = location.pathname.replace('reviewBoard','editReviewBoard') + "/update" + location.search;
     })
 
 }

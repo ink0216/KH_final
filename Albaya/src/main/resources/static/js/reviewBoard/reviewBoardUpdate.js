@@ -8,7 +8,7 @@ const reviewBoardUpdateFrm = document.querySelector("#reviewBoardUpdateFrm");
 reviewBoardUpdateFrm.addEventListener("submit", e => {
 
 
-    const reviewTitle = document.querySelector("[name='reivewTitle']");
+    const reviewTitle = document.querySelector("[name='reviewTitle']");
     const boardContent = document.querySelector("[name='reviewBoardContent']");
 
 

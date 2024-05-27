@@ -37,8 +37,8 @@ public class EditBoardServiceImpl implements EditBoardService {
 	
 	// 게시글 수정
 	@Override
-	public int reviewBoardUpdate(Map<String, Integer> map) {
-		int result = mapper.reviewBoardUpdate(map);
+	public int reviewBoardUpdate(ReviewBoard inputBoard) {
+		int result = mapper.reviewBoardUpdate(inputBoard);
 		
 		if(result == 0) return 0;
 		
