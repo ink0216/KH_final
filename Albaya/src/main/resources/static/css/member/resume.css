@@ -1,6 +1,9 @@
+body{
+    border:rgb(76, 112, 124);
+    background-color: rgb(214, 232, 239);
+}
 #container{
     margin:auto;
-    border:1px solid black;
     width:1500px;
    padding-bottom:100px;
    margin-bottom:100px;
@@ -12,11 +15,11 @@
     align-items: center;
     height:150px;
     width: 1000px;
-    border:1px solid black;
+    border:1px solid lightgray;
     border-radius: 10px;
     padding:30px;
     padding-bottom: 90px;
-    
+    background-color: white;
 }
 
 h1{
@@ -76,12 +79,15 @@ h1{
 #loadResume{
     display:flex;
     align-items:center;
-    border:1px solid black;
+    border:1px solid ligth;
     height:80px;
     padding-right:20px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius:10px;
+    border:rgb(76, 112, 124);
+    /* background-color: rgb(219, 230, 234); */
+    
  
 }
 #loadResume>div:nth-child(1){
@@ -106,9 +112,11 @@ h1{
     margin:auto;
     margin-top:20px;
     width: 1000px;
-    border:1px solid black;
+    border:1px solid lightgray;
     border-radius:10px;
     padding-bottom:20px;
+    background-color:white;
+   
    
 }
 #resume>h3{
@@ -226,8 +234,15 @@ input[type="date"]{
     margin-left:20px;
 }
 
-#registerBtn{
-    margin:auto;
-    border:1px solid blue;
-    height:40px;
+.resume{
+    
+    background-color: #014C73;
+    border-radius:10px;
+    border: 1px solid #014C73;
+    color:white;
+    width: 100px;
+    height:60px;
+}
+.resume:hover{
+    cursor:pointer;
 }
