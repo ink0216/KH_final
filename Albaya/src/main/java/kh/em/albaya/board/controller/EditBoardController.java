@@ -142,22 +142,24 @@ public class EditBoardController {
 		return path;
 	}
 	
+	
 	// 게시글 수정
 	@PostMapping("{reviewBoardCode:[12]}/{reviewBoardNo:[0-9]+}/update")
 	public String reviewBoardUpdate(
 		@PathVariable("reviewBoardCode")int reviewBoardCode,
 		@PathVariable("reviewBoardNo")int reviewBoardNo,
+		@ModelAttribute("inputBoard") ReviewBoard inputBoard,
 		@SessionAttribute("loginMember") Member loginMember,
 		@RequestParam(value="querystring", required = false, defaultValue = "") 
 		String querystring,
 		RedirectAttributes ra
 			) {
 		
-		Map<String, Integer> map = new HashMap<>();
-		map.put("reviewBoardCode",reviewBoardCode);
-		map.put("reivewBoardNo", reviewBoardNo);
+		inputBoard.setReviewBoardCode(reviewBoardCode);
+		inputBoard.setReviewBoardNo(reviewBoardNo);
+		inputBoard.setMemberNo(loginMember.getMemberNo());
 		
-		int result = service.reviewBoardUpdate(map);
+		int result = service.reviewBoardUpdate(inputBoard);
 		
 		String message = null;
 		String path = null;
@@ -165,13 +167,13 @@ public class EditBoardController {
 		if(result >0) {
 			message = "게시글 수정이 완료되었습니다";
 			path = String.format
-					("/board/%d/%d%s", 
+					("/reviewBoard/%d/%d%s", 
 							reviewBoardCode, 
 							reviewBoardNo, 
 							querystring);
 		}else {
 			message= "수정 실패하였습니다";
-			path = "update";
+			path = "/reviewBoard/update";
 		}
 		ra.addFlashAttribute("message", message);
 		

@@ -37,7 +37,7 @@
 	<!-- 게시글 수정 -->
 	<update id="reviewBoardUpdate">
 		UPDATE REVIEW_BOARD SET 
-		REVIEW_TITLE = #{revieTitle},
+		REVIEW_TITLE = #{reviewTitle},
 		REVIEW_BOARD_CONTENT = #{reviewBoardContent}
 		WHERE REVIEW_BOARD_CODE = #{reviewBoardCode}
 		AND REVIEW_BOARD_NO = #{reviewBoardNo}

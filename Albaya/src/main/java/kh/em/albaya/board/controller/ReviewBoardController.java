@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.ReviewBoardService;
 import kh.em.albaya.member.model.dto.Member;
@@ -75,7 +78,10 @@ public class ReviewBoardController {
 			@PathVariable("reviewBoardCode") int reviewBoardCode,
 			@PathVariable("reviewBoardNo") int reviewBoardNo,
 			Model model,
-			RedirectAttributes ra
+			RedirectAttributes ra,
+			@SessionAttribute(value = "loginMember", required = false) Member loginMember,
+			HttpServletRequest req,
+			HttpServletResponse resp
 			) {
 		// 일반,비회원,기업 전부 상세 조회 가능
 		
@@ -93,6 +99,19 @@ public class ReviewBoardController {
 			path = "redirect:/reviewBoard/" + reviewBoardCode;
 			ra.addFlashAttribute("message", "게시글이 존재하지 않습니다");
 		}else { // 있는 경우
+//			
+//			if(loginMember == null || 
+//			   loginMember.getMemberNo() != reviewBoard.getMemberNo()) {
+//				
+//				Cookie[] cookies = req.getCookies();
+//				
+//				Cookie c = null;
+//				for(Cookie temp : cookies) {
+//					
+//				}
+//			}
+//				
+				
 			path = "reviewBoard/reviewBoardDetail";
 			model.addAttribute("reviewBoard",reviewBoard);
 			// 조회수 관련 코드 추가예정
