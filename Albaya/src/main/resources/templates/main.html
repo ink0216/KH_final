@@ -26,142 +26,27 @@
 
     <br><br>
     <th:block th:replace="~{common/header}"></th:block>
-
+    <!-- 제목, 급여명,급여양, 시군구 조회해오기 -->
     <section>
         <div class="imgList">
             <div class="list">
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
+                <!-- 
+                    <th:block th:each=" boardType : ${application.boardTypeList}">
+                -->
+                <th:block th:each=" hire : ${boxList}" th:object="${hire}">
+                    <div class="imgItem" th:data-hire-no="*{hireNo}">
+                        
+                        <img src="/images/shopLogo.jpg" alt="기업 썸네일">
+                        <p id="hireTitle" th:text="*{hireTitle}">버거킹 알바 모집중😁😁😁
+                            함께 일해요~
+                        </p>
+                        <div class="itemInfo">
+                            <p id="payName" th:text="*{payName}">급여명</p>
+                            <p id="pay" th:text="*{payInput}">10000</p>
+                            <p id="sigunguName" th:text="*{sigunguName}">지역(시군구)</p>
+                        </div>
                     </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-                <div class="imgItem">
-                    <img src="/images/shopLogo.jpg" alt="기업 썸네일">
-                    <p id="hireTitle">버거킹 알바 모집중😁😁😁
-                        함께 일해요~
-                    </p>
-                    <div class="itemInfo">
-                        <p id="payName">급여명</p>
-                        <p id="pay">10000</p>
-                        <p id="sigunguName">지역(시군구)</p>
-                    </div>
-                </div>
-
-
-
+                </th:block>
             </div>
         </div>
 

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.em.albaya.board.model.mapper.ReviewBoardMapper">
+
+
+	<resultMap type="reviewBoard" id="reviewBoard_rm">
+	
+		<id property="reviewBoardNo" column="REVIEW_BOARD_NO"/>
+	
+		<collection 
+			property="commentList"
+			select = "selectCommentList"
+			column = "REVIEW_BOARD_NO"
+			javaType = "java.util.ArrayList"
+			ofType = "Comment"
+		/>
+	
+	</resultMap>
+
+
 	<!-- 게시판 종류 조회 -->
 	<select id="selectBoardTypeList">
 	SELECT REVIEW_BOARD_CODE "reviewBoardCode", REVIEW_BOARD_NAME "reviewBoardName"
@@ -108,7 +125,7 @@
 	
 	
 	<!-- 게시글 상세 조회 -->
-	<select id="selectOne">
+	<select id="selectOne" resultMap="reviewBoard_no">
 		SELECT REVIEW_BOARD_NO , REVIEW_TITLE, REVIEW_BOARD_CONTENT,
 				REVIEW_BOARD_CODE, READ_COUNT, MEMBER_NO,
 				MEMBER_EMAIL,
@@ -127,7 +144,7 @@
 	
 	
 	<!-- 상세 조회한 게시글 댓글 조회 -->
-	<select id="">
+	<select id="selectCommentList" resultType="Comment">
 		SELECT LEVEL, C.* 
 			FROM
 				(SELECT COMMENT_NO, COMMENT_CONTENT,
@@ -135,14 +152,14 @@
 						  REVIEW_BOARD_NO, MEMBER_NO, MEMBER_EMAIL,  PARENT_COMMENT_NO, COMMENT_DEL_FL
 				FROM "COMMENT"
 				JOIN MEMBER USING(MEMBER_NO)
-				WHERE REVIEW_BOARD_NO = 2) C
+				WHERE REVIEW_BOARD_NO = #{reviewBoardNo) C
 		WHERE COMMENT_DEL_FL = 'N'
 		OR 0 != (SELECT COUNT(*) FROM "COMMENT" SUB
 						WHERE SUB.PARENT_COMMENT_NO = C.COMMENT_NO
 						AND COMMENT_DEL_FL = 'N')
 		START WITH PARENT_COMMENT_NO IS NULL
 		CONNECT BY PRIOR COMMENT_NO = PARENT_COMMENT_NO
-		ORDER SIBLINGS BY COMMENT_NO;
+		ORDER SIBLINGS BY COMMENT_NO
 	</select>
 
 	

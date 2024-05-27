@@ -8,8 +8,8 @@ const reviewBoardUpdateFrm = document.querySelector("#reviewBoardUpdateFrm");
 reviewBoardUpdateFrm.addEventListener("submit", e => {
 
 
-    const reviewTitle = document.querySelector("[name='reivewTitle']");
-    const boardContent = document.querySelector("[name='reviewBoardContent']");
+    const reviewTitle = document.querySelector("[name='reviewTitle']");
+    const reviewBoardContent = document.querySelector("[name='reviewBoardContent']");
 
 
     // 제목 미작성시
@@ -43,3 +43,24 @@ reviewBoardUpdateFrm.addEventListener("submit", e => {
 
 });
 
+
+/* 뒤로가기 버튼 */
+
+const cancelBtn = document.querySelector("#cancelBtn")
+
+cancelBtn.addEventListener("click",() => {
+
+    if(confirm("뒤로가기를 하시면 지금까지 작성했던 내용이 모두 사라집니다. 정말 뒤로가시겠습니까?")){
+        
+      
+    
+
+        location.href = '/reviewBoard/2';
+
+    } else{
+
+        e.preventDefault();
+        return;
+    }
+
+})

@@ -72,6 +72,7 @@ deleteBtn.addEventListener("click", () => {
 /* 수정버튼  */
 
 const updateBtn = document.querySelector("#updateBtn");
+
 if(updateBtn != null){
 
     
@@ -80,7 +81,7 @@ if(updateBtn != null){
 
 
        
-        location.href = location.pathname.replace('board','editReviewBoard') + "/update" + location.search;
+        location.href = location.pathname.replace('reviewBoard','editReviewBoard') + "/update" + location.search;
     })
 
 }
