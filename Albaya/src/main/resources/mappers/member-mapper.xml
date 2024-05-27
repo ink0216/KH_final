@@ -44,8 +44,8 @@
 	
 	<update id="changePw">
 		UPDATE "MEMBER"
-		SET MEMBER_PW = #{encPw}
+		SET MEMBER_PW = #{encPw},
+		SET LAST_MODIFIED_PW_DATE = SYSDATE
 		WHERE MEMBER_EMAIL = #{memberEmail}
 	</update>
-	
 </mapper>

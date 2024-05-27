@@ -81,7 +81,7 @@
 
                     <div class="member-changePw-header">
                         <h3>비밀번호</h3>
-                        <button id="editBtn">변경</button>
+                        <button id="changePwBtn">변경</button>
                     </div>
                     <div class="member-changePw-p-area">
                         <p>비밀번호를 주기적으로 변경해 개인정보를 보호하세요.</p>
@@ -93,12 +93,12 @@
                             </div>
 
                             <div class="member-changePw-right">
-                                <th:block th:if="${session.loginMember.lastModifiedDate == null}">
+                                <th:block th:unless="${session.loginMember.lastModifiedPwDate}">
                                     안전을 위해 정보를 수정해주세요!!
                                 </th:block>
-                                <th:block th:if="${session.loginMember.lastModifiedPwDate != null}"
+                                <th:block th:if="${session.loginMember.lastModifiedPwDate}"
                                 th:text="${session.loginMember.lastModifiedPwDate}">
-                               </th:block>
+                                </th:block>
                             </div>
 
                         </div>
@@ -108,7 +108,7 @@
                 <div class="member-withdraw-container">
                     <div class="member-withdraw-header">
                         <h3>회원 탈퇴</h3>
-                        <button id="editBtn">탈퇴</button>
+                        <button id="deleteBtn">탈퇴</button>
                     </div>
                 </div>
             </div>
@@ -116,4 +116,10 @@
     </main>
 </body>
 <script src="/js/myPage/myPageInfo.js"></script>
+<script th:inline="javascript">
+    const message =  /*[[${message}]]*/ "전달 받은 message";
+    // message가 없다면 null
+
+    if (message != null) alert(message);
+</script>
 </html>

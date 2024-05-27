@@ -34,10 +34,10 @@ deleteBtn.addEventListener("click", () => {
     }
     alert("삭제되었습니다.");
 
-    return; // 임시로 넣은 return; 구문
+    
 
      // /board/AS/21?cp=1 -> /editBoard/AS/21/delete?cp=1 
-     const url = location.pathname.replace("board","editReviewBoard")  + "/delete"; 
+     const url = location.pathname.replace("reviewBoard","editReviewBoard")  + "/delete"; 
 
      // form태그 생성 
      const form = document.createElement("form");
@@ -71,9 +71,10 @@ deleteBtn.addEventListener("click", () => {
 
 /* 수정버튼  */
 
+const updateBtn = document.querySelector("#updateBtn");
 if(updateBtn != null){
 
-    const updateBtn = document.querySelector("#updateBtn");
+    
 
     updateBtn.addEventListener("click", () => {
 

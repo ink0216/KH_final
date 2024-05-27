@@ -1,0 +1,185 @@
+*{
+    /* border: 1px solid black; */
+    font-family: 'SUIT-Regular';
+}
+
+/* 제목 전체 폰트 */
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 이미지 제목 폰트 */
+@font-face {
+    font-family: 'WAGURITTF';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403@1.0/WAGURITTF.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ------------------------------------------------------------------------------------ */
+
+.header{
+
+    display: flex;
+    margin: 0px 20px;
+    align-items: center;
+    user-select: none;
+}
+.header h3{    font-family: 'GongGothicMedium';}
+
+#logo{
+    margin: 0 20px;
+    width: 170px;
+    height: auto;
+}
+
+/* ----------------------------------------------------------- */
+/* 모집내용 */
+.hireContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.containerAll{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+
+.marginContainal{
+    flex-direction: column;
+    margin: 20px 10px;
+}
+
+hr{
+    border: 0.5px solid #ddd; 
+}
+#hireDetailForm{
+    width: 90%;
+}
+.container{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.div1{
+    display: flex;
+    margin: 20px 30px;
+    height: auto;
+}
+
+.div2{
+    display: flex;
+    height: auto;
+}
+.div2 p{
+    margin: 3px;
+}
+.div2 .time{
+    margin-left: 10px;
+}
+.title{
+    width: 80px;
+    font-weight: bold;
+    margin-right: 20px
+}
+
+.payArea{
+    display: flex;
+    align-items: center;
+}
+#payName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid darksalmon;
+    border-radius: 10px;
+    font-size: 11px;
+    color: salmon;
+    margin-right: 10px;
+    padding: 0 10px;
+    height: 13px;
+
+}
+
+
+/* 이미지 글씨 부분 */
+.hireTitleImg{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#titleImage{
+    margin: auto;
+    width: 500px;
+}
+
+
+/* 공고문 조회 */
+.hireTitleImg pre {
+    font-family: 'WAGURITTF';
+    position: absolute;
+    width: 400px;
+    height: 40px;
+    resize: none;
+    top: 34%;
+    left: 43%;
+    transform: translate(-50%,-50%);
+    color: black;
+    border: none;
+    font-size: 20px;
+    outline: none;
+    text-align: center;
+}
+
+/* 지도 */
+#map{
+    width: 95%;
+    height: 300px;
+    margin-top: 15px;
+    margin: auto;
+}
+
+/* 버튼 */
+.btnArea{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.btnArea button{
+    padding: 10px;
+    margin: 20px;
+    font-size: 15px;
+    border: none;
+    background-color: #014C73 ;
+    color: white;
+    cursor: pointer;
+    width: 100px;
+}
+
+.btnArea button:hover{
+    background-color: #046298;
+}
+
+
+
+

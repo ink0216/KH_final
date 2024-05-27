@@ -10,4 +10,5 @@ public interface HireService {
 	 */
 	int hireWrite(Hire hire);
 
+	
 }

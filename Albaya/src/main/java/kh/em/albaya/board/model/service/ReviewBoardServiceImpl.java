@@ -28,7 +28,7 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 	
 	// 특정 게시판의 지정된 페이지 목록 조회
 	@Override
-	public Map<String, Object> selectBoardTypeList(int reviewBoardCode, int cp) {
+	public Map<String, Object> selectBoardList(int reviewBoardCode, int cp) {
 		
 		// 삭제 안된 게시글 조회
 		int listCount = mapper.getListCount(reviewBoardCode);

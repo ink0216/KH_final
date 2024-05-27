@@ -197,13 +197,58 @@ map: map
 });
 
 
+
+const dd = document.querySelector('.address-dd'); //dd태그
+
+const div = document.createElement('div');
+div.className='hidden';
+
+const sido = document.createElement('input'); // 시도
+const sigunsu = document.createElement('input'); // 시군구
+const dong = document.createElement('input'); //동읍면
+
+
+
 function sample5_execDaumPostcode() {
 new daum.Postcode({
     oncomplete: function(data) {
-        var addr = data.address; // 최종 주소 변수
 
-        // 주소 정보를 해당 필드에 넣는다.
-        document.getElementById("address").value = addr;
+        var addr;
+
+        if(data.jibunAddress!=''){ //지번주소가 있는 경우
+            addr = data.jibunAddress; // 최종 주소 변수(지번주소)
+        } 
+        if(data.autoJibunAddress!=''){  //지번 주소가 없는 경우
+            addr = data.autoJibunAddress; 
+        }
+
+
+        console.log(data);
+        console.log("data.autoJibunAddress : ",data.autoJibunAddress);
+        console.log("addr : ",addr);
+
+
+        //-----------------------------------------------------------------------
+        //input 요소 추가        
+
+        div.innerHTML='';
+
+        sido.setAttribute("name","dosiName"); 
+        sigunsu.setAttribute("name","sigunguName");
+        dong.setAttribute("name","dongName");
+
+        sido.value=data.sido;
+        sigunsu.value=data.sigungu;
+        dong.value=data.bname;
+
+        div.append(sido,sigunsu,dong);
+        dd.append(div);
+
+        //---------------------------------------------------------------------------
+
+         // 주소 정보를 해당 필드에 넣는다.
+         document.getElementById("address").value = addr;
+  
         // 주소로 상세 정보를 검색
         geocoder.addressSearch(data.address, function(results, status) {
             // 정상적으로 검색이 완료됐으면
@@ -587,6 +632,16 @@ hireWrtieForm.addEventListener("submit",e=>{
         e.preventDefault();
         return;
     }
+    const submitBtn = document.querySelector("#submitBtn");
+    submitBtn.addEventListener("click", ()=>{
+        const hireStatus = document.createElement("input");
+        hireStatus.classList.add("hidden");
+        hireStatus.setAttribute("name", "hireStatus");
+        //저장 : 1 // 임시저장 : 2
+        hireStatus.value=1;
+        const hireWrtieForm = document.querySelector("#hireWrtieForm");
+        hireWrtieForm.append(hireStatus);
+    });
 
 })
 

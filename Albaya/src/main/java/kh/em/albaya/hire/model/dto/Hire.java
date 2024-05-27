@@ -26,7 +26,7 @@ public class Hire {
 	private String hireEnd; //모집 종료 날짜AAA
 	private int hireCount; //모집인원AAA
 	private int hireTerm; //근무 기간 하루 / 일주일 ....AAAA
-	private int hireGender; //남 여 성별무관AAAAA
+	private String hireGender; //남 여 성별무관AAAAA
 	private int applyCount; //지원자 수
 	private int hireStatus; //공고 상태 미저장 저장 임시저장
 	private String workDay; //근무 요일AAAA
@@ -50,4 +50,11 @@ public class Hire {
 	// 월화수목금토일 name값 같은 checkbox 사용하면 -> String으로 넘어옴('월,화') 이런 식으로
 	//	-> 화면에 뿌리거나 할 때에는 ,를 기준으로 split해서 쪼개면 된다
 
+	//위치정보
+	private String dosiName;
+	private int dosiNo;
+	private String sigunguName;
+	private int sigunguNo;
+	private String dongName;
+	private int dongNo;
 }

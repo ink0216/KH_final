@@ -1,5 +1,8 @@
 package kh.em.albaya.myPage.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.member.model.dto.Member;
@@ -60,11 +64,84 @@ public class MyPageController {
 		
 		if(result == 1) {
 			ra.addFlashAttribute("message", message);
-			return "/";
+			return "/main";
 		}
 		else {
 			ra.addFlashAttribute("message", message);
-			return "redirect:/mypage/myPageInfo";
+			return "redirect:/myPage/myPageInfo";
+		}
+	}
+	
+	@GetMapping("updateMemberInfo")
+	public String updateMemberInfo() {
+		return "updateMemberInfo";
+	}
+	
+	@GetMapping("deleteMember")
+	public String deleteMember() {
+		return "/myPage/deleteMember";
+	}
+	
+	@PostMapping("deleteMember")
+	public String deleteMember(
+			Member member,
+	        @SessionAttribute(value = "loginMember", required = false) Member loginMember,
+			RedirectAttributes ra,
+			SessionStatus status) {
+		
+		int memberNo = loginMember.getMemberNo();
+		String memberEmail = member.getMemberEmail();
+		String memberPw = member.getMemberPw();
+		
+		String message = null;
+		
+		int result = service.myPageCheckPw(memberNo, memberEmail, memberPw);
+		
+		if(result == 1) {
+			int deleteMember = service.deleteMember(memberNo, memberEmail);
+			if(deleteMember == 1) {
+				message = "탈퇴되었습니다.";
+				ra.addFlashAttribute("message", message);
+				status.setComplete();
+				return "redirect:/";
+			}
+			else {
+				message = "비밀번호가 일치하지 않습니다.";
+				ra.addFlashAttribute("message", message);
+				return "redirect:/myPage/deleteMember";
+			}
+		}
+		return "redirect:/";
+	}
+	
+	@GetMapping("changePw")
+	public String changePw() {
+		return "/myPage/changePw";
+	}
+	
+	@PostMapping("changePw")
+	public String changePw(
+			@SessionAttribute(value = "loginMember", required = false) Member loginMember,
+			@RequestParam("curPassword") String curPassword,
+			@RequestParam("newPassword") String newPassword,
+			RedirectAttributes ra) {
+		int memberNo = loginMember.getMemberNo();
+		
+		int result = service.findMemberPw(memberNo, curPassword, newPassword);
+		
+		String message = null;
+		if(result >= 1) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			loginMember.setLastModifiedPwDate(sdf.format(new Date()));
+			
+			message = "비밀번호가 변경되었습니다";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/myPageInfo";
+		}
+		else {
+			message = "비밀번호가 일치하지 않습니다.";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/changePw";
 		}
 	}
 }

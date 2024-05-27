@@ -1,9 +1,7 @@
 package kh.em.albaya.board.controller;
 
 
-import java.lang.reflect.Member;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -17,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.ReviewBoardService;
+import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,12 +47,13 @@ public class ReviewBoardController {
       ) {
       // 일반, 비회원, 기업 전부 다 조회 가능
 
+
 		
 		Map<String , Object> map = null;
 		
 		//검색 아닐때
 		if(paramMap.get("key")==null) {
-			map = service.selectBoardTypeList(reviewBoardCode, cp); // 게시글 목록 조회
+			map = service.selectBoardList(reviewBoardCode, cp); // 게시글 목록 조회
 		}else { //검색일때
 			
 			paramMap.put("reviewBoardCode", reviewBoardCode); 
@@ -95,7 +95,9 @@ public class ReviewBoardController {
 		}else { // 있는 경우
 			path = "reviewBoard/reviewBoardDetail";
 			model.addAttribute("reviewBoard",reviewBoard);
+			// 조회수 관련 코드 추가예정
 		}
+		
 		
 		return path;
 	}

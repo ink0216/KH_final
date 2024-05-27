@@ -203,12 +203,8 @@ public class MemberController {
     		) {
     	
     	int result = service.changePw(newPassword, memberEmail);
-
-    	String message = null;
     	
     	if (result == 1) {
-    		message = "비밀번호가 변경되었습니다.";
-    		ra.addFlashAttribute("message", message);
     		return "redirect:/";
     	}
     	

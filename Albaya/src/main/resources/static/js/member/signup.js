@@ -71,62 +71,71 @@
         }
         event.preventDefault();
         const inputTel = document.querySelector('#inputTel').value;
-        const randomNumber = Math.floor(100000 + Math.random() * 900000);
-        const msg = randomNumber.toString();
 
-        console.log(msg);
-        const authObj = {
-            "inputTel" : inputTel,
-            "msg" : msg
+        if(inputTel.trim().length === 0){
+            alert("전화번호를 입력해주세요.");
+            event.preventDefault();
+            obj.authState = false;
+            return;
         }
-
-        fetch('/member/send-one', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(authObj)
-        })
-        .then(resp => resp.json())
-        .then(result => {
-            count++;
-          
-            if(count > 1 || inputTel.value.trim().length === 0){
-                alert("휴대폰 인증은 1회만 가능합니다. 새로고침 해주세요.");
-                event.preventDefault();
-                return;
+        else{
+            const randomNumber = Math.floor(100000 + Math.random() * 900000);
+            const msg = randomNumber.toString();
+    
+            console.log(msg);
+            const authObj = {
+                "inputTel" : inputTel,
+                "msg" : msg
             }
-            
-            const inputAuthField = document.createElement("input");
-            inputAuthField.classList.add("inputAuthField");
-            inputAuthField.setAttribute("type","text");
-            inputAuth.append(inputAuthField);
-
-            const authButton = document.createElement("button");
-            authButton.classList.add("authButton");
-            authButton.setAttribute("type","button");
-            inputAuth.append(authButton);
-            authButton.textContent = "인증확인";
-
-            alert("인증번호가 전송되었습니다.");
-
-            authButton.addEventListener("click", () => {
-                console.log(inputAuthField.value.trim().length)
-                if(inputAuthField.value.trim().length <= 0){
-                    alert("인증번호를 입력해주세요.");
+            fetch('/member/send-one', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(authObj)
+            })
+            .then(resp => resp.json())
+            .then(result => {
+                count++;
+    
+                if(count > 1){
+                    alert("휴대폰 인증은 1회만 가능합니다. 새로고침 해주세요.");
+                    event.preventDefault();
                     obj.authState = false;
                     return;
                 }
                 
-                if(authObj.msg != inputAuthField.value){
-                    alert("인증번호가 일치하지 않습니다.");
-                    obj.authState = false;
-                    return;
-                }
-                alert("인증되었습니다.");
-                obj.authState = true;
+                const inputAuthField = document.createElement("input");
+                inputAuthField.classList.add("inputAuthField");
+                inputAuthField.setAttribute("type","text");
+                inputAuth.append(inputAuthField);
+    
+                const authButton = document.createElement("button");
+                authButton.classList.add("authButton");
+                authButton.setAttribute("type","button");
+                inputAuth.append(authButton);
+                authButton.textContent = "인증확인";
+    
+                alert("인증번호가 전송되었습니다.");
+    
+                authButton.addEventListener("click", () => {
+                    console.log(inputAuthField.value.trim().length)
+                    if(inputAuthField.value.trim().length <= 0){
+                        alert("인증번호를 입력해주세요.");
+                        obj.authState = false;
+                        return;
+                    }
+                    
+                    if(authObj.msg != inputAuthField.value){
+                        alert("인증번호가 일치하지 않습니다.");
+                        obj.authState = false;
+                        return;
+                    }
+                    alert("인증되었습니다.");
+                    obj.authState = true;
+                })
             })
-        })
+        }
     });
 
 

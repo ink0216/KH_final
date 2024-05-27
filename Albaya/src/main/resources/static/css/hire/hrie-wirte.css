@@ -35,6 +35,7 @@
     display: flex;
     margin: 0px 20px;
     user-select: none;
+    align-items: center;
 }
 .header h3{    font-family: 'GongGothicMedium';}
 
@@ -265,6 +266,10 @@ font-weight: bold;
     user-select: none;
 }
 
+.hidden{
+    display: none;
+}
+
 
 #map{
     width: 500px;
@@ -374,6 +379,7 @@ font-weight: bold;
     background-color: #014C73 ;
     color: white;
     cursor: pointer;
+    width: 100px;
 }
 
 .btnArea button:hover{
@@ -397,4 +403,3 @@ font-weight: bold;
 
 
 /* ------------------------------------------------------------------ */
-/* 공고문 조회 */

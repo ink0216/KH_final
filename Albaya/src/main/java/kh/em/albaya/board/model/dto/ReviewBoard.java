@@ -19,13 +19,13 @@ public class ReviewBoard {
 	
 	private int reviewBoardNo;
 	private int memberNo;
+	private int reviewBoardCode;
 	private String reviewTitle;
 	private String reviewBoardContent;
 	private String reviewBoardWriteDate;
 	private int readCount;
 	private String boardDelFl;
 	private String reviewBoardUpdateDate;
-	private int reviewBoardCode;
 	
 	// MEMBER 테이블 조인
 	private String memberEmail;

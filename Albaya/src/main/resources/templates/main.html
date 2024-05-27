@@ -12,13 +12,14 @@
     </style>
     <link rel="stylesheet" href="/css/common/header.css">
     <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
 </head>
 
 <body>
     메인페이지 입니다. <br>
     <a href="/hire/hireWrite">공고 작성 페이지로 이동</a>
     <br>
-    <a href="/reviewBoardList">알바 후기 게시판으로 이동</a>
+    <a href="/reviewBoard/2">알바 후기 게시판으로 이동</a>
     <br>
     <a href="/hire/hireDetail">공고문 상세 조회</a>
 
@@ -202,9 +203,7 @@
 
     </section>
 
-
-
-
+    <th:block th:replace="~{common/footer}"></th:block>
     <script th:inline="javascript">
         const message =  /*[[${message}]]*/ "전달 받은 message";
         // message가 없다면 null

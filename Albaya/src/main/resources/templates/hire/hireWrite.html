@@ -7,6 +7,7 @@
     <title>공고문 등록</title>
 
     <link rel="stylesheet" href="/css/hire/hrie-wirte.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
 </head>
 
 <body>
@@ -62,7 +63,7 @@
                             모집인원
                         </dt>
                         <dd>
-                            <input type="text" name="hireCount" id="hireCount" placeholder="모집인원을 등록해주세요">
+                            <input type="number" name="hireCount" id="hireCount" placeholder="모집인원을 등록해주세요">
                             <span class="inputConfirm" id="countMessage"></span>
                         </dd>
                     </dl>
@@ -204,7 +205,7 @@
                             </select>
 
 
-                            <input type="text" id="payInput" placeholder="급여">
+                            <input type="number" id="payInput" name="payInput" placeholder="급여">
                             <span class="inputConfirm" id="payMessage"></span>
 
 
@@ -221,15 +222,15 @@
                         <dt>모집 성별</dt>
                         <dd>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender0" value="0" class="hireGender">
+                                <input type="radio" name="hireGender" id="gender0" value="A" class="hireGender">
                                 <label for="gender0">성별무관</label>
                             </div>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender1" value="1" class="hireGender">
+                                <input type="radio" name="hireGender" id="gender1" value="M" class="hireGender">
                                 <label for="gender1">남</label>
                             </div>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender2" value="2" class="hireGender">
+                                <input type="radio" name="hireGender" id="gender2" value="F" class="hireGender">
 
                                 <label for="gender2">여</label>
                             </div>
@@ -249,7 +250,7 @@
 
                     <dl>
                         <dt>근무지 주소</dt>
-                        <dd>
+                        <dd class="address-dd">
                             <!-- 주소를 입력 받은 input -->
                             <input type="text" id="address" placeholder="주소" name="address" readonly>
                             <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"
@@ -344,6 +345,14 @@
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b&libraries=services"></script>
     <script src="/js/hire/hire-write.js"></script>
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <script th:inline="javascript">
+        const message =  /*[[${message}]]*/ "전달 받은 message";
+        // message가 없다면 null
+
+        if (message != null) alert(message);
+    </script>
+
 </body>
 
 </html>
