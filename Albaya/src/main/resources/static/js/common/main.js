@@ -114,4 +114,12 @@ const setPageOf=(pageNumber)=>{
 
     })
 })
-
+// <!-- document.querySelector(".imgItem").dataset.hireNo 해서 꺼내 쓸 수 있다.!!!!! -->
+const imgItem = document.querySelectorAll(".imgItem");
+imgItem.forEach(i=>{
+    i.addEventListener("click", ()=>{
+        let hireNo = i.dataset.hireNo;
+        console.log(hireNo);
+        location.href='/hire/'+hireNo;
+    })
+});
