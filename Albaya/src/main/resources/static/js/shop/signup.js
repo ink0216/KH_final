@@ -1,6 +1,7 @@
 
 
 const shopEmail= document.querySelector("#shopEmail");
+const emailBtn = document.querySelector("#emailBtn");
 
 let count = 0;
 
