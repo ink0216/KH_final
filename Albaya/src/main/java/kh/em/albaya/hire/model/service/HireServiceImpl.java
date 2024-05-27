@@ -47,7 +47,6 @@ public class HireServiceImpl implements HireService{
 		hireLocation.put("dongName", dongName);
 		
 		
-		
 		//dongNo 세팅
 		int dongNo = mapper.hireDongNo(hireLocation);
 		hire.setDongNo(dongNo);
@@ -61,5 +60,11 @@ public class HireServiceImpl implements HireService{
 		
 		//삽입 실패 시
 		return 0;
+	}
+	
+	//공고 상세 조회
+	@Override
+	public Hire detailHire(int hireNo) {
+		return mapper.detailHire(hireNo);
 	}
 }

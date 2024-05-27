@@ -10,5 +10,11 @@ public interface HireService {
 	 */
 	int hireWrite(Hire hire);
 
+	/**공고 상세조회
+	 * @param hireNo
+	 * @return
+	 */
+	Hire detailHire(int hireNo);
+
 	
 }
