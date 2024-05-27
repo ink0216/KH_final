@@ -72,6 +72,7 @@ deleteBtn.addEventListener("click", () => {
 /* 수정버튼  */
 
 const updateBtn = document.querySelector("#updateBtn");
+
 if(updateBtn != null){
 
     

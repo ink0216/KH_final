@@ -40,7 +40,7 @@ min-height: 100vh;
 /* 게시판 컨테이너 스타일 */
 .list-table {
 max-width: 1300px;
-background-color:white;
+background-color:rgb(245, 154, 154);
 padding: 20px;
 border-radius: 8px;
 /* margin-top: 80px;
@@ -102,7 +102,7 @@ text-decoration: none;
 
 /* 테이블 행 스타일 */
 .list-table tr:hover {
-background-color: #EAEAEA
+background-color: #ee7c7c
 }
 
 
@@ -121,11 +121,6 @@ margin-left:700px;
 margin-top:30px;
 border-radius:15px;
 margin-left:460px;
-display:flex;
-flex-direction: row;
-justify-content: center;
-align-items:center;
-
 
 
 }
@@ -278,6 +273,3 @@ cursor:pointer;
 }
 
 
-.reviewBoardButtonNotice{
-   color:red;
-}

@@ -16,7 +16,10 @@ public class MainController {
    }
    
 
-   
+   @RequestMapping("admin")
+   public String adminPage() {
+	   return "/admin";
+   }
 
 
    
