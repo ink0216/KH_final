@@ -1,22 +1,61 @@
 
 
 const shopEmail= document.querySelector("#shopEmail");
+
+let count = 0;
+
+const obj = {
+    "memberEmail":false,
+    "memberPw":false,
+    "memberPhoneNumber":false,
+    "memberName":false,
+    "memberGender":false,
+    "memberAddress":false,
+    "authState":false
+};
+
 shopEmail.addEventListener("input", () => {
     const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if(shopEmail.value.trim().length === 0){
-        // obj.memberEmail= false;
-        inputEmail.value = "";
+        obj.memberEmail= false;
+        shopEmail.value = "";
         return;
     }
 
     if(!regExp.test(shopEmail.value)){
-        emailVerify.classList.add("red");
-        emailVerify.classList.remove("green");
+        emailVerify.classList.add("fail");
+        emailVerify.classList.remove("success");
         emailVerify.innerText = "올바른 이메일 형식이 아닙니다";
-        // obj.memberEmail = false;
+        obj.memberEmail = false;
         return;
     }
+    fetch("/shop/checkEmail",{
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ email: shopEmail.value })
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        if(result == 1){
+            console.log("ㅎㅇ");
+            emailVerify.classList.add("fail");
+            emailVerify.classList.remove("success");
+            emailVerify.innerText = "이미 존재하는 이메일 입니다"
+            obj.memberEmail = false;
+            return;
+        }
+        emailVerify.classList.add("success");
+        emailVerify.classList.remove("fail");
+        emailVerify.innerText = "사용 가능한 이메일 입니다"
+        obj.memberEmail = true;
+
+        
+    })
+    emailVerify.classList.add("success");
+    emailVerify.classList.remove("fail");
+    emailVerify.innerText = "올바른 이메일 형식입니다";
+    obj.memberEmail = true;
 })
         
 

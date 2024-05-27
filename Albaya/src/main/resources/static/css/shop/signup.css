@@ -166,10 +166,10 @@ form{
     border-radius: 5px;
 }
 
-.red{
+.fail{
     color: red;
 }
 
-.green{
+.success{
     color: green;
 }

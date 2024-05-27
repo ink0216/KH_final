@@ -52,4 +52,11 @@ public class ShopController {
     public String signup() {
     	return "/shop/signup";
     }
+    
+    @PostMapping("checkEmail")
+    @ResponseBody
+    public int postMethodName(@RequestBody String memberEmail) {  
+        return service.checkEmail(memberEmail);
+    }
+    
 }
