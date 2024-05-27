@@ -158,27 +158,27 @@
             return;
         }
 
-        fetch(url,{
-            method:"POST",
-            headers: {"Content-Type":"application/json"},
-            body: inputEmail.value
-        })
-        .then(resp => resp.text())
-        .then(result => {
-            if(result == 1){
-                emailVerify.classList.add("fail");
-                emailVerify.classList.remove("success");
-                emailVerify.innerText = "이미 존재하는 이메일 입니다"
-                obj.memberEmail = false;
-                return;
-            }
-            emailVerify.classList.add("success");
-            emailVerify.classList.remove("fail");
-            emailVerify.innerText = "사용 가능한 이메일 입니다"
-            obj.memberEmail = true;
+        // fetch(url,{
+        //     method:"POST",
+        //     headers: {"Content-Type":"application/json"},
+        //     body: inputEmail.value
+        // })
+        // .then(resp => resp.text())
+        // .then(result => {
+        //     if(result == 1){
+        //         emailVerify.classList.add("fail");
+        //         emailVerify.classList.remove("success");
+        //         emailVerify.innerText = "이미 존재하는 이메일 입니다"
+        //         obj.memberEmail = false;
+        //         return;
+        //     }
+        //     emailVerify.classList.add("success");
+        //     emailVerify.classList.remove("fail");
+        //     emailVerify.innerText = "사용 가능한 이메일 입니다"
+        //     obj.memberEmail = true;
 
             
-        })
+        // })
         emailVerify.classList.add("success");
         emailVerify.classList.remove("fail");
         emailVerify.innerText = "올바른 이메일 형식입니다";
@@ -187,7 +187,9 @@
     });
 
     /* 비밀번호 유효검사 */
+    
     inputPw.addEventListener("input", () => {
+        
         const regExp = /^[a-zA-Z0-9!@#_-]{8,20}$/;
         if(inputPw.value.trim().length === 0){
             obj.memberPw= false;

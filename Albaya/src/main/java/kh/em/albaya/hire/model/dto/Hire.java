@@ -20,6 +20,7 @@ public class Hire {
 	private int typeNo; //직종 번호AAA
 	private String typeName; //직종 이름(여기도 들어오나 확인해보기)
 	private int payNo; //시급 / 주급AAAA
+	private String payName;
 	private String hireTitle; //공고 제목AAA
 	private String hireContent; //주요 근무 내용AAAA
 	private String hireStart; //모집 시작 날짜AAA

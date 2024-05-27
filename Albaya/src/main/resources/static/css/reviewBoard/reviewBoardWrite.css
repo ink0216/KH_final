@@ -36,7 +36,7 @@ body{
     border:1px solid black;
 }
 
-#reviewBoardTitle-area{
+#reviewTitle-area{
     font-size:30px;
     justify-content: space-evenly;
     display: flex;
@@ -44,9 +44,9 @@ body{
     
 }
 
-#reviewBoardTitle{
+#reviewTitle{
     width:800px;
-    height:35px;
+    height:25px;
     border-radius:10px;
     border-color:rgb(184, 171, 171);
     font-family : "inherit";
@@ -67,6 +67,7 @@ textarea {
     border-radius:10px;
     border-color:rgb(184, 171, 171);
     resize:none;
+    padding:8px;
 }
 
 

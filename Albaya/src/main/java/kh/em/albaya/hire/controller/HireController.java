@@ -3,6 +3,7 @@ package kh.em.albaya.hire.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -70,7 +71,20 @@ public class HireController {
 	public String hirePopup() { //업직종 선택 팝업창으로 이동
 		return "/hire/hirePopup";
 	}
-	
+	//@GetMapping("{boardCode:[0-9]+}")
+	/**공고 상세 조회 페이지로 이동
+	 * @param hireNo
+	 * @return
+	 */
+	@GetMapping("{hireNo:[0-9]+}")
+	public String hireDetail(
+			@PathVariable("hireNo") int hireNo,
+			Model model
+			) {
+		Hire hire = service.detailHire(hireNo);
+		model.addAttribute("hire", hire);
+		return "/hire/hireDetail";
+	}
 	
 	
 	

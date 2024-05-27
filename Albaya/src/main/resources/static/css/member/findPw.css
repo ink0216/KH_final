@@ -5,20 +5,22 @@
 }
 
 body{
-    background-color: rgb(228, 242, 238);
-    font-family: 'TheJamsil5Bold';
+    background-color: rgb(240 244 243);
+    font-family: 'SUIT-Regular';
 }
 
 /* 전체 폰트 */
+/*  전체 폰트 */
 @font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
 
+
 button{
-    font-family: 'TheJamsil5Bold';
+    font-family: 'SUIT-Regular';
 }
 
 button:hover{
@@ -43,11 +45,18 @@ button:hover{
 
 .login-container{
     display: flex;
-    width: 50%;
-    height: 500px;
+    width: 920px;
+    height: 550px;
     flex-direction: column;
     background-color: white;
     align-items: center;
+    margin: 50px 30px;
+    padding: 10px 0
+}
+
+.login-text p{
+    font-size: 13px;
+    color: #545454;
 }
 
 
@@ -94,6 +103,10 @@ button:hover{
     justify-content: center;
 }
 
+.select-member button{
+    font-weight: bold;
+}
+
 .selected-member{
     display:flex;
     width: 40%;
@@ -131,7 +144,7 @@ button:hover{
 
 
 #personalMember{
-    background-color: grey;
+    background-color: rgb(190, 189, 189);
 }
 
 .findId-middle-wrapper{
@@ -157,6 +170,14 @@ button:hover{
     justify-content: center;
 }
 
+.findId span{
+    font-weight: bold;
+}
+
+.findId input{
+    padding: 10px;
+}
+
 .findId-text-area{
     display: flex;
     align-items: center;
@@ -177,12 +198,14 @@ button:hover{
     width: 100%;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 15px;
 }
 
 .findId-area-pNum > input{
     width: 100%;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 15px;
 }
 
 .findId-footer-wrapper {
@@ -200,27 +223,28 @@ button:hover{
 
 .findId-footer-button > button{
     width: 100%;
-    height: 100%;
+    height: 68%;
     border: none;
     border-radius: 5px;
     background-color: #014C73;
     color: white;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .authKey-area{
     display: flex;
-    width: 20%;
+    width: 30%;
+    justify-content: center;
 }
 
 .authKey-area > button{
-    width: 100%;
+    width: 87%;
+    height: 92%;
     border: none;
     border-radius: 5px;
-    background-color: #014C73;
-    color: white;
-    margin-left: 5px;
-    font-size: 14px;
+    font-size: 13px;
+
 }
 
 .authKey-wrapper{
