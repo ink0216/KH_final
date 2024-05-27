@@ -54,7 +54,7 @@ const selectCommentList = () => {
 
                     // 닉네임
                     const nickname = document.createElement("span");
-                    nickname.innerText = comment.memberNickname;
+                    nickname.innerText = comment.memberEmail;
 
                     // 날짜(작성일)
                     const commentDate = document.createElement("span");

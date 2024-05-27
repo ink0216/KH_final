@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판 상세</title>
     <link rel="stylesheet" href="/css/reviewBoard/reviewBoardDetail.css">
+    <link rel="stylesheet" href="/css/reviewBoard/comment.css">
     <th:block th:replace="~{common/header}"></th:block>
 
     <!-- 2024-05-17 기준 타임리프 코드 다 주석처리한 상태로 다 바깥으로 꺼냄 (미완성상태에서 놔두면 타임리프 오류남) 나중에 다시 집어넣어야 함 -->
@@ -46,7 +47,8 @@
                 </div>
                 <div id="declare-area"> 
                     <!-- 신고 아이콘 -->
-                    <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren", onclick="openPopup()" style="color: #ff0000;"></i>
+                    <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren", onclick="openPopup()" style="color: #ff0000;"
+                    ></i>
                 </div>
             </div>
                 <div id="reviewBoardContent-area" th:text="*{reviewBoardContent}">

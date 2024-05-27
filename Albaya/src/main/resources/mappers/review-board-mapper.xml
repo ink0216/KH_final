@@ -125,7 +125,7 @@
 	
 	
 	<!-- 게시글 상세 조회 -->
-	<select id="selectOne" resultMap="reviewBoard_no">
+	<select id="selectOne" resultMap="reviewBoard_rm">
 		SELECT REVIEW_BOARD_NO , REVIEW_TITLE, REVIEW_BOARD_CONTENT,
 				REVIEW_BOARD_CODE, READ_COUNT, MEMBER_NO,
 				MEMBER_EMAIL,
@@ -152,7 +152,7 @@
 						  REVIEW_BOARD_NO, MEMBER_NO, MEMBER_EMAIL,  PARENT_COMMENT_NO, COMMENT_DEL_FL
 				FROM "COMMENT"
 				JOIN MEMBER USING(MEMBER_NO)
-				WHERE REVIEW_BOARD_NO = #{reviewBoardNo) C
+				WHERE REVIEW_BOARD_NO = #{reviewBoardNo}) C
 		WHERE COMMENT_DEL_FL = 'N'
 		OR 0 != (SELECT COUNT(*) FROM "COMMENT" SUB
 						WHERE SUB.PARENT_COMMENT_NO = C.COMMENT_NO
