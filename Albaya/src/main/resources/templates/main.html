@@ -35,7 +35,7 @@
                 -->
                 <th:block th:each=" hire : ${boxList}" th:object="${hire}">
                     <div class="imgItem" th:data-hire-no="*{hireNo}">
-                        
+
                         <img src="/images/shopLogo.jpg" alt="기업 썸네일">
                         <p id="hireTitle" th:text="*{hireTitle}">버거킹 알바 모집중😁😁😁
                             함께 일해요~
@@ -82,7 +82,8 @@
 
         <div class="pagination-container">
             <div class="prev-button">이전</div>
-            <div class="number-button-wrapper"><span class="number-button">1</span></div>
+            <div class="number-button-wrapper"><button class="number-button">1</ㅠ>
+            </div>
             <div class="next-button">이후</div>
         </div>
 

@@ -1,5 +1,8 @@
 package kh.em.albaya.hire.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import kh.em.albaya.hire.model.dto.Hire;
 
 public interface HireService {
@@ -15,6 +18,8 @@ public interface HireService {
 	 * @return
 	 */
 	Hire detailHire(int hireNo);
+
+	Map<String,Object> selectHireList(int cp);
 
 	
 }
