@@ -51,7 +51,7 @@
                     ></i>
                 </div>
             </div>
-                <div id="reviewBoardContent-area" th:text="*{reviewBoardContent}">
+                <div style="white-space:pre;" id="reviewBoardContent-area" th:text="*{reviewBoardContent}">
                     
                     바인딩 3시간 파트타임 업무 지원했는데 경영지원팀 피부 좀 까무잡잡하고 갈색 긴머리분 면접보면서 웃지마라 어디가서 면접보면서도 웃지마라,꼬리물기식 질문, 훈계 이렇게 무한으로 면접을 40분동안 합니다.
 
@@ -80,14 +80,14 @@
     <script th:inline="javascript">
         const loginMemberNo= /*[[${session.loginMember?.memberNo}]]*/"로그인한 멤버";
     
-
+        
       
         const reviewBoardNo = /*[[${reviewBoard.reviewBoardNo}]]*/"게시글 번호";
 
         
         const reviewBoardCode = /*[[${reviewBoard.reviewBoardCode}]]*/"게시판 코드";
 
-        
+        const authorityNo = /*[[${session.loginMember?.authorityNo}]]*/"회원타입";
     </script>
   
 </body>
