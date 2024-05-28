@@ -17,5 +17,7 @@ public interface ShopMapper {
 
 	int signup(Shop shop);
 
+	Shop login(String shopEmail);
+
 	
 }

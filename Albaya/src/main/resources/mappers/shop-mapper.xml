@@ -30,4 +30,15 @@
 		 #{shopEmail},#{shopPw}, #{shopTel}, #{shopBrn}, 
 		 #{shopOwner}, #{shopProfile}, #{addressDetail}, SYSDATE, DEFAULT, DEFAULT)
 	</insert>
+	
+	<select id="login" resultType="Shop">
+		SELECT SHOP_NO, DONG_NO, SHOP_NAME, SHOP_EMAIL, SHOP_PW,
+		SHOP_TEL, SHOP_BRN, SHOP_OWNER, SHOP_PROFILE, ADDRESS_DETAIL,
+		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE,
+		SHOP_STATUS, AUTHORITY_NO
+		FROM "SHOP"
+		WHERE SHOP_EMAIL = #{shopEmail}
+		AND SHOP_STATUS != 5
+		
+	</select>
 </mapper>

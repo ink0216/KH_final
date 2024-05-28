@@ -1,5 +1,6 @@
 package kh.em.albaya.shop.model.service;
 
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 
 public interface ShopService{
@@ -9,4 +10,6 @@ public interface ShopService{
 	int checkBrn(String shopBrn);
 
 	int signup(Shop shop);
+
+	Shop login(Shop inputShop);
 }

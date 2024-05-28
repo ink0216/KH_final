@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.shop.model.mapper.ShopMapper;
 import lombok.RequiredArgsConstructor;
@@ -55,5 +56,22 @@ public class ShopServiceImpl implements ShopService{
 		}
 		
 		return result;
+	}
+	
+	@Override
+	public Shop login(Shop inputShop) {
+		Shop loginShop = mapper.login(inputShop.getShopEmail());
+		
+		if(loginShop == null) {
+			return null;
+		}
+		
+		if(!bcrypt.matches(inputShop.getShopPw(), loginShop.getShopPw())) {
+			return null;
+		}
+		
+		loginShop.setShopPw(null);
+		
+		return loginShop;
 	}
 }
