@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/member/selectSignup.css">
+</head>
+
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <main class="main-container">
+        <div class="content-area-container">
+            <div class="h2-area">
+                <h2>Albaya 회원 가입 페이지</h2>
+            </div>
+
+            <div class="select-member-area">
+                <div class="select-member">
+                    <div class="notice-area">
+                        원하는 일자리를 찾아보세요
+                    </div>
+                    <div class="img-area">
+                        <img src="/images/member.jpg" alt="">
+                    </div>
+                    <div class="btn-area">
+                        <button type="button" id="memberBtn">개인회원 가입</button>
+                    </div>
+                </div>
+                <div class="select-member">
+                    <div class="notice-area">
+                        원하는 인재를 찾아보세요
+                    </div>
+                    <div class="img-area">
+                        <img src="/images/shop.png" alt="">
+                    </div>
+                    <div class="btn-area">
+                        <button type="button" id="shopBtn">기업회원 가입</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+    <script src="/js/member/selectSignup.js"></script>
+    <script th:inline="javascript">
+        const message =  /*[[${message}]]*/ "전달 받은 message";
+        // message가 없다면 null
+
+        if (message != null) alert(message);
+    </script>
+    <script src="/js/common/header.js"></script>
+</html>
