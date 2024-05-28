@@ -14,7 +14,7 @@ public class ShopServiceImpl implements ShopService{
 	private final BCryptPasswordEncoder bcrypt;
 	
 	@Override
-	public int checkEmail(String memberEmail) {
-		return mapper.checkEmail(memberEmail);
+	public int checkEmail(String shopEmail) {
+		return mapper.checkEmail(shopEmail);
 	}
 }

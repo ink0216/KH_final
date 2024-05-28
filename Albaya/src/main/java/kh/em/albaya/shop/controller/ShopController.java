@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kh.em.albaya.member.controller.MemberController;
+import kh.em.albaya.member.model.dto.Member;
+import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.shop.model.service.ShopService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -55,8 +57,10 @@ public class ShopController {
     
     @PostMapping("checkEmail")
     @ResponseBody
-    public int postMethodName(@RequestBody String memberEmail) {  
-        return service.checkEmail(memberEmail);
+    public int postMethodName(@RequestBody Shop shop) {
+    	String shopEmail = shop.getShopEmail();
+    	int result = service.checkEmail(shopEmail);
+        return result;
     }
     
 }

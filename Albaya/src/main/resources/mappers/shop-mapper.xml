@@ -4,6 +4,6 @@
 	<select id="checkEmail" resultType="_int">
 		SELECT COUNT(*)
 		FROM "SHOP"
-		WHERE SHOP_EMAIL = #{memberEmail}
+		WHERE SHOP_EMAIL = #{shopEmail}
 	</select>
 </mapper>

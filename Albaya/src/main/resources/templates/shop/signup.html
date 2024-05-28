@@ -24,7 +24,7 @@
                         </div>
                         <div class="row-right-phoneNumber">
                             <input type="text" name="shopEmail" id="shopEmail">
-                            <span class="red" id="emailVerify">ㅎㅇ</span>
+                            <span class="red alertSpan" id="emailVerify"></span>
                         </div>
                         <div class="auth-button-area">
                             <button type="button" id="emailBtn">중복확인</button>
@@ -34,8 +34,10 @@
                         <div class="row-left">
                             <span>비밀번호</span>
                         </div>
-                        <div class="row-right">
-                            <input type="password" name="shopPw">
+                        <div class="row-right-phoneNumber">
+                            <input type="text" name="shopPw" id="shopPw">
+                            <span id="pwVerify" class="alertSpan">변경할 비밀번호는 영문 대소문자, 숫자, 특수 문자(!, @, #, _, -, ^)만 포함해야하며, 
+                                8 ~ 20글자 사이만 입력 가능합니다.</span>
                         </div>
                     </div>
                     <div class="row">
@@ -43,10 +45,11 @@
                             <span>휴대폰 번호</span>
                         </div>
                         <div class="row-right-phoneNumber">
-                            <input type="number" id="authKey" placeholder="-제외">
+                            <input type="number" id="inputTel" name="shopTel" placeholder="-제외">
+                            
                         </div>
                         <div class="auth-button-area">
-                            <button type="button">인증번호</button>
+                            <button type="button" id="authBtn">인증번호</button>
                         </div>
                     </div>
                     <div class="row">
