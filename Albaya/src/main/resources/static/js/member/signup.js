@@ -288,7 +288,7 @@
 
     /* 주소 유효성 검사 2 */
     address.addEventListener("input", () => {
-        const regExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{2,5}$/;
+        const regExp = /^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{2,30}$/;
 
         if(address.value.trim().length === 0){
             
@@ -305,12 +305,12 @@
 
     /* 주소 유효성 검사 3 */
     detailAddress.addEventListener("input", () => {
-        const regExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{2,5}$/;
+        const regExp = /^[[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9]{2,30}$/;
         if(detailAddress.value.trim().length === 0){
             detailAddress.value = "";
             obj.memberAddress =false;
         }
-        if(!regExp.test(address.value)){
+        if(!regExp.test(detailAddress.value )){
         restriction();
         return;
         }
