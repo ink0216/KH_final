@@ -81,7 +81,7 @@ public class HireServiceImpl implements HireService{
 		// 13번째 부터 1페이지
 		// 1p == 13 ~ 22
 		// 2p == 23 ~ 32
-		int offset = 13 + (cp-1) * 10; 
+		int offset = 12 + (cp-1) * 10; 
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		List<Hire> hireList = mapper.selectHireList(null, rowBounds);

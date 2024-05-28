@@ -15,7 +15,10 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class MainController {
+	
 	private final MainService service;
+	
+	
    @RequestMapping("")
    public String mainPage(
 		   Model model
