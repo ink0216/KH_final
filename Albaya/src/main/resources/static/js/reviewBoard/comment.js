@@ -145,13 +145,13 @@ const commentContent = document.querySelector("#commentContent");
 // 댓글 등록 버튼 클릭
 addContent.addEventListener("click", e =>{
 
-    // 일반 회원 로그인이 되어있지 않은 경우
-    if(loginMemberNo == null){
+    // // 일반 회원 로그인이 되어있지 않은 경우
+    // if(loginMemberNo == null){
         
-        alert("일반 회원으로 로그인하셔야 작성할 수 있습니다.");
+    //     alert("일반 회원으로 로그인하셔야 작성할 수 있습니다.");
 
-        return;
-    }
+    //     return;
+    // }
 
 
     // 아무것도 입력하지 않고 댓글 작성하려고 한 경우
@@ -170,7 +170,7 @@ addContent.addEventListener("click", e =>{
 
         "commentContent" : commentContent.value,
         "reviewBoardNo" : reviewBoardNo,
-        "memberNo" : loginMemberNo // 또는 Session 회원 번호
+        "memberNo" : memberNo // 또는 Session 회원 번호
 
     };
 
