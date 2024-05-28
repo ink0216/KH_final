@@ -77,6 +77,18 @@
     <script src="/js/reviewBoard/reviewBoardDetail.js"></script> 
     <script src="/js/reviewBoard/comment.js"></script> 
     
+    <script th:inline="javascript">
+        const loginMemberNo= /*[[${session.loginMember?.memberNo}]]*/"로그인한 멤버";
+    
+
+      
+        const reviewBoardNo = /*[[${reviewBoard.reviewBoardNo}]]*/"게시글 번호";
+
+        
+        const reviewBoardCode = /*[[${reviewBoard.reviewBoardCode}]]*/"게시판 코드";
+
+        
+    </script>
   
 </body>
 </html>
