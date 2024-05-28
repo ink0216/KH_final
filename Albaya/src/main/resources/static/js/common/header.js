@@ -11,3 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+const hireWriteBtn = document.getElementById('hireWriteBtn');
+
+hireWriteBtn.addEventListener("click",()=>{
+    location.href='/hire/hireWrite';
+})
