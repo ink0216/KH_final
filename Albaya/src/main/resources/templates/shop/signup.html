@@ -16,7 +16,7 @@
                 <h2>기업 회원가입</h2>
             </div>
             
-            <form action="">
+            <form action="/shop/signup" method="POST">
                 <div class="signup-info-container">
                     <div class="row">
                         <div class="row-left">
@@ -35,7 +35,7 @@
                             <span>비밀번호</span>
                         </div>
                         <div class="row-right-phoneNumber">
-                            <input type="text" name="shopPw" id="shopPw">
+                            <input type="password" name="shopPw" id="shopPw" maxlength="20">
                             <span id="pwVerify" class="alertSpan">변경할 비밀번호는 영문 대소문자, 숫자, 특수 문자(!, @, #, _, -, ^)만 포함해야하며, 
                                 8 ~ 20글자 사이만 입력 가능합니다.</span>
                         </div>
@@ -45,8 +45,8 @@
                             <span>휴대폰 번호</span>
                         </div>
                         <div class="row-right-phoneNumber">
-                            <input type="number" id="inputTel" name="shopTel" placeholder="-제외">
-                            
+                            <input type="number" id="inputTel" name="shopTel" placeholder="-제외" maxlength="11">
+                            <span class="red alertSpan" id="telVerify"></span>
                         </div>
                         <div class="auth-button-area">
                             <button type="button" id="authBtn">인증번호</button>
@@ -60,15 +60,19 @@
                             <input type="number" id="authKeyCheck">
                         </div>
                         <div class="auth-button-area">
-                            <button type="button">확인</button>
+                            <button type="button" id="authCheckBtn">확인</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="row-left">
-                            <span>사업자등록번호</span>
+                            <span>사업자번호</span>
                         </div>
-                        <div class="row-right">
-                            <input type="number" name="shopBrn" placeholder="-제외">
+                        <div class="row-right-phoneNumber">
+                            <input type="number" name="shopBrn" id="shopBrn" placeholder="-제외" maxlength="10">
+                            <span class="red alertSpan" id="brnVerif">사업자등록번호 숫자 10자리를 입력해주세요.</span>
+                        </div>
+                        <div class="auth-button-area">
+                            <button type="button" id="brnBtn">중복확인</button>
                         </div>
                     </div>
                     <div class="row">
@@ -76,15 +80,15 @@
                             <span>회사/점포명</span>
                         </div>
                         <div class="row-right">
-                            <input type="text" name="shopName">
+                            <input type="text" name="shopName" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="row-left">
+                        <div class="row-left" requirec>
                             <span>대표자명</span>
                         </div>
                         <div class="row-right">
-                            <input type="text" name="shopEmail">
+                            <input type="text" name="shopOwner" required>
                         </div>
                     </div>
                     <div class="row">
@@ -92,7 +96,7 @@
                             <span>주소</span>
                         </div>
                         <div class="row-right-phoneNumber">
-                            <input type="text" name="shopAddress" id="address">
+                            <input type="text" name="shopAddress" id="address" readonly>
                         </div>
                         <div class="auth-button-area">
                             <button type="button" onclick="sample5_execDaumPostcode()">검색</button>
@@ -108,7 +112,7 @@
                     </div>
                 </div>
                 <div class="submit-container">
-                    <button>가입하기</button>
+                    <button id="signupBtn">가입하기</button>
                 </div>
             </form>
         </div>

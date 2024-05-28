@@ -8,16 +8,26 @@ const shopPw = document.querySelector("#shopPw");
 const pwVerify = document.querySelector("#pwVerify");
 
 const authBtn = document.querySelector("#authBtn");
+const telVerify = document.querySelector("#telVerify");
+const authCheckBtn = document.querySelector("#authCheckBtn");
 
+// const authCheckBtn = document.querySelector("#authCheckBtn"); // 인증번호 인증
+// const authBtn = document.querySelector('#authBtn'); // 인증번호 전송
+const inputTel = document.querySelector('#inputTel'); // 전화번호 입력
+const authKeyCheck = document.querySelector('#authKeyCheck'); // 인증번호 입력
+
+const brnVerif = document.querySelector('#brnVerif');
+const shopBrn = document.querySelector('#shopBrn');
+const brnBtn = document.querySelector('#brnBtn');
+
+const signupBtn = document.querySelector("#signupBtn");
 let count = 0;
 
 const obj = {
     "shopEmail":false,
     "shopPw":false,
     "shopTel":false,
-    "memberName":false,
-    "memberGender":false,
-    "memberAddress":false,
+    "shopBrn":false,
     "authState":false
 };
 
@@ -25,7 +35,7 @@ shopEmail.addEventListener("input", () => {
     const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if(shopEmail.value.trim().length === 0){
-        obj.memberEmail= false;
+        obj.shopEmail= false;
         shopEmail.value = "";
         return;
     }
@@ -102,34 +112,32 @@ inputTel.addEventListener("input", () => {
         return;
     }
     if(!regExp.test(inputTel.value)){
-        pwVerify.classList.add("fail");
-        pwVerify.classList.remove("success");
-        pwVerify.innerText = "올바른 비밀번호 형식이 아닙니다";
+        telVerify.classList.add("fail");
+        telVerify.classList.remove("success");
+        telVerify.innerText = "올바른 전화번호 형식이 아닙니다";
         obj.shopTel = false;
         return;
     }
 
-    pwVerify.classList.add("success");
-    pwVerify.classList.remove("fail");
-    pwVerify.innerText = "사용 가능한 비밀번호입니다."
+    telVerify.classList.add("success");
+    telVerify.classList.remove("fail");
+    telVerify.innerText = "사용 가능한 전화번호입니다."
     obj.shopTel = true;
     return;
 
 });
 
-
-document.querySelector('#authBtn').addEventListener('click', e => {
-    if(count > 1){
+authBtn.addEventListener('click', e => {
+    if(obj.shopTel === false){
+        e.preventDefault();
         return;
     }
-    e.preventDefault();
 
-    const inputTel = document.querySelector('#inputTel').value;
-    const authKeyCheck = document.querySelector('#authKeyCheck').value;
-    const authBtn = document.querySelector('#authBtn');
+    const inputTel = document.querySelector('#inputTel');
+    const authKeyCheck = document.querySelector('#authKeyCheck');
 
 
-    if(inputTel.trim().length === 0){
+    if(inputTel.value.trim().length === 0){
         alert("전화번호를 입력해주세요.");
         e.preventDefault();
         obj.authState = false;
@@ -153,18 +161,11 @@ document.querySelector('#authBtn').addEventListener('click', e => {
         })
         .then(resp => resp.json())
         .then(result => {
-            count++;
-
-            if(count > 1){
-                alert("휴대폰 인증은 1회만 가능합니다. 새로고침 해주세요.");
-                e.preventDefault();
-                obj.authState = false;
-                return;
-            }
+            authBtn.disabled = true;
 
             alert("인증번호가 전송되었습니다.");
 
-            authBtn.addEventListener("click", () => {
+            authCheckBtn.addEventListener("click", () => {
                 console.log(msg)
                 if(authKeyCheck.value.trim().length <= 0){
                     alert("인증번호를 입력해주세요.");
@@ -183,6 +184,57 @@ document.querySelector('#authBtn').addEventListener('click', e => {
         })
     }
 });
+
+shopBrn.addEventListener("input", () => {
+    const regExp = /^\d{10}$/;
+
+    if(shopBrn.value.trim().length === 0){
+        obj.shopBrn= false;
+        shopBrn.value = "";
+        return;
+    }
+
+    if(!regExp.test(shopBrn.value)){
+        brnVerif.classList.add("fail");
+        brnVerif.classList.remove("success");
+        brnVerif.innerText = "올바른 사업자등록번호가 아닙니다.";
+        obj.shopBrn = false;
+        return;
+    }
+    else{
+        brnVerif.classList.add("fail");
+        brnVerif.classList.remove("success");
+        brnVerif.innerText = "중복확인을 진행해주세요."
+        obj.shopBrn = false;
+    }
+    brnBtn.addEventListener("click", () => {
+        fetch("/shop/checkBrn",{
+            method:"POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({"shopBrn" : shopBrn.value})
+        })
+        .then(resp => resp.text())
+        .then(result => {
+            if(result == 1){
+                console.log(result)
+                brnVerif.classList.add("fail");
+                brnVerif.classList.remove("success");
+                brnVerif.innerText = "이미 사용중인 사업자등록번호입니다.";
+                obj.shopBrn = false;
+                return;
+            }
+            else{
+                console.log(result)
+
+                brnVerif.classList.add("success");
+                brnVerif.classList.remove("fail");
+                brnVerif.innerText = "사용 가능한 사업자등록번호입니다."
+                obj.shopBrn = true;
+                return;
+            }
+        })
+    })
+})
 function sample5_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -232,3 +284,52 @@ function sample5_execDaumPostcode() {
     }).open();
 }
 
+signupBtn.addEventListener("click", e => {
+    const keys = Object.keys(obj);
+    for (const key of keys) {
+        switch (key) {
+            case "shopEmail":
+                if (!obj.shopEmail) {
+                    shopEmail.focus();
+                    e.preventDefault();
+                    alert("이메일이 올바르지 않습니다.");
+                    return;
+                }
+                break;
+            case "shopPw":
+                if (!obj.shopPw) {
+                    shopEmail.focus();
+                    e.preventDefault();
+                    alert("비밀번호가 올바르지 않습니다.");
+                    return;
+                }
+                break;
+            case "shopTel":
+                if (!obj.shopTel) {
+                    inputTel.focus();
+                    e.preventDefault();
+                    alert("전화번호가 올바르지 않습니다.");
+                    return;
+                }
+                break;
+            case "authState":
+                if (!obj.authState) {
+                    authBtn.focus();
+                    e.preventDefault();
+                    alert("인증이 완료되지 않았습니다.");
+                    return;
+                }
+                break;
+            case "shopBrn":
+                if (!obj.shopBrn) {      
+                    shopBrn.focus();
+                    e.preventDefault();
+                    alert("사업자등록번호가 올바르지 않습니다.");
+                    return;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+})
