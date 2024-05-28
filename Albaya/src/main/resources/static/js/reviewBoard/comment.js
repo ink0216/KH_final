@@ -138,21 +138,22 @@ const selectCommentList = () => {
 
 /* 댓글 작성하고 등록하기 */
 
-const addContent = document.querySelector("#addComment");
+const addComment = document.querySelector("#addComment");
 const commentContent = document.querySelector("#commentContent");
 
 
 // 댓글 등록 버튼 클릭
-addContent.addEventListener("click", e =>{
+addComment.addEventListener("click", e =>{
 
-    // // 일반 회원 로그인이 되어있지 않은 경우
-    // if(loginMemberNo == null){
+    // 일반 회원 로그인이 되어있지 않은 경우
+    if(loginMemberNo == null){
         
-    //     alert("일반 회원으로 로그인하셔야 작성할 수 있습니다.");
+        alert("일반 회원으로 로그인하셔야 작성할 수 있습니다.");
 
-    //     return;
-    // }
+        return;
+    }
 
+    
 
     // 아무것도 입력하지 않고 댓글 작성하려고 한 경우
     if(commentContent.value.trim().length == 0){
@@ -172,7 +173,7 @@ addContent.addEventListener("click", e =>{
 
         "commentContent" : commentContent.value,
         "reviewBoardNo" : reviewBoardNo,
-        "memberNo" : memberNo // 또는 Session 회원 번호
+        "memberNo" : loginMemberNo // 또는 Session 회원 번호
 
     };
 
@@ -202,8 +203,8 @@ addContent.addEventListener("click", e =>{
             selectCommentList();    
 
 
-            /* 글 작성자에게 댓글이 등록되었다는 알림 전달 + 알림 클릭시 해당 댓글이 작성된 위치로 이동 */
-            sendNotificationFn("insertComment", `${location.pathname}?cn=${result}`,reviewBoardNo);
+            // /* 글 작성자에게 댓글이 등록되었다는 알림 전달 + 알림 클릭시 해당 댓글이 작성된 위치로 이동 */
+            // sendNotificationFn("insertComment", `${location.pathname}?cn=${result}`,reviewBoardNo);
         }
 
         else{
@@ -333,7 +334,6 @@ const insertChildComment = (parentCommentNo, btn) => {
     const data = {
 
         "commentContent" : textarea.value,
-        "reviewBoardNo" : reviewBoardNo,
         "memberNo" : loginMemberNo, // 또는 Session 회원 번호
         "parentCommentNo" : parentCommentNo
 
@@ -354,7 +354,7 @@ const insertChildComment = (parentCommentNo, btn) => {
             alert("답글 등록 완료");
 
             // 답글 달고 나면 commentContent 내용을 지움
-            // commentContent.value = "";
+            commentContent.value = "";
 
             // 답글을 달면 댓글 작성자에게 알림이 감
             sendNotificationFn("insertComment", `${location.pathname}?cn=${result}`,reviewBoardNo);
