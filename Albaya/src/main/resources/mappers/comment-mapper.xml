@@ -21,7 +21,7 @@
 	</select>
 	
 	<!-- 댓글 작성 -->
-	<insert id="insert">
+	<insert id="insert" parameterType="Comment" useGeneratedKeys="true">
 		<selectKey order="BEFORE" resultType="_int"  keyProperty="commentNo">
   			SELECT SEQ_COMMENT_NO.NEXTVAL FROM DUAL
   		</selectKey>

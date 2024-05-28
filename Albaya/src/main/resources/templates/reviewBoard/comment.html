@@ -9,34 +9,34 @@
                 th:object="${comment}">
     
 
-        <th:block th:if="*{commentDelFl}=='Y'">
-                삭제된 댓글 입니다.
-        </th:block>
-
-        <th:block th:if="*{commentDelFl}=='N'"> 
-           
-        
-            <p class="comment-writer">
-                <span th:text="*{memberEmail}">닉네임</span>
-                <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
-            </p>
-
-            <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
-
-            <!-- 버튼 영역 -->
-            <div class="comment-btn-area">
-                <button th:onclick="|showInsertComment(*{commentNo}, this)|">답글</button>   
-                 
-                <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
-                    <!-- 로그인한 사람과 댓글 쓴 사람의 회원 번호가 같을 때만 수정 삭제 버튼 보이게 하기 -->
-                    <button th:onclick="|showUpdateComment(*{commentNo}, this)|">수정</button>     
-                    <button th:onclick="|deleteComment(*{commentNo})|">삭제</button>
-                    
+                <th:block th:if="*{commentDelFl}=='Y'">
+                    삭제된 댓글 입니다.
                 </th:block>
-                <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->  
 
-            </div>
-        </th:block>
+                <th:block th:if="*{commentDelFl}=='N'"> 
+                
+                
+                    <p class="comment-writer">
+                        <span th:text="*{memberEmail}">닉네임</span>
+                        <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
+                    </p>
+
+                    <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
+
+                    <!-- 버튼 영역 -->
+                    <div class="comment-btn-area">
+                        <button th:onclick="|showInsertComment(*{commentNo}, this)|">답글</button>   
+                        
+                        <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
+                            <!-- 로그인한 사람과 댓글 쓴 사람의 회원 번호가 같을 때만 수정 삭제 버튼 보이게 하기 -->
+                            <button th:onclick="|showUpdateComment(*{commentNo}, this)|">수정</button>     
+                            <button th:onclick="|deleteComment(*{commentNo})|">삭제</button>
+                            
+                        </th:block>
+                        <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->  
+
+                    </div>
+                </th:block>
 
             </li>
             
