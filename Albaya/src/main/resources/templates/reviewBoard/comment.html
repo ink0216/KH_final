@@ -9,9 +9,9 @@
                 th:object="${comment}">
     
 
-        <th:block th:if="*{commentDelFl}=='Y'">
-                삭제된 댓글 입니다.
-        </th:block>
+                <th:block th:if="*{commentDelFl}=='Y'">
+                    삭제된 댓글 입니다.
+                </th:block>
 
         <th:block th:if="*{commentDelFl}=='N'"> 
            
@@ -38,6 +38,7 @@
 
             <!-- </div> -->
         </th:block>
+
 
             </li>
             

@@ -36,43 +36,61 @@ h1{
 }
 
 #containers{
-    display:flex;
+    display: flex;
     flex-direction: column;
-    margin:auto;
-    margin-top:40px;
+    margin: auto;
+    margin-top: 40px;
     margin-bottom: 40px;
-    width:620px;
-    height:70%;
-    border:1px solid black;
-    padding-left:20px;
-    padding-right:20px;
-    padding-top:20px;
-    padding-bottom:20px;
+    width: 620px;
+    height: 80%;
+    /* border: 1px solid black; */
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: white;
-    border:1px solid white;
-    border-top:2px solid black;
+    border: 1px solid white;
+    border-top: 2px solid black;
+}
+
+.spanText{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.div1{
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.div2{
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    width: 127px;
 }
 
 #pwInfo{
-    margin-left: 80px;
+    margin: 0px 126px;
+    font-size: 13px;
 }
+.pw-area{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 
 #inputGender>input{
     width:100px;
 }
-#inputEmail{
-    margin-left:25px;
-    width:200px;
-}
-#inputPw{
-    margin-left:10px;
-    width:200px;
-}
-#inputTel{
-    margin-left: 16px;
-}
-#inputName{
-    margin-left: 38px;
+
+#inputGender{
+    display: flex;
+    align-items: center;
 }
 
 #inputAddress{
@@ -88,11 +106,12 @@ h1{
 }
 
 button{
-    border-radius:5px;
-    border:1px solid lightgray;
-    background:lightgray;
-    width:90px;
-    height:35px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background: lightgray;
+    width: 90px;
+    height: 35px;
 }
 
 #addressSearch{
@@ -113,28 +132,34 @@ button{
     margin-left: 200px;
 }
 div>input[type=text]{
-    margin: 5px 0px;
-    padding-left: 20px;
+    margin: 2px 0px;
+    /* padding-left: 20px; */
     border-radius: 5px;
     border: 1px solid gray;
     height: 30px;
-    width: 400px;
+    width: 350px;
 }
 div>input[type=password]{
-    padding-left:20px;
-    border-radius:5px;
-    border:1px solid gray;
-    height:30px;
-    width:400px;  
+    /* padding-left: 20px; */
+    border-radius: 5px;
+    border: 1px solid gray;
+    height: 30px;
+    width: 350px; 
 }
 
 #addressContainer{
-    margin-left: 85px;
+    margin-left: 40px;
 }
-#inputAuth{
+.search-add{
     display: flex;
-    margin-left: 80px;
-    flex-direction: column;
+    align-items: center;
+}
+
+#inputAuth{
+       /* display: flex; */
+       margin: -20px 0px 15px 125px;
+       /* display: flex; */
+       /* flex-direction: column; */
 
 }
 .authButton{
@@ -146,10 +171,12 @@ div>input[type=password]{
 
 .fail{
     color:red;
+    font-size: 13px;
 }
 
 .success{
     color:green;
+    font-size: 13px;
 }
 
 button:hover{
@@ -158,14 +185,15 @@ button:hover{
 }
 
 #emailVerify{
-    margin-left:80px;
+    margin: -20px 0px 15px 125px;
 }
 #passwordVerify{
-    margin-left:80px;
+    margin: 1px 125px;
 }
 
 #nameVerify{
-    margin-left:80px;
+    margin: -20px 0px 50px 125px;
+    /* margin-top: -25px; */
 }
 
 #register{
