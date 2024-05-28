@@ -127,7 +127,7 @@ public class ReviewBoardController {
 				
 				if(c == null) {
 					
-					c = new Cookie("reaeReviewBoardNo", "[" + reviewBoardNo + "]");
+					c = new Cookie("readReviewBoardNo", "[" + reviewBoardNo + "]");
 					result = service.updateReadCount(reviewBoardNo);
 				}
 				else {

@@ -173,7 +173,7 @@
 	
 	
 	<!-- 현재 조회수 조회 -->
-	<select id="selectReadCount">
+	<select id="selectReadCount" resultType="_int">
 		SELECT READ_COUNT
 		FROM "REVIEW_BOARD"
 		WHERE REVIEW_BOARD_NO = #{reviewBoardNo}
