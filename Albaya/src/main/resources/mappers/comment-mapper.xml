@@ -31,8 +31,6 @@
 			#{commentNo},
 			#{reviewBoardNo},
 			#{memberNo},
-			
-			
 			<if test="parentCommentNo != 0">
 			  #{parentCommentNo}
 			</if>
@@ -40,7 +38,6 @@
 			<if test="parentCommentNo == 0">
 			  NULL
 			</if>,
-			
 			#{commentContent},
 			DEFAULT,
 			DEFAULT

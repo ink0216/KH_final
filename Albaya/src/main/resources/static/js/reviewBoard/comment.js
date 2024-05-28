@@ -334,6 +334,7 @@ const insertChildComment = (parentCommentNo, btn) => {
     const data = {
 
         "commentContent" : textarea.value,
+        "reviewBoardNo" : reviewBoardNo,
         "memberNo" : loginMemberNo, // 또는 Session 회원 번호
         "parentCommentNo" : parentCommentNo
 
@@ -355,10 +356,6 @@ const insertChildComment = (parentCommentNo, btn) => {
 
             // 답글 달고 나면 commentContent 내용을 지움
             commentContent.value = "";
-
-            // 답글을 달면 댓글 작성자에게 알림이 감
-            sendNotificationFn("insertComment", `${location.pathname}?cn=${result}`,reviewBoardNo);
-
 
             // 댓글 목록을 지웠다가 다시 조회해서 화면에 출력하는 함수인 selectCommentList() 호출
             selectCommentList();    

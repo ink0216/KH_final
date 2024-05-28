@@ -33,5 +33,11 @@ public interface ReviewBoardMapper {
 	// 게시글 상세조회
 	ReviewBoard selectOne(Map<String, Object> map);
 
+	// 조회수 증가
+	int updateReadCount(int reviewBoardNo);
+
+	// 현재 조회수 조회
+	int selectReadCount(int reviewBoardNo);
+
 
 }

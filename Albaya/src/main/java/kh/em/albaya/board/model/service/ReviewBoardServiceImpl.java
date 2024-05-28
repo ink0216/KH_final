@@ -86,4 +86,12 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 	}
 	
 	
+	// 조회수 증가
+	@Override
+	public int updateReadCount(int reviewBoardNo) {
+		
+		int result = mapper.updateReadCount(reviewBoardNo);
+		return 0;
+	}
+	
 }
