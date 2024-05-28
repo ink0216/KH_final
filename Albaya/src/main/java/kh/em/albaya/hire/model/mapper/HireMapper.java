@@ -1,8 +1,10 @@
 package kh.em.albaya.hire.model.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 
 import kh.em.albaya.hire.model.dto.Hire;
 
@@ -38,6 +40,14 @@ public interface HireMapper {
 	 * @return
 	 */
 	Hire detailHire(int hireNo);
+
+
+	int selectListCount();
+
+	List<Hire> selectHireList(Object object, RowBounds rowBounds);
+
+
+
 
 	
 

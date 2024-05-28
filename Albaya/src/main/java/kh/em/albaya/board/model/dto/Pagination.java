@@ -34,6 +34,15 @@ public class Pagination {
 		calculate();
 	}
 
+	public Pagination(int currentPage, int listCount, int limit, int pageSize, int offset) {
+		super();
+		this.currentPage = currentPage;
+		this.listCount = listCount;
+		this.limit = limit;
+		this.pageSize = pageSize;
+		calculate(offset);
+	}
+	
 
 	public int getCurrentPage() {
 		return currentPage;
@@ -135,6 +144,34 @@ public class Pagination {
 		}
 		
 
+		if(endPage == maxPage) {
+			nextPage = maxPage;;
+		}else {
+			nextPage = endPage + 1;
+		}
+	}
+	
+	private void calculate(int offset) {
+		
+		// 마지막 페이지
+		maxPage = (int)Math.ceil((double)(listCount - offset) / limit);
+		
+		// 페이지 시작번호
+		startPage = (currentPage -1) / pageSize * pageSize +1;
+		// 페이지 끝번호
+		endPage = pageSize - 1 + startPage;
+		
+		// 페이지 끝 번호가 최대 페이지 수를 초과한 경우
+		if(endPage > maxPage) endPage = maxPage;
+		
+		
+		if(currentPage < pageSize) {
+			prevPage = 1; 
+		} else {
+			prevPage = startPage - 1;
+		}
+		
+		
 		if(endPage == maxPage) {
 			nextPage = maxPage;;
 		}else {

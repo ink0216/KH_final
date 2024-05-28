@@ -165,7 +165,50 @@ tbody tr:hover {
 .pagination-container {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
+
+  .number-button{
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    cursor: pointer;
+    background: rgb(230, 230, 230);
+    border-radius: 2px;
+    border: none;
+  }
+
+  .number-button:hover{
+    border: 0.2px solid rgb(154, 154, 154);
+    border-radius: 2px;
+    user-select: none;
+  }
+
+  .checked{
+    border: 0.2px solid rgb(154, 154, 154);
+    border-radius: 2px;
+    user-select: none;
+  }
+
+  .prev-button{
+    user-select: none;
+    margin: 5px;
+  }
+  .next-button{
+    user-select: none;
+    margin: 5px;
+  }
+
+  .prev-button:active{
+    user-select: none;
+    font-weight: bold;
+  }
+
+  .next-button:active{
+    user-select: none;
+    font-weight: bold;
+  }
+
 /*  ----------------------------------*/
 
 

@@ -1,11 +1,14 @@
 package kh.em.albaya.hire.model.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kh.em.albaya.board.model.dto.Pagination;
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.mapper.HireMapper;
 import lombok.RequiredArgsConstructor;
@@ -66,5 +69,27 @@ public class HireServiceImpl implements HireService{
 	@Override
 	public Hire detailHire(int hireNo) {
 		return mapper.detailHire(hireNo);
+	}
+	
+	@Override
+	public Map<String,Object> selectHireList(int cp) {
+		// 전체 공고 수 조회
+		int listCount = mapper.selectListCount();
+		
+		Pagination pagination = new Pagination(cp, listCount, 10, 8, 12);
+		
+		// 13번째 부터 1페이지
+		// 1p == 13 ~ 22
+		// 2p == 23 ~ 32
+		int offset = 13 + (cp-1) * 10; 
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		List<Hire> hireList = mapper.selectHireList(null, rowBounds);
+		
+		
+		Map<String, Object> map = Map.of("hireList", hireList, "pagination", pagination);
+		
+		return map;
+		 
 	}
 }

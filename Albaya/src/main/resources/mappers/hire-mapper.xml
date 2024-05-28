@@ -28,6 +28,16 @@
 	</select>
 	
 	
+	<select id="selectListCount">
+		SELECT COUNT(*) FROM "HIRE"
+		WHERE HIRE_STATUS = 0
+	</select>
+	
+	<select id="selectHireList">
+		SELECT * FROM "HIRE"
+		WHERE HIRE_STATUS = 0
+		ORDER BY HIRE_NO DESC
+	</select>
 	
 	<!-- INSERT -->
 	<insert id="insertWrite" useGeneratedKeys="true" parameterType="Hire">
