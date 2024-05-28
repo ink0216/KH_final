@@ -161,6 +161,24 @@
 		CONNECT BY PRIOR COMMENT_NO = PARENT_COMMENT_NO
 		ORDER SIBLINGS BY COMMENT_NO
 	</select>
+	
+	
+	
+	<!-- 조회수 1 증가 -->
+	<update id="updateReadCount">
+		UPDATE "REVIEW_BOARD" SET
+		READ_COUNT = READ_COUNT + 1
+		WHERE REVIEW_BOARD_NO = #{reviewBoardNo}
+	</update>
+	
+	
+	<!-- 현재 조회수 조회 -->
+	<select id="selectReadCount">
+		SELECT READ_COUNT
+		FROM "REVIEW_BOARD"
+		WHERE REVIEW_BOARD_NO = #{reviewBoardNo}
+	</select>
+	
 
 	
 </mapper>
