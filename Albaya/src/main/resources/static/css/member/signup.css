@@ -1,5 +1,25 @@
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{font-family: 'SUIT-Regular';}
+
 body{
-    background-color: rgb(228, 242, 238);
+    background-color: rgb(240 244 243);
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    width: 920px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 button:hover{
@@ -10,44 +30,67 @@ button:hover{
 }
 
 h1{
-    font-family: 'TheJamsil5Bold';
-    margin-top:70px;
-    margin-left:30%;
+    font-size: 40px;
+    margin: auto;
+    margin-top: 50px;
 }
 
 #containers{
-    display:flex;
+    display: flex;
     flex-direction: column;
-    margin:auto;
-    margin-top:40px;
-    width:620px;
-    height:70%;
-    border:1px solid black;
-    padding-left:20px;
-    padding-right:20px;
-    padding-top:20px;
-    padding-bottom:20px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 620px;
+    height: 80%;
+    /* border: 1px solid black; */
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: white;
-    border:1px solid white;
-    border-top:2px solid black;
+    border: 1px solid white;
+    border-top: 2px solid black;
 }
+
+.spanText{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.div1{
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.div2{
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    width: 127px;
+}
+
+#pwInfo{
+    margin: 0px 126px;
+    font-size: 13px;
+}
+.pw-area{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 
 #inputGender>input{
     width:100px;
 }
-#inputEmail{
-    margin-left:25px;
-    width:200px;
-}
-#inputPw{
-    margin-left:10px;
-    width:200px;
-}
-#inputTel{
-    margin-left: 16px;
-}
-#inputName{
-    margin-left: 38px;
+
+#inputGender{
+    display: flex;
+    align-items: center;
 }
 
 #inputAddress{
@@ -63,11 +106,12 @@ h1{
 }
 
 button{
-    border-radius:10px;
-    border:1px solid lightgray;
-    background:lightgray;
-    width:90px;
-    height:35px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background: lightgray;
+    width: 90px;
+    height: 35px;
 }
 
 #addressSearch{
@@ -88,27 +132,35 @@ button{
     margin-left: 200px;
 }
 div>input[type=text]{
-    padding-left:20px;
-    border-radius:10px;
-    border:1px solid gray;
-    height:30px;
-    width:400px;  
+    margin: 2px 0px;
+    /* padding-left: 20px; */
+    border-radius: 5px;
+    border: 1px solid gray;
+    height: 30px;
+    width: 350px;
 }
 div>input[type=password]{
-    padding-left:20px;
-    border-radius:10px;
-    border:1px solid gray;
-    height:30px;
-    width:400px;  
+    /* padding-left: 20px; */
+    border-radius: 5px;
+    border: 1px solid gray;
+    height: 30px;
+    width: 350px; 
 }
 
 #addressContainer{
-    margin-left: 85px;
+    margin-left: 40px;
 }
+.search-add{
+    display: flex;
+    align-items: center;
+}
+
 #inputAuth{
-    display:flex;
-    margin-left:81px;
-  
+       /* display: flex; */
+       margin: -20px 0px 15px 125px;
+       /* display: flex; */
+       /* flex-direction: column; */
+
 }
 .authButton{
     margin-left:8px;
@@ -119,17 +171,12 @@ div>input[type=password]{
 
 .fail{
     color:red;
+    font-size: 13px;
 }
 
 .success{
     color:green;
-}
-/* 전체 폰트 */
-@font-face {
-    font-family:'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
+    font-size: 13px;
 }
 
 button:hover{
@@ -138,14 +185,15 @@ button:hover{
 }
 
 #emailVerify{
-    margin-left:80px;
+    margin: -20px 0px 15px 125px;
 }
 #passwordVerify{
-    margin-left:80px;
+    margin: 1px 125px;
 }
 
 #nameVerify{
-    margin-left:80px;
+    margin: -20px 0px 50px 125px;
+    /* margin-top: -25px; */
 }
 
 #register{

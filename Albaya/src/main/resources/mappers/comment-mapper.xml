@@ -39,7 +39,7 @@
 			<!-- 부모 댓글 -->
 			<if test="parentCommentNo == 0">
 			  NULL
-			</if>,
+			</if>
 			
 			#{commentContent},
 			DEFAULT,
