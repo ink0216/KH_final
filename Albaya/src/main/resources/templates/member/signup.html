@@ -15,53 +15,78 @@
 
         <form action="/member/signup" method="POST" id="signupForm">
             <div id="containers">
-                <div>
-                    <span id="email">이메일<span class="required">*</span></span> <input type="text" name="memberEmail"
-                        maxlength="20" id="inputEmail" required>
-                </div><br>
-                <div id="emailVerify"></div><br>
+
+                <div class="email-area div1">
+                    <div class="title">
+                        <span id="email" class="spanText">이메일<span class="required">*</span></span>
+                    </div>
+                    <input type="text" name="memberEmail" maxlength="20" id="inputEmail" required>
+                </div>
+                <div id="emailVerify"></div>
 
 
-                <div> <span id="pw">비밀번호<span class="required">*</span></span> <input type="password" name="memberPw"
-                        maxlength="20" id="inputPw" required></div><br>
-                <div id="pwInfo">비밀번호는 8 ~ 20 글자 사이로 @!#$% 같은 특별 문자로 작성해주세요</div>
-                <div id="passwordVerify"></div><br>
+                <div class="pw-area div1">
+                    <div class="div2">
+                        <div class="title">
+                            <span id="pw" class="spanText">비밀번호<span class="required">*</span></span>
+                        </div>
+                        <input type="password" name="memberPw" maxlength="20" id="inputPw" required>
+                    </div>
+                    <p id="pwInfo">비밀번호는 8 ~ 20 글자 사이로 @!#$% 같은 특별 문자로 작성해주세요</p>
+                    <p id="passwordVerify"></p>
+                </div>
 
-                <div id="telNo">
-                    <span>전화번호<span class="required">*</span></span><input type="text" name="memberPhoneNumber"
-                        maxlength="11" id="inputTel" required>
-                    <button id="memberAuth" type="button">인증번호</button><br><br>
-                    <div id="inputAuth"></div>
-                </div><br>
-                <div><span>이름<span class="required">*</span></span> <input type="text" name="memberName" id="inputName"
-                        maxlength="20" required><br></div><br>
-                <div id="nameVerify"></div><br>
 
-                <div id="inputGender">
-                    <span>성별<span class="required">*</span></span>
+                <div class="tel-area div1">
+                    <div class="div2">
+                        <div class="title">
+                            <span class="spanText">전화번호<span class="required">*</span></span>
+                        </div>
+                        <input type="text" name="memberPhoneNumber" maxlength="11" id="inputTel" required>
+                        <button id="memberAuth" type="button">인증번호</button>
+                    </div>
+                </div>
+                <p id="inputAuth"></p>
+
+
+                <div class="name-area div1">
+                    <div class="div2">
+                        <div class="title">
+                            <span class="spanText">이름<span class="required">*</span></span>
+                        </div>
+                        <input type="text" name="memberName" id="inputName" maxlength="20" required>
+                    </div>
+                </div>
+                <p id="nameVerify"></p>
+
+
+                <div class="inputGender div2">
+                    <div class="title">
+                        <span class="spanText">성별<span class="required">*</span></span>
+                    </div>
                     <span>남자</span><input type="radio" name="memberGender" class="inputGender" value="1"
                         checked="checked">
                     <span>여자</span><input type="radio" name="memberGender" class="inputGender" value="2">
-                </div><br>
+                </div>
 
-                <div>
-                    <span>주소<span class="required">*</span></span>
+
+                <div class="add-area div1">
+                    <div class="title">
+                        <span class="spanText">주소<span class="required">*</span></span>
+                    </div>
                     <div id="addressContainer">
-                        <div>
+                        <div class="search-add">
                             <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode"
                                 required>
-                            <button id="searchAddress" type="button">검색</button><br><br>
+                            <button id="searchAddress" type="button">검색</button>
                         </div>
 
-
                         <input type="text" name="memberAddress" placeholder="도로명/지번 주소" maxlength="40" id="address"
-                            required><br><br>
-
+                            required>
 
                         <input type="text" name="memberAddress" placeholder="상세 주소" maxlength="50" id="detailAddress"
-                            required><br><br>
+                            required>
                         <div id="addressVerify"></div>
-
                     </div>
                 </div>
 
