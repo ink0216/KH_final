@@ -32,6 +32,10 @@ button{
     font-family: 'TheJamsil5Bold';
 }
 
+.alertSpan{
+    font-size: 13px; /* 원하는 글자 크기로 변경 */
+}
+
 button:hover{
     cursor: pointer;
 }
@@ -166,10 +170,10 @@ form{
     border-radius: 5px;
 }
 
-.red{
+.fail{
     color: red;
 }
 
-.green{
+.success{
     color: green;
 }

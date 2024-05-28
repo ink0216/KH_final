@@ -22,4 +22,11 @@ public class Shop {
 	private String shopOwner;
 	private String shopProfile;
 	private String addressDetail;
+	
+	//위치정보
+	private String dosiName;
+	private int dosiNo;
+	private String sigunguName;
+	private int sigunguNo;
+	private String dongName;
 }
