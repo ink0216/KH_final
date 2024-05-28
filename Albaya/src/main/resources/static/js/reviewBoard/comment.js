@@ -162,6 +162,8 @@ addContent.addEventListener("click", e =>{
         commentContent.focus();
 
         return;
+        
+        
     }
 
 
