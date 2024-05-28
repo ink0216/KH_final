@@ -98,11 +98,6 @@ public class HireController {
 		return service.selectHireList(cp);
 	}
 	
-	
-	
-	
-	
-	
 	//공고문 상세조회 하기
 	@GetMapping("hireDetail")
 	public String hireDetail() {

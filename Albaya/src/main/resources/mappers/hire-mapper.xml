@@ -62,7 +62,7 @@
 		FROM "DONG"
 		JOIN "SIGUNGU" USING (SIGUNGU_NO)
 		JOIN "DOSI" USING (DOSI_NO)
-		WHERE DONG_NAME LIKE '%'||#{dongName}||'%'
+		WHERE DONG_NAME = #{dongName}
 		AND SIGUNGU_NAME LIKE '%'||#{sigunguName}||'%'
 		AND DOSI_NAME LIKE '%'||#{dosiName}||'%'
 	</select>
