@@ -644,5 +644,15 @@ hireWrtieForm.addEventListener("submit",e=>{
     });
 
 })
+const semiSaveBtn = document.querySelector("#semiSaveBtn");
+semiSaveBtn.addEventListener("click", ()=>{
+    const hireStatus = document.createElement("input");
+    hireStatus.classList.add("hidden");
+    hireStatus.setAttribute("name", "hireStatus");
+    //저장 : 1 // 임시저장 : 2
+    hireStatus.value=2;
+    const hireWrtieForm = document.querySelector("#hireWrtieForm");
+    hireWrtieForm.append(hireStatus);
+});
 
 

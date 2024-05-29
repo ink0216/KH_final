@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.main.model.service.MainService;
@@ -43,7 +44,11 @@ public class MainController {
    public String adminPage() {
 	   return "/admin";
    }
-
+   @GetMapping("loginError")
+	public String loginError(RedirectAttributes ra) {
+		ra.addFlashAttribute("message", "기업 회원으로 로그인 후 이용해 주세요");
+		return "redirect:/"; 
+	}
 
    
 }

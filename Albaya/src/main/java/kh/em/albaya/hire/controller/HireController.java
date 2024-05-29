@@ -16,12 +16,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.service.HireService;
+import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
 import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
-
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Controller
 @RequestMapping("hire")
 @RequiredArgsConstructor
@@ -43,11 +45,11 @@ public class HireController {
 	public String hireWrite(
 			Hire hire,
 			Model model,
-			@SessionAttribute("loginMember") Member loginMember,
+			@SessionAttribute("loginShop") Shop loginShop,
 			RedirectAttributes ra
 			) { //SEQUENCE : 공고 번호 시퀀스만 생성했다
 		//HIRE 테이블에 INSERT하는 서비스 호출
-		int shopNo = loginMember.getMemberNo();
+		int shopNo = loginShop.getShopNo();
 		hire.setShopNo(shopNo);
 		
 		int hireNo = service.hireWrite(hire);
@@ -90,6 +92,18 @@ public class HireController {
 			Model model
 			) {
 		Hire hire = service.detailHire(hireNo);
+		String workDay1 = hire.getWorkDay();
+		
+		String[] workDayList = workDay1.split(",");
+		String workDay = null;
+		for(int i=0; i<workDayList.length;i++) {
+			if(workDayList.get(i)=='') {
+				
+			}
+				
+		}
+		log.debug("workDay : "+workDay);
+		hire.setWorkDay(workDay);
 		model.addAttribute("hire", hire);
 		return "/hire/hireDetail";
 	}
@@ -102,6 +116,7 @@ public class HireController {
 		return service.selectHireList(cp);
 	}
 	
+	//인서씨가 한것
 	//공고문 상세조회 하기
 	@GetMapping("hireDetail")
 	public String hireDetail() {
