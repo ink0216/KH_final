@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////
-const tbody= document.querySelector("tbody"); //tbody
+const tbody= document.querySelector(".tbody"); //tbody
 const numberButtonWrapper = document.querySelector('.number-button-wrapper'); //숫자 버튼 묶음
 
 //****************가져온 공고문 페이징 번호에 따라 조회하기*****************//
@@ -105,7 +105,6 @@ function reloadTable(cp) {
 
         setPageOf(hireList);
         getPagination(pagination);
-
     })
 }
 
