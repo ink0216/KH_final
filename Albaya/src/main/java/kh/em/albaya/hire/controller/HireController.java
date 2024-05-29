@@ -103,5 +103,13 @@ public class HireController {
 	public String hireDetail() {
 		return "/hire/hireDetail";
 	}
+	
+	
+	
+	//지역별 공고 조회하기 화면으로 이동하기
+	@GetMapping("hireLocation")
+	public String hireLocation() {
+		return "hire/hireLocation";
+	}
 }
 
