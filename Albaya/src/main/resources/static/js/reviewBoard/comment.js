@@ -4,6 +4,8 @@
 /* 댓글 목록 요청(ajax) */
 const selectCommentList = () => {
 
+    
+
 
 
     fetch("/comment?reviewBoardNo="+ reviewBoardNo) // GET 방식 요청
@@ -46,9 +48,7 @@ const selectCommentList = () => {
                     commentWriter.classList.add("comment-writer");
 
 
-                    commentWriter.style.display = "flex";
-                    commentWriter.style.flexDirection = "row";
-                    commentWriter.style.alignItems = "center";
+            
                     
                     // 닉네임
                     const nickname = document.createElement("span");
@@ -59,7 +59,10 @@ const selectCommentList = () => {
                     
                     commentDate.classList.add("comment-date");
 
+
                     commentDate.innerText = comment.commentWriteDate;
+
+                    
 
                     
                     // 작성자 영역(commentWriter)에 닉네임, 날짜 추가
@@ -206,6 +209,7 @@ addComment.addEventListener("click", e =>{
 
             // 댓글 목록을 지웠다가 다시 조회해서 화면에 출력하는 함수인 selectCommentList() 호출
             selectCommentList();    
+
 
 
         }
