@@ -16,7 +16,7 @@
             <div class="header-left">
                 <div class="collab">
                     <div class="searchHeader">
-                        <a href="#" id="logo">
+                        <a href="/" id="logo">
                             <img src="/images/ALBAYA_LOGO.png">
                         </a>
                         <input type="text" placeholder="search" id="searchField">
@@ -25,7 +25,7 @@
                     <div id="menus">
                         <ul>
                             <li class="underline"><a><b>업직종별</b></a></li>
-                            <li class="underline"><a><b>지역별</b></a></li>
+                            <li class="underline"><a href="/hire/hireLocation"><b>지역별</b></a></li>
                             <li class="underline"><a><b>알바토크</b></a></li>
                         </ul>
                     </div>
@@ -39,6 +39,7 @@
                 <th:block th:if="${session.loginMember != null}">
                     <button class="loginMember"><i class="fa-regular fa-bell"></i></button>
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
+                    <a href="/member/logout" class="login">로그아웃</a>
                 </th:block>
 
                 <th:block th:if="${session.loginMember == null}">
@@ -60,28 +61,28 @@
 <script>
     const ulaafter = document.querySelectorAll(".underline");
     const ulaafterEffect = document.querySelectorAll(".underline:hover::after")
-    for(let i = 0; i < ulaafter.length; i++){
-        ulaafter[i].addEventListener("click",() => {
-            
-        
+    for (let i = 0; i < ulaafter.length; i++) {
+        ulaafter[i].addEventListener("click", () => {
+
+
             //현재 선택한 요소 뒤에 있는 모든 요소에서 클래스 제거
-            for(let j = i+1; j < ulaafter.length; j++){
-                if(ulaafter[j].classList.contains("selectedList") ){
+            for (let j = i + 1; j < ulaafter.length; j++) {
+                if (ulaafter[j].classList.contains("selectedList")) {
                     ulaafter[j].classList.remove("selectedList");
                     ulaafter[j].style.pointerEvents = "auto";
                 }
             }
 
             //현재 선택한 요소 앞에 있는 모든 요소에서 클래스 제거
-            for(let k = i-1; k >=0; k--){
-                if(ulaafter[k].classList.contains("selectedList")){
+            for (let k = i - 1; k >= 0; k--) {
+                if (ulaafter[k].classList.contains("selectedList")) {
                     ulaafter[k].classList.remove("selectedList");
                     ulaafter[k].style.pointerEvents = "auto";
-                    
-                    
+
+
                 }
-            }      
-            ulaafter[i].classList.add("selectedList"); 
+            }
+            ulaafter[i].classList.add("selectedList");
             ulaafter[i].style.pointerEvents = "none";
         });
     }

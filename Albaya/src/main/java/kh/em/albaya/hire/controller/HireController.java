@@ -98,15 +98,18 @@ public class HireController {
 		return service.selectHireList(cp);
 	}
 	
-	
-	
-	
-	
-	
 	//공고문 상세조회 하기
 	@GetMapping("hireDetail")
 	public String hireDetail() {
 		return "/hire/hireDetail";
+	}
+	
+	
+	
+	//지역별 공고 조회하기 화면으로 이동하기
+	@GetMapping("hireLocation")
+	public String hireLocation() {
+		return "hire/hireLocation";
 	}
 }
 

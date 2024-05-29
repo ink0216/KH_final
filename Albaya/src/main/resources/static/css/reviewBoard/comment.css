@@ -39,13 +39,16 @@
 
 
 
-.comment-writer > span{
+.comment-writer {
     font-weight: bold;
     margin-left : 10px;
+	font-size:20px;
+	
 }
 
+
 .comment-date{
-	font-size: 0.9em;
+	font-size: 0.7em;
 	color:#014C73;
 }
 
@@ -57,17 +60,7 @@
 
 /* 버튼 */
 .comment-btn-area button{
-    /* width: 50px;
-    height: 30px;
-	margin-left: 10px;
-
-    font-weight: bold;
-    border: 0;
-    background-color: #014C73;
-    color : white;
-
-    cursor: pointer; */
-
+ 
 
 	font-size:15px;
 	margin-left:10px;
@@ -89,7 +82,7 @@
 
 .comment-row{
 	border-top : 1px solid #ccc;
-	padding : 15px 0;
+	padding : 10px 0;
 }
 
 
@@ -99,14 +92,7 @@
 }
 
 /* 
-.child-comment:before {
-	content: "\f0a4";
-	font-family: "FontAwesome";
-	
-	position : absolute;
-	left : 0;
-	top : 35px;
-} */
+
 
 
 /* 답글 */
@@ -155,4 +141,5 @@ ul{
 
 #memberEmail{
 	font-size:18px;
+	margin-right:10px;
 }

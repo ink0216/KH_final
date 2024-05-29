@@ -33,8 +33,16 @@
 		WHERE HIRE_STATUS = 0
 	</select>
 	
+	<!-- 기업명, 공고제목, 근무시간, 근무지역, 급여-->
 	<select id="selectHireList">
-		SELECT * FROM "HIRE"
+		SELECT SHOP_NAME, HIRE_TITLE, WORK_START,
+		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
+		 FROM "HIRE"
+		JOIN "SHOP" USING (SHOP_NO)
+		JOIN "DONG" USING (DONG_NO)
+		JOIN "SIGUNGU" USING (SIGUNGU_NO)
+		JOIN "DOSI" USING (DOSI_NO)
+		JOIN "PAY_TYPE" USING (PAY_NO)
 		WHERE HIRE_STATUS = 0
 		ORDER BY HIRE_NO DESC
 	</select>
@@ -58,13 +66,13 @@
 	
 	<!-- 시군구동이 모두 일치하는 동 번호 조회 -->
 	<select id="hireDongNo">
-		SELECT DONG_NO
-		FROM "DONG"
-		JOIN "SIGUNGU" USING (SIGUNGU_NO)
-		JOIN "DOSI" USING (DOSI_NO)
-		WHERE DONG_NAME LIKE '%'||#{dongName}||'%'
-		AND SIGUNGU_NAME LIKE '%'||#{sigunguName}||'%'
-		AND DOSI_NAME LIKE '%'||#{dosiName}||'%'
+	       SELECT DONG_NO
+       FROM "DONG"
+       JOIN "SIGUNGU" USING (SIGUNGU_NO)
+       JOIN "DOSI" USING (DOSI_NO)
+       WHERE REPLACE(DONG_NAME, ' ', '') LIKE '%' || REPLACE(#{dongName}, ' ', '') || '%'
+       AND REPLACE(SIGUNGU_NAME, ' ', '') LIKE '%' || REPLACE(#{sigunguName}, ' ', '') || '%'
+       AND REPLACE(DOSI_NAME, ' ', '') LIKE '%' || REPLACE(#{dosiName}, ' ', '') || '%'
 	</select>
 	
 	<!-- 공고 번호, 공고제목, 공고내용, 업직종 이름, 모집인원, 

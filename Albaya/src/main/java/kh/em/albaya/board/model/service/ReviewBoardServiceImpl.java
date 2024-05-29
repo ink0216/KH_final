@@ -91,6 +91,10 @@ public class ReviewBoardServiceImpl implements ReviewBoardService{
 	public int updateReadCount(int reviewBoardNo) {
 		
 		int result = mapper.updateReadCount(reviewBoardNo);
+		
+		if(result>0) {
+			return mapper.selectReadCount(reviewBoardNo);
+		}
 		return 0;
 	}
 	
