@@ -60,7 +60,16 @@ const setPageOf=(hireList)=>{
         const tr = document.createElement('tr');
         
         tr.className ='tr';
-
+        /* th:data-hire-no="*{hireNo}" */
+        tr.setAttribute("data-hire-no", hire.hireNo);
+        tr.addEventListener("click", (e)=>{
+            /* e.target == 이벤트가 발생한 대상(td태그)
+            e.currentTarget == 클릭이벤트가 부여돼있는 대상(tr) */
+            let hireNo = e.currentTarget.dataset.hireNo;
+            console.log(hireNo);
+            location.href='/hire/'+hireNo; //상세조회
+        });
+        
         //상점명
         const shopName = document.createElement('td');
         shopName.className='shopName';
@@ -85,10 +94,11 @@ const setPageOf=(hireList)=>{
         hireTitle.textContent=hire.hireTitle;
         hireTime.textContent=hire.workStart + " ~ " + hire.workEnd;
         sigunguName.textContent=hire.sigunguName;
-        pay.textContent=hire.payType+" "+hire.payInput;
+        pay.textContent=hire.payName+" "+hire.payInput;
 
 
         tr.append(shopName,hireTitle,hireTime,sigunguName,pay);
+    
         tbody.append(tr);
     
     }
@@ -170,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // <!-- document.querySelector(".imgItem").dataset.hireNo 해서 꺼내 쓸 수 있다.!!!!! -->
+/* 박스 공고 클릭 시 상세 조회 페이지로 이동 */
 const imgItem = document.querySelectorAll(".imgItem");
 imgItem.forEach(i=>{
     i.addEventListener("click", ()=>{
@@ -178,3 +189,5 @@ imgItem.forEach(i=>{
         location.href='/hire/'+hireNo;
     })
 });
+/* 리스트 공고 클릭 시 상세 조회 페이지로 이동 */
+

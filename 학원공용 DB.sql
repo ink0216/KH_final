@@ -900,4 +900,85 @@ SELECT *
 FROM "DONG"
 JOIN "SIGUNGU" USING (SIGUNGU_NO)
 JOIN "DOSI" USING (DOSI_NO)
-WHERE SIGUNGU_NAME = 'ㅅ'
+WHERE SIGUNGU_NAME = 'ㅅ';
+
+SELECT SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
+		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
+		 FROM "HIRE" A
+		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
+		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
+		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
+		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
+		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+		WHERE HIRE_STATUS = 0
+		ORDER BY HIRE_NO DESC;
+	
+	/*공고 번호, 공고제목, 공고내용, 업직종 이름, 모집인원, 
+	모집종료일(2024-03-23), 근무기간(몇개월), 근무요일(월,수,금)
+	근무 시작 시간, 근무 종료 시간, 급여종류명, 급여양, 모집성별,
+	근무지 시군구, 근무지 상세주소, 담당자명, 담당자연락처,담당자이메일,
+	 * */
+--공고 상세조회
+	--경기도 고양시덕양구 화정동
+	SELECT SUBSTR(SIGUNGU_NAME,1,3)||' '||SUBSTR(SIGUNGU_NAME,4)  FROM SIGUNGU  
+WHERE LENGTH(SIGUNGU_NAME)>=5;
+	SELECT HIRE_NO, HIRE_TITLE, HIRE_CONTENT, TYPE_NAME, HIRE_COUNT,
+	TO_CHAR(HIRE_END, 'YYYY-MM-DD') HIRE_END,
+	DECODE(HIRE_TERM, 1, '하루', 7, '일주일', 
+	3, '1~3개월', 6, '3~6개월', 365, '1년 이상') HIRE_TERM,
+	WORK_DAY,
+	WORK_START, WORK_END, PAY_NAME, PAY_INPUT , 
+	DECODE(HIRE_GENDER, 'A', '성별무관', 'F', '여성', 'M', '남성') HIRE_GENDER,
+    CASE 
+    	WHEN LENGTH(SIGUNGU_NAME)>=5 THEN DOSI_NAME||' '||SUBSTR(SIGUNGU_NAME,1,3)||' '||SUBSTR(SIGUNGU_NAME,4)||' '||DONG_NAME
+    	ELSE DOSI_NAME||' '||SIGUNGU_NAME||' '||DONG_NAME 
+    END
+    ADDRESS,
+	ADDRESS_DETAIL, SHOP_OWNER, SHOP_TEL, SHOP_EMAIL
+	FROM "HIRE" A
+	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
+	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
+	JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
+	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
+	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
+	WHERE HIRE_NO = 13;
+
+
+ALTER TABLE "HIRE" ADD SHOP_NAME VARCHAR2(100) 
+DEFAULT '없음' NOT NULL;
+SELECT TO_CHAR(SHOP_TEL) FROM "HIRE"; --이렇게 하면 앞의 0 안빠진다.
+SELECT SHOP_TEL FROM "HIRE";
+COMMIT;
+/*1:하루
+ * 7:일주일
+ * 3:1-3개월
+ * 6:3-6개월
+ * 365:1년 이상
+ * */
+SELECT 
+FROM "DONG"
+
+          (
+              SELECT 
+                  DOSI_NAME || ' ' || 
+                  (CASE 
+                      WHEN LENGTH(SIGUNGU_NAME) >= 5 THEN 
+                          SUBSTR(SIGUNGU_NAME, 1, 3) || ' ' || SUBSTR(SIGUNGU_NAME, 4) 
+                      ELSE 
+                          SIGUNGU_NAME 
+                  END) || ' ' || 
+                  DONG_NAME
+              FROM "DONG"
+              JOIN "SIGUNGU" USING (SIGUNGU_NO)
+              JOIN "DOSI" USING (DOSI_NO)
+              WHERE DONG_NO = SHOP.DONG_NO
+          ) AS FULL_ADDRESS;
+
+
+
+
+
+
+
+
+
