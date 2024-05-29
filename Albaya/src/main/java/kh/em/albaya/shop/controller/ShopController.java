@@ -30,7 +30,7 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("shop")
-@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginShop"})
 @Slf4j
 @PropertySource("classpath:/config.properties")
 public class ShopController {
@@ -105,16 +105,16 @@ public class ShopController {
 		Shop loginShop = service.login(inputShop);
     	
 		String message = null;
+
 		
 		if(loginShop == null) {
 			message = "아이디 또는 비밀번호가 일치하지 않습니다";
-			ra.addFlashAttribute("message", message);
 			ra.addFlashAttribute("message", message);
 			return "redirect:/member/login";
 		}
 
 		if(loginShop != null) {
-			model.addAttribute("loginMember", loginShop);
+			model.addAttribute("loginShop", loginShop);
 			
 			Cookie cookie = new Cookie("saveId", loginShop.getShopEmail());
 	

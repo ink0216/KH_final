@@ -11,6 +11,8 @@ coparationMember.addEventListener("click", () => {
     coparationMember.style.backgroundColor = "rgb(190, 189, 189)";
     personalMember.style.backgroundColor = "white"
     document.querySelector('.login-form').action = '/shop/login';
+    document.querySelector("#memberEmail").name = 'shopEmail';
+    document.querySelector("#memberPw").name = 'shopPw';
 })
 
 const getCookie = (key) => {

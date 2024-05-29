@@ -149,7 +149,7 @@ authBtn.addEventListener('click', e => {
 
         console.log(msg);
         const authObj = {
-            "inputTel" : inputTel,
+            "inputTel" : inputTel.value,
             "msg" : msg
         }
         fetch('/member/send-one', {
@@ -162,7 +162,7 @@ authBtn.addEventListener('click', e => {
         .then(resp => resp.json())
         .then(result => {
             authBtn.disabled = true;
-
+            inputTel.readOnly = true;
             alert("인증번호가 전송되었습니다.");
 
             authCheckBtn.addEventListener("click", () => {
