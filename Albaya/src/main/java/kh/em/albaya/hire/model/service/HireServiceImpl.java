@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import kh.em.albaya.board.model.dto.Pagination;
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.mapper.HireMapper;
+import kh.em.albaya.location.dto.Dong;
+import kh.em.albaya.location.dto.Dosi;
+import kh.em.albaya.location.dto.Sigungu;
 import lombok.RequiredArgsConstructor;
 @Transactional
 @Service
@@ -91,5 +94,27 @@ public class HireServiceImpl implements HireService{
 		
 		return map;
 		 
+	}
+	
+	
+	
+	
+	//시도 조회하기
+	@Override
+	public List<Dosi> selectDosi() {
+		return mapper.selectDosi();
+	}
+	
+	//시군구 조회하기
+	@Override
+	public List<Sigungu> selectSigungu(String dosiName) {
+		return mapper.selectSigungu(dosiName);
+	}
+	
+	
+	//동읍면 조회하기
+	@Override
+	public List<Dong> selectDong(String sigunguName) {
+		return mapper.selectDong(sigunguName);
 	}
 }
