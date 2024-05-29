@@ -1,0 +1,50 @@
+
+<main>
+    <div class="wrapper-container">
+        <div class="login-container">
+            <div class="findId-text-conatiner">
+                <div class="login-text">
+                    <div class="h1-place">
+                        <h1>비밀번호 변경하기</h1>
+                        <p>변경할 비밀번호는 영문 대소문자, 숫자, 특수 문자(!, @, #, _, -, ^)만 포함해야하며, 
+                            8 ~ 20글자 사이만 입력 가능합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-wrapper">
+                <div class="findPw-area">
+                    <form class="changePwForm" action="/myPage/changePwShop" method="POST" id = "changePwForm">
+                    <div class="text-area">
+                        <div class="text-span-area">
+                            현재 비밀번호
+                        </div>
+                        <div class="text-span-area">
+                            변경할 비밀번호
+                        </div>
+                        <div class="text-span-area">
+                            변경할 비밀번호 확인
+                        </div>
+                    </div>
+                        <div class="input-area">
+                            <div class="text-input-area">
+                                <input type="password" name="curPassword" class="inputPassword" id="curPassword" maxlength="20">
+                            </div>
+                            <div class="text-input-area">
+                                <input type="password" name="newPassword" class="inputPassword" id="newPassword" maxlength="20">
+                            </div>
+                            <div class="text-input-area">
+                                <input type="password" name="checkNewPassword" class="inputPassword" id="checkNewPassword" maxlength="20">
+                                <input type="hidden" name="shopEmail" th:value="${param.shopEmail}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-area">
+                    <button id="cancelBtn">취소</button>
+                    <button id="changeBtn">변경하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

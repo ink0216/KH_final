@@ -63,4 +63,49 @@ public class MyPageServiceImpl implements myPageService{
 		
 		return result;
 	}
+	
+	@Override
+	public int findShopPw(int shopNo, String curPassword, String newPassword) {
+		String shopPw = mapper.findShopPw(shopNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		String encPw = bcrypt.encode(newPassword);
+		
+		map.put("shopNo", shopNo);
+		map.put("encPw", encPw);
+		
+		if(!bcrypt.matches(curPassword, shopPw)) {
+			return 0;
+		}
+		
+		int result = mapper.updateShopPw(map);
+		
+		return result;
+	}
+	
+	@Override
+	public int myPageCheckShopPw(int shopNo, String shopEmail, String shopPw) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("shopNo", shopNo);
+		map.put("shopEmail", shopEmail);
+		
+		String encPw = mapper.findShopEncPw(map);
+		
+		if(!bcrypt.matches(shopPw, encPw)) {
+			return 0;
+		}
+		
+		return mapper.myPageCheckPw(map);
+	}
+	
+	@Override
+	public int deleteShop(int shopNo, String shopEmail) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("shopNo", shopNo);
+		map.put("shopEmail", shopEmail);
+		
+		return mapper.deleteShop(map);
+	}
 }

@@ -34,9 +34,10 @@
 	</select>
 	
 	<!-- 기업명, 공고제목, 근무시간, 근무지역, 급여-->
-	<select id="selectHireList">
-		SELECT SHOP_NAME, HIRE_TITLE, WORK_START,
+	<select id="selectHireList">	
+		SELECT SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
 		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
+
 		 FROM "HIRE" h
 		JOIN "SHOP" USING (SHOP_NO)
 		JOIN "DONG"  USING (DONG_NO)
