@@ -19,17 +19,19 @@
             <p class="comment-writer">
                 <span th:text="*{#strings.substringBefore(memberEmail,'@')}" id="memberEmail">닉네임</span>
                 <span class="comment-date" th:text="*{commentWriteDate}">작성일</span>
-                <div id="comment-btn-area">
+            </p>
+            <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
+            <div class="comment-btn-area">
                 <button th:onclick="|showInsertComment(*{commentNo}, this)|" id="comment-btn">답글</button>   
                 <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
                     <!-- 로그인한 사람과 댓글 쓴 사람의 회원 번호가 같을 때만 수정 삭제 버튼 보이게 하기 -->
                     <button th:onclick="|showUpdateComment(*{commentNo}, this)|" id="comment-btn">수정</button>     
                     <button th:onclick="|deleteComment(*{commentNo})|" id="comment-btn">삭제</button>
-                </div>
                 </th:block>
-            </p>
+            </div>
+            
 
-            <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
+            
 
         
         </th:block>
@@ -48,3 +50,6 @@
         </button>
     </div>
 </div>
+<script th:inline="javascript">
+    const memberEmail = /*[[*{#strings.substringBefore(memberEmail,'@')}]]*/ "아이디";
+</script>

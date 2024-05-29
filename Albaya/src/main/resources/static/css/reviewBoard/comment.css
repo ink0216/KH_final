@@ -39,13 +39,16 @@
 
 
 
-.comment-writer > span{
+.comment-writer {
     font-weight: bold;
     margin-left : 10px;
+	font-size:20px;
+	
 }
 
+
 .comment-date{
-	font-size: 0.9em;
+	font-size: 0.7em;
 	color:#014C73;
 }
 
@@ -79,7 +82,7 @@
 
 .comment-row{
 	border-top : 1px solid #ccc;
-	padding : 15px 0;
+	padding : 10px 0;
 }
 
 
@@ -138,4 +141,5 @@ ul{
 
 #memberEmail{
 	font-size:18px;
+	margin-right:10px;
 }
