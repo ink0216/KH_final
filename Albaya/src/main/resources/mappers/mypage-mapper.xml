@@ -7,6 +7,7 @@
 		FROM "MEMBER"
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND MEMBER_NO = #{memberNo}
+		AND MEMBER_STATUS != '5'
 	</select>
 	
 	<select id="findEncPw" resultType="string">
@@ -14,6 +15,7 @@
 		FROM "MEMBER"
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND MEMBER_NO = #{memberNo}
+		AND MEMBER_STATUS != '5'	
 	</select>
 	
 	<update id="deleteMember">
@@ -21,6 +23,7 @@
 		SET MEMBER_STATUS = 5
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND MEMBER_NO = #{memberNo}
+		AND MEMBER_STATUS != '5'
 	</update>
 	
 	<update id="updateMemberPw">
@@ -28,6 +31,7 @@
 	    SET MEMBER_PW = #{encPw},
 	    LAST_MODIFIED_PW_DATE = SYSDATE
 	    WHERE MEMBER_NO = #{memberNo}
+	    AND MEMBER_STATUS != '5'
 	</update>
 
 	
@@ -35,6 +39,37 @@
 		SELECT "MEMBER_PW"
 		FROM "MEMBER"
 		WHERE MEMBER_NO = #{memberNo}
+		AND MEMBER_STATUS != '5'
 	</select>
 	
+	<select id="findShopPw" resultType="string">
+		SELECT "SHOP_PW"
+		FROM "SHOP"
+		WHERE SHOP_NO = #{memberNo}
+		AND SHOP_STATUS != '5'
+	</select>
+	
+	<update id="updateShopPw">
+	    UPDATE "SHOP"
+	    SET SHOP_PW = #{encPw},
+	    LAST_MODIFIED_PW_DATE = SYSDATE
+	    WHERE SHOP_NO = #{shopNo}
+	    AND SHOP_STATUS != '5'
+	</update>
+	
+	<select id="findShopEncPw" resultType="string">
+		SELECT SHOP_PW
+		FROM "SHOP"
+		WHERE SHOP_EMAIL = #{shopEmail}
+		AND SHOP_NO = #{shopNo}
+		AND SHOP_STATUS != '5'	
+	</select>
+	
+	<update id="deleteShop">
+		UPDATE "SHOP"
+		SET SHOP_STATUS = 5
+		WHERE SHOP_EMAIL = #{shopEmail}
+		AND SHOP_NO = #{shopNo}
+		AND SHOP_STATUS != '5'
+	</update>
 </mapper>

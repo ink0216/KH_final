@@ -281,3 +281,8 @@ cursor:pointer;
 .reviewBoardButtonNotice{
    color:red;
 }
+
+
+#commentCount{
+   color:aqua;
+}

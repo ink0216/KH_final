@@ -143,3 +143,12 @@ ul{
 	font-size:18px;
 	margin-right:10px;
 }
+
+#commentCount{
+	margin-left:365px;
+	padding-bottom:20px;
+}
+pre{
+	height:90px;
+	font-size : 22px;
+}

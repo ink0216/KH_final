@@ -2,13 +2,13 @@ const personalMember = document.querySelector('#personalMember');
 const coparationMember = document.querySelector('#coparationMember');
 
 personalMember.addEventListener("click", () => {
-    personalMember.style.backgroundColor = "rgb(190, 189, 189)";
+    personalMember.style.backgroundColor = "#f5f5f5";
     coparationMember.style.backgroundColor = "white"
     document.querySelector('.login-form').action = '/member/login';
 })
 
 coparationMember.addEventListener("click", () => {
-    coparationMember.style.backgroundColor = "rgb(190, 189, 189)";
+    coparationMember.style.backgroundColor = "#f5f5f5";
     personalMember.style.backgroundColor = "white"
     document.querySelector('.login-form').action = '/shop/login';
     document.querySelector("#memberEmail").name = 'shopEmail';

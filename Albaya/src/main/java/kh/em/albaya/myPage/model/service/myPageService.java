@@ -8,4 +8,10 @@ public interface myPageService {
 
 	int findMemberPw(int memberNo, String curPassword, String newPassword);
 
+	int findShopPw(int shopNo, String curPassword, String newPassword);
+
+	int myPageCheckShopPw(int shopNo, String shopEmail, String shopPw);
+
+	int deleteShop(int shopNo, String shopEmail);
+
 }

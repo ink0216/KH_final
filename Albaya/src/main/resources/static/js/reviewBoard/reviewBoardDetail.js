@@ -4,14 +4,17 @@ const siren = document.querySelector("#siren");
 
 
     function openPopup(){
+
+        if(loginMemberNo == null){
+
+            alert("로그인 후 신고 서비스를 이용할 수 있습니다.");
+            return;
+        }
   
         window.open('/declarePopup.html', 'popupWindow', 'width=770, height=1200, left=150, resizable = no');
     }
 
 
-
-
-    
 
 
 

@@ -17,8 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
-import kh.em.albaya.member.controller.MemberController;
-import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.shop.model.service.ShopService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +29,7 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("shop")
-@SessionAttributes({"loginShop"})
+@SessionAttributes({"loginShop", "loginMember"})
 @Slf4j
 @PropertySource("classpath:/config.properties")
 public class ShopController {
@@ -104,9 +102,8 @@ public class ShopController {
     		RedirectAttributes ra) {
     	
 		Shop loginShop = service.login(inputShop);
-    	
+		
 		String message = null;
-
 		
 		if(loginShop == null) {
 			message = "아이디 또는 비밀번호가 일치하지 않습니다";
@@ -114,9 +111,9 @@ public class ShopController {
 			return "redirect:/member/login";
 		}
 
-		if(loginShop != null) {
+		if(loginShop != null) {	
 			model.addAttribute("loginShop", loginShop);
-			
+
 			Cookie cookie = new Cookie("saveId", loginShop.getShopEmail());
 	
 			cookie.setPath("/");

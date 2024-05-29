@@ -17,6 +17,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.service.HireService;
 import kh.em.albaya.shop.model.dto.Shop;
+import kh.em.albaya.location.dto.Dong;
+import kh.em.albaya.location.dto.Dosi;
+import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -123,8 +127,40 @@ public class HireController {
 	
 	//지역별 공고 조회하기 화면으로 이동하기
 	@GetMapping("hireLocation")
-	public String hireLocation() {
+	public String hireLocation(
+			Model model) {
+		
+		List<Dosi> dosiList = service.selectDosi();
+		model.addAttribute("dosiList", dosiList);
+		
 		return "hire/hireLocation";
+	}
+	
+	
+	
+	
+	//시/도에 따라 시군구 조회하기
+	@GetMapping("/selectSigungu")
+	@ResponseBody
+	public List<Sigungu> selectSigungu(
+			@RequestParam("dosiName") String dosiName){
+		
+		List<Sigungu> sigunguList = service.selectSigungu(dosiName);
+		
+		return sigunguList;
+	}
+	
+	
+	//동읍면 조회하기
+	@GetMapping("/selectDong")
+	@ResponseBody
+	public List<Dong> selectDong(
+			@RequestParam("sigunguName") String sigunguName){
+		
+		List<Dong> dongList = service.selectDong(sigunguName);
+		
+		return dongList;
+		
 	}
 }
 

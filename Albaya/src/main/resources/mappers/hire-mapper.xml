@@ -43,6 +43,7 @@
 		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
 		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
 		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+
 		WHERE HIRE_STATUS = 0
 		ORDER BY HIRE_NO DESC
 	</select>
@@ -141,4 +142,25 @@ WHERE LENGTH(SIGUNGU_NAME)>=5;
 	DECODE(HIRE_GENDER, 'A', '성별무관', 'F', '여성', 'M', '남성') HIRE_GENDER,
 	-->
 	
+	
+	
+	
+	
+	<select id="selectDosi">
+		SELECT * FROM "DOSI"
+	</select>
+	
+	<select id="selectSigungu">
+		SELECT * 
+		FROM "SIGUNGU"
+		JOIN "DOSI" USING(DOSI_NO) 
+		WHERE DOSI_NAME =#{dosiName}
+	</select>
+	
+	<select id="selectDong">
+		SELECT * 
+		FROM "DONG"
+		JOIN "SIGUNGU" USING(SIGUNGU_NO) 
+		WHERE SIGUNGU_NAME =#{sigunguName}
+	</select>
 </mapper>

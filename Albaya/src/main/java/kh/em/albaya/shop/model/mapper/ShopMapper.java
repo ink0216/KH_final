@@ -19,5 +19,7 @@ public interface ShopMapper {
 
 	Shop login(String shopEmail);
 
+	String loginShopAddress(int shopDongNo);
+
 	
 }

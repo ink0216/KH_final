@@ -17,5 +17,12 @@ public interface MyPageMapper {
 
 	String findMemberPw(int memberNo);
 
+	String findShopPw(int shopNo);
+	
+	int updateShopPw(Map<String, Object> map);
+
+	String findShopEncPw(Map<String, Object> map);
+
+	int deleteShop(Map<String, Object> map);
 
 }
