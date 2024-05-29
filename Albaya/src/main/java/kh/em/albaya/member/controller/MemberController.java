@@ -32,7 +32,7 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 @RequiredArgsConstructor
 @RequestMapping("member")
 @PropertySource("classpath:/config.properties")
-@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginShop", "loginMember"})
 @Slf4j
 public class MemberController {
    

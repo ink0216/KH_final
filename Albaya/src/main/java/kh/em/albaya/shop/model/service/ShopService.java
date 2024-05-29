@@ -12,4 +12,6 @@ public interface ShopService{
 	int signup(Shop shop);
 
 	Shop login(Shop inputShop);
+
+	String loginShopAddress(int shopDongNo);
 }

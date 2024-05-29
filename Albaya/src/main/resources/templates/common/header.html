@@ -36,13 +36,13 @@
 
             <div class="header-buttons">
 
-                <th:block th:if="${session.loginMember != null}">
+                <th:block th:if="${session.loginMember != null or session.loginShop != null}">
                     <button class="loginMember"><i class="fa-regular fa-bell"></i></button>
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
                     <a href="/member/logout" class="login">로그아웃</a>
                 </th:block>
 
-                <th:block th:if="${session.loginMember == null}">
+                <th:block th:if="${session.loginMember == null and session.loginShop == null}">
                     <a href="/member/login" class="login">로그인</a> &nbsp;
                     |&nbsp;
                     <a href = "/member/selectSignup" class = "login">회원가입</a>  

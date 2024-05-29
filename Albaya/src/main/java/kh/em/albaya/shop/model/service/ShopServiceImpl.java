@@ -76,4 +76,9 @@ public class ShopServiceImpl implements ShopService{
 		
 		return loginShop;
 	}
+	
+	@Override
+	public String loginShopAddress(int shopDongNo) {
+		return mapper.loginShopAddress(shopDongNo);
+	}
 }
