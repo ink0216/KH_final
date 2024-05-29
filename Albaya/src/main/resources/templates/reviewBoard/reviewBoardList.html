@@ -58,24 +58,26 @@
                     
                     <th:block th:unless="${#lists.isEmpty(reviewBoardList)}">
                         
-                    <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
-                        <td th:text="*{reviewBoardNo}">글번호</td>
-                        <td><a th:unless="${param.key}" 
-                            th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" 
-                            th:text="*{reviewTitle}">게시글 제목</a></td>
-                        
+                        <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
+                            <td th:text="*{reviewBoardNo}">글번호</td>
+                            <td>
+                                <a th:unless="${param.key}" 
+                                th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" 
+                                th:text="*{reviewTitle}">게시글 제목</a>
+                                
+                                
+                                <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
+                                <!-- <th:block th:text="|[*{commentCount}]|"></th:block> -->
+                            </td>
                             
-                            <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
-                            <!-- <th:block th:text="|[*{commentCount}]|"></th:block> -->
-                        
-                            <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
-                            <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
+                                <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
+                                <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
 
-                            <td th:text="*{reviewBoardWriteDate}">작성일</td>
+                                <td th:text="*{reviewBoardWriteDate}">작성일</td>
 
-                            <td th:text="*{readCount}">0</td>
-                        </th:block>
-                    </tr>
+                                <td th:text="*{readCount}">0</td>
+                            </th:block>
+                        </tr>
                   
                     </th:block>
                 </tbody>

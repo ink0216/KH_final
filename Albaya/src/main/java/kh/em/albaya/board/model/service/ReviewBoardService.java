@@ -41,5 +41,12 @@ public interface ReviewBoardService {
 	ReviewBoard selectOne(Map<String, Object> map);
 
 
+	/** 조회수 증가
+	 * @param reviewBoardNo
+	 * @return
+	 */
+	int updateReadCount(int reviewBoardNo);
+
+
 
 }

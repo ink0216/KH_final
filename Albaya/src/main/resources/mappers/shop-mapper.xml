@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kh.em.albaya.shop.model.mapper.ShopMapper">
+
+	<select id="checkEmail" resultType="_int">
+		SELECT COUNT(*)
+		FROM "SHOP"
+		WHERE SHOP_EMAIL = #{shopEmail}
+	</select>
+	
+	<select id="checkBrn" resultType="_int">
+		SELECT COUNT(*)
+		FROM "SHOP"
+		WHERE SHOP_BRN = #{shopBrn}
+	</select>
+	
+	<select id="findDongNo" resultType="_int">
+		SELECT DONG_NO
+		FROM "DONG"
+		JOIN "SIGUNGU" USING (SIGUNGU_NO)
+		JOIN "DOSI" USING (DOSI_NO)
+		WHERE DONG_NAME = #{dongName}
+		AND SIGUNGU_NAME LIKE '%'||#{sigunguName}||'%'
+		AND DOSI_NAME LIKE '%'||#{dosiName}||'%'
+	</select>
+	
+	<insert id="signup">
+		INSERT INTO
+		"SHOP" VALUES(SEQ_SHOP_NO.NEXTVAL, #{dongNo}, #{shopName},
+		 #{shopEmail},#{shopPw}, #{shopTel}, #{shopBrn}, 
+		 #{shopOwner}, #{shopProfile}, #{addressDetail}, SYSDATE, DEFAULT, DEFAULT)
+	</insert>
+	
+	<select id="login" resultType="Shop">
+		SELECT SHOP_NO, DONG_NO, SHOP_NAME, SHOP_EMAIL, SHOP_PW,
+		SHOP_TEL, SHOP_BRN, SHOP_OWNER, SHOP_PROFILE, ADDRESS_DETAIL,
+		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') ENROLL_DATE,
+		SHOP_STATUS, AUTHORITY_NO
+		FROM "SHOP"
+		WHERE SHOP_EMAIL = #{shopEmail}
+		AND SHOP_STATUS != 5
+		
+	</select>
+</mapper>

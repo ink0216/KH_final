@@ -32,14 +32,14 @@
 			#{reviewBoardNo},
 			#{memberNo},
 			
-			<!-- 자식 댓글 -->
+			
 			<if test="parentCommentNo != 0">
 			  #{parentCommentNo}
 			</if>
-			<!-- 부모 댓글 -->
+			
 			<if test="parentCommentNo == 0">
 			  NULL
-			</if>
+			</if>,
 			
 			#{commentContent},
 			DEFAULT,

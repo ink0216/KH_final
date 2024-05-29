@@ -48,6 +48,11 @@ public class MemberController {
       return "/member/signup";
    }
    
+   @GetMapping("selectSignup")
+   public String selectSignup() {
+	   return "/member/selectSignup";
+   }
+   
    @PostMapping("signup")
    public String signup(
          Member member,

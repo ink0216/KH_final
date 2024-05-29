@@ -2,6 +2,7 @@ package kh.em.albaya.board.model.service;
 
 import java.util.List;
 
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import kh.em.albaya.board.model.dto.Comment;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor	
+@PropertySource("classpath:/config.properties")
 public class CommentServiceImpl implements CommentService {
 	
 	private final CommentMapper mapper;

@@ -3,10 +3,17 @@
     padding: 0px;
     box-sizing: border-box; 
 }
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{font-family: 'SUIT-Regular';}
+
 
 body{
-    background-color: rgb(228, 242, 238);
-    font-family: 'TheJamsil5Bold';
+    background-color: rgb(240 244 243);
 }
 
 input[type=number]::-webkit-outer-spin-button,
@@ -20,16 +27,12 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-/* 전체 폰트 */
-@font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
 button{
     font-family: 'TheJamsil5Bold';
+}
+
+.alertSpan{
+    font-size: 13px; /* 원하는 글자 크기로 변경 */
 }
 
 button:hover{
@@ -166,10 +169,10 @@ form{
     border-radius: 5px;
 }
 
-.red{
+.fail{
     color: red;
 }
 
-.green{
+.success{
     color: green;
 }
