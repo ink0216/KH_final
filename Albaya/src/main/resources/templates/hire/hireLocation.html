@@ -4,10 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>지역별 공고 조회</title>
 </head>
 
 <body>
+    <th:block th:replace="~{common/header}"></th:block>
+    <h1>지역별 공고 조회입니다</h1>
+
+    <div class="locaton-search-container">
+        <div class="search-header-container">
+            <div class="sido-header"></div>
+            <div class="sigungu-header"></div>
+            <div class="dong-header"></div>
+        </div>
+
+        <div class="search-bodat-container">
+            <div class="sido-body">
+                <ul>
+                    <li>
+                        <button>경기</button>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="sigungu-body">
+                <ul>
+                    <li>
+                        <button>일산동구</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dong-body">
+                <ul>
+                    <li>
+                        <button>마두동</button>
+                    </li>
+                    <li>
+                        <button>마두동</button>
+                    </li>
+                    <li>
+                        <button>마두동</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <th:block th:replace="~{common/footer}"></th:block>
+
 
 </body>
 
