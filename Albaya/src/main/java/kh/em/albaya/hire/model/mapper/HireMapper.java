@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import kh.em.albaya.hire.model.dto.Hire;
+import kh.em.albaya.location.dto.Dosi;
 
 @Mapper
 public interface HireMapper {
@@ -45,6 +46,15 @@ public interface HireMapper {
 	int selectListCount();
 
 	List<Hire> selectHireList(Object object, RowBounds rowBounds);
+
+
+
+	
+	/**
+	 * 시도 조회하기
+	 * @return
+	 */
+	List<Dosi> selectDosi();
 
 
 

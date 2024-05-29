@@ -78,4 +78,11 @@
 		SELECT 
 	
 	</select>
+	
+	
+	
+	
+	<select id="selectDosi">
+		SELECT * FROM "DOSI"
+	</select>
 </mapper>

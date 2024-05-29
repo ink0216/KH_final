@@ -1,5 +1,6 @@
 package kh.em.albaya.hire.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.service.HireService;
+import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 
@@ -108,7 +110,12 @@ public class HireController {
 	
 	//지역별 공고 조회하기 화면으로 이동하기
 	@GetMapping("hireLocation")
-	public String hireLocation() {
+	public String hireLocation(
+			Model model) {
+		
+		List<Dosi> dosiList = service.selectDosi();
+		model.addAttribute("dosiList", dosiList);
+		
 		return "hire/hireLocation";
 	}
 }
