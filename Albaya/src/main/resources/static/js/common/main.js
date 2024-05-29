@@ -74,7 +74,7 @@ const setPageOf=(hireList)=>{
 
         //근무 지역
         const sigunguName = document.createElement('td');
-        sigunguName.className='sigunguName';
+        sigunguName.className='sigungu-name';
 
         //급여
         const pay = document.createElement('td');

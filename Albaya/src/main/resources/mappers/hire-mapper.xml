@@ -85,4 +85,18 @@
 	<select id="selectDosi">
 		SELECT * FROM "DOSI"
 	</select>
+	
+	<select id="selectSigungu">
+		SELECT * 
+		FROM "SIGUNGU"
+		JOIN "DOSI" USING(DOSI_NO) 
+		WHERE DOSI_NAME =#{dosiName}
+	</select>
+	
+	<select id="selectDong">
+		SELECT * 
+		FROM "DONG"
+		JOIN "SIGUNGU" USING(SIGUNGU_NO) 
+		WHERE SIGUNGU_NAME =#{sigunguName}
+	</select>
 </mapper>

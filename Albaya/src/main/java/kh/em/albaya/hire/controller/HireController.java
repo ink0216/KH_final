@@ -16,7 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.service.HireService;
+import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
+import kh.em.albaya.location.dto.Sigungu;
 import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 
@@ -117,6 +119,33 @@ public class HireController {
 		model.addAttribute("dosiList", dosiList);
 		
 		return "hire/hireLocation";
+	}
+	
+	
+	
+	
+	//시/도에 따라 시군구 조회하기
+	@GetMapping("/selectSigungu")
+	@ResponseBody
+	public List<Sigungu> selectSigungu(
+			@RequestParam("dosiName") String dosiName){
+		
+		List<Sigungu> sigunguList = service.selectSigungu(dosiName);
+		
+		return sigunguList;
+	}
+	
+	
+	//동읍면 조회하기
+	@GetMapping("/selectDong")
+	@ResponseBody
+	public List<Dong> selectDong(
+			@RequestParam("sigunguName") String sigunguName){
+		
+		List<Dong> dongList = service.selectDong(sigunguName);
+		
+		return dongList;
+		
 	}
 }
 

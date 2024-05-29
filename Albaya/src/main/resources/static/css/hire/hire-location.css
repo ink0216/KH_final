@@ -1,31 +1,134 @@
-.locaton-search-container{
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'SUIT-Regular';
+}
+
+
+.titleArea{
+    width: 700px;
+    margin: 10px 0px 50px 10px;
+}
+
+/* 시군구 표 */
+.container1{  
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-.search-header-container{
+
+.locaton-search-container{
+    width: 700px;
     display: flex;
-    border: 1px solid black;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 0.3px solid #ccc;
+    border-radius: 2px;
+}
+
+
+/* 표 머리 부분 */
+.search-header-container{
+    width: 700px;
+    display: flex;
 }
 
 .header{
-    width: 170px;
-    border: 1px solid black;
+    display: flex;
+    width: 33.3%;
+    height: 50px;
+    background-color: #f5f5f5;
     text-align: center;
-    margin: 5
+    margin: 5;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 0.3px solid #ccc;
+    font-weight: bold;
 }
+.sido-header{ border-right: 0.3px solid #ccc;}
+.sigungu-header{ border-right: 0.3px solid #ccc;}
 
+
+/* 표 몸통 */
 .search-body-container{
     display: flex;
     justify-content: center;
-    border: 1px solid;
+    height: 300px;
+    width: 700px;
+    border-bottom: 0.3px solid #ccc;
 }
 
 .body{
+    width: 33.3%;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    width: 170px;
+}
+
+.body ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    border-bottom: 0.5px solid gainsboro;
+    padding: 0px;
+    margin: 0px;
+}
+
+.body ul button{
+    border: none;
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+}
+
+.body ul button:hover{
+    background-color: rgb(248, 238, 234);
+}
+
+.body ul li{ 
+    width: 100%;
+}
+
+/* 스크롤바 */
+.sido-body{overflow-y: auto; border-right: 0.13px solid #ccc;}
+.sigungu-body{overflow-y: auto; border-right: 0.13px solid #ccc;}
+.dong-body{overflow-y: auto}
+
+
+/* 동이름 나오는 div */
+.search-locations{
+    display: flex;
+    width: 700px;
+    height: 70px;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+.location-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #e4e9e7;
+    width: 100px;
+    height: 30px;
+    margin: 20px;
+
+}
+.del-btn{
+    margin: 5px;
+    border: none;
+    background-color: #e4e9e7;
+    cursor: pointer;
+    font-weight: bold;
 }

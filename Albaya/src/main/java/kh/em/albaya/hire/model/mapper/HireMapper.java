@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import kh.em.albaya.hire.model.dto.Hire;
+import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
+import kh.em.albaya.location.dto.Sigungu;
 
 @Mapper
 public interface HireMapper {
@@ -55,6 +57,22 @@ public interface HireMapper {
 	 * @return
 	 */
 	List<Dosi> selectDosi();
+
+
+
+	/**시군구 조회하기
+	 * @param dosiName
+	 * @return
+	 */
+	List<Sigungu> selectSigungu(String dosiName);
+
+
+
+	/**동읍면 조회하기
+	 * @param sigunguName
+	 * @return
+	 */
+	List<Dong> selectDong(String sigunguName);
 
 
 

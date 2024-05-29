@@ -6,56 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>지역별 공고 조회</title>
     <link rel="stylesheet" href="/css/hire/hire-location.css">
+    <link rel="stylesheet" href="/css/common/main.css">
 </head>
 
 <body>
     <th:block th:replace="~{common/header}"></th:block>
-    <h1>지역별 공고 조회입니다</h1>
 
-    <div class="locaton-search-container">
-        <div class="search-header-container">
-            <div class="sido-header header">시/도</div>
-            <div class="sigungu-header header">시/군/구</div>
-            <div class="dong-header header">동/읍/면</div>
+
+    <div class="container1">
+        <div class="titleArea">
+            <h3>지역별 공고 검색</h3>
         </div>
 
-        <div class="search-body-container">
-
-            <div class="sido-body body">
-                <th:block class="sido-body" th:each="dosi : ${dosiList}" th:object="${dosi}">
-                    <ul>
-                        <li>
-                            <button th:text="*{dosiName}">경기</button>
-                        </li>
-                    </ul>
-                </th:block>
+        <div class="locaton-search-container">
+            <div class="search-header-container">
+                <div class="sido-header header">시/도</div>
+                <div class="sigungu-header header">시/군/구</div>
+                <div class="dong-header header">동/읍/면</div>
             </div>
 
+            <div class="search-body-container">
+                <div class="sido-body body">
+                    <th:block class="sido-body" th:each="dosi : ${dosiList}" th:object="${dosi}">
+                        <ul>
+                            <li>
+                                <button th:text="*{dosiName}" class="dosiName">경기</button>
+                            </li>
+                        </ul>
+                    </th:block>
+                </div>
 
-            <div class="sigungu-body body">
-                <ul>
-                    <li>
-                        <button>일산동구</button>
-                    </li>
-                </ul>
+                <div class="sigungu-body body"></div>
+
+                <div class="dong-body body"></div>
             </div>
 
-            <div class="dong-body body">
-                <ul>
-                    <li>
-                        <button>마두동</button>
-                    </li>
-                    <li>
-                        <button>마두동</button>
-                    </li>
-                    <li>
-                        <button>마두동</button>
-                    </li>
-                </ul>
-            </div>
+            <div class="search-locations"></div>
+
         </div>
-
     </div>
+
+    <div class="tableContainer">
+        <div class="tableList">
+            <table>
+                <thead>
+                    <tr class="thead">
+                        <th>기업명</th>
+                        <th>공고제목</th>
+                        <th>근무시간</th>
+                        <th>근무지역</th>
+                        <th>급여</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr class="tr">
+                        <td name="shopName" class="shopName">버거킹</td>
+                        <td name="hireTitle" class="hireTitle">버거킹에서 함께 일할 분을 찾습니다‼️🤓🍔</td>
+                        <td name="hireTime" class="hireTime">09:00 ~ 16:00</td>
+                        <td name="sigunguName" class="sigunguName">서울시 중구</td>
+                        <td name="pay" class="pay">10000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="pagination-container">
+        <div class="prev-button">이전</div>
+        <div class="number-button-wrapper"><button class="number-button">1</ㅠ>
+        </div>
+        <div class="next-button">이후</div>
+    </div>
+
+    </section>
 
 
 
@@ -66,6 +92,7 @@
 
 
     <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/hire/hire-location.js"></script>
 </body>
 
 </html>
