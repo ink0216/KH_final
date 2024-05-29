@@ -24,6 +24,8 @@ public class Shop {
 	private String addressDetail;
 	private String lastModifiedDate;
 	private String lastModifiedPwDate;
+	private int authorityNo;
+	
 	
 	//위치정보
 	private String dosiName;
