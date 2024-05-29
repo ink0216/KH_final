@@ -58,6 +58,7 @@ const setPageOf=(hireList)=>{
     for(let hire of hireList){ //전체 공고 수 세기
 
         const tr = document.createElement('tr');
+        
         tr.className ='tr';
 
         //상점명
@@ -82,9 +83,9 @@ const setPageOf=(hireList)=>{
 
         shopName.textContent = hire.shopName;
         hireTitle.textContent=hire.hireTitle;
-        hireTime.textContent=hire.hireTime;
+        hireTime.textContent=hire.workStart + " ~ " + hire.workEnd;
         sigunguName.textContent=hire.sigunguName;
-        pay.textContent=hire.pay;
+        pay.textContent=hire.payType+" "+hire.payInput;
 
 
         tr.append(shopName,hireTitle,hireTime,sigunguName,pay);
