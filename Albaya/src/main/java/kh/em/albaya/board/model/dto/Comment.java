@@ -25,5 +25,6 @@ public class Comment {
 	
 	// 댓글 조회시 작성자 이메일(MEMBER테이블 조인)
 	private String memberEmail;
+	private int commentCount;
 
 }

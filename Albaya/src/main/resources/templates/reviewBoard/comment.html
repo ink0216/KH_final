@@ -1,13 +1,29 @@
+
 <div id="commentArea">
-    <div class="comment-list-area">
-        <ul id="commentList">
+    
+
+    
 
        
+    <div class="comment-list-area">
+        
+        
+        
+
+        <pre>
+            <p id="commentCount" th:if="${#lists.size(reviewBoard.commentList) == 0}">현재 게시글에 댓글이 존재하지 않습니다.</p>
+            <p id="commentCount" th:if="${#lists.size(reviewBoard.commentList) != 0}">댓글 개수 :  <span th:text="${#lists.size(reviewBoard.commentList)}">0</span>개</p>
+        </pre>
+        <ul id="commentList">
+
+            
+          
             <li class="comment-row" 
                 th:classappend="${comment.parentCommentNo} != 0 ? child-comment" 
                 th:each="comment : ${reviewBoard.commentList}" 
                 th:object="${comment}">
-    
+
+            
 
                 <th:block th:if="*{commentDelFl}=='Y'">
                     삭제된 댓글 입니다.
@@ -52,4 +68,5 @@
 </div>
 <script th:inline="javascript">
     const memberEmail = /*[[*{#strings.substringBefore(memberEmail,'@')}]]*/ "아이디";
+    const commentCount = /*[[${commentCount}]]*/"댓글 수";
 </script>
