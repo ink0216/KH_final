@@ -37,7 +37,7 @@ const selectCommentList = () => {
                 // 삭제된 댓글인데, 대댓글이 존재하는 경우 부모 댓글만 안보이게 하게 설정
             if(comment.commentDelFl == 'Y'){
 
-                    commentRow.innerText = "*삭제된 댓글*";
+                    commentRow.innerText = "* 삭제된 댓글입니다 *";
 
             } else {
                     // 부모 댓글이 삭제되지 않은 댓글일 경우 작성자, 날짜 감싸는 요소가 표시
@@ -153,6 +153,13 @@ addComment.addEventListener("click", e =>{
         return;
     }
 
+    if(authorityNo == '2'){
+        
+        alert("기업회원은 댓글/답글을 작성할 수 없습니다.");
+
+        return;
+    }
+
     
 
     // 아무것도 입력하지 않고 댓글 작성하려고 한 경우
@@ -203,8 +210,6 @@ addComment.addEventListener("click", e =>{
             selectCommentList();    
 
 
-            // /* 글 작성자에게 댓글이 등록되었다는 알림 전달 + 알림 클릭시 해당 댓글이 작성된 위치로 이동 */
-            // sendNotificationFn("insertComment", `${location.pathname}?cn=${result}`,reviewBoardNo);
         }
 
         else{
@@ -320,6 +325,21 @@ const insertChildComment = (parentCommentNo, btn) => {
 
     // 답글 내용이 작성된 textarea
     const textarea = btn.parentElement.previousElementSibling;
+
+    // 일반 회원 로그인이 되어있지 않은 경우
+    if(loginMemberNo == null){
+        
+        alert("일반 회원으로 로그인하셔야 작성할 수 있습니다.");
+
+        return;
+    }
+
+    if(authorityNo == '2'){
+        
+        alert("기업회원은 댓글/답글을 작성할 수 없습니다.");
+
+        return;
+    }
 
 
     if(textarea.value.trim().length == 0) {
@@ -586,12 +606,3 @@ const updateComment = (commentNo, btn) => {
     })
     .catch(err => console.log(err));
 }
-
-
-
-
-
-
-
-
-
