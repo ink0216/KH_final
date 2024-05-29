@@ -91,6 +91,7 @@
                     <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button> 
                     
                     <button id="insertNoticeBtn" th:if="${session.loginMember != null and session.loginMember.authorityNo == 1 and reviewBoardCode == 1}">공지 작성</button>
+                    <!-- <button id="insertNoticeBtn" th:if="${session.loginMember.authorityNo == 1 or session.loginShop.authorityNo == 1 and reviewBoardCode == 1}">공지 작성</button> -->
                     
                     <p id="reviewBoardButtonNotice" th:if="${reviewBoardCode == 2 and session.loginMember == null}" 
                     style="color:red; 
@@ -108,7 +109,7 @@
                         * 기업회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
                     </p>
                    
-                  
+                    
                 </div>
                 
             

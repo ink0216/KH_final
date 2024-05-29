@@ -46,15 +46,13 @@ const selectCommentList = () => {
                     commentWriter.classList.add("comment-writer");
 
 
-                   
+                    commentWriter.style.display = "flex";
+                    commentWriter.style.flexDirection = "row";
+                    commentWriter.style.alignItems = "center";
                     
-
-
-                
-
                     // 닉네임
                     const nickname = document.createElement("span");
-                    nickname.innerText = comment.memberEmail;
+                    nickname.innerText = comment.memberEmail.split("@")[0];
 
                     // 날짜(작성일)
                     const commentDate = document.createElement("span");
@@ -63,7 +61,7 @@ const selectCommentList = () => {
 
                     commentDate.innerText = comment.commentWriteDate;
 
-
+                    
                     // 작성자 영역(commentWriter)에 닉네임, 날짜 추가
                     commentWriter.append(nickname, commentDate);
 
