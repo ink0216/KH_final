@@ -10,9 +10,11 @@ import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.shop.model.mapper.ShopMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ShopServiceImpl implements ShopService{
 	private final ShopMapper mapper;
 	

@@ -12,9 +12,9 @@ body{
     background-color: rgb(240 244 243);
 }
 
-div{
+/* div{
     border: 1px solid black;
-}
+} */
 
 button:hover{
     cursor: pointer;

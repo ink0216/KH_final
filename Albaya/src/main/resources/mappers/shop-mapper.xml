@@ -14,15 +14,16 @@
 		WHERE SHOP_BRN = #{shopBrn}
 	</select>
 	
-	<select id="findDongNo" resultType="_int">
-		SELECT DONG_NO
-		FROM "DONG"
-		JOIN "SIGUNGU" USING (SIGUNGU_NO)
-		JOIN "DOSI" USING (DOSI_NO)
-		WHERE DONG_NAME = #{dongName}
-		AND SIGUNGU_NAME LIKE '%'||#{sigunguName}||'%'
-		AND DOSI_NAME LIKE '%'||#{dosiName}||'%'
+	<select id="findDongNo" parameterType="map" resultType="int">
+	    SELECT DONG_NO
+	    FROM "DONG"
+	    JOIN "SIGUNGU" USING (SIGUNGU_NO)
+	    JOIN "DOSI" USING (DOSI_NO)
+	    WHERE REPLACE(DONG_NAME, ' ', '') LIKE '%' || REPLACE(#{dongName}, ' ', '') || '%'
+	    AND REPLACE(SIGUNGU_NAME, ' ', '') LIKE '%' || REPLACE(#{sigunguName}, ' ', '') || '%'
+	    AND REPLACE(DOSI_NAME, ' ', '') LIKE '%' || REPLACE(#{dosiName}, ' ', '') || '%'
 	</select>
+
 	
 	<insert id="signup">
 		INSERT INTO
