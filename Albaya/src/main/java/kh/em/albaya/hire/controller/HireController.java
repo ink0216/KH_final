@@ -92,18 +92,11 @@ public class HireController {
 			Model model
 			) {
 		Hire hire = service.detailHire(hireNo);
-		String workDay1 = hire.getWorkDay();
+		String workDay1 = hire.getWorkDay(); //다 합쳐져있는 버전
 		
 		String[] workDayList = workDay1.split(",");
 		String workDay = null;
-		for(int i=0; i<workDayList.length;i++) {
-			if(workDayList.get(i)=='') {
-				
-			}
-				
-		}
-		log.debug("workDay : "+workDay);
-		hire.setWorkDay(workDay);
+		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
 		return "/hire/hireDetail";
 	}
