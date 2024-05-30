@@ -56,4 +56,10 @@ public class MainController {
    }
 
    
+   @GetMapping("/declarePopup")
+	public String declarePopup() {
+		return "/declarePopup";
+	}
+	
+   
 }
