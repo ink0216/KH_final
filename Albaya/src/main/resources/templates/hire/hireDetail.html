@@ -38,17 +38,17 @@
 
                     <div class="typeDetail div1">
                         <p class="title">업직종</p>
-                        <p>외식/음료</p>
+                        <p th:text="${hire.typeName}">외식/음료</p>
                     </div>
 
                     <div class="countDetail div1">
                         <p class="title">모집 인원</p>
-                        <p>5명</p>
+                        <p th:text="${hire.hireCount}">5명</p>
                     </div>
 
                     <div class="endDetail div1">
                         <p class="title">모집 종료</p>
-                        <p>2024-05-23</p>
+                        <p th:text="${hire.hireEnd}" >2024-05-23</p>
                     </div>
 
                 </div>
@@ -58,7 +58,7 @@
 
             <div class="hireTitleImg marginContainal">
                 <img src="/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
-                <pre name="hireContent">
+                <pre name="hireContent" th:text="${hire.hireTitle}">
                     버거킹 알바 모집중😁😁😁
                         함께 일해요~
                 </pre>
@@ -74,12 +74,16 @@
 
                     <div class="termDetail div1">
                         <p class="title">근무기간</p>
-                        <p>3-6개월</p>
+                        <p th:text="${hire.hireTerm2}">3-6개월</p>
                     </div>
 
                     <div class="dayDetail div1">
                         <p class="title">근무요일</p>
-                        <p>월, 수, 금</p>
+                        <p>
+                            <th:block th:each="workDay : ${workDayList}">
+                                <th:block> ,[[${workDay}]]</th:block>
+                            </th:block>
+                        </p>
                     </div>
 
                     <div class="timeDetail div1">
@@ -87,11 +91,11 @@
                         <div class="time">
                             <div class="div2">
                                 <p>시작 시간</p>
-                                <p class="time">9:00</p>
+                                <p class="time" th:text="${hire.workStart}">9:00</p>
                             </div>
                             <div class="div2">
                                 <p>종료 시간</p>
-                                <p class="time">16:00</p>
+                                <p class="time" th:text="${hire.workEnd}">16:00</p>
                             </div>
                         </div>
                     </div>
@@ -101,14 +105,14 @@
                     <div class="payDetail div1">
                         <p class="title">급여</p>
                         <div class="payArea">
-                            <p id="payName">시급</p>
-                            <p>10000</p>
+                            <p id="payName" th:text="${hire.payName}">시급</p>
+                            <p th:text="${hire.payInput}">10000</p>
                         </div>
                     </div>
 
                     <div class="genderDetail div1">
                         <p class="title">모집 성별</p>
-                        <p>성별 무관</p>
+                        <p th:text="${hire.hireGender}">성별 무관</p>
                     </div>
 
                 </div>
@@ -125,8 +129,8 @@
                 <div class="hire-container3 container">
                     <div class="div1">
                         <p class="title">근무지 주소</p>
-                        <p>서울 중구 서소문로 136</p>
-                        <p>버거킹 시청역점</p>
+                        <p th:text="${hire.address}">서울 중구 서소문로 136</p>
+                        <p th:text="${hire.addressDetail}">버거킹 시청역점</p>
                     </div>
                     <div id="map"></div>
                 </div>
@@ -144,17 +148,17 @@
                     <div class="shopOwner ">
                         <div class="div1">
                             <p class="title">담당자명</p>
-                            <p>홍길동</p>
+                            <p th:text="${hire.shopOwner}">홍길동</p>
                         </div>
 
                         <div class="div1">
-                            <p class="title ">연락처</p>
-                            <p>01011112222</p>
+                            <p class="title">연락처</p>
+                            <p th:text="${hire.shopTel}">01011112222</p>
                         </div>
 
                         <div class="div1">
                             <p class="title">이메일</p>
-                            <p>qwer@gmail.com</p>
+                            <p th:text="${hire.shopEmail}">qwer@gmail.com</p>
                         </div>
                     </div>
 
