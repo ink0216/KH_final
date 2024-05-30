@@ -69,7 +69,7 @@
 		,
 		#{workDay},#{payInput},#{dongNo},
 		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
-		,#{shopEmail},#{shopTel},#{shopName}
+		,#{shopEmail},#{shopTel},#{shopName},#{address}
 				)
 	</insert>
 	
@@ -128,7 +128,7 @@
     	ELSE DOSI_NAME||' '||SIGUNGU_NAME||' '||DONG_NAME 
     END
     ADDRESS,
-	ADDRESS_DETAIL, SHOP_OWNER, SHOP_TEL, SHOP_EMAIL
+	ADDRESS_DETAIL, SHOP_OWNER, SHOP_TEL, SHOP_EMAIL, ROAD_ADDRESS
 	FROM "HIRE" A
 	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
 	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)

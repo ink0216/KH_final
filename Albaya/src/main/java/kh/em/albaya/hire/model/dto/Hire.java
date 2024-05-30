@@ -33,7 +33,7 @@ public class Hire {
 	private int hireStatus; //공고 상태 미저장 저장 임시저장
 	private String workDay; //근무 요일AAAA
 	private int payInput; //급여 숫자AAAA
-	
+	private String roadAddress;
 	//HIRE_PERIOD 테이블 JOIN(HIRE_NO컬럼으로)
 	private String workStart; //근무 시작 시간AAAA
 	private String workEnd; //근무 종료 시간AAAA
