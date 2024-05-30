@@ -59,7 +59,14 @@
 		#{hireNo},#{shopNo},#{typeNo},
 		#{payNo},#{hireTitle},#{hireContent},
 		DEFAULT,TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),#{hireCount},
-		#{hireTerm},#{hireGender},DEFAULT,
+		#{hireTerm},#{hireGender},
+		<if test='hireStatus == null'>
+		DEFAULT
+		</if>
+		<if test='hireStatus != null'>
+		#{hireStatus}
+		</if>
+		,
 		#{workDay},#{payInput},#{dongNo},
 		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
 		,#{shopEmail},#{shopTel},#{shopName}
@@ -109,12 +116,10 @@
 	  -->
 	<!-- 공고 상세 조회 -->
 	<select id="detailHire">
-		SELECT SUBSTR(SIGUNGU_NAME,1,3)||' '||SUBSTR(SIGUNGU_NAME,4)  FROM SIGUNGU  
-WHERE LENGTH(SIGUNGU_NAME)>=5;
 	SELECT HIRE_NO, HIRE_TITLE, HIRE_CONTENT, TYPE_NAME, HIRE_COUNT,
 	TO_CHAR(HIRE_END, 'YYYY-MM-DD') HIRE_END,
 	DECODE(HIRE_TERM, 1, '하루', 7, '일주일', 
-	3, '1~3개월', 6, '3~6개월', 365, '1년 이상') HIRE_TERM,
+	3, '1~3개월', 6, '3~6개월', 365, '1년 이상') HIRE_TERM2,
 	WORK_DAY,
 	WORK_START, WORK_END, PAY_NAME, PAY_INPUT , 
 	DECODE(HIRE_GENDER, 'A', '성별무관', 'F', '여성', 'M', '남성') HIRE_GENDER,
