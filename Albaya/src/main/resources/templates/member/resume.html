@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <th:block th:replace="~{common/header}"></th:block>
     <!-- 이력서  -->
     <div id = "container">
         <div  class = "profileInfo">
@@ -163,11 +164,11 @@
                                 </div>
         
                                 <div name = "selectUniversityName" id = "selectUniversityName" class="hide">
-                                    <span>대학교</span>&nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured>
+                                    <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
+                                    <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
                                     <div><br>
         
-                                        <div class = "term">
+                                        
                                             <!-- <span>졸업여부</span>
                                             <select name="graduationStatus" class="graduationDropDown" required>
                                                 <option value = "1">졸업</option>
@@ -177,7 +178,7 @@
                                                 <option value = "5">수교</option>
                                             </select> -->
         
-                                            <div>
+                                            <div id="dateContainer">
                                                 <span>재학기간</span>
                                                 <input type="date" name="date" class="date" required>
                                                 <input type="date" name="date" class="date" required>
@@ -185,7 +186,7 @@
                                         </div>
                         
         
-                                    </div>
+                                   
         
                                 </div>
                             </div>
@@ -233,6 +234,24 @@
                         </li>
                     </ul>
                     
+                </div>
+                <hr>
+
+                <div class = "resumeElement">
+                    <h3>경력사항<span class="required">*</span></h3>
+                    <br>
+                    <ul>
+                        <li>
+                            <div id="career">
+                                <span>경력구분<span class="required">*</span></span>
+                                <div id="careerSelect">
+                                    <button id="newHire" type="button">신입</button>
+                                    <button id="experienced" type="button">경력</button><br>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+        
                 </div>
                 <hr>
         
