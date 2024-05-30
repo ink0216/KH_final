@@ -42,6 +42,11 @@ public interface HireService {
 	 * @return
 	 */
 	List<Dong> selectDong(String sigunguName);
+
+	/** 업직종별 조회하기
+	 * @return
+	 */
+	List<String> selectKind();
 	
 
 	

@@ -1,0 +1,42 @@
+.container1 *{
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+.container1{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+}
+
+.title{
+    display: flex;
+    height: 32px;
+    align-items: center;
+}
+.selectHire{
+    display: flex;
+    align-items: center;
+    height: 180px;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+}
+
+.item-btn{
+    width: 33.3%;
+    height: 50px;
+    margin: 2px;
+    cursor: pointer;
+    user-select: none;
+}
+
+
