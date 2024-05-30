@@ -25,4 +25,6 @@ public interface MyPageMapper {
 
 	int deleteShop(Map<String, Object> map);
 
+	int myPageCheckShopPw(Map<String, Object> map);
+
 }

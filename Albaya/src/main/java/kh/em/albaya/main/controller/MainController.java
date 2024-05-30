@@ -49,7 +49,11 @@ public class MainController {
 		return "redirect:/"; 
 	}
    
-  
+   @GetMapping("loginError2")
+   public String loginError2(RedirectAttributes ra) {
+		ra.addFlashAttribute("message", "로그인 후 이용해 주세요");
+		return "redirect:/member/login";
+   }
 
    
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -99,7 +100,8 @@ public class ShopController {
     		Model model,
 			@RequestParam(value = "saveId", required = false) String saveId,
 			HttpServletResponse resp,	
-    		RedirectAttributes ra) {
+    		RedirectAttributes ra,
+    		@SessionAttribute(value = "uri", required = false) String uri) {
     	
 		Shop loginShop = service.login(inputShop);
 		
@@ -126,6 +128,9 @@ public class ShopController {
 			}
 			resp.addCookie(cookie);
 			
+		}
+		if(uri != null) {
+			return "redirect:" + uri;
 		}
 		return "redirect:/";
     }

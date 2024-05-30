@@ -96,6 +96,8 @@ public class HireController {
 		
 		String[] workDayList = workDay1.split(",");
 		String workDay = null;
+		log.debug("workDay : "+workDay);
+		hire.setWorkDay(workDay);
 		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
 		return "/hire/hireDetail";

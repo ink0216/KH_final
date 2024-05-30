@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -101,10 +102,14 @@ public class MemberController {
     		Model model,
 			@RequestParam(value = "saveId", required = false) String saveId,
 			HttpServletResponse resp,	
-    		RedirectAttributes ra) {
+    		RedirectAttributes ra,
+    		HttpSession session,
+    		@SessionAttribute(value = "uri", required = false) String uri) {
     	
 		Member loginMember = service.login(inputMember);
     	
+//		String uri = (String) session.getAttribute("uri");
+
 		String message = null;
 		
 		if(loginMember == null) {
@@ -113,7 +118,7 @@ public class MemberController {
 			ra.addFlashAttribute("message", message);
 			return "redirect:/member/login";
 		}
-
+		
 		if(loginMember != null) {
 			model.addAttribute("loginMember", loginMember);
 			
@@ -129,6 +134,9 @@ public class MemberController {
 			}
 			resp.addCookie(cookie);
 			
+			if(uri != null) {
+				return "redirect:" + uri;
+			}
 		}
 		return "redirect:/";
     }
@@ -157,7 +165,7 @@ public class MemberController {
     	String memberEmail = service.findMemberId(member);
     	session.setAttribute("result", result);
     	session.setAttribute("memberEmail", memberEmail);
-    	
+    
     	return result;
     }
     
