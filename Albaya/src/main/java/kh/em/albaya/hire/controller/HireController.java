@@ -95,7 +95,6 @@ public class HireController {
 		String workDay1 = hire.getWorkDay(); //다 합쳐져있는 버전
 		
 		String[] workDayList = workDay1.split(",");
-		String workDay = null;
 		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
 		return "/hire/hireDetail";
