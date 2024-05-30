@@ -9,7 +9,7 @@
 			BOARD_DECLARE_CONTENT,REVIEW_BOARD_CONDITION,
 			BOARD_DECLARE_DATE,
 			(SELECT MEMBER_NO
-			FROM REVIEW_BOARD rb 
+			FROM REVIEW_BOARD 
 			WHERE REVIEW_BOARD_NO = #{reviewBoardNo})REPORTED_MEMBER_NO 
 		FROM BOARD_DECLARE 
 		WHERE REVIEW_BOARD_CONDITION = 1
@@ -17,6 +17,21 @@
 	</select>
 	
 	<!-- 게시글 신고 -->
+	<insert id="insertDeclare" useGeneratedKeys="true" parameterType="Declare">
+	
+  		<selectKey order="BEFORE" resultType="_int" keyProperty="reviewBoardDeclareNo">
+  			SELECT SEQ_REVIEW_BOARD_DECLARE_NO.NEXTVAL FROM DUAL
+  		</selectKey>
+		INSERT INTO BOARD_DECLARE 
+		VALUES(
+			#{reviewBoardDeclareNo},
+			#{reviewBoardNo},
+			#{memberNo},
+			#{boardDeclareContent},
+			 DEFAULT,
+			 DEFAULT,
+			#{reportedMemberNo})
+	</insert>
 	
 	
 </mapper>
