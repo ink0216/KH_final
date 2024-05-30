@@ -18,5 +18,7 @@ public class Declare {
 	private int memberNo;
 	private String boardDeclareContent;
 	private String reviewBoardCondition;
+	private String boardDeclareDate;
+	private int reportedMemberNo;
 
 }
