@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +40,7 @@ public class DeclareController {
 	// 게시글 신고 하기
 	@PostMapping("")
 	public String insertDeclare(
+			@RequestParam("reviewBoardNo")int reviewBoardNo, // 게시글 번호...어디서 얻어옴
 			@RequestParam("boardDeclareContent") String boardDeclareContent, //신고 사유
 			@SessionAttribute("loginMember") Member loginMember,
 			@ModelAttribute Declare inputDeclare,
@@ -48,6 +50,8 @@ public class DeclareController {
 		
 		inputDeclare.setBoardDeclareContent(boardDeclareContent);
 		inputDeclare.setMemberNo(memberNo);
+		inputDeclare.setReviewBoardNo(reviewBoardNo);
+		
 		
 		
 		int result = service.insertDeclare(inputDeclare);
@@ -67,9 +71,10 @@ public class DeclareController {
 	}
 	
 	// 신고 처리...
-	@GetMapping("/declare")
+	@GetMapping("")
 	public String updateDeclare(
 			@RequestParam("memberNo")int memberNo,
+//			@RequestParam("reviewBoardNo") int reviewBoardNo,
 			@RequestParam("reportedDeclareNo") int reportedDeclareNo,
 			@SessionAttribute("loginMember") Member loginMember) {
 		return null;

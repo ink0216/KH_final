@@ -34,4 +34,3 @@ document.querySelector("#declareFrm").addEventListener("submit", e => {
 })
 
 
-

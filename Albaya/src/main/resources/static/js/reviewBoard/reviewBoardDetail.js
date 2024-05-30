@@ -11,7 +11,8 @@ const siren = document.querySelector("#siren");
             return;
         }
   
-        window.open('/declarePopup', 'popupWindow', 'width=770, height=1200, left=150, resizable = no');
+        window.open('/declarePopup?reviewBoardNo='+reviewBoardNo+'&loginMemberNo='+loginMemberNo,
+                    'popupWindow', 'width=770, height=1200, left=150, resizable = no');
         // location.href="/declarePopup";
         // location.href="/declarePopup?memberEmail="+ memberEmail;
 
