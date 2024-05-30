@@ -76,6 +76,13 @@ public interface HireMapper {
 
 
 
+	/** 업직종별 공고 조회하기
+	 * @return
+	 */
+	List<String> selectKind();
+
+
+
 
 	
 

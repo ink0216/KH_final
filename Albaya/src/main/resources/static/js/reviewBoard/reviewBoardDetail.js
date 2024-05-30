@@ -3,7 +3,7 @@ const siren = document.querySelector("#siren");
 /* 신고 아이콘 클릭시 신고 팝업창 */
 
 
-    function openPopup(){
+    siren.addEventListener("click", () => {
 
         if(loginMemberNo == null){
 
@@ -12,7 +12,11 @@ const siren = document.querySelector("#siren");
         }
   
         window.open('/declarePopup.html', 'popupWindow', 'width=770, height=1200, left=150, resizable = no');
+        
+        
+        
     }
+);
 
 
 

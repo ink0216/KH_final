@@ -30,8 +30,7 @@ public class MainController {
 	  List<Hire> boxList = new ArrayList<>();
 	  for(int i=0; i<12; i++) {
 		  Hire hire = hireList.get(i);
-		  boxList.add(hire);
-	  }
+		  boxList.add(hire);	  }
 	  
 	
 	  
