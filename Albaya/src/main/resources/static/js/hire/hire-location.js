@@ -172,6 +172,42 @@ dosiNameList.forEach(dosiName=>{
                     .then(resp=>resp.json())
                     .then(list=>{
 
+                       if(list.length==0){
+                            const locationItems = document.querySelectorAll('.location-item');
+                            const dongName = document.querySelectorAll('.dong');
+
+                            if(locationItems.length>=5){
+                                alert('희망하는 지역은 최대 5개까지 입력 가능합니다');
+                                return;
+                            }
+
+                            for(let i =0; i<dongName.length; i++){
+                                if(sigunguBtn.innerHTML==dongName[i].innerHTML){
+                                    alert("중복되는 지역입니다.");
+                                    return;
+                                }
+                            }
+
+                            const locationItem = document.createElement("div");
+                            locationItem.classList.add('location-item');
+                    
+                            const p = document.createElement('p'); //p태그
+                            p.innerHTML=e.target.innerHTML;
+                            p.classList.add("dong");
+                    
+                            const button = document.createElement('button'); //button
+                            button.innerHTML="x";
+                            button.classList.add("del-btn");
+                    
+                            locationItem.append(p,button);
+                            searchLocations.append(locationItem);
+                    
+                            // x버튼 눌렸을 때
+                            button.addEventListener("click",()=>{
+                                locationItem.remove();
+                            })
+                       }
+
                         dongBody.innerHTML="";
                         
                         console.log(list);
