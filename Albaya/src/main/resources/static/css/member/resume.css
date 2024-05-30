@@ -183,12 +183,8 @@ hr{
 }
 
 #dropdownContainer>div:nth-child(1){
-    
-
     width:250px;
 }
-
-
 
 select{
     margin-left:20px;
@@ -226,24 +222,55 @@ input[type="date"]{
 }
 #certificateDetail{
     display:flex;
+    flex-wrap:wrap;
 }
 #certificateDetail>div>input[type="text"]{
-    width:300px;
+    width:600px;
+}
+#organization{
+    margin-left:-5px;
+}
+#score{
+    margin-left:25px;
+    margin-top:20px;
+    width:50px;
 }
 #issueDetail{
-    margin-left:20px;
+    margin-top:20px;
+    margin-left:235px;
 }
 
 .resume{
-    margin-left:200px;
-    background-color: #014C73;
+    margin-left:30px;
+    /* background-color: #014C73; */
+
+    background-color: black;
     border-radius:10px;
-    border: 1px solid #014C73;
+    /* border: 1px solid #014C73; */
+    border: 1px solid black;
     color:white;
-    width: 100px;
+    width: 150px;
     height:60px;
+    border-bottom: 5px solid gray;
+    border-right: 5px solid gray;
+}
+.resume:nth-child(1){
+    margin-left:-40px;
 }
 .resume:hover{
     cursor:pointer;
+}
+.resume:active{
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+    border-top:5px solid gray;
+    border-left:5px solid gray;
+}
+
+#validatingBtnsContainer{
+
+    display:flex;
+    justify-content: center;
+    margin-left:200px;
 }
 
