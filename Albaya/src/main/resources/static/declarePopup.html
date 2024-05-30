@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +31,7 @@
     <div id="declarePopup-explain2">
         <p>신고 처리는 관리자에 의해 최대한 빠른 시간 내에 처리할 예정입니다. 규정에 따라 <br>
         신고 처리가 반려당할 수 있으며 허위 신고임이 밝혀질 경우 신고자가 경고/활동 정지 처분을 <br>
+
         받을 수도 있습니다. </p>
 
     <div id="declareMemberEmail">
@@ -45,6 +46,7 @@
     
     <form action="declare" th:object="${reviewBoard}" method="POST" class="declareFrm" id="declareFrm">
     <div id="declarePopup-Content">
+
         <textarea name="boardDeclareContent" id="declarePopupContent" maxlength="1500" placeholder="신고 사유를 입력하세요(최대 1500자)"></textarea>
     </div>
 
