@@ -96,12 +96,12 @@ public class HireController {
 		
 		String[] workDayList = workDay1.split(",");
 		String workDay = null;
-		for(int i=0; i<workDayList.length;i++) {
-			if(workDayList.get(i)=='') {
-				
-			}
-				
-		}
+//		for(int i=0; i<workDayList.length;i++) {
+//			if(workDayList.get(i)=='') {
+//				
+//			}
+//				
+//		}
 		log.debug("workDay : "+workDay);
 		hire.setWorkDay(workDay);
 		model.addAttribute("hire", hire);
