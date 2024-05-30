@@ -1,12 +1,18 @@
 package kh.em.albaya.board.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import kh.em.albaya.board.model.dto.Declare;
 import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.DeclareService;
 import kh.em.albaya.member.model.dto.Member;
@@ -23,27 +29,45 @@ public class DeclareController {
 	@GetMapping("/declareList")
 	public String declareSelect(
 			@RequestParam("reviewBoardNo")int reviewBoardNo,
-			@SessionAttribute("loginMember")Member loginMember) {
+			@SessionAttribute("loginMember")Member loginMember,
+			Model model) {
 //		service.selectDeclare(reviewBoardNo);
 		return null;
 	}
 	
 	
 	// 게시글 신고 하기
-	@PostMapping()
+	@PostMapping("")
 	public String insertDeclare(
-			@RequestParam("boardDeclareContent") String boardDeclareContent,
-			@SessionAttribute("loginMember") Member loginMember) {
+			@RequestParam("boardDeclareContent") String boardDeclareContent, //신고 사유
+			@SessionAttribute("loginMember") Member loginMember,
+			@ModelAttribute Declare inputDeclare,
+			Model model) {
 		
 		int memberNo = loginMember.getMemberNo();
 		
-//		service.insertDeclare(memberNo,boardDeclareContent);
+		inputDeclare.setBoardDeclareContent(boardDeclareContent);
+		inputDeclare.setMemberNo(memberNo);
 		
-		return null;
+		
+		int result = service.insertDeclare(inputDeclare);
+		
+		String path = null;
+		String message = null;
+		
+		if(result >0 ) {
+//			path = "/reviewBoard/reviewBoardList";
+			message = "신고 되었습니다";
+		}else {
+//			path = "/reviewBoard/reviewBoardList";
+			message = "신고 실패하였습니다";
+		}
+		
+		return "/reviewBoard/reviewBoardList";
 	}
 	
 	// 신고 처리...
-	@GetMapping()
+	@GetMapping("/re")
 	public String updateDeclare(
 			@RequestParam("memberNo")int memberNo,
 			@RequestParam("reportedDeclareNo") int reportedDeclareNo,
