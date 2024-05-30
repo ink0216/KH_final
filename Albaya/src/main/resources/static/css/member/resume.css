@@ -302,6 +302,7 @@ input[type="date"]{
     width:168px;
     border:1px solid lightgray;
     background-color: white;
+    color:lightgray;
     
 }
 #careerSelect>button:hover{
@@ -312,7 +313,14 @@ input[type="date"]{
     border-bottom-left-radius: 10px;
 }
 #experienced{
-    margin-left:-10px;
+   margin-left:-10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+.experiencedDetail{
+    display:flex;
+}
+.selectedBtn{
+    border:1px solid black;
+    color:black;
 }

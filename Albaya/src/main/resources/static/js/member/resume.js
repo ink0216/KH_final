@@ -88,3 +88,38 @@ score.addEventListener("input", () => {
     }
 });
 
+
+//경력사항
+const newHire = document.querySelector("#newHire");
+const experienced = document.querySelector("#experienced");
+const career = document.querySelector("#career");
+let count1 =0 ;
+let count2 =0 ;
+
+const div = document.createElement("div");
+newHire.addEventListener("click", () => {
+    count1++;
+    count2 =0;
+    career.removeChild(div)
+    newHire.classList.add("selectedBtn");
+    experienced.classList.remove("selectedBtn");
+})
+
+
+experienced.addEventListener("click", () => {
+    count2++;
+    count1 = 0;
+    
+    if(count2 > 1){
+        return;
+    }
+   
+    experienced.classList.add("selectedBtn");
+    newHire.classList.remove("selectedBtn");
+    
+   
+    div.classList.add("expreiencedDetail");
+    career.appendChild(div)
+
+    
+})
