@@ -2,6 +2,10 @@
     font-family: 'SUIT-Regular';
 }
 
+.underline a{
+    color: #014C73;
+    text-decoration: none;
+}
 
 /*  전체 폰트 */
 @font-face {
