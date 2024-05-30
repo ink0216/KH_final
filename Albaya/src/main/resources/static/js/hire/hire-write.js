@@ -637,8 +637,8 @@ hireWrtieForm.addEventListener("submit",e=>{
         const hireStatus = document.createElement("input");
         hireStatus.classList.add("hidden");
         hireStatus.setAttribute("name", "hireStatus");
-        //저장 : 1 // 임시저장 : 2
-        hireStatus.value=1;
+        //저장 : 0 // 임시저장 : 1
+        hireStatus.value=0;
         const hireWrtieForm = document.querySelector("#hireWrtieForm");
         hireWrtieForm.append(hireStatus);
     });
@@ -649,8 +649,8 @@ semiSaveBtn.addEventListener("click", ()=>{
     const hireStatus = document.createElement("input");
     hireStatus.classList.add("hidden");
     hireStatus.setAttribute("name", "hireStatus");
-    //저장 : 1 // 임시저장 : 2
-    hireStatus.value=2;
+    //저장 : 0 // 임시저장 : 1
+    hireStatus.value=1;
     const hireWrtieForm = document.querySelector("#hireWrtieForm");
     hireWrtieForm.append(hireStatus);
 });
