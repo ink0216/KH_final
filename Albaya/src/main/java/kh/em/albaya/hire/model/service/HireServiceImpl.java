@@ -117,4 +117,12 @@ public class HireServiceImpl implements HireService{
 	public List<Dong> selectDong(String sigunguName) {
 		return mapper.selectDong(sigunguName);
 	}
+	
+	
+	
+	// 업직종별 공고 조회하기
+	@Override
+	public List<String> selectKind() {
+		return mapper.selectKind();
+	}
 }
