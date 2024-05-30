@@ -96,7 +96,7 @@ public class MyPageServiceImpl implements myPageService{
 			return 0;
 		}
 		
-		return mapper.myPageCheckPw(map);
+		return mapper.myPageCheckShopPw(map);
 	}
 	
 	@Override

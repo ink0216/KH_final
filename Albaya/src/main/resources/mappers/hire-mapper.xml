@@ -150,7 +150,7 @@
 	
 	
 	
-	
+	<!--**************** 지역별 공고 조회하기********************* -->
 	<select id="selectDosi">
 		SELECT * FROM "DOSI"
 	</select>
@@ -168,4 +168,14 @@
 		JOIN "SIGUNGU" USING(SIGUNGU_NO) 
 		WHERE SIGUNGU_NAME =#{sigunguName}
 	</select>
+	
+	
+	
+	<!-- ***************업직종별 공고 조회하기******************** -->
+	<select id="selectKind">
+	SELECT TYPE_NAME FROM WORK_TYPE 
+	</select>
+	
+	
+	
 </mapper>

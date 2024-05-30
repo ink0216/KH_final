@@ -30,8 +30,7 @@ public class MainController {
 	  List<Hire> boxList = new ArrayList<>();
 	  for(int i=0; i<12; i++) {
 		  Hire hire = hireList.get(i);
-		  boxList.add(hire);
-	  }
+		  boxList.add(hire);	  }
 	  
 	
 	  
@@ -49,6 +48,12 @@ public class MainController {
 		ra.addFlashAttribute("message", "기업 회원으로 로그인 후 이용해 주세요");
 		return "redirect:/"; 
 	}
+   
+   @GetMapping("loginError2")
+   public String loginError2(RedirectAttributes ra) {
+		ra.addFlashAttribute("message", "로그인 후 이용해 주세요");
+		return "redirect:/member/login";
+   }
 
    
 }

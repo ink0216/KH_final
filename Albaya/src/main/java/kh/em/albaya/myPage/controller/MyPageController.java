@@ -35,13 +35,13 @@ public class MyPageController {
 	        @SessionAttribute(value = "loginShop", required = false) Shop loginShop,
 			RedirectAttributes ra) {
 		
-		String message = null;
-		
-		if(loginMember == null && loginShop == null) {
-			message = "로그인 후 이용해주세요.";
-			ra.addFlashAttribute("message", message);
-			return "redirect:/member/login";
-		}
+//		String message = null;
+//		
+//		if(loginMember == null && loginShop == null) {
+//			message = "로그인 후 이용해주세요.";
+//			ra.addFlashAttribute("message", message);
+//			return "redirect:/member/login";
+//		}
 		return "/myPage/myPageInfo";
 	}
 	
@@ -53,7 +53,7 @@ public class MyPageController {
 	@PostMapping("myPageCheckPw")
 	public String myPageCheckPw(
 			Member member,
-	        @SessionAttribute(value = "loginMember", required = false) Member loginMember,
+			@SessionAttribute(value = "loginMember", required = false) Member loginMember,
 			RedirectAttributes ra) {
 		
 		int memberNo = loginMember.getMemberNo();
@@ -69,11 +69,37 @@ public class MyPageController {
 			return "/main";
 		}
 		else {
+			message = "비밀번호가 일치하지 않습니다.";
 			ra.addFlashAttribute("message", message);
-			return "redirect:/myPage/myPageInfo";
+			return "redirect:/myPage/myPageCheckPw";
 		}
 	}
 	
+	@PostMapping("myPageCheckShopPw")
+	public String myPageCheckShopPw(
+			Shop shop,
+			@SessionAttribute(value = "loginShop", required = false) Shop loginShop,
+			RedirectAttributes ra) {
+		
+		int shopNo = loginShop.getShopNo();
+		String shopEmail = shop.getShopEmail();
+		String shopPw = shop.getShopPw();
+		
+		String message = null;
+		
+		int result = service.myPageCheckShopPw(shopNo, shopEmail, shopPw);
+		
+		if(result == 1) {
+			ra.addFlashAttribute("message", message);
+			return "/main";
+		}
+		else {
+			message = "비밀번호가 일치하지 않습니다.";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/myPageCheckPw";
+		}
+	}
+
 	@GetMapping("updateMemberInfo")
 	public String updateMemberInfo() {
 		return "updateMemberInfo";

@@ -10,6 +10,14 @@
 		AND MEMBER_STATUS != '5'
 	</select>
 	
+	<select id="myPageCheckShopPw" resultType="_int">
+		SELECT COUNT(*)
+		FROM "SHOP"
+		WHERE SHOP_EMAIL = #{shopEmail}
+		AND SHOP_NO = #{shopNo}
+		AND SHOP_STATUS != '5'
+	</select>
+	
 	<select id="findEncPw" resultType="string">
 		SELECT MEMBER_PW
 		FROM "MEMBER"

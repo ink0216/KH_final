@@ -95,6 +95,9 @@ public class HireController {
 		String workDay1 = hire.getWorkDay(); //다 합쳐져있는 버전
 		
 		String[] workDayList = workDay1.split(",");
+		String workDay = null;
+		log.debug("workDay : "+workDay);
+		hire.setWorkDay(workDay);
 		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
 		return "/hire/hireDetail";
@@ -153,6 +156,19 @@ public class HireController {
 		
 		return dongList;
 		
+	}
+	
+	
+	
+	//업직종별 공고 조회하기 화면으로 이동하기
+	@GetMapping("hireKind")
+	public String hireKind(
+			Model model) {
+		
+		List<String> typeList = service.selectKind();
+		model.addAttribute("typeList", typeList);
+		
+		return "hire/hireKind";
 	}
 }
 

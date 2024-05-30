@@ -181,7 +181,8 @@ addComment.addEventListener("click", e =>{
 
         "commentContent" : commentContent.value,
         "reviewBoardNo" : reviewBoardNo,
-        "memberNo" : loginMemberNo // 또는 Session 회원 번호
+        "memberNo" : loginMemberNo, // 또는 Session 회원 번호
+        
 
     };
 
