@@ -5,20 +5,21 @@
 }
 
 body{
-    background-color: rgb(228, 242, 238);
-    font-family: 'TheJamsil5Bold';
+    background-color: rgb(240 244 243);
+    font-family: 'SUIT-Regular';
 }
 
 /* 전체 폰트 */
+/*  전체 폰트 */
 @font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
 
 button{
-    font-family: 'TheJamsil5Bold';
+    font-family: 'SUIT-Regular';
 }
 
 button:hover{
@@ -38,26 +39,31 @@ button:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
 }
 
 .login-container{
     display: flex;
-    width: 50%;
+    width: 920px;
     height: 500px;
     flex-direction: column;
     background-color: white;
     align-items: center;
+    margin: 50px 30px;
 }
 
 
 .findId-text-conatiner{
-    display: flex;
-    width: 70%;
-    height: 17%;
-    align-items: center;
-    margin-top: 40px;
-    margin-left: 50px;
+       /* display: flex; */
+       width: 70%;
+       /* height: 17%; */
+       align-items: center;
+       margin-top: 40px;
+       margin-left: 50px;
+}
+
+.login-text p {
+    font-size: 13px;
+    color: #545454;
 }
 
 
@@ -92,6 +98,10 @@ button:hover{
     width: 100%;
     height: 15%;
     justify-content: center;
+}
+
+.select-member button{
+    font-weight: bold;
 }
 
 .selected-member{
@@ -131,7 +141,7 @@ button:hover{
 
 
 #personalMember{
-    background-color: grey;
+    background-color: rgb(190, 189, 189);
 }
 
 .findId-middle-wrapper{
@@ -146,6 +156,10 @@ button:hover{
     width: 80%;
     height: 33%;
     margin-bottom: 30px;
+}
+
+.findId-input-area span{
+    font-weight: bold;
 }
 
 .findId{
@@ -177,12 +191,14 @@ button:hover{
     width: 100%;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 5px;
 }
 
 .findId-area-pNum > input{
     width: 100%;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 5px;
 }
 
 .findId-footer-wrapper{
@@ -199,27 +215,29 @@ button:hover{
 
 .findId-footer-button > button{
     width: 100%;
-    height: 100%;
+    height: 68%;
     border: none;
     border-radius: 5px;
     background-color: #014C73;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .authKey-area{
     display: flex;
-    width: 20%;
+    width: 34%;
 }
 
 .authKey-area > button{
-    width: 100%;
+    width: 89%;
     border: none;
     border-radius: 5px;
-    background-color: #014C73;
-    color: white;
+    /* background-color: #014C73; */
+    /* color: white; */
     margin-left: 5px;
     font-size: 14px;
+
 }
 
 .authKey-wrapper{
@@ -227,4 +245,8 @@ button:hover{
     width: 80%;
     height: 33%;
     margin-bottom: 30px;
+}
+
+.authKey-wrapper span{
+    font-weight: bold;
 }

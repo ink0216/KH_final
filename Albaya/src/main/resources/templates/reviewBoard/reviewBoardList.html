@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albaya 알바 후기 게시판</title>
     <link rel="stylesheet" href="/css/reviewBoard/reviewBoardList.css">
+    <link rel="stylesheet" th:if="${reviewBoardCode == 1}" href="/css/reviewBoard/reviewBoardList-admin.css">
     
     <th:block th:replace="~{common/header}"></th:block>
   
 </head>
 
-<body>
+<!-- 공지게시판 내용은 게시판 색깔을 약간 다르게 함 -->
+<body class="${reviewBoardCode == 1 ? 'reviewBoardList-admin','reviewBoardList'}">
     <main>
         <!-- reviewBoard Code 1번이 공지 2번이 토크(일반) -->
-        <section class="reviewBoard-List">
+        <section class="reviewBoard-List" >
 
             
 
 
             <div class="list-wrapper">
-                
+               
                 <table class="list-table">
+                   
                     <div id="reviewBoardType">
                         <div id="notice" class="box" onclick="toggleColor('notice','1')">
                             공지
@@ -28,6 +31,7 @@
                         <div id="talk" class="box" onclick="toggleColor('talk','2')">
                             토크
                         </div>
+                        
                         
                     </div>
                    
@@ -54,24 +58,27 @@
                     
                     <th:block th:unless="${#lists.isEmpty(reviewBoardList)}">
                         
-                    <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
-                        <td th:text="*{reviewBoardNo}">글번호</td>
-                        <td><a th:unless="${param.key}" 
-                            th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" 
-                            th:text="*{reviewTitle}">게시글 제목</a></td>
-                        
+                        <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
+                            <td th:text="*{reviewBoardNo}">글번호</td>
+                            <td>
+                                <a th:unless="${param.key}" 
+                                th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" 
+                                th:text="*{reviewTitle}">게시글 제목</a>
+                                
+                                
+                                <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
+                                <th:block id="commentCount" th:text="|[*{commentCount}]|"></th:block> 
+                                <!-- <p id="commentCount">총 <span th:text="${#lists.size(reviewBoard.commentList)}">0</span> 개의 댓글이 있습니다.</p> -->
+                            </td>
                             
-                            <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
-                            <!-- <th:block th:text="|[*{commentCount}]|"></th:block> -->
-                        
-                            <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
-                            <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
+                                <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
+                                <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
 
-                            <td th:text="*{reviewBoardWriteDate}">작성일</td>
+                                <td th:text="*{reviewBoardWriteDate}">작성일</td>
 
-                            <td th:text="*{readCount}">0</td>
-                        </th:block>
-                    </tr>
+                                <td th:text="*{readCount}">0</td>
+                            </th:block>
+                        </tr>
                   
                     </th:block>
                 </tbody>
@@ -79,12 +86,41 @@
         
                 </table>
             </div>
+            
                 <div class="btn-area">
                     <!-- 기업 회원이거나 비회원 유저는 게시글 조회만 가능하고 일반회원만 글쓰기를 허용함 -->
-                    <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo != 2}">글쓰기</button> 
+                    <!-- <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button>  -->
+                    <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button> 
                     
-                    <button id="insertNoticeBtn" th:if="${session.loginMember != null and session.loginMember.authorityNo == 1 and reviewBoardCode == 1}">공지 작성</button>
+                    <button id="insertNoticeBtn" th:if="${session.loginMember != null and reviewBoardCode == 1 and session.loginMember.authorityNo == 1}">공지 작성</button>
+                    
+
+                    <p id="reviewBoardButtonNotice" th:if="${reviewBoardCode == 2 and session.loginMember == null and session.loginShop == null}" 
+                    style="color:red; 
+                    font-size:18px;
+                    display:flex;
+                    margin-left:450px;">
+                        * 비회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
+                    </p>
+                   
+                    <p id="reviewBoardButtonNotice" th:if="${reviewBoardCode == 2 and session.loginMember != null and session.loginMember.authorityNo == 2}" 
+                    style="color:red; 
+                    font-size:18px;
+                    display:flex;
+                    margin-left:450px;">
+                    <p id="shopMemberNo" th:if="${session.loginMember == null}" >
+                        <p th:if="${session.loginShop != null and session.loginShop.authorityNo == 2 and session.loginMember == null}"  style="color:red; 
+                        font-size:18px;
+                        display:flex;
+                        margin-left:450px;">
+                        * 기업회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
+                        </p>
+                    </p>
+                    </p>
+                   
+                    
                 </div>
+                
             
            
 
@@ -205,9 +241,8 @@
             const reviewBoardCode = /*[[${reviewBoardCode}]]*/ "후기 게시판 코드 번호";
         </script>
     </main>
-    <script th:inline="javascript">
-        const reviewBoardCode = /*[[${reviewBoardCode}]]*/ "후기 게시판 코드 번호";
-    </script>
+   
     <script src="/js/reviewBoard/reviewBoardList.js"></script>
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>

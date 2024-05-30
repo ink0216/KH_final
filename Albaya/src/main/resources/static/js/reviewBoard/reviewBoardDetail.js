@@ -3,15 +3,24 @@ const siren = document.querySelector("#siren");
 /* 신고 아이콘 클릭시 신고 팝업창 */
 
 
-    function openPopup(){
+    siren.addEventListener("click",e => {
+
+        if(loginMemberNo == null){
+
+            alert("로그인 후 신고 서비스를 이용할 수 있습니다.");
+            return;
+        }
   
-        window.open('/declarePopup.html', 'popupWindow', 'width=770, height=1200, left=150, resizable = no');
+        window.open('/declarePopup', 'popupWindow', 'width=770, height=1200, left=150, resizable = no');
+        // location.href="/declarePopup";
+        // location.href="/declarePopup?memberEmail="+ memberEmail;
+
+        // window.open('/declarePopup?memberEmail='+ memberEmail,'declarePopup','width=770,height=1200,left=150,resizable=no');
+        
     }
+);
 
-
-
-
-    
+        
 
 
 
@@ -72,6 +81,7 @@ deleteBtn.addEventListener("click", () => {
 /* 수정버튼  */
 
 const updateBtn = document.querySelector("#updateBtn");
+
 if(updateBtn != null){
 
     
@@ -80,7 +90,7 @@ if(updateBtn != null){
 
 
        
-        location.href = location.pathname.replace('board','editReviewBoard') + "/update" + location.search;
+        location.href = location.pathname.replace('reviewBoard','editReviewBoard') + "/update" + location.search;
     })
 
 }

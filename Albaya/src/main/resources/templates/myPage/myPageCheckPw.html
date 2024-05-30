@@ -23,8 +23,9 @@
                     </div>
                 </div>
 
-                <div class="input-area-container">
-                    <form action="/myPage/myPageCheckPw" method="POST">
+                <th:block th:if="${session.loginMember != null}"> 
+                    <div class="input-area-container">
+                        <form action="/myPage/myPageCheckPw" method="POST">
                         <div class="input-area-horizontal">
                             <div class="text-area">
                                 아이디
@@ -43,6 +44,29 @@
                             </div>
                         </div>
                     </div>
+                </th:block>
+                <th:block th:if="${session.loginShop != null}"> 
+                    <div class="input-area-container">
+                        <form action="/myPage/myPageCheckShopPw" method="POST">
+                        <div class="input-area-horizontal">
+                            <div class="text-area">
+                                아이디
+                            </div>
+                            <div class="input-area">
+                                <input type="text" name="shopEmail" id="memberEmail" readonly
+                                th:value="${session.loginShop.shopEmail}">
+                            </div>
+                        </div>
+                        <div class="input-area-horizontal">
+                            <div class="text-area">
+                                비밀번호
+                            </div>
+                            <div class="input-area">
+                                <input type="password" name="shopPw">
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
                     
                 </div>
                 <div class="btn-area-container">
@@ -54,4 +78,10 @@
     </div>
 </body>
 <script src="/js/myPage/myPageCheckPw.js"></script>
+<script th:inline="javascript">
+    const message =  /*[[${message}]]*/ "전달 받은 message";
+    // message가 없다면 null
+
+    if (message != null) alert(message);
+</script>
 </html>

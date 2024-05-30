@@ -26,9 +26,12 @@ public class ReviewBoard {
 	private int readCount;
 	private String boardDelFl;
 	private String reviewBoardUpdateDate;
-	
+	private int commentCount;
 	// MEMBER 테이블 조인
 	private String memberEmail;
+	
+	// 댓글 목록
+	private List<Comment> commentList;
 	
 	
 	

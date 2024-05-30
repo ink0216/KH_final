@@ -28,6 +28,25 @@
 	</select>
 	
 	
+	<select id="selectListCount">
+		SELECT COUNT(*) FROM "HIRE"
+		WHERE HIRE_STATUS = 0
+	</select>
+	
+	<!-- 기업명, 공고제목, 근무시간, 근무지역, 급여-->
+	<select id="selectHireList">
+		SELECT A.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
+		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
+		 FROM "HIRE" A
+		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
+		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
+		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
+		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
+		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+
+		WHERE HIRE_STATUS = 0
+		ORDER BY HIRE_NO DESC
+	</select>
 	
 	<!-- INSERT -->
 	<insert id="insertWrite" useGeneratedKeys="true" parameterType="Hire">
@@ -40,21 +59,123 @@
 		#{hireNo},#{shopNo},#{typeNo},
 		#{payNo},#{hireTitle},#{hireContent},
 		DEFAULT,TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),#{hireCount},
-		#{hireTerm},#{hireGender},DEFAULT,
+		#{hireTerm},#{hireGender},
+		<if test='hireStatus == null'>
+		DEFAULT
+		</if>
+		<if test='hireStatus != null'>
+		#{hireStatus}
+		</if>
+		,
 		#{workDay},#{payInput},#{dongNo},
-		#{addressDetail},#{workStart},#{workEnd}
+		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
+		,#{shopEmail},#{shopTel},#{shopName},#{address}
 				)
 	</insert>
 	
 	<!-- 시군구동이 모두 일치하는 동 번호 조회 -->
 	<select id="hireDongNo">
-		SELECT DONG_NO
-		FROM "DONG"
-		JOIN "SIGUNGU" USING (SIGUNGU_NO)
-		JOIN "DOSI" USING (DOSI_NO)
-		WHERE DONG_NAME LIKE '%'||#{dongName}||'%'
-		AND SIGUNGU_NAME LIKE '%'||#{sigunguName}||'%'
-		AND DOSI_NAME LIKE '%'||#{dosiName}||'%'
+	       SELECT DONG_NO
+       FROM "DONG"
+       JOIN "SIGUNGU" USING (SIGUNGU_NO)
+       JOIN "DOSI" USING (DOSI_NO)
+       WHERE REPLACE(DONG_NAME, ' ', '') LIKE '%' || REPLACE(#{dongName}, ' ', '') || '%'
+       AND REPLACE(SIGUNGU_NAME, ' ', '') LIKE '%' || REPLACE(#{sigunguName}, ' ', '') || '%'
+       AND REPLACE(DOSI_NAME, ' ', '') LIKE '%' || REPLACE(#{dosiName}, ' ', '') || '%'
 	</select>
+	
+	
+	  <!-- 
+	  <choose>
+       <when test='ISEXCEL != null and ISEXCEL.equals("Y")'>       
+      </when>
+      <otherwise>			
+      </otherwise>
+</choose>
+
+<if test='ITEM_CD != null and !ITEM_CD.equals("")'>   
+</if> 
+
+<![CDATA[ 
+		CASE 이 네 가지 중 하나를 선택해서 한 컬럼이 나온다
+			WHEN SYSDATE-BOARD_WRITE_DATE < 1/24/60 
+			THEN FLOOR((SYSDATE-BOARD_WRITE_DATE)*24*60*60)||'초 전'
+			
+			WHEN SYSDATE-BOARD_WRITE_DATE < 1 
+			THEN FLOOR((SYSDATE-BOARD_WRITE_DATE)*24)||'시간 전'
+			
+			ELSE TO_CHAR(BOARD_WRITE_DATE, 'YYYY-MM-DD') 아무 케이스에도 안 들어가는 경우
+		END BOARD_WRITE_DATE 별칭
+	]]>
+	   -->
+	   <!-- 공고 번호, 공고제목, 공고내용, 업직종 이름, 모집인원, 
+	모집종료일(2024-03-23), 근무기간(몇개월), 근무요일(월,수,금)
+	근무 시작 시간, 근무 종료 시간, 급여종류명, 급여양, 모집성별,
+	근무지 시군구, 근무지 상세주소, 담당자명, 담당자연락처,담당자이메일,
+	
+	  -->
+	<!-- 공고 상세 조회 -->
+	<select id="detailHire">
+	SELECT HIRE_NO, HIRE_TITLE, HIRE_CONTENT, TYPE_NAME, HIRE_COUNT,
+	TO_CHAR(HIRE_END, 'YYYY-MM-DD') HIRE_END,
+	DECODE(HIRE_TERM, 1, '하루', 7, '일주일', 
+	3, '1~3개월', 6, '3~6개월', 365, '1년 이상') HIRE_TERM2,
+	WORK_DAY,
+	WORK_START, WORK_END, PAY_NAME, PAY_INPUT , 
+	DECODE(HIRE_GENDER, 'A', '성별무관', 'F', '여성', 'M', '남성') HIRE_GENDER,
+    CASE 
+    	WHEN LENGTH(SIGUNGU_NAME)>=5 THEN DOSI_NAME||' '||SUBSTR(SIGUNGU_NAME,1,3)||' '||SUBSTR(SIGUNGU_NAME,4)||' '||DONG_NAME
+    	ELSE DOSI_NAME||' '||SIGUNGU_NAME||' '||DONG_NAME 
+    END
+    ADDRESS,
+	ADDRESS_DETAIL, SHOP_OWNER, SHOP_TEL, SHOP_EMAIL, ROAD_ADDRESS
+	FROM "HIRE" A
+	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
+	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
+	JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
+	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
+	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
+	WHERE HIRE_NO = #{hireNo}
+	</select>
+	<!--  
+	DECODE(HIRE_TERM, 1, '하루', 7, '일주일', 
+	3, '1~3개월', 6, '3~6개월', 365, '1년 이상')
+	<if test="HIRE_TERM ==1">
+	'하루'
+	</if>
+	
+	DECODE(HIRE_GENDER, 'A', '성별무관', 'F', '여성', 'M', '남성') HIRE_GENDER,
+	-->
+	
+	
+	
+	
+	<!--**************** 지역별 공고 조회하기********************* -->
+	<select id="selectDosi">
+		SELECT * FROM "DOSI"
+	</select>
+	
+	<select id="selectSigungu">
+		SELECT * 
+		FROM "SIGUNGU"
+		JOIN "DOSI" USING(DOSI_NO) 
+		WHERE DOSI_NAME =#{dosiName}
+	</select>
+	
+	<select id="selectDong">
+		SELECT * 
+		FROM "DONG"
+		JOIN "SIGUNGU" USING(SIGUNGU_NO) 
+		WHERE SIGUNGU_NAME =#{sigunguName}
+	</select>
+	
+	
+	
+	<!-- ***************업직종별 공고 조회하기******************** -->
+	<select id="selectKind">
+	SELECT TYPE_NAME FROM WORK_TYPE 
+	</select>
+	
+	
 	
 </mapper>

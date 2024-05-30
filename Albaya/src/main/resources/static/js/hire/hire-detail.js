@@ -11,7 +11,10 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울 중구 서소문로 136', function (result, status) {
+// geocoder.addressSearch('서울 중구 서소문로 136', function (result, status) {
+let address = document.getElementById("address");
+
+geocoder.addressSearch(address.innerHTML, function (result, status) {
 
 // 정상적으로 검색이 완료됐으면 
 if (status === kakao.maps.services.Status.OK) {
@@ -26,7 +29,7 @@ if (status === kakao.maps.services.Status.OK) {
 
     // 인포윈도우로 장소에 대한 설명을 표시합니다
     var infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:6px 0;">버거킹 시청역점</div>'
+        content: '<div style="width:50px;text-align:center;padding:6px 0;">HERE</div>' 
     });
     infowindow.open(map, marker);
 

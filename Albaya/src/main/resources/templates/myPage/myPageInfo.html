@@ -7,113 +7,22 @@
     <link rel="stylesheet" href="/css/myPage/myPageInfo.css">
 </head>
 <body>
+
     <th:block th:replace="~{common/header}"></th:block>
+    <!-- <div class="h1-wrapper">
+        <h2><span th:text="${session.loginMember != null ? session.loginMember.memberName : session.loginShop.shopOwner}" style="color: black;"></span>
+            님의<br> Albaya 개인 회원 정보</h2>
+    </div> -->
+    <th:block th:if="${session.loginMember != null}">
+        <th:block th:replace="~{myPage/memberInfo}">
 
-    <main class="main-layout-wrapper">
-        <div class="main-container-wrapper">
-            <div class="h1-wrapper">
-                <h2><span th:text="${session.loginMember.memberName}" style="color: black;"></span>님의<br>
-                Albaya 개인 회원 정보</h2>
-            </div>
-            <div class="main-content-wrapper">
-                <div class="member-info-container">
+        </th:block>
+    </th:block>
+    <th:block th:if="${session.loginShop != null}">
+        <th:block th:replace="~{myPage/shopInfo}">
 
-                    <div class="member-info-header">
-                        <h3>회원 정보</h3>
-                        <button id="updateMemberInfo">수정</button>
-                    </div>
-
-                    <div class="member-p-area">
-                        <p>해당 정보들을 수정하실 수 있습니다.</p>
-                    </div>
-
-                    <div class="member-info-area">
-
-                        <div class="info-row">
-                            <div class="info-row-left">
-                                <span>최근 수정일</span>
-                            </div>
-                            <div class="info-row-right">
-                                <th:block th:if="${session.loginMember.lastModifiedDate == null}">
-                                    안전을 위해 정보를 수정해주세요!!
-                                </th:block>
-                                <th:block th:if="${session.loginMember.lastModifiedDate != null}"
-                                 th:text="${session.loginMember.lastModifiedDate}">
-                                </th:block>
-                            </div>
-                        </div>
-
-                        <div class="info-row">
-                            <div class="info-row-left">
-                                <span>연락처</span>
-                            </div>
-                            <div class="info-row-right">
-                                <th:block th:text=
-                                "${#strings.concat(#strings.substring(session.loginMember.memberPhoneNumber, 0, 3),
-                                    '-', #strings.substring(session.loginMember.memberPhoneNumber, 3, 7),
-                                    '-', #strings.substring(session.loginMember.memberPhoneNumber, 7))}">                
-                                </th:block>
-                            </div>
-                        </div>
-
-                        <div class="info-row">
-                            <div class="info-row-left">
-                                <span>이메일</span>
-                            </div>
-                            <div class="info-row-right">
-                                <th:block th:text="${session.loginMember.memberEmail}"></th:block>
-                            </div>
-                        </div>
-
-                        <div class="info-row">
-                            <div class="info-row-left">
-                                <span>주소</span>
-                            </div>
-                            <div class="info-row-right">
-                                <th:block th:utext="${#strings.replace(session.loginMember.memberAddress, '^^^', ' ')}"></th:block>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                
-                <div class="member-changePw-container">
-
-                    <div class="member-changePw-header">
-                        <h3>비밀번호</h3>
-                        <button id="changePwBtn">변경</button>
-                    </div>
-                    <div class="member-changePw-p-area">
-                        <p>비밀번호를 주기적으로 변경해 개인정보를 보호하세요.</p>
-                    </div>
-                    <div class="member-changePw-status-container">
-                        <div class="member-changePw-status">
-                            <div class="member-changePw-left">
-                                <span>최근 수정일</span>
-                            </div>
-
-                            <div class="member-changePw-right">
-                                <th:block th:unless="${session.loginMember.lastModifiedPwDate}">
-                                    안전을 위해 정보를 수정해주세요!!
-                                </th:block>
-                                <th:block th:if="${session.loginMember.lastModifiedPwDate}"
-                                th:text="${session.loginMember.lastModifiedPwDate}">
-                                </th:block>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="member-withdraw-container">
-                    <div class="member-withdraw-header">
-                        <h3>회원 탈퇴</h3>
-                        <button id="deleteBtn">탈퇴</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+        </th:block>
+    </th:block>
 </body>
 <script src="/js/myPage/myPageInfo.js"></script>
 <script th:inline="javascript">

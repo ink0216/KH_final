@@ -2,15 +2,17 @@ const personalMember = document.querySelector('#personalMember');
 const coparationMember = document.querySelector('#coparationMember');
 
 personalMember.addEventListener("click", () => {
-    personalMember.style.backgroundColor = "grey";
+    personalMember.style.backgroundColor = "#f5f5f5";
     coparationMember.style.backgroundColor = "white"
     document.querySelector('.login-form').action = '/member/login';
 })
 
 coparationMember.addEventListener("click", () => {
-    coparationMember.style.backgroundColor = "grey";
+    coparationMember.style.backgroundColor = "#f5f5f5";
     personalMember.style.backgroundColor = "white"
     document.querySelector('.login-form').action = '/shop/login';
+    document.querySelector("#memberEmail").name = 'shopEmail';
+    document.querySelector("#memberPw").name = 'shopPw';
 })
 
 const getCookie = (key) => {

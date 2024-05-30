@@ -1,17 +1,26 @@
+* {
+    font-family: 'SUIT-Regular';
+}
+
+
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 #container{
     padding-left:20%;
     padding-right:20%;
 }
-#menuBar{
-    display:flex;
-    border:1px solid lightgray;
-    height:150px;
+.menuBar{
+    border-bottom: 1px solid lightgray;
     width: 100%;
-    margin:-20px;
     background-color: white;
-    padding-left:25%;
+
 }
 #logo{
     margin: auto;
@@ -25,12 +34,11 @@
 }
 
 #menus>ul{
-    display:flex;
+    display: flex;
     justify-content: space-evenly;
-    align-items:center;
-    width:48%;
-    height:100%;    
-    margin-top:-20px;
+    align-items: center;
+    width: 339px;
+    margin-top: -20px;
 }
 
 .underline{
@@ -42,6 +50,17 @@
     position:relative;
     
 }
+.underline:hover::after{
+    cursor:pointer;
+    height:5px;
+    
+    
+    
+    transform:scaleX(1);
+    transform-origin:center;
+    background-color:lightgray;
+    transition:transform 0.25s ease-out;
+}
 
 .underline::after{
     content:'';
@@ -52,18 +71,14 @@
     transform:scaleX(0);
     transform-origin:center;
     height:5px;
-    background-color:lightgray;
+    
     transition:transform 0.25s ease-out;
 }
 .underline:hover{
     cursor:pointer;
 }
 
-.underline:hover::after{
-    cursor:pointer;
-    transform:scaleX(1);
-    transform-origin:center;
-}
+
 
 .selectedList::after{
     width:100%;
@@ -87,15 +102,23 @@
 #recruit{
     height:30px;
 }
-#buttons{
-    display:flex;
-    align-items:center;
-    margin-left:500px;
-    height:50%;
-    width:800px;
-    margin:auto;
-    margin-top: 80px;
-    margin-left: 600px;
+.header-buttons{
+    display: flex;
+    align-items: flex-end;
+    margin-right: 30px;
+    margin-bottom: 14px;
+    /* margin-left: 500px; */
+    /* height: 50%; */
+    /* width: 800px; */
+    /* margin: auto; */
+    /* margin-top: 80px; */
+    /* margin-left: 600px; */
+}
+
+.login{
+    font-size: 13px;
+    text-decoration: none;
+    color: rgb(88, 88, 88);
 }
 .loggedIn{
     border:1px solid lightgray;
@@ -136,11 +159,15 @@
     background: blue;
 }
 
-#innerMenuBar{
-  
-    display:flex;
-    margin-left:-250px;
-    width:1486px;
+.innerMenuBar{
+    display: flex;
+    /* margin-left: -250px; */
+    /* width: 1486px; */
+    justify-content: space-between;
+}
+
+.collab{
+    margin: 0px 30px;
 }
 
 #buttons>a {
@@ -150,7 +177,7 @@
     
 }
 
-#searchHeader{
+.searchHeader{
     display:flex;
     align-items: center;
     justify-content: center;
@@ -184,5 +211,24 @@
 
 
 
+
+/* 반응형 */
+@media screen and (max-width:995px) {
+    .innerMenuBar{
+        flex-direction: column;
+    }
+
+    .header-buttons{
+        display: flex;
+        align-items: center;
+        margin-left: 73px;
+        margin-top: 7px;
+        width: 500px;
+    }
+
+    #menus{
+        margin-left: -4px;
+    }
+}
 
 

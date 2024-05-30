@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판 상세</title>
     <link rel="stylesheet" href="/css/reviewBoard/reviewBoardDetail.css">
+    <link rel="stylesheet" href="/css/reviewBoard/comment.css">
     <th:block th:replace="~{common/header}"></th:block>
 
     <!-- 2024-05-17 기준 타임리프 코드 다 주석처리한 상태로 다 바깥으로 꺼냄 (미완성상태에서 놔두면 타임리프 오류남) 나중에 다시 집어넣어야 함 -->
@@ -46,10 +47,11 @@
                 </div>
                 <div id="declare-area"> 
                     <!-- 신고 아이콘 -->
-                    <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren", onclick="openPopup()" style="color: #ff0000;"></i>
+                    <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren" style="color: #ff0000;"
+                    th:if="${reviewBoardCode == 2}"></i>
                 </div>
             </div>
-                <div id="reviewBoardContent-area" th:text="*{reviewBoardContent}">
+                <div style="white-space:pre;" id="reviewBoardContent-area" th:text="*{reviewBoardContent}">
                     
                     바인딩 3시간 파트타임 업무 지원했는데 경영지원팀 피부 좀 까무잡잡하고 갈색 긴머리분 면접보면서 웃지마라 어디가서 면접보면서도 웃지마라,꼬리물기식 질문, 훈계 이렇게 무한으로 면접을 40분동안 합니다.
 
@@ -62,18 +64,34 @@
                         <!-- th:block 안의 버튼은 로그인한 회원이 게시글의 회원번호와 같다면 활성화됨 백앤드 완성하면 위의 문장 주석 풀 예정임-->
                             <button id="updateBtn">수정하기</button>
                             <button id="deleteBtn">삭제하기</button>
-                        <!-- </th:block> -->
+                        </th:block>
                 </div>
         
             </div>
         </section>
 
-        <!-- <th:block th:replace="~{reviewBoard/comment}"></th:block> -->
+        <th:block th:replace="~{reviewBoard/comment}"></th:block>
         
     </main>
     <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
     <script src="/js/reviewBoard/reviewBoardDetail.js"></script> 
+    <script src="/js/reviewBoard/comment.js"></script> 
     
-  
+    <script th:inline="javascript">
+        const loginMemberNo= /*[[${session.loginMember?.memberNo}]]*/"로그인한 멤버";
+    
+        
+      
+        const reviewBoardNo = /*[[${reviewBoard.reviewBoardNo}]]*/"게시글 번호";
+
+        
+        const reviewBoardCode = /*[[${reviewBoard.reviewBoardCode}]]*/"게시판 코드";
+
+        const authorityNo = /*[[${session.loginMember?.authorityNo}]]*/"회원타입";
+        
+
+        
+    </script>
+  <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>

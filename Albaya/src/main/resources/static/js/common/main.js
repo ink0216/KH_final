@@ -42,43 +42,34 @@ observer.observe(imgList)
 
 
 
-/* 페이지네이션 */
-
-const numberButton = document.querySelector("number-button");//페이징 번호
-numberButton.addEventListener("click",()=>{
-    fetch("/hire/")
-    .then(resp=>resp.json())
-    .then(list=>{
-            
-    const setPageButtons=()=>{
-    const numberButtonWrapper = document.querySelector('.number-button-wrapper');
-    numberButtonWrapper.innerHTML=''; 
-
-    for(let i=1; i<list.length; i++){
-
-        const span = document.createElement('span');
-        span.className='number-button';
-
-        span.textContent=i;
-        numberButtonWrapper.append(span);
-    }
-}
-
-/* 해당 페이지 */
-const tbody= document.querySelector("tbody");
 
 
-const setPageOf=(pageNumber)=>{
-    tbody.innerHTML='';
 
-    for(
-        let i = countPrePage * (pageNumber -1)+1;
-        i <= countPrePage * (pageNumber -1) + 10 && i <= list.length;
-        i++
-    ){
-       const tr = document.createElement('tr');
-       tr.className ='tr';
 
+
+
+/////////////////////////////////////////////////////////////////////
+const tbody= document.querySelector("tbody"); //tbody
+const numberButtonWrapper = document.querySelector('.number-button-wrapper'); //숫자 버튼 묶음
+
+//****************가져온 공고문 페이징 번호에 따라 조회하기*****************//
+const setPageOf=(hireList)=>{
+
+    for(let hire of hireList){ //전체 공고 수 세기
+
+        const tr = document.createElement('tr');
+        
+        tr.className ='tr';
+        /* th:data-hire-no="*{hireNo}" */
+        tr.setAttribute("data-hire-no", hire.hireNo);
+        tr.addEventListener("click", (e)=>{
+            /* e.target == 이벤트가 발생한 대상(td태그)
+            e.currentTarget == 클릭이벤트가 부여돼있는 대상(tr) */
+            let hireNo = e.currentTarget.dataset.hireNo;
+            console.log(hireNo);
+            location.href='/hire/'+hireNo; //상세조회
+        });
+        
         //상점명
         const shopName = document.createElement('td');
         shopName.className='shopName';
@@ -93,25 +84,110 @@ const setPageOf=(pageNumber)=>{
 
         //근무 지역
         const sigunguName = document.createElement('td');
-        sigunguName.className='sigunguName';
+        sigunguName.className='sigungu-name';
 
         //급여
         const pay = document.createElement('td');
         pay.className='pay';
 
-        shopName.textContent=data[i-1].shopName;
-        hireTitle.textContent=data[i-1].hireTitle;
-        hireTime.textContent=data[i-1].hireTime;
-        sigunguName.textContent=data[i-1].sigunguName;
-        pay.textContent=data[i-1].pay;
+        shopName.textContent = hire.shopName;
+        hireTitle.textContent=hire.hireTitle;
+        hireTime.textContent=hire.workStart + " ~ " + hire.workEnd;
+        sigunguName.textContent=hire.sigunguName;
+        pay.textContent=hire.payName+" "+hire.payInput;
+
 
         tr.append(shopName,hireTitle,hireTime,sigunguName,pay);
+    
         tbody.append(tr);
+    
     }
-
 }
 
 
-    })
+
+//*************************페이지 수를 세서 페이징 번호 생성****************************//
+const getPagination =(pagination)=>{ 
+
+    for(let i= pagination.startPage ; i <= pagination.endPage ; i++){
+
+        const button = document.createElement('button');
+        button.className='number-button';
+
+        button.textContent=i;
+
+        //******페이징 버튼이 눌렸을 경우***********//
+        button.addEventListener("click",e=>{
+            console.log(button + "클릭됨");
+            reloadTable(e.target.innerHTML);
+        })
+
+        if(i == pagination.currentPage){
+            button.classList.add("checked");
+        }
+
+        numberButtonWrapper.append(button);
+    }
+
+    const prevButton = document.querySelector('.prev-button');
+    prevButton.dataset.pageNo = pagination.prevPage;
+
+    const nextButton = document.querySelector('.next-button');
+    nextButton.dataset.pageNo = pagination.nextPage;
+}
+
+
+
+//******이전 버튼이 눌렸을 경우***********//
+const prevButton = document.querySelector('.prev-button');
+prevButton.addEventListener("click",(e)=>{
+    reloadTable(e.target.dataset.pageNo);
 })
+
+//******다음 버튼이 눌렸을 경우***********//
+const nextButton = document.querySelector('.next-button');
+nextButton.addEventListener("click",(e)=>{
+    reloadTable(e.target.dataset.pageNo);
+})
+
+
+
+
+
+function reloadTable(cp) {
+    fetch("/hire/selectHireList?cp=" + cp)
+    .then(resp=>resp.json())
+    .then(map => {
+        console.log(map);
+        const {hireList, pagination} = map;
+
+        tbody.innerHTML='';
+        numberButtonWrapper.innerHTML="";
+
+        setPageOf(hireList);
+        getPagination(pagination);
+
+    })
+}
+
+
+
+//새로고침 되었을 때
+document.addEventListener("DOMContentLoaded", () => {
+    reloadTable(1);
+});
+
+
+
+// <!-- document.querySelector(".imgItem").dataset.hireNo 해서 꺼내 쓸 수 있다.!!!!! -->
+/* 박스 공고 클릭 시 상세 조회 페이지로 이동 */
+const imgItem = document.querySelectorAll(".imgItem");
+imgItem.forEach(i=>{
+    i.addEventListener("click", ()=>{
+        let hireNo = i.dataset.hireNo;
+        console.log(hireNo);
+        location.href='/hire/'+hireNo;
+    })
+});
+/* 리스트 공고 클릭 시 상세 조회 페이지로 이동 */
 

@@ -10,55 +10,75 @@
 </head>
 
 <header>
-    <div id="menuBar">
-        <div id="innerMenuBar">
+    <div class="menuBar">
+        <div class="innerMenuBar">
 
+            <div class="header-left">
+                <div class="collab">
+                    <div class="searchHeader">
+                        <a href="/" id="logo">
+                            <img src="/images/ALBAYA_LOGO.png">
+                        </a>
+                        <input type="text" placeholder="search" id="searchField">
+                        <button id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div><br><br>
+                    <div id="menus">
+                        <ul>
+                            <li class="underline"><a href="/hire/hireKind"><b>업직종별</b></a></li>
+                            <li class="underline"><a href="/hire/hireLocation"><b>지역별</b></a></li>
+                            <li class="underline"><a><b>알바토크</b></a></li>
+                        </ul>
+                    </div>
 
-            <div id="collab">
-                <div id="searchHeader">
-                    <a href="#" id="logo">
-                        <img src="/images/ALBAYA_LOGO.png">
-                    </a>
-                    <input type="text" placeholder="search" id="searchField">
-                    <button id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div><br><br>
-                <div id="menus">
-                    <ul>
-                        <li class="underline"><a><b>업직종별</b></a></li>
-                        <li class="underline"><a><b>지역별</b></a></li>
-                        <li class="underline"><a><b>알바토크</b></a></li>
-                    </ul>
                 </div>
-
             </div>
 
-            <div id="buttons">
 
-                <th:block th:if="${session.loginMember != null}">
+            <div class="header-buttons">
+            
+                <th:block th:if="${session.loginMember != null or session.loginShop !=null}">
+
                     <button class="loginMember"><i class="fa-regular fa-bell"></i></button>
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
+
                     &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn">이력서 등록</button>
                     &nbsp;&nbsp;<button class="loggedIn">공고 등록</button>
 
+
+                    <th:block th:if="${session.loginMember != null}">
+                        <a href="/member/logout" class="login">로그아웃</a>
+                    </th:block>
+
+                    <th:block th:if="${session.loginShop != null}">
+                        <a href="/shop/logout" class="login">로그아웃</a>
+                    </th:block>
+                    
+
                 </th:block>
-                <th:block th:if="${session.loginMember == null}">
+
+                <th:block th:if="${session.loginMember == null and session.loginShop ==null}">
+
                     <a href="/member/login" class="login">로그인</a> &nbsp;
                     |&nbsp;
-                    <a href="/member/signup" class="login">회원가입</a>
-                    
+
+
+                    <a href = "/member/selectSignup" class = "login">회원가입</a>  
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button class = "loggedIn">이력서 등록</button>
+                    &nbsp;&nbsp;<button class = "loggedIn">공고 등록</button>
+
                 </th:block>
 
-                <button></button>
-
+                <!-- <button></button> -->
             </div>
+
         </div>
     </div>
 
     <div id="container"></div>
 </header>
-<script src="/js/common/header.js"></script>
 <script>
     const ulaafter = document.querySelectorAll(".underline");
+    const ulaafterEffect = document.querySelectorAll(".underline:hover::after")
     for (let i = 0; i < ulaafter.length; i++) {
         ulaafter[i].addEventListener("click", () => {
 
@@ -67,6 +87,7 @@
             for (let j = i + 1; j < ulaafter.length; j++) {
                 if (ulaafter[j].classList.contains("selectedList")) {
                     ulaafter[j].classList.remove("selectedList");
+                    ulaafter[j].style.pointerEvents = "auto";
                 }
             }
 
@@ -74,10 +95,13 @@
             for (let k = i - 1; k >= 0; k--) {
                 if (ulaafter[k].classList.contains("selectedList")) {
                     ulaafter[k].classList.remove("selectedList");
+                    ulaafter[k].style.pointerEvents = "auto";
+
 
                 }
             }
             ulaafter[i].classList.add("selectedList");
+            ulaafter[i].style.pointerEvents = "none";
         });
     }
 </script>

@@ -4,6 +4,8 @@
 /* 댓글 목록 요청(ajax) */
 const selectCommentList = () => {
 
+    
+
 
 
     fetch("/comment?reviewBoardNo="+ reviewBoardNo) // GET 방식 요청
@@ -37,7 +39,7 @@ const selectCommentList = () => {
                 // 삭제된 댓글인데, 대댓글이 존재하는 경우 부모 댓글만 안보이게 하게 설정
             if(comment.commentDelFl == 'Y'){
 
-                    commentRow.innerText = "*삭제된 댓글*";
+                    commentRow.innerText = "* 삭제된 댓글입니다 *";
 
             } else {
                     // 부모 댓글이 삭제되지 않은 댓글일 경우 작성자, 날짜 감싸는 요소가 표시
@@ -46,24 +48,23 @@ const selectCommentList = () => {
                     commentWriter.classList.add("comment-writer");
 
 
-                   
+            
                     
-
-
-                
-
                     // 닉네임
                     const nickname = document.createElement("span");
-                    nickname.innerText = comment.memberNickname;
+                    nickname.innerText = comment.memberEmail.split("@")[0];
 
                     // 날짜(작성일)
                     const commentDate = document.createElement("span");
                     
                     commentDate.classList.add("comment-date");
 
+
                     commentDate.innerText = comment.commentWriteDate;
 
+                    
 
+                    
                     // 작성자 영역(commentWriter)에 닉네임, 날짜 추가
                     commentWriter.append(nickname, commentDate);
 
@@ -138,12 +139,12 @@ const selectCommentList = () => {
 
 /* 댓글 작성하고 등록하기 */
 
-const addContent = document.querySelector("#addComment");
+const addComment = document.querySelector("#addComment");
 const commentContent = document.querySelector("#commentContent");
 
 
 // 댓글 등록 버튼 클릭
-addContent.addEventListener("click", e =>{
+addComment.addEventListener("click", e =>{
 
     // 일반 회원 로그인이 되어있지 않은 경우
     if(loginMemberNo == null){
@@ -153,6 +154,14 @@ addContent.addEventListener("click", e =>{
         return;
     }
 
+    if(authorityNo == '2'){
+        
+        alert("기업회원은 댓글/답글을 작성할 수 없습니다.");
+
+        return;
+    }
+
+    
 
     // 아무것도 입력하지 않고 댓글 작성하려고 한 경우
     if(commentContent.value.trim().length == 0){
@@ -162,6 +171,8 @@ addContent.addEventListener("click", e =>{
         commentContent.focus();
 
         return;
+        
+        
     }
 
 
@@ -170,7 +181,8 @@ addContent.addEventListener("click", e =>{
 
         "commentContent" : commentContent.value,
         "reviewBoardNo" : reviewBoardNo,
-        "memberNo" : loginMemberNo // 또는 Session 회원 번호
+        "memberNo" : loginMemberNo, // 또는 Session 회원 번호
+        
 
     };
 
@@ -200,8 +212,7 @@ addContent.addEventListener("click", e =>{
             selectCommentList();    
 
 
-            /* 글 작성자에게 댓글이 등록되었다는 알림 전달 + 알림 클릭시 해당 댓글이 작성된 위치로 이동 */
-            sendNotificationFn("insertComment", `${location.pathname}?cn=${result}`,reviewBoardNo);
+
         }
 
         else{
@@ -318,6 +329,21 @@ const insertChildComment = (parentCommentNo, btn) => {
     // 답글 내용이 작성된 textarea
     const textarea = btn.parentElement.previousElementSibling;
 
+    // 일반 회원 로그인이 되어있지 않은 경우
+    if(loginMemberNo == null){
+        
+        alert("일반 회원으로 로그인하셔야 작성할 수 있습니다.");
+
+        return;
+    }
+
+    if(authorityNo == '2'){
+        
+        alert("기업회원은 댓글/답글을 작성할 수 없습니다.");
+
+        return;
+    }
+
 
     if(textarea.value.trim().length == 0) {
         // 자식 댓글 내용이 써져있지 않다면 등록 안됨
@@ -352,11 +378,7 @@ const insertChildComment = (parentCommentNo, btn) => {
             alert("답글 등록 완료");
 
             // 답글 달고 나면 commentContent 내용을 지움
-            // commentContent.value = "";
-
-            // 답글을 달면 댓글 작성자에게 알림이 감
-            sendNotificationFn("insertComment", `${location.pathname}?cn=${result}`,reviewBoardNo);
-
+            commentContent.value = "";
 
             // 댓글 목록을 지웠다가 다시 조회해서 화면에 출력하는 함수인 selectCommentList() 호출
             selectCommentList();    
@@ -587,13 +609,3 @@ const updateComment = (commentNo, btn) => {
     })
     .catch(err => console.log(err));
 }
-
-
-
-
-
-
-
-
-
-

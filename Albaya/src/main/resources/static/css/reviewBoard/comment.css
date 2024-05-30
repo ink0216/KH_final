@@ -5,12 +5,15 @@
 	justify-content: center;
 	
 	margin: 30px 0;
+	margin-left:-50px;
+	
 }
 
 .comment-write-area > textarea{
-	flex-basis: 75%;
+	flex-basis: 50%;
     margin-right: 10px;
 	resize: none;
+	
 }
 
 .comment-write-area > button{
@@ -34,19 +37,19 @@
 	align-items: center;
 }
 
-.comment-writer > img{
-	width: 40px;
-    height: 40px
-}
 
-.comment-writer > span{
+
+.comment-writer {
     font-weight: bold;
     margin-left : 10px;
+	font-size:20px;
+	
 }
 
+
 .comment-date{
-	font-size: 0.8em;
-	color: #aaa;
+	font-size: 0.7em;
+	color:#014C73;
 }
 
 
@@ -57,22 +60,18 @@
 
 /* 버튼 */
 .comment-btn-area button{
-    width: 50px;
-    height: 30px;
-	margin-left: 10px;
+ 
 
-    font-weight: bold;
-    border: 0;
-    background-color: #014C73;
-    color : white;
-
-    cursor: pointer;
+	font-size:15px;
+	margin-left:10px;
+	background-color:rgb(228, 242, 238);
+	border:none;
+	border-bottom:1px solid black;
+	color:rgb(39, 39, 39);
 }
 
 .comment-btn-area button:hover{
-    background-color: white;
-    color : #014C73;
-    border: 2px solid #014C73;
+    cursor:pointer;
 }
 
 .update-textarea{
@@ -83,7 +82,8 @@
 
 .comment-row{
 	border-top : 1px solid #ccc;
-	padding : 15px 0;
+	padding : 10px 0;
+	margin-top:0px;
 }
 
 
@@ -93,14 +93,7 @@
 }
 
 /* 
-.child-comment:before {
-	content: "\f0a4";
-	font-family: "FontAwesome";
-	
-	position : absolute;
-	left : 0;
-	top : 35px;
-} */
+
 
 
 /* 답글 */
@@ -116,4 +109,47 @@
 /* 댓글 내용 */
 .comment-content{
 	white-space: pre-wrap; /* 작성된 문자열 모양 그대로(공백 유지) */
+	margin-left:10px;
 }
+
+
+ul{
+	width:1000px;
+	margin-left:400px;
+}
+
+#comment-btn{
+	font-size:15px;
+	margin-left:10px;
+	background-color:rgb(228, 242, 238);
+	border:none;
+	border-bottom:1px solid black;
+	color:rgb(39, 39, 39);
+}
+
+
+#comment-btn:hover{
+	cursor:pointer;
+}
+
+#addComment {
+	color:white;
+	border-radius:10px;
+	height:60px;
+	font-size:24px;
+	margin-top:12px;
+}
+
+#memberEmail{
+	font-size:18px;
+	margin-right:10px;
+}
+/* 
+#commentCount{
+	margin-left:365px;
+	font-size:26px;
+}
+
+pre{
+	height:90px;
+} */

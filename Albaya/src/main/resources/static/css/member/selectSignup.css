@@ -1,0 +1,98 @@
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{font-family: 'SUIT-Regular';}
+
+body{
+    background-color: rgb(240 244 243);
+}
+
+/* div{
+    border: 1px solid black;
+} */
+
+button:hover{
+    cursor: pointer;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+
+.content-area-container{
+    display: flex;
+    width: 60%;
+    height: 80%;
+    flex-direction: column;
+}
+
+.h2-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.select-member-area{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: space-between;
+}
+
+.select-member{
+    display: flex;
+    width: 48%;
+    background-color: white;
+    flex-direction: column;
+}
+
+.notice-area{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-area{
+    display: flex;
+    width: 100%;
+    height: 55%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-area{
+    display: flex;
+    height: 25%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.btn-area > button{
+    width: 40%;
+    height: 50%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background:#014C73;
+}
+.btn-area > #shopBtn{
+    width: 40%;
+    height: 50%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: black;
+}

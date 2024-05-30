@@ -3,7 +3,7 @@
 <mapper namespace="kh.em.albaya.board.model.mapper.CommentMapper">
 
 	<!-- 댓글 목록 조회 -->
-	<select id="">
+	<select id="select">
 		 SELECT LEVEL, C.* FROM
 			(SELECT COMMENT_NO, COMMENT_CONTENT,
 			    TO_CHAR(COMMENT_WRITE_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') COMMENT_WRITE_DATE,
@@ -21,11 +21,48 @@
 	</select>
 	
 	<!-- 댓글 작성 -->
+	<insert id="insert" parameterType = "Comment" useGeneratedKeys = "true">
+		<selectKey order="BEFORE" resultType="_int"  keyProperty="commentNo">
+  			SELECT SEQ_COMMENT_NO.NEXTVAL FROM DUAL
+  		</selectKey>
+  		
+  		INSERT INTO "COMMENT"
+  		VALUES(
+			#{commentNo},
+			#{reviewBoardNo},
+			#{memberNo},
+			
+			
+			<if test="parentCommentNo != 0">
+			  #{parentCommentNo}
+			</if>
+			
+			<if test="parentCommentNo == 0">
+			  NULL
+			</if>,
+			
+			#{commentContent},
+			DEFAULT,
+			DEFAULT
+			)
+	
+	</insert>
 	 
-	<!-- 댓글 삭제 -->
-	
-	
 	<!-- 댓글 수정 -->
+	<update id="update">
+	UPDATE "COMMENT" SET
+	COMMENT_CONTENT = #{commentContent}
+	WHERE COMMENT_NO = #{commentNo}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<update id="delete">
+		UPDATE "COMMENT" SET
+  		COMMENT_DEL_FL = 'Y'
+  		WHERE COMMENT_NO = #{commentNo}
+	</update>
+	
+	
 
 	
 </mapper>

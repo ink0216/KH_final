@@ -1,0 +1,178 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box; 
+}
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{font-family: 'SUIT-Regular';}
+
+
+body{
+    background-color: rgb(240 244 243);
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+button{
+    font-family: 'TheJamsil5Bold';
+}
+
+.alertSpan{
+    font-size: 13px; /* 원하는 글자 크기로 변경 */
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+/* 선택됐을때 배경색 바꾸는 코드 */
+.selected{
+    background-color: green;
+}
+
+/* div{
+    border: 1px solid black;
+} */
+
+form{
+    width: 100%;
+    height: 100%;
+}
+
+.hidden{
+    display: none;
+}
+
+.main-container{
+    display: flex;
+    height: 1200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-container-wrapper{
+    display: flex;
+    width: 40%;
+    height: 90%;
+    flex-direction: column;
+    background-color: white;
+}
+
+.h1-area-container{
+    display: flex;
+    height: 10%;
+    width: 100%;
+    align-items: center;
+    border-bottom: 3px solid black;
+    padding: 15px;
+}
+
+.signup-info-container{
+    display: flex;
+    height: 90%;
+    width: 100%;
+    padding: 15px;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 15px;
+}
+
+.row-left{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    padding: 15px;
+}
+
+.row-right{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    padding: 15px;
+}
+
+.row-right > input{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 70%;
+    height: 75%;
+    padding: 15px;
+}
+
+.row-right-phoneNumber{
+    display: flex;
+    width: 50.8%;
+    align-items: flex-start;
+    padding: 15px;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.row-right-phoneNumber > input{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 75%;
+    padding: 15px;
+}
+
+.auth-button-area{
+    display: flex;
+    width: 19%;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    margin-top: 4px;
+}
+
+.auth-button-area > button{
+    width: 70%;
+    height: 50%;
+    background-color: #014C73;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.submit-container{
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-container > button{
+    width: 15%;
+    height: 50%;
+    background-color: #014C73;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.fail{
+    color: red;
+}
+
+.success{
+    color: green;
+}
