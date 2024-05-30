@@ -67,7 +67,7 @@ public class DeclareController {
 	}
 	
 	// 신고 처리...
-	@GetMapping("/re")
+	@GetMapping("/declare")
 	public String updateDeclare(
 			@RequestParam("memberNo")int memberNo,
 			@RequestParam("reportedDeclareNo") int reportedDeclareNo,
@@ -76,6 +76,8 @@ public class DeclareController {
 	}
 	
 	
+	
+
 	
 
 }
