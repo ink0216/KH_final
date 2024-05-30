@@ -44,7 +44,7 @@
             default:
                 const selectedEl = document.querySelectorAll(".show");
                 for(let i = 0; i < selectedEl.length; i++){
-                    if(selectedVal != dropDown.value && ){
+                    if(selectedVal != dropDown.value){
                         selectedEl[i].classList.remove("show");
                         selectedEl[i].classList.add("hide");
                     }
