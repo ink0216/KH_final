@@ -1,13 +1,13 @@
-
-// const declareFrm = document.querySelector("#declareFrm");
-
+const declareFrm = document.querySelector("#declareFrm");
+// 
 const declareBtn = document.querySelector("#declareBtn");
 
 
 
 document.querySelector("#declareFrm").addEventListener("submit", e => {
 
-    const declareContent = document.querySelector("[name='declareContent']");
+    const declareContent = document.querySelector("[name='boardDeclareContent']");
+    
 
     // 테스트용
     // declareBtn.addEventListener("click",() => {
@@ -26,12 +26,12 @@ document.querySelector("#declareFrm").addEventListener("submit", e => {
         declareContent.focus();
 
         e.preventDefault();
+
+        return;
     }
 
     alert("신고 처리가 완료되었습니다.");
 
 })
-
-
 
 

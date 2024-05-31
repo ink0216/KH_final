@@ -5,7 +5,7 @@
 	justify-content: center;
 	
 	margin: 30px 0;
-	margin-left:45px;
+	margin-left:-50px;
 	
 }
 
@@ -83,6 +83,7 @@
 .comment-row{
 	border-top : 1px solid #ccc;
 	padding : 10px 0;
+	margin-top:0px;
 }
 
 
@@ -143,12 +144,12 @@ ul{
 	font-size:18px;
 	margin-right:10px;
 }
-
+/* 
 #commentCount{
 	margin-left:365px;
-	padding-bottom:20px;
+	font-size:26px;
 }
+
 pre{
 	height:90px;
-	font-size : 22px;
-}
+} */

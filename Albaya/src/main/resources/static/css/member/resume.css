@@ -183,12 +183,8 @@ hr{
 }
 
 #dropdownContainer>div:nth-child(1){
-    
-
     width:250px;
 }
-
-
 
 select{
     margin-left:20px;
@@ -202,6 +198,7 @@ select{
     margin-left:20px;   
 }
 
+
 .show{
     display:block;
 }
@@ -211,7 +208,11 @@ select{
 }
 
 input[type="date"]{
-    width:200px;
+    width:100px;
+}
+
+#schoolContainer > div > div> input[type="date"]{
+    width:100px;
 }
 
 .term{
@@ -226,24 +227,100 @@ input[type="date"]{
 }
 #certificateDetail{
     display:flex;
+    flex-wrap:wrap;
 }
 #certificateDetail>div>input[type="text"]{
-    width:300px;
+    width:600px;
+}
+#organization{
+    margin-left:-5px;
+}
+#score{
+    margin-left:25px;
+    margin-top:20px;
+    width:50px;
 }
 #issueDetail{
-    margin-left:20px;
+    margin-top:20px;
+    margin-left:235px;
+}
+#issueDate{
+    width:200px;
 }
 
 .resume{
-    margin-left:200px;
-    background-color: #014C73;
+    margin-left:30px;
+    /* background-color: #014C73; */
+
+    background-color: black;
     border-radius:10px;
-    border: 1px solid #014C73;
+    /* border: 1px solid #014C73; */
+    border: 1px solid black;
     color:white;
-    width: 100px;
+    width: 150px;
     height:60px;
+    border-bottom: 5px solid gray;
+    border-right: 5px solid gray;
+}
+.resume:nth-child(1){
+    margin-left:-40px;
 }
 .resume:hover{
     cursor:pointer;
 }
+.resume:active{
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+    border-top:5px solid gray;
+    border-left:5px solid gray;
+}
 
+#validatingBtnsContainer{
+
+    display:flex;
+    justify-content: center;
+    margin-left:200px;
+}
+
+
+#dateContainer{
+    margin:0px;
+}
+#dateContainer>input[type="date"]{
+    margin-left:20px;
+}
+
+#career{
+    display:flex;
+}
+#careerSelect{
+    margin-left:100px;
+   margin-top:-15px;
+}
+#careerSelect>button{
+    height:50px;
+    width:168px;
+    border:1px solid lightgray;
+    background-color: white;
+    color:lightgray;
+    
+}
+#careerSelect>button:hover{
+    cursor:pointer;
+}
+#newHire{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+#experienced{
+   margin-left:-10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.experiencedDetail{
+    display:flex;
+}
+.selectedBtn{
+    border:1px solid black;
+    color:black;
+}

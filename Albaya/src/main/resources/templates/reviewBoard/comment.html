@@ -10,10 +10,10 @@
         
         
 
-        <pre>
+        <!-- <pre>
             <p id="commentCount" th:if="${#lists.size(reviewBoard.commentList) == 0}">현재 게시글에 댓글이 존재하지 않습니다.</p>
-            <p id="commentCount" th:if="${#lists.size(reviewBoard.commentList) != 0}">댓글 개수 :  <span th:text="${#lists.size(reviewBoard.commentList)}">0</span>개</p>
-        </pre>
+            <p id="commentCount" th:if="${#lists.size(reviewBoard.commentList) != 0}"><i class="fa-regular fa-comment-dots"></i> <span th:text="${#lists.size(reviewBoard.commentList)}"> &nbsp;&nbsp; </span></p>
+        </pre> -->
         <ul id="commentList">
 
             
@@ -70,3 +70,4 @@
     const memberEmail = /*[[*{#strings.substringBefore(memberEmail,'@')}]]*/ "아이디";
     const commentCount = /*[[${commentCount}]]*/"댓글 수";
 </script>
+<script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>

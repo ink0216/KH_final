@@ -23,15 +23,15 @@
             <th:block th:each="boardDeclare : ${boardDeclareList}">
                 <tr>
                     <td>1</td><!-- 관리자가 보는 신고 게시판 번호 -->
-                    <!-- <td th:text="${boardDeclare.reviewBoardDeclareNo}"></td> -->
+                    <td th:text="${boardDeclare.reviewBoardDeclareNo}"></td>
                     <td>1</td> <!-- 알바 후기 게시판의 게시판 번호 -->
-                    <!-- <td th:text="${reviewBoard.reviewBoardNo}"></td>  -->
+                    <td th:text="${reviewBoard.reviewBoardNo}"></td> 
                     <td>대충 신고 게시글 제목</td>
-                    <!-- <td th:text="${reviewBoard.reviewTitle}"></td> -->
+                    <td th:text="${reviewBoard.reviewTitle}"></td>
                     <td>신고당한 작성자</td>
-                    <!-- <td th:text="${reviewBoard.memberEmail}"></td> -->
+                    <td th:text="${reviewBoard.memberEmail}"></td>
                     <td>2024-05-27</td>
-                    <!-- <td th:text="${reviewBoard.reviewBoardWriteDate}"></td> -->
+                    <td th:text="${reviewBoard.reviewBoardWriteDate}"></td>
                     <td><button id="declareCancel">신고 처리 무효</button><button id="declareConfirm">신고 처리 확정</button></td>
                 </tr>
             </th:block>

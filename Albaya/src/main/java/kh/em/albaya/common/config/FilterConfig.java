@@ -6,6 +6,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import kh.em.albaya.common.filter.LoginFilter;
 import kh.em.albaya.common.filter.ShopFilter;
 
 /*만들어 놓은 Filter 클래스가 언제 적용될 지 설정
@@ -44,4 +45,20 @@ public class FilterConfig {
 		
 	}
 
+	@Bean
+	public FilterRegistrationBean<LoginFilter> loginFilter() {
+		FilterRegistrationBean<LoginFilter> filter = new FilterRegistrationBean<>();
+		
+		filter.setFilter(new LoginFilter());
+		
+
+		String[] filteringURL = {"/myPage/*"};
+		
+		filter.setUrlPatterns(Arrays.asList(filteringURL));
+		
+		filter.setName("LoginFilter");
+				
+		filter.setOrder(2);
+		return filter;
+	}
 }

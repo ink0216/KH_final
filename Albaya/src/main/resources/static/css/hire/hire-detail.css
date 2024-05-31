@@ -179,7 +179,9 @@ hr{
 .btnArea button:hover{
     background-color: #046298;
 }
-
+#days span{
+    margin: 0 5px;
+}
 
 
 
