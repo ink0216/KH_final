@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서</title>
-    <link rel="stylesheet" href="../../static/css/member/resume.css">
+    <link rel="stylesheet" href="/css/member/resume.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -249,20 +249,22 @@
                                     <button id="experienced" type="button">경력</button><br>
                                 </div><br><br>
                                 <div class = "experiencedDetail hide" >
-                                    <button id = "chuga">+</button>
+                                    
+                                    
                                     <div class = "experiencedContainer">
-                                        
-                                            <span>회사이름</span>
-                                            <input type="text"> <br><br>
+                                            <div id = "companyName">
+                                                <span>회사이름</span>
+                                                <input type="text"> 
+                                            </div>
+    
+                            
+                                            <div class = "dateInput">
+                                                <input type="date" name="" id="">~<input type="date" name="" id="">
+                                                <button type = "button" id = "chuga">+</button>
+                                            </div>
+                                            
                                             
                                         
-
-                                        <div class = "date">
-                                            <span>근무기간</span>
-                                            <input type="date" name="" id="">
-                                            <input type="date" name="" id="">
-                                            
-                                        </div>
                                     </div>
 
                                 </div>
@@ -296,7 +298,7 @@
                                        
                                     <div id = "issueDetail">
                                         <span>취득일</span>
-                                        <input type="date" name="issueDate" id="issueDate" class="date" required>
+                                        <input type="date" name="issueDate" id="issueDate"  required>
                                     </div>
                                 </div>
                             </div>
@@ -315,6 +317,6 @@
         </div><br><br>
 
     </div>
-    <script src = "../../static/js/member/resume.js"> </script>
+    <script src = "/js/member/resume.js"> </script>
 </body>
 </html>

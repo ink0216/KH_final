@@ -326,9 +326,20 @@ input[type="date"]{
     width:700px;
     padding-left:20px;
     padding-right:20px;
-    padding-top: 20px;
-    padding-bottom:40px;
+    padding-top: 10px;
+    padding-bottom:20px;
     border-radius:10px;
+    position:relative;
+}
+.experiencedContainer{
+    display:flex;
+   
+}
+.experiencedContainer>div>*{
+    margin-top:20px;
+}
+.experiencedContainer>div>input[type="text"]{
+    width:300px;
 }
 
 .selectedBtn{
@@ -336,6 +347,9 @@ input[type="date"]{
     color:black !important;
     position:relative;
     z-index: 10;
+}
+.date{
+    display:flex;
 }
 
 .hide{
@@ -350,11 +364,27 @@ input[type="date"]{
     display:flex;
 }
 
-#chuga{
+.dateInput>button{
+
     margin-bottom:20px;
     font-size: 20px;
-    background:white;
+    position:absolute;
+    background:black;
     border:2px solid white;
-    color: rgb(183, 182, 182);
+    color: white;
+    border-radius:10px;
+    width:30px;
+    margin-right:10px;
+
     
+    
+}
+.dateInput>button:hover{
+    cursor:pointer;
+    color: gray;
+}
+
+.dateInput>input[type="date"]{
+    margin-left:10px;
+    margin-right:10px;
 }
