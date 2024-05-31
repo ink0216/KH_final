@@ -181,6 +181,7 @@ dosiNameList.forEach(dosiName=>{
                     .then(list=>{
 
                        if(list.length==0){ //*************************************** */
+                        console.log(sigunguItem.sigunguNo);
                             const locationItems = document.querySelectorAll('.location-item');
                             const dongName = document.querySelectorAll('.dong');
 
