@@ -7,53 +7,33 @@
     const selectMiddleSchoolName = document.querySelector("#selectMiddleSchoolName");
     const selectSchoolName = document.querySelector("#selectSchoolName");
     const selectUniversityName = document.querySelector("#selectUniversityName");
-    const elementsByCombination = document.querySelectorAll("#schoolContainer > div");
+
+    
 
     const eduObj = {
         "1":"selectPrimarySchoolName",
         "2":"selectMiddleSchoolName",
         "3":"selectSchoolName",
-        "4":"universityName"
+        "4":"selectUniversityName"
     };
 
 
     dropDown.addEventListener("change" , () => {
-        let selectedVal = " ";
-        
-        switch(dropDown.value){
-            case "1":
-                selectPrimarySchoolName.classList.add("show");
-                selectPrimarySchoolName.classList.remove("hide");
-                selectedVal ="1"
-                break;
-
-            case "2":
-                selectMiddleSchoolName.classList.add("show");
-                selectMiddleSchoolName.classList.remove("hide");
-                selectedVal = "2";
-                break;
-
-            // case "3":
-            //     universityName.classList.add("show");
-            //     universityName.classList.remove("hide");
-            //     schoolName.classList.add("hide");
-            //     schoolName.classList.remove("show");
-            //     selectedVal = "3";
-            //     break;
-            
-            default:
-                const selectedEl = document.querySelectorAll(".show");
-                for(let i = 0; i < selectedEl.length; i++){
-                    if(selectedVal != dropDown.value && ){
-                        selectedEl[i].classList.remove("show");
-                        selectedEl[i].classList.add("hide");
-                    }
-                    
-                 }
-                break;
-                
+        let selectedVal = dropDown.value;
+        for(key in eduObj){
+            let element = document.querySelector("#"+eduObj[key]);
+            if(element){
+                if(selectedVal == key){
+                    element.classList.add("show");
+                    element.classList.remove("hide");
+                }else{
+                    element.classList.remove("show");
+                    element.classList.add("hide");
+                }
+            }
         }
-
+        
+       
        
     });
 
@@ -108,3 +88,38 @@ score.addEventListener("input", () => {
     }
 });
 
+
+//경력사항
+const newHire = document.querySelector("#newHire");
+const experienced = document.querySelector("#experienced");
+const career = document.querySelector("#career");
+let count1 =0 ;
+let count2 =0 ;
+
+const div = document.createElement("div");
+newHire.addEventListener("click", () => {
+    count1++;
+    count2 =0;
+    career.removeChild(div)
+    newHire.classList.add("selectedBtn");
+    experienced.classList.remove("selectedBtn");
+})
+
+
+experienced.addEventListener("click", () => {
+    count2++;
+    count1 = 0;
+    
+    if(count2 > 1){
+        return;
+    }
+   
+    experienced.classList.add("selectedBtn");
+    newHire.classList.remove("selectedBtn");
+    
+   
+    div.classList.add("expreiencedDetail");
+    career.appendChild(div)
+
+    
+})

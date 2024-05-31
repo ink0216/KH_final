@@ -7,6 +7,7 @@ const declareBtn = document.querySelector("#declareBtn");
 document.querySelector("#declareFrm").addEventListener("submit", e => {
 
     const declareContent = document.querySelector("[name='boardDeclareContent']");
+    
 
     // 테스트용
     // declareBtn.addEventListener("click",() => {

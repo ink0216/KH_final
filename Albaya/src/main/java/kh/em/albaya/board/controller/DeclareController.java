@@ -38,12 +38,14 @@ public class DeclareController {
 	
 	
 	// 게시글 신고 하기
+	
 	@PostMapping("")
 	public String insertDeclare(
 			@RequestParam("reviewBoardNo")int reviewBoardNo, // 게시글 번호...어디서 얻어옴
 			@RequestParam("boardDeclareContent") String boardDeclareContent, //신고 사유
+			@RequestParam("reviewBoardNo") int reviewBoardNo ,
 			@SessionAttribute("loginMember") Member loginMember,
-			@ModelAttribute Declare inputDeclare,
+			@ModelAttribute Declare inputDeclare, 
 			Model model) {
 		
 		int memberNo = loginMember.getMemberNo();
@@ -51,7 +53,6 @@ public class DeclareController {
 		inputDeclare.setBoardDeclareContent(boardDeclareContent);
 		inputDeclare.setMemberNo(memberNo);
 		inputDeclare.setReviewBoardNo(reviewBoardNo);
-		
 		
 		
 		int result = service.insertDeclare(inputDeclare);
@@ -79,6 +80,8 @@ public class DeclareController {
 			@SessionAttribute("loginMember") Member loginMember) {
 		return null;
 	}
+	
+	
 	
 	
 	

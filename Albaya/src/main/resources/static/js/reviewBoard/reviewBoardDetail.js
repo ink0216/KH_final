@@ -3,7 +3,7 @@ const siren = document.querySelector("#siren");
 /* 신고 아이콘 클릭시 신고 팝업창 */
 
 
-    siren.addEventListener("click",e => {
+    siren.addEventListener("click",(e) => {
 
         if(loginMemberNo == null){
 
@@ -11,12 +11,10 @@ const siren = document.querySelector("#siren");
             return;
         }
   
-        window.open('/declarePopup?reviewBoardNo='+reviewBoardNo+'&loginMemberNo='+loginMemberNo,
-                    'popupWindow', 'width=770, height=1200, left=150, resizable = no');
-        // location.href="/declarePopup";
-        // location.href="/declarePopup?memberEmail="+ memberEmail;
 
-        // window.open('/declarePopup?memberEmail='+ memberEmail,'declarePopup','width=770,height=1200,left=150,resizable=no');
+        window.open('/declarePopup?reviewBoardNo='+reviewBoardNo+'&loginMemberNo='+loginMemberNo+'$writeMemberNo='+writeMemberNo,'popupWindow', 'width=770, height=1200, left=150, resizable = no');
+       
+      
         
     }
 );
