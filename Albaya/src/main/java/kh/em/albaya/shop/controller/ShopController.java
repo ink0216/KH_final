@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.shop.model.service.ShopService;
 import lombok.RequiredArgsConstructor;
@@ -79,8 +81,9 @@ public class ShopController {
     @PostMapping("signup")
     public String signup(
     		Shop shop,
-    		RedirectAttributes ra) {
-    	int result = service.signup(shop);
+    		RedirectAttributes ra,
+    		@RequestParam("shopProfile") MultipartFile profileImg) {
+    	int result = service.signup(shop, profileImg);
     	
     	String message = null;
         if(result > 0) {
@@ -101,8 +104,9 @@ public class ShopController {
 			@RequestParam(value = "saveId", required = false) String saveId,
 			HttpServletResponse resp,	
     		RedirectAttributes ra,
-    		@SessionAttribute(value = "uri", required = false) String uri) {
-    	
+    		@SessionAttribute(value = "uri", required = false) String uri,
+    		HttpSession session) {
+    
 		Shop loginShop = service.login(inputShop);
 		
 		String message = null;
@@ -130,11 +134,12 @@ public class ShopController {
 			
 		}
 		if(uri != null) {
+	        session.removeAttribute("uri");
 			return "redirect:" + uri;
 		}
 		return "redirect:/";
     }
-
+   
     @GetMapping("logout")
     public String logout(
     		SessionStatus status

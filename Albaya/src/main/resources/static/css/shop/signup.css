@@ -44,9 +44,9 @@ button:hover{
     background-color: green;
 }
 
-/* div{
+div{
     border: 1px solid black;
-} */
+}
 
 form{
     width: 100%;
@@ -59,7 +59,7 @@ form{
 
 .main-container{
     display: flex;
-    height: 1200px;
+    height: 1350px;
     align-items: center;
     justify-content: center;
 }
@@ -154,7 +154,7 @@ form{
 }
 
 .submit-container{
-    height: 8%;
+    height: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,4 +175,67 @@ form{
 
 .success{
     color: green;
+}
+
+.profile-img-container{
+    display: flex;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img-area{
+    display: flex;
+    background-color: white;
+    width: 40%;
+    height: 100%;
+    padding: 15px;
+    flex-direction: column;
+}
+
+.span-area{
+    display: flex;
+    width: 100%;
+    height: 15%;
+}
+
+.img-area{
+    display: flex;
+    width: 100%;
+    height: 65%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-area{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container{
+    display: flex;
+    border-radius: 50%;
+    width: 17%;
+    height: 80%;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+}
+
+.btn-area > button{
+    width: 17%;
+    height: 90%;
+    background-color: #014C73;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
