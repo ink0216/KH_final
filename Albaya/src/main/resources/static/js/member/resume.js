@@ -181,23 +181,14 @@ chuga.addEventListener("click" , () => {
 });
 
 //삭제버튼 작성
+const removeBtns = document.querySelectorAll(".remove");
 
-    const removeBtns = document.querySelectorAll(".remove");
+    
 
-    // removeBtns.forEach(btns => {
-    //     btns.addEventListener("click", () => {
-    //         const container = btns.closest(".experiencedContainer");
-    //         if (container) {
-    //             container.parentNode.removeChild(container);
-    //         }
-    //     })
-        
-    //  })
-    for(let i = 0; i<removeBtns.length; i++){
-        removeBtns[i].addEventListener("click", () => {
-            const container =  removeBtns[i].closest(".experiencedContainer");
-            container.parentNode.removeChild(container);
-        })
-    }
-        
+    removeBtns[0].addEventListener("click", () => {
+      const element = removeBtns[0].closest(".experiencedContainer");
+      element.parentNode.removeChild(element);
+    });
+    
+    
 
