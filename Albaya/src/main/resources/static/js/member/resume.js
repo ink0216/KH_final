@@ -93,33 +93,111 @@ score.addEventListener("input", () => {
 const newHire = document.querySelector("#newHire");
 const experienced = document.querySelector("#experienced");
 const career = document.querySelector("#career");
-let count1 =0 ;
-let count2 =0 ;
+const experienceDetailDiv = document.querySelector(".experiencedDetail");
+const nonBreakingSpace = document.createTextNode("\u00A0");
 
-const div = document.createElement("div");
+
+
+const experiencedDetail = document.querySelector(".experiencedDetail");
 newHire.addEventListener("click", () => {
-    count1++;
-    count2 =0;
-    career.removeChild(div)
+    experiencedDetail.classList.remove("show");
+    experiencedDetail.classList.add("hide")
+
+
     newHire.classList.add("selectedBtn");
     experienced.classList.remove("selectedBtn");
 })
 
 
+
+
 experienced.addEventListener("click", () => {
-    count2++;
-    count1 = 0;
-    
-    if(count2 > 1){
-        return;
-    }
-   
+
+    experiencedDetail.classList.remove("hide");
+    experiencedDetail.classList.add("show");
+
     experienced.classList.add("selectedBtn");
     newHire.classList.remove("selectedBtn");
     
    
-    div.classList.add("expreiencedDetail");
-    career.appendChild(div)
+ 
+   
 
     
-})
+});
+
+//경력 추가하기 버튼
+
+const addExperience = () => {
+    
+    const experienceContainerDiv = document.createElement("div");
+    experienceContainerDiv.classList.add("experiencedContainer");
+    experienceDetailDiv.appendChild(experienceContainerDiv);
+
+        const companyNameDiv = document.createElement("div");
+        companyNameDiv.setAttribute("id","companyName");
+        experienceContainerDiv.append(companyNameDiv);
+
+            const companyNameSpan = document.createElement("span");
+            companyNameSpan.innerHTML = "회사이름&nbsp;";
+            companyNameDiv.appendChild(companyNameSpan);
+
+            const inputCompanyName =  document.createElement("input");
+            inputCompanyName.setAttribute("type","text");
+            companyNameDiv.appendChild(inputCompanyName);
+
+            career.appendChild(nonBreakingSpace);
+
+        const dateInputDiv =  document.createElement("div");
+        dateInputDiv.classList.add("dateInput");
+        experienceContainerDiv.appendChild(dateInputDiv);
+
+            const inputDate = document.createElement("input");
+            const inputDate2 = document.createElement("input");
+
+            
+
+            inputDate.setAttribute("type","date");
+            inputDate2.setAttribute("type","date");
+            dateInputDiv.appendChild(inputDate);
+            dateInputDiv.append("~");
+            dateInputDiv.appendChild(inputDate2);
+
+          
+            const removeBtn = document.createElement("button");
+            removeBtn.innerText = "-"
+            removeBtn.classList.add("remove");
+            removeBtn.setAttribute("id","removeBtn")
+            removeBtn.setAttribute("type","button")
+            dateInputDiv.appendChild(removeBtn);
+
+
+}
+
+//추가버튼 작성
+const chuga = document.querySelector("#chuga");
+chuga.addEventListener("click" , () => {
+    addExperience();
+});
+
+//삭제버튼 작성
+
+    const removeBtns = document.querySelectorAll(".remove");
+
+    // removeBtns.forEach(btns => {
+    //     btns.addEventListener("click", () => {
+    //         const container = btns.closest(".experiencedContainer");
+    //         if (container) {
+    //             container.parentNode.removeChild(container);
+    //         }
+    //     })
+        
+    //  })
+    for(let i = 0; i<removeBtns.length; i++){
+        removeBtns[i].addEventListener("click", () => {
+            const container =  removeBtns[i].closest(".experiencedContainer");
+            container.parentNode.removeChild(container);
+        })
+    }
+        
+

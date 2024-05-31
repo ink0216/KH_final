@@ -200,6 +200,10 @@ public class MemberController {
     public String changePw() {
     	return "/member/findPwResult";
     }
+    @GetMapping("resume")
+    public String getResume () {
+    	return "/member/resume";
+    }
     
     @PostMapping("findPwResult")
     public String findPwResult() {
