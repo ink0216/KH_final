@@ -26,7 +26,7 @@
                         <ul>
                             <li class="underline"><a href="/hire/hireKind"><b>업직종별</b></a></li>
                             <li class="underline"><a href="/hire/hireLocation"><b>지역별</b></a></li>
-                            <li class="underline"><a><b>알바토크</b></a></li>
+                            <li class="underline"><a href="/reviewBoard/2"><b>알바토크</b></a></li>
                         </ul>
                     </div>
 
@@ -35,10 +35,44 @@
 
 
             <div class="header-buttons">
-            
+
                 <th:block th:if="${session.loginMember != null or session.loginShop !=null}">
 
-                    <button class="loginMember"><i class="fa-regular fa-bell"></i></button>
+                    <!-- 알림 버튼 영역 -->
+                    <div class="loginMember notification-container">
+                        <!-- 알림 버튼 -->
+                        <button class=" notification-btn fa-regular fa-bell" id="my-element"></button>
+
+                        <ul class="notification-list">
+                            <li class="notification-item">
+                                <div class="notification-text">
+                                    <img src="" alt="">
+                                    <div class="notification-content-container">
+                                        <p class="notification-date">20분 전</p>
+
+                                        <!-- 개인 회원의 경우 -->
+                                        <p class="notification-content">
+                                            <b>[쿠팡]</b>에서
+                                            <b>홍길동</b>님의 이력서를 조회하였습니다.
+                                        </p>
+
+                                        <!-- 기업 회원의 경우 -->
+                                        <!--  <p class="notification-content"
+                                            th:if="{session.loginShop != null and session.loginMember == null}">
+                                            <b>홍길동</b>님이
+                                            <b>[쿠팡]</b>에 지원하셨습니다.
+                                        </p> -->
+
+                                    </div>
+                                </div>
+
+                                <span class="notification-delete">&times;</span>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;<button  id ="resumeRedirect" class="loggedIn">이력서 등록</button>
@@ -52,7 +86,6 @@
                     <th:block th:if="${session.loginShop != null}">
                         <a href="/shop/logout" class="login">로그아웃</a>
                     </th:block>
-                    
 
                 </th:block>
 
@@ -60,11 +93,9 @@
 
                     <a href="/member/login" class="login">로그인</a> &nbsp;
                     |&nbsp;
-
-
-                    <a href = "/member/selectSignup" class = "login">회원가입</a>  
-                    &nbsp;&nbsp;&nbsp;&nbsp;<button class = "loggedIn">이력서 등록</button>
-                    &nbsp;&nbsp;<button class = "loggedIn">공고 등록</button>
+                    <a href="/member/selectSignup" class="login">회원가입</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn">이력서 등록</button>
+                    &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
 
                 </th:block>
 
@@ -110,5 +141,6 @@
         window.location.href = "http://localhost/member/resume";
     })
 </script>
+<script src="/js/common/header.js"></script>
 
 </html>

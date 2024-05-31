@@ -125,4 +125,38 @@ public class HireServiceImpl implements HireService{
 	public List<String> selectKind() {
 		return mapper.selectKind();
 	}
+	
+	//지역별 공고 조회해오기
+	@Override
+	public Map<String,Object> locationHireList(Map<String, Object> map) {
+		List<Integer> dongList =  (List<Integer>)(map.get("dongList"));
+		List<Integer> sigunguList =  (List<Integer>)(map.get("sigunguList"));
+		int cp =  (int)(map.get("cp"));
+		// 전체 공고 수 조회
+				int listCount = mapper.dongListCount(dongList);
+				if(sigunguList.size()>0) {
+					//시군구 리스트에 들어있는 경우
+					listCount +=mapper.sigunguListCount(sigunguList);
+				}
+				
+				Pagination pagination = new Pagination(cp, listCount, 10, 8, 0);
+				
+				// 13번째 부터 1페이지
+				// 1p == 13 ~ 22
+				// 2p == 23 ~ 32
+				int offset = (cp-1) * 10; 
+				RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+				
+				List<Hire> hireList = mapper.locationHireList(map, rowBounds);
+				List<Hire> sigunguHireList = null;
+				if(sigunguList.size()>0) {
+					//시군구 리스트에 들어있는 경우
+					sigunguHireList = mapper.sigunguHireList(sigunguList);
+				}
+				hireList.addAll(sigunguHireList);
+				Map<String, Object> map1
+				= Map.of("hireList", hireList, "pagination", pagination);
+				
+				return map1;
+	}
 }

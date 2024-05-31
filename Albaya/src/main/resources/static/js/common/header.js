@@ -13,8 +13,193 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const hireWriteBtn = document.getElementById('hireWriteBtn');
+// const hireWriteBtn = document.getElementById('hireWriteBtn');
 
-hireWriteBtn.addEventListener("click",()=>{
-    location.href='/hire/hireWrite';
-})
+// hireWriteBtn.addEventListener("click",()=>{
+//     location.href='/hire/hireWrite';
+// })
+
+
+
+/* ***********************************************************/
+/* 알림 설정 */
+
+/* 알림 관련 전역 변수 */
+const notificationLoginCheck = /*[[${session.showMember or session.loginMember} ? true : false]]*/ '로그인 체크';
+const notificationDefaultImage = /*[[#{user.default.image}]]*/ '유저 기본 이미지';
+
+let noticationSock;     //알림 웹소켓 객체
+let sendNotificationFn;  //웹소켓을 이용해 알림을 보내는 함수
+
+let selectNotificationFn;  //비동기로 알림을 조회하는 함수
+let notReadCheckFn;        //비동기로 읽지 않은 알림 개수 채크하는 함수
+
+if(notificationLoginCheck){//로그인 된 상태인 경우
+    noticationSock = new SockJs("/notification/send");
+
+    /* 웹소켓을 이용해 알림을 전달하는 함수 */
+    sendNotificationFn = (type,url,pkNo) =>{
+        const notification = {
+            "notificationType" : type,
+            "notificationUrl" : url,
+            "pkNo" : pkNo 
+        }
+
+        noticationSock.send(JSON.stringify(notification));
+    }
+
+
+    /* 웹소켓을 통해 서버에서 전달된 메세지가 있을 경우 */
+    noticationSock.addEventListener("message",e=>{
+
+        const notificationBtn = document.querySelector(".notification-btn");
+        notificationBtn.classList.remove("fa-regular");
+        notificationBtn.classList.add("fa-solid");
+
+        selectNotificationFn();
+    })
+
+    /* 읽지 않은 알림이 있는지 확인 */
+    notReadCheckFn = async () =>{
+        const resp = await fetch("/notification/notReadCheck");
+        const notReadCount = await resp.text();
+        return notReadCount; //안읽은 알림 개수가 Promise 객체에 담겨 반환
+    }
+
+    /* 비동기로 알림을 조회하는 함수 */
+    selectNotificationFn = ()=>{
+        fetch("/notification")
+        .then(resp=>resp.json())
+        .then(selectList =>{
+
+            const notiList = document.querySelectorAll(".notification-list");
+            notiList.innerHTML = '';
+
+            for(let data of selectList){
+
+                const notiItem = document.createElement("li");
+                notiItem.className='notification-item';
+
+
+                // 알림을 읽지 않은 경우
+                if(data.notificationCheck =='N') notiItem.classList.add("not-read");
+
+                const notiText = document.createElement("div");
+                notiText.className = 'notification-text';
+
+                notiText.addEventListener("click", e=>{
+
+                    /* 만약 읽지 않은 알림인 경우 */
+                    if(data.notificationCheck == 'N'){
+                        fetch("/notification",{
+                            method: "PUT",
+                            headers:{"Content-Type": "application/json"},
+                            body: data.notificationNo
+                        })
+
+
+                    }
+
+                    // 클릭 시 알림에 기록된 경로로 이동
+                    location.href = data.notificationUrl;
+                })
+
+                //알림 보낸 회원 프로필 이미지
+                const senderProfile = document.createElement('img');
+                if(data.sendMemberProfilImg == null) senderProfile.src = notificationDefaultImage;
+                else senderProfile.src=data.sendMemberProfileImg;
+
+               // 알림 내용 영역
+               const contentContainer = document.createElement("div");
+               contentContainer.className = 'notification-content-container';
+               
+               // 알림 보내진 시간
+               const notiDate = document.createElement("p");
+               notiDate.className = 'notification-date';
+               notiDate.innerText = data.notificationDate;
+
+               // 알림 내용
+               const notiContent = document.createElement("p");
+               notiContent.className = 'notification-content';
+               notiContent.innerHTML = data.notificationContent; // 태그가 해석 될 수 있도록 innerHTML
+
+               // 삭제 버튼
+               const notiDelete = document.createElement("span");
+               notiDelete.className = 'notidication-delete';
+               notiDelete.innerHTML = '&times;';
+
+
+               /* 삭제 버튼 클리 시 비동기로 해당 알림 지우기 */
+               notiDelete.addEventListener("click", e=>{
+                fetch("/notification",{
+                    method:"DELETE",
+                    headers:{"Content-Type":"application/json()"},
+                    body: data.notificationNo
+                })
+                .then(resp=>resp.text())
+                .then(result=>{
+
+                    // 클릭된 x버튼이 포함되는 알림 삭제
+                    notiDelete.parentElement.remove();
+
+                    //남은 알림 개수 확인 
+                    notReadCheckFn().then(notReadCount=>{
+                        const notificationBtn = document.querySelectorAll('.notification-btn');
+
+                        /* 남은 알림이 있으면 활성화*/
+                        if(notReadCount > 0){
+                            notificationBtn.classList.remove("fa-regular");
+                            notificationBtn.classList.add("fa-solid");
+                        }else{ // 없으면 비활성화
+                            notificationBtn.classList.add("fa-regular");
+                            notificationBtn.classList.remove("fa-solid");
+                        }
+                    })
+                })
+            })
+
+            /* 화면 조립 */
+            notiList.append(notiItem);
+            notiItem.append(notiText, notiDelete);
+            notiText.append(senderProfile, contentContainer);
+            contentContainer.append(notiDate, notiContent);
+            }
+        })
+    }
+
+
+    document.addEventListener("DOMContentLoaded",()=>{
+
+        //알림 버튼
+        const notificationBtn = document.querySelector('.notification-btn');
+
+
+        notReadCheckFn().then(notReadCount => {
+            if(notReadCount > 0){
+                notificationBtn.classList.remove("fa-regular");
+                notificationBtn.classList.add("fa-solid");
+            }
+        })
+
+        /* 알립 버튼 클릭 */
+        notificationBtn.addEventListener("click",e=>{
+            const notiList=document.querySelector('.notification-list');
+
+              // 보이는 상태일 때
+              if(notiList.classList.contains("notification-show")){
+                notiList.classList.remove("notification-show");
+                return;
+            }
+
+            /* 로그인 상태인 경우 알림 목록을 바로 비동기로 조회 */
+            selectNotificationFn();
+            notiList.classList.add("notification-show");
+        })
+    })
+
+}
+
+
+
+
+

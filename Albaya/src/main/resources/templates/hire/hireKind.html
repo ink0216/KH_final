@@ -26,15 +26,15 @@
 
                 <div class="selectHire">
                     <th:block class="kindItems" th:each="type : ${typeList}">
-                        <button class="item-btn" th:text="${type}">업직종이름</button>
+                        <button class="item-btn" th:text="${type}" type="button">업직종이름</button>
                     </th:block>
                 </div>
 
                 <div class="search-type">
-                    <div class="kindItem">
+                    <!-- <div class="kindItem">
                         <p class="kind-name">외식/음료</p>
-                        <button class="del-btn">x</button>
-                    </div>
+                        <button class="del-btn" type="button">x</button>
+                    </div> -->
                 </div>
 
 
@@ -91,7 +91,7 @@
 
 
     <th:block th:replace="~{common/footer}"></th:block>
-    <script src="/js/hire/hire-location.js"></script>
+    <script src="/js/hire/hire-kind.js"></script>
 </body>
 
 </html>

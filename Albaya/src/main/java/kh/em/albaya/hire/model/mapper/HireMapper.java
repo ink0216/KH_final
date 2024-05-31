@@ -83,6 +83,39 @@ public interface HireMapper {
 
 
 
+	/**지역별 공고 조회해오기
+	 * @param map
+	 * @param rowBounds 
+	 * @return
+	 */
+	List<Hire> locationHireList(Map<String, Object> map, RowBounds rowBounds);
+
+
+
+	/**해당 동 내의 공고 수 얻어오기
+	 * @param dongList
+	 * @return
+	 */
+	int dongListCount(List<Integer> dongList);
+
+
+
+	/**동이 없는 시군구의 경우 그 시군구 내의 공고 수 얻어오기
+	 * @param sigunguList
+	 * @return
+	 */
+	int sigunguListCount(List<Integer> sigunguList);
+
+
+
+	/**동이 없는 시군구의 경우 그 시군구 내의 공고 얻어오기
+	 * @param sigunguList
+	 * @return
+	 */
+	List<Hire> sigunguHireList(List<Integer> sigunguList);
+
+
+
 
 	
 

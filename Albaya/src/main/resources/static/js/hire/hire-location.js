@@ -32,9 +32,9 @@ const setPageOf=(hireList)=>{
 
         shopName.textContent = hire.shopName;
         hireTitle.textContent=hire.hireTitle;
-        hireTime.textContent=hire.hireTime;
+        hireTime.textContent=hire.workStart + " ~ " + hire.workEnd;
         sigunguName.textContent=hire.sigunguName;
-        pay.textContent=hire.pay;
+        pay.textContent=hire.payName+" "+hire.payInput;
 
 
         tr.append(shopName,hireTitle,hireTime,sigunguName,pay);
@@ -94,24 +94,32 @@ nextButton.addEventListener("click",(e)=>{
 
 
 function reloadTable(cp) {
-    fetch("/hire/selectHireList?cp=" + cp)
+    const obj = {
+        "cp": cp,
+        "dongList" : dongList,
+        "sigunguList" : sigunguList
+    };
+    fetch("/hire/locationHireList", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(obj)
+    })
     .then(resp=>resp.json())
     .then(map => {
-        console.log(map);
-        const {hireList, pagination} = map;
+        const {hireList, pagination,sigunguHireList} = map;
 
         tbody.innerHTML='';
         numberButtonWrapper.innerHTML="";
 
-        setPageOf(hireList);
+        setPageOf(hireList+sigunguHireList);
         getPagination(pagination);
     })
 }
 
-//새로고침 되었을 때
-document.addEventListener("DOMContentLoaded", () => {
-    reloadTable(1);
-});
+// //새로고침 되었을 때
+// document.addEventListener("DOMContentLoaded", () => {
+//     reloadTable(1);
+// });
 
 
 
@@ -128,6 +136,9 @@ const sigunguBody = document.querySelector('.sigungu-body');
 const dongBody = document.querySelector('.dong-body');
 const searchLocations = document.querySelector('.search-locations');
 
+const dongList = []; //빈 배열
+const sigunguList = []; //빈 배열
+
 dosiNameList.forEach(dosiName=>{
 
     dosiName.addEventListener("click",e=>{
@@ -141,7 +152,6 @@ dosiNameList.forEach(dosiName=>{
 /***************************시군구 얻어와 화면 만들기 ****************************/
             sigunguBody.innerHTML='';
 
-            console.log(list);
 
             list.forEach(sigunguItem=>{
 
@@ -171,8 +181,9 @@ dosiNameList.forEach(dosiName=>{
                     fetch("/hire/selectDong?sigunguName="+sigungu)
                     .then(resp=>resp.json())
                     .then(list=>{
-
-                       if(list.length==0){
+                        //해당 시군구에 동이 하나도 없는 경우
+                       if(list.length==0){ //*************************************** */
+                        console.log(sigunguItem.sigunguNo);
                             const locationItems = document.querySelectorAll('.location-item');
                             const dongName = document.querySelectorAll('.dong');
 
@@ -187,7 +198,8 @@ dosiNameList.forEach(dosiName=>{
                                     return;
                                 }
                             }
-
+                            sigunguList.push(sigunguItem.sigunguNo);
+                            
                             const locationItem = document.createElement("div");
                             locationItem.classList.add('location-item');
                     
@@ -205,12 +217,14 @@ dosiNameList.forEach(dosiName=>{
                             // x버튼 눌렸을 때
                             button.addEventListener("click",()=>{
                                 locationItem.remove();
+                                sigunguList.splice(sigunguList.indexOf(sigunguItem.sigunguNo),1);
+                                    reloadTable(1);
                             })
-                       }
-
+                        }
+                        console.log("sigunguList :", sigunguList );
+                        reloadTable(1);
                         dongBody.innerHTML="";
                         
-                        console.log(list);
 
                         list.forEach(dongItem=>{
                             const ul = document.createElement('ul');
@@ -234,10 +248,10 @@ dosiNameList.forEach(dosiName=>{
 /* ********************************동 선택했을 때************************************ */
 
                             dongBtn.addEventListener("click", e=>{
-
                                 const locationItems = document.querySelectorAll('.location-item');
                                 const dongName = document.querySelectorAll('.dong');
-
+                                
+                                
                                 if(locationItems.length>=5){
                                     alert('희망하는 지역은 최대 5개까지 입력 가능합니다');
                                     return;
@@ -249,6 +263,8 @@ dosiNameList.forEach(dosiName=>{
                                         return;
                                     }
                                 }
+                                dongList.push(dongItem.dongNo);
+                                reloadTable(1);
 
                                 const locationItem = document.createElement("div");
                                 locationItem.classList.add('location-item');
@@ -266,9 +282,12 @@ dosiNameList.forEach(dosiName=>{
                         
                                 // x버튼 눌렸을 때
                                 button.addEventListener("click",()=>{
+                                    dongList.splice(dongList.indexOf(dongItem.dongNo),1);
+                                
                                     locationItem.remove();
                                 })
-                                
+                                console.log("dongList : ", dongList);
+                                reloadTable(1);
                         })
 
         /* ************************************************************************ */
@@ -279,11 +298,11 @@ dosiNameList.forEach(dosiName=>{
 
                         
                     })
+                    
                 })
             })
 
         })
-        // console.log(dosi);
     })
 })
 

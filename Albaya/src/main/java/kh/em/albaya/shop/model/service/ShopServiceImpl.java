@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
@@ -31,7 +32,7 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	@Override
-	public int signup(Shop shop) {
+	public int signup(Shop shop, MultipartFile profileImg) {
 		
 		Map<String, Object> map = new HashMap<>();
 		
@@ -51,7 +52,7 @@ public class ShopServiceImpl implements ShopService{
 		shop.setShopPw(encPw);
 		
 		
-		int result = mapper.signup(shop);
+		int result = mapper.signup(shop, profileImg);
 		
 		if(result < 1) {
 			return 0;

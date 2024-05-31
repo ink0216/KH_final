@@ -153,6 +153,7 @@
 	<!--**************** 지역별 공고 조회하기********************* -->
 	<select id="selectDosi">
 		SELECT * FROM "DOSI"
+		ORDER BY DOSI_NAME
 	</select>
 	
 	<select id="selectSigungu">
@@ -160,6 +161,7 @@
 		FROM "SIGUNGU"
 		JOIN "DOSI" USING(DOSI_NO) 
 		WHERE DOSI_NAME =#{dosiName}
+		ORDER BY SIGUNGU_NAME
 	</select>
 	
 	<select id="selectDong">
@@ -167,6 +169,7 @@
 		FROM "DONG"
 		JOIN "SIGUNGU" USING(SIGUNGU_NO) 
 		WHERE SIGUNGU_NAME =#{sigunguName}
+		ORDER BY DONG_NAME
 	</select>
 	
 	
@@ -176,6 +179,67 @@
 	SELECT TYPE_NAME FROM WORK_TYPE 
 	</select>
 	
+	<!-- 지역별 공고 조회해오기 -->
+	<select id="locationHireList">
+		SELECT A.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
+		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
+		 FROM "HIRE" A
+		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
+		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
+		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
+		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
+		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+
+		WHERE HIRE_STATUS = 0
+		AND DONG_NO IN 
+		<foreach collection="list" item="item" open="(" close=")" separator=" , ">
+			#{item}
+		</foreach>
+		ORDER BY HIRE_NO DESC
 	
+	</select>
+	
+	<!-- 해당 동 내의 공고 수 찾기 -->
+	<select id="dongListCount" parameterType="list">
+		SELECT COUNT(*) FROM "HIRE"
+		WHERE DONG_NO IN 
+		<foreach collection="list" item="item" open="(" close=")" separator=" , ">
+			#{item}
+		</foreach>
+		
+		ORDER BY HIRE_NO DESC
+	</select>
+	
+	<!-- 시군구 내 공고 수 찾기 -->
+	<select id="sigunguListCount">
+		SELECT COUNT(*) 
+		FROM "HIRE"
+		JOIN "DONG" USING (DONG_NO)
+		JOIN "SIGUNGU" USING (SIGUNGU_NO)
+		WHERE SIGUNGU_NO IN 
+		<foreach collection="list" item="item" open="(" close=")" separator=" , ">
+			#{item}
+		</foreach>
+	
+	</select>
+	
+	<!-- 동이 없는 시군구 내 공고 조회하기 -->
+	<select id="sigunguHireList">
+		SELECT A.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
+		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
+		 FROM "HIRE" A
+		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
+		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
+		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
+		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
+		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+
+		WHERE HIRE_STATUS = 0
+		AND SIGUNGU_NO IN 
+		<foreach collection="list" item="item" open="(" close=")" separator=" , ">
+			#{item}
+		</foreach>
+		ORDER BY HIRE_NO DESC
+	</select>
 	
 </mapper>
