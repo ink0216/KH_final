@@ -109,7 +109,7 @@
                     display:flex;
                     margin-left:450px;">
                     <p id="shopMemberNo" th:if="${session.loginMember == null}" >
-                        <p th:if="${session.loginShop != null and session.loginShop.authorityNo == 2 and session.loginMember == null}"  style="color:red; 
+                        <p th:if="${session.loginShop != null and session.loginShop.authorityNo == '2'}"  style="color:red; 
                         font-size:18px;
                         display:flex;
                         margin-left:450px;">
