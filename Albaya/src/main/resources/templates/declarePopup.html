@@ -44,15 +44,18 @@
     </div>
     </div>
     
-    <form action="declare" method="POST" th:object="${reviewBoard}" class="declareFrm" id="declareFrm">
-    <div id="declarePopup-Content">
+    <form action="/declare/insert" method="POST" class="declareFrm" id="declareFrm">
+        <div id="declarePopup-Content">
+
 
         <textarea name="boardDeclareContent" id="declarePopupContent" maxlength="300" placeholder="신고 사유를 입력하세요(최대 300자)"></textarea>
     </div>
 
-    <div id="declareBtn-area">
-        <button type="submit" id="declareBtn" class="declareBtn" >신고하기</button>
-    </div>
+        <div id="declareBtn-area">
+            <button type="submit" id="declareBtn" class="declareBtn" >신고하기</button>
+        </div>
+
+        <input type="hidden" name="reviewBoardNo" th:value="${param.reviewBoardNo}">
     </form>
     
 </body>

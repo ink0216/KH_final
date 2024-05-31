@@ -28,6 +28,10 @@ background-color: rgb(228, 242, 238);
 min-height: 100vh;
 }
 
+.reviewBoard-List{
+   min-width: 1000px;
+}
+
 .list-wrapper{
    display:flex;
    flex-direction: column;

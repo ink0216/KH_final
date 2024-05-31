@@ -13,12 +13,12 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Declare {
 	
-	private int reviewBoardDeclareNo;
-	private int reviewBoardNo;
-	private int memberNo;
-	private String boardDeclareContent;
-	private String reviewBoardCondition;
-	private String boardDeclareDate;
-	private int reportedMemberNo;
+	private int reviewBoardDeclareNo; 	 // 게시글 신고 번호
+	private int reviewBoardNo; 			 // 신고당한 게시글 번호
+	private int memberNo; 				 // 신고한 회원번호
+	private String boardDeclareContent;  //게시글 신고 사유
+	private String reviewBoardCondition; // 처리 상태
+	private String boardDeclareDate;	 // 신고 날짜
+	private int reportedMemberNo; 		 // 신고당한 회원 번호
 
 }
