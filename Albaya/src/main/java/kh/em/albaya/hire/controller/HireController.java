@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -113,12 +114,6 @@ public class HireController {
 		return service.selectHireList(cp);
 	}
 	
-	//인서씨가 한것
-	//공고문 상세조회 하기
-	@GetMapping("hireDetail")
-	public String hireDetail() {
-		return "/hire/hireDetail";
-	}
 	
 	
 	
@@ -133,6 +128,14 @@ public class HireController {
 		return "hire/hireLocation";
 	}
 	
+	//지역별 공고 조회해오기
+	@PostMapping("locationHireList")
+	@ResponseBody
+	public Map<String,Object> locationHireList(
+			@RequestBody Map<String, Object> map
+			){
+		return service.locationHireList(map);
+	}
 	
 	
 	
