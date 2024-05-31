@@ -183,6 +183,7 @@ dosiNameList.forEach(dosiName=>{
                     .then(list=>{
                         //해당 시군구에 동이 하나도 없는 경우
                        if(list.length==0){ //*************************************** */
+                        console.log(sigunguItem.sigunguNo);
                             const locationItems = document.querySelectorAll('.location-item');
                             const dongName = document.querySelectorAll('.dong');
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
 <body>
     <th:block th:replace="~{common/header}"></th:block>
 
-    <main class="main-container">
+    <div class="main-container">
         <div class="content-area-container">
             <div class="h2-area">
                 <h2>Albaya 회원 가입 페이지</h2>
@@ -41,16 +42,17 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <th:block th:replace="~{common/footer}"></th:block>
 </body>
-    <script src="/js/member/selectSignup.js"></script>
-    <script th:inline="javascript">
-        const message =  /*[[${message}]]*/ "전달 받은 message";
-        // message가 없다면 null
+<script src="/js/member/selectSignup.js"></script>
+<script th:inline="javascript">
+    const message =  /*[[${message}]]*/ "전달 받은 message";
+    // message가 없다면 null
 
-        if (message != null) alert(message);
-    </script>
-    <script src="/js/common/header.js"></script>
+    if (message != null) alert(message);
+</script>
+<script src="/js/common/header.js"></script>
+
 </html>
