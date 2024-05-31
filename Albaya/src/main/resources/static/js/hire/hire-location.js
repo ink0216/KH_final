@@ -94,7 +94,15 @@ nextButton.addEventListener("click",(e)=>{
 
 
 function reloadTable(cp) {
-    fetch("/hire/selectHireList?cp=" + cp)
+    const obj = {
+        "cp": cp,
+        "dongList" : dongList
+    };
+    fetch("/hire/locationHireList", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : JSON.stringify(obj)
+    })//*************여기해야한다 */
     .then(resp=>resp.json())
     .then(map => {
         console.log(map);
@@ -108,10 +116,10 @@ function reloadTable(cp) {
     })
 }
 
-//새로고침 되었을 때
-document.addEventListener("DOMContentLoaded", () => {
-    reloadTable(1);
-});
+// //새로고침 되었을 때
+// document.addEventListener("DOMContentLoaded", () => {
+//     reloadTable(1);
+// });
 
 
 
@@ -127,7 +135,7 @@ const dosiNameList = document.querySelectorAll('.dosiName');
 const sigunguBody = document.querySelector('.sigungu-body');
 const dongBody = document.querySelector('.dong-body');
 const searchLocations = document.querySelector('.search-locations');
-
+const dongList = []; //빈 배열
 dosiNameList.forEach(dosiName=>{
 
     dosiName.addEventListener("click",e=>{
@@ -172,7 +180,7 @@ dosiNameList.forEach(dosiName=>{
                     .then(resp=>resp.json())
                     .then(list=>{
 
-                       if(list.length==0){
+                       if(list.length==0){ //*************************************** */
                             const locationItems = document.querySelectorAll('.location-item');
                             const dongName = document.querySelectorAll('.dong');
 
@@ -206,7 +214,7 @@ dosiNameList.forEach(dosiName=>{
                             button.addEventListener("click",()=>{
                                 locationItem.remove();
                             })
-                       }
+                        }
 
                         dongBody.innerHTML="";
                         
@@ -234,21 +242,29 @@ dosiNameList.forEach(dosiName=>{
 /* ********************************동 선택했을 때************************************ */
 
                             dongBtn.addEventListener("click", e=>{
+                                console.log(dongBtn.innerHTML);
+
+                                const index = dongList.indexOf(e.target.innerHTML);
+                                dongList.push(e.target.innerHTML);
+                                
 
                                 const locationItems = document.querySelectorAll('.location-item');
                                 const dongName = document.querySelectorAll('.dong');
-
+                                
                                 if(locationItems.length>=5){
                                     alert('희망하는 지역은 최대 5개까지 입력 가능합니다');
+                                    dongList.splice(index,1);
                                     return;
                                 }
 
                                 for(let i =0; i<dongName.length; i++){
                                     if(dongBtn.innerHTML==dongName[i].innerHTML){
                                         alert("중복되는 지역입니다.");
+                                        dongList.splice(index,1);
                                         return;
                                     }
                                 }
+                                console.log(dongList);
 
                                 const locationItem = document.createElement("div");
                                 locationItem.classList.add('location-item');
@@ -266,6 +282,11 @@ dosiNameList.forEach(dosiName=>{
                         
                                 // x버튼 눌렸을 때
                                 button.addEventListener("click",()=>{
+
+                                    const index2 = dongList.indexOf(button.previousElementSibling.innerHTML);
+                                    dongList.splice(index2,1);
+
+                                    console.log(dongList);
                                     locationItem.remove();
                                 })
                                 
@@ -279,6 +300,8 @@ dosiNameList.forEach(dosiName=>{
 
                         
                     })
+                    //요기요기
+                    reloadTable(1);
                 })
             })
 

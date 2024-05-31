@@ -83,6 +83,15 @@ public interface HireMapper {
 
 
 
+	/**지역별 공고 조회해오기
+	 * @param map
+	 * @param rowBounds 
+	 * @return
+	 */
+	List<Hire> locationHireList(Map<String, Object> map, RowBounds rowBounds);
+
+
+
 
 	
 

@@ -29,7 +29,7 @@ if (status === kakao.maps.services.Status.OK) {
 
     // 인포윈도우로 장소에 대한 설명을 표시합니다
     var infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="width:50px;text-align:center;padding:6px 0;">HERE</div>' 
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">HERE</div>' 
     });
     infowindow.open(map, marker);
 
