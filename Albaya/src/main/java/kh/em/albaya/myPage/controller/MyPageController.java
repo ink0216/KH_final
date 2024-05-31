@@ -127,50 +127,48 @@ public class MyPageController {
 		
 		if(result == 1) {
 			int deleteMember = service.deleteMember(memberNo, memberEmail);
-			if(deleteMember == 1) {
-				message = "탈퇴되었습니다.";
-				ra.addFlashAttribute("message", message);
-				status.setComplete();
-				return "redirect:/";
-			}
-			else {
-				message = "비밀번호가 일치하지 않습니다.";
-				ra.addFlashAttribute("message", message);
-				return "redirect:/myPage/deleteMember";
-			}
+
+			message = "탈퇴되었습니다.";
+			ra.addFlashAttribute("message", message);
+			status.setComplete();
+			return "redirect:/";
+
 		}
-		return "redirect:/";
+		else {
+			message = "비밀번호가 일치하지 않습니다.";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/deleteMember";
+		}
 	}
 	@PostMapping("deleteShop")
 	public String deleteMember(
-			Member member,
+			Shop shop,
 	        @SessionAttribute(value = "loginShop", required = false) Shop loginShop,
 			RedirectAttributes ra,
 			SessionStatus status) {
 		
 		int ShopNo = loginShop.getShopNo();
-		String ShopEmail = loginShop.getShopEmail();
-		String ShopPw = loginShop.getShopPw();
+		String ShopEmail = shop.getShopEmail();
+		String ShopPw = shop.getShopPw();
 		
 		String message = null;
 		
 		int result = service.myPageCheckShopPw(ShopNo, ShopEmail, ShopPw);
 		
 		if(result == 1) {
-			int deleteMember = service.deleteShop(ShopNo, ShopEmail);
-			if(deleteMember == 1) {
-				message = "탈퇴되었습니다.";
-				ra.addFlashAttribute("message", message);
-				status.setComplete();
-				return "redirect:/";
-			}
-			else {
-				message = "비밀번호가 일치하지 않습니다.";
-				ra.addFlashAttribute("message", message);
-				return "redirect:/myPage/deleteMember";
-			}
+			int deleteMember = service.deleteMember(ShopNo, ShopEmail);
+
+			message = "탈퇴되었습니다.";
+			ra.addFlashAttribute("message", message);
+			status.setComplete();
+			return "redirect:/";
+
 		}
-		return "redirect:/";
+		else {
+			message = "비밀번호가 일치하지 않습니다.";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/deleteMember";
+		}
 	}
 	@GetMapping("changePw")
 	public String changePw() {

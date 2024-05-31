@@ -333,3 +333,42 @@ signupBtn.addEventListener("click", e => {
         }
     }
 })
+
+const uploadButton = document.querySelector("#uploadButton");
+let imageInput = document.querySelector("#imageInput");
+const profileImg = document.querySelector('#profileImg');
+
+uploadButton.addEventListener("click", e => {
+    imageInput.click();
+});
+
+const changeImageFn = e => {
+
+    const maxSize = 1024 * 1024 * 5; // 5MB
+
+    const file = e.target.files[0];
+
+    if (!file) {
+        alert("파일을 선택해주세요.");
+        return; // 파일이 선택되지 않은 경우
+    }
+    
+    if (file.size > maxSize) {
+        alert("5MB 이하의 이미지 파일을 선택해 주세요.");
+        imageInput.value = ''; // 입력 초기화
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = e => {
+        const url = e.target.result;
+        profileImg.setAttribute("src", url);
+        profileImg.style.display = 'block';
+    };
+
+    reader.readAsDataURL(file);
+};
+
+imageInput.addEventListener("change", changeImageFn);
+
