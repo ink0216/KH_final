@@ -7,53 +7,33 @@
     const selectMiddleSchoolName = document.querySelector("#selectMiddleSchoolName");
     const selectSchoolName = document.querySelector("#selectSchoolName");
     const selectUniversityName = document.querySelector("#selectUniversityName");
-    const elementsByCombination = document.querySelectorAll("#schoolContainer > div");
+
+    
 
     const eduObj = {
         "1":"selectPrimarySchoolName",
         "2":"selectMiddleSchoolName",
         "3":"selectSchoolName",
-        "4":"universityName"
+        "4":"selectUniversityName"
     };
 
 
     dropDown.addEventListener("change" , () => {
-        let selectedVal = " ";
-        
-        switch(dropDown.value){
-            case "1":
-                selectPrimarySchoolName.classList.add("show");
-                selectPrimarySchoolName.classList.remove("hide");
-                selectedVal ="1"
-                break;
-
-            case "2":
-                selectMiddleSchoolName.classList.add("show");
-                selectMiddleSchoolName.classList.remove("hide");
-                selectedVal = "2";
-                break;
-
-            // case "3":
-            //     universityName.classList.add("show");
-            //     universityName.classList.remove("hide");
-            //     schoolName.classList.add("hide");
-            //     schoolName.classList.remove("show");
-            //     selectedVal = "3";
-            //     break;
-            
-            default:
-                const selectedEl = document.querySelectorAll(".show");
-                for(let i = 0; i < selectedEl.length; i++){
-                    if(selectedVal != dropDown.value && ){
-                        selectedEl[i].classList.remove("show");
-                        selectedEl[i].classList.add("hide");
-                    }
-                    
-                 }
-                break;
-                
+        let selectedVal = dropDown.value;
+        for(key in eduObj){
+            let element = document.querySelector("#"+eduObj[key]);
+            if(element){
+                if(selectedVal == key){
+                    element.classList.add("show");
+                    element.classList.remove("hide");
+                }else{
+                    element.classList.remove("show");
+                    element.classList.add("hide");
+                }
+            }
         }
-
+        
+       
        
     });
 
@@ -107,4 +87,117 @@ score.addEventListener("input", () => {
         return;
     }
 });
+
+
+//경력사항
+const newHire = document.querySelector("#newHire");
+const experienced = document.querySelector("#experienced");
+const career = document.querySelector("#career");
+const experienceDetailDiv = document.querySelector(".experiencedDetail");
+const nonBreakingSpace = document.createTextNode("\u00A0");
+
+
+
+const experiencedDetail = document.querySelector(".experiencedDetail");
+newHire.addEventListener("click", () => {
+    experiencedDetail.classList.remove("show");
+    experiencedDetail.classList.add("hide")
+
+
+    newHire.classList.add("selectedBtn");
+    experienced.classList.remove("selectedBtn");
+})
+
+
+
+
+experienced.addEventListener("click", () => {
+
+    experiencedDetail.classList.remove("hide");
+    experiencedDetail.classList.add("show");
+
+    experienced.classList.add("selectedBtn");
+    newHire.classList.remove("selectedBtn");
+    
+   
+ 
+   
+
+    
+});
+
+//경력 추가하기 버튼
+
+const addExperience = () => {
+    
+    const experienceContainerDiv = document.createElement("div");
+    experienceContainerDiv.classList.add("experiencedContainer");
+    experienceDetailDiv.appendChild(experienceContainerDiv);
+
+        const companyNameDiv = document.createElement("div");
+        companyNameDiv.setAttribute("id","companyName");
+        experienceContainerDiv.append(companyNameDiv);
+
+            const companyNameSpan = document.createElement("span");
+            companyNameSpan.innerHTML = "회사이름&nbsp;";
+            companyNameDiv.appendChild(companyNameSpan);
+
+            const inputCompanyName =  document.createElement("input");
+            inputCompanyName.setAttribute("type","text");
+            companyNameDiv.appendChild(inputCompanyName);
+
+            career.appendChild(nonBreakingSpace);
+
+        const dateInputDiv =  document.createElement("div");
+        dateInputDiv.classList.add("dateInput");
+        experienceContainerDiv.appendChild(dateInputDiv);
+
+            const inputDate = document.createElement("input");
+            const inputDate2 = document.createElement("input");
+
+            
+
+            inputDate.setAttribute("type","date");
+            inputDate2.setAttribute("type","date");
+            dateInputDiv.appendChild(inputDate);
+            dateInputDiv.append("~");
+            dateInputDiv.appendChild(inputDate2);
+
+          
+            const removeBtn = document.createElement("button");
+            removeBtn.innerText = "-"
+            removeBtn.classList.add("remove");
+            removeBtn.setAttribute("id","removeBtn")
+            removeBtn.setAttribute("type","button")
+            dateInputDiv.appendChild(removeBtn);
+
+
+}
+
+//추가버튼 작성
+const chuga = document.querySelector("#chuga");
+chuga.addEventListener("click" , () => {
+    addExperience();
+});
+
+//삭제버튼 작성
+
+    const removeBtns = document.querySelectorAll(".remove");
+
+    // removeBtns.forEach(btns => {
+    //     btns.addEventListener("click", () => {
+    //         const container = btns.closest(".experiencedContainer");
+    //         if (container) {
+    //             container.parentNode.removeChild(container);
+    //         }
+    //     })
+        
+    //  })
+    for(let i = 0; i<removeBtns.length; i++){
+        removeBtns[i].addEventListener("click", () => {
+            const container =  removeBtns[i].closest(".experiencedContainer");
+            container.parentNode.removeChild(container);
+        })
+    }
+        
 

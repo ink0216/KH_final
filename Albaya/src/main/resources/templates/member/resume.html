@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서</title>
-    <link rel="stylesheet" href="../../static/css/member/resume.css">
+    <link rel="stylesheet" href="/css/member/resume.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <th:block th:replace="~{common/header}"></th:block>
     <!-- 이력서  -->
-    <div id = "container">
+    <div id = "cont">
         <div  class = "profileInfo">
             <div id = "innerProfileContainer">
                 <div id="profileImg">
@@ -51,7 +52,7 @@
     
         <!-- 이력서 작성 section -->
         <form action ="#" >
-            <div id="resume">
+            <div id="resumeDisplay">
                 <h3>나의 이력서</h3>
                 <hr>
                 <div class="resumeElement">
@@ -163,11 +164,11 @@
                                 </div>
         
                                 <div name = "selectUniversityName" id = "selectUniversityName" class="hide">
-                                    <span>대학교</span>&nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured>
+                                    <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
+                                    <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
                                     <div><br>
         
-                                        <div class = "term">
+                                        
                                             <!-- <span>졸업여부</span>
                                             <select name="graduationStatus" class="graduationDropDown" required>
                                                 <option value = "1">졸업</option>
@@ -177,7 +178,7 @@
                                                 <option value = "5">수교</option>
                                             </select> -->
         
-                                            <div>
+                                            <div id="dateContainer">
                                                 <span>재학기간</span>
                                                 <input type="date" name="date" class="date" required>
                                                 <input type="date" name="date" class="date" required>
@@ -185,7 +186,7 @@
                                         </div>
                         
         
-                                    </div>
+                                   
         
                                 </div>
                             </div>
@@ -235,6 +236,44 @@
                     
                 </div>
                 <hr>
+
+                <div class = "resumeElement">
+                    <h3>경력사항<span class="required">*</span></h3>
+                    <br>
+                    <ul>
+                        <li>
+                            <div id="career" >
+                                <span>경력구분<span class="required">*</span></span>
+                                <div id="careerSelect">
+                                    <button id="newHire" type="button" class="selectedBtn">신입</button>
+                                    <button id="experienced" type="button">경력</button><br>
+                                </div><br><br>
+                                <div class = "experiencedDetail hide" >
+                                    
+                                    
+                                    <div class = "experiencedContainer">
+                                            <div id = "companyName">
+                                                <span>회사이름</span>
+                                                <input type="text"> 
+                                            </div>
+    
+                            
+                                            <div class = "dateInput">
+                                                <input type="date" name="" id="">~<input type="date" name="" id="">
+                                                <button type = "button" id = "chuga">+</button>
+                                            </div>
+                                            
+                                            
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+        
+                </div>
+                <hr>
         
                 <div class = "resumeElement">
                     <h3>자격증<span class="required">*</span></h3>
@@ -259,7 +298,7 @@
                                        
                                     <div id = "issueDetail">
                                         <span>취득일</span>
-                                        <input type="date" name="issueDate" id="issueDate" class="date" required>
+                                        <input type="date" name="issueDate" id="issueDate"  required>
                                     </div>
                                 </div>
                             </div>
@@ -278,6 +317,6 @@
         </div><br><br>
 
     </div>
-    <script src = "../../static/js/member/resume.js"> </script>
+    <script src = "/js/member/resume.js"> </script>
 </body>
 </html>
