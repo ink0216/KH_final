@@ -114,7 +114,12 @@ public class HireController {
 		return service.selectHireList(cp);
 	}
 	
-	
+	/*const index3
+	 * = sigunguList.indexOf(
+	 * e.target.innerHTML);
+     
+     sigunguList.splice(index3,1);
+	 * */
 	
 	
 	//지역별 공고 조회하기 화면으로 이동하기
@@ -134,6 +139,7 @@ public class HireController {
 	public Map<String,Object> locationHireList(
 			@RequestBody Map<String, Object> map
 			){
+		
 		return service.locationHireList(map);
 	}
 	
