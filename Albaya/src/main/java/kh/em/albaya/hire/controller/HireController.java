@@ -89,6 +89,7 @@ public class HireController {
 	@GetMapping("{hireNo:[0-9]+}")
 	public String hireDetail(
 			@PathVariable("hireNo") int hireNo,
+			@RequestParam(value="cp",required = false, defaultValue="1") int cp, 
 			Model model
 			) {
 		Hire hire = service.detailHire(hireNo);
@@ -100,6 +101,7 @@ public class HireController {
 		hire.setWorkDay(workDay);
 		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
+		
 		return "/hire/hireDetail";
 	}
 	

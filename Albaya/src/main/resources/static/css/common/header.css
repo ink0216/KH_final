@@ -2,6 +2,10 @@
     font-family: 'SUIT-Regular';
 }
 
+.underline a{
+    color: #014C73;
+    text-decoration: none;
+}
 
 /*  전체 폰트 */
 @font-face {
@@ -116,9 +120,13 @@
 }
 
 .login{
+    display: flex;
     font-size: 13px;
     text-decoration: none;
     color: rgb(88, 88, 88);
+    width: 50px;
+    justify-content: center;
+    align-items: center;
 }
 .loggedIn{
     border:1px solid lightgray;
@@ -224,6 +232,7 @@
         margin-left: 73px;
         margin-top: 7px;
         width: 500px;
+        justify-content: flex-start;
     }
 
     #menus{

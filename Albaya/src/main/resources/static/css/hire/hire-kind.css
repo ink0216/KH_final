@@ -1,7 +1,7 @@
 .container1 *{
     margin: 0px;
     padding: 0px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .container1{
@@ -14,6 +14,9 @@
     display: flex;
     flex-direction: column;
     width: 700px;
+    padding: 20px;
+    border: 0.3px solid #ccc;
+    border-radius: 20px;
 }
 
 .title{
@@ -37,6 +40,51 @@
     margin: 2px;
     cursor: pointer;
     user-select: none;
+    cursor: pointer;
 }
+
+.item-btn:hover{
+    background-color: rgb(248, 238, 234);
+    border: 0.3px solid #ccc;
+}
+
+
+.search-type{
+    display: flex;
+    height: 50px;
+    border-top: 0.3px solid #ccc;
+}
+
+.kindItem{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px;
+    border: 0.3px solid #ccc;
+    border-radius: 10px;
+    user-select: none;
+
+}
+
+.kind-name{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: rgb(62, 62, 62);
+}
+
+.del-btn{
+    display: flex;
+    align-items: center;
+    border: none;
+    justify-content: center;
+    width: 10%;
+    cursor: pointer;
+    background-color: white;
+}
+
 
 

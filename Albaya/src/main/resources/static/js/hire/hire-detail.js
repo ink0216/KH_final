@@ -37,3 +37,16 @@ if (status === kakao.maps.services.Status.OK) {
     map.setCenter(coords);
 }
 });    
+
+
+
+/* 닫기버튼 */
+const closeBtn = document.querySelector("#closeBtn");
+closeBtn.addEventListener("click",()=>{
+    let url = document.referrer;
+    if(url==''){
+        url='/';
+    }
+    location.href=url;
+})
+
