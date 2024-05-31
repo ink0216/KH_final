@@ -47,8 +47,9 @@
     <form action="/declare/insert" method="POST" class="declareFrm" id="declareFrm">
         <div id="declarePopup-Content">
 
-            <textarea name="boardDeclareContent" id="declarePopupContent" maxlength="1500" placeholder="신고 사유를 입력하세요(최대 1500자)"></textarea>
-        </div>
+
+        <textarea name="boardDeclareContent" id="declarePopupContent" maxlength="300" placeholder="신고 사유를 입력하세요(최대 300자)"></textarea>
+    </div>
 
         <div id="declareBtn-area">
             <button type="submit" id="declareBtn" class="declareBtn" >신고하기</button>
@@ -61,6 +62,7 @@
 <script th:inline="javascript">
     const memberEmail = /*[[*{#strings.substringBefore(memberEmail,'@')}]]*/"신고를 한 사람";
     const reviewBoardCode = /*[[${reviewBoardCode}]]*/"게시판 코드";
+    const reviewBoardCondition = /*[[${reviewBoardCondition}]]*/"신고 상태";
     
 </script>
     <script src="/js/reviewBoard/declarePopup.js"></script>

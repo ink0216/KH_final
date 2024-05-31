@@ -56,6 +56,7 @@ public class DeclareController {
 	
 	@PostMapping("insert")
 	public void insertDeclare(
+
 			@SessionAttribute("loginMember") Member loginMember,
 			Declare inputDeclare, 
 			Model model, HttpServletResponse resp) throws IOException {
@@ -87,7 +88,6 @@ public class DeclareController {
 	@GetMapping("")
 	public String updateDeclare(
 			@RequestParam("memberNo")int memberNo,
-//			@RequestParam("reviewBoardNo") int reviewBoardNo,
 			@RequestParam("reportedDeclareNo") int reportedDeclareNo,
 			@SessionAttribute("loginMember") Member loginMember) {
 		return null;

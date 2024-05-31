@@ -108,14 +108,15 @@
                     font-size:18px;
                     display:flex;
                     margin-left:450px;">
-                        <p id="shopMemberNo" th:if="${session.loginMember == null}" >
-                            <p th:if="${session.loginShop != null and session.loginShop.authorityNo == 2 and session.loginMember == null}"  
-                            style="color:red; 
-                            font-size:18px;
-                            display:flex;
-                            margin-left:450px;">
-                            * 기업회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
-                            </p>
+            <p id="shopMemberNo" th:if="${session.loginMember == null}" >
+                <p th:if="${session.loginShop != null and session.loginShop.authorityNo == 2 and session.loginMember == null}"  
+                style="color:red; 
+                font-size:18px;
+                display:flex;
+                margin-left:450px;">
+                * 기업회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
+                </p>
+
                         </p>
                     </p>
 

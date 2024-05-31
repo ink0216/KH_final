@@ -2,9 +2,10 @@ body{
     border:rgb(76, 112, 124);
     background-color: rgb(214, 232, 239);
 }
-#container{
-    margin:auto;
-    width:1500px;
+#cont{
+ 
+    top:0;
+    padding-top:20px;
    padding-bottom:100px;
    margin-bottom:100px;
 }
@@ -108,7 +109,7 @@ h1{
     cursor:pointer;
 }
 
-#resume{
+#resumeDisplay{
     margin:auto;
     margin-top:20px;
     width: 1000px;
@@ -119,10 +120,10 @@ h1{
    
    
 }
-#resume>h3{
+#resumeDisplay>h3{
     text-align:center;
 }
-#resume>div{
+#resumeDisplay>div{
     margin:40px;
     margin-left:80px;
 
@@ -284,14 +285,22 @@ input[type="date"]{
 
 
 #dateContainer{
-    margin:0px;
+    display:flex;
+    width:400px;
+    
 }
-#dateContainer>input[type="date"]{
-    margin-left:20px;
+.innerDateContainer>input[type="date"]{
+  padding-right:10px;
+  margin-left:20px;
 }
+.innerDateContainer{
+    display:flex;
+}
+
 
 #career{
     display:flex;
+    flex-direction: column;
 }
 #careerSelect{
     margin-left:100px;
@@ -318,9 +327,72 @@ input[type="date"]{
     border-bottom-right-radius: 10px;
 }
 .experiencedDetail{
+    margin-left:10px;
+    display:flex;
+    justify-content: center;
+    border:1px solid lightgray;
+    width:700px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top: 10px;
+    padding-bottom:20px;
+    border-radius:10px;
+    position:relative;
+}
+.experiencedContainer{
+    display:flex;
+   
+}
+.experiencedContainer>div>*{
+    margin-top:20px;
+}
+.experiencedContainer>div>input[type="text"]{
+    width:300px;
+}
+
+.selectedBtn{
+    border:1px solid black !important;
+    color:black !important;
+    position:relative;
+    z-index: 10;
+}
+.date{
     display:flex;
 }
-.selectedBtn{
-    border:1px solid black;
-    color:black;
+
+.hide{
+    display:none ;
+}
+
+.show{
+    display:block;
+}
+
+#companyContainer{
+    display:flex;
+}
+
+.dateInput>button{
+
+    margin-bottom:20px;
+    font-size: 20px;
+    position:absolute;
+    background:black;
+    border:2px solid white;
+    color: white;
+    border-radius:10px;
+    width:30px;
+    margin-right:10px;
+
+    
+    
+}
+.dateInput>button:hover{
+    cursor:pointer;
+    color: gray;
+}
+
+.dateInput>input[type="date"]{
+    margin-left:10px;
+    margin-right:10px;
 }

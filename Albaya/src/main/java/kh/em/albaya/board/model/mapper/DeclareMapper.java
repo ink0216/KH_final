@@ -33,4 +33,5 @@ public interface DeclareMapper {
 	int insertDeclare(Declare inputDeclare);
 
 	
+
 }
