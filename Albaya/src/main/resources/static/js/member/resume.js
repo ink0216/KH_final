@@ -96,30 +96,50 @@ const career = document.querySelector("#career");
 let count1 =0 ;
 let count2 =0 ;
 
-const div = document.createElement("div");
+const addExperience = () => {
+    const detailDiv = document.createElement("div");
+    const containerDiv = document.createElement("div");
+
+    const companyName = document.createElement("span");
+    const inputCompanyName = document.createElement("input");
+
+    const dateDiv = document.createElement("input");
+    const workTerm = document.createElement("span");
+
+}
+
+const experiencedDetail = document.querySelector(".experiencedDetail");
 newHire.addEventListener("click", () => {
     count1++;
     count2 =0;
-    career.removeChild(div)
+    experiencedDetail.classList.remove("show");
+    experiencedDetail.classList.add("hide")
+
+
     newHire.classList.add("selectedBtn");
     experienced.classList.remove("selectedBtn");
 })
+
+
 
 
 experienced.addEventListener("click", () => {
     count2++;
     count1 = 0;
     
-    if(count2 > 1){
-        return;
-    }
-   
+    
+    experiencedDetail.classList.remove("hide");
+    experiencedDetail.classList.add("show");
+
     experienced.classList.add("selectedBtn");
     newHire.classList.remove("selectedBtn");
     
    
     div.classList.add("expreiencedDetail");
-    career.appendChild(div)
+    career.appendChild(div);
+    // if(count2 > 1){
+    //     return;
+    // }
 
     
 })

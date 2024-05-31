@@ -292,6 +292,7 @@ input[type="date"]{
 
 #career{
     display:flex;
+    flex-direction: column;
 }
 #careerSelect{
     margin-left:100px;
@@ -321,6 +322,20 @@ input[type="date"]{
     display:flex;
 }
 .selectedBtn{
-    border:1px solid black;
-    color:black;
+    border:1px solid black !important;
+    color:black !important;
+    position:relative;
+    z-index: 10;
+}
+
+.hide{
+    display:none ;
+}
+
+.show{
+    display:block;
+}
+
+#companyContainer{
+    display:flex;
 }
