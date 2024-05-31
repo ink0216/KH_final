@@ -120,8 +120,7 @@ newHire.addEventListener("click", () => {
 
 
 experienced.addEventListener("click", () => {
-    
-    
+
     experiencedDetail.classList.remove("hide");
     experiencedDetail.classList.add("show");
 

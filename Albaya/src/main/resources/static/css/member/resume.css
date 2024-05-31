@@ -319,12 +319,18 @@ input[type="date"]{
     border-bottom-right-radius: 10px;
 }
 .experiencedDetail{
-    margin:auto;
+    margin-left:10px;
     display:flex;
-    border-top:1px solid lightgray;
+    justify-content: center;
+    border:1px solid lightgray;
     width:700px;
-    padding-top: 40px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top: 20px;
+    padding-bottom:40px;
+    border-radius:10px;
 }
+
 .selectedBtn{
     border:1px solid black !important;
     color:black !important;
@@ -342,4 +348,13 @@ input[type="date"]{
 
 #companyContainer{
     display:flex;
+}
+
+#chuga{
+    margin-bottom:20px;
+    font-size: 20px;
+    background:white;
+    border:2px solid white;
+    color: rgb(183, 182, 182);
+    
 }
