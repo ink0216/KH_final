@@ -11,6 +11,7 @@ const siren = document.querySelector("#siren");
             return;
         }
   
+
         window.open('/declarePopup?reviewBoardNo='+reviewBoardNo+'&loginMemberNo='+loginMemberNo+'$writeMemberNo='+writeMemberNo,'popupWindow', 'width=770, height=1200, left=150, resizable = no');
        
       

@@ -56,11 +56,11 @@
     </form>
     
 </body>
-<script src="/js/reviewBoard/declarePopup.js"></script>
 <script th:inline="javascript">
     const memberEmail = /*[[*{#strings.substringBefore(memberEmail,'@')}]]*/"신고를 한 사람";
     const reviewBoardCode = /*[[${reviewBoardCode}]]*/"게시판 코드";
     
 </script>
+    <script src="/js/reviewBoard/declarePopup.js"></script>
 
 </html>

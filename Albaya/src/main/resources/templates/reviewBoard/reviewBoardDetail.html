@@ -73,15 +73,13 @@
         <th:block th:replace="~{reviewBoard/comment}"></th:block>
         
     </main>
-    <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
-    <script src="/js/reviewBoard/reviewBoardDetail.js"></script> 
-    <script src="/js/reviewBoard/comment.js"></script> 
     
+    <!-- 전역변수 -->
     <script th:inline="javascript">
         const loginMemberNo= /*[[${session.loginMember?.memberNo}]]*/"로그인한 멤버";
-    
         
         const reviewBoardNo = /*[[${reviewBoard.reviewBoardNo}]]*/"게시글 번호";
+
       
 
         
@@ -94,6 +92,10 @@
 
         
     </script>
+
+    <script src="https://kit.fontawesome.com/a373078820.js" crossorigin="anonymous"></script>
+    <script src="/js/reviewBoard/reviewBoardDetail.js"></script> 
+    <script src="/js/reviewBoard/comment.js"></script> 
   <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
