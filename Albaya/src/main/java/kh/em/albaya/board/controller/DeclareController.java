@@ -41,7 +41,6 @@ public class DeclareController {
 	
 	@PostMapping("")
 	public String insertDeclare(
-			@RequestParam("reviewBoardNo")int reviewBoardNo, // 게시글 번호...어디서 얻어옴
 			@RequestParam("boardDeclareContent") String boardDeclareContent, //신고 사유
 			@RequestParam("reviewBoardNo") int reviewBoardNo ,
 			@SessionAttribute("loginMember") Member loginMember,
@@ -75,7 +74,6 @@ public class DeclareController {
 	@GetMapping("")
 	public String updateDeclare(
 			@RequestParam("memberNo")int memberNo,
-//			@RequestParam("reviewBoardNo") int reviewBoardNo,
 			@RequestParam("reportedDeclareNo") int reportedDeclareNo,
 			@SessionAttribute("loginMember") Member loginMember) {
 		return null;

@@ -1,5 +1,7 @@
 package kh.em.albaya.board.model.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import kh.em.albaya.board.model.dto.Declare;
@@ -13,5 +15,7 @@ public interface DeclareMapper {
 	 * @return
 	 */
 	int insertDeclare(Declare inputDeclare);
+
+	List<Declare> selectDeclareList(int reviewBoardNo);
 
 }

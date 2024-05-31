@@ -19,9 +19,137 @@ body{
 
 
 #adminPageBox{
-    border:1px solid black;
-    width:100%;
+    width: 1900px;
     height:100%;
     margin-top:80px;
+    margin-left:80px;
+    padding-left:50px;
 }
+
+#declareExplain{
+    font-family:'SUIT-Regular';
+    font-size: 18px;
+}
+
+
+#reject{
+    font-family:'SUIT-Regular';
+    width:90px;
+    height:40px;
+    font-size:20px;
+    margin:7px;
+    background-color: green;
+    color:white;
+    font-size:20px;
+    border-radius:15px;
+    border:none;
+}
+
+
+#accept{
+    font-family:'SUIT-Regular';
+    width:90px;
+    height:40px;
+    font-size:20px;
+    margin:7px;
+    background-color: rgb(247, 25, 25);
+    color:white;
+    font-size:20px;
+    border-radius:15px;
+    border:none;
+}
+
+
+#reject:hover{
+    cursor:pointer;
+}
+
+
+#accept:hover{
+    cursor:pointer;
+}
+
+
+
+.table-container {
+    width: 80%;
+    overflow-x: auto;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    
+}
+
+.styled-table thead tr {
+    background-color: #014C73;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #014C73
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.styled-table tr > *:nth-of-type(1){
+    width:4%;
+}
+    
+.styled-table tr > *:nth-of-type(2){
+    width:7%;
+}
+    
+.styled-table tr > *:nth-of-type(3){
+    width:10%;
+}
+.styled-table tr > *:nth-of-type(4){
+    width:39%;
+     word-break: break-word; 
+    word-wrap: break-word; 
+   
+   
+}
+.styled-table tr > *:nth-of-type(5){
+    width:4%;
+}
+.styled-table tr > *:nth-of-type(6){
+    width:10%;
+}
+.styled-table tr > *:nth-of-type(7){
+    width:10%;
+}
+.styled-table tr > *:nth-of-type(8){
+    width:20%;
+}
+    
+
+th{
+    font-size:14px;
+    text-align:center;
+}
+
+
 
