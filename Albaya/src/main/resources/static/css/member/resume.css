@@ -319,7 +319,11 @@ input[type="date"]{
     border-bottom-right-radius: 10px;
 }
 .experiencedDetail{
+    margin:auto;
     display:flex;
+    border-top:1px solid lightgray;
+    width:700px;
+    padding-top: 40px;
 }
 .selectedBtn{
     border:1px solid black !important;

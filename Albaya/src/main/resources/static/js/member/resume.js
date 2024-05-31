@@ -93,8 +93,6 @@ score.addEventListener("input", () => {
 const newHire = document.querySelector("#newHire");
 const experienced = document.querySelector("#experienced");
 const career = document.querySelector("#career");
-let count1 =0 ;
-let count2 =0 ;
 
 const addExperience = () => {
     const detailDiv = document.createElement("div");
@@ -110,8 +108,6 @@ const addExperience = () => {
 
 const experiencedDetail = document.querySelector(".experiencedDetail");
 newHire.addEventListener("click", () => {
-    count1++;
-    count2 =0;
     experiencedDetail.classList.remove("show");
     experiencedDetail.classList.add("hide")
 
@@ -124,8 +120,6 @@ newHire.addEventListener("click", () => {
 
 
 experienced.addEventListener("click", () => {
-    count2++;
-    count1 = 0;
     
     
     experiencedDetail.classList.remove("hide");
@@ -137,9 +131,7 @@ experienced.addEventListener("click", () => {
    
     div.classList.add("expreiencedDetail");
     career.appendChild(div);
-    // if(count2 > 1){
-    //     return;
-    // }
+   
 
     
 })
