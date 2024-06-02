@@ -47,6 +47,12 @@ public interface HireService {
 	 * @return
 	 */
 	List<String> selectKind();
+
+	/**지역별 공고 조회해오기
+	 * @param map
+	 * @return
+	 */
+	Map<String,Object> locationHireList(Map<String, Object> map);
 	
 
 	
