@@ -289,37 +289,45 @@
                 <hr>
         
                 <div class = "resumeElement">
-                    <h3>자격증<span class="required">*</span></h3>
+                    <h3>자격증</h3>
                     <br>
                     <ul>
                         <li>
-                            <div id="certificate">
-                                <span>자격증명<span class="required">*</span></span>
-                                <input type="text" name="searchCertificate" id="searchCertificate" required><br><br>
-                            
-                                <div id="certificateDetail">
+                           
+                                <div id="certificate" class = "certificate">
+                                    <span>자격증명</span>&nbsp;&nbsp;
+                                    <input type="text" name="searchCertificate" class="searchCertificate" required><br><br>
+                                
+                                   
+                                        <div class = "certificateDetail">
+                
+                                            <div class="organizationDetail">
+                                                <span>발행기관</span>&nbsp;&nbsp;
+                                                <input type="text" name="organization" class = "organization" required>
+                                            </div>
+            
+                                            <div class="scoreDetail">
+                                                <span>점수</span>&nbsp;&nbsp;
+                                                <input type="number" name="score" class = "score" max="100" required>&nbsp;/100
+                                            </div>
+                                               
+                                            <div class = "issueDetail">
+                                                <span>취득일</span>
+                                                <input type="date" name="issueDate" class="issueDate"  required>
+                                                <button type="button" id = "certAdd">+</button>
+                                            </div>
         
-                                    <div id="organizationDetail">
-                                        <span>발행기관</span>&nbsp;&nbsp;
-                                        <input type="text" name="organization" id = "organization" required>
-                                    </div>
-    
-                                    <div id="scoreDetail">
-                                        <span>점수</span>&nbsp;&nbsp;
-                                        <input type="number" name="score" id = "score" max="100" required>&nbsp;/100
-                                    </div>
-                                       
-                                    <div id = "issueDetail">
-                                        <span>취득일</span>
-                                        <input type="date" name="issueDate" id="issueDate"  required>
-                                    </div>
+                                           
+                                        </div>
+                                   
                                 </div>
-                            </div>
-                        </li>
+                            
+                        </li><br><br>
                     </ul>
+                    
         
                 </div><br>
-        </form>
+            </form>
             <hr>
            
             <div id="validatingBtnsContainer">
