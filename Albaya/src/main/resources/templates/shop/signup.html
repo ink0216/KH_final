@@ -9,19 +9,20 @@
 <body>
     <th:block th:replace="~{common/header}"></th:block>
 
-    <form action="/shop/signup" method="POST">
+    <form action="/shop/signup" method="POST" enctype="multipart/form-data">
     <div class="profile-img-container">
         <div class="profile-img-area">
             <div class="span-area">
-               <span>기업/점포 대표 이미지를 설정할 수 있습니다. 설정하지 않을 시 기본 이미지로 저장됩니다.</span>
+               <span>기업/점포 대표 이미지를 설정할 수 있습니다.</span>
             </div>
             <div class="img-area">
                 <div class="img-container">
-                    <input type="file" id="imageInput" style="display:none" />
-                    <img id="profileImg" name="shopProfile" style="display:none;"/>
+                    <input type="file" id="imageInput" style="display:none" name="profileImg" accept="image/*"/>
+                    <img id="profileImg" style="display:none;"/>
                 </div>
             </div>
             <div class="btn-area">
+                <button id="deleteBtn" type="button">삭제</button>
                 <button id="uploadButton" type="button">이미지 선택</button>
             </div>
         </div>
@@ -35,7 +36,7 @@
                 <div class="signup-info-container">
                     <div class="row">
                         <div class="row-left">
-                            <span>아이디(이메일)</span>
+                            <span>아이디(이메일) <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
                             <input type="text" name="shopEmail" id="shopEmail">
@@ -47,7 +48,7 @@
                     </div>
                     <div class="row">
                         <div class="row-left">
-                            <span>비밀번호</span>
+                            <span>비밀번호 <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
                             <input type="password" name="shopPw" id="shopPw" maxlength="20">
@@ -57,10 +58,10 @@
                     </div>
                     <div class="row">
                         <div class="row-left">
-                            <span>휴대폰 번호</span>
+                            <span>휴대폰 번호 <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
-                            <input type="number" id="inputTel" name="shopTel" placeholder="-제외" maxlength="11">
+                            <input type="number" id="inputTel" name="shopTel" placeholder="-제외" oninput="maxLength(11)">
                             <span class="red alertSpan" id="telVerify"></span>
                         </div>
                         <div class="auth-button-area">
@@ -69,7 +70,7 @@
                     </div>
                     <div class="row">
                         <div class="row-left">
-                            <span></span>
+                            <span>인증번호 <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
                             <input type="number" id="authKeyCheck">
@@ -80,10 +81,10 @@
                     </div>
                     <div class="row">
                         <div class="row-left">
-                            <span>사업자번호</span>
+                            <span>사업자번호 <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
-                            <input type="number" name="shopBrn" id="shopBrn" placeholder="-제외" maxlength="10">
+                            <input type="number" name="shopBrn" id="shopBrn" placeholder="-제외" oninput="asd(10)">
                             <span class="red alertSpan" id="brnVerif">사업자등록번호 숫자 10자리를 입력해주세요.</span>
                         </div>
                         <div class="auth-button-area">
@@ -92,15 +93,15 @@
                     </div>
                     <div class="row">
                         <div class="row-left">
-                            <span>회사/점포명</span>
+                            <span>회사/점포명 <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
                             <input type="text" name="shopName" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="row-left" requirec>
-                            <span>대표자명</span>
+                        <div class="row-left" required>
+                            <span>대표자명 <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
                             <input type="text" name="shopOwner" required>
@@ -108,7 +109,7 @@
                     </div>
                     <div class="row">
                         <div class="row-left">
-                            <span>주소</span>
+                            <span>주소 <span class="fail">*</span></span>
                         </div>
                         <div class="row-right-phoneNumber">
                             <input type="text" name="shopAddress" id="address" readonly>
@@ -134,9 +135,9 @@
     </div>
     <th:block th:replace="~{common/footer}"></th:block>
 </body> 
+<script src="/js/shop/signup.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <!-- 실제 지도를 그리는 JS API 불러오기 -->
 <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b&libraries=services"></script>
-<script src="/js/shop/signup.js"></script>
 </html>

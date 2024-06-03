@@ -1,12 +1,16 @@
 package kh.em.albaya.shop.model.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.em.albaya.common.util.Utility;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.shop.model.mapper.ShopMapper;
@@ -21,6 +25,12 @@ public class ShopServiceImpl implements ShopService{
 	
 	private final BCryptPasswordEncoder bcrypt;
 	
+	@Value("${my.profile.web-path}")
+	private String profileWebPath;
+	
+	@Value("${my.profile.folder-path}")
+	private String profileFolderPath;
+	
 	@Override
 	public int checkEmail(String shopEmail) {
 		return mapper.checkEmail(shopEmail);
@@ -32,7 +42,19 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	@Override
-	public int signup(Shop shop, MultipartFile profileImg) {
+	public int signup(Shop shop, MultipartFile profileImg) throws IllegalStateException, IOException {
+		String updatePath = null;
+		
+		String rename = null;
+		if(!profileImg.isEmpty()) {
+			// updatePath
+			
+			rename = Utility.fileRename(profileImg.getOriginalFilename());
+			
+			// /myPage/profile/변경된파일명.jpg
+			updatePath = profileWebPath + rename;
+		}
+		
 		
 		Map<String, Object> map = new HashMap<>();
 		
@@ -51,11 +73,17 @@ public class ShopServiceImpl implements ShopService{
 		String encPw = bcrypt.encode(shopPw);
 		shop.setShopPw(encPw);
 		
+		shop.setShopProfile(updatePath);
 		
-		int result = mapper.signup(shop, profileImg);
-		
+		int result = mapper.signup(shop);
+
 		if(result < 1) {
 			return 0;
+		}
+		else if(result >= 1) {
+			if(!profileImg.isEmpty()) {				
+				profileImg.transferTo(new File(profileFolderPath + rename));
+			}
 		}
 		
 		return result;
