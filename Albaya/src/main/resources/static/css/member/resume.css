@@ -286,11 +286,18 @@ input[type="date"]{
 
 
 #dateContainer{
-    margin:0px;
+    display:flex;
+    width:400px;
+    
 }
-#dateContainer>input[type="date"]{
-    margin-left:20px;
+.innerDateContainer>input[type="date"]{
+  padding-right:10px;
+  margin-left:20px;
 }
+.innerDateContainer{
+    display:flex;
+}
+
 
 #career{
     display:flex;

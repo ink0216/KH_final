@@ -17,56 +17,58 @@
             <div id="reviewBoardDetailBox">
                 <div id="reviewTitle">
                     <h1 style = "font-size:45px;" th:text="*{reviewTitle}">&nbsp;  게시글 제목  </h1>
-                    
                 </div>
+
                 <div id="reviewBoardInfo">
-                <div id="reviewBoardWriteDate">
-                    <p>
-                        <i class="fa-solid fa-calendar-days" style="color: #000000;"></i>
-                        &nbsp; 
-                        [[*{reviewBoardWriteDate}]]
-                    </p>
-                </div>
-                <div id="memberEmail"> 
-                    <!-- id 명칭은 나중에 수정해야함 -->
-                    <p>
-                        <!-- <span th:text="*{memberEmail}">  -->
-                        
+                    <div id="reviewBoardWriteDate">
+                        <p>
+                            <i class="fa-solid fa-calendar-days" style="color: #000000;"></i>
+                            &nbsp; 
+                            [[*{reviewBoardWriteDate}]]
+                        </p>
+                    </div>
+                    <div id="memberEmail"> 
+                        <!-- id 명칭은 나중에 수정해야함 -->
+                        <p>
+                            <!-- <span th:text="*{memberEmail}">  -->
+                            
                             <i class="fa-solid fa-pen" style="color: #000000;"></i>&nbsp;
                             <!-- [[*{memberEmail}]] -->
                             [[*{#strings.substringBefore(memberEmail,'@')}]]
                             <!-- *{#strings.substringBefore(memberEmail,'@')} -->
-                            
-                    </p>
-                </div>
-                <div id="readCount">
-                    <p>
-                        <i class="fa-solid fa-eye"></i>&nbsp;
-                        [[*{readCount}]]    
-                    </p>
-                </div>
-                <div id="declare-area"> 
-                    <!-- 신고 아이콘 -->
-                    <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren" style="color: #ff0000;"
-                    th:if="${reviewBoardCode == 2}"></i>
-                </div>
-            </div>
-                <div style="white-space:pre;" id="reviewBoardContent-area" th:text="*{reviewBoardContent}">
-                    
-                    바인딩 3시간 파트타임 업무 지원했는데 경영지원팀 피부 좀 까무잡잡하고 갈색 긴머리분 면접보면서 웃지마라 어디가서 면접보면서도 웃지마라,꼬리물기식 질문, 훈계 이렇게 무한으로 면접을 40분동안 합니다.
+                                
+                        </p>
+                    </div>
+                    <div id="readCount">
+                        <p>
+                            <i class="fa-solid fa-eye"></i>&nbsp;
+                            [[*{readCount}]]    
+                        </p>
+                    </div>
 
-아르바이트 면접에서 이렇게 면박주는곳은 일하면 어떨지 보입니다. 이런곳에서 일하지마시고 다른곳 지원하시라구 알려드려요
+                    <div id="declare-area"> 
+                        <!-- 신고 아이콘 -->
+                        <i class="fa-solid fa-triangle-exclamation fa-xl" id="siren" style="color: #ff0000;"
+                        th:if="${reviewBoardCode == 2}"></i>
+                    </div>
+
                 </div>
-                <div class="reviewBoard-btn-area">
-                    
-                        <button id="goToListBtn">목록으로</button>
-                        <th:block th:if="${reviewBoard.memberNo == session.loginMember?.memberNo}">  
-                        <!-- th:block 안의 버튼은 로그인한 회원이 게시글의 회원번호와 같다면 활성화됨 백앤드 완성하면 위의 문장 주석 풀 예정임-->
-                            <button id="updateBtn">수정하기</button>
-                            <button id="deleteBtn">삭제하기</button>
-                        </th:block>
+                
+                <div style="white-space:pre;"
+                     id="reviewBoardContent-area" 
+                     th:text="*{reviewBoardContent}">
+                   게시글 내용
                 </div>
-        
+                
+            </div>
+            <div class="reviewBoard-btn-area">
+                
+                    <button id="goToListBtn">목록으로</button>
+                    <th:block th:if="${reviewBoard.memberNo == session.loginMember?.memberNo}">  
+                    <!-- th:block 안의 버튼은 로그인한 회원이 게시글의 회원번호와 같다면 활성화됨 백앤드 완성하면 위의 문장 주석 풀 예정임-->
+                        <button id="updateBtn">수정하기</button>
+                        <button id="deleteBtn">삭제하기</button>
+                    </th:block>
             </div>
         </section>
 
@@ -89,6 +91,9 @@
 
       
         const writeMemberNo = /*[[${reviewBoard.memberNo}]]*/"게시글 작성자";
+
+   
+
 
         
     </script>

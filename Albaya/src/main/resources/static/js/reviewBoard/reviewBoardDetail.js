@@ -1,4 +1,4 @@
-const siren = document.querySelector("#siren");
+const siren = document.querySelector("#declare-area");
 
 /* 신고 아이콘 클릭시 신고 팝업창 */
 
@@ -10,9 +10,12 @@ const siren = document.querySelector("#siren");
             alert("로그인 후 신고 서비스를 이용할 수 있습니다.");
             return;
         }
-  
 
-        window.open('/declarePopup?reviewBoardNo='+reviewBoardNo+'&loginMemberNo='+loginMemberNo+'$writeMemberNo='+writeMemberNo,'popupWindow', 'width=770, height=1200, left=150, resizable = no');
+        
+       
+
+        window.open('/declarePopup?reviewBoardNo='+reviewBoardNo,
+                'popupWindow', 'width=770, height=1200, left=150, resizable = no');
        
       
         

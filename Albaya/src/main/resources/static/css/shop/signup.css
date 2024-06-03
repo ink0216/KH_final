@@ -44,9 +44,9 @@ button:hover{
     background-color: green;
 }
 
-/* div{
+div{
     border: 1px solid black;
-} */
+}
 
 form{
     width: 100%;
@@ -238,6 +238,10 @@ form{
 
 .btn-area > button{
     width: 15%;
+}
+
+.btn-area > button{
+    width: 17%;
     height: 90%;
     background-color: #014C73;
     color: white;

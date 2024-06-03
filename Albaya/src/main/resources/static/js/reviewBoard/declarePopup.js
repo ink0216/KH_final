@@ -30,6 +30,15 @@ document.querySelector("#declareFrm").addEventListener("submit", e => {
         return;
     }
 
+    
+
+    if(reviewBoardCondition == '1'){
+        alert("이미 신고된 게시글입니다.");
+        return;
+    }
+
+
+ 
     alert("신고 처리가 완료되었습니다.");
 
 })

@@ -83,7 +83,9 @@ public class ShopController {
     public String signup(
     		Shop shop,
     		RedirectAttributes ra,
+
     		@RequestParam("profileImg") MultipartFile profileImg) throws IllegalStateException, IOException {
+
     	int result = service.signup(shop, profileImg);
     	
     	String message = null;

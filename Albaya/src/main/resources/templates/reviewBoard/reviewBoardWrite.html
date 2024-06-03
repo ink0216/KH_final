@@ -11,49 +11,48 @@
 
 </head>
 <body>
-<div id="reviewBoardWriteFrm">
-    <div id="alba">
-        <p id="reviewBoardWritePage" th:if="${session.loginMember.authorityNo != 1}">알바 후기 작성 페이지</p>
-        <p id="reviewBoardWritePage" th:if="${session.loginMember.authorityNo == 1}">공지 작성 페이지</p>
-    </div>
-    <div id="reviewBoardWriteRule">
-        <p id="reviewBoardWriteRuleTitle" style="color:red; font-weight:bold;" th:if="${session.loginMember.authorityNo != 1}">알바 후기 게시글 작성 전 주의사항을 반드시 읽어주세요!</p>
-        <p id="reviewBoardWriteRuleTitle" style="color:red; font-weight:bold;" th:if="${session.loginMember.authorityNo == 1}">알바 후기 게시판에 필요한 공지를 작성하는 관리자 전용 페이지입니다.</p>
-        <p id="reviewBoardWriteRuleContent" th:if="${session.loginMember.authorityNo != 1}">
-            <li>1. 회사에 대한 무분별한 비난, 허위 사실이 포함되거나 지나친 욕설이 담긴 글 작성을 금지합니다. </li><br>
-            <li>2. 이곳은 아르바이트에 대한 정보 공유 및 경험담에 대해 공유하는 곳입니다. 주제에 벗어난 글 작성을 금지합니다.</li><br>
-            <li>3. 같은 게시글을 여러번 작성하는 행위(도배)를 할 경우 신고 및 활동 정지 사유가 됩니다. </li><br>
-            <li>4. 타 회원과의 지나친 분쟁 행위를 금지합니다.</li><br>
-            <li>5. 주의사항을 지키지 않은 게시글은 타 회원에 의해 신고 처리가 되어 활동 정지 처분을 받을 수 있습니다.</li><br>
-        
+    <div id="reviewBoardWriteFrm">
+        <div id="alba">
+            <p id="reviewBoardWritePage" th:if="${session.loginMember.authorityNo != 1}">알바 후기 작성 페이지</p>
+            <p id="reviewBoardWritePage" th:if="${session.loginMember.authorityNo == 1}">공지 작성 페이지</p>
+        </div>
+        <div id="reviewBoardWriteRule">
+            <p id="reviewBoardWriteRuleTitle" style="color:red; font-weight:bold;" th:if="${session.loginMember.authorityNo != 1}">알바 후기 게시글 작성 전 주의사항을 반드시 읽어주세요!</p>
+            <p id="reviewBoardWriteRuleTitle" style="color:red; font-weight:bold;" th:if="${session.loginMember.authorityNo == 1}">알바 후기 게시판에 필요한 공지를 작성하는 관리자 전용 페이지입니다.</p>
+            <p id="reviewBoardWriteRuleContent" th:if="${session.loginMember.authorityNo != 1}">
+                <li>1. 회사에 대한 무분별한 비난, 허위 사실이 포함되거나 지나친 욕설이 담긴 글 작성을 금지합니다. </li><br>
+                <li>2. 이곳은 아르바이트에 대한 정보 공유 및 경험담에 대해 공유하는 곳입니다. 주제에 벗어난 글 작성을 금지합니다.</li><br>
+                <li>3. 같은 게시글을 여러번 작성하는 행위(도배)를 할 경우 신고 및 활동 정지 사유가 됩니다. </li><br>
+                <li>4. 타 회원과의 지나친 분쟁 행위를 금지합니다.</li><br>
+                <li>5. 주의사항을 지키지 않은 게시글은 타 회원에 의해 신고 처리가 되어 활동 정지 처분을 받을 수 있습니다.</li><br>
             
-        </p>
-    </div>
-    <div id="writeBox">
-        <form action = "insert" th:object="${reviewBoard}" method="POST" class="reviewBoard-write" id="reviewBoardUpdateFrm">
+                
+            </p>
+        </div>
+        <div id="writeBox">
+            <form action = "insert" th:object="${reviewBoard}" method="POST" class="reviewBoard-write" id="reviewBoardUpdateFrm">
+                <div id="reviewTitle-area">
+                    제목 <textarea name="reviewTitle" id="reviewTitle" placeholder="제목을 입력하세요."></textarea>
+                </div>
+                <div id="reviewBoardContent-area">
+                    내용 <textarea name="reviewBoardContent" id="reviewBoardContent" maxlength="4000" 
+                    placeholder = "내용을 입력하세요.(최대 4000자)&#13;&#10;&#13;&#10;&#13;&#10;게시글 작성 시 위의 주의사항을 반드시 숙지하셔야 합니다."></textarea>
+                </div>
 
+                <div class="writeBtn-area">
+                    <button id="writeBtn">작성하기</button>
+                </div>
             
-            <div id="reviewTitle-area">
-                제목 <textarea name="reviewTitle" id="reviewTitle" placeholder="제목을 입력하세요."></textarea>
-            </div>
-            <div id="reviewBoardContent-area">
-                내용 <textarea name="reviewBoardContent" id="reviewBoardContent" maxlength="4000" 
-                placeholder = "내용을 입력하세요.(최대 4000자)&#13;&#10;&#13;&#10;&#13;&#10;게시글 작성 시 위의 주의사항을 반드시 숙지하셔야 합니다."></textarea>
+            </form>
+            <div class="cancelBtn-area">
+                <button id="cancelBtn">뒤로가기</button>
             </div>
 
-            <div class="writeBtn-area">
-        <button id="writeBtn">작성하기</button>
+        </div>
     </div>
-    
-        </form>
-    <div class="cancelBtn-area">
-        <button id="cancelBtn">뒤로가기</button>
-    </div>
-
-</div>
-</div>
-<th:block th:replace="~{common/footer}"></th:block>
 </body>
+
+<th:block th:replace="~{common/footer}"></th:block>
 
 <script src="/js/reviewBoard/reviewBoardWrite.js"></script>
 </html>

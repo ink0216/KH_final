@@ -42,6 +42,7 @@ public class ShopServiceImpl implements ShopService{
 	}
 	
 	@Override
+
 	public int signup(Shop shop, MultipartFile profileImg) throws IllegalStateException, IOException {
 		String updatePath = null;
 		
@@ -54,7 +55,6 @@ public class ShopServiceImpl implements ShopService{
 			// /myPage/profile/변경된파일명.jpg
 			updatePath = profileWebPath + rename;
 		}
-		
 		
 		Map<String, Object> map = new HashMap<>();
 		

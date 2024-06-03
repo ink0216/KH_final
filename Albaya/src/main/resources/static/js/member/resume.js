@@ -181,7 +181,6 @@ chuga.addEventListener("click" , () => {
 });
 
 //삭제버튼 작성
-
     const removeBtns = document.querySelectorAll(".remove");
 
     // removeBtns.forEach(btns => {

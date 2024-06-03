@@ -16,7 +16,7 @@ public interface ShopMapper {
 
 	int findDongNo(Map<String, Object> map);
 
-	int signup(Shop shop);
+	int signup(Shop shop, MultipartFile profileImg);
 
 	Shop login(String shopEmail);
 

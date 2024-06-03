@@ -58,12 +58,12 @@ const selectCommentList = () => {
                     const commentDate = document.createElement("span");
                     
                     commentDate.classList.add("comment-date");
-
-
-                    commentDate.innerText = comment.commentWriteDate;
-
+              
                     
+                    commentDate.innerText = comment.commentWriteDate.toLocaleString();
 
+
+   
                     
                     // 작성자 영역(commentWriter)에 닉네임, 날짜 추가
                     commentWriter.append(nickname, commentDate);
