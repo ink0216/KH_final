@@ -36,10 +36,11 @@ public class MainController {
    }
    
 
-   @RequestMapping("admin")
-   public String adminPage() {
-	   return "/admin";
-   }
+//   @GetMapping("admin")
+//   public String adminPage() {
+//	   return "/admin";
+//   }
+   
    @GetMapping("loginError")
 	public String loginError(RedirectAttributes ra) {
 		ra.addFlashAttribute("message", "기업 회원으로 로그인 후 이용해 주세요");

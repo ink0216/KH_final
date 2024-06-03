@@ -288,9 +288,7 @@
   
   /* 알림 창 보이게 하기 */
   .notification-show{ display: block; }
-  
-  /* 알림 창 보이게 하기 */
-  /* .notification-show{ display: block; } */
+
   
 .notification-item {
     background-color: white;
