@@ -7,7 +7,6 @@
     <title>공고문 조회</title>
 
     <link rel="stylesheet" href="/css/hire/hire-detail.css">
-    <link rel="stylesheet" href="/css/common/footer.css">
 </head>
 
 <body>
@@ -48,7 +47,7 @@
 
                     <div class="endDetail div1">
                         <p class="title">모집 종료</p>
-                        <p th:text="${hire.hireEnd}" >2024-05-23</p>
+                        <p th:text="${hire.hireEnd}">2024-05-23</p>
                     </div>
 
                 </div>
@@ -81,7 +80,7 @@
                         <p class="title">근무요일</p>
                         <p id="days">
                             <th:block th:each="workDay : ${workDayList}">
-                                <th:block th:if="${workDay}=='mom'"> 
+                                <th:block th:if="${workDay}=='mom'">
                                     <span>월요일</span>
                                 </th:block>
                                 <th:block th:if="${workDay}=='tue'">
@@ -102,7 +101,7 @@
                                 <th:block th:if="${workDay}=='sun'">
                                     <span>일요일</span>
                                 </th:block>
-                                <th:block th:if="${workDay}=='aa'"> 
+                                <th:block th:if="${workDay}=='aa'">
                                     <span>협의가능</span>
                                 </th:block>
                             </th:block>
@@ -150,7 +149,7 @@
 
 
                 <div class="hire-container3 container">
-                    <div class="div1">
+                    <div class="addDiv">
                         <p class="title">근무지 주소</p>
                         <p th:text="${hire.roadAddress}" id="address">서울 중구 서소문로 136</p>
                         <p th:text="${hire.addressDetail}" id="addressDetail">버거킹 시청역점</p>

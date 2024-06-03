@@ -24,6 +24,21 @@ hireWriteBtn.addEventListener("click",()=>{
     location.href='/hire/hireWrite';
 })
 
+const goHireKind = document.getElementById('goHireKind');
+goHireKind.addEventListener("click",()=>{
+    location.href='/hire/hireKind';
+});
+
+const goHireLocation = document.getElementById('goHireLocation');
+goHireLocation.addEventListener("click",()=>{
+    location.href='/hire/hireLocation';
+});
+
+const goReview2 = document.getElementById('goReview2');
+goReview2.addEventListener("click",()=>{
+    location.href='/reviewBoard/2';
+});
+
 
 
 /* ***********************************************************/

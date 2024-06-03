@@ -1,6 +1,11 @@
 * {
     font-family: 'SUIT-Regular';
 }
+header * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 
 .underline a{
     color: #014C73;
@@ -43,6 +48,8 @@
     align-items: center;
     width: 339px;
     margin-top: -20px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
 
 .underline{
@@ -83,15 +90,15 @@
 }
 
 
-
 .selectedList::after{
     width:100%;
     bottom:0;
     left:0;
     height:5px;
     background-color:#014C73;
-    transition:transform 360000s ease-in;
+    transition:transform 0.25s ease-in;
 }
+
 .selectedNextSibling::after{
     width:100%;
     bottom:0;
@@ -135,6 +142,7 @@
     border-radius:10px;
     font-size: 12px;
     background: white;
+    cursor: pointer;
 }
 
 .loginMember{
@@ -145,6 +153,11 @@
     border-radius:100%;
     border: 1px solid white;
     background:white;
+}
+
+.logout{
+    margin-bottom: 8px;
+    margin-left: 8px;
 }
 
 #buttons > button:nth-child(1){
