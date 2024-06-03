@@ -60,7 +60,7 @@ const applyBtn = document.getElementById('applyBtn');
 applyBtn.addEventListener("click",()=>{
     const options=[];
     options.push("width=600");
-    options.push("height=700");
+    options.push("height=650");
     options.push("left=300");
     options.push("top=100");
 
