@@ -8,16 +8,16 @@
 
 document.querySelector("#reviewBoardWriteFrm").addEventListener("submit", e => {
 
-    const reviewBoardTitle = document.querySelector("[name='reviewBoardTitle']");
+    const reviewBoardTitle = document.querySelector("[name='reviewTitle']");
     const reviewBoardContent = document.querySelector("[name='reviewBoardContent']");
 
 
     // 제목 미작성시
-    if(reviewBoardTitle.value.trim().length == 0){
+    if(reviewTitle.value.trim().length == 0){
         alert("제목을 입력하세요.");
 
         // 제목쪽으로 커서를 옮김
-        reviewBoardTitle.focus();
+        reviewTitle.focus();
 
         // form 제출 막음
         e.preventDefault();

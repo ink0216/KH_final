@@ -8,14 +8,7 @@ import kh.em.albaya.member.model.dto.Member;
 
 public interface DeclareService {
 
-	
-	/** 게시글 신고 목록 조회
-	 * @param reviewBoardNo
-	 * @param cp
-	 * @return
-	 */
-	Map<String, Object> selectDeclare(int reviewBoardNo, int cp);
-	
+
 	
 	/** 게시글 신고 하기
 	 * @param memberNo
@@ -23,6 +16,33 @@ public interface DeclareService {
 	 * @return
 	 */
 	int insertDeclare(Declare inputDeclare);
+
+
+
+
+	/** 게시판 종류 조회
+	 * @return
+	 */
+	List<Map<String, Object>> selectDeclareTypeList();
+
+
+	/**
+	 * 신고 게시판의 목록 출력
+	 * @param declareBoardCode
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectDeclareList(int declareBoardCode, int cp);
+
+
+
+	/**
+	 * 중복된 신고
+	 * @param reviewBoardCondition
+	 * @return
+	 */
+	int duplicateDeclare(String reviewBoardCondition);
+	
 
 	
 

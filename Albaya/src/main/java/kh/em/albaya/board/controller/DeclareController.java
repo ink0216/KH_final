@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletResponse;
 import kh.em.albaya.board.model.dto.Declare;
@@ -22,7 +24,9 @@ import kh.em.albaya.board.model.dto.ReviewBoard;
 import kh.em.albaya.board.model.service.DeclareService;
 import kh.em.albaya.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("declare")
 @RequiredArgsConstructor
@@ -33,21 +37,21 @@ public class DeclareController {
 	//------------ 게시글 신고 -------------
 	
 	// 게시글 신고 목록 조회
-	@GetMapping("declareList")
-	public String declareSelect(
-			@RequestParam("reviewBoardNo")int reviewBoardNo,
+	@GetMapping("{declareBoardCode:[0-9]+}")
+	public String selectDeclareList(
+			@PathVariable("declareBoardCode") int declareBoardCode,
 			Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
 			@RequestParam Map<String, Object> paramMap) {
 		
 		
-		Map<String, Object> map = null;
-		map = service.selectDeclare(reviewBoardNo,cp);
+		Map<String, Object> map = null; 
+		map = service.selectDeclareList(declareBoardCode,cp);
 		
 		model.addAttribute("pagination", map.get("pagination"));
 		model.addAttribute("declareList", map.get("declareList"));
 		
-		return "admin"; // 신고 관리 페이지로 이동하기
+		return "declare/admin"; // 신고 관리 페이지로 이동하기
 	}
 	
 	
@@ -94,10 +98,35 @@ public class DeclareController {
 	}
 	
 	
+	// 중복 처리 검사
+//	@GetMapping("duplicate")
+//	public String duplicateDeclare(
+//			Declare inputDeclare,
+//			@RequestParam("reviewBoardCondition") String reviewBoardCondition,
+//			RedirectAttributes ra) {
+//			
+//			
+//			int result = service.duplicateDeclare(reviewBoardCondition);
+//			
+//			if(result > 0) {
+//				
+//				ra.addFlashAttribute("message", "이미 신고된 게시글입니다.");
+//				
+//				return null;}
+//			else {
+//				
+//			}
+				
 	
-	
-	
-
-	
-
+			
 }
+			
+		
+
+	
+	
+	
+
+	
+
+
