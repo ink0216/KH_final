@@ -96,8 +96,7 @@ nextButton.addEventListener("click",(e)=>{
 function reloadTable(cp) {
     const obj = {
         "cp": cp,
-        "dongList" : dongList,
-        "sigunguList" : sigunguList
+        "dongList" : dongList
     };
     fetch("/hire/locationHireList", {
         method : "POST",
@@ -106,12 +105,13 @@ function reloadTable(cp) {
     })
     .then(resp=>resp.json())
     .then(map => {
-        const {hireList, pagination,sigunguHireList} = map;
+        console.log(map);
+        const {hireList, pagination} = map;
 
         tbody.innerHTML='';
         numberButtonWrapper.innerHTML="";
 
-        setPageOf(hireList+sigunguHireList);
+        setPageOf(hireList);
         getPagination(pagination);
     })
 }
@@ -137,7 +137,6 @@ const dongBody = document.querySelector('.dong-body');
 const searchLocations = document.querySelector('.search-locations');
 
 const dongList = []; //빈 배열
-const sigunguList = []; //빈 배열
 
 dosiNameList.forEach(dosiName=>{
 
@@ -198,7 +197,6 @@ dosiNameList.forEach(dosiName=>{
                                     return;
                                 }
                             }
-                            sigunguList.push(sigunguItem.sigunguNo);
                             
                             const locationItem = document.createElement("div");
                             locationItem.classList.add('location-item');
@@ -217,12 +215,8 @@ dosiNameList.forEach(dosiName=>{
                             // x버튼 눌렸을 때
                             button.addEventListener("click",()=>{
                                 locationItem.remove();
-                                sigunguList.splice(sigunguList.indexOf(sigunguItem.sigunguNo),1);
-                                    reloadTable(1);
                             })
                         }
-                        console.log("sigunguList :", sigunguList );
-                        reloadTable(1);
                         dongBody.innerHTML="";
                         
 

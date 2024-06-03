@@ -238,7 +238,13 @@ function sample5_execDaumPostcode() {
             dong.setAttribute("name","dongName");
 
             sido.value=data.sido;
-            sigunsu.value=data.sigungu;
+            
+            if(data.sigungu.length>4){
+                sigunsu.value=data.sigungu.substr(0,3)+data.sigungu.substr(4); //띄어쓰기 됐던 포항시 북구 -> 포항시북구 붙이기
+            }else{
+                sigunsu.value=data.sigungu;
+            }
+            
             dong.value=data.bname;
 
             div.append(sido,sigunsu,dong);

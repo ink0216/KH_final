@@ -31,9 +31,6 @@ public class MainController {
 	  for(int i=0; i<12; i++) {
 		  Hire hire = hireList.get(i);
 		  boxList.add(hire);	  }
-	  
-	
-	  
 	  model.addAttribute("boxList", boxList);
       return "/main";
    }
