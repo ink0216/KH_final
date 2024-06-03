@@ -1,5 +1,6 @@
 package kh.em.albaya.hire.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,14 @@ public class HireServiceImpl implements HireService{
 		hire.setTypeNo(typeNo);
 		
 		String dosiName = hire.getDosiName();
+		if(dosiName.equals("경북")) dosiName = "경상북도";
+		if(dosiName.equals("경남")) dosiName = "경상남도";
+		
+		if(dosiName.equals("충북")) dosiName = "충청북도";
+		if(dosiName.equals("충남")) dosiName = "충청남도";
+		
+		if(dosiName.equals("전북특별자치도")) dosiName = "전라북도";
+		if(dosiName.equals("전남")) dosiName = "전라남도";
 		String sigunguName = hire.getSigunguName();
 		String dongName=hire.getDongName();
 		
@@ -79,8 +88,10 @@ public class HireServiceImpl implements HireService{
 		// 전체 공고 수 조회
 		int listCount = mapper.selectListCount();
 		
-		Pagination pagination = new Pagination(cp, listCount, 10, 8, 12);
-		
+		Pagination pagination = new 
+				Pagination(cp, listCount, 10, 8, 12);
+				//현재 페이지 번호, 전체 글 수, 한 페이지 게시글 수(limit)
+		//보여질 페이지 번호 개수(pageSize), offset(페이지 당 건너뛰는 글 수)
 		// 13번째 부터 1페이지
 		// 1p == 13 ~ 22
 		// 2p == 23 ~ 32
@@ -130,14 +141,9 @@ public class HireServiceImpl implements HireService{
 	@Override
 	public Map<String,Object> locationHireList(Map<String, Object> map) {
 		List<Integer> dongList =  (List<Integer>)(map.get("dongList"));
-		List<Integer> sigunguList =  (List<Integer>)(map.get("sigunguList"));
 		int cp =  (int)(map.get("cp"));
 		// 전체 공고 수 조회
 				int listCount = mapper.dongListCount(dongList);
-				if(sigunguList.size()>0) {
-					//시군구 리스트에 들어있는 경우
-					listCount +=mapper.sigunguListCount(sigunguList);
-				}
 				
 				Pagination pagination = new Pagination(cp, listCount, 10, 8, 0);
 				
@@ -146,14 +152,10 @@ public class HireServiceImpl implements HireService{
 				// 2p == 23 ~ 32
 				int offset = (cp-1) * 10; 
 				RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-				
-				List<Hire> hireList = mapper.locationHireList(map, rowBounds);
-				List<Hire> sigunguHireList = null;
-				if(sigunguList.size()>0) {
-					//시군구 리스트에 들어있는 경우
-					sigunguHireList = mapper.sigunguHireList(sigunguList);
-				}
-				hireList.addAll(sigunguHireList);
+				List<Integer> dongList1 = (List<Integer>)map.get("dongList");
+				List<Hire> hireList 
+				= mapper.locationHireList(dongList1, rowBounds);
+			
 				Map<String, Object> map1
 				= Map.of("hireList", hireList, "pagination", pagination);
 				
