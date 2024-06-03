@@ -279,11 +279,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 0 1px #eee, 0 4px 8px 0 rgba(0, 0, 0, .3);
-    /* display: none; 처음에 알림 창이 보이지 않게 함 */
+    display: none; 
+    /* 처음에 알림 창이 보이지 않게 함 */
   }
   
   /* 알림 창 보이게 하기 */
-  /* .notification-show{ display: block; } */
+  .notification-show{ display: block; }
   
 .notification-item {
     background-color: white;

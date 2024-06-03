@@ -49,7 +49,8 @@
 /* 모집 내용 */
 
 .container {
-    margin: 0px 20px;
+   margin: auto;
+   width: 900px;
 }
 
 .hireContent>h3{
@@ -63,12 +64,12 @@
     background-color: #f2f7f7;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 13px;
 }
 
 .hireContent-input dl{
     display:  flex;
-    margin: 10px;
+    margin: 13px;
 }
 
 .hireContent-input dt{
@@ -80,7 +81,7 @@
 }
 
 .hireContent-input dd input{
-    font-size: 10px;
+    font-size: 13px;
     user-select: none;
     width: 300px;
 }
@@ -130,7 +131,7 @@
     transform: translate(-50%,-50%);
     color: black;
     border: none;
-    font-size: 10px;
+    font-size: 16px;
     outline: none;
     text-align: center;
 }
@@ -334,7 +335,7 @@ font-weight: bold;
 }
 
 .ownerInfo-input dd input{
-    font-size: 10px;
+    font-size: 13px;
     user-select: none;
     width: 300px;
 }

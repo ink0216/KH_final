@@ -75,8 +75,8 @@
 
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;<button  id ="resumeRedirect" class="loggedIn">이력서 등록</button>
-                    &nbsp;&nbsp;<button class="loggedIn">공고 등록</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button id="resumeRedirect" class="loggedIn">이력서 등록</button>
+                    &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
 
 
                     <th:block th:if="${session.loginMember != null}">
@@ -136,8 +136,8 @@
         });
     }
 
-    const resume =  document.querySelector("#resumeRedirect");
-    resume.addEventListener("click" , () => {
+    const resume = document.querySelector("#resumeRedirect");
+    resume.addEventListener("click", () => {
         window.location.href = "http://localhost/member/resume";
     })
 </script>
