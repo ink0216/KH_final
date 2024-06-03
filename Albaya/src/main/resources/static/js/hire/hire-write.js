@@ -293,6 +293,7 @@ function setType(type) {
     checkObj.selectedType=true;
 }
 
+
 /* -------------------------------------------------------------- */
 /* 유효성 검사 */
 const checkObj={

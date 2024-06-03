@@ -181,5 +181,13 @@ public class HireController {
 		
 		return "hire/hireKind";
 	}
+	
+	
+	
+	//지원하기 팝업창으로 이동
+	@GetMapping("hireApply")
+	public String hireApply() {
+		return "hire/hireApply";
+	}
 }
 
