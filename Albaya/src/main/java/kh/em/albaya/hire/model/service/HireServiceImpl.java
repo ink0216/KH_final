@@ -15,6 +15,7 @@ import kh.em.albaya.hire.model.mapper.HireMapper;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.shop.model.dto.Shop;
 import lombok.RequiredArgsConstructor;
 @Transactional
 @Service
@@ -162,6 +163,14 @@ public class HireServiceImpl implements HireService{
 				return map1;
 	}
 	
+	// 지원하기 페이지 기업 정보 가져오기
+	@Override
+	public Hire hireInfo(int hireNo) {
+		Hire hireInfo = mapper.hireInfo(hireNo);
+		if(hireInfo != null) {
+			return hireInfo;
+		}
+		return null;
 	//업직종별 공고 조회해오기
 	@Override
 	public Map<String, Object> kindHireList(Map<String, Object> map) {

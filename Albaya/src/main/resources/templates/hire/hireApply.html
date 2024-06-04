@@ -30,12 +30,12 @@
 
                     <div class="shopName-container">
                         <span class="span1">근무회사명</span>
-                        <span>버거깅</span>
+                        <span th:text="${hireInfo.shopName}">버거깅</span>
                     </div>
 
                     <div class="hireTitle-container">
                         <span class="span1">공고제목</span>
-                        <span>알바생을 구합니다</span>
+                        <span th:text="${hireInfo.hireTitle}">알바생을 구합니다</span>
                     </div>
 
                 </div>
@@ -96,17 +96,20 @@
 
                 <div class="user-info">
                     <span class="memberName span1">이름</span>
-                    <span>홍길동</span>
+                    <span th:text="${session.loginMember.memberName}">홍길동</span>
                 </div>
 
                 <div class="user-info">
                     <span class="memberTel span1">휴대폰</span>
-                    <span> 010-1111-2222</span>
+                    <span th:text=
+                    "${#strings.concat(#strings.substring(session.loginMember.memberPhoneNumber, 0, 3),
+                        '-', #strings.substring(session.loginMember.memberPhoneNumber, 3, 7),
+                        '-', #strings.substring(session.loginMember.memberPhoneNumber, 7))}">  010-1111-2222</span>
                 </div>
 
                 <div class="user-info">
                     <span class="memberEmail span1">이메일</span>
-                    <span>hong@gmail.com</span>
+                    <span th:text="${session.loginMember.memberEmail}">hong@gmail.com</span>
                 </div>
 
             </div>

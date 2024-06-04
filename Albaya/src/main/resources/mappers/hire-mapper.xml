@@ -34,18 +34,17 @@
 	</select>
 	
 	<!-- 기업명, 공고제목, 근무시간, 근무지역, 급여-->
-	<select id="selectHireList">
-		SELECT A.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
+	<select id="selectHireList">	
+			SELECT SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
 		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
-		 FROM "HIRE" A
+		FROM "HIRE" A
 		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
 		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
 		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
 		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
 		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
-
 		WHERE HIRE_STATUS = 0
-		ORDER BY HIRE_NO DESC
+		ORDER BY HIRE_NO DESCDESC
 	</select>
 	
 	<!-- INSERT -->
@@ -205,6 +204,14 @@
 	<select id="selectKind">
 	SELECT * FROM "WORK_TYPE"
 	</select>
+	
+	<select id="hireInfo" resultType="Hire">
+	    SELECT HIRE_TITLE, s.SHOP_NAME
+	    FROM "HIRE" h
+	    JOIN SHOP s ON h.SHOP_NO = s.SHOP_NO
+	    WHERE h.HIRE_NO = #{hireNo}
+	</select>
+
 	
 	<!-- 해당 업직종의 공고 수 찾기 -->
 	<select id="kindListCount">
