@@ -1,10 +1,3 @@
-//이력서 사진
-const changeProfileImg =  document.querySelector("#editProfile");
-changeProfileImg.addEventListener("click",async () => {
-     const imgPath = await window.showDirectoryPicker();
-     console.log(imgPath);
-})
-
 
 //최종학력 선택(고등학교/대학교) 선택시 팝업
 
@@ -14,8 +7,6 @@ changeProfileImg.addEventListener("click",async () => {
     const selectMiddleSchoolName = document.querySelector("#selectMiddleSchoolName");
     const selectSchoolName = document.querySelector("#selectSchoolName");
     const selectUniversityName = document.querySelector("#selectUniversityName");
-
-  
 
     
 
@@ -134,7 +125,6 @@ experienced.addEventListener("click", () => {
 
     
 });
-
 //경력 추가하기 버튼
 
 const addExperience = () => {
@@ -182,6 +172,7 @@ const addExperience = () => {
             removeBtn.setAttribute("type","button")
             dateInputDiv.appendChild(removeBtn);
 }
+
 
 
 const fifthResume = document.querySelector(".resumeElement:nth-child(11)")
@@ -272,7 +263,6 @@ certAdd.addEventListener("click", () => {
         });
     }
 })
-
     
-        
+    
 

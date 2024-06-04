@@ -32,10 +32,13 @@ const setPageOf=(hireList)=>{
 
         shopName.textContent = hire.shopName;
         hireTitle.textContent=hire.hireTitle;
-        hireTime.textContent=hire.hireTime;
+        hireTime.textContent=hire.workStart + " ~ " + hire.workEnd;
         sigunguName.textContent=hire.sigunguName;
-        pay.textContent=hire.pay;
+        pay.textContent=hire.payName+" "+hire.payInput;
 
+        tr.addEventListener("click", ()=>{
+            location.href='/hire/'+hire.hireNo; //상세 조회 페이지로 이동
+        });
 
         tr.append(shopName,hireTitle,hireTime,sigunguName,pay);
         tbody.append(tr);
@@ -92,9 +95,20 @@ nextButton.addEventListener("click",(e)=>{
 
 
 
+const kindList=[]; //빈 배열
 
 function reloadTable(cp) {
-    fetch("/hire/selectHireList?cp=" + cp)
+    const obj={
+        "cp":cp,
+        "kindList":kindList
+    };
+    fetch("/hire/kindHireList", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(obj)
+    } )
     .then(resp=>resp.json())
     .then(map => {
         console.log(map);
@@ -145,7 +159,13 @@ itemBtn.forEach(typeBtnItem=>{
                 return;
             }
         }
+        const kindNo = e.target.dataset.typeNo;
+        console.log("kindNo : ",kindNo);
 
+        kindList.push(e.target.dataset.typeNo);
+        console.log("no는?",e.target.dataset.typeNo);
+
+        reloadTable(1);
 
         const div = document.createElement('div');
         div.classList.add("kindItem");
@@ -163,8 +183,12 @@ itemBtn.forEach(typeBtnItem=>{
 
         /* x버튼을 누른 경우 */
         button.addEventListener('click',()=>{
+            kindList.splice(kindList.indexOf(typeBtnItem.dataset.typeNo),1);
             div.remove();
+            reloadTable(1);
         })
+        console.log("kindList : ", kindList);
+        
         })
 
 })

@@ -134,13 +134,14 @@ public class HireServiceImpl implements HireService{
 	
 	// 업직종별 공고 조회하기
 	@Override
-	public List<String> selectKind() {
+	public List<Hire> selectKind() {
 		return mapper.selectKind();
 	}
 	
 	//지역별 공고 조회해오기
 	@Override
 	public Map<String,Object> locationHireList(Map<String, Object> map) {
+		
 		List<Integer> dongList =  (List<Integer>)(map.get("dongList"));
 		int cp =  (int)(map.get("cp"));
 		// 전체 공고 수 조회
@@ -153,9 +154,8 @@ public class HireServiceImpl implements HireService{
 				// 2p == 23 ~ 32
 				int offset = (cp-1) * 10; 
 				RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-				List<Integer> dongList1 = (List<Integer>)map.get("dongList");
 				List<Hire> hireList 
-				= mapper.locationHireList(dongList1, rowBounds);
+				= mapper.locationHireList(dongList, rowBounds);
 			
 				Map<String, Object> map1
 				= Map.of("hireList", hireList, "pagination", pagination);
@@ -171,5 +171,24 @@ public class HireServiceImpl implements HireService{
 			return hireInfo;
 		}
 		return null;
+	//업직종별 공고 조회해오기
+	@Override
+	public Map<String, Object> kindHireList(Map<String, Object> map) {
+		List<Integer> kindList = (List<Integer>)map.get("kindList");
+		int cp =  (int)(map.get("cp"));
+		int listCount = mapper.kindListCount(kindList);
+		
+		Pagination pagination = new Pagination(cp, listCount, 10, 8, 0);
+		
+		int offset = (cp-1) * 10; 
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		List<Hire> hireList
+			= mapper.kindHireList(kindList, rowBounds);
+		
+		Map<String, Object> map1
+		= Map.of("hireList", hireList, "pagination", pagination);
+		
+		return map1;
 	}
 }

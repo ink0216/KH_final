@@ -47,7 +47,7 @@ public interface HireService {
 	/** 업직종별 조회하기
 	 * @return
 	 */
-	List<String> selectKind();
+	List<Hire> selectKind();
 
 	/**지역별 공고 조회해오기
 	 * @param map
@@ -61,6 +61,11 @@ public interface HireService {
 	 */
 	Hire hireInfo(int hireNo);
 
+	/**업직종별 공고 조회해오기
+	 * @param map
+	 * @return
+	 */
+	Map<String, Object> kindHireList(Map<String, Object> map);
 	
 
 	

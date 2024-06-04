@@ -172,7 +172,7 @@ public class HireController {
 	public String hireKind(
 			Model model) {
 		
-		List<String> typeList = service.selectKind();
+		List<Hire> typeList = service.selectKind();
 		model.addAttribute("typeList", typeList);
 		
 		return "hire/hireKind";
@@ -192,6 +192,7 @@ public class HireController {
 		}
 	    return "/hire/hireApply"; // 이동할 URL로 포워딩
 	}
+
 	
 	//지역별 공고 조회해오기
 	@PostMapping("locationHireList")
@@ -201,6 +202,16 @@ public class HireController {
 			){
 		
 		return service.locationHireList(map);
+	}
+	
+	//업직종별 공고 조회해오기
+	@PostMapping("kindHireList")
+	@ResponseBody
+	public Map<String,Object> kindHireList(
+			@RequestBody Map<String, Object> map
+			){
+		
+		return service.kindHireList(map);
 	}
 }
 

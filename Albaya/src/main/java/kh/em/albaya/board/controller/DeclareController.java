@@ -98,6 +98,56 @@ public class DeclareController {
 	}
 	
 	
+	
+	// 신고 반려 처리 
+	@ResponseBody
+	@GetMapping("reject")
+	public String rejectDeclare(
+			@RequestParam("reviewBoardDeclareNo") int reviewBoardDeclareNo,
+			@RequestParam("reviewBoardNo") int reviewBoardNo,
+			RedirectAttributes ra
+			) {
+		
+		int result = service.rejectDeclare(reviewBoardDeclareNo,reviewBoardNo);
+		
+		String message = null;
+		
+		if(result > 0) {
+			message = "신고 반려 처리 완료 되었습니다";
+		}else {
+			message = "신고 반려 처리 실패 하였습니다";
+		}
+		
+		ra.addAttribute("message", message);
+		
+		
+		return "redirect:/declare/admin" ;
+	}
+	
+	
+	// 신고 완료 처리
+	@ResponseBody
+	@GetMapping("complete")
+	public String completeDeclare(
+			@RequestParam("reviewBoardDeclareNo") int reviewBoardDeclareNo,
+			@RequestParam("reviewBoardNo")int reviewBoardNo,
+			RedirectAttributes ra) {
+		
+		int result = service.completeDeclare(reviewBoardDeclareNo,reviewBoardNo);
+		
+
+		String message = null;
+		
+		if(result > 0) {
+			message = "신고 처리 완료 되었습니다";
+		}else {
+			message = "신고 처리 실패 하였습니다";
+		}
+		
+		return "redirect:/declare/admin";
+	}
+	
+	
 	// 중복 처리 검사
 //	@GetMapping("duplicate")
 //	public String duplicateDeclare(

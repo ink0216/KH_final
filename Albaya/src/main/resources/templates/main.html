@@ -42,7 +42,7 @@
                 <th:block th:each=" hire : ${boxList}" th:object="${hire}">
                     <div class="imgItem" th:data-hire-no="*{hireNo}">
 
-                        <img src="/images/shopLogo.jpg" alt="기업 썸네일">
+                        <img th:src="*{shopProfile}" alt="기업 썸네일">
                         <p id="hireTitle" th:text="*{hireTitle}">버거킹 알바 모집중😁😁😁
                             함께 일해요~
                         </p>
