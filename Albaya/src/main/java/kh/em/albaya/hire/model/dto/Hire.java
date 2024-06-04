@@ -45,6 +45,7 @@ public class Hire {
 	private String shopOwner; //담당자명AAAA
 	private String shopTel; //담당자 연락처AAAA
 	private String shopEmail; //담당자 이메일AAAA
+	private String shopProfile; //기업 프로필 이미지
 	
 	//월급 계산용
 	private int hirePay; //급여(월 단위)

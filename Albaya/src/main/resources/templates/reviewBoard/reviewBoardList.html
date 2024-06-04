@@ -76,7 +76,10 @@
                                 </td>
 
                                 <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
-                                    <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
+                                    <!-- 토크 게시판에서는 회원 닉네임 중간부분이 다 가려짐. 공지 게시판은 제외 -->
+                                    <td th:unless="${reviewBoardCode == 2}" th:text="${temp}"></td>
+                                    <td th:if="${reviewBoardCode == 2}" th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}">이메일</td>
+                                    <!-- <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td> -->
 
                                     <td th:text="*{reviewBoardWriteDate}">작성일</td>
 
