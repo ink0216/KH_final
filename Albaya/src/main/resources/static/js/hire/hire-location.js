@@ -36,7 +36,9 @@ const setPageOf=(hireList)=>{
         sigunguName.textContent=hire.sigunguName;
         pay.textContent=hire.payName+" "+hire.payInput;
 
-
+        tr.addEventListener("click", ()=>{
+            location.href='/hire/'+hire.hireNo; //상세 조회 페이지로 이동
+        });
         tr.append(shopName,hireTitle,hireTime,sigunguName,pay);
         tbody.append(tr);
     
