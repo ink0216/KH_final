@@ -1,5 +1,11 @@
 package kh.em.albaya.myPage.model.service;
 
+import java.io.IOException;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import kh.em.albaya.shop.model.dto.Shop;
+
 public interface myPageService {
 
 	int myPageCheckPw(int memberNo, String memberEmail, String memberPw);
@@ -13,5 +19,7 @@ public interface myPageService {
 	int myPageCheckShopPw(int shopNo, String shopEmail, String shopPw);
 
 	int deleteShop(int shopNo, String shopEmail);
+
+	int changeProfile(Shop shop, MultipartFile profileImg) throws IllegalStateException, IOException;
 
 }

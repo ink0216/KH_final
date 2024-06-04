@@ -43,7 +43,7 @@ deleteBtn.addEventListener("click", () => {
         alert("게시글 삭제가 취소되었습니다.");
         return;
     }
-    alert("삭제되었습니다.");
+    // alert("삭제되었습니다.");
 
     
 

@@ -24,6 +24,7 @@ const signupBtn = document.querySelector("#signupBtn");
 let count = 0;
 
 const obj = {
+    "shopProfile":false,
     "shopEmail":false,
     "shopPw":false,
     "shopTel":false,
@@ -188,6 +189,8 @@ authBtn.addEventListener('click', e => {
 shopBrn.addEventListener("input", () => {
     const regExp = /^\d{10}$/;
 
+    asd(10);
+
     if(shopBrn.value.trim().length === 0){
         obj.shopBrn= false;
         shopBrn.value = "";
@@ -284,10 +287,68 @@ function sample5_execDaumPostcode() {
     }).open();
 }
 
+const uploadButton = document.querySelector("#uploadButton");
+let imageInput = document.querySelector("#imageInput");
+const profileImg = document.querySelector('#profileImg');
+
+uploadButton.addEventListener("click", e => {
+    imageInput.click();
+});
+
+const changeImageFn = e => {
+
+    const maxSize = 1024 * 1024 * 5;
+
+    const file = e.target.files[0];
+
+    if (!file) {
+        alert("파일을 선택해주세요.");
+        obj.shopProfile = false;
+        return;
+    }
+    
+    if (file.size > maxSize) {
+        alert("5MB 이하의 이미지 파일을 선택해 주세요.");
+        imageInput.value = '';
+        obj.shopProfile = false;
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = e => {
+        const url = e.target.result;
+        profileImg.setAttribute("src", url);
+        profileImg.style.display = 'block';
+        obj.shopProfile = true;
+        console.log(profileImg.src);
+    };
+    
+};
+
+imageInput.addEventListener("change", changeImageFn);
+
+const deleteBtn = document.querySelector("#deleteBtn");
+
+deleteBtn.addEventListener("click", e => {
+    imageInput.value = '';
+    profileImg.style.display = 'none';
+    profileImg.setAttribute("src", "");
+
+    obj.shopProfile = false;
+});
 signupBtn.addEventListener("click", e => {
     const keys = Object.keys(obj);
     for (const key of keys) {
         switch (key) {
+            case "shopProfile":
+                if (!obj.shopProfile) {
+                    e.preventDefault();
+                    alert("대표 이미지를 삽입해주세요.");
+                    return;
+                }
+                break;
             case "shopEmail":
                 if (!obj.shopEmail) {
                     shopEmail.focus();
@@ -371,4 +432,3 @@ const changeImageFn = e => {
 };
 
 imageInput.addEventListener("change", changeImageFn);
-

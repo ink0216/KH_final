@@ -108,6 +108,10 @@ public class HireController {
 	
 	
 	
+	/**메인페이지 하단 공고 조회
+	 * @param cp
+	 * @return
+	 */
 	@GetMapping("selectHireList")
 	@ResponseBody
 	public Map<String,Object> selectHireList(@RequestParam("cp") int cp){
@@ -133,15 +137,7 @@ public class HireController {
 		return "hire/hireLocation";
 	}
 	
-	//지역별 공고 조회해오기
-	@PostMapping("locationHireList")
-	@ResponseBody
-	public Map<String,Object> locationHireList(
-			@RequestBody Map<String, Object> map
-			){
-		
-		return service.locationHireList(map);
-	}
+
 	
 	
 	
@@ -188,6 +184,14 @@ public class HireController {
 	@GetMapping("hireApply")
 	public String hireApply() {
 		return "hire/hireApply";
+	//지역별 공고 조회해오기
+	@PostMapping("locationHireList")
+	@ResponseBody
+	public Map<String,Object> locationHireList(
+			@RequestBody Map<String, Object> map
+			){
+		
+		return service.locationHireList(map);
 	}
 }
 

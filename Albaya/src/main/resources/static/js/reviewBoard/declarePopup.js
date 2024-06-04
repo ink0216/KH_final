@@ -1,5 +1,5 @@
 const declareFrm = document.querySelector("#declareFrm");
-// 
+
 const declareBtn = document.querySelector("#declareBtn");
 
 
@@ -30,12 +30,15 @@ document.querySelector("#declareFrm").addEventListener("submit", e => {
         return;
     }
 
+
+
     
 
-    if(reviewBoardCondition == '1'){
-        alert("이미 신고된 게시글입니다.");
-        return;
-    }
+    // if(reviewBoardCondition == '1'){
+    //     alert("이미 신고된 게시글입니다.");
+    //     e.preventDefault();
+    //     return;
+    // }
 
 
  
