@@ -80,9 +80,9 @@ public class DeclareServiceImpl implements DeclareService{
 	
 	// 신고 반려 처리
 	@Override
-	public int rejectDeclare(int reviewBoardDeclareNo,int reviewBoardNo) {
-		int result = mapper.rejectDeclare(reviewBoardDeclareNo,reviewBoardNo);
-		return result;
+	public int rejectDeclare(int reviewBoardDeclareNo) {
+		
+		return mapper.rejectDeclare(reviewBoardDeclareNo);
 	}
 	
 	// 신고 완료하기

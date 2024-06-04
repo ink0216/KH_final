@@ -33,7 +33,9 @@
            
         
             <p class="comment-writer">
-                <span th:text="*{#strings.substringBefore(memberEmail,'@')}">닉네임</span>
+                <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
+                    <span th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}">닉네임</span>
+                </th:block>
                 <span class="comment-date" th:text="*{commentWriteDate}" style="font-size: 0.65em; margin-left:10px;
                 color:#014C73;">작성일</span>
             </p>
