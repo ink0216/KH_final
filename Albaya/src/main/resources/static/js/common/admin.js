@@ -167,6 +167,14 @@ document.addEventListener('DOMContentLoaded',function() {
 
 //         // const boardDeclareNo = reviewBoardDeclareNo.value;
 
+        fetch("/declare/reject", {
+            method : "PUT",
+            headers : {"Content-Type":"application/json"},
+            body : reviewBoardDeclareNo
+        })
+        .then(response => response.text())
+        .then(result => {
+            if(result > 0){
 //         fetch("/declare/delete", {
 //             method : "DELETE",
 //             headers : {"Content-Type":"application/json"},
@@ -182,10 +190,11 @@ document.addEventListener('DOMContentLoaded',function() {
 //             }
 //         })
 
+    } else {
        
 
 
-
+    }
 //     } else {
 
 //         alert("반려 처리가 취소되었습니다.");

@@ -35,7 +35,7 @@
 			 REPORTED_MEMBER_NO 
 		FROM BOARD_DECLARE 
 		WHERE REVIEW_BOARD_CONDITION = 1
-		ORDER BY REVIEW_BOARD_DECLARE_NO DESC
+		ORDER BY REVIEW_BOARD_DECLARE_NO
 	</select>
 	
 	
@@ -79,8 +79,9 @@
 		AND DECLARE_DEL_FL = 'Y'
 		WHERE REVIEW_BOARD_CONDITION = 1
 		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
-		AND RRVIEW_BOARD_NO = #{reviewBoardNo}
 	</update>
+	
+	
 	
 	<!-- 신고 확정 처리 구문 -->
 	<update id="completeDeclare">
@@ -89,7 +90,18 @@
 		AND DECLARE_DEL_FL = 'Y'
 		WHERE REVIEW_BOARD_CONDITION =1
 		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
-		AND RRVIEW_BOARD_NO = #{reviewBoardNo}
+	</update>
+	
+	
+	<!-- 신고 확정된 게시글 삭제 -->
+	<update id="updateReviewBoard">
+		UPDATE REVIEW_BOARD SET 
+		BOARD_DEL_FL = 'Y'
+		WHERE REVIEW_BOARD_NO = (
+			SELECT REVIEW_BOARD_NO
+			FROM BOARD_DECLARE 
+			WHERE REVIEW_BOARD_CONDITION = 2
+			)
 	</update>
 	
 	

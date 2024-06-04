@@ -81,7 +81,6 @@ public class DeclareServiceImpl implements DeclareService{
 	// 신고 반려 처리
 	@Override
 	public int rejectDeclare(int reviewBoardDeclareNo) {
-		
 		return mapper.rejectDeclare(reviewBoardDeclareNo);
 	}
 	
@@ -89,7 +88,12 @@ public class DeclareServiceImpl implements DeclareService{
 	@Override
 	public int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo) {
 		  int result = mapper.completeDeclare(reviewBoardDeclareNo,reviewBoardNo);
-		return 0;
+		  
+		  if(result>0) {
+			  return mapper.updateReviewBoard();
+		  } else {
+			  return 0;
+		  }
 	}
 	
 }
