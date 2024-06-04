@@ -97,8 +97,9 @@
 
 .inputArea{
     display: flex;
-    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
 }
 .inputArea textarea{
     width: 490px;
@@ -108,6 +109,8 @@
     border: 0.5px solid #ddd;
     border-radius: 5px;
 }
+
+.apply-content-area{height: 290px;}
 
 .btn-container{
     display: flex;
@@ -135,3 +138,12 @@
 .user-check-container label{
     font-size: 12px;
 }
+
+
+.green{
+    color: green;
+font-size: 11px;}
+
+.red{
+    color: red;
+font-size: 11px;}
