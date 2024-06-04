@@ -84,7 +84,7 @@ public interface HireMapper {
 	/** 업직종별 공고 조회하기
 	 * @return
 	 */
-	List<String> selectKind();
+	List<Hire> selectKind();
 
 
 
@@ -102,6 +102,23 @@ public interface HireMapper {
 	 * @return
 	 */
 	List<Hire> locationHireList(List<Integer> dongList1, RowBounds rowBounds);
+
+
+
+	/**직종별 공고 수 얻어오기
+	 * @param kindList
+	 * @return
+	 */
+	int kindListCount(List<Integer> kindList);
+
+
+
+	/**직종별 공고 조회해오기
+	 * @param kindList
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Hire> kindHireList(List<Integer> kindList, RowBounds rowBounds);
 
 
 
