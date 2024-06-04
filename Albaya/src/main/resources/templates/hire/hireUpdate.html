@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공고문 등록</title>
+
+    <link rel="stylesheet" href="/css/hire/hrie-wirte.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="/">
+            <img src="/images/logo.png" alt="logo" id="logo">
+        </a>
+        <h3>공고문 등록</h3>
+    </div>
+
+    <hr style="border-width:1px 0 0 0; border-style:solid; border-color:#bbb;">
+
+    <div class="container">
+
+        <form action="/hire/hireWrite" method="POST" id="hireWrtieForm">
+            <div class="hireContent">
+
+                <h3> 모집 내용</h3>
+
+                <hr>
+
+                <div class="hireContent-input">
+
+                    <dl class="titleInput">
+                        <dt>공고제목</dt>
+                        <dd>
+                            <input type="text" placeholder="공고문 제목을 입력해주세요" name="hireTitle" id="hireTitle">
+                            <span class="inputConfirm" id="titleMessage"></span>
+                        </dd>
+                        <dd>
+                            <p>
+                                * 0/40(최소 2자)
+                            </p>
+                        </dd>
+                    </dl>
+
+                    <div class="typeInput">
+                        <dl>
+                            <dt>
+                                업직종
+                            </dt>
+
+                            <dd>
+                                <input type="text" placeholder="업직종을 선택해 주세요" name="typeName" id="selectedType"
+                                    readonly>
+                                <input type="hidden" name="typeNo" id="typeNo">
+                                <button id="typeBtn" type="button">선택</button>
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <dl class="countInput">
+                        <dt>
+                            모집인원
+                        </dt>
+                        <dd>
+                            <input type="number" name="hireCount" id="hireCount" placeholder="모집인원을 등록해주세요">
+                            <span class="inputConfirm" id="countMessage"></span>
+                        </dd>
+                    </dl>
+
+                    <dl class="endInput">
+                        <dt>
+                            모집종료
+                        </dt>
+                        <dd>
+                            <input type="date" name="hireEnd" id="hireEnd">
+                            <span class="inputConfirm" id="endMessage"></span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="hireTitleImg">
+
+                <img src="/images/titleInput.jpg" alt="제목을 입력하세요" id="titleImage">
+
+                <textarea placeholder="상세 내용을 입력하세요" cols="20" rows="2" name="hireContent"
+                id="hireContent"></textarea>
+
+            </div>
+
+            <hr>
+
+            <div class="hireCondition">
+                <h3>근무 조건</h3>
+                <hr>
+
+                <div class="hireCondition-input">
+                    <dl class="termInput">
+                        <dt>근무 기간</dt>
+                        <dd>
+                            <div class="termCheckbox">
+                                <div>
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="oneDay" value="1">
+                                    <label for="oneDay">하루</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="oneWeek" value="7">
+                                    <label for="oneWeek">일주일</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="3months" value="3">
+                                    <label for="3months">1-3개월</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="6months" value="6">
+                                    <label for="6months">3-6개월</label>
+                                </div>
+
+                                <div>
+                                    <input type="radio" class="hireTerm" name="hireTerm" id="years" value="365">
+                                    <label for="years">1년 이상</label>
+                                </div>
+
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <dl class="dayInput">
+                        <dt>근무 요일</dt>
+
+                        <dd>
+                            <div class="dayCheckbox">
+                                <div>
+                                    <input type="checkbox" name="workDay" id="mon" value="mom" class="hireDays">
+                                    <label for="mon">월요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="tue" value="tue" class="hireDays">
+                                    <label for="tue">화요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="wed" value="wed" class="hireDays">
+                                    <label for="wed">수요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="thu" value="thu" class="hireDays">
+                                    <label for="thu">목요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="fri" value="fri" class="hireDays">
+                                    <label for="fri">금요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="sat" value="sat" class="hireDays">
+                                    <label for="sat">토요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="sun" value="sun" class="hireDays">
+                                    <label for="sun">일요일</label>
+                                </div>
+
+                                <div>
+                                    <input type="checkbox" name="workDay" id="aa" value="aa" class="hireDays">
+                                    <label for="aa">협의가능</label>
+                                </div>
+
+                            </div>
+                        </dd>
+                    </dl>
+
+
+                    <dl class="timeInput">
+                        <dt>근무 시간</dt>
+
+                        <dd>
+                            <input type="time" placeholder="시작 시간" id="workStart" name="workStart">
+                            <input type="time" placeholder="종료 시간" id="workEnd" name="workEnd">
+                        </dd>
+
+                    </dl>
+
+
+                    <dl class="payInput">
+
+                        <dt>급여</dt>
+
+                        <dd>
+                            <select name="payNo" id="payNo">
+                                <option value=1>시급</option>
+                                <option value=2>주급</option>
+                                <option value=3>월급</option>
+                                <option value=4>연봉</option>
+                                <option value=5>일급</option>
+                            </select>
+
+
+                            <input type="number" id="payInput" name="payInput" placeholder="급여">
+                            <span class="inputConfirm" id="payMessage"></span>
+
+
+                        </dd>
+
+                        <!--                         <dd>
+                            <button id="payConfirmBtn" type="button">확인</button>
+                        </dd> -->
+
+                    </dl>
+
+
+                    <dl>
+                        <dt>모집 성별</dt>
+                        <dd>
+                            <div class="gender-input">
+                                <input type="radio" name="hireGender" id="gender0" value="A" class="hireGender">
+                                <label for="gender0">성별무관</label>
+                            </div>
+                            <div class="gender-input">
+                                <input type="radio" name="hireGender" id="gender1" value="M" class="hireGender">
+                                <label for="gender1">남</label>
+                            </div>
+                            <div class="gender-input">
+                                <input type="radio" name="hireGender" id="gender2" value="F" class="hireGender">
+
+                                <label for="gender2">여</label>
+                            </div>
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+
+
+            <div class="address">
+
+                <h3>근무지 정보</h3>
+                <hr>
+
+                <div class="address-input">
+
+                    <dl>
+                        <dt>근무지 주소</dt>
+                        <dd class="address-dd">
+                            <!-- 주소를 입력 받은 input -->
+                            <input type="text" id="address" placeholder="주소" name="address" readonly>
+                            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"
+                                id="addSearchBtn"><br>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>세부주소</dt>
+                        <dd>
+                            <input type="text" id="addressDetail" placeholder="상세 주소" name="addressDetail">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt></dt>
+                        <dd>
+                            <!-- 지도를 담을 영역 -->
+                            <div id="map"></div>
+                        </dd>
+                    </dl>
+
+
+                    <dl>
+                        <dt>근무 회사명</dt>
+                        <dd>
+                            <input type="text" id="shopName" name="shopName" placeholder="회사명">
+                        </dd>
+                    </dl>
+
+
+                </div>
+            </div>
+
+
+
+            <div class="ownerInfo">
+
+                <h3>
+                    담당자 정보
+                </h3>
+
+                <hr>
+
+                <div class="ownerInfo-input">
+                    <dl>
+                        <dt>담당자명</dt>
+                        <dd>
+                            <input type="text" name="shopOwner" id="shopOwner" placeholder="이름을 입력하세요">
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>연락처</dt>
+                        <dd>
+                            <input type="text" name="shopTel" id="shopTel" placeholder="연락처를 입력하세요(-제외)">
+                            <span class="inputConfirm" id="telMessage"></span>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>이메일</dt>
+                        <dd>
+                            <input type="text" name="shopEmail" id="shopEmail" placeholder="이메일을 입력하세요">
+                            <span class="inputConfirm" id="emailMessage"></span>
+                        </dd>
+                    </dl>
+
+                </div>
+
+            </div>
+
+            <div class="agreeArea">
+                <input type="checkbox" id="agree" name="agree">
+                <label for="agree">
+                    개인 정보 수집 및 이용에 동의합니다.(필수)
+                </label>
+            </div>
+
+            <div class="btnArea">
+                <button id="submitBtn">등록하기</button>
+                <button id="semiSaveBtn">임시저장</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- 실제 지도를 그리는 JS API 불러오기 -->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b&libraries=services"></script>
+    <script src="/js/hire/hire-write.js"></script>
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script th:inline="javascript">
+        const message =  /*[[${message}]]*/ "전달 받은 message";
+        // message가 없다면 null
+
+        if (message != null) alert(message);
+    </script>
+
+</body>
+
+</html>
