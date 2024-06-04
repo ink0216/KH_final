@@ -183,7 +183,7 @@ public class HireController {
 	//지원하기 팝업창으로 이동
 	@GetMapping("hireApply")
 	public String hireApply() {
-		return "hire/hireApply";
+		return "hire/hireApply";}
 	}
 	//지역별 공고 조회해오기
 	@PostMapping("locationHireList")
