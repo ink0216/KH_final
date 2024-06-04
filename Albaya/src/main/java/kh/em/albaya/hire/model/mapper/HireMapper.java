@@ -10,6 +10,7 @@ import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 
 @Mapper
@@ -121,6 +122,19 @@ public interface HireMapper {
 	 * @return
 	 */
 	List<Hire> kindHireList(List<Integer> kindList, RowBounds rowBounds);
+
+
+
+	/** 지원서 작성하기
+	 * @param loginMember
+	 * @param hire
+	 * @return
+	 */
+	int hireApply(Member loginMember, Hire hire);
+
+
+
+	int hireApply(Map<String, Object> map);
 
 
 

@@ -60,4 +60,10 @@ public class Hire {
 	private int sigunguNo;
 	private String dongName;
 	private int dongNo;
+	
+	// 지원한 공고 내용
+	private String resumeNo;
+	private String applyTitle;
+	private String applyContent;
+	
 }

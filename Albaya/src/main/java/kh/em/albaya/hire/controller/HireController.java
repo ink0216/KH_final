@@ -213,5 +213,27 @@ public class HireController {
 		
 		return service.kindHireList(map);
 	}
+	
+	// 지원서 작성
+	@PostMapping("hireApply/{hireNo}")
+	public String hireApply(
+			@PathVariable("hireNo") int hireNo,
+			@SessionAttribute("loginMember") Member loginMember,
+			Hire hire,
+			RedirectAttributes ra
+			){
+		hire.setHireNo(hireNo); // 주소에서 공고 번호 얻어와 값 세팅
+		
+		int result = service.hireApply(loginMember, hire);
+		
+		String message = null;
+		
+		if(result >= 1) {
+			message = "지원이 완료되었습니다.";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/";
+		}
+		return "redirect:/";
+	}		
 }
 
