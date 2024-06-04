@@ -262,16 +262,53 @@ certAdd.addEventListener("click", () => {
             }
         });
     }
-})
+});
 
 
 const jobsOfDesireBtn =  document.querySelectorAll(".jobsOfDesireBtn");
 const addDesiredJobs =  document.querySelector("#addDesiredJobs");
 
+
+//희망 정직 선택하기(최대 5개)
+let textContentArr = [];
 jobsOfDesireBtn.forEach(btn => {
     btn.addEventListener("click", () => {
-        const addJobDiv = `<div class = "addJobCategory">${btn.textContent}</div>`;
+       
+       
+        for(let i=0; i<textContentArr.length; i++){
+            if(btn.textContent == textContentArr[i]){
+                alert("중복 선택은 가능하지 않습니다");
+                return;
+            }
+        } 
+        textContentArr.push(btn.textContent);
+
+
+        if(document.querySelectorAll(".addJobCategory>span").length > 4){
+            alert("최대 5가지만 선택할 수 있습니다");
+            return;
+        }
+
+        const addJobDiv = `
+            <span class = "addJobCategory">
+                ${btn.textContent}
+                <span>&times;</span>
+            </span>`;
+
         addDesiredJobs.innerHTML += addJobDiv;
+
+        const addJobCategory = document.querySelectorAll(".addJobCategory>span");
+        for (let i =0; i < addJobCategory.length;i++) {
+            addJobCategory[i].addEventListener("click", e => {
+                if(document.querySelectorAll(".addJobCategory")[i].innerText.substring(0,document.querySelectorAll(".addJobCategory")[i].innerText.lastIndexOf("\n")) == textContentArr[i]){
+                    textContentArr.splice(i,1);
+                    const element =  document.querySelectorAll(".addJobCategory")[i].closest(".addJobCategory");
+                    if(element){
+                        element.parentNode.removeChild(element);
+                    }
+                }
+            })
+        }
     })
 })
     
