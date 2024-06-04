@@ -263,6 +263,16 @@ certAdd.addEventListener("click", () => {
         });
     }
 })
-    
+
+
+const jobsOfDesireBtn =  document.querySelectorAll(".jobsOfDesireBtn");
+const addDesiredJobs =  document.querySelector("#addDesiredJobs");
+
+jobsOfDesireBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const addJobDiv = `<div class = "addJobCategory">${btn.textContent}</div>`;
+        addDesiredJobs.innerHTML += addJobDiv;
+    })
+})
     
 
