@@ -184,6 +184,7 @@ public class HireController {
 	@GetMapping("hireApply")
 	public String hireApply() {
 		return "hire/hireApply";}
+	}
 	//지역별 공고 조회해오기
 	@PostMapping("locationHireList")
 	@ResponseBody
