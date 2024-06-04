@@ -246,4 +246,16 @@
 		INSERT INTO "APPLY_HIRE"
 		VALUES(#{memberNo}, {hireNo}, NULL, #{applyTitle}, #{applyContent})
 	</insert>
+	
+	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->
+	<select id="allHire">
+	SELECT *
+	FROM "HIRE" A
+	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
+	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
+	JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
+	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
+	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
+	WHERE HIRE_NO = #{hireNo}
+	</select>
 </mapper>

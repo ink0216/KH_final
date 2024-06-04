@@ -194,10 +194,12 @@
                 <th:block th:if="${session.loginMember != null}">
                     <button type="button" id="applyBtn" th:hire-no="${hire.hireNo}">지원하기</button>
                 </th:block>
-
-                <th:block th:if="${session.loginShop.shopNo == hire.shopNo}">
-                    <button type="button" id="updateBtn" th:hire-no="${hire.hireNo}">수정하기</button>
+                <th:block th:if="${session.loginShop}">
+                    <th:block th:if="${session.loginShop.shopNo == hire.shopNo}">
+                        <button type="button" id="updateBtn" th:hire-no="${hire.hireNo}">수정하기</button>
+                    </th:block>
                 </th:block>
+                
 
             </div>
         </form>
