@@ -3,6 +3,7 @@
     font-family: 'SUIT-Regular';
 }
 
+
 /* 제목 전체 폰트 */
 @font-face {
     font-family: 'GongGothicMedium';
@@ -27,17 +28,18 @@
     font-style: normal;
 }
 
-
 /* ------------------------------------------------------------------------------------ */
 
 .header{
 
     display: flex;
-    margin: 0px 20px;
+    margin: auto;
+    width: 950px;
     user-select: none;
+    font-size: 20px;
     align-items: center;
 }
-.header h3{    font-family: 'GongGothicMedium';}
+.header h3{font-family: 'GongGothicMedium';}
 
 #logo{
     margin: 0 20px;
@@ -49,11 +51,12 @@
 /* 모집 내용 */
 
 .container {
-    margin: 0px 20px;
+   margin: auto;
+   width: 900px;
 }
 
 .hireContent>h3{
-    font-family: 'GongGothicMedium';
+    font-family: 'SUIT-Regular';
     margin-top: 30px;
     margin-bottom: 5px;
     user-select: none;
@@ -63,24 +66,23 @@
     background-color: #f2f7f7;
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 13px;
 }
 
 .hireContent-input dl{
     display:  flex;
-    margin: 10px;
+    margin: 13px;
 }
 
 .hireContent-input dt{
-    font-family: 'GongGothicMedium';
     width: 80px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     user-select: none;
 }
 
 .hireContent-input dd input{
-    font-size: 10px;
+    font-size: 13px;
     user-select: none;
     width: 300px;
 }
@@ -130,7 +132,7 @@
     transform: translate(-50%,-50%);
     color: black;
     border: none;
-    font-size: 10px;
+    font-size: 30px;
     outline: none;
     text-align: center;
 }
@@ -139,7 +141,7 @@
 /* --------------------------------------------------------------- */
 /* 근무 조건 */
 .hireCondition>h3{
-    font-family: 'GongGothicMedium';
+    font-family: 'SUIT-Regular';
     margin-top: 30px;
     margin-bottom: 5px;
     user-select: none;
@@ -158,9 +160,8 @@
 }
 
 .hireCondition-input dt{
-    font-family: 'GongGothicMedium';
     width: 80px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     user-select: none;
 }
@@ -240,7 +241,7 @@ font-weight: bold;
 }
 
 .address>h3{
-    font-family: 'GongGothicMedium';
+    font-family: 'SUIT-Regular';
     margin-top: 30px;
     margin-bottom: 5px;
     user-select: none;
@@ -259,9 +260,8 @@ font-weight: bold;
 }
 
 .address-input dt{
-    font-family: 'GongGothicMedium';
     width: 80px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     user-select: none;
 }
@@ -307,7 +307,7 @@ font-weight: bold;
 /* ---------------------------------------------------------------- */
 /* 담장자 정보 입력 */
 .ownerInfo>h3{
-    font-family: 'GongGothicMedium';
+    font-family: 'SUIT-Regular';
     margin-top: 30px;
     margin-bottom: 5px;
     user-select: none;
@@ -326,15 +326,14 @@ font-weight: bold;
 }
 
 .ownerInfo-input dt{
-    font-family: 'GongGothicMedium';
     width: 80px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     user-select: none;
 }
 
 .ownerInfo-input dd input{
-    font-size: 10px;
+    font-size: 13px;
     user-select: none;
     width: 300px;
 }

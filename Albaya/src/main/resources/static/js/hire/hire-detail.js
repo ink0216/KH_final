@@ -50,3 +50,19 @@ closeBtn.addEventListener("click",()=>{
     location.href=url;
 })
 
+
+
+
+/* ******************************************************************* */
+/* 지원하기 */
+const applyBtn = document.getElementById('applyBtn');
+
+applyBtn.addEventListener("click",()=>{
+    const options=[];
+    options.push("width=600");
+    options.push("height=650");
+    options.push("left=300");
+    options.push("top=100");
+
+    window.open("/hire/hireApply","_blank",options.toString());
+})

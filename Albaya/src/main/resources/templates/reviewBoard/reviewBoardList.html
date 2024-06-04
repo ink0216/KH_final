@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albaya 알바 후기 게시판</title>
     <link rel="stylesheet" href="/css/reviewBoard/reviewBoardList.css">
     <link rel="stylesheet" th:if="${reviewBoardCode == 1}" href="/css/reviewBoard/reviewBoardList-admin.css">
-    
+
     <th:block th:replace="~{common/header}"></th:block>
-  
+
 </head>
 
 <!-- 공지게시판 내용은 게시판 색깔을 약간 다르게 함 -->
+
 <body class="${reviewBoardCode == 1 ? 'reviewBoardList-admin','reviewBoardList'}">
     <main>
         <!-- reviewBoard Code 1번이 공지 2번이 토크(일반) -->
-        <section class="reviewBoard-List" >
+        <section class="reviewBoard-List">
 
-            
+
 
 
             <div class="list-wrapper">
-               
+
                 <table class="list-table">
-                   
+
                     <div id="reviewBoardType">
                         <div id="notice" class="box" onclick="toggleColor('notice','1')">
                             공지
@@ -31,19 +33,19 @@
                         <div id="talk" class="box" onclick="toggleColor('talk','2')">
                             토크
                         </div>
-                        
-                        
+
+
                     </div>
-                   
+
                     <th:block th:if="${#lists.isEmpty(reviewBoardList)}">
-                    
-                    <tbody>
-                        <tr>
-                            <td colspan="5">게시글이 존재하지 않습니다.</td>
-                        </tr>
-                    </tbody>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="5">게시글이 존재하지 않습니다.</td>
+                            </tr>
+                        </tbody>
                     </th:block>
-                 
+
                     <thead>
                         <tr>
                             <th>글번호</th>
@@ -53,174 +55,201 @@
                             <th>조회수</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
-                    
-                    <th:block th:unless="${#lists.isEmpty(reviewBoardList)}">
-                        
-                        <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
-                            <td th:text="*{reviewBoardNo}">글번호</td>
-                            <td>
-                                <a th:unless="${param.key}" 
-                                th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" 
-                                th:text="*{reviewTitle}">게시글 제목</a>
-                                
-                                
-                                <a th:if="${param.key}" th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="*{reviewTitle}">게시글 제목</a>
-                                <th:block id="commentCount" th:text="|[*{commentCount}]|"></th:block> 
-                                <!-- <p id="commentCount">총 <span th:text="${#lists.size(reviewBoard.commentList)}">0</span> 개의 댓글이 있습니다.</p> -->
-                            </td>
-                            
+
+                        <th:block th:unless="${#lists.isEmpty(reviewBoardList)}">
+
+                            <tr th:each="reviewBoard : ${reviewBoardList}" th:object="${reviewBoard}">
+                                <td th:text="*{reviewBoardNo}">글번호</td>
+                                <td>
+                                    <a th:unless="${param.key}"
+                                        th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}"
+                                        th:text="*{reviewTitle}">게시글 제목</a>
+
+
+                                    <a th:if="${param.key}"
+                                        th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}"
+                                        th:text="*{reviewTitle}">게시글 제목</a>
+                                    <th:block id="commentCount" th:text="|[*{commentCount}]|"></th:block>
+                                    <!-- <p id="commentCount">총 <span th:text="${#lists.size(reviewBoard.commentList)}">0</span> 개의 댓글이 있습니다.</p> -->
+                                </td>
+
                                 <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
-                                <td th:text="${temp.substring(0,1)} + '*' + ${temp.substring(5)}">이메일</td>
+                                    <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
 
-                                <td th:text="*{reviewBoardWriteDate}">작성일</td>
+                                    <td th:text="*{reviewBoardWriteDate}">작성일</td>
 
-                                <td th:text="*{readCount}">0</td>
-                            </th:block>
-                        </tr>
-                  
-                    </th:block>
-                </tbody>
-               
-        
+                                    <td th:text="*{readCount}">0</td>
+                                </th:block>
+                            </tr>
+
+                        </th:block>
+                    </tbody>
+
+
                 </table>
             </div>
-            
-                <div class="btn-area">
-                    <!-- 기업 회원이거나 비회원 유저는 게시글 조회만 가능하고 일반회원만 글쓰기를 허용함 -->
-                    <!-- <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button>  -->
-                    <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button> 
-                    
-                    <button id="insertNoticeBtn" th:if="${session.loginMember != null and reviewBoardCode == 1 and session.loginMember.authorityNo == 1}">공지 작성</button>
-                    
 
-                    <p id="reviewBoardButtonNotice" th:if="${reviewBoardCode == 2 and session.loginMember == null and session.loginShop == null}" 
-                    style="color:red; 
+            <div class="btn-area">
+                <!-- 기업 회원이거나 비회원 유저는 게시글 조회만 가능하고 일반회원만 글쓰기를 허용함 -->
+                <!-- <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button>  -->
+                <button id="insertBtn"
+                    th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button>
+
+                <button id="insertNoticeBtn"
+                    th:if="${session.loginMember != null and reviewBoardCode == 1 and session.loginMember.authorityNo == 1}">공지
+                    작성</button>
+
+
+                <p id="reviewBoardButtonNotice"
+                    th:if="${reviewBoardCode == 2 and session.loginMember == null and session.loginShop == null}" style="color:red; 
                     font-size:18px;
                     display:flex;
-                    margin-left:450px;">
-                        * 비회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
-                    </p>
-                   
-                    <p id="reviewBoardButtonNotice" th:if="${reviewBoardCode == 2 and session.loginMember != null and session.loginMember.authorityNo == 2}" 
-                    style="color:red; 
-                    font-size:18px;
-                    display:flex;
-                    margin-left:450px;">
-            <p id="shopMemberNo" th:if="${session.loginMember == null}" >
-                <p th:if="${session.loginShop != null and session.loginShop.authorityNo == 2 and session.loginMember == null}"  
-                style="color:red; 
-                font-size:18px;
-                display:flex;
-                margin-left:450px;">
-                * 기업회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
+                    justify-content: center;
+                    ">
+                    * 비회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
                 </p>
 
-                        </p>
-                    </p>
+                <p id="reviewBoardButtonNotice"
+                    th:if="${reviewBoardCode == 2 and session.loginMember != null and session.loginMember.authorityNo == 2}"
+                    style="color:red; 
+                    font-size:18px;
+                    display:flex;
+                    justify-content: center;
+                   ">
+                <p id="shopMemberNo" th:if="${session.loginMember == null}">
+                <p th:if="${session.loginShop != null and session.loginShop.authorityNo == 2 and session.loginMember == null}"
+                    style="color:red; 
+                font-size:18px;
+                display:flex;
+                justify-content: center;
+                ">
+                    * 기업회원은 게시글, 댓글 조회만 가능합니다. 작성 서비스를 이용하시려면 일반 회원으로 로그인해주세요.
+                </p>
 
-                    
-                </div>
-                
-
-            
-             <div class="pagination-area">
-
-				<!-- 일반 목록 조회 ( 검색 X ) -->
-				<ul class="pagination" th:unless="${param.key}" th:object="${pagination}">    
-
-					<!-- 첫 페이지로 이동 -->
-					<li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=1)}">&lt;&lt;</a></li>
-
-					<!-- 이전 목록 마지막 번호로 이동 -->
-					<li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{prevPage})}">&lt;</a></li>
-
-					<!-- 특정 페이지로 이동 -->
-					
-					<th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-					<!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
-						
-						<!-- 현재 보고있는 페이지 -->
-						<li th:if="${i} == *{currentPage}">
-						
-							<a class="current" th:text="${i}">현재 페이지</a>
-						</li>
-	
-						<!-- 보고있지 않은 페이지 -->
-						<li th:unless="${i} == *{currentPage}"> 
-						
-							<a th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode=${reviewBoardCode}, cp=${i})}" 
-								 th:text="${i}">이동할 페이지</a> 
-						</li>
-
-					</th:block>
-					
+                </p>
+                </p>
 
 
-					<!-- 다음 목록 시작 번호로 이동 -->
-					<li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{nextPage})}">&gt;</a></li>
-
-					<!-- 끝 페이지로 이동 -->
-					<li><a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
-				</ul>
+            </div>
 
 
-                
+
+            <div class="pagination-area">
+
+                <!-- 일반 목록 조회 ( 검색 X ) -->
+                <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">
+
+                    <!-- 첫 페이지로 이동 -->
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=1)}">&lt;&lt;</a>
+                    </li>
+
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{prevPage})}">&lt;</a>
+                    </li>
+
+                    <!-- 특정 페이지로 이동 -->
+
+                    <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                        <!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
+
+                        <!-- 현재 보고있는 페이지 -->
+                        <li th:if="${i} == *{currentPage}">
+
+                            <a class="current" th:text="${i}">현재 페이지</a>
+                        </li>
+
+                        <!-- 보고있지 않은 페이지 -->
+                        <li th:unless="${i} == *{currentPage}">
+
+                            <a th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode=${reviewBoardCode}, cp=${i})}"
+                                th:text="${i}">이동할 페이지</a>
+                        </li>
+
+                    </th:block>
+
+
+
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{nextPage})}">&gt;</a>
+                    </li>
+
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=*{maxPage})}">&gt;&gt;</a>
+                    </li>
+                </ul>
+
+
+
 
                 <!-- 검색을 통한 게시글 조회인 경우 -->
                 <ul class="pagination" th:if="${param.key}" th:object="${pagination}">
-                
+
                     <!-- 첫 페이지로 이동 -->
-                    <li><a th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = 1, key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = 1, key=${param.key}, query=${param.query})}">&lt;&lt;</a>
+                    </li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = *{prevPage}, key=${param.key}, query=${param.query})}">&lt;</a></li>
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = *{prevPage}, key=${param.key}, query=${param.query})}">&lt;</a>
+                    </li>
 
                     <!-- 특정 페이지로 이동 -->
-                    <th:block th:if="*{startPage lt endPage}" th:each=" i : *{#numbers.sequence(startPage,endPage)}"></th:block>
+                    <th:block th:if="*{startPage lt endPage}" th:each=" i : *{#numbers.sequence(startPage,endPage)}">
+                    </th:block>
 
                     <!-- #numbers.sequence(n,m)  => {n,n+1,...,m} -->
-                    <th:block  th:if="*{startPage lt endPage}" th:each="i : *{#numbers.sequence(startPage, endPage)}">
-						
-                    <!-- 현재 보고있는 페이지 -->
-                    <li th:if="${i == pagination.currentPage}">
-                    <!-- <li th:if="${i} == *{currentPage}"> -->
-                        <a class="current" th:text="${i}">현재 페이지</a>
-                        
-                    </li>
+                    <th:block th:if="*{startPage lt endPage}" th:each="i : *{#numbers.sequence(startPage, endPage)}">
 
-                    <!-- 보고있지 않은 페이지 -->
-                    <!-- <li th:unless="${i == pagination.currentPage}">  -->
-                    <li th:unless="${i} == *{currentPage}">
-                        <a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=${i}, key=${param.key}, query=${param.query})}" 
-                             th:text="${i}">이동할 페이지</a> 
-                             
-                    </li>
-                </th:block>
+                        <!-- 현재 보고있는 페이지 -->
+                        <li th:if="${i == pagination.currentPage}">
+                            <!-- <li th:if="${i} == *{currentPage}"> -->
+                            <a class="current" th:text="${i}">현재 페이지</a>
 
-                	<!-- 일치하는 게시글이 없을 경우 -->
-					<th:block th:unless="*{startPage lt endPage}">
-						<li>
-							<a class="current">1</a>
-						</li>
-					</th:block>
-					
+                        </li>
+
+                        <!-- 보고있지 않은 페이지 -->
+                        <!-- <li th:unless="${i == pagination.currentPage}">  -->
+                        <li th:unless="${i} == *{currentPage}">
+                            <a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=${i}, key=${param.key}, query=${param.query})}"
+                                th:text="${i}">이동할 페이지</a>
+
+                        </li>
+                    </th:block>
+
+                    <!-- 일치하는 게시글이 없을 경우 -->
+                    <th:block th:unless="*{startPage lt endPage}">
+                        <li>
+                            <a class="current">1</a>
+                        </li>
+                    </th:block>
+
 
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = *{nextPage}, key=${param.key}, query=${param.query})}">&gt;</a></li>
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = *{nextPage}, key=${param.key}, query=${param.query})}">&gt;</a>
+                    </li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = *{maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
+                    <li><a
+                            th:href="@{/reviewBoard/{reviewBoardCode}(reviewBoardCode = ${reviewBoardCode},cp = *{maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a>
+                    </li>
                 </ul>
             </div>
-        
 
 
-            <form th:action="@{{reviewBoardCode}(reviewBoardCode=${reviewBoardCode})}" method="GET" id="reviewBoardSearch">
+
+            <form th:action="@{{reviewBoardCode}(reviewBoardCode=${reviewBoardCode})}" method="GET"
+                id="reviewBoardSearch">
 
                 <!-- action 안에 상대 경로를 통해 알맞은 게시판, 페이지 입력.(=게시판글 조회) -->
-    
+
                 <!-- select 태그도 input 태그에 포함됨
                 select 태그는 value와 (name, id)는 분리해서 씀 -->
                 <select name="key" id="searchKey">
@@ -228,20 +257,21 @@
                     <option value="c">내용</option>
                     <option value="tc">제목+내용</option>
                 </select>
-    
-                <input type="text" name="query"  id="searchQuery" placeholder="검색어를 입력해주세요.">
-    
+
+                <input type="text" name="query" id="searchQuery" placeholder="검색어를 입력해주세요.">
+
                 <button id="searchBtn">검색</button>
             </form>
-        
+
         </section>
 
         <script th:inline="javascript">
             const reviewBoardCode = /*[[${reviewBoardCode}]]*/ "후기 게시판 코드 번호";
         </script>
     </main>
-   
+
     <script src="/js/reviewBoard/reviewBoardList.js"></script>
     <th:block th:replace="~{common/footer}"></th:block>
 </body>
+
 </html>

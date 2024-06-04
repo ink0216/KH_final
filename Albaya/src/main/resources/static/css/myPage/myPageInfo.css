@@ -41,7 +41,7 @@ span{
 
 button:hover{
     cursor: pointer;
-    background-color: #014C73;
+    /* background-color: #014C73; */
 }
 
 .main-layout-wrapper{
