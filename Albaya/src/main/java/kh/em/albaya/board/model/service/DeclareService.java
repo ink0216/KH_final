@@ -42,6 +42,25 @@ public interface DeclareService {
 	 * @return
 	 */
 	int duplicateDeclare(String reviewBoardCondition);
+
+
+
+
+	/** 신고 반려 처리
+	 * @param reviewBoardDeclareNo
+	 * @return
+	 */
+	int rejectDeclare(int reviewBoardDeclareNo,int reviewBoardNo);
+
+
+
+
+	/** 신고 완료 하기
+	 * @param reviewBoardDeclareNo
+	 * @param reviewBoardNo
+	 * @return
+	 */
+	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
 	
 
 	
