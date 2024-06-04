@@ -96,4 +96,10 @@ public class DeclareServiceImpl implements DeclareService{
 		  }
 	}
 	
+	
+	@Override
+	public List<Declare> selectDeclareList() {
+		return mapper.selectDeclareList();
+	}
+	
 }
