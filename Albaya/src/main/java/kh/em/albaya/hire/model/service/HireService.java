@@ -7,6 +7,7 @@ import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.shop.model.dto.Shop;
 
 public interface HireService {
 
@@ -53,6 +54,12 @@ public interface HireService {
 	 * @return
 	 */
 	Map<String,Object> locationHireList(Map<String, Object> map);
+
+	/** 공고 올린 기업 정보 얻어오기
+	 * @param hireNo
+	 * @return
+	 */
+	Hire hireInfo(int hireNo);
 
 	/**업직종별 공고 조회해오기
 	 * @param map

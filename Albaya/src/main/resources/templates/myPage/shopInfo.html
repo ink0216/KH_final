@@ -79,7 +79,8 @@
                             <span>주소</span>
                         </div>
                         <div class="info-row-right">
-                            <th:block th:utext="${session.loginShop.fullAddress}"></th:block>
+                            <th:block th:utext="${session.loginShop.fullAddress}"></th:block> &nbsp;
+                            <p th:text="${session.loginShop.addressDetail}"></p>
                         </div>
                     </div>
 
