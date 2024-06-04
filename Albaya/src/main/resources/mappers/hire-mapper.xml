@@ -241,4 +241,9 @@
 		</foreach>
 		ORDER BY HIRE_NO DESC
 	</select>
+	
+	<insert id="hireApply">
+		INSERT INTO "APPLY_HIRE"
+		VALUES(#{memberNo}, {hireNo}, NULL, #{applyTitle}, #{applyContent})
+	</insert>
 </mapper>
