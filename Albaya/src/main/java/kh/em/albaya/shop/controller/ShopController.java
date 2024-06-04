@@ -1,5 +1,6 @@
 package kh.em.albaya.shop.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.context.annotation.PropertySource;
@@ -82,7 +83,9 @@ public class ShopController {
     public String signup(
     		Shop shop,
     		RedirectAttributes ra,
-    		@RequestParam("shopProfile") MultipartFile profileImg) {
+
+    		@RequestParam("profileImg") MultipartFile profileImg) throws IllegalStateException, IOException {
+
     	int result = service.signup(shop, profileImg);
     	
     	String message = null;
@@ -105,7 +108,7 @@ public class ShopController {
 			HttpServletResponse resp,	
     		RedirectAttributes ra,
     		@SessionAttribute(value = "uri", required = false) String uri,
-    		HttpSession session) {
+    		HttpSession session) throws IllegalStateException, IOException  {
     
 		Shop loginShop = service.login(inputShop);
 		

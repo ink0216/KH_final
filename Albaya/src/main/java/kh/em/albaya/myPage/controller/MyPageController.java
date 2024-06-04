@@ -1,5 +1,6 @@
 package kh.em.albaya.myPage.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.em.albaya.member.model.dto.Member;
@@ -225,5 +227,31 @@ public class MyPageController {
 			ra.addFlashAttribute("message", message);
 			return "redirect:/myPage/changePw";
 		}
+	}
+	
+    @PostMapping("changeProfile")
+	public String changeProfile(
+			Shop shop,
+			RedirectAttributes ra,
+			@RequestParam("profileImg") MultipartFile profileImg,
+			@SessionAttribute("loginShop") Shop loginShop) throws IllegalStateException, IOException {
+    	int result = service.changeProfile(shop, profileImg);
+    	
+    	String message = null; 		
+    	
+    	if(result == 1) {
+    		message = "변경되었습니다.";
+    		 		
+    		String newImg = shop.getShopProfile();
+    		loginShop.setShopProfile(newImg);
+  
+    		ra.addFlashAttribute("message", message);
+    		return "redirect:/myPage/myPageInfo";
+    	}
+    	else {
+    		message = "변경 실패.;;;";
+    		ra.addFlashAttribute("message", message);
+    		return "redirect:/myPage/myPageInfo";
+    	}
 	}
 }
