@@ -15,7 +15,7 @@
 	</select>
 
 
-
+	<!-- 신고 게시판 타입 조회 -->
 	<select id = "selectDeclareTypeList">
 		SELECT DECLARE_BOARD_CODE "declareBoardCode", DECLARE_BOARD_NAME "declareBoardName"
 		FROM DECLARE_TYPE
@@ -68,6 +68,28 @@
 	FROM BOARD_DECLARE
 	WHERE REVIEW_BOARD_CONDITION = #{reviewBoardCondition}
 	</select>
+	
+	
+	
+	
+	<!-- 신고 반려 처리 구문 -->
+	<update id="rejectDeclare">
+		UPDATE BOARD_DECLARE SET 
+		REVIEW_BOARD_CONDITION = 0
+		WHERE REVIEW_BOARD_CONDITION = 1
+		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
+		AND RRVIEW_BOARD_NO = #{reviewBoardNo}
+	</update>
+	
+	<!-- 신고 확정 처리 구문 -->
+	<update id="completeDeclare">
+		UPDATE BOARD_DECLARE SET 
+		REVIEW_BOARD_CONDITION = 2
+		WHERE REVIEW_BOARD_CONDITION =1
+		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
+		AND RRVIEW_BOARD_NO = #{reviewBoardNo}
+	</update>
+	
 	
 	
 </mapper>
