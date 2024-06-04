@@ -171,6 +171,7 @@ public class HireServiceImpl implements HireService{
 			return hireInfo;
 		}
 		return null;
+	}
 	//업직종별 공고 조회해오기
 	@Override
 	public Map<String, Object> kindHireList(Map<String, Object> map) {

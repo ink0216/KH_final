@@ -190,7 +190,11 @@
 
             <div class="btnArea marginContainal">
                 <button type="button" id="closeBtn">닫기</button>
-                <button type="button" id="applyBtn" th:hire-no="${hire.hireNo}">지원하기</button>
+
+                <th:block th:if="${session.loginMember != null}">
+                    <button type="button" id="applyBtn" th:hire-no="${hire.hireNo}">지원하기</button>
+                </th:block>
+
             </div>
         </form>
     </div>

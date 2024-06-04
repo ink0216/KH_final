@@ -213,5 +213,14 @@ public class HireController {
 		
 		return service.kindHireList(map);
 	}
+	
+	
+	
+	
+	//지원서 상세조회(인서-테스트)
+	@GetMapping("hireApplyDetail")
+	public String hireApplyDetail() {
+		return "hire/hireApplyDetail";
+	}
 }
 
