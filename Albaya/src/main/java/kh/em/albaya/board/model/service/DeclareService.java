@@ -50,7 +50,7 @@ public interface DeclareService {
 	 * @param reviewBoardDeclareNo
 	 * @return
 	 */
-	int rejectDeclare(int reviewBoardDeclareNo,int reviewBoardNo);
+	int rejectDeclare(int reviewBoardDeclareNo);
 
 
 

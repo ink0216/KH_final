@@ -65,7 +65,7 @@ reject.addEventListener("click", () => {
         const reviewBoardDeclareNo = reviewBoardDeclareNo.innerText;
 
         fetch("/declare/reject", {
-            method : "DELETE",
+            method : "PUT",
             headers : {"Content-Type":"application/json"},
             body : reviewBoardDeclareNo
         })
@@ -78,10 +78,6 @@ reject.addEventListener("click", () => {
                 selectDeclareList();
             }
         })
-
-       
-
-
 
     } else {
 
