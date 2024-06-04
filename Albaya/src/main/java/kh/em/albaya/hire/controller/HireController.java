@@ -180,10 +180,19 @@ public class HireController {
 	
 	
 	
-	//지원하기 팝업창으로 이동
-	@GetMapping("hireApply")
-	public String hireApply() {
-		return "hire/hireApply";
+	//지원하기 팝업창으로 이동 -> hireNo 사용하기 위해 실제 페이지로 이동하기 전에 번호만 얻어오는 메서드
+	@GetMapping("hireApply/{hireNo}")
+	public String hireApply(
+			@PathVariable("hireNo") int hireNo,
+			Model model) {
+		Hire hireInfo = service.hireInfo(hireNo);
+		
+		if(hireInfo != null) {
+			model.addAttribute("hireInfo", hireInfo);
+		}
+	    return "/hire/hireApply"; // 이동할 URL로 포워딩
+	}
+	
 	//지역별 공고 조회해오기
 	@PostMapping("locationHireList")
 	@ResponseBody

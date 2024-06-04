@@ -10,6 +10,7 @@ import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.shop.model.dto.Shop;
 
 @Mapper
 public interface HireMapper {
@@ -102,6 +103,10 @@ public interface HireMapper {
 	 * @return
 	 */
 	List<Hire> locationHireList(List<Integer> dongList1, RowBounds rowBounds);
+
+
+
+	Hire hireInfo(int hireNo);
 
 
 
