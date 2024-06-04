@@ -33,9 +33,9 @@
                             <!-- <span th:text="*{memberEmail}">  -->
                             
                             <i class="fa-solid fa-pen" style="color: #000000;"></i>&nbsp;
-                            <!-- [[*{memberEmail}]] -->
-                            [[*{#strings.substringBefore(memberEmail,'@')}]]
-                            <!-- *{#strings.substringBefore(memberEmail,'@')} -->
+                            
+                            <!-- [[*{#strings.substringBefore(memberEmail,'@')}]] -->
+                            <!-- [[${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}]] -->
                                 
                         </p>
                     </div>

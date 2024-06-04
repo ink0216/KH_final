@@ -3,6 +3,8 @@ body{
     background-color: rgb(228, 242, 238);
 
 }
+
+
 @font-face {
     font-family: 'TheJamsil5Bold';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
@@ -27,8 +29,10 @@ body{
 }
 
 #declareExplain{
+    margin-top:60px;
     font-family:'SUIT-Regular';
-    font-size: 18px;
+    font-size: 25px;
+    margin-bottom:250px;
 }
 
 
@@ -121,8 +125,9 @@ body{
     
 .styled-table tr > *:nth-of-type(2){
     width:7%;
-    text-align:center;
+    text-align:center; 
 }
+
     
 .styled-table tr > *:nth-of-type(3){
     width:10%;
@@ -163,7 +168,7 @@ th{
 
 .pagination{
     list-style: none;
-    margin-top:45px;
+    margin-top:40px;
     display: flex;
     justify-content: center;
     padding: 0;
@@ -208,4 +213,11 @@ th{
  a{
     text-decoration: none;
     color:black;
+ }
+
+
+ #connectToReviewBoard {
+    color : blue;
+    font-size:1.5em;
+    text-decoration-line: underline;
  }
