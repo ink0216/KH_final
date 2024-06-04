@@ -1,6 +1,5 @@
 package kh.em.albaya.hire.model.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import kh.em.albaya.hire.model.mapper.HireMapper;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
-import kh.em.albaya.shop.model.dto.Shop;
 import lombok.RequiredArgsConstructor;
 @Transactional
 @Service
