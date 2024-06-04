@@ -1,0 +1,171 @@
+/*  전체 폰트 */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+    font-family: 'SUIT-Regular';
+    font-size: 13px;
+}
+
+.title-h2{
+    font-size: 25px;
+}
+
+.title-h3{
+    font-size: 18px;
+}
+
+.hr{
+    width: 90%;
+    border: 0.5px solid black;
+    margin: 5px 0px;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-title{margin: 10px 0px;}
+
+.div1{
+    margin: 20px 0px;
+    width: 500px;
+}
+
+.info-title{
+    margin-bottom: 10px;
+}
+
+.span1{
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+    /* font-weight: bold; */
+    font-size: 14px;
+    color: #6c6a6a;
+}
+
+.shopName-container :nth-child(2){
+    color: #00a8ff;
+}
+
+
+
+.radio-area{
+    display: flex;
+    margin: 5px;
+    padding: 3px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.resume-radio{
+    display: flex;
+    align-items: center;
+    margin: 7px 0px;
+    border: 0.5px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    height: 50px;
+    padding:5px 3px;
+}
+
+.apply-title-area{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+#applyTitle{
+    width: 385px;
+    height: 30px;
+    border: 0.5px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.inputArea{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.inputArea textarea{
+    width: 490px;
+    height: 250px;
+    resize: none;
+    padding: 10px;
+    border: 0.5px solid #ddd;
+    border-radius: 5px;
+}
+
+.inputContent{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#applyContent{
+    border: 0.5px solid #ccc;
+    width: 493px;
+    height: 250px;
+    padding: 10px;
+}
+
+.apply-content-area{height: 290px;}
+
+.btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+#btn{
+    padding: 5px;
+    width: 100px;
+    border: none;
+    background-color: #014C73;
+    color: white;
+    cursor: pointer;
+}
+.resume-select-area{
+    display: flex;
+    align-items: center;
+}
+
+
+.resume-link a{
+    color: darksalmon;
+}
+
+.inputTitle{margin: 0px 10px;}
+
+.user-check-container{
+    display: flex;
+    align-items: center;
+}
+
+.user-check-container label{
+    font-size: 12px;
+}
+
+
+.green{
+    color: green;
+font-size: 11px;}
+
+.red{
+    color: red;
+font-size: 11px;}

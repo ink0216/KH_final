@@ -1,6 +1,5 @@
 package kh.em.albaya.hire.model.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -173,7 +172,7 @@ public class HireServiceImpl implements HireService{
 		}
 		return null;
 	}
-	
+
 	//업직종별 공고 조회해오기
 	@Override
 	public Map<String, Object> kindHireList(Map<String, Object> map) {

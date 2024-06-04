@@ -309,7 +309,8 @@ const checkObj={
     "hireEnd"   : false, //모집 종료
     "shopTel"   : false, //연락처
     "shopEmail" : false,  //이메일 
-    "payInput"  : false //급여
+    "payInput"  : false, //급여
+    "hireContent" : false // 내용
     }
 
 /* 공고문 제목 유효성 검사 */
@@ -345,6 +346,8 @@ hireTitle.addEventListener("input",e=>{
     titleMessage.classList.add("blue");
     checkObj.hireTitle=true;
 })
+
+
 
 /* 업직종 선택 유효성 검사 */
 
@@ -470,7 +473,12 @@ shopEmail.addEventListener("input",e=>{
 const hireWrtieForm = document.getElementById("hireWrtieForm"); //form
 
 hireWrtieForm.addEventListener("submit",e=>{
+    /* 공고문 내용 유효성 검사 */
+    const hireContent = document.querySelector("#hireContent");
 
+    if(hireContent.value.trim().length>0){
+        checkObj.hireContent=true;
+    }
     for(let key in checkObj){
         if(!checkObj[key]){
             let str;
@@ -497,6 +505,9 @@ hireWrtieForm.addEventListener("submit",e=>{
                     
                 case "payInput":
                     str="급여 검사를 해주세요"; break;
+
+                case "hireContent":
+                    str="공고문 내용을 입력해 주세요."; break;
             }
 
             alert(str);
