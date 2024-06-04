@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="/resume/" class="container">
+    <form action="/hire/hireApply" class="container">
 
         <div class="popup-title">
             <h2 class="title-h2">지원하기</h2>
@@ -30,12 +30,12 @@
 
                     <div class="shopName-container">
                         <span class="span1">근무회사명</span>
-                        <span name="shopName">버거깅</span>
+                        <span th:text="${hireInfo.shopName}">버거깅</span>
                     </div>
 
                     <div class="hireTitle-container">
                         <span class="span1">공고제목</span>
-                        <span name="hireTitle">알바생을 구합니다</span>
+                        <span th:text="${hireInfo.hireTitle}">알바생을 구합니다</span>
                     </div>
 
                 </div>
@@ -54,7 +54,10 @@
                     <div class="radio-area">
                         <div class="resume-radio">
                             <input type="radio" name="resumeNo" id="resuemNo1">
-                            <label for="resuemNo1"><a href="/" target="_blank">아르바이트 경험이 많아 믿고 맡기실 수
+                            <label for="resuemNo1">
+                                <a href="/" target="_blank"
+                                    onclick="window.open(this.href, width=600, height=650,left=300,top=100)">아르바이트
+                                    경험이 많아 믿고 맡기실 수
                                     있습니다.</a></label>
                         </div>
                         <div class="resume-radio">
@@ -99,17 +102,19 @@
 
                 <div class="user-info">
                     <span class="memberName span1">이름</span>
-                    <span name="memberName">홍길동</span>
+                    <span th:text="${session.loginMember.memberName}">홍길동</span>
                 </div>
 
                 <div class="user-info">
                     <span class="memberTel span1">휴대폰</span>
-                    <span name="memberPhoneNumber"> 010-1111-2222</span>
+                    <span th:text="${#strings.concat(#strings.substring(session.loginMember.memberPhoneNumber, 0, 3),
+                        '-', #strings.substring(session.loginMember.memberPhoneNumber, 3, 7),
+                        '-', #strings.substring(session.loginMember.memberPhoneNumber, 7))}"> 010-1111-2222</span>
                 </div>
 
                 <div class="user-info">
                     <span class="memberEmail span1">이메일</span>
-                    <span name="memberEmail">hong@gmail.com</span>
+                    <span th:text="${session.loginMember.memberEmail}">hong@gmail.com</span>
                 </div>
 
             </div>

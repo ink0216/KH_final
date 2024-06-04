@@ -63,15 +63,24 @@ public interface DeclareMapper {
 	 * @param reviewBoardDeclareNo
 	 * @return
 	 */
-	int rejectDeclare(int reviewBoardDeclareNo,int reviewBoardNo);
+	int rejectDeclare(int reviewBoardDeclareNo);
 
 
-	/** 신고 처리
+	/** 신고 완료 처리
 	 * @param reviewBoardDeclareNo
 	 * @param reviewBoardNo
 	 * @return
 	 */
 	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
+
+
+	
+
+	
+	/** 신고 완료 게시물 삭제
+	 * @return
+	 */
+	int updateReviewBoard();
 
 	
 

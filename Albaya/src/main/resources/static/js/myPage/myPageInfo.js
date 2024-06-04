@@ -19,7 +19,7 @@ changePwBtn.addEventListener("click", () => {
 const uploadBtn = document.querySelector("#uploadBtn");
 let imageInput = document.querySelector("#imageInput");
 const profileImg = document.querySelector('#profileImg');
-const originalImageSrc = profileImg.src; // 기존 이미지를 저장
+const originalImageSrc = profileImg.src;
 const submitBtn = document.querySelector("#submitBtn");
 
 uploadBtn.addEventListener("click", e => {
@@ -32,7 +32,7 @@ const changeImageFn = e => {
 
     if (!file) {
         alert("파일을 선택해주세요.");
-        profileImg.setAttribute("src", originalImageSrc); // 기존 이미지로 복원
+        profileImg.setAttribute("src", originalImageSrc);
         shopProfileStatus = false;
         return;
     }
@@ -40,7 +40,7 @@ const changeImageFn = e => {
     if (file.size > maxSize) {
         alert("5MB 이하의 이미지 파일을 선택해 주세요.");
         imageInput.value = '';
-        profileImg.setAttribute("src", originalImageSrc); // 기존 이미지로 복원
+        profileImg.setAttribute("src", originalImageSrc);
         shopProfileStatus = false;
         return;
     }
@@ -71,9 +71,3 @@ submitBtn.addEventListener("click", e => {
         return;
     }
 });
-
-function asd(val) {
-    if (shopBrn.value.length > val) {
-        shopBrn.value = shopBrn.value.slice(0, val);
-    }
-}

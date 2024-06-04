@@ -56,6 +56,7 @@ closeBtn.addEventListener("click",()=>{
 /* ******************************************************************* */
 /* 지원하기 */
 const applyBtn = document.getElementById('applyBtn');
+const hireNo = applyBtn.getAttribute('hire-no');
 
 applyBtn.addEventListener("click",()=>{
     const options=[];
@@ -64,5 +65,16 @@ applyBtn.addEventListener("click",()=>{
     options.push("left=300");
     options.push("top=100");
 
-    window.open("/hire/hireApply","_blank",options.toString());
+    window.open(`/hire/hireApply/${hireNo}`,"_blank",options.toString());
 })
+
+/* ******************************************************************* */
+/* 공고 수정 버튼 */
+const updateBtn = document.getElementById('updateBtn');
+if(updateBtn != null){
+
+    updateBtn.addEventListener("click", () => {
+
+        location.href = `/hire/hireUpdate/${hireNo}`
+    });
+}
