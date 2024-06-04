@@ -397,3 +397,29 @@ input[type="date"]{
     margin-left:10px;
     margin-right:10px;
 }
+
+
+#profilePicturePopUp{
+    display:flex;
+    justify-content: center;
+    border:1px solid black;
+    width:540px;
+    height:100px;
+    
+}
+#profilePicturePopUp>div>input{
+    border:none;
+}
+#close{
+    left:0;
+    height:30px;
+}
+
+#addProfileImg{
+    width:100%;
+    margin:0;
+}
+
+#imgContainer{
+    width:500px;
+}
