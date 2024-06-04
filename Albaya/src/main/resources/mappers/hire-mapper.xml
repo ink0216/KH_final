@@ -115,7 +115,7 @@
 	  -->
 	<!-- 공고 상세 조회 -->
 	<select id="detailHire">
-	SELECT HIRE_NO, HIRE_TITLE, HIRE_CONTENT, TYPE_NAME, HIRE_COUNT,
+	SELECT HIRE_NO, HIRE_TITLE, HIRE_CONTENT, TYPE_NAME, HIRE_COUNT,SHOP_NO,
 	TO_CHAR(HIRE_END, 'YYYY-MM-DD') HIRE_END,
 	DECODE(HIRE_TERM, 1, '하루', 7, '일주일', 
 	3, '1~3개월', 6, '3~6개월', 365, '1년 이상') HIRE_TERM2,

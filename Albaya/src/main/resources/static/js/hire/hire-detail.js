@@ -67,3 +67,14 @@ applyBtn.addEventListener("click",()=>{
 
     window.open(`/hire/hireApply/${hireNo}`,"_blank",options.toString());
 })
+
+/* ******************************************************************* */
+/* 공고 수정 버튼 */
+const updateBtn = document.getElementById('updateBtn');
+if(updateBtn != null){
+
+    updateBtn.addEventListener("click", () => {
+
+        location.href = `/hire/hireUpdate/${hireNo}`
+    });
+}
