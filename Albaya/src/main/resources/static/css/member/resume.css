@@ -1,3 +1,4 @@
+
 body{
     border:rgb(76, 112, 124);
     margin: 0px;
@@ -227,27 +228,28 @@ input[type="date"]{
 #sigungu{
     margin-left:200px;
 }
-#certificateDetail{
+.certificateDetail{
     display:flex;
     flex-wrap:wrap;
 }
-#certificateDetail>div>input[type="text"]{
+.certificateDetail>div>input[type="text"]{
     width:600px;
 }
-#organization{
-    margin-left:-5px;
-}
-#score{
+
+.score{
     margin-left:25px;
     margin-top:20px;
     width:50px;
 }
-#issueDetail{
+.issueDetail{
     margin-top:20px;
-    margin-left:235px;
+    margin-left:80px;
+    
 }
-#issueDate{
+.issueDate{
     width:200px;
+    margin-left:20px;
+    
 }
 
 .resume{
@@ -374,7 +376,6 @@ input[type="date"]{
 }
 
 .dateInput>button{
-
     margin-bottom:20px;
     font-size: 20px;
     position:absolute;
@@ -384,9 +385,6 @@ input[type="date"]{
     border-radius:10px;
     width:30px;
     margin-right:10px;
-
-    
-    
 }
 .dateInput>button:hover{
     cursor:pointer;
@@ -399,27 +397,54 @@ input[type="date"]{
 }
 
 
-#profilePicturePopUp{
-    display:flex;
-    justify-content: center;
-    border:1px solid black;
-    width:540px;
-    height:100px;
+#certAdd{
+    margin-left:125px;
+    margin-bottom:20px;
+    font-size: 20px;
+    position:absolute;
+    background:black;
+    border:2px solid white;
+    color: white;
+    border-radius:10px;
+    width:30px;
     
 }
-#profilePicturePopUp>div>input{
-    border:none;
+.certMinus{
+    margin-left:125px;
+    margin-bottom:20px;
+    font-size: 20px;
+    position:absolute;
+    background:black;
+    border:2px solid white;
+    color: white;
+    border-radius:10px;
+    width:30px;
 }
-#close{
-    left:0;
-    height:30px;
+.issueDetail>button:hover{
+    cursor:pointer;
+    color:gray;
+}
+.certification{
+    
+    border:1px solid black;
+  
 }
 
-#addProfileImg{
-    width:100%;
-    margin:0;
+/* .certification>span{
+    margin-left:90px;
+} */
+
+.certificationDetail>span{
+    
+    width:10px;
 }
 
-#imgContainer{
-    width:500px;
+.organizationInfo{
+    display:flex;
+    flex-direction: column;
 }
+
+.certificate>ul>li{
+    list-style-type: none;
+}
+

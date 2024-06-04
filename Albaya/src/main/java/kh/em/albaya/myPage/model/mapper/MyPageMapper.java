@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kh.em.albaya.shop.model.dto.Shop;
+
 @Mapper
 public interface MyPageMapper {
 
@@ -26,5 +28,7 @@ public interface MyPageMapper {
 	int deleteShop(Map<String, Object> map);
 
 	int myPageCheckShopPw(Map<String, Object> map);
+
+	int changeProfile(Shop shop);
 
 }

@@ -1,5 +1,7 @@
 package kh.em.albaya.shop.model.service;
 
+
+import java.io.IOException;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.em.albaya.member.model.dto.Member;
@@ -11,7 +13,7 @@ public interface ShopService{
 
 	int checkBrn(String shopBrn);
 
-	int signup(Shop shop, MultipartFile profileImg);
+	int signup(Shop shop, MultipartFile profileImg) throws IllegalStateException, IOException;
 
 	Shop login(Shop inputShop);
 

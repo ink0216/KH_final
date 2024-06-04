@@ -223,6 +223,21 @@ form{
     overflow: hidden;
     display: inline-block;
     position: relative;
+    border: 1px solid black;
+}
+
+.img-container > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-area > :nth-child(1){
+    background-color: red;
+}
+
+.btn-area > button{
+    width: 15%;
 }
 
 .btn-area > button{
@@ -232,6 +247,8 @@ form{
     color: white;
     border: none;
     border-radius: 5px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .img-container img {

@@ -80,4 +80,10 @@
 		AND SHOP_NO = #{shopNo}
 		AND SHOP_STATUS != '5'
 	</update>
+	
+	<update id="changeProfile">
+		UPDATE "SHOP"
+		SET SHOP_PROFILE = #{shopProfile}
+		WHERE SHOP_NO = #{shopNo}
+	</update>
 </mapper>

@@ -1,6 +1,7 @@
 
 const reject = document.querySelector("#reject");
 const accept = document.querySelector("#accept");
+const reviewBoardDeclareNo = document.querySelector("#reviewBoardDeclareNo");
 
 // 반려 버튼
 
@@ -8,7 +9,23 @@ reject.addEventListener("click", () => {
     
     if(confirm("해당 신고내용을 반려 처리하시겠습니까?")){
 
-        alert("해당 신고가 반려 처리되었습니다.");
+        const declareNo = reviewBoardDeclareNo.innerText;
+
+        fetch("/ajax/delete", {
+            method : "DELETE",
+            headers : {"Content-Type":"application/json"},
+            body : declareNo
+        })
+        .then(response => response.text())
+        .then(result => {
+            if(result > 0){
+
+                alert("해당 신고가 반려 처리되었습니다.");
+                
+            }
+        })
+
+       
 
 
 
