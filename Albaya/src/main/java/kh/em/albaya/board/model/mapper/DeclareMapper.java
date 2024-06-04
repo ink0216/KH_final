@@ -73,6 +73,9 @@ public interface DeclareMapper {
 	 */
 	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
 
+
+	
+
 	
 	/** 신고 완료 게시물 삭제
 	 * @return
