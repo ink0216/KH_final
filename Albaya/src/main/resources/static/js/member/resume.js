@@ -1,3 +1,10 @@
+//이력서 사진
+const changeProfileImg =  document.querySelector("#editProfile");
+changeProfileImg.addEventListener("click",async () => {
+     const imgPath = await window.showDirectoryPicker();
+     console.log(imgPath);
+})
+
 
 //최종학력 선택(고등학교/대학교) 선택시 팝업
 
@@ -7,6 +14,8 @@
     const selectMiddleSchoolName = document.querySelector("#selectMiddleSchoolName");
     const selectSchoolName = document.querySelector("#selectSchoolName");
     const selectUniversityName = document.querySelector("#selectUniversityName");
+
+  
 
     
 
@@ -80,7 +89,7 @@ sidoId.addEventListener("change", e => {
 
 //score validation
 //점수 유효성 검사
-const score = document.querySelector("#score");
+const score = document.querySelector(".score");
 score.addEventListener("input", () => {
     if(score.value > 100){
         alert("점수가 100보다는 클수가 없습니다");
@@ -163,21 +172,68 @@ const addExperience = () => {
             dateInputDiv.append("~");
             dateInputDiv.appendChild(inputDate2);
 
+
+            
+            const currContainer = document.querySelectorAll(".experiencedContainer")
           
             const removeBtn = document.createElement("button");
             removeBtn.innerText = "-"
             removeBtn.classList.add("remove");
-            removeBtn.setAttribute("id","removeBtn")
             removeBtn.setAttribute("type","button")
             dateInputDiv.appendChild(removeBtn);
-
-
 }
+
+
+const fifthResume = document.querySelector(".resumeElement:nth-child(11)")
+const addCertificate = () => {
+    
+    const certificateDetailHTML = `
+        <li><br><br>
+            <div class="certificateDetail">
+                <div class="organizationDetail">
+                    <span>자격증명&nbsp;&nbsp;</span>
+                    <input type="text" class="certName">
+                    <br><br>
+                    <span>발행기관&nbsp;&nbsp;</span>
+                    <input type="text" class="organization">
+                </div>
+
+
+                <div class="scoreDetail">
+                    <span>점수</span>&nbsp;&nbsp;
+                    <input type="number" name="score" class = "score" max="100" required>&nbsp;/100
+                </div>
+                                               
+                <div class = "issueDetail">
+                    <span>취득일</span>
+                    <input type="date" name="issueDate" class="issueDate"  required>
+                    <button type="button" class = "certMinus">-</button>
+                </div>
+            </div>
+        </li><br><br>
+    `;
+
+    const ul = document.createElement("ul");
+    ul.innerHTML = certificateDetailHTML;
+    fifthResume.appendChild(ul);
+};
+
+
 
 //추가버튼 작성
 const chuga = document.querySelector("#chuga");
 chuga.addEventListener("click" , () => {
     addExperience();
+    //삭제버튼 작성
+    const removeBtns = document.querySelectorAll(".remove");
+    for(let i = 0; i < removeBtns.length; i++){
+        removeBtns[i].addEventListener("click", () => {
+            const container = removeBtns[i].closest(".experiencedContainer");
+            if(container){
+                container.parentNode.removeChild(container);
+            }
+        });
+    }
 });
 
 //삭제버튼 작성
@@ -198,5 +254,25 @@ chuga.addEventListener("click" , () => {
             container.parentNode.removeChild(container);
         })
     }
+
+//자격증 추가 버튼 작성
+const certAdd = document.querySelector("#certAdd");
+
+certAdd.addEventListener("click", () => {
+    addCertificate();
+    //삭제버튼 작성
+    const removeBtns = document.querySelectorAll(".certMinus");
+    for(let i = 0; i < removeBtns.length; i++){
+        removeBtns[i].addEventListener("click", () => {
+            const container = removeBtns[i].closest("ul");
+            if(container){
+                container.parentNode.removeChild(container);
+                fifthResume.removeChild(document.createElement("hr"))
+            }
+        });
+    }
+})
+
+    
         
 

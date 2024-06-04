@@ -72,7 +72,7 @@
                             </td>
                             
                                 <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
-                                <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td>
+                                <td th:text="${temp.substring(0,1)} + '*' + ${temp.substring(5)}">이메일</td>
 
                                 <td th:text="*{reviewBoardWriteDate}">작성일</td>
 
