@@ -33,9 +33,11 @@
 .header{
 
     display: flex;
-    margin: 0px 20px;
-    align-items: center;
+    margin: auto;
+    width: 950px;
     user-select: none;
+    font-size: 20px;
+    align-items: center;
 }
 .header h3{    font-family: 'GongGothicMedium';}
 
@@ -68,21 +70,24 @@ hr{
     border: 0.5px solid #ddd; 
 }
 #hireDetailForm{
-    width: 90%;
+    width: 900px;
 }
 .container{
     border: 1px solid lightgray;
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
-    margin: 10px 0;
+    margin: 10px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .div1{
     display: flex;
-    margin: 20px 30px;
+    margin: 3px 0px 0px 5px;
     height: auto;
+    width: 380px;
 }
 
 .div2{
@@ -94,6 +99,13 @@ hr{
 }
 .div2 .time{
     margin-left: 10px;
+}
+
+.addDiv{
+    display: flex;
+    margin: 3px 0px 0px 5px;
+    height: auto;
+    width:500px;
 }
 .title{
     width: 80px;

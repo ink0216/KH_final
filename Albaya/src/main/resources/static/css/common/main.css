@@ -60,6 +60,7 @@ section * {
 
 .imgItem:hover {
     border: 1px solid lightslategray;
+    border-top: 3px solid #014C73;
     box-shadow: 1px 1px 20px #d2d1d1;
     }
 
@@ -174,7 +175,7 @@ tbody tr:hover {
     height: 25px;
     margin: 5px;
     cursor: pointer;
-    background: rgb(230, 230, 230);
+    background: rgb(228 241 239);
     border-radius: 2px;
     border: none;
   }

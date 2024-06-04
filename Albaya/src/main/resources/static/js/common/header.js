@@ -13,11 +13,31 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// const hireWriteBtn = document.getElementById('hireWriteBtn');
+const hireWriteBtn = document.getElementById('hireWriteBtn');
+const loginShop = /*[[${session.shopMember}]]*/'기업 회원'
 
-// hireWriteBtn.addEventListener("click",()=>{
-//     location.href='/hire/hireWrite';
-// })
+hireWriteBtn.addEventListener("click",()=>{
+    // if(!loginShop){
+    //     alert("기업 회원만 공고문 작성이 가능합니다. ");
+    //     return;
+    // }
+    location.href='/hire/hireWrite';
+})
+
+const goHireKind = document.getElementById('goHireKind');
+goHireKind.addEventListener("click",()=>{
+    location.href='/hire/hireKind';
+});
+
+const goHireLocation = document.getElementById('goHireLocation');
+goHireLocation.addEventListener("click",()=>{
+    location.href='/hire/hireLocation';
+});
+
+const goReview2 = document.getElementById('goReview2');
+goReview2.addEventListener("click",()=>{
+    location.href='/reviewBoard/2';
+});
 
 
 

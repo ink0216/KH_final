@@ -24,9 +24,9 @@
                     </div><br><br>
                     <div id="menus">
                         <ul>
-                            <li class="underline"><a href="/hire/hireKind"><b>업직종별</b></a></li>
-                            <li class="underline"><a href="/hire/hireLocation"><b>지역별</b></a></li>
-                            <li class="underline"><a href="/reviewBoard/2"><b>알바토크</b></a></li>
+                            <li class="underline" id="goHireKind"><a><b>업직종별</b></a></li>
+                            <li class="underline" id="goHireLocation"><a><b>지역별</b></a></li>
+                            <li class="underline" id="goReview2"><a><b>알바토크</b></a></li>
                         </ul>
                     </div>
 
@@ -75,16 +75,16 @@
 
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;<button  id ="resumeRedirect" class="loggedIn">이력서 등록</button>
-                    &nbsp;&nbsp;<button class="loggedIn">공고 등록</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button id="resumeRedirect" class="loggedIn">이력서 등록</button>
+                    &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
 
 
                     <th:block th:if="${session.loginMember != null}">
-                        <a href="/member/logout" class="login">로그아웃</a>
+                        <a href="/member/logout" class="login logout">로그아웃</a>
                     </th:block>
 
                     <th:block th:if="${session.loginShop != null}">
-                        <a href="/shop/logout" class="login">로그아웃</a>
+                        <a href="/shop/logout" class="login logout">로그아웃</a>
                     </th:block>
 
                 </th:block>
@@ -136,8 +136,8 @@
         });
     }
 
-    const resume =  document.querySelector("#resumeRedirect");
-    resume.addEventListener("click" , () => {
+    const resume = document.querySelector("#resumeRedirect");
+    resume.addEventListener("click", () => {
         window.location.href = "http://localhost/member/resume";
     })
 </script>
