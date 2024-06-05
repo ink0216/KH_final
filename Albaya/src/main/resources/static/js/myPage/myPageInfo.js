@@ -1,8 +1,18 @@
 const updateMemberInfo = document.querySelector("#updateMemberInfo");
-const deleteMember = document.querySelector("#deleteMember");
+const deleteMember = document.querySelector("#deleteBtn");
 const changePwBtn = document.querySelector("#changePwBtn");
 
 let shopProfileStatus = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/myPage/countHireApply",{
+        method:"GET"
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        
+    })
+})
 
 updateMemberInfo.addEventListener("click", () => {
     location.href = "/myPage/myPageCheckPw";

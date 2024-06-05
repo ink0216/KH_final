@@ -213,6 +213,7 @@ public class HireServiceImpl implements HireService{
 	public Hire allHire(int hireNo) {
 		return mapper.allHire(hireNo);
 	}
+
 	
 	@Override
 	public int hireApplyCheck(int hireNo, int memberNo) {
