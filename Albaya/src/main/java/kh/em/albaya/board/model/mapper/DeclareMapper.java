@@ -82,6 +82,9 @@ public interface DeclareMapper {
 	 */
 	int updateReviewBoard();
 
+
+	List<Declare> selectDeclareList();
+
 	
 
 }

@@ -76,7 +76,6 @@
 	<update id="rejectDeclare" parameterType = "_int">
 		UPDATE BOARD_DECLARE SET 
 		REVIEW_BOARD_CONDITION = 0
-		AND DECLARE_DEL_FL = 'Y'
 		WHERE REVIEW_BOARD_CONDITION = 1
 		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
 	</update>
@@ -87,7 +86,6 @@
 	<update id="completeDeclare">
 		UPDATE BOARD_DECLARE SET 
 		REVIEW_BOARD_CONDITION = 2
-		AND DECLARE_DEL_FL = 'Y'
 		WHERE REVIEW_BOARD_CONDITION =1
 		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
 	</update>
