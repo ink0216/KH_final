@@ -46,7 +46,6 @@ goReview2.addEventListener("click",()=>{
 
 /* 알림 관련 전역 변수 */
 const notificationLoginCheck = /*[[${session.loginShop or session.loginMember} ? true : false]]*/ '로그인 체크';
-const notificationDefaultImage = /*[[#{user.default.image}]]*/ '유저 기본 이미지';
 
 let noticationSock;     //알림 웹소켓 객체
 let sendNotificationFn;  //웹소켓을 이용해 알림을 보내는 함수
