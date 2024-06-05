@@ -52,6 +52,12 @@ public class MainController {
 		ra.addFlashAttribute("message", "로그인 후 이용해 주세요");
 		return "redirect:/member/login";
    }
+   
+//   @GetMapping("loginError3")
+//   public String loginError3(RedirectAttributes ra) {
+//		ra.addFlashAttribute("message", "관리자 전용 페이지입니다");
+//		return "redirect:/";
+//   }
 
    
    @GetMapping("/declarePopup")
