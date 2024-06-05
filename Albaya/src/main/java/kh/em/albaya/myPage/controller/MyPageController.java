@@ -259,13 +259,15 @@ public class MyPageController {
     @GetMapping("countHireApply")
     @ResponseBody
     public int countHireApply(
-    		@SessionAttribute("loginMember") Member loginMember) {
+    		@SessionAttribute("loginMember") Member loginMember,
+    		Model model) {
     	
     	int memberNo = loginMember.getMemberNo();
     	
     	int result = service.countHireApply(memberNo);
     	
     	if(result >= 1) {
+    		model.addAttribute("countHireApply", result);
     		return result;
     	}
     	
