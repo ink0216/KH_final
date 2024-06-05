@@ -61,6 +61,14 @@ public interface DeclareService {
 	 * @return
 	 */
 	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
+
+
+
+
+	/** 비동기 목록 조회
+	 * @return
+	 */
+	List<Declare> selectDeclareList();
 	
 
 	

@@ -132,4 +132,13 @@ public interface HireMapper {
 	 */
 	int hireApply(Map<String, Object> map);
 
+
+
+	/**공고 수정 시 공고 내용 모두 얻어오기
+	 * @param hireNo
+	 * @return
+	 */
+	Hire allHire(int hireNo);
+
+	
 }

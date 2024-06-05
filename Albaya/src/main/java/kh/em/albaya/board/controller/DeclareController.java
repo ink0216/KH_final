@@ -59,6 +59,19 @@ public class DeclareController {
 	
 	
 	
+	/** 비동기 게시글 신고 목록 조회
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("selectList")
+	public List<Declare> selectDeclareList() {
+		
+		List<Declare> declareList = service.selectDeclareList();		
+		return declareList;
+	}
+	
+	
+	
 	// 게시글 신고 하기
 	
 	@PostMapping("insert")
@@ -106,7 +119,7 @@ public class DeclareController {
 	@ResponseBody
 	@PutMapping("reject")
 	public int rejectDeclare(
-			@RequestParam("reviewBoardDeclareNo") int reviewBoardDeclareNo
+			@RequestBody int reviewBoardDeclareNo
 			) {
 		
 		return service.rejectDeclare(reviewBoardDeclareNo);
@@ -116,7 +129,7 @@ public class DeclareController {
 	
 	// 신고 완료 처리
 	@ResponseBody
-	@GetMapping("complete")
+	@PutMapping("complete")
 	public String completeDeclare(
 			@RequestParam("reviewBoardDeclareNo") int reviewBoardDeclareNo,
 			@RequestParam("reviewBoardNo")int reviewBoardNo,

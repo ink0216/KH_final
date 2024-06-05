@@ -2,6 +2,7 @@ package kh.em.albaya.hire.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -253,5 +254,16 @@ public class HireController {
 		return "hire/hireApplyDetail";
 	}
 
+	//공고 수정 버튼 클릭 시 화면 이동
+	@GetMapping("update/{hireNo:[0-9]+}")
+	public String hireUpdate(
+			@PathVariable("hireNo") int hireNo,
+			Model model) {
+		Hire hire = service.allHire(hireNo);
+		List<String> dayList = Arrays.asList(hire.getWorkDay().split(","));
+		model.addAttribute("hire", hire);
+		model.addAttribute("dayList", dayList);
+		return "hire/hireUpdate";
+	}
 }
 

@@ -207,4 +207,10 @@ public class HireServiceImpl implements HireService{
 		int result = mapper.hireApply(map);
 		return result;
 	}
+	
+    //공고 수정 시 공고 내용 모두 조회해오기
+	@Override
+	public Hire allHire(int hireNo) {
+		return mapper.allHire(hireNo);
+	}
 }
