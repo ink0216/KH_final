@@ -190,7 +190,18 @@
 
             <div class="btnArea marginContainal">
                 <button type="button" id="closeBtn">닫기</button>
-                <button type="button" id="applyBtn" th:hire-no="${hire.hireNo}">지원하기</button>
+
+                <th:block th:if="${session.loginMember != null}">
+                    <button type="button" id="applyBtn" th:hire-no="${hire.hireNo}">지원하기</button>
+                </th:block>
+                <th:block th:if="${session.loginShop}">
+                    <th:block th:if="${session.loginShop.shopNo == hire.shopNo}">
+                        <button type="button" id="updateBtn" th:hire-no="${hire.hireNo}">수정하기</button>
+                    </th:block>
+                </th:block>
+                
+
+
             </div>
         </form>
     </div>
@@ -201,6 +212,12 @@
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2c183bb6985e38b3a2743e0bbbd8e7b&libraries=services"></script>
     <script src="/js/hire/hire-detail.js"></script>
     <th:block th:replace="~{common/footer}"></th:block>
+    <script th:inline="javascript">
+        const message =  /*[[${message}]]*/ "전달 받은 message";
+        // message가 없다면 null
+
+        if (message != null) alert(message);
+    </script>
 </body>
 
 </html>

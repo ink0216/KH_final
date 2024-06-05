@@ -35,7 +35,7 @@
 	
 	<!-- 기업명, 공고제목, 근무시간, 근무지역, 급여-->
 	<select id="selectHireList">	
-			SELECT SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
+			SELECT B.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
 		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
 		FROM "HIRE" A
 		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
@@ -115,7 +115,7 @@
 	  -->
 	<!-- 공고 상세 조회 -->
 	<select id="detailHire">
-	SELECT HIRE_NO, HIRE_TITLE, HIRE_CONTENT, TYPE_NAME, HIRE_COUNT,
+	SELECT HIRE_NO, HIRE_TITLE, HIRE_CONTENT, TYPE_NAME, HIRE_COUNT,SHOP_NO,
 	TO_CHAR(HIRE_END, 'YYYY-MM-DD') HIRE_END,
 	DECODE(HIRE_TERM, 1, '하루', 7, '일주일', 
 	3, '1~3개월', 6, '3~6개월', 365, '1년 이상') HIRE_TERM2,
@@ -240,5 +240,22 @@
 			#{item}
 		</foreach>
 		ORDER BY HIRE_NO DESC
+	</select>
+	
+	<insert id="hireApply">
+		INSERT INTO "APPLY_HIRE"
+		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent})
+	</insert>
+	
+	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->
+	<select id="allHire">
+	SELECT *
+	FROM "HIRE" A
+	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
+	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
+	JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
+	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
+	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
+	WHERE HIRE_NO = #{hireNo}
 	</select>
 </mapper>

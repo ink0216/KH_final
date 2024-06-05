@@ -1,6 +1,5 @@
 package kh.em.albaya.hire.model.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import kh.em.albaya.hire.model.mapper.HireMapper;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 import lombok.RequiredArgsConstructor;
 @Transactional
@@ -172,6 +172,7 @@ public class HireServiceImpl implements HireService{
 		}
 		return null;
 	}
+
 	//업직종별 공고 조회해오기
 	@Override
 	public Map<String, Object> kindHireList(Map<String, Object> map) {
@@ -191,5 +192,25 @@ public class HireServiceImpl implements HireService{
 		= Map.of("hireList", hireList, "pagination", pagination);
 		
 		return map1;
+	}
+	
+	@Override
+	// 지원서 작성하기
+	public int hireApply(int memberNo, Hire hire, int hireNo) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("memberNo", memberNo);
+		map.put("hireNo", hireNo);
+		map.put("applyTitle", hire.getApplyTitle());
+		map.put("applyContent", hire.getApplyContent());
+		
+		int result = mapper.hireApply(map);
+		return result;
+	}
+	
+    //공고 수정 시 공고 내용 모두 조회해오기
+	@Override
+	public Hire allHire(int hireNo) {
+		return mapper.allHire(hireNo);
 	}
 }

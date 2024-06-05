@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <form action="/resume/" class="container">
+    <form th:action="@{/hire/hireApply/{hireNo}(hireNo=${hireNo})}" class="container" method="POST">
 
+        <input type="hidden" name="memberNo" th:value="${session.loginMember.memberNo}" />
+        <input type="hidden" name="hireNo" th:value="${hireNo}" />
+        
         <div class="popup-title">
             <h2 class="title-h2">지원하기</h2>
         </div>
@@ -54,15 +57,21 @@
                     <div class="radio-area">
                         <div class="resume-radio">
                             <input type="radio" name="resumeNo" id="resuemNo1">
-                            <label for="resuemNo1"><a href="/resume/1">아르바이트 경험이 많아 믿고 맡기실 수 있습니다.</a></label>
+                            <label for="resuemNo1">
+                                <a href="/" target="_blank"
+                                    onclick="window.open(this.href, width=600, height=650,left=300,top=100)">아르바이트
+                                    경험이 많아 믿고 맡기실 수
+                                    있습니다.</a></label>
                         </div>
                         <div class="resume-radio">
                             <input type="radio" name="resumeNo" id="resuemNo2">
-                            <label for="resuemNo2"><a href="/resume/2">아르바이트 경험이 많아 믿고 맡기실 수 있습니다.</a></label>
+                            <label for="resuemNo2"><a href="/resume/2" target="_blank">아르바이트 경험이 많아 믿고 맡기실 수
+                                    있습니다.</a></label>
                         </div>
                         <div class="resume-radio">
                             <input type="radio" name="resumeNo" id="resuemNo3">
-                            <label for="resuemNo3"><a href="/resume/3">아르바이트 경험이 많아 믿고 맡기실 수 있습니다.</a></label>
+                            <label for="resuemNo3"><a href="/resume/3" target="_blank">아르바이트 경험이 많아 믿고 맡기실 수
+                                    있습니다.</a></label>
                         </div>
                     </div>
                 </div>
@@ -70,7 +79,7 @@
                 <div class="apply-title-area">
                     <span class="span1">지원제목</span>
                     <div class="inputArea">
-                        <input type="text" naem="applyTitle" id="applyTitle" placeholder="지원제목을 입력하세요">
+                        <input type="text" name="applyTitle" id="applyTitle" placeholder="지원제목을 입력하세요">
                     </div>
                 </div>
 
@@ -101,10 +110,9 @@
 
                 <div class="user-info">
                     <span class="memberTel span1">휴대폰</span>
-                    <span th:text=
-                    "${#strings.concat(#strings.substring(session.loginMember.memberPhoneNumber, 0, 3),
+                    <span th:text="${#strings.concat(#strings.substring(session.loginMember.memberPhoneNumber, 0, 3),
                         '-', #strings.substring(session.loginMember.memberPhoneNumber, 3, 7),
-                        '-', #strings.substring(session.loginMember.memberPhoneNumber, 7))}">  010-1111-2222</span>
+                        '-', #strings.substring(session.loginMember.memberPhoneNumber, 7))}"> 010-1111-2222</span>
                 </div>
 
                 <div class="user-info">
@@ -128,10 +136,16 @@
         <div class="btn-container div1">
             <button id="apply-btn">지원하기</button>
         </div>
-        
+
     </form>
 
     <script src="/js/hire/hire-apply.js"></script>
+    <script th:inline="javascript">
+        const message =  /*[[${message}]]*/ "전달 받은 message";
+        // message가 없다면 null
+
+        if (message != null) alert(message);
+    </script>
 </body>
 
 </html>

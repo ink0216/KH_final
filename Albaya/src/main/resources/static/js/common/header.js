@@ -45,8 +45,7 @@ goReview2.addEventListener("click",()=>{
 /* 알림 설정 */
 
 /* 알림 관련 전역 변수 */
-const notificationLoginCheck = /*[[${session.showMember or session.loginMember} ? true : false]]*/ '로그인 체크';
-const notificationDefaultImage = /*[[#{user.default.image}]]*/ '유저 기본 이미지';
+const notificationLoginCheck = /*[[${session.loginShop or session.loginMember} ? true : false]]*/ '로그인 체크';
 
 let noticationSock;     //알림 웹소켓 객체
 let sendNotificationFn;  //웹소켓을 이용해 알림을 보내는 함수
@@ -153,7 +152,7 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
                notiDelete.addEventListener("click", e=>{
                 fetch("/notification",{
                     method:"DELETE",
-                    headers:{"Content-Type":"application/json()"},
+                    headers:{"Content-Type":"application/json"},
                     body: data.notificationNo
                 })
                 .then(resp=>resp.text())

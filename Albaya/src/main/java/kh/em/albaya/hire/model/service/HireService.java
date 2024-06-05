@@ -7,6 +7,7 @@ import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 
 public interface HireService {
@@ -66,7 +67,22 @@ public interface HireService {
 	 * @return
 	 */
 	Map<String, Object> kindHireList(Map<String, Object> map);
+
+	/** 지원서 작성하기
+	 * @param loginMember
+	 * @param hire
+	 * @return
+	 */
+	int hireApply(int memberNo, Hire hire, int hireNo);
 	
+	int hireApply(Member loginMember, Hire hire);
+
+	/**공고 내용 모두 조회해오기
+	 * @param hireNo
+	 * @return
+	 */
+	Hire allHire(int hireNo);
+
 
 	
 }

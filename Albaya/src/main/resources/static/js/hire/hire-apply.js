@@ -40,8 +40,7 @@ applyBtn.addEventListener("click",e=>{
         return;
     }
 
-    
-    window.close();
-    
-
+    setTimeout(() => {
+        window.close();
+    }, 300);
 })
