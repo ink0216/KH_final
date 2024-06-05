@@ -213,4 +213,10 @@ public class HireServiceImpl implements HireService{
 	public Hire allHire(int hireNo) {
 		return mapper.allHire(hireNo);
 	}
+	
+	@Override
+	public int hireApply(Member loginMember, Hire hire) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
