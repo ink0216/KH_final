@@ -73,7 +73,7 @@ public interface HireService {
 	 * @param hire
 	 * @return
 	 */
-	int hireApply(Member loginMember, Hire hire);
+	int hireApply(int memberNo, Hire hire, int hireNo);
 	
 
 	

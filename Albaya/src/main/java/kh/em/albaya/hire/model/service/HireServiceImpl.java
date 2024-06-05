@@ -196,13 +196,15 @@ public class HireServiceImpl implements HireService{
 	
 	@Override
 	// 지원서 작성하기
-	public int hireApply(Member loginMember, Hire hire) {
+	public int hireApply(int memberNo, Hire hire, int hireNo) {
 		Map<String, Object> map = new HashMap<>();
 		
-		map.put("loginMember", loginMember);
-		map.put("hire", hire);
+		map.put("memberNo", memberNo);
+		map.put("hireNo", hireNo);
+		map.put("applyTitle", hire.getApplyTitle());
+		map.put("applyContent", hire.getApplyContent());
 		
 		int result = mapper.hireApply(map);
-		return 0;
+		return result;
 	}
 }

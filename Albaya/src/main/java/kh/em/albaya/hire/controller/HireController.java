@@ -1,5 +1,7 @@
 package kh.em.albaya.hire.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpServletResponse;
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.service.HireService;
 import kh.em.albaya.shop.model.dto.Shop;
@@ -217,25 +220,32 @@ public class HireController {
 
 	// 지원서 작성
 	@PostMapping("hireApply/{hireNo}")
-	public String hireApply(
-			@PathVariable("hireNo") int hireNo,
-			@SessionAttribute("loginMember") Member loginMember,
-			Hire hire,
-			RedirectAttributes ra
-			){
-		hire.setHireNo(hireNo); // 주소에서 공고 번호 얻어와 값 세팅
-		
-		int result = service.hireApply(loginMember, hire);
-		
-		String message = null;
-		
-		if(result >= 1) {
-			message = "지원이 완료되었습니다.";
-			ra.addFlashAttribute("message", message);
-			return "redirect:/";
-		}
-		return "redirect:/";
-	}		
+	public void hireApply(
+	        @PathVariable("hireNo") int hireNo,
+	        @SessionAttribute("loginMember") Member loginMember,
+	        Hire hire,
+	        RedirectAttributes ra,
+	        Model model,
+	        HttpServletResponse response
+	) throws IOException{        
+	    int memberNo = loginMember.getMemberNo();
+	    
+	    int result = service.hireApply(memberNo, hire, hireNo);
+	    
+	    String message = "지원이 완료되었습니다.";
+	    ra.addFlashAttribute("message", message);
+	    
+	    response.setContentType("text/html; charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    
+	    PrintWriter out = response.getWriter();
+	    out.println("<script type='text/javascript'>");
+	    out.println("alert('지원이 완료되었습니다.');");
+	    out.println("window.close();");
+	    out.println("</script>");
+	    out.flush();
+	}
+	
 
 	//지원서 상세조회(인서-테스트)
 	@GetMapping("hireApplyDetail")

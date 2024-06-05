@@ -130,17 +130,6 @@ public interface HireMapper {
 	 * @param hire
 	 * @return
 	 */
-	int hireApply(Member loginMember, Hire hire);
-
-
-
 	int hireApply(Map<String, Object> map);
 
-
-
-
-
-	
-
-	
 }

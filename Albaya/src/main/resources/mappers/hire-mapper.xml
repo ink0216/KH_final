@@ -244,6 +244,6 @@
 	
 	<insert id="hireApply">
 		INSERT INTO "APPLY_HIRE"
-		VALUES(#{memberNo}, {hireNo}, NULL, #{applyTitle}, #{applyContent})
+		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent})
 	</insert>
 </mapper>

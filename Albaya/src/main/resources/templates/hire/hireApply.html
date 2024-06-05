@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <form action="/hire/hireApply" class="container">
+    <form th:action="@{/hire/hireApply/{hireNo}(hireNo=${hireNo})}" class="container" method="POST">
 
+        <input type="hidden" name="memberNo" th:value="${session.loginMember.memberNo}" />
+        <input type="hidden" name="hireNo" th:value="${hireNo}" />
+        
         <div class="popup-title">
             <h2 class="title-h2">지원하기</h2>
         </div>
@@ -137,6 +140,12 @@
     </form>
 
     <script src="/js/hire/hire-apply.js"></script>
+    <script th:inline="javascript">
+        const message =  /*[[${message}]]*/ "전달 받은 message";
+        // message가 없다면 null
+
+        if (message != null) alert(message);
+    </script>
 </body>
 
 </html>
