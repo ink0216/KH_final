@@ -60,13 +60,26 @@ if(applyBtn != null){
     const hireNo = applyBtn.getAttribute('hire-no');
 
     applyBtn.addEventListener("click",()=>{
-        const options=[];
-        options.push("width=600");
-        options.push("height=650");
-        options.push("left=300");
-        options.push("top=100");
-    
-        window.open(`/hire/hireApply/${hireNo}`,"_blank",options.toString());
+        fetch("/hire/hireApplyCheck/"+hireNo,{
+            method: "GET"
+        })
+        .then(resp => resp.json())
+        .then(result => {
+            if(result == 1){
+                alert("이미 지원한 공고입니다.");
+                console.log(result);
+                return;
+            }
+            else{
+                const options=[];
+                options.push("width=600");
+                options.push("height=650");
+                options.push("left=300");
+                options.push("top=100");
+            
+                window.open(`/hire/hireApply/${hireNo}`,"_blank",options.toString());
+            }
+        })
     })
 }
 

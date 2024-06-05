@@ -35,8 +35,9 @@
 	
 	<!-- 기업명, 공고제목, 근무시간, 근무지역, 급여-->
 	<select id="selectHireList">	
-			SELECT B.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
-		WORK_END, DOSI_NAME, SIGUNGU_NAME, PAY_NAME, PAY_INPUT
+
+		SELECT B.SHOP_NAME, A.HIRE_TITLE, A.WORK_START,A.HIRE_NO,
+		A.WORK_END, E.DOSI_NAME, D.SIGUNGU_NAME, F.PAY_NAME, A.PAY_INPUT
 		FROM "HIRE" A
 		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
 		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
@@ -257,5 +258,12 @@
 	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
 	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
 	WHERE HIRE_NO = #{hireNo}
+	</select>
+	
+	<select id="hireApplyCheck" resultType="_int">
+		SELECT COUNT(*)
+		FROM APPLY_HIRE
+		WHERE MEMBER_NO = #{memberNo}
+		AND HIRE_NO = #{hireNo}
 	</select>
 </mapper>

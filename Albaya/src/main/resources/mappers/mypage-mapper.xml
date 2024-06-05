@@ -86,4 +86,10 @@
 		SET SHOP_PROFILE = #{shopProfile}
 		WHERE SHOP_NO = #{shopNo}
 	</update>
+	
+	<select id="countHireApply" resultType="_int">
+		SELECT COUNT(*)
+		FROM APPLY_HIRE
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
 </mapper>

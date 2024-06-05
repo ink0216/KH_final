@@ -22,4 +22,5 @@ public interface myPageService {
 
 	int changeProfile(Shop shop, MultipartFile profileImg) throws IllegalStateException, IOException;
 
+	int countHireApply(int memberNo);
 }
