@@ -266,5 +266,21 @@ public class HireController {
 		return "hire/hireUpdate";
 	}
 	
+	// 지원하기 클릭 시 지원을 했는지 여부 판단하는 비동기 요청
+	@GetMapping("hireApplyCheck/{hireNo:[0-9]+}")
+	@ResponseBody
+	public int hireApplyCheck(
+			@PathVariable("hireNo") int hireNo,
+	        @SessionAttribute("loginMember") Member loginMember) {
+		int memberNo = loginMember.getMemberNo();
+		
+		int result = service.hireApplyCheck(hireNo, memberNo);
+		
+		if(result >= 1) {
+			return 1;
+		}
+		
+		return 0;
+	}
 }
 

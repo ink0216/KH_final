@@ -214,4 +214,14 @@ public class HireServiceImpl implements HireService{
 		return mapper.allHire(hireNo);
 	}
 
+	
+	@Override
+	public int hireApplyCheck(int hireNo, int memberNo) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("hireNo", hireNo);
+		map.put("memberNo", memberNo);
+		
+		return mapper.hireApplyCheck(map);
+	}
 }

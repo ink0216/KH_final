@@ -521,6 +521,49 @@ input[type="date"]{
 }
 
 
+#locationContainer{
+    display:flex;
+    flex-direction:column;
+    border:1px solid black;
+    width:500px;
+    height:250px;
+}
+.dosiList{
+    display:flex;
+    flex-direction:column;
+    border:1px solid black;
+    justify-content: center;
+    width:250px;
+}
+.dosiList>div{
+    width:100px;
+}
+.sigunguList{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    border:1px solid black;
+    width:250px;
+}
+.locationHeading{
+    display: flex;
+    justify-content: center;
+    width:500px;  
+}
+.locationHeading>div{
+    display:flex;
+    border:1px solid black;
+    width:250px;
+    padding-right:-10px;
+    justify-content: center;
+    
+}
+#innerLocationContainer{
+    display:flex;
+}
+
+
+
 
 
 

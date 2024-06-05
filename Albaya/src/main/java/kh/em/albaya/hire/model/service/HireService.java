@@ -81,6 +81,13 @@ public interface HireService {
 	 */
 	Hire allHire(int hireNo);
 
+	/** 지원하기 누른 회원 여부 확인
+	 * @param hireNo
+	 * @param memberNo
+	 * @return
+	 */
+	int hireApplyCheck(int hireNo, int memberNo);
+
 
 	
 }
