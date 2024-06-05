@@ -22,7 +22,7 @@
             <th>신고받은 사람</th>
             <th>신고 처리</th>
         </thead>
-        <tbody>
+        <tbody class="tbody">
             <th:block th:each="declare : ${declareList}" th:object="${declare}">
                 <tr>
                     <!-- <td>1</td> 
@@ -43,7 +43,7 @@
                     
                     
                     
-                    <td><button id="reject">반려</button><button id="accept">확정</button></td>
+                    <td><button class="reject">반려</button><button class="accept">확정</button></td>
                 </tr>
             <!-- </th:block> -->
         </tbody>
@@ -111,5 +111,6 @@
 </body>
 
 <script src="/js/common/admin.js"></script>
+
 
 </html>

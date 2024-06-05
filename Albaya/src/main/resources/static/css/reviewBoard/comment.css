@@ -1,24 +1,32 @@
+#commentArea{
+	width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
 /*댓글*/
 .comment-write-area {
-	display: flex;
-	min-height: 85px;
-	justify-content: center;
-	
-	margin: 30px 0;
-	margin-left:-50px;
-	
+    display: flex;
+    min-height: 85px;
+    margin: 0px;
+    margin-top: 50px;
+    /* margin-left: -50px; */
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .comment-write-area > textarea{
-	flex-basis: 50%;
+	width: 755px;
+    /* flex-basis: 50%; */
     margin-right: 10px;
-	resize: none;
+    resize: none;
+    height: 100px;
 	
 }
 
 .comment-write-area > button{
 	flex-basis: 7%;
-    height: 85px;
+    /* height: 85px; */
 
 	font-weight: bold;
     border: 0;
@@ -28,8 +36,9 @@
 }
 
 #commentList{
-	padding: 0;
-	list-style: none;
+	margin: 10px;
+    padding: 0;
+    list-style: none;
 }
 
 .comment-writer {
@@ -65,7 +74,7 @@
 
 	font-size:15px;
 	margin-left:10px;
-	background-color:rgb(228, 242, 238);
+	background-color: rgb(240 244 243);
 	border:none;
 	border-bottom:1px solid black;
 	color:rgb(39, 39, 39);
@@ -82,15 +91,17 @@
 }
 
 .comment-row{
-	border-top : 1px solid #ccc;
-	padding : 10px 0;
-	margin-top:0px;
+	width: 800px;
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+    margin-top: 0px;
 }
 
 
 .child-comment{
-	padding-left : 50px;
-	position: relative;
+	width: 750px;
+    padding-left: 50px;
+    position: relative;
 }
 
 /* 
@@ -122,7 +133,7 @@ ul{
 #comment-btn{
 	font-size:15px;
 	margin-left:10px;
-	background-color:rgb(228, 242, 238);
+	background-color: rgb(240 244 243);
 	border:none;
 	border-bottom:1px solid black;
 	color:rgb(39, 39, 39);
@@ -134,11 +145,15 @@ ul{
 }
 
 #addComment {
-	color:white;
-	border-radius:10px;
-	height:60px;
-	font-size:24px;
-	margin-top:12px;
+
+    padding: 0px 7px;
+    color: white;
+    border-radius: 5px;
+    height: 25px;
+    font-size: 14px;
+    margin-top: 12px;
+
+
 }
 
 #memberEmail{

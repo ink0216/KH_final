@@ -1,5 +1,8 @@
 package kh.em.albaya.hire.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpServletResponse;
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.hire.model.service.HireService;
 import kh.em.albaya.shop.model.dto.Shop;
@@ -214,13 +218,52 @@ public class HireController {
 		return service.kindHireList(map);
 	}
 	
+
+	// 지원서 작성
+	@PostMapping("hireApply/{hireNo}")
+	public void hireApply(
+	        @PathVariable("hireNo") int hireNo,
+	        @SessionAttribute("loginMember") Member loginMember,
+	        Hire hire,
+	        RedirectAttributes ra,
+	        Model model,
+	        HttpServletResponse response
+	) throws IOException{        
+	    int memberNo = loginMember.getMemberNo();
+	    
+	    int result = service.hireApply(memberNo, hire, hireNo);
+	    
+	    String message = "지원이 완료되었습니다.";
+	    ra.addFlashAttribute("message", message);
+	    
+	    response.setContentType("text/html; charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    
+	    PrintWriter out = response.getWriter();
+	    out.println("<script type='text/javascript'>");
+	    out.println("alert('지원이 완료되었습니다.');");
+	    out.println("window.close();");
+	    out.println("</script>");
+	    out.flush();
+	}
 	
-	
-	
+
 	//지원서 상세조회(인서-테스트)
 	@GetMapping("hireApplyDetail")
 	public String hireApplyDetail() {
 		return "hire/hireApplyDetail";
+	}
+
+	//공고 수정 버튼 클릭 시 화면 이동
+	@GetMapping("update/{hireNo:[0-9]+}")
+	public String hireUpdate(
+			@PathVariable("hireNo") int hireNo,
+			Model model) {
+		Hire hire = service.allHire(hireNo);
+		List<String> dayList = Arrays.asList(hire.getWorkDay().split(","));
+		model.addAttribute("hire", hire);
+		model.addAttribute("dayList", dayList);
+		return "hire/hireUpdate";
 	}
 }
 

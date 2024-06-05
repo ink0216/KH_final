@@ -36,7 +36,7 @@ body{
 }
 
 
-#reject{
+.reject{
     font-family:'SUIT-Regular';
     width:90px;
     height:40px;
@@ -50,7 +50,7 @@ body{
 }
 
 
-#accept{
+.accept{
     font-family:'SUIT-Regular';
     width:90px;
     height:40px;
@@ -64,12 +64,12 @@ body{
 }
 
 
-#reject:hover{
+.reject:hover{
     cursor:pointer;
 }
 
 
-#accept:hover{
+.accept:hover{
     cursor:pointer;
 }
 

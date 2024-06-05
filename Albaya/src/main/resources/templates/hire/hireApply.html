@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <form action="/hire/hireApply" class="container">
+    <form th:action="@{/hire/hireApply/{hireNo}(hireNo=${hireNo})}" class="container" method="POST">
 
+        <input type="hidden" name="memberNo" th:value="${session.loginMember.memberNo}" />
+        <input type="hidden" name="hireNo" th:value="${hireNo}" />
+        
         <div class="popup-title">
             <h2 class="title-h2">지원하기</h2>
         </div>
@@ -76,7 +79,7 @@
                 <div class="apply-title-area">
                     <span class="span1">지원제목</span>
                     <div class="inputArea">
-                        <input type="text" naem="applyTitle" id="applyTitle" placeholder="지원제목을 입력하세요">
+                        <input type="text" name="applyTitle" id="applyTitle" placeholder="지원제목을 입력하세요">
                     </div>
                 </div>
 
@@ -137,6 +140,12 @@
     </form>
 
     <script src="/js/hire/hire-apply.js"></script>
+    <script th:inline="javascript">
+        const message =  /*[[${message}]]*/ "전달 받은 message";
+        // message가 없다면 null
+
+        if (message != null) alert(message);
+    </script>
 </body>
 
 </html>

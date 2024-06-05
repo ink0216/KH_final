@@ -158,7 +158,7 @@
             return;
         }
 
-        // fetch(url,{
+        // fetch("checkEmail",{
         //     method:"POST",
         //     headers: {"Content-Type":"application/json"},
         //     body: inputEmail.value
@@ -203,6 +203,7 @@
             obj.memberPw = false;
             return;
         }
+       
         
         passwordVerify.classList.add("success");
         passwordVerify.classList.remove("fail");

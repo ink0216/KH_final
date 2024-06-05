@@ -50,7 +50,7 @@ public interface DeclareService {
 	 * @param reviewBoardDeclareNo
 	 * @return
 	 */
-	int rejectDeclare(int reviewBoardDeclareNo,int reviewBoardNo);
+	int rejectDeclare(int reviewBoardDeclareNo);
 
 
 
@@ -61,6 +61,14 @@ public interface DeclareService {
 	 * @return
 	 */
 	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
+
+
+
+
+	/** 비동기 목록 조회
+	 * @return
+	 */
+	List<Declare> selectDeclareList();
 	
 
 	

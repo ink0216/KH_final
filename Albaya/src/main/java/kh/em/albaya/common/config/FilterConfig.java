@@ -57,7 +57,7 @@ public class FilterConfig {
 		filter.setUrlPatterns(Arrays.asList(filteringURL));
 		
 		filter.setName("LoginFilter");
-				
+			
 		filter.setOrder(2);
 		return filter;
 	}

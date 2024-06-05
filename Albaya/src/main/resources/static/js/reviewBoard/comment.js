@@ -52,7 +52,12 @@ const selectCommentList = () => {
                     
                     // 닉네임
                     const nickname = document.createElement("span");
-                    nickname.innerText = comment.memberEmail.split("@")[0];
+                    // nickname.innerText = comment.memberEmail.split("@")[0];
+                    nickname.innerText = comment.memberEmail.split("@")[0].replace(/.(?=.*.)/g, "*");
+                    
+                    
+                    commentWriter.append(nickname); 
+
 
                     // 날짜(작성일)
                     const commentDate = document.createElement("span");
