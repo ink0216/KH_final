@@ -20,7 +20,6 @@ public class Notification {
 	private String notificationCheck;
 	private String notificationDate;
 	private String notificationUrl;
-	private String sendMemberProfileImg;
 	private int sendMemberNo; //알림을 보낸 사람의 번호
 	private int receiveMemberNo; // 알림을 받는 사람의 번호 ***이게 더 중요하다
 	

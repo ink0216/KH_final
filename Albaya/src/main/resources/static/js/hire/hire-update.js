@@ -3,7 +3,7 @@ const payConfirmBtn = document.getElementById('payConfirmBtn');
 const payInput = document.getElementById('payInput') 
 
 payInput.addEventListener("input",e=>{
-
+    checkObj.payInput=false;
     const pay= e.target.value;
 
     /* 급여 종류 얻어오기 */
@@ -276,14 +276,32 @@ function sample5_execDaumPostcode() {
         }
     }).open();
 }
+/* ====================================== */
+const roadAddress = document.querySelector('#address'); //주소
+geocoder.addressSearch(roadAddress.value, function(results, status) {
+    // 정상적으로 검색이 완료됐으면
+    if (status === daum.maps.services.Status.OK) {
 
+        var result = results[0]; //첫번째 결과의 값을 활용
+
+        // 해당 주소에 대한 좌표를 받아서
+        var coords = new daum.maps.LatLng(result.y, result.x);
+        // 지도를 보여준다.
+        mapContainer.style.display = "block";
+        map.relayout();
+        // 지도 중심을 변경한다.
+        map.setCenter(coords);
+        // 마커를 결과값으로 받은 위치로 옮긴다.
+        marker.setPosition(coords)
+    }
+});
 
 /* -------------------------------------------------------------- */
 /* 업직종 선택 popup창 */
 const typeBtn = document.querySelector("#typeBtn"); //업직종 선택 버튼
 
 typeBtn.addEventListener("click",()=>{
-
+    checkObj.selectedType=false;
     const options=[];
     options.push("width=500");
     options.push("height=300");
@@ -303,14 +321,14 @@ function setType(type) {
 /* -------------------------------------------------------------- */
 /* 유효성 검사 */
 const checkObj={
-    "hireTitle" : false, //공고문 제목
-    "selectedType" : false, //업직종 선택
-    "hrieCount" : false, //모집인원
-    "hireEnd"   : false, //모집 종료
-    "shopTel"   : false, //연락처
-    "shopEmail" : false,  //이메일 
-    "payInput"  : false, //급여
-    "hireContent" : false // 내용
+    "hireTitle" : true, //공고문 제목--
+    "selectedType" : true, //업직종 선택--
+    "hrieCount" : true, //모집인원--
+    "hireEnd"   : true, //모집 종료--
+    "shopTel"   : true, //연락처--
+    "shopEmail" : true,  //이메일 --
+    "payInput"  : true, //급여
+    "hireContent" : true // 내용
     }
 
 /* 공고문 제목 유효성 검사 */
@@ -318,6 +336,7 @@ const hireTitle = document.getElementById("hireTitle");
 const titleMessage = document.getElementById("titleMessage");
 
 hireTitle.addEventListener("input",e=>{
+    checkObj.hireTitle=false;
     const inputTitle = e.target.value;
 
     if(inputTitle.trim().length===0){
@@ -356,6 +375,7 @@ const hireCount = document.getElementById("hireCount");//모집 인원
 const countMessage = document.getElementById("countMessage");
 
 hireCount.addEventListener("input",e=>{
+    checkObj.hrieCount=false;
     const inputCount = e.target.value;
     const regExp = /^\d+$/;
 
@@ -385,6 +405,7 @@ const hireEnd = document.getElementById("hireEnd")//모집 종료
 const endMessage = document.getElementById("endMessage");
 
 hireEnd.addEventListener("change",e=>{
+    checkObj.hireEnd=false;
     const now = new Date(); //현재 날짜
     const inputEnd = new Date(hireEnd.value); //입력된 날짜
 
@@ -414,6 +435,7 @@ const shopTel = document.getElementById("shopTel");
 const telMessage = document.getElementById("telMessage");
 
 shopTel.addEventListener("input",e=>{
+    checkObj.shopTel=false;
     const inputTel = e.target.value;
     const regExp=/^\d{9,11}$/;
 
@@ -443,6 +465,7 @@ const shopEmail= document.getElementById("shopEmail");
 const emailMessage = document.getElementById("emailMessage");
 
 shopEmail.addEventListener("input",e=>{
+    checkObj.shopEmail=false;
     const inputEmail = e.target.value;
     const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 

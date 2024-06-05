@@ -152,7 +152,7 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
                notiDelete.addEventListener("click", e=>{
                 fetch("/notification",{
                     method:"DELETE",
-                    headers:{"Content-Type":"application/json()"},
+                    headers:{"Content-Type":"application/json"},
                     body: data.notificationNo
                 })
                 .then(resp=>resp.text())
