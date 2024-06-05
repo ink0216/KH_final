@@ -56,7 +56,7 @@ button:hover{
 .main-container-wrapper{
     display: flex;
     width: 35%;
-    height: 80%;
+    height: 90%;
     flex-direction: column;
 }
 
@@ -94,7 +94,7 @@ button:hover{
     border: 1px solid black;
     border-radius: 5px;
     width: 10%;
-    height: 70%;
+    height: 80%;
     background-color: white;
 }
 
@@ -150,7 +150,7 @@ button:hover{
     border: 1px solid black;
     border-radius: 5px;
     width: 10%;
-    height: 70%;
+    height: 80%;
     background-color: white;
 }
 
@@ -209,7 +209,7 @@ button:hover{
     border: 1px solid black;
     border-radius: 5px;
     width: 10%;
-    height: 70%;
+    height: 80%;
     background-color: white;
 }
 

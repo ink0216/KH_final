@@ -160,4 +160,9 @@ public class MyPageServiceImpl implements myPageService{
 			return 0;
 		}
 	}
+	
+	@Override
+	public int countHireApply(int memberNo) {
+		return mapper.countHireApply(memberNo);
+	}
 }

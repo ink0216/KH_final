@@ -265,5 +265,6 @@ public class HireController {
 		model.addAttribute("dayList", dayList);
 		return "hire/hireUpdate";
 	}
+	
 }
 
