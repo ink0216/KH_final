@@ -1,7 +1,8 @@
 body{
             
     font-family:'SUIT-Regular';
-    background-color:rgb(228, 242, 238);
+    background-color: rgb(240 244 243);
+    margin: 0px;
 
     }
 
@@ -18,15 +19,36 @@ body{
         font-style: normal;
      }  
 
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewBoard-detail{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
      
 #reviewBoardDetailBox{
-    width:1100px;
-    min-height:500px;
-    border:1px solid black;
-    padding-left:10px;
-    padding-right:10px;
-    margin-top : 70px;
-    margin-left: 350px;
+    width: 800px;
+    min-height: 502px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px;
+    /* padding-left: 10px; */
+    /* padding-right: 10px; */
+    margin-top: 70px;
+}
+
+.reviewBoard-btn-area{
+    display: flex;
+    justify-content: flex-end;
 }
 
 #reviewBoardInfo{
@@ -44,42 +66,40 @@ body{
 }
 
 #updateBtn{
-    width: 120px;
-    height: 40px;
+    width: 100px;
+    height: 32px;
     background-color: #014C73;
-    font-size: 18px;
+    font-size: 15px;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
     border: none;
-    border-radius: 15px;
-    margin:10px;
+    border-radius: 5px;
+    margin: 10px;
 }
 
 
 #goToListBtn{
-    width: 120px;
-    height: 40px;
-    background-color:#014C73;
-    font-size: 18px;
+    width: 100px;
+    height: 32px;
+    background-color: #014C73;
+    font-size: 15px;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
     border: none;
-    border-radius: 15px;
-    margin:10px;
+    border-radius: 5px;
+    margin: 10px;
 }
 
 #deleteBtn{
-
-    width: 120px;
-    height: 40px;
+    width: 100px;
+    height: 32px;
     background-color: #014C73;
-    font-size: 18px;
+    font-size: 15px;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
     border: none;
-    border-radius: 15px;
-    margin:10px;
-
+    border-radius: 5px;
+    margin: 10px;
 }
 
 #updateBtn:hover{
@@ -105,5 +125,6 @@ body{
 }
 
 .reviewBoard-btn-area{
-    margin-left: 400px;
+    width: 810px;
+    /* margin-left: 400*/
 }
