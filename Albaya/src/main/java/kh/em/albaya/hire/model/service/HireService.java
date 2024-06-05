@@ -74,7 +74,13 @@ public interface HireService {
 	 * @return
 	 */
 	int hireApply(Member loginMember, Hire hire);
-	
+
+	/**공고 내용 모두 조회해오기
+	 * @param hireNo
+	 * @return
+	 */
+	Hire allHire(int hireNo);
+
 
 	
 }
