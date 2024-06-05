@@ -244,7 +244,7 @@
 	
 	<insert id="hireApply">
 		INSERT INTO "APPLY_HIRE"
-		VALUES(#{memberNo}, {hireNo}, NULL, #{applyTitle}, #{applyContent})
+		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent})
 	</insert>
 	
 	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->

@@ -52,7 +52,7 @@ public class FilterConfig {
 		filter.setFilter(new LoginFilter());
 		
 
-		String[] filteringURL = {"/myPage/*", "/hire/hireApply/*"};
+		String[] filteringURL = {"/myPage/*"};
 		
 		filter.setUrlPatterns(Arrays.asList(filteringURL));
 		
