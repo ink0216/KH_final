@@ -130,23 +130,14 @@ public class DeclareController {
 	// 신고 완료 처리
 	@ResponseBody
 	@PutMapping("complete")
-	public String completeDeclare(
-			@RequestParam("reviewBoardDeclareNo") int reviewBoardDeclareNo,
-			@RequestParam("reviewBoardNo")int reviewBoardNo,
+	public int completeDeclare(
+			@RequestBody int reviewBoardDeclareNo,
 			RedirectAttributes ra) {
 		
-		int result = service.completeDeclare(reviewBoardDeclareNo,reviewBoardNo);
+		
 		
 
-		String message = null;
-		
-		if(result > 0) {
-			message = "신고 처리 완료 되었습니다";
-		}else {
-			message = "신고 처리 실패 하였습니다";
-		}
-		
-		return "redirect:/declare/admin";
+		return service.completeDeclare(reviewBoardDeclareNo);
 	}
 	
 	

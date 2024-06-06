@@ -25,8 +25,8 @@ const selectList = () => {
         console.log(result);
         console.log(typeof result);
 
-        const declareList = JSON.parse(result);
-
+        // const declareList = JSON.parse(result);
+        const declareList = result;
         
         tbody.innerHTML = "";
 
@@ -34,13 +34,14 @@ const selectList = () => {
 
             const tr = document.createElement("tr");
 
-            const arr = [declare.reviewBoardDeclareNo,
-                        declare.reviewBoardNo, declare.memberNo, 
-                        declare.boardDeclareContent,
-                        declare.reviewBoardCondition, 
-                        declare.boardDeclareDate, 
-                        declare.reportedMemberNo, 
-                        declare.declareBoardCode];
+            const arr = ['reviewBoardDeclareNo',
+            'reviewBoardNo',
+            'memberNo',
+            'boardDeclareContent',
+            'reviewBoardCondition',
+            'boardDeclareDate',
+            'reportedMemberNo'
+            ];
 
             for (let key of arr) {
 
@@ -50,6 +51,23 @@ const selectList = () => {
                 tr.append(td);
 
             }
+            const buttonTd = document.createElement("td");
+
+            
+            const reject = document.createElement("button");
+
+            reject.innerText = "반려";
+            reject.classList.add("reject");
+           
+
+
+            const accept = document.createElement("button");
+            accept.innerText = "확정";
+            accept.classList.add("accept");
+            
+
+            buttonTd.append(reject, accept);
+            tr.append(buttonTd);
 
             tbody.append(tr);
 
@@ -121,7 +139,7 @@ document.addEventListener('DOMContentLoaded',function() {
         
                     method : "PUT",
                     headers : {"Content-Type":"application/json"},
-                    body : reviewBoardDeclareNo.value
+                    body : button.closest("tr").children[0].innerText
                 })
         
                 .then(response => response.text())

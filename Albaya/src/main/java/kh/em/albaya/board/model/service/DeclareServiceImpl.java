@@ -86,14 +86,10 @@ public class DeclareServiceImpl implements DeclareService{
 	
 	// 신고 완료하기
 	@Override
-	public int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo) {
-		  int result = mapper.completeDeclare(reviewBoardDeclareNo,reviewBoardNo);
-		  
-		  if(result>0) {
-			  return mapper.updateReviewBoard();
-		  } else {
-			  return 0;
-		  }
+	public int completeDeclare(int reviewBoardDeclareNo) {
+		
+			  return mapper.completeDeclare(reviewBoardDeclareNo);
+
 	}
 	
 	

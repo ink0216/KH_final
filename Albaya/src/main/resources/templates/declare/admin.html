@@ -40,10 +40,8 @@
                     <td th:text="${declare.reviewBoardCondition}"></td>
                     <td th:text="${declare.boardDeclareDate}"></td>
                     <td th:text="${declare.reportedMemberNo}"></td>
-                    
-                    
-                    
-                    <td><button class="reject">반려</button><button class="accept">확정</button></td>
+                    <!-- <td th:text="${declare.reportedMemberNo}"></td> -->
+                    <td id="buttonArea"><button class="reject">반려</button><button class="accept">확정</button></td>
                 </tr>
             <!-- </th:block> -->
         </tbody>
@@ -109,6 +107,8 @@
 
 
 </body>
+
+
 
 <script src="/js/common/admin.js"></script>
 
