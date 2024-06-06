@@ -10,376 +10,439 @@
 <body>
     <th:block th:replace="~{common/header}"></th:block>
     <!-- 이력서  -->
-    <div id = "cont">
-        <div  class = "profileInfo">
-            <div id = "innerProfileContainer">
-                <div id="profileImg">
-                    <img src="" alt="">
-                    <button id="editProfile"><i class="fa-solid fa-camera"></i></button>
+    <!-- 사진 업데이트 팝업창 -->
+        <div class = "container hide" >
+            <div class = "innerContainer ">
+                <div class = "heading"> 
+                    <h2>사진 업데이트</h2>
                 </div>
-                <div id="info">
-                    <div id="name">
-                        <span id="key">이름</span>
-                        <span id="value"><b>황진관</b></span>
-                    </div>
-                    <div id="addNtel">
-                        <div class="credentials">
-                            <span>주소</span>
-                            <span id = "address">경기도 파주시 조리읍</span>
-                        </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <div class = "credentials">
-                            <span id="telNo">휴대폰</span>
-                            <span>010-5782-3394</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span>이메일</span>
-                        <span id="email">jkhwang58@gmail.com</span>
-                    </div>
-        
-                </div><br><br>
-            </div >
-            <div id="loadResume">
-                <div><i class="fa-solid fa-file"></i></div>
-                <div><b>2024년 05월 22일 13:21:36에</b> 임시저장된 이력서가 있습니다.</div>
-                <div id = "buttons">
-                    <button>이력서 불라!!</button>
-                    <button>삭제</button>
+                <div class = "selectFileSpan"> 
+                    <span>사진 업데이트:</span>
+                </div><br>
+                <div class = "fileInput"> 
+                    <input type=file id="picFile"></input>
+                </div>
+                <br><br>
+                <div class="finalizingBtns">
+                    <button type="button"  id = "cancel">취소</button>
+                    <button type="button" id = "update">업데이트</button>
                 </div>
             </div>
         </div>
-    
-        <!-- 이력서 작성 section -->
-        <form action ="#" >
-            <div id="resumeDisplay">
-                <h3>나의 이력서</h3>
-                <hr>
-                <div class="resumeElement">
-                    <h3>이력서 제목<span class="required">*</span></h3>
-                    <ul>
-                        <li><input type="text" id = "title" required></li>
-                    </ul>
-                    
-                </div>
-                <hr>
 
-                <div class = "resumeElement">
-                    <h3>자기소개</h3>
-    
-                    <ul>
-                        <li>
-                            <textarea name="introduce" id="introduce">
 
-                            </textarea>
-                        </li>
-                    </ul>
-    
-                </div>
-                <hr>
-        
-                <div class="resumeElement">
-                    <h3>학력 사항<span class="required">*</span></h3>
-                    <ul>
-                        <li>
-                            <div id = "tip">
-                                <p><b>Tip</b></p>
-                                &nbsp;&nbsp;<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <div id = "cont">
+            <div  class = "profileInfo">
+                <div id = "innerProfileContainer">
+                    <div id="profileImg">
+                        <img src="" alt="">
+                        <button id="editProfile"><i class="fa-solid fa-camera"></i></button>
+                    </div>
+                    <div id="info">
+                        <div id="name">
+                            <span id="key">이름</span>
+                            <span id="value"><b>황진관</b></span>
+                        </div>
+                        <div id="addNtel">
+                            <div class="credentials">
+                                <span>주소</span>
+                                <span id = "address">경기도 파주시 조리읍</span>
                             </div>
-                        </li>
-                        <li>
-                            <div id = "dropdownContainer">
-                                <div>
-                                    <span>최종학력</span>
-                                    <select name="educationName" id="dropDown" required>
-                                        <option value="">선택</option>
-                                        <option value="1">초등학교</option>
-                                        <option value="2">중학교</option>
-                                        <option value="3">고등학교</option>
-                                        <option value="4">대학교</option>
-                                        
-                                    </select>
-                                </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <div class = "credentials">
+                                <span id="telNo">휴대폰</span>
+                                <span>010-5782-3394</span>
                             </div>
-                        </li>
+                        </div>
+                        <div>
+                            <span>이메일</span>
+                            <span id="email">jkhwang58@gmail.com</span>
+                        </div>
+            
+                    </div><br><br>
+                </div >
+                <div id="loadResume">
+                    <div><i class="fa-solid fa-file"></i></div>
+                    <div><b>2024년 05월 22일 13:21:36에</b> 임시저장된 이력서가 있습니다.</div>
+                    <div id = "buttons">
+                        <button>이력서 불라!!</button>
+                        <button>삭제</button>
+                    </div>
+                </div>
+            </div>
         
-                        <li><br><br>
-                            <div id="schoolContainer">
-
-                                <!-- 초등학교 -->
-                                <div  name="selectPrimarySchoolName" id="selectPrimarySchoolName" class="hide">
-                                
-                                    <span>초등학교</span>
-                                    <input type="text" name="primarySchoolName" id="primarySchoolName" placeholder="초등학교" required><br><br>
-                                    <div class="term">
-                                        <span>졸업여부</span>
-                                        <select name="graduationStatus" class="graduationDropDown" required>
-                                            <option>선택</option>
-                                            <option value = "1">졸업</option>
-                                            <option value = "2">재학</option>
-                                            <option value = "3">휴학</option>
-                                            <option value = "4">중퇴</option>
-                                            <option value = "5">수교</option>
-                                        </select>
-
-                                        <div>
+            <!-- 이력서 작성 section -->
+            <form action ="#" >
+                <div id="resumeDisplay">
+                    <h3>나의 이력서</h3>
+                    <hr>
+                    <div class="resumeElement">
+                        <h3>이력서 제목<span class="required">*</span></h3>
+                        <ul>
+                            <li><input type="text" id = "title" required></li>
+                        </ul>
+                        
+                    </div>
+                    <hr>
+    
+                    <div class = "resumeElement">
+                        <h3>자기소개</h3>
+        
+                        <ul>
+                            <li>
+                                <textarea name="introduce" id="introduce">
+    
+                                </textarea>
+                            </li>
+                        </ul>
+        
+                    </div>
+                    <hr>
+            
+                    <div class="resumeElement">
+                        <h3>학력 사항<span class="required">*</span></h3>
+                        <ul>
+                            <li>
+                                <div id = "tip">
+                                    <p><b>Tip</b></p>
+                                    &nbsp;&nbsp;<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div id = "dropdownContainer">
+                                    <div>
+                                        <span>최종학력</span>
+                                        <select name="educationName" id="dropDown" required>
+                                            <option value="">선택</option>
+                                            <option value="1">초등학교</option>
+                                            <option value="2">중학교</option>
+                                            <option value="3">고등학교</option>
+                                            <option value="4">대학교</option>
                                             
-                                            <div class="innerDateContainer">
-                                                <span>재학기간</span>
-                                                <input type="date" name="date" class="date" required>
-                                                <input type="date" name="date" class="date" required>
-                                            </div>
-                                        </div>
+                                        </select>
                                     </div>
                                 </div>
-
-                                <!-- 중학교 -->
-                                <div name="selectMiddleSchoolName" id="selectMiddleSchoolName" class="hide">
-                                
-                                    <span>중학교</span>
-                                    <input type="text" name="middleSchoolName" id="middleSchoolName" placeholder="중학교" required><br><br>
-                                    <div class="term">
-                                        <span>졸업여부</span>
-                                        <select name="graduationStatus" class="graduationDropDown" required>
-                                            <option>선택</option>
-                                            <option value = "1">졸업</option>
-                                            <option value = "2">재학</option>
-                                            <option value = "3">휴학</option>
-                                            <option value = "4">중퇴</option>
-                                            <option value = "5">수교</option>
-                                        </select>
-
-                                        <div>
-                                            
-                                            <div class = "innerDateContainer">
-                                                <span>재학기간</span>
-                                                <input type="date" name="date" class="date" required>
-                                                <input type="date" name="date" class="date" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 고등학교 -->
-                                <div name="selectSchoolName" id="selectSchoolName" class="hide">
-                                
-                                    <span>고등학교</span>
-                                    <input type="text" name="highSchoolName" id="schoolName" placeholder="고등학교" required><br><br>
-                                    <div class="term">
-                                        <span>졸업여부</span>
-                                        <select name="graduationStatus" class="graduationDropDown" required>
-                                            <option>선택</option>
-                                            <option value = "1">졸업</option>
-                                            <option value = "2">재학</option>
-                                            <option value = "3">휴학</option>
-                                            <option value = "4">중퇴</option>
-                                            <option value = "5">수교</option>
-                                        </select>
-                                        <div>
-                                            
-                                            <div class = "innerDateContainer">
-                                                <span>재학기간</span>
-                                                <input type="date" name="date" class="date" required>
-                                                <input type="date" name="date" class="date" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div name = "selectUniversityName" id = "selectUniversityName" class="hide">
-                                    <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
-                                    <div><br>
-        
-                                        
-                                            <!-- <span>졸업여부</span>
+                            </li>
+            
+                            <li><br><br>
+                                <div id="schoolContainer">
+    
+                                    <!-- 초등학교 -->
+                                    <div  name="selectPrimarySchoolName" id="selectPrimarySchoolName" class="hide">
+                                    
+                                        <span>초등학교</span>
+                                        <input type="text" name="primarySchoolName" id="primarySchoolName" placeholder="초등학교" required><br><br>
+                                        <div class="term">
+                                            <span>졸업여부</span>
                                             <select name="graduationStatus" class="graduationDropDown" required>
+                                                <option>선택</option>
                                                 <option value = "1">졸업</option>
                                                 <option value = "2">재학</option>
                                                 <option value = "3">휴학</option>
                                                 <option value = "4">중퇴</option>
                                                 <option value = "5">수교</option>
-                                            </select> -->
-        
-                                            <div id="dateContainer">
+                                            </select>
+    
+                                            <div>
                                                 
                                                 <div class="innerDateContainer">
                                                     <span>재학기간</span>
-                                                    <input type="date" name="date" class="date" id = "startDate" required>
-                                                    ~
-                                                    <input type="date" name="date" class="date" id = "endDate" required>
+                                                    <input type="date" name="date" class="date" required>
+                                                    <input type="date" name="date" class="date" required>
                                                 </div>
                                             </div>
                                         </div>
-                        
-        
-                                   
-        
-                                </div>
-                            </div>
-        
-                        </li>
-                    </ul>
-                    
-                </div>
-                <hr>
-        
-                <div class="resumeElement">
-                    <h3>희망 근무지</h3>
-    
-                    <div id = "locationContainer">
-                        <div class = "locationHeading">
-                            <div><h1>도시</h1></div>
-                            <div><h1>시군구</h1></div>
-                        </div>
-                        <div id="innerLocationContainer">
-                            <div class = "dosiList" >
-                                <div class = "dosies">경기</div>
-                                <div class = "dosies">서울특별시</div>
-                                <div class = "dosies">전라북도</div>
-                                <div class = "dosies">울산광역시</div>
-                            </div>
-                            <div class = "sigunguList" >
-                    
-                                <div class = "sigungus">강서구</div>
-                                <div class = "sigungus">강남</div>
-                                <div class = "sigungus">여의도</div>
-                                <div class = "sigungus">광화문</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <hr>
-
-                <div class="resumeElement">
-                    <h3>희망 업직종<span class="required">*</span></h3>
-
-                   <ul>
-                        <li>
-                            <div id="buttonContainer">
-                               
-                                <div class = "jobsOfDesire">
-                                    <button type = "button" class = "jobsOfDesireBtn">외식/음료</button>
-                                    <button type = "button" class = "jobsOfDesireBtn">사무직</button>
-                                    <button type = "button" class = "jobsOfDesireBtn">운전/배달</button>
-                                </div>
-                                <div class = "jobsOfDesire">
-                                    <button type = "button" class = "jobsOfDesireBtn">매정관리/판매</button>
-                                    <button type = "button" class = "jobsOfDesireBtn">고객상담</button>
-                                    <button type = "button" class = "jobsOfDesireBtn">병원/간호/연구</button>
-                                </div>
-                                <div class = "jobsOfDesire">
-                                    <button type = "button" class = "jobsOfDesireBtn">서비스</button>
-                                    <button type = "button" class = "jobsOfDesireBtn">생산/건설</button>
-                                    <button type = "button" class = "jobsOfDesireBtn">교육/강사</button>
-                                </div>
-                            </div>
-                           
-                            <div id="addDesiredJobs">
-
-                            </div>
-                            
-                            
-                        </li>
-                   </ul>
-                   
-
-                </div>
-                <hr>
-
-                <div class = "resumeElement">
-                    <h3>경력사항<span class="required">*</span></h3>
-                    <br>
-                    <ul>
-                        <li>
-                            <div id="career" >
-                                <span>경력구분<span class="required">*</span></span>
-                                <div id="careerSelect">
-                                    <button id="newHire" type="button" class="selectedBtn">신입</button>
-                                    <button id="experienced" type="button">경력</button><br>
-                                </div><br><br>
-                                <div class = "experiencedDetail hide" >
-                                    
-                                    
-                                    <div class = "experiencedContainer">
-                                            <div id = "companyName">
-                                                <span>회사이름</span>
-                                                <input type="text"> 
-                                            </div>
-    
-                            
-                                            <div class = "dateInput">
-                                                <input type="date" name="" id="">~<input type="date" name="" id="">
-                                                <button type = "button" id = "chuga">+</button>
-                                            </div>
-                                            
-                                            
-                                        
                                     </div>
-
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-        
-                </div>
-                <hr>
-        
-                <div class = "resumeElement">
-                    <h3>자격증</h3>
-                    <br>
-                    <ul>
-                        <li>
-                           
-                                <div id="certificate" class = "certificate">
-                                    <span>자격증명</span>&nbsp;&nbsp;
-                                    <input type="text" name="searchCertificate" class="searchCertificate" required><br><br>
-                                
-                                   
-                                        <div class = "certificateDetail">
-                
-                                            <div class="organizationDetail">
-                                                <span>발행기관</span>&nbsp;&nbsp;
-                                                <input type="text" name="organization" class = "organization" required>
+    
+                                    <!-- 중학교 -->
+                                    <div name="selectMiddleSchoolName" id="selectMiddleSchoolName" class="hide">
+                                    
+                                        <span>중학교</span>
+                                        <input type="text" name="middleSchoolName" id="middleSchoolName" placeholder="중학교" required><br><br>
+                                        <div class="term">
+                                            <span>졸업여부</span>
+                                            <select name="graduationStatus" class="graduationDropDown" required>
+                                                <option>선택</option>
+                                                <option value = "1">졸업</option>
+                                                <option value = "2">재학</option>
+                                                <option value = "3">휴학</option>
+                                                <option value = "4">중퇴</option>
+                                                <option value = "5">수교</option>
+                                            </select>
+    
+                                            <div>
+                                                
+                                                <div class = "innerDateContainer">
+                                                    <span>재학기간</span>
+                                                    <input type="date" name="date" class="date" required>
+                                                    <input type="date" name="date" class="date" required>
+                                                </div>
                                             </div>
-            
-                                            <div class="scoreDetail">
-                                                <span>점수</span>&nbsp;&nbsp;
-                                                <input type="number" name="score" class = "score" max="100" required>&nbsp;/100
-                                            </div>
-                                               
-                                            <div class = "issueDetail">
-                                                <span>취득일</span>
-                                                <input type="date" name="issueDate" class="issueDate"  required>
-                                                <button type="button" id = "certAdd">+</button>
-                                            </div>
-        
-                                           
                                         </div>
-                                   
-                                </div>
+                                    </div>
+    
+                                    <!-- 고등학교 -->
+                                    <div name="selectSchoolName" id="selectSchoolName" class="hide">
+                                    
+                                        <span>고등학교</span>
+                                        <input type="text" name="highSchoolName" id="schoolName" placeholder="고등학교" required><br><br>
+                                        <div class="term">
+                                            <span>졸업여부</span>
+                                            <select name="graduationStatus" class="graduationDropDown" required>
+                                                <option>선택</option>
+                                                <option value = "1">졸업</option>
+                                                <option value = "2">재학</option>
+                                                <option value = "3">휴학</option>
+                                                <option value = "4">중퇴</option>
+                                                <option value = "5">수교</option>
+                                            </select>
+                                            <div>
+                                                
+                                                <div class = "innerDateContainer">
+                                                    <span>재학기간</span>
+                                                    <input type="date" name="date" class="date" required>
+                                                    <input type="date" name="date" class="date" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div name = "selectUniversityName" id = "selectUniversityName" class="hide">
+                                        <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
+                                        <div><br>
+            
+                                            
+                                                <!-- <span>졸업여부</span>
+                                                <select name="graduationStatus" class="graduationDropDown" required>
+                                                    <option value = "1">졸업</option>
+                                                    <option value = "2">재학</option>
+                                                    <option value = "3">휴학</option>
+                                                    <option value = "4">중퇴</option>
+                                                    <option value = "5">수교</option>
+                                                </select> -->
+            
+                                                <div id="dateContainer">
+                                                    
+                                                    <div class="innerDateContainer">
+                                                        <span>재학기간</span>
+                                                        <input type="date" name="date" class="date" id = "startDate" required>
+                                                        ~
+                                                        <input type="date" name="date" class="date" id = "endDate" required>
+                                                    </div>
+                                                </div>
+                                            </div>
                             
-                        </li><br><br>
-                    </ul>
-                    
+            
+                                       
+            
+                                    </div>
+                                </div>
+            
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <hr>
+            
+                    <div class="resumeElement">
+                        <h3>희망 근무지</h3>
         
-                </div><br>
-            </form>
-            <hr>
-
+                        <ul>
+                            <li>
+                                <div class = "locationContainer">
+                                    <div class = "locationHeading">
+                                        <div><h3>도시</h3></div>
+                                        <div><h3>시군구</h3></div>
+                                        <div><h3>동</h3></div>
+                                    </div>
+                                    <div class="innerLocationContainer">
+                                        <div class = "dosiList" >
+                                            <div class = "dosies">경기</div>
+                                            <div class = "dosies">서울특별시</div>
+                                            <div class = "dosies">전라북도</div>
+                                            <div class = "dosies">울산광역시</div>
+                                            <div class = "dosies">경기</div>
+                                            <div class = "dosies">서울특별시</div>
+                                            <div class = "dosies">전라북도</div>
+                                            <div class = "dosies">울산광역시</div>
+                                            <div class = "dosies">경기</div>
+                                            <div class = "dosies">서울특별시</div>
+                                            <div class = "dosies">전라북도</div>
+                                            <div class = "dosies">울산광역시</div>
+                                        </div>
+                                        <div class = "sigunguList" >
+                                            <div class = "sigungus">강서구</div>
+                                            <div class = "sigungus">강남</div>
+                                            <div class = "sigungus">여의도</div>
+                                            <div class = "sigungus">광화문</div>
+                                            <div class = "sigungus">남산</div>
+                                            <div class = "sigungus">강서구</div>
+                                            <div class = "sigungus">강남</div>
+                                            <div class = "sigungus">여의도</div>
+                                            <div class = "sigungus">광화문</div>
+                                            <div class = "sigungus">강서구</div>
+                                            <div class = "sigungus">강남</div>
+                                            <div class = "sigungus">여의도</div>
+                                            <div class = "sigungus">광화문</div>
+                                        </div>
+                                        <div class = "dong" >
+                                            <div class = "dongs">강서구</div>
+                                            <div class = "dongs">강남</div>
+                                            <div class = "dongs">여의도</div>
+                                            <div class = "dongs">광화문</div>
+                                            <div class = "dongs">남산</div>
+                                            <div class = "dongs">강서구</div>
+                                            <div class = "dongs">강남</div>
+                                            <div class = "dongs">여의도</div>
+                                            <div class = "dongs">광화문</div>
+                                            <div class = "dongs">강서구</div>
+                                            <div class = "dongs">강남</div>
+                                            <div class = "dongs">여의도</div>
+                                            <div class = "dongs">광화문</div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class = "locationSelectContainer">
+    
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <hr>
+    
+                    <div class="resumeElement">
+                        <h3>희망 업직종<span class="required">*</span></h3>
+    
+                       <ul>
+                            <li>
+                                <div id="buttonContainer">
+                                   
+                                    <div class = "jobsOfDesire">
+                                        <button type = "button" class = "jobsOfDesireBtn">외식/음료</button>
+                                        <button type = "button" class = "jobsOfDesireBtn">사무직</button>
+                                        <button type = "button" class = "jobsOfDesireBtn">운전/배달</button>
+                                    </div>
+                                    <div class = "jobsOfDesire">
+                                        <button type = "button" class = "jobsOfDesireBtn">매정관리/판매</button>
+                                        <button type = "button" class = "jobsOfDesireBtn">고객상담</button>
+                                        <button type = "button" class = "jobsOfDesireBtn">병원/간호/연구</button>
+                                    </div>
+                                    <div class = "jobsOfDesire">
+                                        <button type = "button" class = "jobsOfDesireBtn">서비스</button>
+                                        <button type = "button" class = "jobsOfDesireBtn">생산/건설</button>
+                                        <button type = "button" class = "jobsOfDesireBtn">교육/강사</button>
+                                    </div>
+                                </div>
+                               
+                                <div id="addDesiredJobs">
+    
+                                </div>
+                                
+                                
+                            </li>
+                       </ul>
+                       
+    
+                    </div>
+                    <hr>
+    
+                    <div class = "resumeElement">
+                        <h3>경력사항<span class="required">*</span></h3>
+                        <br>
+                        <ul>
+                            <li>
+                                <div id="career" >
+                                    <span>경력구분<span class="required">*</span></span>
+                                    <div id="careerSelect">
+                                        <button id="newHire" type="button" class="selectedBtn">신입</button>
+                                        <button id="experienced" type="button">경력</button><br>
+                                    </div><br><br>
+                                    <div class = "experiencedDetail hide" >
+                                        
+                                        
+                                        <div class = "experiencedContainer">
+                                                <div id = "companyName">
+                                                    <span>회사이름</span>
+                                                    <input type="text"> 
+                                                </div>
+        
+                                
+                                                <div class = "dateInput">
+                                                    <input type="date" name="" id="">~<input type="date" name="" id="">
+                                                    <button type = "button" id = "chuga">+</button>
+                                                </div>
+                                                
+                                                
+                                            
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
             
-           
-            <div id="validatingBtnsContainer">
-                <button class = "resume">지원하기</button>
-                <button class = "resume">임시저장</button>
-            </div>
-
+                    </div>
+                    <hr>
             
-
-        </div><br><br>
-
-    </div>
+                    <div class = "resumeElement">
+                        <h3>자격증</h3>
+                        <br>
+                        <ul>
+                            <li>
+                               
+                                    <div id="certificate" class = "certificate">
+                                        <span>자격증명</span>&nbsp;&nbsp;
+                                        <input type="text" name="searchCertificate" class="searchCertificate" required><br><br>
+                                    
+                                       
+                                            <div class = "certificateDetail">
+                    
+                                                <div class="organizationDetail">
+                                                    <span>발행기관</span>&nbsp;&nbsp;
+                                                    <input type="text" name="organization" class = "organization" required>
+                                                </div>
+                
+                                                <div class="scoreDetail">
+                                                    <span>점수</span>&nbsp;&nbsp;
+                                                    <input type="number" name="score" class = "score" max="100" required>&nbsp;/100
+                                                </div>
+                                                   
+                                                <div class = "issueDetail">
+                                                    <span>취득일</span>
+                                                    <input type="date" name="issueDate" class="issueDate"  required>
+                                                    <button type="button" id = "certAdd">+</button>
+                                                </div>
+            
+                                               
+                                            </div>
+                                       
+                                    </div>
+                                
+                            </li><br><br>
+                        </ul>
+                        
+            
+                    </div><br>
+                </form>
+                <hr>
+    
+                
+               
+                <div id="validatingBtnsContainer">
+                    <button class = "resume">지원하기</button>
+                    <button class = "resume">임시저장</button>
+                </div>
+    
+                
+    
+            </div><br><br>
+            
+    
+        </div>
+   
     <script src = "/js/member/resume.js"> </script>
 </body>
 </html>

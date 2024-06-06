@@ -40,16 +40,54 @@
 
 //city dropdown
 
-const sigungu = document.querySelector("#sigungu");
-const sido = document.querySelector("#sido");
+const dongs = document.querySelectorAll(".dongs");
+const locationSelectContainer =  document.querySelector(".locationSelectContainer");
+const selectCont = document.querySelectorAll(".selectDong");
 
-sido.addEventListener("change", e => {
-    fetch("/hire/selectSigungu?dosiName=" + e.target.textContent)
-    .then(resp => resp.json())
-    .then(result => {
-        console.log(result);
+const locationContentArr = [];
+dongs.forEach(btn => {
+    btn.addEventListener("click", () => {
+       
+       
+        for(let i=0; i<locationContentArr.length; i++){
+            if(btn.textContent == locationContentArr[i]){
+                alert("중복 선택은 가능하지 않습니다");
+                return;
+            }
+        } 
+        locationContentArr.push(btn.textContent);
+
+
+        if(document.querySelectorAll(".selectDong>span").length > 5){
+            alert("최대 5가지만 선택할 수 있습니다");
+            return;
+        }
+
+        const selectLocationInnerHtml = `
+            <span class = "selectDong">
+                ${btn.textContent}
+                <span>&times;</span>
+            </span>`;
+
+        locationSelectContainer.innerHTML += selectLocationInnerHtml;
+
+        const selectDong = document.querySelectorAll(".selectDong>span");
+        for (let i =0; i < selectDong.length;i++) {
+            selectDong[i].addEventListener("click", e => {
+                if(document.querySelectorAll(".selectDong")[i].innerText.substring(0,document.querySelectorAll(".selectDong")[i].innerText.lastIndexOf("\n")) 
+                    == locationContentArr[i]){
+                    locationContentArr.splice(i,1);
+                    const element =  document.querySelectorAll(".selectDong")[i].closest(".selectDong");
+                    if(element){
+                        element.parentNode.removeChild(element);
+                    }
+                }
+            })
+        }
     })
-});
+})
+
+
 // const sidoId = document.querySelector("#sido");
 // const sidoClass = document.querySelectorAll(".sido");
 // const sigungu = {
@@ -322,5 +360,48 @@ jobsOfDesireBtn.forEach(btn => {
         }
     })
 })
+
+const editProfile = document.querySelector("#editProfile");
+const container = document.querySelector(".container");
+const cancel = document.querySelector("#cancel");
+const update = document.querySelector("#update");
+editProfile.addEventListener("click",() => {
+    container.classList.remove("hide");
+    container.classList.add("show");
+    document.body.style.overflowY = "hidden"
+})
+
+cancel.addEventListener("click", () => {
+    container.classList.remove("show");
+    container.classList.add("hide");
+    document.body.style.overflowY = "auto"
+})
+const picFile = document.querySelector("#picFile");
+    const setImg =  document.querySelector("#profileImg");
+
+    
+    picFile.addEventListener("input",e => {
+       
+        const file = e.target.files[0];
+        if(file) {
+            const reader = new FileReader();
+            reader.onload = function(e)  {
+            const img = e.target.result;
+            // const innerhtml = `<img src="${img}" alt="Upload File">` 
+            // setImg.innerHTML = innerhtml;
+            setImg.style.backgroundImage = `url(${img})`;
+            setImg.style.backgroundSize = "100%";
+            setImg.style.backgroundRepeat = "no-repeat";
+            setImg.style.backgroundPosition = "absolute"; 
+            
+            
+        }
+        reader.readAsDataURL(file)
+
+        }
+        
+
+    })
+
     
 
