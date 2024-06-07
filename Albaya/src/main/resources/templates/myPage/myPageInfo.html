@@ -25,6 +25,8 @@
         </th:block>
     </th:block>
 </body>
+<th:block th:replace="~{common/footer}"></th:block>
+
 <script src="/js/myPage/myPageInfo.js"></script>
 <script th:inline="javascript">
     const message =  /*[[${message}]]*/ "전달 받은 message";

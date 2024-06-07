@@ -1,8 +1,31 @@
 const updateMemberInfo = document.querySelector("#updateMemberInfo");
-const deleteMember = document.querySelector("#deleteMember");
+const deleteMember = document.querySelector("#deleteBtn");
 const changePwBtn = document.querySelector("#changePwBtn");
+const hireApplyListBtn = document.querySelector("#hireApplyListBtn");
 
 let shopProfileStatus = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/myPage/countHireApply",{
+        method:"GET"
+    })
+    .then(resp => resp.text())
+    .then(result => {
+        const hireApplyCount = document.querySelector("#hireApplyCount");
+        hireApplyCount.innerHTML = result;
+       
+        hireApplyListBtn.addEventListener("click", e => {
+            if(result <= 0){
+                alert("지원한 공고가 없습니다.");
+                e.preventDefault();
+                return;
+            }
+            else{
+                location.href = "/myPage/hireApplyListBtn";
+            }
+        })
+    })
+})
 
 updateMemberInfo.addEventListener("click", () => {
     location.href = "/myPage/myPageCheckPw";

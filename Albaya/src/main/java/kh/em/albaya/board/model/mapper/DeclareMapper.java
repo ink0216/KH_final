@@ -68,10 +68,9 @@ public interface DeclareMapper {
 
 	/** 신고 완료 처리
 	 * @param reviewBoardDeclareNo
-	 * @param reviewBoardNo
 	 * @return
 	 */
-	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
+	int completeDeclare(int reviewBoardDeclareNo);
 
 
 	
