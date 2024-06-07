@@ -11,6 +11,7 @@
     <th:block th:replace="~{common/header}"></th:block>
     <!-- 이력서  -->
     <!-- 사진 업데이트 팝업창 -->
+    <form action ="#" >
         <div class = "container hide" >
             <div class = "innerContainer ">
                 <div class = "heading"> 
@@ -72,7 +73,7 @@
             </div>
         
             <!-- 이력서 작성 section -->
-            <form action ="#" >
+           
                 <div id="resumeDisplay">
                     <h3>나의 이력서</h3>
                     <hr>
@@ -206,7 +207,8 @@
                                             </div>
                                         </div>
                                     </div>
-            
+                                    
+                                    <!-- 대학교 -->
                                     <div name = "selectUniversityName" id = "selectUniversityName" class="hide">
                                         <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
                                         <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
@@ -426,7 +428,7 @@
                         
             
                     </div><br>
-                </form>
+                
                 <hr>
     
                 
@@ -442,6 +444,7 @@
             
     
         </div>
+    </form>
    
     <script src = "/js/member/resume.js"> </script>
     <th:block th:replace="~{common/footer}"></th:block>
