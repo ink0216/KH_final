@@ -34,6 +34,8 @@ public interface MemberMapper {
 
 	int changePw(Map<String, Object> map);
 
+	Member findMemberByNo(int memberNo);
+
 
 	
 	
