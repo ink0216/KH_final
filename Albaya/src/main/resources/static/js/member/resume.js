@@ -11,9 +11,9 @@
     
 
     const eduObj = {
-        "1":"selectPrimarySchoolName",
-        "2":"selectMiddleSchoolName",
-        "3":"selectSchoolName",
+        "1":"selectPrimarySchoolName", //초
+        "2":"selectMiddleSchoolName", //중
+        "3":"selectSchoolName", //고
         "4":"selectUniversityName"
     };
 
