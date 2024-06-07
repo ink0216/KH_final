@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="adminPageBox">
-    <h1 style="font-size:55px;">관리자 페이지</h1>
+    <h1 style="font-size:55px; font-family: 'TheJamsil5Bold';" id="adminTitle">관리자 페이지</h1>
     <div class="table-container">
     <table border= "1" class="styled-table">
         <thead>
@@ -34,7 +34,7 @@
                     <td>reporteddeclare22</td>  -->
 
                     <td th:text="${declare.reviewBoardDeclareNo}"></td>
-                    <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/2/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${declare.reviewBoardNo}"></a> </td>
+                    <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${declare.reviewBoardNo}"></a> </td>
                     <td th:text="${declare.memberNo}"></td>
                     <td th:text="${declare.boardDeclareContent}"></td>
                     <td th:text="${declare.reviewBoardCondition}"></td>
@@ -60,10 +60,10 @@
     <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">    
 
         <!-- 첫 페이지로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=1)}">&lt;&lt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=1)}">&lt;&lt;</a></li>
 
         <!-- 이전 목록 마지막 번호로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=*{prevPage})}">&lt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{prevPage})}">&lt;</a></li>
 
         <!-- 특정 페이지로 이동 -->
         
@@ -88,10 +88,10 @@
 
 
         <!-- 다음 목록 시작 번호로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=*{nextPage})}">&gt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{nextPage})}">&gt;</a></li>
 
         <!-- 끝 페이지로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
     </ul>
 
 
@@ -106,11 +106,43 @@
 </div>
 
 
+
+
+<div id = "checkMemberStatus">
+    <div id="checkMemberStatusTitle">
+        회원 상태 확인
+    </div>
+
+    <div id="checkMemberStatusContent">회원 번호를 입력하여 회원의 계정 및 경고 횟수를 확인하세요.</div>
+    <div id="checkMemberStatusContent2">
+        경고 1회 누적 &nbsp; : <t style="color:red; font-weight:bold;">1</t> <br>
+        경고 2회 누적  &nbsp;: <t style="color:red; font-weight:bold;">2</t> <br>
+        정지 상태 회원 : <t style="color:red; font-weight:bold;">3</t> <br>
+        경고 0회 누적   : <t style="color:red; font-weight:bold;">4</t> <br>
+        탈퇴한 회원 &nbsp;&nbsp;   : <t style="color:red; font-weight:bold;">5</t> <br>
+
+    </div>
+
+    <input type="number" id="inputMemberNo">
+
+    <button id="searchBtn">검색</button>
+
+    <div id="result">
+
+    </div>
+
+</div>
+<th:block th:replace="~{common/footer}"></th:block>
+
 </body>
 
 
 
 <script src="/js/common/admin.js"></script>
+<script th:inline ="javascript">
+    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입"; 
+    const currentPage = /*[[${pagination.currentPage}]]*/"페이지번호";
+</script>
 
 
 </html>

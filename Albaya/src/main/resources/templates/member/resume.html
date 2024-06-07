@@ -76,7 +76,6 @@
             </div>
         
             <!-- 이력서 작성 section -->
-            
                 <div id="resumeDisplay">
                     <h3>나의 이력서</h3>
                     <hr>
@@ -202,7 +201,8 @@
                                             </div>
                                         </div>
                                     </div>
-            
+                                    
+                                    <!-- 대학교 -->
                                     <div name = "selectUniversityName" id = "selectUniversityName" class="hide">
                                         <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
                                         <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
@@ -422,7 +422,6 @@
                         
             
                     </div><br>
-               
                 <hr>
     
                 
@@ -434,11 +433,12 @@
     
                 
     
-            </div><br><br>
+            </div>
             
     
         </div>
     </form>
     <script src = "/js/member/resume.js"> </script>
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>

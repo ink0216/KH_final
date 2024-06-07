@@ -21,21 +21,8 @@ public class DeclareServiceImpl implements DeclareService{
 	
 	private final DeclareMapper mapper;
 	
-	
+	// ----- 게시글 신고 목록 조회 -----
 
-	
-	
-	//게시글 신고하기
-	@Override
-	public int insertDeclare(Declare inputDeclare) {
-		
-		
-		int result = mapper.insertDeclare(inputDeclare);
-		
-		return result;
-	}
-	
-	
 	
 	// 신고 게시판 타입
 	@Override
@@ -43,11 +30,11 @@ public class DeclareServiceImpl implements DeclareService{
 		return mapper.selectDeclareTypeList();
 	}
 	
-	
 	//신고게시판의 목록 출력
 	@Override
 	public Map<String, Object> selectDeclareList(int declareBoardCode, int cp) {
 		
+		// 처리중인 신고 게시물 수
 		int listCount = mapper.getDeclareCount(declareBoardCode);
 		
 		Pagination pagination = new Pagination(cp, listCount);
@@ -67,15 +54,46 @@ public class DeclareServiceImpl implements DeclareService{
 	}
 	
 	
-	// 중복 신고 게시물
+	//비동기 게시글 신고 목록 조회
 	@Override
-	public int duplicateDeclare(String reviewBoardCondition) {
+	public List<Declare> selectDeclareList() {
+		return mapper.selectDeclareList();
+	}
 		
-		int result = mapper.duplicateDeclare(reviewBoardCondition);
+	
+	
+
+	
+	
+	//게시글 신고하기
+	@Override
+	public int insertDeclare(Declare inputDeclare) {
+		
+		// 중복 신고 검사
+		int count = mapper.duplicateDeclare(inputDeclare);
+		
+		int result = 0;
+		if(count <1) {
+			result = mapper.insertDeclare(inputDeclare);
+		}else {
+			result = 0;
+		}
 		
 		return result;
 	}
 	
+	
+	
+//	// 중복 신고 게시물
+//	@Override
+//	public int duplicateDeclare(String reviewBoardCondition) {
+//		
+//		int result = mapper.duplicateDeclare(reviewBoardCondition);
+//		
+//		return result;
+//	}
+	
+
 	
 	
 	// 신고 반려 처리
@@ -84,18 +102,30 @@ public class DeclareServiceImpl implements DeclareService{
 		return mapper.rejectDeclare(reviewBoardDeclareNo);
 	}
 	
-	// 신고 완료하기
+	// 신고 확정 처리
 	@Override
 	public int completeDeclare(int reviewBoardDeclareNo) {
 		
-			  return mapper.completeDeclare(reviewBoardDeclareNo);
+		// 신고 확정
+		int result = mapper.completeDeclare(reviewBoardDeclareNo);
+				
+		// 신고 확정된 리뷰pk 번호 얻어와
+		// 해당 번호 글 삭제 상태 변경
+		int result2 = mapper.updateReviewBoard(reviewBoardDeclareNo);
+		
+		// 신고횟수 누적
+		int result3 = mapper.changeMemberCondition(reviewBoardDeclareNo);
+		
+		
+		if(result>0 && result2>0 && result3>0) {
+			return 1;
+		}else {
+			throw new RuntimeException();
+		}
+		
+	}
+	
+	
 
-	}
-	
-	
-	@Override
-	public List<Declare> selectDeclareList() {
-		return mapper.selectDeclareList();
-	}
 	
 }

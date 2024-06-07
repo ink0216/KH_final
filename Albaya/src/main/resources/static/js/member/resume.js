@@ -380,9 +380,9 @@ const picFile = document.querySelector("#picFile");
     const setImg =  document.querySelector("#profileImg");
 
     
-    picFile.addEventListener("input",e => {
+    update.addEventListener("click",e => {
        
-        const file = e.target.files[0];
+        const file = picFile.files[0];
         if(file) {
             const reader = new FileReader();
             reader.onload = function(e)  {
@@ -390,13 +390,15 @@ const picFile = document.querySelector("#picFile");
             // const innerhtml = `<img src="${img}" alt="Upload File">` 
             // setImg.innerHTML = innerhtml;
             setImg.style.backgroundImage = `url(${img})`;
-            setImg.style.backgroundSize = "100%";
+            setImg.style.backgroundSize = "150%";
             setImg.style.backgroundRepeat = "no-repeat";
-            setImg.style.backgroundPosition = "absolute"; 
-            
-            
+            setImg.style.backgroundPosition = "left"; 
         }
-        reader.readAsDataURL(file)
+
+        reader.readAsDataURL(file);
+        container.classList.remove("show");
+    container.classList.add("hide");
+    document.body.style.overflowY = "auto"
 
         }
         

@@ -1,11 +1,13 @@
 package kh.em.albaya.member.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -143,9 +145,11 @@ public class MemberController {
     
     @GetMapping("logout")
     public String logout(
-    		SessionStatus status
+    		SessionStatus status,
+    		HttpSession session
     		) {
     	status.setComplete();
+    	session.invalidate();
     	return "redirect:/";
     }
     
@@ -161,7 +165,7 @@ public class MemberController {
     		Model model,
     		HttpSession session) {
     	int result = service.findId(member);
-
+    	
     	String memberEmail = service.findMemberId(member);
     	session.setAttribute("result", result);
     	session.setAttribute("memberEmail", memberEmail);
@@ -227,4 +231,15 @@ public class MemberController {
     	
     	return "redirect:/";
     }
+    
+    
+    
+    @GetMapping("/search")
+    @ResponseBody
+    public Member getMemberByNo(@RequestParam("memberNo") int memberNo) {
+        return service.findMemberByNo(memberNo);
+    }
+    
+
+    
 }

@@ -2,7 +2,7 @@ const declareFrm = document.querySelector("#declareFrm");
 
 const declareBtn = document.querySelector("#declareBtn");
 
-
+const reviewBoardCondition = document.querySelector("[name='reviewBoardCondition']").value;
 
 document.querySelector("#declareFrm").addEventListener("submit", e => {
 
@@ -30,15 +30,19 @@ document.querySelector("#declareFrm").addEventListener("submit", e => {
         return;
     }
 
+    // const reviewBoardCondition = document.querySelector("[name='reviewBoardCondition']").value;
+
+    if(reviewBoardCondition == '1'){
+        alert("이미 신고된게시글입니다.");
+        e.preventDefault();
+        return;
+    }
+
 
 
     
 
-    // if(reviewBoardCondition == '1'){
-    //     alert("이미 신고된 게시글입니다.");
-    //     e.preventDefault();
-    //     return;
-    // }
+
 
 
  
