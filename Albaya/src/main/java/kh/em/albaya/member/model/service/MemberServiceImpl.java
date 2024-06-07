@@ -93,4 +93,14 @@ public class MemberServiceImpl implements MemberService{
 		
 		return result;
 	}
+	
+	
+	
+	@Override
+	public Member findMemberByNo(int memberNo) {
+		
+		return mapper.findMemberByNo(memberNo);
+	}
+	
+	
 }

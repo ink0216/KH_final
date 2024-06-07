@@ -48,4 +48,11 @@
 		SET LAST_MODIFIED_PW_DATE = SYSDATE
 		WHERE MEMBER_EMAIL = #{memberEmail}
 	</update>
+	
+	
+	<select id="findMemberByNo">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_STATUS 
+		FROM MEMBER 
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
 </mapper>

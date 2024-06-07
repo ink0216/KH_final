@@ -31,7 +31,7 @@ body{
     margin-top:60px;
     font-family:'SUIT-Regular';
     font-size: 25px;
-    margin-bottom:250px;
+    margin-bottom:100px;
 }
 
 
@@ -77,7 +77,7 @@ body{
 .table-container {
     width: 80%;
     overflow-x: auto;
-    margin-left:380px;
+    margin-left:290px;
 }
 
 .styled-table {
@@ -226,11 +226,84 @@ th{
 
  #adminTitle{
 
-    margin-left:380px;
+    margin-left:290px;
  }
 
 
  .pagination-area{
 
-    margin-left : 380px;
+    margin-left : 290px;
  }
+
+
+
+
+ #checkMemberStatus{
+    margin-left : 290px;
+ }
+
+
+ #checkMemberStatusTitle {
+
+    font-family: 'TheJamsil5Bold';
+    font-size : 58px;
+    margin-bottom:27px;
+ }
+
+
+ #checkMemberStatusContent {
+
+    font-family: 'TheJamsil5Bold';
+    font-size:32px;
+    margin-bottom:20px;
+ }
+
+
+ #checkMemberStatusContent2 {
+
+    font-family: 'SUIT-Regular';
+    font-size:25px;
+    color : #014C73;
+ }
+
+
+ #inputMemberNo {
+    margin-top:30px;
+    width:100px;
+    height:30px;
+    font-size:25px;
+ }
+
+
+
+ #searchBtn {
+
+    margin-left:15px;
+    width:90px;
+    height:30px;
+    background-color: #014C73;
+    border : none;
+    color: white;
+    font-size:20px;
+    font-family: 'SUIT-Regular';
+    border-radius:5px;
+ }
+
+ #searchBtn:hover {
+
+    cursor:pointer;
+ }
+
+
+ #result {
+    margin-top:10px;
+    font-size:23px;
+    font-family: 'SUIT-Regular';
+
+ }
+
+ input[type="number"]::-webkit-outer-spin-button,
+ input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

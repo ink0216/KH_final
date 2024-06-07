@@ -14,7 +14,7 @@ const tbody = document.querySelector(".tbody");
 
 
 
-// 표 다시 조회하기
+//표 다시 조회하기
 const selectList = () => {
 
     fetch("/declare/selectList")
@@ -35,7 +35,7 @@ const selectList = () => {
                 
                 const tr = document.createElement("tr");
 
-
+                
 
                 const arr = [
                     'reviewBoardDeclareNo',
@@ -214,3 +214,41 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+
+document.getElementById('searchBtn').addEventListener("click", () => {
+
+    const memberNo = document.getElementById("inputMemberNo").value;
+
+
+    if(inputMemberNo.value.trim().length === 0){
+
+        alert("계정 상태를 확인 할 회원번호를 입력해주세요.");
+
+        resultDiv.innerHTML = "";
+
+        e.preventDefault();
+
+        return;
+
+    }
+
+    fetch(`/member/search?memberNo=${memberNo}`)
+    .then(response => response.json())
+    .then(data => {
+        const resultDiv = document.getElementById('result');
+        if (data) {
+            resultDiv.innerHTML = `회원 번호 : ${data.memberNo} <br> 회원 계정 : ${data.memberEmail} <br> 회원 상태 : ${data.memberStatus}`;
+        } else {
+            resultDiv.innerHTML = '회원이 존재하지 않습니다.';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('result').innerHTML = '존재하지 않은 회원 번호입니다.';
+    });
+
+
+    
+
+})
