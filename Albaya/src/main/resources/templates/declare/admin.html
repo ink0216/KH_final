@@ -34,7 +34,7 @@
                     <td>reporteddeclare22</td>  -->
 
                     <td th:text="${declare.reviewBoardDeclareNo}"></td>
-                    <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/2/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${declare.reviewBoardNo}"></a> </td>
+                    <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${declare.reviewBoardNo}"></a> </td>
                     <td th:text="${declare.memberNo}"></td>
                     <td th:text="${declare.boardDeclareContent}"></td>
                     <td th:text="${declare.reviewBoardCondition}"></td>
@@ -104,6 +104,34 @@
 
     </div>
 </div>
+
+
+
+
+<div id = "checkMemberStatus">
+    <div id="checkMemberStatusTitle">
+        회원 상태 확인
+    </div>
+
+    <div id="checkMemberStatusContent">회원 번호를 입력하여 회원의 계정 및 경고 횟수를 확인하세요.</div>
+    <div id="checkMemberStatusContent2">
+        경고 1회 누적 &nbsp; : <t style="color:red; font-weight:bold;">1</t> <br>
+        경고 2회 누적  &nbsp;: <t style="color:red; font-weight:bold;">2</t> <br>
+        정지 상태 회원 : <t style="color:red; font-weight:bold;">3</t> <br>
+        경고 0회 누적   : <t style="color:red; font-weight:bold;">4</t> <br>
+        탈퇴한 회원 &nbsp;&nbsp;   : <t style="color:red; font-weight:bold;">5</t> <br>
+
+    </div>
+
+    <input type="number" id="inputMemberNo">
+
+    <button id="searchBtn">검색</button>
+
+    <div id="result">
+
+    </div>
+
+</div>
 <th:block th:replace="~{common/footer}"></th:block>
 
 </body>
@@ -112,7 +140,7 @@
 
 <script src="/js/common/admin.js"></script>
 <script th:inline ="javascript">
-    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입";
+    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입"; 
     const currentPage = /*[[${pagination.currentPage}]]*/"페이지번호";
 </script>
 
