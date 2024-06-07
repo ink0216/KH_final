@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.em.albaya.common.util.Utility;
-import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.shop.model.mapper.ShopMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@PropertySource("classpath:/config.properties") 
 public class ShopServiceImpl implements ShopService{
 	private final ShopMapper mapper;
 	
