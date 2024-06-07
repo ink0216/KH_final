@@ -22,11 +22,13 @@ import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.myPage.model.service.myPageService;
 import kh.em.albaya.shop.model.dto.Shop;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("myPage")
 @RequiredArgsConstructor
 @SessionAttributes({"loginShop", "loginMember"})
+@Slf4j
 public class MyPageController {
 	private final myPageService service;
 	
@@ -68,8 +70,7 @@ public class MyPageController {
 		int result = service.myPageCheckPw(memberNo, memberEmail, memberPw);
 		
 		if(result == 1) {
-			ra.addFlashAttribute("message", message);
-			return "/main";
+			return "redirect:/myPage/myPageInfoUpdate";
 		}
 		else {
 			message = "비밀번호가 일치하지 않습니다.";
@@ -272,5 +273,23 @@ public class MyPageController {
     	}
     	
     	return 0;
+    }
+    
+    @GetMapping("myPageInfoUpdate")
+    public String myPageInfoUpdate(
+    		@SessionAttribute("loginMember") Member loginMember,
+    		Model model) {
+    	
+    	if(loginMember.getMemberAddress() != null) {
+    		String[] arr = loginMember.getMemberAddress().split("\\^\\^\\^");
+    		
+    		model.addAttribute("postCode", arr[0]);
+    		model.addAttribute("addr", arr[1]);
+    		model.addAttribute("detail", arr[2]);
+
+    	}
+    	
+    	
+    	return "/myPage/myPageInfoUpdate";
     }
 }
