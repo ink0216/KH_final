@@ -254,4 +254,14 @@ public class MyPageController {
     		return "redirect:/myPage/myPageInfo";
     	}
 	}
+    
+    
+    
+    
+    
+    //지원한 공고 리스트 보러가기 링크
+    @GetMapping("myApplyList")
+    public String myApplyList() {
+    	return "/myPage/myApplyList";
+    }
 }
