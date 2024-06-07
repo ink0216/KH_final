@@ -8,7 +8,7 @@
 /* HTML과 Body를 100vh로 설정 */
 html, body {
     height: 100%;
-    background-color: rgb(228, 242, 238);
+    background-color: rgb(240 244 243);
     font-family: 'SUIT-Regular';
 }
 /* 

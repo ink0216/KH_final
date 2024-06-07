@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 
 public interface myPageService {
@@ -23,4 +24,6 @@ public interface myPageService {
 	int changeProfile(Shop shop, MultipartFile profileImg) throws IllegalStateException, IOException;
 
 	int countHireApply(int memberNo);
+
+	int memberInfoUpdate(Member member, String[] memberAddress);
 }
