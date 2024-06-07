@@ -10,6 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
             location.href = "/myPage/myPageInfo";
         });
     }
+    //이력서 작성 버튼
+const resumeRedirect = document.querySelector("#resumeRedirect");
+if(resumeRedirect != null){
+    resumeRedirect.addEventListener("click", ()=>{
+        location.href = "/resume/resumeWrite";
+    })
+}
 });
 
 
