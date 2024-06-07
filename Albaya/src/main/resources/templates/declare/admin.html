@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="adminPageBox">
-    <h1 style="font-size:55px;">관리자 페이지</h1>
+    <h1 style="font-size:55px; font-family: 'TheJamsil5Bold';" id="adminTitle">관리자 페이지</h1>
     <div class="table-container">
     <table border= "1" class="styled-table">
         <thead>
@@ -60,10 +60,10 @@
     <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">    
 
         <!-- 첫 페이지로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=1)}">&lt;&lt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=1)}">&lt;&lt;</a></li>
 
         <!-- 이전 목록 마지막 번호로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=*{prevPage})}">&lt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{prevPage})}">&lt;</a></li>
 
         <!-- 특정 페이지로 이동 -->
         
@@ -88,10 +88,10 @@
 
 
         <!-- 다음 목록 시작 번호로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=*{nextPage})}">&gt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{nextPage})}">&gt;</a></li>
 
         <!-- 끝 페이지로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode} (declareBoardCode=${declareBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
+        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
     </ul>
 
 
@@ -104,7 +104,7 @@
 
     </div>
 </div>
-
+<th:block th:replace="~{common/footer}"></th:block>
 
 </body>
 

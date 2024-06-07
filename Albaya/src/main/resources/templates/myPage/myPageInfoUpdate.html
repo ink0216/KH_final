@@ -10,7 +10,6 @@
     <th:block th:replace="~{common/header}"></th:block>
 
     <form action="/myPage/memberInfoUpdate" method="POST">
-
         <main class="main-container-wrapper">
             <div class="main-container">
                 
@@ -61,6 +60,7 @@
                             <span>휴대폰 번호</span>
                         </div>
                         <div class="info-row-right">
+
                             <input type="text" name="memberPhoneNumber" class="memberTel" id="memberTel" th:value="${session.loginMember.memberPhoneNumber}" readonly>
                         </div>
                         <div class="info-row-btn-area">
@@ -110,6 +110,7 @@
 
 
 </body>
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/myPage/myPageInfoUpdate.js"></script>
 </html>

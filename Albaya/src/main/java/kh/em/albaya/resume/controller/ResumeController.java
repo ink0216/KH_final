@@ -12,6 +12,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @SessionAttributes({"loginShop", "loginMember"})
 public class ResumeController {
+	/*RESUME테이블
+	 * LICENSE 자격증
+	 * RESUME_LOCATION - DONG
+	 * CAREER
+	 * RESUME_WORK (희망직종) - WORK_TYPE
+	 * 
+	 * RESUME_EDUCATION
+	 * EDUCATION
+	 * EDUCATION_STATUS
+	 * */
 	@GetMapping("resumeWrite")
 	public String resumeWrite() {
 		return "member/resume";

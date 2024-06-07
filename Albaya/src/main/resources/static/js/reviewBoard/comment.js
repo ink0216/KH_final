@@ -52,11 +52,14 @@ const selectCommentList = () => {
                     
                     // 닉네임
                     const nickname = document.createElement("span");
+                    const emailPart = comment.memberEmail.split("@")[0];
+                    let maskedNickname = "";
+                    maskedNickname = emailPart[0] + emailPart.slice(1, -1).replace(/./g, "*") + emailPart[emailPart.length - 1];
+                    nickname.innerText=maskedNickname;
                     // nickname.innerText = comment.memberEmail.split("@")[0];
-                    nickname.innerText = comment.memberEmail.split("@")[0].replace(/.(?=.*.)/g, "*");
-                    
-                    
+                    // nickname.innerText = comment.memberEmail.split("@")[0].replace(/.(?=.*.)/g, "*");
                     commentWriter.append(nickname); 
+                
 
 
                     // 날짜(작성일)
@@ -109,7 +112,7 @@ const selectCommentList = () => {
                         // 수정 버튼
                         const updateBtn = document.createElement("button");
                         updateBtn.innerText = "수정";
-                       
+                        updateBtn.setAttribute("onclick", `showUpdateComment(${comment.commentNo}, this)`);
 
 
                         // 삭제 버튼

@@ -62,9 +62,11 @@ const selectList = () => {
 
                         const link = document.createElement("a");
 
-                        link.href = `/reviewBoard/2/${declare[key]}?reviewBoardCode=${reviewBoardCode}&reviewBoardNo=${declare[key]}&cp=${currentPage}`;
+                        link.href = `/reviewBoard/2/${declare[key]}?reviewBoardCode=2&reviewBoardNo=${declare[key]}&cp=${currentPage}`;
 
                         link.innerText = declare[key];
+
+                        link.classList.add("connectToReviewBoard");
 
                         td.appendChild(link);
 
@@ -210,8 +212,4 @@ document.addEventListener('DOMContentLoaded', function () {
     
     selectList();
 });
-
-
-
-
 

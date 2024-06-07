@@ -27,6 +27,7 @@ body{
     font-family: 'SUIT-Regular';
 }
 
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -158,7 +159,6 @@ button:hover{
     background-color: #014C73;
     color: white;
 }
-
 .submit-area{
     display: flex;
     width: 100%;

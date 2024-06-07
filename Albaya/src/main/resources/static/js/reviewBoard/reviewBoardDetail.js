@@ -62,15 +62,14 @@ deleteBtn.addEventListener("click", () => {
  
      // 쿼리스트링에서 원하는 파라미터 얻어오기
      const params = new URLSearchParams(location.search); 
-     //주소에 있는 파라미터만 다루는 객체 URLSearchParams
-     //location.search 하면 쿼리스트링만 나오게 함
+  
      
-     const cp = params.get("cp"); //주소 쿼리스트링에 있는 cp값이 얼마냐 해서 값 꺼내올 수 있다
+     const cp = params.get("cp"); 
      input.value = cp;
  
      form.append(input);
  
-     // 화면에 form태그를 추가한 후 제출하기
+  
      document.querySelector("body").append(form);
      form.submit();
      });
