@@ -38,7 +38,7 @@ public class FilterConfig {
 		filter.setName("ShopFilter");
 		
 		//필터가 여러 개인 경우 필터 순서 지정
-		filter.setOrder(1);
+		filter.setOrder(2);
 		
 		return filter; //반환된 객체가 필터를 만들어서 bean으로 등록해주면 스프링이 관리해준다
 		
@@ -52,13 +52,13 @@ public class FilterConfig {
 		filter.setFilter(new LoginFilter());
 		
 
-		String[] filteringURL = {"/myPage/*"};
+		String[] filteringURL = {"/myPage/*","/resume/*"};
 		
 		filter.setUrlPatterns(Arrays.asList(filteringURL));
 		
 		filter.setName("LoginFilter");
 			
-		filter.setOrder(2);
+		filter.setOrder(1);
 		return filter;
 	}
 }

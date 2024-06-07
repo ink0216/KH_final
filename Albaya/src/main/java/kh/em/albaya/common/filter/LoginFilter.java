@@ -26,7 +26,6 @@ public class LoginFilter implements Filter{
 		
 		if(session.getAttribute("loginMember") == null && session.getAttribute("loginShop") == null) {
 	        String uri = req.getRequestURI();
-
 	        session.setAttribute("uri", uri);
 	        
 			resp.sendRedirect("/loginError2");
