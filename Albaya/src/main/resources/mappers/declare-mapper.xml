@@ -93,6 +93,8 @@
         SET REVIEW_BOARD_CONDITION = 2
         WHERE REVIEW_BOARD_CONDITION = 1
         AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
+
+    
 	</update>
 	
 	<!-- 신고 당한 멤버 상태 변경 구문 -->
