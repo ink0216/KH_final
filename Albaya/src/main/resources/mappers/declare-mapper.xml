@@ -95,7 +95,11 @@
         AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
 
     
-        UPDATE MEMBER
+	</update>
+	
+	<!-- 신고 당한 멤버 상태 변경 구문 -->
+	<update id="changeMemberCondition">
+		UPDATE MEMBER
         SET MEMBER_STATUS = CASE
                                 WHEN MEMBER_STATUS = 4 THEN 1
                                 WHEN MEMBER_STATUS = 1 THEN 2
@@ -108,6 +112,7 @@
             WHERE REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
         )
 	</update>
+	
 	
 	
 	<!-- 신고 확정된 게시글 삭제 -->
