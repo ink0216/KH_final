@@ -92,7 +92,7 @@
 		UPDATE BOARD_DECLARE
         SET REVIEW_BOARD_CONDITION = 2
         WHERE REVIEW_BOARD_CONDITION = 1
-        AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo};
+        AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
 
     
         UPDATE MEMBER
@@ -106,7 +106,7 @@
             SELECT REPORTED_MEMBER_NO
             FROM BOARD_DECLARE
             WHERE REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
-        );
+        )
 	</update>
 	
 	

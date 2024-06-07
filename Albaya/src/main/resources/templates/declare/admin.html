@@ -111,6 +111,10 @@
 
 
 <script src="/js/common/admin.js"></script>
+<script th:inline ="javascript">
+    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입";
+    const currentPage = /*[[${pagination.currentPage}]]*/"페이지번호";
+</script>
 
 
 </html>
