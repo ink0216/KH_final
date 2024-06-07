@@ -259,7 +259,36 @@
 	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
 	WHERE HIRE_NO = #{hireNo}
 	</select>
+	<!-- 
+	<insert id="insertWrite" useGeneratedKeys="true" parameterType="Hire">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="hireNo">
+		SELECT SEQ_HIRE_NO.NEXTVAL FROM DUAL
+		</selectKey>
 	
+		INSERT INTO "HIRE" 
+		VALUES(
+		#{hireNo},#{shopNo},#{typeNo},
+		#{payNo},#{hireTitle},#{hireContent},
+		DEFAULT,TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),#{hireCount},
+		#{hireTerm},#{hireGender},
+		<if test='hireStatus == null'>
+		DEFAULT
+		</if>
+		<if test='hireStatus != null'>
+		#{hireStatus}
+		</if>
+		,
+		#{workDay},#{payInput},#{dongNo},
+		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
+		,#{shopEmail},#{shopTel},#{shopName},#{address}
+				)
+	</insert>
+	
+	
+	
+	
+	
+	 -->
 	<select id="hireApplyCheck" resultType="_int">
 		SELECT COUNT(*)
 		FROM APPLY_HIRE
