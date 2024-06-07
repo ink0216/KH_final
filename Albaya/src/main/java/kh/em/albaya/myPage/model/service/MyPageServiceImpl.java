@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.em.albaya.common.util.Utility;
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.myPage.model.mapper.MyPageMapper;
 import kh.em.albaya.shop.model.dto.Shop;
 import lombok.RequiredArgsConstructor;
@@ -164,5 +165,21 @@ public class MyPageServiceImpl implements myPageService{
 	@Override
 	public int countHireApply(int memberNo) {
 		return mapper.countHireApply(memberNo);
+	}
+	
+	@Override
+	public int memberInfoUpdate(Member member, String[] memberAddress) {
+		
+		
+		if(!member.getMemberAddress().equals(",,")) {
+			
+			String address = String.join("^^^", memberAddress);
+			
+			member.setMemberAddress(address);
+		}
+		else {
+			member.setMemberAddress(null);
+		}
+		return mapper.memberInfoUpdate(member);
 	}
 }

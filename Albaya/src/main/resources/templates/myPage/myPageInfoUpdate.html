@@ -9,7 +9,7 @@
 <body>
     <th:block th:replace="~{common/header}"></th:block>
 
-    <form action="">
+    <form action="/myPage/memberInfoUpdate" method="POST">
 
         <main class="main-container-wrapper">
             <div class="main-container">
@@ -52,7 +52,8 @@
                             <span>성별</span>
                         </div>
                         <div class="info-row-right2">
-                            <input type="text" name="memberGender" id="memberGender" th:value="${session.loginMember.memberGender == 1 ? '남자' : '여자'}" readonly>
+                            <input type="text" id="memberGender" th:value="${session.loginMember.memberGender == 1 ? '남자' : '여자'}" readonly>
+                            <input type="hidden" name="memberGender" id="memberGender" th:value="${session.loginMember.memberGender }">
                         </div>
                     </div>
                     <div class="info-row">
@@ -60,10 +61,10 @@
                             <span>휴대폰 번호</span>
                         </div>
                         <div class="info-row-right">
-                            <input type="text" name="memberPhoneNumber" id="memberTel" th:value="${session.loginMember.memberPhoneNumber}" readonly>
+                            <input type="text" name="memberPhoneNumber" class="memberTel" id="memberTel" th:value="${session.loginMember.memberPhoneNumber}" readonly>
                         </div>
                         <div class="info-row-btn-area">
-                            <button type="button">변경하기</button>
+                            <button type="button" id="changeTelBtn">변경하기</button>
                         </div>
                     </div>
                     <div class="info-row">
@@ -71,10 +72,10 @@
                             <span>주소</span>
                         </div>
                         <div class="info-row-right">
-                            <input type="text" name="memberAddress" id="memberTel" th:value="${postCode}" readonly>
+                            <input type="text" name="memberAddress" id="postcode" th:value="${postCode}" readonly>
                         </div>
                         <div class="info-row-btn-area">
-                            <button type="button">검색</button>
+                            <button type="button" id="searchAddress">검색</button>
                         </div>
                     </div>
                     <div class="info-row">
@@ -82,7 +83,7 @@
                             <span></span>
                         </div>
                         <div class="info-row-right2">
-                            <input type="text" name="memberGender" id="memberTel" th:value="${addr}" readonly>
+                            <input type="text" name="memberAddress" id="address" th:value="${addr}" readonly>
                         </div>
                     </div>
                     <div class="info-row">
@@ -90,10 +91,13 @@
                             <span>상세 주소</span>
                         </div>
                         <div class="info-row-right2">
-                            <input type="text" name="memberGender" id="memberTel" th:value="${detail}" readonly>
+                            <input type="text" name="memberAddress" id="detailAddress" th:value="${detail}">
                         </div>
                     </div>
-                    
+                    <div class="submit-area">
+                        <button type="button" id="cancelBtn">취소</button>
+                        <button id="updateBtn">변경하기</button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -106,5 +110,6 @@
 
 
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/myPage/myPageInfoUpdate.js"></script>
 </html>

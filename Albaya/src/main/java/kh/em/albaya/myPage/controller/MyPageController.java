@@ -282,14 +282,50 @@ public class MyPageController {
     	
     	if(loginMember.getMemberAddress() != null) {
     		String[] arr = loginMember.getMemberAddress().split("\\^\\^\\^");
-    		
-    		model.addAttribute("postCode", arr[0]);
-    		model.addAttribute("addr", arr[1]);
-    		model.addAttribute("detail", arr[2]);
-
+    		  
+			model.addAttribute("postCode", arr[0]);
+			model.addAttribute("addr", arr[1]);	
+    		if(arr.length == 3) {		
+    			model.addAttribute("detail", arr[2]);
+    		}
     	}
     	
     	
     	return "/myPage/myPageInfoUpdate";
     }
+    
+    @PostMapping("memberInfoUpdate")
+    public String memberInfoUpdate(
+    		Member member,
+    		Model model,
+			@SessionAttribute("loginMember") Member loginMember,
+    		@RequestParam("memberAddress") String[] memberAddress,
+			RedirectAttributes ra) {
+    	
+    	int memberNo = loginMember.getMemberNo();
+    	
+    	member.setMemberNo(memberNo);
+    	
+		int result = service.memberInfoUpdate(member, memberAddress);
+		
+		String message = null;
+		
+		if(result == 1) {
+			message = "정보가 변경되었습니다.";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			loginMember.setLastModifiedDate(sdf.format(new Date()));
+			loginMember.setMemberName(member.getMemberName());
+			loginMember.setMemberPhoneNumber(member.getMemberPhoneNumber());
+			loginMember.setMemberAddress(member.getMemberAddress());
+			
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/myPageInfo";
+		}
+		else {
+			message = "변경 실패.;;;";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/myPageInfoUpdate";
+		}
+	}
 }

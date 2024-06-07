@@ -92,4 +92,13 @@
 		FROM APPLY_HIRE
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
+	
+	<update id="memberInfoUpdate">
+		UPDATE "MEMBER"
+		SET MEMBER_NAME = #{memberName},
+		MEMBER_PHONE_NUMBER = #{memberPhoneNumber},
+		MEMBER_ADDRESS = #{memberAddress},
+		LAST_MODIFIED_DATE = SYSDATE
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 </mapper>
