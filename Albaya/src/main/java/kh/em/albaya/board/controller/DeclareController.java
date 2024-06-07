@@ -134,7 +134,7 @@ public class DeclareController {
 			@RequestBody int reviewBoardDeclareNo,
 			RedirectAttributes ra) {
 		
-
+	
 		return service.completeDeclare(reviewBoardDeclareNo);
 	}
 	

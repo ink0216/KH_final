@@ -17,7 +17,7 @@ public interface DeclareMapper {
 	 * @param loginMember
 	 * @return
 	 */
-	List<Declare> selectDeclare(int reviewBoardNo,RowBounds rowBounds);
+//	List<Declare> selectDeclare(int reviewBoardNo,RowBounds rowBounds);
 
 	
 	/** 게시글 신고
@@ -76,16 +76,19 @@ public interface DeclareMapper {
 	/** 신고 당한 멤버 상태 변경
 	 * @param reviewBoardDeclareNo
 	 */
-//	void changeMemberCondition(int reviewBoardDeclareNo);
-//
-//	
-//	/** 신고 확정 게시물 삭제
-//	 * @return
-//	 */
-//	int updateReviewBoard();
+	int changeMemberCondition(int reviewBoardDeclareNo);
+
+	
+	/** 신고 확정 게시물 삭제
+	 * @return
+	 */
+	int updateReviewBoard(int reviewBoardDeclareNo);
+	
 
 
 	List<Declare> selectDeclareList();
+
+
 
 
 	
