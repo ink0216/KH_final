@@ -105,13 +105,13 @@ public class DeclareController {
 	//---------- 신고 처리 ----------------------
 	
 	// 신고 처리...
-	@GetMapping("")
-	public String updateDeclare(
-			@RequestParam("memberNo")int memberNo,
-			@RequestParam("reportedDeclareNo") int reportedDeclareNo,
-			@SessionAttribute("loginMember") Member loginMember) {
-		return null;
-	}
+//	@GetMapping("")
+//	public String updateDeclare(
+//			@RequestParam("memberNo")int memberNo,
+//			@RequestParam("reportedDeclareNo") int reportedDeclareNo,
+//			@SessionAttribute("loginMember") Member loginMember) {
+//		return null;
+//	}
 	
 	
 	
@@ -127,14 +127,12 @@ public class DeclareController {
 	
 	
 	
-	// 신고 완료 처리
+	// 신고 확정 처리
 	@ResponseBody
 	@PutMapping("complete")
 	public int completeDeclare(
 			@RequestBody int reviewBoardDeclareNo,
 			RedirectAttributes ra) {
-		
-		
 		
 
 		return service.completeDeclare(reviewBoardDeclareNo);

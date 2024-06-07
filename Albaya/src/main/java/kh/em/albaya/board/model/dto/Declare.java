@@ -20,7 +20,7 @@ public class Declare {
 	private String reviewBoardCondition; // 처리 상태
 	private String boardDeclareDate;	 // 신고 날짜
 	private int reportedMemberNo; 		 // 신고당한 회원 번호
-	private int declareBoardCode; 
+	private int declareBoardCode; 		 
 	private int declareDelFl;
 
 }
