@@ -66,24 +66,29 @@ public interface DeclareMapper {
 	int rejectDeclare(int reviewBoardDeclareNo);
 
 
-	/** 신고 완료 처리
+	/** 신고 확정 처리
 	 * @param reviewBoardDeclareNo
-	 * @param reviewBoardNo
 	 * @return
 	 */
-	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
+	int completeDeclare(int reviewBoardDeclareNo);
 
 
-	
-
-	
-	/** 신고 완료 게시물 삭제
-	 * @return
+	/** 신고 당한 멤버 상태 변경
+	 * @param reviewBoardDeclareNo
 	 */
-	int updateReviewBoard();
+//	void changeMemberCondition(int reviewBoardDeclareNo);
+//
+//	
+//	/** 신고 확정 게시물 삭제
+//	 * @return
+//	 */
+//	int updateReviewBoard();
 
 
 	List<Declare> selectDeclareList();
+
+
+	
 
 	
 

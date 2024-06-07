@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -202,7 +203,7 @@ public class MyPageController {
 			return "redirect:/myPage/changePw";
 		}
 	}
-	
+
 	@PostMapping("changePwShop")
 	public String changePwShop(
 			@SessionAttribute(value = "loginShop", required = false) Shop loginShop,
@@ -263,5 +264,22 @@ public class MyPageController {
     @GetMapping("myApplyList")
     public String myApplyList() {
     	return "/myPage/myApplyList";
+    }
+    @GetMapping("countHireApply")
+    @ResponseBody
+    public int countHireApply(
+    		@SessionAttribute("loginMember") Member loginMember,
+    		Model model) {
+    	
+    	int memberNo = loginMember.getMemberNo();
+    	
+    	int result = service.countHireApply(memberNo);
+    	
+    	if(result >= 1) {
+    		model.addAttribute("countHireApply", result);
+    		return result;
+    	}
+    	
+    	return 0;
     }
 }

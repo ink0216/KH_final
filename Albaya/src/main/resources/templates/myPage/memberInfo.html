@@ -79,7 +79,6 @@
                         <div class="member-changePw-left">
                             <span>최근 수정일</span>
                         </div>
-
                         <div class="member-changePw-right">
                             <th:block th:unless="${session.loginMember.lastModifiedPwDate}">
                                 안전을 위해 정보를 수정해주세요!!
@@ -88,7 +87,27 @@
                             th:text="${session.loginMember.lastModifiedPwDate}">
                             </th:block>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="member-changePw-container">
 
+                <div class="member-changePw-header">
+                    <h3>내가 지원한 공고</h3>
+                    <button id="hireApplyListBtn">확인</button>
+                </div>
+                <div class="member-changePw-p-area">
+                    <p>지원한 모든 공고를 확인할 수 있습니다. 모집이 만료된 공고도 노출됩니다.</p>
+                </div>
+                <div class="member-changePw-status-container">
+                    <div class="member-changePw-status">
+                        <div class="member-changePw-left">
+                            <span>지원 내역</span>
+                        </div>
+                        <div class="member-changePw-right">
+                            <p id="hireApplyCount"></p>건
+                        </div>
                     </div>
                 </div>
             </div>

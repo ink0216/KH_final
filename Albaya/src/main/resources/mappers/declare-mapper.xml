@@ -81,14 +81,38 @@
 	</update>
 	
 	
-	
-	<!-- 신고 확정 처리 구문 -->
-	<update id="completeDeclare">
-		UPDATE BOARD_DECLARE SET 
+	<!-- UPDATE BOARD_DECLARE SET 
 		REVIEW_BOARD_CONDITION = 2
 		WHERE REVIEW_BOARD_CONDITION =1
-		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
+		AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo} -->
+		
+		
+	<!-- 신고 확정 처리 구문 -->
+	<update id="completeDeclare">
+		UPDATE BOARD_DECLARE
+        SET REVIEW_BOARD_CONDITION = 2
+        WHERE REVIEW_BOARD_CONDITION = 1
+        AND REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
+
+    
 	</update>
+	
+	<!-- 신고 당한 멤버 상태 변경 구문 -->
+	<update id="changeMemberCondition">
+		UPDATE MEMBER
+        SET MEMBER_STATUS = CASE
+                                WHEN MEMBER_STATUS = 4 THEN 1
+                                WHEN MEMBER_STATUS = 1 THEN 2
+                                WHEN MEMBER_STATUS = 2 THEN 3
+                                ELSE MEMBER_STATUS
+                            END
+        WHERE MEMBER_NO = (
+            SELECT REPORTED_MEMBER_NO
+            FROM BOARD_DECLARE
+            WHERE REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo}
+        )
+	</update>
+	
 	
 	
 	<!-- 신고 확정된 게시글 삭제 -->

@@ -31,4 +31,5 @@ public interface MyPageMapper {
 
 	int changeProfile(Shop shop);
 
+	int countHireApply(int memberNo);
 }

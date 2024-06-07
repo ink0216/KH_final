@@ -38,6 +38,7 @@
 			SELECT B.SHOP_NAME, A.HIRE_TITLE, A.WORK_START,A.HIRE_NO,
 		A.WORK_END, E.DOSI_NAME, D.SIGUNGU_NAME, F.PAY_NAME, A.PAY_INPUT
 
+
 		FROM "HIRE" A
 		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
 		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
@@ -258,5 +259,41 @@
 	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
 	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
 	WHERE HIRE_NO = #{hireNo}
+	</select>
+	<!-- 
+	<insert id="insertWrite" useGeneratedKeys="true" parameterType="Hire">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="hireNo">
+		SELECT SEQ_HIRE_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO "HIRE" 
+		VALUES(
+		#{hireNo},#{shopNo},#{typeNo},
+		#{payNo},#{hireTitle},#{hireContent},
+		DEFAULT,TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),#{hireCount},
+		#{hireTerm},#{hireGender},
+		<if test='hireStatus == null'>
+		DEFAULT
+		</if>
+		<if test='hireStatus != null'>
+		#{hireStatus}
+		</if>
+		,
+		#{workDay},#{payInput},#{dongNo},
+		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
+		,#{shopEmail},#{shopTel},#{shopName},#{address}
+				)
+	</insert>
+	
+	
+	
+	
+	
+	 -->
+	<select id="hireApplyCheck" resultType="_int">
+		SELECT COUNT(*)
+		FROM APPLY_HIRE
+		WHERE MEMBER_NO = #{memberNo}
+		AND HIRE_NO = #{hireNo}
 	</select>
 </mapper>

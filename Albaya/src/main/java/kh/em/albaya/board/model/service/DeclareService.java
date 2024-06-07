@@ -55,12 +55,11 @@ public interface DeclareService {
 
 
 
-	/** 신고 완료 하기
+	/** 신고 확정 처리
 	 * @param reviewBoardDeclareNo
-	 * @param reviewBoardNo
 	 * @return
 	 */
-	int completeDeclare(int reviewBoardDeclareNo, int reviewBoardNo);
+	int completeDeclare(int reviewBoardDeclareNo);
 
 
 

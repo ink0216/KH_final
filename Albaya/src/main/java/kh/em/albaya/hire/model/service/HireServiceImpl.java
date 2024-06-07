@@ -218,5 +218,15 @@ public class HireServiceImpl implements HireService{
 	public int hireApply(Member loginMember, Hire hire) {
 		// TODO Auto-generated method stub
 		return 0;
+  }
+	
+	@Override
+	public int hireApplyCheck(int hireNo, int memberNo) {
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("hireNo", hireNo);
+		map.put("memberNo", memberNo);
+		
+		return mapper.hireApplyCheck(map);
 	}
 }
