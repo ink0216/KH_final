@@ -113,7 +113,7 @@ const selectList = () => {
         });
 }
 
-
+// 반려 버튼 
 const attachEventListeners = () => {
     const rejectButtons = document.querySelectorAll('.reject');
 
@@ -161,7 +161,7 @@ const attachEventListeners = () => {
 
 
 
-
+// 신고 처리 완료 비동기
     const acceptButtons = document.querySelectorAll('.accept');
 
 
@@ -212,4 +212,5 @@ document.addEventListener('DOMContentLoaded', function () {
     
     selectList();
 });
+
 

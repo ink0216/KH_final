@@ -11,6 +11,8 @@ import kh.em.albaya.member.model.dto.Member;
 
 @Mapper
 public interface DeclareMapper {
+	
+	//------ 게시글 신고 목록 ------
 
 	/**게시글 신고 목록 조회
 	 * @param reviewBoardNo
@@ -19,6 +21,26 @@ public interface DeclareMapper {
 	 */
 //	List<Declare> selectDeclare(int reviewBoardNo,RowBounds rowBounds);
 
+
+	/**
+	 * 처리중인 신고 게시물 수
+	 * @param declareBoardCode
+	 * @return
+	 */
+	int getDeclareCount(int declareBoardCode);
+
+	/**
+	 * 신고 게시판의 내용 출력	
+	 * @param declareBoardCode
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Declare> selectDeclareList(int declareBoardCode, RowBounds rowBounds);
+
+	
+	//------ 게시글 신고 목록 ------
+	
+	
 	
 	/** 게시글 신고
 	 * @param memberNo
@@ -33,30 +55,13 @@ public interface DeclareMapper {
 	 */
 	List<Map<String, Object>> selectDeclareTypeList();
 
-	
-	/**
-	 * 신고 게시판에서 삭제안된 요소 출력
-	 * @param declareBoardCode
-	 * @return
-	 */
-	int getDeclareCount(int declareBoardCode);
 
-	
-	/**
-	 * 신고 게시판의 내용 출력	
-	 * @param declareBoardCode
-	 * @param rowBounds
-	 * @return
-	 */
-	List<Declare> selectDeclareList(int declareBoardCode, RowBounds rowBounds);
-
-	
 	/**
 	 * 게시글 중복 신고
 	 * @param reviewBoardCondition
 	 * @return
 	 */
-	int duplicateDeclare(String reviewBoardCondition);
+//	int duplicateDeclare(String reviewBoardCondition);
 
 
 	/** 신고 반려 처리
@@ -88,10 +93,9 @@ public interface DeclareMapper {
 
 	List<Declare> selectDeclareList();
 
+	int duplicateDeclare(Declare inputDeclare);
 
 
-
-	
 
 	
 
