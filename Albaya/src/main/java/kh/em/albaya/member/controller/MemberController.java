@@ -143,9 +143,11 @@ public class MemberController {
     
     @GetMapping("logout")
     public String logout(
-    		SessionStatus status
+    		SessionStatus status,
+    		HttpSession session
     		) {
     	status.setComplete();
+    	session.invalidate();
     	return "redirect:/";
     }
     
@@ -161,7 +163,7 @@ public class MemberController {
     		Model model,
     		HttpSession session) {
     	int result = service.findId(member);
-
+    	
     	String memberEmail = service.findMemberId(member);
     	session.setAttribute("result", result);
     	session.setAttribute("memberEmail", memberEmail);

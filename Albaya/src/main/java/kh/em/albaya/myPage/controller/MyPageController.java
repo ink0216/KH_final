@@ -203,7 +203,7 @@ public class MyPageController {
 			return "redirect:/myPage/changePw";
 		}
 	}
-	
+
 	@PostMapping("changePwShop")
 	public String changePwShop(
 			@SessionAttribute(value = "loginShop", required = false) Shop loginShop,
