@@ -392,7 +392,7 @@ const picFile = document.querySelector("#picFile");
             setImg.style.backgroundImage = `url(${img})`;
             setImg.style.backgroundSize = "150%";
             setImg.style.backgroundRepeat = "no-repeat";
-            setImg.style.backgroundPosition = "absolute"; 
+            setImg.style.backgroundPosition = "left"; 
         }
 
         reader.readAsDataURL(file);
