@@ -17,7 +17,7 @@ document.querySelector("#declareFrm").addEventListener("submit", e => {
     //     return;
     // })
     
-   
+
 
     if(declareContent.value.trim().length == 0) {
 
@@ -40,12 +40,6 @@ document.querySelector("#declareFrm").addEventListener("submit", e => {
 
 
 
-    
-
-
-
-
- 
     alert("신고 처리가 완료되었습니다.");
 
 })

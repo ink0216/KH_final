@@ -56,19 +56,11 @@
 			(SELECT MEMBER_NO
 			FROM REVIEW_BOARD
 			WHERE REVIEW_BOARD_NO = #{reviewBoardNo}),
-			DEFAULT,
 			DEFAULT)
 	</insert>
 	
 	
-	
-	<!-- 중복 신고 검사  -->
-<!-- 	<select id="duplicateDeclare">
-	SELECT COUNT(*)
-	FROM BOARD_DECLARE
-	WHERE REVIEW_BOARD_CONDITION = #{reviewBoardCondition}
-	</select>
-	 -->
+
 	 
 	 <!-- 게시글 신고 중복 처리 검사 구문 -->
 	<select id="duplicateDeclare">
