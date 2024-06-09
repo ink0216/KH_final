@@ -1,0 +1,105 @@
+#container{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top:50px;    
+}
+
+
+#resumeProfileInfo{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -90px;
+    
+    
+}
+#profImg{
+    width:200px;
+    height:200px;
+    border-radius: 100%;
+    border:1px solid lightgray;
+    margin-bottom: 20px;
+    position:relative;
+}
+#imgEditBtn{
+    height:40px;
+    width:40px;
+    border-radius:100%;
+    border:1px solid lightgray;
+    position:absolute;
+    bottom:0;
+    right:30px;
+}
+.info{
+    margin-left:30px;
+    margin-top:10px;
+}
+
+
+#profileDetail{
+    margin-left:40px;
+    border:1px solid lightgray;
+    width:510px;
+    border-radius:10px;
+    padding-bottom:20px;
+    padding-top:20px;
+}
+#profileDetail>div>span{
+    color:gray;
+}
+#heading{
+    display: flex;
+    width:100%;
+    height:130px;
+    border-bottom:1px solid lightgray;
+    padding-bottom:20px;
+}
+#headingContainer{
+    
+    margin-left:20px;
+}
+#heaingContainer>p{
+    margin-right:10px;
+}
+img{
+    margin-left:70px;
+}
+#title{
+    display:flex;
+    position:relative;
+
+}
+#title>h2{
+    margin-left:20px;
+}
+#editInfo{
+    position:absolute;
+    width:40px;
+    height:40px;
+    margin-top:10px;
+    margin-right:10px;
+    font-size: large;
+    color:lightgray;;
+    right:0;
+    border:1px solid white;
+    background-color: white;
+}
+#editInfo:hover{
+    color:gray;
+    cursor:pointer;
+
+}
+.detail{
+    margin-top:20px;
+    margin-left:20px;   
+}
+
+#hireList{
+    margin-left:30px;
+    border:1px solid lightgray;
+    width:400px;
+    
+    border-radius:10px;
+}
+
