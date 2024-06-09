@@ -70,13 +70,20 @@
 	</select>
 	 -->
 	 
-	 <!-- 신고 중복 처리 검사 구문 -->
+	 <!-- 게시글 신고 중복 처리 검사 구문 -->
 	<select id="duplicateDeclare">
 		SELECT COUNT(*)
 		FROM BOARD_DECLARE 
 		WHERE REVIEW_BOARD_NO = #{reviewBoardNo}
 		AND REVIEW_BOARD_CONDITION = 1
-		AND REPORTED_MEMBER_NO = #{reportedMemberNo}
+	</select>
+	
+	<!-- 신고 당한 회원 중복 검사 -->
+	<select id="duplicateMember">
+		SELECT COUNT(*)
+		FROM BOARD_DECLARE 
+		WHERE REPORTED_MEMBER_NO = #{reportedMemberNo}
+		AND REVIEW_BOARD_CONDITION =1
 	</select>
 	
 	
