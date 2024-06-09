@@ -70,10 +70,14 @@ public class DeclareServiceImpl implements DeclareService{
 	public int insertDeclare(Declare inputDeclare) {
 		
 		// 중복 신고 검사
-		int count = mapper.duplicateDeclare(inputDeclare);
+		
+		// 게시물 신고 중복
+		int board = mapper.duplicateDeclare(inputDeclare);
+		// 회원 신고 중복
+		int mem = mapper.duplicateMember(inputDeclare);
 		
 		int result = 0;
-		if(count <1) {
+		if(board < 1 && mem <1) {
 			result = mapper.insertDeclare(inputDeclare);
 		}else {
 			result = 0;
