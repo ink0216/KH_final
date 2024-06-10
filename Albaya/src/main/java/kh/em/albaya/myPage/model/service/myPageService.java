@@ -26,4 +26,6 @@ public interface myPageService {
 	int countHireApply(int memberNo);
 
 	int memberInfoUpdate(Member member, String[] memberAddress);
+
+	int shopInfoUpdate(Shop shop);
 }
