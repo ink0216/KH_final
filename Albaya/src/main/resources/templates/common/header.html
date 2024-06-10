@@ -75,7 +75,7 @@
 
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;<button id="resumeRedirect" class="loggedIn">이력서 등록</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button  class="loggedIn" id="resumeRedirect">이력서 등록</button>
                     &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
 
 
@@ -94,7 +94,7 @@
                     <a href="/member/login" class="login">로그인</a> &nbsp;
                     |&nbsp;
                     <a href="/member/selectSignup" class="login">회원가입</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn">이력서 등록</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn" id="resumeRedirect">이력서 등록</button>
                     &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
 
                 </th:block>
@@ -136,10 +136,7 @@
         });
     }
 
-    const resume = document.querySelector("#resumeRedirect");
-    resume.addEventListener("click", () => {
-        window.location.href = "http://localhost/member/resume";
-    })
+    
 </script>
 <script src="/js/common/header.js"></script>
 

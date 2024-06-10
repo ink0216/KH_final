@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 
 @Mapper
@@ -32,4 +33,6 @@ public interface MyPageMapper {
 	int changeProfile(Shop shop);
 
 	int countHireApply(int memberNo);
+
+	int memberInfoUpdate(Member member);
 }

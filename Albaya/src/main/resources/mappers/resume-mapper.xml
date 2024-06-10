@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kh.em.albaya.resume.model.mapper.ResumeMapper">
+
+	<!-- 해당 회원이 임시저장했던 이력서 조회해오기 -->
+	<select id="semiResumeList">
+		SELECT * FROM RESUME
+		WHERE MEMBER_NO = #{memberNo}
+		AND RESUME_STATUS = 1
+	</select>
+
+	<!-- 학력 사항 조회해서 화면 만들기 -->
+	<select id="educationList">
+		SELECT * FROM "EDUCATION"
+		ORDER BY EDUCATION_NO
+	</select>
+	
+	<!-- 직종 조회해서 화면 만들기 -->
+	<select id="workList">
+		SELECT * FROM "WORK_TYPE"
+		ORDER BY TYPE_NO
+	
+	</select>
+	
+	<!-- 학력 상태 조회해서 화면 만들기 -->
+	<select id="statusList">
+		SELECT * FROM "EDUCATION_STATUS"
+		ORDER BY EDUCATION_STATUS_NO
+	</select>
+</mapper>

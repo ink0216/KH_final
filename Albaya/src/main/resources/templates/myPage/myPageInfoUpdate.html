@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보 수정</title>
+    <link rel="stylesheet" href="/css/myPage/myPageInfoUpdate.css">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <form action="/myPage/memberInfoUpdate" method="POST">
+        <main class="main-container-wrapper">
+            <div class="main-container">
+                
+                <div class="h1-area">
+                    <h1>회원 정보 수정</h1>
+                </div>
+                
+                <div class="notice-area-container">
+                    <div class="notice-area">
+                        <ul class="notice">
+                            <li>개인 정보는 개인의 동의 없이 누구에게도 공개되지 않습니다.</li>
+                            <li>이름과 주소를 변경할 수 있습니다.</li>
+                            <li>휴대폰 번호는 인증 후 변경 가능합니다.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="update-info-area">
+                    <div class="info-row">
+                        <div class="info-row-left">
+                            <span>이메일</span>
+                        </div>
+                        <div class="info-row-right2">
+                            <input type="text" name="memberEmail"
+                            th:value="${session.loginMember.memberEmail}" id="memberEmail" readonly>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-row-left">
+                            <span>이름</span>
+                        </div>
+                        <div class="info-row-right2">
+                            <input type="text" name="memberName"
+                            th:value="${session.loginMember.memberName}">
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-row-left">
+                            <span>성별</span>
+                        </div>
+                        <div class="info-row-right2">
+                            <input type="text" id="memberGender" th:value="${session.loginMember.memberGender == 1 ? '남자' : '여자'}" readonly>
+                            <input type="hidden" name="memberGender" id="memberGender" th:value="${session.loginMember.memberGender }">
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-row-left">
+                            <span>휴대폰 번호</span>
+                        </div>
+                        <div class="info-row-right">
+
+                            <input type="text" name="memberPhoneNumber" class="memberTel" id="memberTel" th:value="${session.loginMember.memberPhoneNumber}" readonly>
+                        </div>
+                        <div class="info-row-btn-area">
+                            <button type="button" id="changeTelBtn">변경하기</button>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-row-left">
+                            <span>주소</span>
+                        </div>
+                        <div class="info-row-right">
+                            <input type="text" name="memberAddress" id="postcode" th:value="${postCode}" readonly>
+                        </div>
+                        <div class="info-row-btn-area">
+                            <button type="button" id="searchAddress">검색</button>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-row-left">
+                            <span></span>
+                        </div>
+                        <div class="info-row-right2">
+                            <input type="text" name="memberAddress" id="address" th:value="${addr}" readonly>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-row-left">
+                            <span>상세 주소</span>
+                        </div>
+                        <div class="info-row-right2">
+                            <input type="text" name="memberAddress" id="detailAddress" th:value="${detail}">
+                        </div>
+                    </div>
+                    <div class="submit-area">
+                        <button type="button" id="cancelBtn">취소</button>
+                        <button id="updateBtn">변경하기</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </form>
+
+
+
+    <th:block th:replace="~{common/footer}"></th:block> 
+
+
+</body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/myPage/myPageInfoUpdate.js"></script>
+</html>

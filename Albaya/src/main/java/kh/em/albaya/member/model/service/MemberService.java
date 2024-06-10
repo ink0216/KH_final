@@ -30,4 +30,8 @@ public interface MemberService {
 	int memberPwCount(Member member);
 
 	int changePw(String newPassword, String memberEmail);
+
+	Member findMemberByNo(int memberNo);
+
+
 }

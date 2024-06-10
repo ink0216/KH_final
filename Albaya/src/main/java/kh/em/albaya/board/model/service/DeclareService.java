@@ -4,11 +4,38 @@ import java.util.List;
 import java.util.Map;
 
 import kh.em.albaya.board.model.dto.Declare;
-import kh.em.albaya.member.model.dto.Member;
 
 public interface DeclareService {
 
+	// ------------ 게시글 신고 목록 조회 --------
+	
+	/** 게시판 종류 조회
+	 * @return
+	 */
+	List<Map<String, Object>> selectDeclareTypeList();
+	
+	
+	/**
+	 * 신고 게시판의 목록 출력
+	 * @param declareBoardCode
+	 * @param cp
+	 * @return
+	 */
+	Map<String, Object> selectDeclareList(int declareBoardCode, int cp);
 
+
+	/** 비동기 목록 조회
+	 * @return
+	 */
+	List<Declare> selectDeclareList();
+	
+
+	
+	// --------------- 게시글 신고 목록 조회 ---------
+	
+	
+	
+	
 	
 	/** 게시글 신고 하기
 	 * @param memberNo
@@ -20,20 +47,6 @@ public interface DeclareService {
 
 
 
-	/** 게시판 종류 조회
-	 * @return
-	 */
-	List<Map<String, Object>> selectDeclareTypeList();
-
-
-	/**
-	 * 신고 게시판의 목록 출력
-	 * @param declareBoardCode
-	 * @param cp
-	 * @return
-	 */
-	Map<String, Object> selectDeclareList(int declareBoardCode, int cp);
-
 
 
 	/**
@@ -41,7 +54,7 @@ public interface DeclareService {
 	 * @param reviewBoardCondition
 	 * @return
 	 */
-	int duplicateDeclare(String reviewBoardCondition);
+//	int duplicateDeclare(String reviewBoardCondition);
 
 
 
@@ -54,7 +67,6 @@ public interface DeclareService {
 
 
 
-
 	/** 신고 확정 처리
 	 * @param reviewBoardDeclareNo
 	 * @return
@@ -62,13 +74,8 @@ public interface DeclareService {
 	int completeDeclare(int reviewBoardDeclareNo);
 
 
-
-
-	/** 비동기 목록 조회
-	 * @return
-	 */
-	List<Declare> selectDeclareList();
-	
+//	// 비동기 중복 검사...
+//	int duplicateDeclare(int reviewBoardNo);
 
 	
 

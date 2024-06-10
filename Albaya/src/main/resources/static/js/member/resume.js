@@ -11,10 +11,12 @@
     
 
     const eduObj = {
-        "1":"selectPrimarySchoolName",
-        "2":"selectMiddleSchoolName",
-        "3":"selectSchoolName",
-        "4":"selectUniversityName"
+        "1":"selectPrimarySchoolName", //초
+        "2":"selectMiddleSchoolName", //중
+        "3":"selectSchoolName", //고
+        "4":"twoUniversityName", //2,3년제
+        "5":"fourUniversityName", //4년제
+        "6":"graduateUniversityName" //대학원 이상
     };
 
 
@@ -33,18 +35,85 @@
             }
         }
         
-       
-       
+    
+    
     });
+    //비동기로 위치정보 얻어와 화면 만들기
+    const dosies = document.querySelectorAll(".dosies");
+    const sigunguList = document.querySelector(".sigunguList");
+    const dong = document.querySelector(".dong");
+    const locationContentArr = [];
+    dosies.forEach(btn => {
+        btn.addEventListener("click", () => {
+            sigunguList.innerHTML = "";
+            dong.innerHTML = "";
+            const dosiName = btn.textContent;
+            fetch("/hire/selectSigungu?dosiName="+dosiName)
+            .then(resp=>resp.json())
+            .then(
+                list=>{
+                    list.forEach(sigunguItem=>{
+                        const div = document.createElement("div");
+                        div.innerHTML = sigunguItem.sigunguName;
+                        sigunguList.classList.add("sigungus");
+                        sigunguList.append(div);
 
+                        div.addEventListener("click", () => {
+                            dong.innerHTML="";
+                            const sigunguName = div.textContent;
+                            fetch("/hire/selectDong?dosiName="+dosiName+"&sigunguName="+sigunguName)
+                            .then(resp=>resp.json())
+                            .then(
+                                list=>{
+                                    list.forEach(dongItem=>{
+                                        const dongdiv = document.createElement("div");
+                                        dongdiv.innerHTML = dongItem.dongName;
+                                        dongdiv.classList.add("dongs");
+                                        dong.append(dongdiv);
+                                        dongdiv.addEventListener("click",()=>{
+                                            
+                                            for(let i=0; i<locationContentArr.length; i++){
+                                                
+                                                if(dongItem.dongNo == locationContentArr[i]){
+                                                    alert("중복 선택은 가능하지 않습니다");
+                                                    return;
+                                                }
+                                            }
+                                            if(document.querySelectorAll(".selectDong>span").length > 4){
+                                                alert("최대 5가지만 선택할 수 있습니다");
+                                                return;
+                                            }
+                                            
+                                                const selectLocationInnerHtml = `
+                                                <span class = "selectDong">
+                                                    ${dongItem.dongName}
+                                                    <span>&times;</span>
+                                                </span>`;
 
+                                            locationSelectContainer.innerHTML += selectLocationInnerHtml;
+                                            locationContentArr.push(dongItem.dongNo);
+                                            const input = document.createElement("input");
+                                            input.type = "hidden";
+                                            input.name = "dongNo";
+                                            input.value = dongItem.dongNo;
+                                            form.append(input);
+                                        });
+                                        
+                                    })
+                                }
+                            );
+                        });
+                    })
+                });
+        });
+    });
 //city dropdown
 
 const dongs = document.querySelectorAll(".dongs");
 const locationSelectContainer =  document.querySelector(".locationSelectContainer");
 const selectCont = document.querySelectorAll(".selectDong");
 
-const locationContentArr = [];
+
 dongs.forEach(btn => {
     btn.addEventListener("click", () => {
        
@@ -155,6 +224,12 @@ newHire.addEventListener("click", () => {
 
     newHire.classList.add("selectedBtn");
     experienced.classList.remove("selectedBtn");
+    const input = document.createElement("input");
+    input.setAttribute("name", "career");
+    input.value=1;
+    input.type="hidden";
+    experiencedDetail.appendChild(input);
+
 })
 
 
@@ -168,8 +243,11 @@ experienced.addEventListener("click", () => {
     experienced.classList.add("selectedBtn");
     newHire.classList.remove("selectedBtn");
     
-   
- 
+    const input = document.createElement("input");
+    input.setAttribute("name", "career");
+    input.value=2;
+    input.type="hidden";
+    experiencedDetail.appendChild(input);
    
 
     
@@ -192,6 +270,7 @@ const addExperience = () => {
 
             const inputCompanyName =  document.createElement("input");
             inputCompanyName.setAttribute("type","text");
+            inputCompanyName.setAttribute("name","companyName");
             companyNameDiv.appendChild(inputCompanyName);
 
             career.appendChild(nonBreakingSpace);
@@ -206,7 +285,9 @@ const addExperience = () => {
             
 
             inputDate.setAttribute("type","date");
+            inputDate.setAttribute("name","startDate");
             inputDate2.setAttribute("type","date");
+            inputDate2.setAttribute("name","endDate");
             dateInputDiv.appendChild(inputDate);
             dateInputDiv.append("~");
             dateInputDiv.appendChild(inputDate2);
@@ -232,16 +313,16 @@ const addCertificate = () => {
             <div class="certificateDetail">
                 <div class="organizationDetail">
                     <span>자격증명&nbsp;&nbsp;</span>
-                    <input type="text" class="certName">
+                    <input type="text" class="certName" name="licenseName">
                     <br><br>
                     <span>발행기관&nbsp;&nbsp;</span>
-                    <input type="text" class="organization">
+                    <input type="text" class="organization" name="licenseFrom">
                 </div>
 
 
                 <div class="scoreDetail">
                     <span>점수</span>&nbsp;&nbsp;
-                    <input type="number" name="score" class = "score" max="100" required>&nbsp;/100
+                    <input type="number" name="licenseScore" class = "score" max="100" >&nbsp;/100
                 </div>
                                                
                 <div class = "issueDetail">
@@ -322,22 +403,27 @@ const addDesiredJobs =  document.querySelector("#addDesiredJobs");
 let textContentArr = [];
 jobsOfDesireBtn.forEach(btn => {
     btn.addEventListener("click", () => {
-       
-       
+    
+    
         for(let i=0; i<textContentArr.length; i++){
             if(btn.textContent == textContentArr[i]){
                 alert("중복 선택은 가능하지 않습니다");
                 return;
             }
         } 
-        textContentArr.push(btn.textContent);
+        
 
 
         if(document.querySelectorAll(".addJobCategory>span").length > 4){
             alert("최대 5가지만 선택할 수 있습니다");
             return;
         }
-
+        textContentArr.push(btn.textContent);
+        const jobinput = document.createElement("input");
+        jobinput.setAttribute("type","hidden");
+        jobinput.setAttribute("name","typeName");
+        jobinput.setAttribute("value",btn.textContent);
+        addDesiredJobs.appendChild(jobinput);
         const addJobDiv = `
             <span class = "addJobCategory">
                 ${btn.textContent}
@@ -392,7 +478,7 @@ const picFile = document.querySelector("#picFile");
             setImg.style.backgroundImage = `url(${img})`;
             setImg.style.backgroundSize = "150%";
             setImg.style.backgroundRepeat = "no-repeat";
-            setImg.style.backgroundPosition = "absolute"; 
+            setImg.style.backgroundPosition = "left"; 
         }
 
         reader.readAsDataURL(file);
@@ -405,5 +491,24 @@ const picFile = document.querySelector("#picFile");
 
     })
 
-    
+    const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer");
+    //저장 버튼
+    const applyBtn = document.querySelector("#applyBtn");
+    applyBtn.addEventListener("click", () => {
+        const input = document.createElement("input");
+        input.setAttribute("type","hidden");
+        input.setAttribute("name","resumeStatus");
+        input.value=0;
+        validatingBtnsContainer.append(input);
+    });
+
+    //임시저장 버튼
+    const semiBtn = document.querySelector("#semiBtn");
+    semiBtn.addEventListener("click", () => {
+        const input = document.createElement("input");
+        input.setAttribute("type","hidden");
+        input.setAttribute("name","resumeStatus");
+        input.value=1;
+        validatingBtnsContainer.append(input);
+    });
 

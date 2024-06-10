@@ -37,7 +37,7 @@ public class DeclareController {
 	
 	private final DeclareService service;
 
-	//------------ 게시글 신고 -------------
+	//------------ 게시글 신고 목록 -------------
 	
 	// 게시글 신고 목록 조회
 	@GetMapping("{declareBoardCode:[0-9]+}")
@@ -79,7 +79,8 @@ public class DeclareController {
 
 			@SessionAttribute("loginMember") Member loginMember,
 			Declare inputDeclare, 
-			Model model, HttpServletResponse resp) throws IOException {
+			Model model, HttpServletResponse resp,
+			RedirectAttributes ra) throws IOException {
 		
 		int memberNo = loginMember.getMemberNo();
 		inputDeclare.setMemberNo(memberNo);
@@ -94,6 +95,7 @@ public class DeclareController {
 			message = "신고 실패하였습니다";
 		}
 
+		ra.addFlashAttribute("message", message);
 		resp.getWriter().write("<script>window.close()</script>");
 		// 팝업창 닫기
 	}
@@ -134,7 +136,7 @@ public class DeclareController {
 			@RequestBody int reviewBoardDeclareNo,
 			RedirectAttributes ra) {
 		
-
+	
 		return service.completeDeclare(reviewBoardDeclareNo);
 	}
 	
@@ -157,9 +159,7 @@ public class DeclareController {
 //			else {
 //				
 //			}
-	
-	
-	
+
 				
 //	@GetMapping("selectList")
 //	public String selectList() {

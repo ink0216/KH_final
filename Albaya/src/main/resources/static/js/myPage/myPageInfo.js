@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
             else{
-                location.href = "/myPage/hireApplyList";
+                location.href = "/myPage/hireApplyListBtn";
             }
         })
     })
@@ -94,4 +94,3 @@ submitBtn.addEventListener("click", e => {
         return;
     }
 });
-
