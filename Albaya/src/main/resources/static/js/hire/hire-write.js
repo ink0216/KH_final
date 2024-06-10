@@ -67,6 +67,7 @@ payInput.addEventListener("input",e=>{
             if(pay<9860)
                 {
                 payMessage.innerHTML="최저 시급 이상 입력하세요";
+                payMessage.classList.remove("blue");
                 payMessage.classList.add("red");
                 checkObj.payInput=false;
                 return;
@@ -90,6 +91,7 @@ payInput.addEventListener("input",e=>{
             console.log("weekPay : ", weekPay);
             if(Number(pay)<weekPay){
                 payMessage.innerHTML="최저 주급 이상 입력하세요";
+                payMessage.classList.remove("blue");
                 payMessage.classList.add("red");
                 checkObj.payInput=false;
                 return;
@@ -114,6 +116,7 @@ payInput.addEventListener("input",e=>{
             if(pay<monthPay){
                 // alert("최저 월급 이상 입력하세요");
                 payMessage.innerHTML="최저 월급 이상 입력하세요";
+                payMessage.classList.remove("blue");
                 payMessage.classList.add("red");
                 checkObj.payInput=false;
                 return;
@@ -139,6 +142,7 @@ payInput.addEventListener("input",e=>{
             if(pay<yearPay){
                 // alert("최저 연봉 이상 입력하세요");
                 payMessage.innerHTML="최저 연봉 이상 입력하세요";
+                payMessage.classList.remove("blue");
                 payMessage.classList.add("red");
                 checkObj.payInput=false;
                 return;
@@ -153,6 +157,7 @@ payInput.addEventListener("input",e=>{
         if(pay<(9860*workTime)){
             // alert("최저 일급 이상 입력하세요");
             payMessage.innerHTML="최저 일급 이상 입력하세요";
+            payMessage.classList.remove("blue");
             payMessage.classList.add("red");
             checkObj.payInput=false;
             return;
@@ -322,6 +327,7 @@ hireTitle.addEventListener("input",e=>{
 
     if(inputTitle.trim().length===0){
         titleMessage.innerHTML="공고 제목을 입력해주세요";
+        titleMessage.classList.remove("blue");
         titleMessage.classList.add("red");
         checkObj.hireTitle=false;
         return;
@@ -329,6 +335,7 @@ hireTitle.addEventListener("input",e=>{
 
     if(inputTitle.trim().length<2){
         titleMessage.innerHTML="2자 이상으로 입력해주세요";
+        titleMessage.classList.remove("blue");
         titleMessage.classList.add("red");
         checkObj.hireTitle=false;
         return;
@@ -336,6 +343,7 @@ hireTitle.addEventListener("input",e=>{
 
     if(inputTitle.trim().length>40){
         titleMessage.innerHTML="40자 이하로 입력해주세요";
+        titleMessage.classList.remove("blue");
         titleMessage.classList.add("red");
         checkObj.hireTitle=false;
         return;
@@ -361,6 +369,7 @@ hireCount.addEventListener("input",e=>{
 
     if(inputCount.trim().length===0){
         countMessage.innerHTML="모집 인원 수를 입력해주세요";
+        countMessage.classList.remove("blue");
         countMessage.classList.add("red");
         checkObj.hrieCount=false;
         return;
@@ -368,6 +377,7 @@ hireCount.addEventListener("input",e=>{
 
     if(!regExp.test(inputCount)){
         countMessage.innerHTML="숫자만 입력해주세요";
+        countMessage.classList.remove("blue");
         countMessage.classList.add("red");
         checkObj.hrieCount=false;
         return;
@@ -390,6 +400,7 @@ hireEnd.addEventListener("change",e=>{
 
     if(inputEnd.value==''){
         endMessage.innerHTML="모집 종료 날짜를 입력하세요";
+        endMessage.classList.remove("blue");
         endMessage.classList.add("red");
         checkObj.hireEnd=false;
         return;
@@ -397,6 +408,7 @@ hireEnd.addEventListener("change",e=>{
 
     if(now>=inputEnd){
         endMessage.innerHTML="현재 날짜 이상의 날짜를 선택하세요";
+        endMessage.classList.remove("blue");
         endMessage.classList.add("red");
         checkObj.hireEnd=false;
         return;
@@ -419,6 +431,7 @@ shopTel.addEventListener("input",e=>{
 
     if(inputTel.trim().length===0){
         telMessage.innerHTML="연락처를 입력해주세요";
+        telMessage.classList.remove("blue");
         telMessage.classList.add("red");
         checkObj.shopTel=false;
         return;
@@ -426,6 +439,7 @@ shopTel.addEventListener("input",e=>{
 
     if(!regExp.test(inputTel)){
         telMessage.innerHTML='올바른 번호를 입력하세요';
+        telMessage.classList.remove("blue");
         telMessage.classList.add("red");
         checkObj.shopTel=false;
         return;
@@ -454,6 +468,7 @@ shopEmail.addEventListener("input",e=>{
 
     if(!regExp.test(inputEmail)){
         emailMessage.innerHTML="올바른 이메일 형식으로 입력해주세요";
+        emailMessage.classList.remove("blue");
         emailMessage.classList.add("red");
         checkObj.shopEmail=false;
         return;

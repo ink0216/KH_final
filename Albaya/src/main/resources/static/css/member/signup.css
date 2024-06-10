@@ -38,7 +38,8 @@ h1{
     margin: auto;
     margin-top: 40px;
     margin-bottom: 40px;
-    width: 620px;
+    width: 750px;
+    min-width: 720px;
     height: 80%;
     /* border: 1px solid black; */
     padding-left: 20px;

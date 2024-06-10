@@ -163,6 +163,32 @@ public class HireServiceImpl implements HireService{
 				return map1;
 	}
 	
+	/**********************************************************************************************/
+	//지역별 공고 조회해오기2
+	@Override
+	public Map<String, Object> locationHireList2(Map<String, Object> map) {
+		int sigunguNo =  (int)(map.get("sigunguNo"));
+		int cp =  (int)(map.get("cp"));
+		// 전체 공고 수 조회
+				int listCount = mapper.sigunguListCount(sigunguNo);
+				
+				Pagination pagination = new Pagination(cp, listCount, 10, 8, 0);
+				
+				// 13번째 부터 1페이지
+				// 1p == 13 ~ 22
+				// 2p == 23 ~ 32
+				int offset = (cp-1) * 10; 
+				RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+				List<Hire> hireList 
+				= mapper.locationHireList2(sigunguNo, rowBounds);
+			
+				Map<String, Object> map2
+				= Map.of("hireList", hireList, "pagination", pagination);
+				
+				return map2;
+	}
+	/**********************************************************************************************/
+	
 	// 지원하기 페이지 기업 정보 가져오기
 	@Override
 	public Hire hireInfo(int hireNo) {

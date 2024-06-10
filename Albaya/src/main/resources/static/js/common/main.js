@@ -46,8 +46,6 @@ observer.observe(imgList)
 
 
 
-
-
 /////////////////////////////////////////////////////////////////////
 const tbody= document.querySelector("tbody"); //tbody
 const numberButtonWrapper = document.querySelector('.number-button-wrapper'); //숫자 버튼 묶음
@@ -107,7 +105,7 @@ const setPageOf=(hireList)=>{
 
 
 //*************************페이지 수를 세서 페이징 번호 생성****************************//
-const getPagination =(pagination)=>{ 
+const getPagination =(pagination, type)=>{ 
 
     for(let i= pagination.startPage ; i <= pagination.endPage ; i++){
 
@@ -119,7 +117,8 @@ const getPagination =(pagination)=>{
         //******페이징 버튼이 눌렸을 경우***********//
         button.addEventListener("click",e=>{
             console.log(button + "클릭됨");
-            reloadTable(e.target.innerHTML);
+            if(type===2) reloadTable2(e.target.innerHTML)
+            else reloadTable(e.target.innerHTML);
         })
 
         if(i == pagination.currentPage){

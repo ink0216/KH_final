@@ -18,6 +18,7 @@
 
 /* 시군구 표 */
 .container1{  
+    min-width: 765px;
     margin-top: 50px;
     display: flex;
     justify-content: center;
