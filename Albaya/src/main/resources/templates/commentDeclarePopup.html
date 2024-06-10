@@ -4,56 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신고 사유 작성</title>
-    <link rel="stylesheet" href="/css/reviewBoard/declarePopup.css">
+    <link rel="stylesheet" href="/css/reviewBoard/commentDeclarePopup.css">
   
   
 </head>
 <body>
-    <div id = "declarePopupTitle">
+    <div id = "commentDeclarePopupTitle">
         <h1>신고 사유 작성 게시판</h1>
     </div>
 
-    <div id="declarePopup-explain">
-        <p>후기 게시판에 작성된 내용이 부적합하다고 판단될 경우 신고 사유 작성과 함께 신고해주세요.
+    <div id="commentDeclarePopup-explain">
+        <p>작성된 댓글 내용이 부적합하다고 판단될 경우 신고 사유 작성과 함께 신고해주세요.
             신고 사유에 해당하는 내용 신고 규칙은 다음과 같습니다.
         </p><br>
-        <div id="declare-explain">
+        <div id="commentDeclare-explain">
         <p style="color:rgb(36, 35, 35); font-family:Arial, Helvetica, sans-serif">
         1. 명예훼손, 허위 사실을 근거로 한 비난, 욕설이 포함된 내용 <br><br>
         2. 지적 재산권을 침해하는 내용 <br><br>
         3. 개인정보 보안법에 위반하는 내용 <br><br>
-        4. 알바 후기 게시판의 주제와 전혀 상관없는 내용 <br><br>
+        4. 게시글 주제와 전혀 관련이 없는 내용 <br><br>
         5. 광고 목적으로 작성된 내용 <br><br>
         6. 갈등을 조장하는 내용 <br><br>
         7. 기타 상대방이 불쾌하다고 느껴지는 주제를 다루는 내용</p>
         </div>
     </div>
-    <div id="declarePopup-explain2">
+    <div id="commentDeclarePopup-explain2">
         <p>신고 처리는 관리자에 의해 최대한 빠른 시간 내에 처리할 예정입니다. 규정에 따라 <br>
         신고 처리가 반려당할 수 있으며 허위 신고임이 밝혀질 경우 신고자가 경고/활동 정지 처분을 <br>
 
         받을 수도 있습니다. </p>
 
-    <div id="declareMemberEmail">
+    <div id="commentDeclareMemberEmail">
         <!-- <th:block th:with="temp = ${#strings.substringBefore(memberEmail,'@')} ">
         <span th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}"></span>
         </th:block> -->
 
     </div>
 
-    <div id="reported-declare">
+    <div id="reported-commentDeclare">
 
     </div>
     </div>
     
-    <form action="/declare/insert" method="POST" class="declareFrm" id="declareFrm">
-        <div id="declarePopup-Content">
+    <form action="/commentDeclare/insert" method="POST" class="commentDeclareFrm" id="commentDeclareFrm">
+        <div id="commentDeclarePopup-Content">
 
-            <textarea name="boardDeclareContent" id="declarePopupContent" maxlength="300" placeholder="신고 사유를 입력하세요(최대 300자)"></textarea>
-        </div>
 
-        <div id="declareBtn-area">
-            <button type="submit" id="declareBtn" class="declareBtn" >신고하기</button>
+        <textarea name="boardCommentDeclareContent" id="commentDeclarePopupContent" maxlength="300" placeholder="신고 사유를 입력하세요(최대 300자)"></textarea>
+    </div>
+
+        <div id="commentDeclareBtn-area">
+            <button type="submit" id="commentDeclareBtn" class="commentDeclareBtn" >신고하기</button>
         </div>
 
         <input type="hidden" name="reviewBoardNo" th:value="${param.reviewBoardNo}">
@@ -62,9 +63,9 @@
 </body>
 <script th:inline="javascript">
     const memberEmail = /*[[*{#strings.substringBefore(memberEmail,'@')}]]*/"신고를 한 사람";
-    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"게시판 코드";
+    const commentNo = /*[[${commentNo}]]*/"댓글번호";
 
 </script>
-    <script src="/js/reviewBoard/declarePopup.js"></script>
+    <script src="/js/reviewBoard/commentDeclarePopup.js"></script>
 
 </html>

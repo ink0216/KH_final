@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지</title>
+    <title>관리자 페이지/게시판</title>
     <th:block th:replace="~{common/header}"></th:block>
     <link rel="stylesheet" href="/css/common/admin.css">
 </head>
 <body>
+    <div>
+        <h2><a href="/declare/commentAdmin">관리자 페이지/댓글(임시용)</a></h2>
+    </div>
     <div id="adminPageBox">
-    <h1 style="font-size:55px; font-family: 'TheJamsil5Bold';" id="adminTitle">관리자 페이지</h1>
+    <h1 style="font-size:55px; font-family: 'TheJamsil5Bold';" id="adminTitle">관리자 페이지/게시글</h1> 
+    
+    <button id="connectToCommentAdmin">댓글 관리 페이지로 이동</button>
+
     <div class="table-container">
     <table border= "1" class="styled-table">
         <thead>
@@ -25,14 +31,6 @@
         <tbody class="tbody">
             <th:block th:each="declare : ${declareList}" th:object="${declare}">
                 <tr>
-                    <!-- <td>1</td> 
-                    <td>85</td> 
-                    <td>declare11</td> 
-                    <td id="declareContent"></td> 
-                    <td>1</td> 
-                    <td>2024-05-31</td> 
-                    <td>reporteddeclare22</td>  -->
-
                     <td th:text="${declare.reviewBoardDeclareNo}"></td>
                     <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${declare.reviewBoardNo}"></a> </td>
                     <td th:text="${declare.memberNo}"></td>
@@ -40,10 +38,9 @@
                     <td th:text="${declare.reviewBoardCondition}"></td>
                     <td th:text="${declare.boardDeclareDate}"></td>
                     <td th:text="${declare.reportedMemberNo}"></td>
-                    <!-- <td th:text="${declare.reportedMemberNo}"></td> -->
                     <td id="buttonArea"><button class="reject">반려</button><button class="accept">확정</button></td>
                 </tr>
-            <!-- </th:block> -->
+            </th:block>
         </tbody>
     </table>
 </div>
@@ -98,7 +95,7 @@
 
     <div id="declareExplain">
         <li>게시글 번호를 클릭하면 신고받은 게시글로 이동합니다.</li>
-        <li>관리자는 게시판 이용 수칙을 반드시 확인하고 신고를 처리해야 합니다. 충분한 신고 사유가 되지 않으면 무효 처리를 할 수 있습니다.</li>
+        <li>관리자는 게시판 이용 수칙을 반드시 확인하고 신고를 처리해야 합니다. 충분한 신고 사유가 되지 않으면 반려 처리를 할 수 있습니다.</li>
         <li>신고 처리 확정 버튼을 누르면 신고당한 게시글이 삭제되고 그 게시글의 작성자는 경고 횟수가 1 증가합니다.</li>
         <li>경고 횟수가 3회 누적시 7일간 로그인이 차단됩니다.</li>
 
@@ -142,6 +139,7 @@
 <script th:inline ="javascript">
     const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입"; 
     const currentPage = /*[[${pagination.currentPage}]]*/"페이지번호";
+    
 </script>
 
 
