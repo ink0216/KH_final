@@ -95,6 +95,12 @@ public interface HireService {
 	 */
 	int hireApplyCheck(int hireNo, int memberNo);
 
+	/**공고 수정
+	 * @param hire
+	 * @return
+	 */
+	int hireUpdate(Hire hire);
+
 
 
 	

@@ -11,7 +11,7 @@
     <th:block th:replace="~{common/header}"></th:block>
     <!-- 이력서  -->
     <!-- 사진 업데이트 팝업창 -->
-    <form action ="/resume/resumeWrite" method="POST" >
+    <form action ="/resume/resumeWrite" method="POST" id="form" enctype="multipart/form-data">
         <div class = "container hide" >
             <div class = "innerContainer ">
                 <div class = "heading"> 
@@ -21,7 +21,7 @@
                     <span value="12">사진 업데이트:</span>
                 </div><br>
                 <div class = "fileInput"> 
-                    <input type=file id="picFile" name="image"></input>
+                    <input type=file id="picFile" name="image" required></input>
                 </div>
                 <br><br>
                 <div class="finalizingBtns">
@@ -130,7 +130,6 @@
                                         <div class="term">
                                             <span>졸업여부</span>
                                             <select name="educationStatusNo" class="graduationDropDown" required>
-                                                <option>선택</option>
                                                 <th:block th:each=" status:${statusList}" th:object="${status}">
                                                     <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
                                                 </th:block>
@@ -155,7 +154,6 @@
                                         <div class="term">
                                             <span>졸업여부</span>
                                             <select name="educationStatusNo" class="graduationDropDown" required>
-                                                <option>선택</option>
                                                 <th:block th:each=" status:${statusList}" th:object="${status}">
                                                     <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
                                                 </th:block>
@@ -180,7 +178,6 @@
                                         <div class="term">
                                             <span>졸업여부</span>
                                             <select name="educationStatusNo" class="graduationDropDown" required>
-                                                <option>선택</option>
                                                 <th:block th:each=" status:${statusList}" th:object="${status}">
                                                     <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
                                                 </th:block>

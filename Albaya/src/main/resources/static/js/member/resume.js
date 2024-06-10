@@ -511,12 +511,14 @@ const picFile = document.querySelector("#picFile");
     const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer");
     //저장 버튼
     const applyBtn = document.querySelector("#applyBtn");
+    const form  = document.querySelector("#form");
     applyBtn.addEventListener("click", () => {
         const input = document.createElement("input");
         input.setAttribute("type","hidden");
         input.setAttribute("name","resumeStatus");
         input.value=0;
         validatingBtnsContainer.append(input);
+        form.submit();
     });
 
     //임시저장 버튼
@@ -527,5 +529,6 @@ const picFile = document.querySelector("#picFile");
         input.setAttribute("name","resumeStatus");
         input.value=1;
         validatingBtnsContainer.append(input);
+        form.submit();
     });
 
