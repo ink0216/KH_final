@@ -18,6 +18,7 @@
 		FROM "MEMBER"
 		WHERE "MEMBER_EMAIL" = #{memberEmail}
 		AND MEMBER_STATUS != 5
+		AND MEMBER_STATUS != 3
 	</select>
 	
 	<select id="memberCount" resultType="_int">

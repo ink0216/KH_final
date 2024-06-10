@@ -4,7 +4,7 @@ const declareBtn = document.querySelector("#declareBtn");
 
 const reviewBoardCondition = document.querySelector("[name='reviewBoardCondition']").value;
 
-document.querySelector("#declareFrm").addEventListener("submit", e => {
+declareFrm.addEventListener("submit", e => {
 
     const declareContent = document.querySelector("[name='boardDeclareContent']");
     

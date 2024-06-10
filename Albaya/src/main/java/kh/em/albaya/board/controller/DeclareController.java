@@ -101,7 +101,6 @@ public class DeclareController {
 	}
 	
 	
-	//-------------- 댓글 신고 ----------------
 	
 	
 	//---------- 신고 처리 ----------------------
@@ -135,41 +134,13 @@ public class DeclareController {
 	public int completeDeclare(
 			@RequestBody int reviewBoardDeclareNo,
 			RedirectAttributes ra) {
-		
 	
 		return service.completeDeclare(reviewBoardDeclareNo);
 	}
 	
 	
-	// 중복 처리 검사
-//	@GetMapping("duplicate")
-//	public String duplicateDeclare(
-//			Declare inputDeclare,
-//			@RequestParam("reviewBoardCondition") String reviewBoardCondition,
-//			RedirectAttributes ra) {
-//			
-//			
-//			int result = service.duplicateDeclare(reviewBoardCondition);
-//			
-//			if(result > 0) {
-//				
-//				ra.addFlashAttribute("message", "이미 신고된 게시글입니다.");
-//				
-//				return null;}
-//			else {
-//				
-//			}
-
-				
-//	@GetMapping("selectList")
-//	public String selectList() {
-//		List<Declare> selectList = service.selectList();
-//		
-//		return selectList();
-//		
-//		
-//	}
-//	
+	
+	
 }
 			
 		
