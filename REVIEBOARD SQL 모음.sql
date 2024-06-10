@@ -232,6 +232,9 @@ WHERE REVIEW_BOARD_NO =
 FROM BOARD_DECLARE 
 WHERE REVIEW_BOARD_DECLARE_NO=131);
 
+------------------------------------------------------
+-- 회원 상태 변경...
+------------------------------------------------------
 
 /* 정지상태 회원 조회 구문...*/
 SELECT MEMBER_NO, AUTHORITY_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_PHONE_NUMBER,
@@ -242,10 +245,20 @@ SELECT MEMBER_NO, AUTHORITY_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_PHONE_NUMBER,
 FROM "MEMBER"
 WHERE MEMBER_STATUS = 3;
 
+-- 회원상태 3번 회원 번호
+SELECT MEMBER_NO
+FROM "MEMBER" 
+WHERE MEMBER_STATUS =3;
+-- 회원 상태 3번 회원수
+SELECT COUNT(*)
+FROM "MEMBER" 
+WHERE MEMBER_STATUS =3;
+
 /* 정지상태 회원 정상상태로 변경하는 구문 */
 UPDATE "MEMBER" SET 
 MEMBER_STATUS = 4
 WHERE MEMBER_STATUS = 3;
+
 
 SELECT MEMBER_STATUS 
 FROM "MEMBER" 
@@ -272,7 +285,7 @@ ORDER BY COMMENT_DECLARE_NO ;
 /* 댓글 신고 구문*/
 INSERT INTO COMMENT_DECLARE 
 VALUES(
-	#{commentDeclareNo},
+	SEQ_COMMENT_DECLARE_NO,
 	#{commentNo},
 	#{memberNo},
 	#{commentDeclareContent},
@@ -284,7 +297,15 @@ VALUES(
 	DEFAULT)
 	;
 
+/* 댓글 신고 반려 처리*/
+UPDATE COMMENT_DECLARE SET 
+COMMENT_DECLARE_CONDITION = 0
+WHERE COMMENT_DECLARE_CONDITION =1
+AND COMMENT_DECLARE_NO = 10;
+
 ------------------------------
+
+
 
 COMMIT;
 ROLLBACK;
