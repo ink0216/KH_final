@@ -163,7 +163,8 @@ public class HireServiceImpl implements HireService{
 				return map1;
 	}
 	
-	
+	/**********************************************************************************************/
+	//지역별 공고 조회해오기2
 	@Override
 	public Map<String, Object> locationHireList2(Map<String, Object> map) {
 		int sigunguNo =  (int)(map.get("sigunguNo"));
@@ -186,7 +187,7 @@ public class HireServiceImpl implements HireService{
 				
 				return map2;
 	}
-
+	/**********************************************************************************************/
 	
 	// 지원하기 페이지 기업 정보 가져오기
 	@Override
