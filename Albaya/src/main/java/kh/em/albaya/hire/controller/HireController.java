@@ -71,8 +71,7 @@ public class HireController {
 		if(hireNo>0) {
 			//공고 등록 성공 시
 			message="공고가 성공적으로 등록되었습니다.";
-			path="/"; //일단 메인페이지
-			//path="/hire/"+hireNo; //등록 성공한 공고 상세조회 페이지로 
+			path="/hire/"+hireNo; //등록 성공한 공고 상세조회 페이지로 
 		}else {
 			//공고 등록 실패 시
 			message="공고 등록에 실패하였습니다.";
@@ -263,9 +262,44 @@ public class HireController {
 		List<String> dayList = Arrays.asList(hire.getWorkDay().split(","));
 		model.addAttribute("hire", hire);
 		model.addAttribute("dayList", dayList);
+		
 		return "hire/hireUpdate";
 	}
 	
+	//공고 수정
+	@PostMapping("hireUpdate")
+	public String hireUpdate(
+			Hire hire,
+			Model model,
+			@SessionAttribute("loginShop") Shop loginShop,
+			RedirectAttributes ra
+			) {
+		int shopNo = loginShop.getShopNo();
+		hire.setShopNo(shopNo);
+		
+		int hireNo = service.hireUpdate(hire);
+//		hire.setShopNo(loginMember.get)
+		String message=null;
+		String path = null;
+		/*넘어오는 데이터 :
+		 * String )hireTitle, typeName, hireEnd, hireContent(근무기간), workDay(요일),
+		 * 			workStart(별칭), workEnd(별칭), dosiName, sigunguName, dongName, addressDetail
+		 * 			,shopName, shopOwner, shopTel, shopEmail 
+		 * int ) hireCount, hireTerm, payNo, payInput, hireGender
+		 * */
+		
+		if(hireNo>0) {
+			//공고 등록 성공 시
+			message="공고가 성공적으로 수정되었습니다.";
+			path="/hire/"+hireNo; //등록 성공한 공고 상세조회 페이지로 
+		}else {
+			//공고 등록 실패 시
+			message="공고 수정에 실패하였습니다.";
+			path="/hire/"+hireNo;
+		}
+		ra.addFlashAttribute("message", message);
+		return "redirect:"+path; 
+	}
 	// 지원하기 클릭 시 지원을 했는지 여부 판단하는 비동기 요청
 	@GetMapping("hireApplyCheck/{hireNo:[0-9]+}")
 	@ResponseBody

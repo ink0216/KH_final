@@ -200,6 +200,7 @@ map: map
 
 const dd = document.querySelector('.address-dd'); //dd태그
 
+
 const div = document.createElement('div');
 div.className='hidden';
 
@@ -685,15 +686,5 @@ hireWrtieForm.addEventListener("submit",e=>{
     });
 
 })
-const semiSaveBtn = document.querySelector("#semiSaveBtn");
-semiSaveBtn.addEventListener("click", ()=>{
-    const hireStatus = document.createElement("input");
-    hireStatus.classList.add("hidden");
-    hireStatus.setAttribute("name", "hireStatus");
-    //저장 : 0 // 임시저장 : 1
-    hireStatus.value=1;
-    const hireWrtieForm = document.querySelector("#hireWrtieForm");
-    hireWrtieForm.append(hireStatus);
-});
 
 

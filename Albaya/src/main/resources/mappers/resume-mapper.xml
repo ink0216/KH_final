@@ -27,4 +27,110 @@
 		SELECT * FROM "EDUCATION_STATUS"
 		ORDER BY EDUCATION_STATUS_NO
 	</select>
+	
+	<!-- 
+	/*넘어오는 모든 name값들:
+		 * image, resumeTitle, introduce, educationNo, 
+		 * //초 : schoolName, educationStatusNo, schoolStartDate, schoolEndDate
+		//중 : 동일
+		//고 : 동일
+		//대 : schoolStartDate, schoolEndDate
+		 * 경력 : companyName*, startDate*, endDate* ****0
+		 * 자격증 : licenseName*, licenseFrom*, licenseScore*, licenseDate* ****0
+		 * dongNo(여러 개 또는 0)* ****0
+		 * career (신입1, 경력2)
+		 * typeName(직종명)* ****0
+		 * resumeStatus(0저장, 1임시저장)
+		 *
+	 -->
+	 <!-- 하나만 들어가는 것만 insert -->
+	 <insert id="resume">
+	 	<selectKey order="BEFORE" resultType="_int" keyProperty="resumeNo">
+		SELECT SEQ_RESUME_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO "RESUME" 
+		VALUES(#{resumeNo}, 
+				#{memberNo},
+				#{career},
+				#{resumeTitle},
+				#{introduce},
+				#{resumeStatus},
+				#{imgPath},
+				#{imgOriginalName},
+				#{imgRename}
+				)
+	 
+	 </insert>
+	 
+	 <!-- CAREER테이블에 INSERT -->
+	 <insert id="career">
+	 INSERT INTO "CAREER" 
+    VALUES
+      (SEQ_CAREER_NO.NEXTVAL,
+        #{resumeNo},
+        #{companyName},
+        TO_DATE(#{startDate}, 'YYYY-MM-DD'),
+        TO_DATE(#{endDate}, 'YYYY-MM-DD')
+        
+      )
+	 
+	 </insert>
+	 
+	 <!-- LICENSE 테이블에 INSERT -->
+	 <insert id="license">
+	 	INSERT INTO "LICENSE"
+	 	VALUES (
+	 		SEQ_LICENSE_NO.NEXTVAL,
+	 		#{resumeNo},
+	 		#{licenseFrom},
+	 		TO_DATE(#{licenseDate}, 'YYYY-MM-DD'),
+	 		#{licenseName},
+	 		#{licenseScore}
+	 	)
+	 </insert>
+	 
+	 <!-- RESUME_LOCATION 테이블에 INSERT -->
+	 <insert id="resumeLocation">
+	 	INSERT INTO "RESUME_LOCATION"
+	 	VALUES(
+	 		SEQ_HOPE_NO.NEXTVAL,
+	 		#{resumeNo},
+	 		#{dongNo}
+	 		
+	 	)
+	 
+	 
+	 </insert>
+	 
+	 <!-- typeName으로 typeNo 찾기 -->
+	 <select id="typeNo">
+	 	SELECT TYPE_NO FROM "WORK_TYPE"
+	 	WHERE TYPE_NAME=#{typeName}
+	 </select>
+	 
+	 <!-- RESUME_WORK 테이블에 INSERT -->
+	 <insert id="resumeWork">
+	 	INSERT INTO "RESUME_WORK"
+	 	VALUES(
+	 		#{resumeNo},
+	 		#{typeNo}
+	 	
+	 	)
+	 
+	 </insert>
+	 
+	 <!-- RESUME_EDUCATION 테이블에 INSERT -->
+	 <insert id="resumeEducation">
+	 	INSERT INTO "RESUME_EDUCATION"
+	 	VALUES(
+	 	SEQ_RESUME_EDU_NO.NEXTVAL,
+	 	#{resumeNo},
+	 	#{educationStatusNo}, 
+	 	#{educationNo},
+	 	 #{schoolName},
+	 	#{schoolPeriod}
+	 	
+	 	)
+	 </insert>
 </mapper>

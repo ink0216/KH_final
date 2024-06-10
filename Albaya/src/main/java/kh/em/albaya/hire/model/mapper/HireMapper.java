@@ -147,5 +147,13 @@ public interface HireMapper {
 	 */
 	int hireApplyCheck(Map<String, Object> map);
 
+
+
+	/**공고 수정하기
+	 * @param hire
+	 * @return
+	 */
+	int hireUpdate(Hire hire);
+
 	
 }

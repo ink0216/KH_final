@@ -1,5 +1,6 @@
 package kh.em.albaya.resume.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import kh.em.albaya.resume.model.dto.Resume;
 import kh.em.albaya.resume.model.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
+//ink0216@naver.com 비번 pass0101로 바뀜!!!!!!
 @Controller
 @RequestMapping("resume")
 @RequiredArgsConstructor
@@ -86,7 +87,7 @@ public class ResumeController {
 		return "member/resume";
 	} 
 	@PostMapping("resumeWrite")
-	public String resumeWrite(
+	public String resumeWrite (
 			/*------------------------------------------------------------------------------
 			/*넘어오는 모든 name값들:
 			 * image, resumeTitle, introduce, educationNo, 
@@ -115,11 +116,14 @@ public class ResumeController {
 			
 			@RequestParam(value="dongNo", required=false) List<Integer> dongNoList,
 			@RequestParam(value="typeName", required=false) List<String> typeNameList,
-			RedirectAttributes ra
-			) {
+			RedirectAttributes ra,
+			@SessionAttribute("loginMember") Member loginMember
+			) throws IllegalStateException, IOException
+	{
 		//이력서 작성 성공 시 일단 메인페이지로 가면서 메시지 띄우고 필요하면 나중에 이력서 상세조회 페이지로 변경하기
 		int result = service.resumeWrite(resume, companyNameList, startDateList, endDateList, licenseNameList, 
-				licenseFromList, licenseScoreList, licenseDateList, dongNoList, typeNameList);
+				licenseFromList, licenseScoreList, licenseDateList, dongNoList, typeNameList
+				,loginMember);
 		
 		String message=null;
 		if(result > 0) {
