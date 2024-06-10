@@ -207,6 +207,16 @@ public class HireController {
 		return service.locationHireList(map);
 	}
 	
+	//지역별 공고 조회해오기(전체)
+	@PostMapping("locationHireList2")
+	@ResponseBody
+	public Map<String, Object> locationHireList2(
+			@RequestBody Map<String, Object> map){
+		
+		return service.locationHireList2(map);
+		
+	}
+	
 	//업직종별 공고 조회해오기
 	@PostMapping("kindHireList")
 	@ResponseBody

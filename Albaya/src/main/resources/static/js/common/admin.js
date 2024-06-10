@@ -10,11 +10,7 @@ const reportedMemberNo = document.querySelector("#reportedMemberNo");
 const tbody = document.querySelector(".tbody");
 
 
-
-
-
-
-//표 다시 조회하기
+// 표 조회
 const selectList = () => {
 
     fetch("/declare/selectList")
@@ -112,6 +108,9 @@ const selectList = () => {
             attachEventListeners();
         });
 }
+
+
+
 
 // 반려 버튼 
 const attachEventListeners = () => {
@@ -252,3 +251,11 @@ document.getElementById('searchBtn').addEventListener("click", () => {
     
 
 })
+
+
+
+const connectToCommentAdmin = document.getElementById('connectToCommentAdmin');
+connectToCommentAdmin.addEventListener('click', () => {
+    
+    alert("클릭 테스트");
+});  

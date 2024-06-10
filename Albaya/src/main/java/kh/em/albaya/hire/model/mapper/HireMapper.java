@@ -13,6 +13,9 @@ import kh.em.albaya.location.dto.Sigungu;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.shop.model.dto.Shop;
 
+/**
+ * 
+ */
 @Mapper
 public interface HireMapper {
 
@@ -104,7 +107,20 @@ public interface HireMapper {
 	 * @return
 	 */
 	List<Hire> locationHireList(List<Integer> dongList1, RowBounds rowBounds);
-
+	
+	
+	/**해당 시군구 내의 공고 수 얻어오기
+	 * @param sigunguNo
+	 * @return
+	 */
+	int sigunguListCount(int sigunguNo);
+	
+	/**지역별 공고 조회해오기2
+	 * @param object
+	 * @param rowBounds 
+	 * @return
+	 */
+	List<Hire> locationHireList2(int sigunguNo, RowBounds rowBounds);
 
 
 	Hire hireInfo(int hireNo);

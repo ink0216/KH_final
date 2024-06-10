@@ -182,4 +182,29 @@ public class MyPageServiceImpl implements myPageService{
 		}
 		return mapper.memberInfoUpdate(member);
 	}
+	
+	@Override
+	public int shopInfoUpdate(Shop shop) {		
+		Map<String, Object> map = new HashMap<>();
+		
+		if(shop.getDosiName() != null) {
+			String dosiName = shop.getDosiName();
+			String sigunguName = shop.getSigunguName();
+			String dongName = shop.getDongName();
+			
+			map.put("dosiName", dosiName);
+			map.put("sigunguName", sigunguName);
+			map.put("dongName", dongName);
+			
+			int dongNo = mapper.findDongNo(map);
+			shop.setDongNo(dongNo);
+			
+			String fullAddress = mapper.loginShopAddress(dongNo);
+			
+			shop.setFullAddress(fullAddress);
+		}
+		
+		return mapper.shopInfoUpdate(shop);
+	}
+	
 }

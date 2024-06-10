@@ -21,7 +21,6 @@ public interface DeclareMapper {
 	 */
 //	List<Declare> selectDeclare(int reviewBoardNo,RowBounds rowBounds);
 
-
 	/**
 	 * 처리중인 신고 게시물 수
 	 * @param declareBoardCode

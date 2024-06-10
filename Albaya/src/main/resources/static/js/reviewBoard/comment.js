@@ -106,6 +106,13 @@ const selectCommentList = () => {
                     commentBtnArea.append(childCommentBtn);
 
 
+                    // 신고 버튼 추가
+                    const commentDeclare = document.createElement("button");
+                    commentDeclare.innerText = "신고";
+                    commentDeclare.setAttribute("onclick",`showDeclarePopup(${comment.commentNo})`);
+                    commentBtnArea.append(commentDeclare);
+
+
                     // 현재 로그인한 사람이 있으면서 로그인한 회원 번호와 댓글 작성자의 번호와 같으면 댓글 수정/삭제 버튼도 출력
                     if(loginMemberNo != null && loginMemberNo == comment.memberNo){
 
@@ -617,3 +624,15 @@ const updateComment = (commentNo, btn) => {
     })
     .catch(err => console.log(err));
 }
+
+
+// 댓글 신고 버튼 동작
+const showDeclarePopup = (commentNo) => {
+    
+    window.open('/commentDeclarePopup?commentNo='+commentNo, 
+    'popupWindow', 'width=770, height=1200, left=150, resizable = no');
+
+}
+
+
+

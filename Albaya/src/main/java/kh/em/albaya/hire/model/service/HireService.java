@@ -55,6 +55,13 @@ public interface HireService {
 	 * @return
 	 */
 	Map<String,Object> locationHireList(Map<String, Object> map);
+	
+
+	/**지역병 공고 조회해오기(전체)
+	 * @param map
+	 * @return
+	 */
+	Map<String, Object> locationHireList2(Map<String, Object> map);
 
 	/** 공고 올린 기업 정보 얻어오기
 	 * @param hireNo
@@ -93,6 +100,7 @@ public interface HireService {
 	 * @return
 	 */
 	int hireUpdate(Hire hire);
+
 
 
 	

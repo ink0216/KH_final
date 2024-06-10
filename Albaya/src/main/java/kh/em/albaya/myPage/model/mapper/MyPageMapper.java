@@ -35,4 +35,10 @@ public interface MyPageMapper {
 	int countHireApply(int memberNo);
 
 	int memberInfoUpdate(Member member);
+
+	int findDongNo(Map<String, Object> map);
+
+	String loginShopAddress(int dongNo);
+
+	int shopInfoUpdate(Shop shop);
 }

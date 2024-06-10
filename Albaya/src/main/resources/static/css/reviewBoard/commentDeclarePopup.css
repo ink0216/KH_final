@@ -1,0 +1,68 @@
+
+body{
+    
+    font-family:'SUIT-Regular';
+
+    }
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+ }  
+ 
+
+
+#commentDeclareBtn{
+
+    width: 120px;
+    height: 40px;
+    background-color: #014C73;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    margin:10px;
+}
+
+#commentDeclareBtn:hover{
+    cursor:pointer;
+}
+
+textarea {
+    width:600px;
+    height:380px;
+    border-radius:10px;
+    border-color:rgb(184, 171, 171);
+    resize:none;
+}
+
+
+#commentDeclarePopup-explain{
+    font-size:24px;
+    color :#014C73;
+    font-weight : bolder;
+    font-family:'TheJamsil5Bold';
+    
+}
+
+
+#commentDeclare-explain{
+    color:black;
+    font-size:18px;
+    background-color: rgb(216, 211, 211);
+    padding : 15px;
+    width:700px;
+}
+
+
+

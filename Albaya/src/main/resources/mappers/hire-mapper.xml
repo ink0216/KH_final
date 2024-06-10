@@ -183,6 +183,15 @@
 		</foreach>
 	</select>
 	
+	<!-- 해당 동 내의 모든 공고 -->
+	<select id="sigunguListCount" parameterType="list">
+		SELECT COUNT(*)
+		FROM "HIRE" A
+		JOIN "DONG" B ON (B.DONG_NO=A.DONG_NO)
+		JOIN "SIGUNGU" C ON (C.SIGUNGU_NO=B.SIGUNGU_NO)
+		WHERE C.SIGUNGU_NO = #{sigunguNo}
+	</select>
+	
 		<!-- 지역별 공고 조회해오기 -->
 	<select id="locationHireList">
 		SELECT A.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
@@ -202,6 +211,30 @@
 		ORDER BY HIRE_NO DESC
 	
 	</select>
+	
+		<!-- 지역별 공고 조회해오기2 -->
+	<select id="locationHireList2">
+		SELECT A.SHOP_NAME, A.HIRE_TITLE, A.WORK_START,A.HIRE_NO,
+				A.WORK_END, E.DOSI_NAME, D.SIGUNGU_NAME, F.PAY_NAME, A.PAY_INPUT
+		FROM "HIRE" A
+		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
+		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
+		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
+		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
+		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+		
+		WHERE HIRE_STATUS = 0
+		AND D.SIGUNGU_NO = #{sigunguNo}
+		ORDER BY HIRE_NO DESC
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- ***************업직종별 공고 조회하기******************** -->
 	<select id="selectKind">
 	SELECT * FROM "WORK_TYPE"

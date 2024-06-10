@@ -18,6 +18,7 @@
 		FROM "MEMBER"
 		WHERE "MEMBER_EMAIL" = #{memberEmail}
 		AND MEMBER_STATUS != 5
+		AND MEMBER_STATUS != 3
 	</select>
 	
 	<select id="memberCount" resultType="_int">
@@ -54,5 +55,20 @@
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_STATUS 
 		FROM MEMBER 
 		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<select id="checkEmail">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	<select id="checkTel">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
+	</select>
+	
+	<select id="getCheckPw">
+		SELECT * FROM MEMBER
+		WHERE MEMBER_PW = #{memberPw}
 	</select>
 </mapper>

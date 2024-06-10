@@ -55,7 +55,7 @@ button:hover{
 
 .main-container-wrapper{
     display: flex;
-    width: 35%;
+    width: 750px;
     height: 90%;
     flex-direction: column;
 }
