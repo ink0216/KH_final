@@ -15,6 +15,16 @@
 		ORDER BY EDUCATION_NO
 	</select>
 	
+	<!-- 직종 조회해서 화면 만들기 -->
+	<select id="workList">
+		SELECT * FROM "WORK_TYPE"
+		ORDER BY TYPE_NO
 	
+	</select>
 	
+	<!-- 학력 상태 조회해서 화면 만들기 -->
+	<select id="statusList">
+		SELECT * FROM "EDUCATION_STATUS"
+		ORDER BY EDUCATION_STATUS_NO
+	</select>
 </mapper>

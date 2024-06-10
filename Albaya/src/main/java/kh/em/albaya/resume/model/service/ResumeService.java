@@ -17,4 +17,31 @@ public interface ResumeService {
 	 */
 	List<Resume> educationList();
 
+	/**직종 조회해서 화면 만들기
+	 * @return
+	 */
+	List<Resume> workList();
+
+	/**학력 상태 조회해서 화면 만들기
+	 * @return
+	 */
+	List<Resume> statusList();
+
+	/**이력서 작성
+	 * @param resume
+	 * @param companyNameList
+	 * @param startDateList
+	 * @param endDateList
+	 * @param licenseNameList
+	 * @param licenseFromList
+	 * @param licenseScoreList
+	 * @param licenseDateList
+	 * @param dongNoList
+	 * @param typeNameList
+	 * @return
+	 */
+	int resumeWrite(Resume resume, List<String> companyNameList, List<String> startDateList, List<String> endDateList,
+			List<String> licenseNameList, List<String> licenseFromList, List<Integer> licenseScoreList,
+			List<String> licenseDateList, List<Integer> dongNoList, List<String> typeNameList);
+
 }

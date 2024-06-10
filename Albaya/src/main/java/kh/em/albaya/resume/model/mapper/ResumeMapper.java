@@ -20,5 +20,15 @@ public interface ResumeMapper {
 	 */
 	List<Resume> educationList();
 
+	/**직종 조회해서 화면 만들기
+	 * @return
+	 */
+	List<Resume> workList();
+
+	/**학력 상태 조회해서 화면 만들기
+	 * @return
+	 */
+	List<Resume> statusList();
+
 	
 }
