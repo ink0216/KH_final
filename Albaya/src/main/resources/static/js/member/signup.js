@@ -158,31 +158,29 @@
             return;
         }
 
-        // fetch("checkEmail",{
-        //     method:"POST",
-        //     headers: {"Content-Type":"application/json"},
-        //     body: inputEmail.value
-        // })
-        // .then(resp => resp.text())
-        // .then(result => {
-        //     if(result == 1){
-        //         emailVerify.classList.add("fail");
-        //         emailVerify.classList.remove("success");
-        //         emailVerify.innerText = "이미 존재하는 이메일 입니다"
-        //         obj.memberEmail = false;
-        //         return;
-        //     }
-        //     emailVerify.classList.add("success");
-        //     emailVerify.classList.remove("fail");
-        //     emailVerify.innerText = "사용 가능한 이메일 입니다"
-        //     obj.memberEmail = true;
+        fetch("/member/checkEmailRedundancy", {
+            method : "POST",
+            headers : {"Content-Type":"application/json"},
+            body : inputEmail.value
+        })
+        .then(resp => resp.text())
+        .then(result => {               
+            if(result == 1){
+                emailVerify.classList.add("fail");
+                emailVerify.classList.remove("success");
+                emailVerify.innerText = "이미 존재하는 이메일입니다";
+                obj.memberEmail = false;
+                return;
+            }
+            emailVerify.classList.add("success");
+            emailVerify.classList.remove("fail");
+            emailVerify.innerText = "사용 가능한 이메일 입니다";
+            obj.memberEmail = true;
+        })
 
             
         // })
-        emailVerify.classList.add("success");
-        emailVerify.classList.remove("fail");
-        emailVerify.innerText = "올바른 이메일 형식입니다";
-        obj.memberEmail = true;
+       
 
     });
 
@@ -203,6 +201,16 @@
             obj.memberPw = false;
             return;
         }
+
+        fetch("/member/checkPwRedundancy",{
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(inputPw.value)
+        })
+        .then(resp => resp.text())
+        .then(result => {
+            console.log(result);
+        })
        
         
         passwordVerify.classList.add("success");
@@ -227,10 +235,29 @@
             obj.memberPhoneNumber = false;
             return;
         }
-        inputAuth.classList.add("success");
-        inputAuth.classList.remove("fail");
-        inputAuth.innerText = "올바른 전화번호 형식입니다";
-        obj.memberPhoneNumber = true;
+
+        fetch("/member/checkTelRedundancy",{
+            method:"POST",
+            headers: {"Content-Type":"application/json"},
+            body: inputTel.value
+        })
+        .then(resp => resp.text())
+        .then(result => {
+            if(result == 1){
+                inputAuth.classList.add("fail");
+                inputAuth.classList.remove("success");
+                inputAuth.innerText = "이미 존재하는 전화번호 입니다";
+                obj.memberPhoneNumber = false;
+                return;
+            }
+
+            inputAuth.classList.add("success");
+            inputAuth.classList.remove("fail");
+            inputAuth.innerText = "사용 가능한 전화번호 입니다";
+            obj.memberPhoneNumber = true;
+           
+        })
+        
     });
 
     /* 이름 유효검사 */

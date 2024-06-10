@@ -102,5 +102,20 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.findMemberByNo(memberNo);
 	}
 	
+	@Override
+	public int checkEmail(String memberEmail) {
+		return mapper.checkEmail(memberEmail);
+	}
+	@Override
+	public int checkTel(String memberPhoneNumber) {
+		return mapper.checkTel(memberPhoneNumber);
+	}
+	
+	@Override
+	public boolean checkPw(String memberPw) {
+		String getCheckPw = mapper.getCheckPw();
+		return bcrypt.matches(memberPw, getCheckPw);
+		
+	}
 	
 }
