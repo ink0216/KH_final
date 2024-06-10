@@ -1,0 +1,95 @@
+
+<form action="/myPage/shopInfoUpdate" method="POST">
+    <main class="main-container-wrapper">
+        <div class="main-container">
+            <th:block th:utext="${session.loginShop.fullAddress}"></th:block> &nbsp;
+            <p th:text="${session.loginShop.addressDetail}"></p>
+            <div class="h1-area">
+                <h1>회원 정보 수정</h1>
+            </div>
+            
+            <div class="notice-area-container">
+                <div class="notice-area">
+                    <ul class="notice">
+                        <li>개인 정보는 개인의 동의 없이 누구에게도 공개되지 않습니다.</li>
+                        <li>이름과 주소를 변경할 수 있습니다.</li>
+                        <li>휴대폰 번호는 인증 후 변경 가능합니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="update-info-area">
+                <div class="info-row">
+                    <div class="info-row-left">
+                        <span>이메일</span>
+                    </div>
+                    <div class="info-row-right2">
+                        <input type="text" name="shopEmail"
+                        th:value="${session.loginShop.shopEmail}" id="memberEmail" readonly>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-left">
+                        <span>이름</span>
+                    </div>
+                    <div class="info-row-right2">
+                        <input type="text" name="shopOwner"
+                        th:value="${session.loginShop.shopOwner}">
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-left">
+                        <span>기업 이름</span>
+                    </div>
+                    <div class="info-row-right2">
+                        <input type="text" name="shopName"
+                        th:value="${session.loginShop.shopName}">
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-left">
+                        <span>사업자등록번호</span>
+                    </div>
+                    <div class="info-row-right2">
+                        <input type="text" id="memberGender" th:value="${session.loginShop.shopBrn}" readonly>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-left">
+                        <span>휴대폰 번호</span>
+                    </div>
+                    <div class="info-row-right">
+                        <input type="text" name="shopTel" class="memberTel" id="memberTel" th:value="${session.loginShop.shopTel}" readonly>
+                    </div>
+                    <div class="info-row-btn-area">
+                        <button type="button" id="changeTelBtn">변경하기</button>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-left">
+                        <span>주소</span>
+                    </div>
+                    <div class="info-row-right">
+                        <input type="text" name="fullAddress" id="address" th:value="${session.loginShop.fullAddress}" readonly>
+                    </div>
+                    <div class="info-row-btn-area">
+                        <button type="button" id="searchAddress">검색</button>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-left">
+                        <span>상세 주소</span>
+                    </div>
+                    <div class="info-row-right2 address-dd">
+                        <input type="text" name="addressDetail" th:value="${session.loginShop.addressDetail}" placeholder="상세 주소">
+                    </div>
+                </div>
+                <div class="submit-area">
+                    <button type="button" id="cancelBtn">취소</button>
+                    <button id="updateBtn">변경하기</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</form>
