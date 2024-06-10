@@ -30,5 +30,7 @@ public interface ResumeMapper {
 	 */
 	List<Resume> statusList();
 
+	int resume(Resume resume);
+
 	
 }

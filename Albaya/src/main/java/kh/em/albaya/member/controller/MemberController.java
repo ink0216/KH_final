@@ -240,6 +240,25 @@ public class MemberController {
         return service.findMemberByNo(memberNo);
     }
     
+    @PostMapping("checkEmailRedundancy")
+    @ResponseBody
+    public int checkEmail(@RequestBody String memberEmail) {
+    	return service.checkEmail(memberEmail);
+    }
+    
+    @PostMapping("checkTelRedundancy")
+    @ResponseBody
+    public int checkTel(@RequestBody String memberPhoneNumber) {
+    	return service.checkTel(memberPhoneNumber);
+    }
+    
+    @PostMapping("checkPwRedundancy")
+    @ResponseBody
+    public boolean checkPw(@RequestBody Member member) {
+    	return service.checkPw(member.getMemberPw());
+    }
+    
+    
 
     
 }

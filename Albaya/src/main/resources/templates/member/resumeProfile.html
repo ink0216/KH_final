@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/member/resumeProfile.css">
+    <link rel="stylesheet" href="../../static/css/member/resumeProfile.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="imgEditPopup" class="show">
+    <div class="popupContainer hide">
+        <div class="imgEditPopup">
+            <div class = "heading"> 
+                <h2>사진 업데이트</h2>
+            </div>
+            <div class = "selectFileSpan"> 
+                <span>사진 업데이트:</span>
+            </div><br>
+            <div class="imageResizePanel">
 
+            </div><br>
+            <div class = "fileInput"> 
+                <input type=file id="picFile" name="image"></input>
+            </div>
+            <br><br>
+            <div class="finalizingBtns">
+                <button type="button"  class = "cancel">취소</button>
+                <button type="button" class = "update">업데이트</button>
+            </div>
+        </div>
     </div>
     <div id="container">
         <div id="resumeProfileInfo">
             <div id="profImg">
                 <img src="" >
-                <button id="imgEditBtn"><i class="fa-solid fa-pencil"></i></button>
+                <button id="imgEditBtn" type="button"><i class="fa-solid fa-pencil"></i></button>
             </div>
             <div  class="info" id="name">
                 <span><h3>황진관</h3></span>
@@ -42,22 +60,26 @@
                     <h1>프로필</h1>
                     <p>고용 정보와 인구통계를 관리하여 <br>더 나은 경험을 구축하세요.</p>
                 </div>
-                <img src="/images/jazz-bend.jpg" >
+                <img src="../../static/images/jazz-bend.jpg" >
                 
             </div>
             <div id="title">
                 <h2>나의 이력서</h2>
                 <button id="editInfo"><i class="fa-solid fa-pencil"></i></button>
             </div>
-            <div class="detail" id="inntroduction">
+            <div class="detail" id="introduction">
                 <span>자기소개</span>
                 <div>dsfdsfdsfsdfdsfsd</div>
             </div>
+            <div class="detail" id="qualifications">
+                <span>최종학력</span>
+                <div>대학교</div>
+            </div>
             <div class="detail" id="loactionPreferences">
-                <span>희망직무</span>
+                <span>희망근무지</span>
                 <div>
-                    <div>경기도 파주시</div>
-                    <div>경기도 파주시</div>
+                    <div>경기도 파주시 조리읍</div>
+                    <div>서울특별시 강서구</div>
                     <div>경기도 파주시</div>
                     <div>경기도 파주시</div>
                     <div>경기도 파주시</div>
@@ -67,10 +89,10 @@
                 <span>희망 업직종</span>
                 <div>
                     <div>음식 음료</div>
-                    <div>음식 음료</div>
-                    <div>음식 음료</div>
-                    <div>음식 음료</div>
-                    <div>음식 음료</div>
+                    <div>매장관리/판매</div>
+                    <div>고객상담</div>
+                    <div>병원/간호/연구</div>
+                    <div>서비스</div>
                 </div>
             </div>
             <div class="detail" id="careers">
@@ -111,12 +133,16 @@
                 <span>경력사항</span>
                 <div>신입</div>
             </div>
+            <div class="detail" id="certificate">
+                <span>자격증</span>
+                <div>정보처리기사</div>
+            </div>
 
         </div>
 
         
     </div>
 
-    
+    <script src = "../../static/js/member/resumeProfile.js"></script>
 </body>
 </html>
