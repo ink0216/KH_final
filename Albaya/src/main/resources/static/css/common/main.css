@@ -39,6 +39,7 @@ section * {
     display: flex;
     justify-content: center; 
     width: 100%;
+    min-width: 765px;
     margin-top: 100px;
 }
 
@@ -98,6 +99,7 @@ section * {
 
 .tableContainer{
     margin-top: 100px;
+    min-width: 765px;
 }
 table{
     width: 90%;
@@ -165,6 +167,7 @@ tbody tr:hover {
 /* --------------------------------- */
 /* 페이지네이션 */
 .pagination-container {
+    min-width: 765px;
     display: flex;
     justify-content: center;
     align-items: center;

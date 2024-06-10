@@ -46,8 +46,6 @@ observer.observe(imgList)
 
 
 
-
-
 /////////////////////////////////////////////////////////////////////
 const tbody= document.querySelector("tbody"); //tbody
 const numberButtonWrapper = document.querySelector('.number-button-wrapper'); //숫자 버튼 묶음

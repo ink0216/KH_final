@@ -35,7 +35,7 @@ button:hover{
 
 .content-area-container{
     display: flex;
-    width: 60%;
+    width: 760px;
     height: 80%;
     flex-direction: column;
 }

@@ -1,4 +1,6 @@
 body{
+    box-sizing: border-box;
+    padding: 0;
     margin: 0px;
 }
 
@@ -9,7 +11,10 @@ footer *{
 }
 footer{
     width: 100%;
+    min-width: 765px;
     height: 200px;
+    position: relative;
+    transform: translateY(100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +23,8 @@ footer{
     padding: 0px;
     box-sizing:border-box;
 }
+
+
 
 #footer-link{
     box-sizing: border-box;

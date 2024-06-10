@@ -44,6 +44,7 @@ button:hover{
 .login-container{
     display: flex;
     width: 920px;
+    min-width: 680px;
     height: 500px;
     flex-direction: row;
     background-color: white;
