@@ -342,9 +342,7 @@ public class MyPageController {
 			RedirectAttributes ra) {
     	
     	int shopNo = loginShop.getShopNo();
-    	
-    	
-    	
+    	    
     	shop.setShopNo(shopNo);
     	
 		int result = service.shopInfoUpdate(shop);

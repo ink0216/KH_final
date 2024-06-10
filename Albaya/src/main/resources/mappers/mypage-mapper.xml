@@ -133,7 +133,9 @@
 		SET SHOP_NAME = #{shopName},
 		SHOP_OWNER = #{shopOwner},
 		SHOP_TEL = #{shopTel},
-		DONG_NO = #{dongNo},
+		<if test="dongName != null">
+			DONG_NO = #{dongNo},
+		</if>
 		ADDRESS_DETAIL = #{addressDetail},
 		LAST_MODIFIED_DATE = SYSDATE
 		WHERE SHOP_NO = #{shopNo}
