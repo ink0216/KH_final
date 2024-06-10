@@ -105,7 +105,7 @@ const setPageOf=(hireList)=>{
 
 
 //*************************페이지 수를 세서 페이징 번호 생성****************************//
-const getPagination =(pagination, type )=>{ 
+const getPagination =(pagination, type)=>{ 
 
     for(let i= pagination.startPage ; i <= pagination.endPage ; i++){
 
