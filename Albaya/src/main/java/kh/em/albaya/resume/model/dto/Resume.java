@@ -45,7 +45,7 @@ public class Resume {
 	private String typeName; // 직종명
 	
 	//RESUME_EDUCATION 테이블 컬럼 졸업, 재학, 휴학, 중퇴, 수료
-	private Integer educationStatusNo; //졸업, 재학, 휴학, 중퇴, 수료
+	private int educationStatusNo; //졸업, 재학, 휴학, 중퇴, 수료
 	private String educationStatusName; //졸업, 재학, 휴학, 중퇴, 수료
 	private String educationNo; // 초중고대
 	private String schoolName; // 학교/기관명
