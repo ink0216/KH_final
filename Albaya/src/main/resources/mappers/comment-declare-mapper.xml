@@ -11,7 +11,7 @@
 	</select>
 
 	<!-- 처리중인 신고 게시물 수 -->
-	<select id="getDeclareCount">
+	<select id="getCommentDeclareCount">
 		SELECT COUNT(*)
 		FROM COMMENT_DECLARE
 		WHERE COMMENT_DECLARE_CONDITION = 1
@@ -35,7 +35,7 @@
 	<insert id="insertDeclare">
 		INSERT INTO COMMENT_DECLARE 
 		VALUES(
-			SEQ_COMMENT_DECLARE_NO,
+			SEQ_COMMENT_DECLARE_NO.NEXTVAL,
 			#{commentNo},
 			#{memberNo},
 			#{commentDeclareContent},
@@ -43,7 +43,7 @@
 			DEFAULT,
 			(SELECT MEMBER_NO
 			 FROM "COMMENT" 
-			 WHERER COMMENT_NO #{commentNo}),
+			 WHERE COMMENT_NO = #{commentNo}),
 			DEFAULT)
 	</insert>
 	
@@ -52,7 +52,7 @@
 		SELECT COUNT(*)
 		FROM COMMENT_DECLARE 
 		WHERE COMMENT_NO = #{commentNo}
-		AND REVIEW_BOARD_CONDITION = 1
+		AND COMMENT_DECLARE_CONDITION = 1
 	</select>
 	
 	<!-- 신고 당한 회원 중복 검사 -->
@@ -60,7 +60,7 @@
 		SELECT COUNT(*)
 		FROM COMMENT_DECLARE 
 		WHERE REPORTED_MEMBER_NO = #{reportedMemberNo}
-		AND REVIEW_BOARD_CONDITION =1
+		AND COMMENT_DECLARE_CONDITION =1
 	</select>
 
 
@@ -78,6 +78,32 @@
 		COMMENT_DECLARE_CONDITION = 2
 		WHERE COMMENT_DECLARE_CONDITION =1
 		AND COMMENT_DECLARE_NO = #{commentDeclareNo}
+	</update>
+	
+	<!-- 신고 당한 멤버 상태 변경 구문 -->
+	<update id="changeMemberCondition">
+		UPDATE MEMBER
+        SET MEMBER_STATUS = CASE
+                                WHEN MEMBER_STATUS = 4 THEN 1
+                                WHEN MEMBER_STATUS = 1 THEN 2
+                                WHEN MEMBER_STATUS = 2 THEN 3
+                                ELSE MEMBER_STATUS
+                            END
+        WHERE MEMBER_NO = (
+            SELECT REPORTED_MEMBER_NO
+            FROM COMMENT_DECLARE
+            WHERE COMMENT_DECLARE_NO = #{commnetDeclareNo}
+        )
+	</update>
+	
+	<!-- 신고 확정된 댓글 삭제 -->
+	<update id="updateCommentDelete">
+		UPDATE "COMMENT" SET 
+		COMMENT_DEL_FL = 'Y'
+		WHERE COMMENT_NO =(
+			SELECT COMMENT_NO
+			FROM COMMENT_DECLARE
+			WHERE COMMENT_DECLARE_NO = #{commentDeclareNo })
 	</update>
 
 

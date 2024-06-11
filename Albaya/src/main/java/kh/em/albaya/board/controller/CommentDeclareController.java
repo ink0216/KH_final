@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,14 +44,14 @@ public class CommentDeclareController {
 		model.addAttribute("pagination", map.get("pagination"));
 		model.addAttribute("commentDeclareList", map.get("commentDeclareList"));
 		
-		return "commentDeclare/admin";
+		return "declare/commentAdmin";
 	}
 	
 	
 	// ----------- 댓글 신고 하기 -----------
 	
 	// 댓글 신고하기
-	@GetMapping("insertComment")
+	@PostMapping("insert")
 	public void insertCommentDeclare(
 		@SessionAttribute("loginMember") Member loginMember,
 		Model model,

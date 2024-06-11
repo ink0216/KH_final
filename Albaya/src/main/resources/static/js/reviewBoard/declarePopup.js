@@ -1,4 +1,4 @@
-
+const declareFrm = document.querySelector("#declareFrm");
 const declareBtn = document.querySelector("#declareBtn");
 
 
