@@ -111,11 +111,14 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.checkTel(memberPhoneNumber);
 	}
 	
-	@Override
-	public boolean checkPw(String memberPw) {
-		String getCheckPw = mapper.getCheckPw();
-		return bcrypt.matches(memberPw, getCheckPw);
-		
+@Override
+public int checkPw(String memberEmail, String memberPw) {
+	String storedEncPwd =  mapper.getStoredPwd(memberEmail);
+	if(storedEncPwd!=null && bcrypt.matches(memberPw, storedEncPwd)) {
+		return 1;
 	}
+	return 0;
+	
+}
 	
 }
