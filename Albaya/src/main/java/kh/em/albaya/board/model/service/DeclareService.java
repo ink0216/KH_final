@@ -24,12 +24,6 @@ public interface DeclareService {
 	Map<String, Object> selectDeclareList(int declareBoardCode, int cp);
 
 
-	/** 비동기 목록 조회
-	 * @return
-	 */
-	List<Declare> selectDeclareList();
-	
-
 	
 	// --------------- 게시글 신고 목록 조회 ---------
 	

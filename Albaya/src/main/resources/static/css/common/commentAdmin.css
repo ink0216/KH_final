@@ -34,6 +34,12 @@ body{
     margin-bottom:100px;
 }
 
+table{
+    border-collapse: collapse;
+    width: 100%;
+ 
+}
+
 
 .reject{
     font-family:'SUIT-Regular';
@@ -130,15 +136,11 @@ body{
 
     
 .styled-table tr > *:nth-of-type(3){
-    width:10%;
+    width:6%;
     text-align:center;
 }
 .styled-table tr > *:nth-of-type(4){
-    width:39%;
-     /* word-break: break-word; 
-    word-wrap: break-word;  */
-    overflow-y: auto;
-   
+    width:43%;
    
 }
 .styled-table tr > *:nth-of-type(5){
@@ -196,7 +198,7 @@ th{
   
  }
  
- .pagination a{
+ .pagination span{
     display: block;
  
     height: 100%;
@@ -217,11 +219,11 @@ th{
  }
 
 
- #connectToReviewBoard {
+ /* #connectToReviewBoard {
     color : blue;
     font-size:1.5em;
     text-decoration-line: underline;
- }
+ } */
 
 
  #commentAdminTitle{
@@ -324,3 +326,14 @@ th{
     cursor:pointer;
 }   
 
+
+
+
+.commentDeclareContent{
+    max-height: 62.55px; 
+    overflow-y: auto; 
+    width: 630px; 
+    white-space: pre-wrap; 
+    word-break: break-word; 
+    box-sizing: border-box; 
+}
