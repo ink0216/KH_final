@@ -8,14 +8,16 @@ form{
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
+    margin-top: 50px;
 }
 
 .profile-img-area{
     display: flex;
     background-color: white;
-    width: 35%;
+    width: 750px;
     height: 100%;
     padding: 15px;
+    /* margin: 50px; */
     flex-direction: column;
 }
 

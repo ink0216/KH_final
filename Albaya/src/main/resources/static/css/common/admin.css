@@ -38,7 +38,7 @@ body{
     min-width: 760px
 }
 
-#declareExplain{
+.explain{
     border: 0.5px solid #ddd;
     width: 900px;
     min-width: 760px;
@@ -102,7 +102,7 @@ body{
     width: 100%;
     min-width: 765px;
     border-collapse: collapse;
-    margin: 25px 0;
+    /* margin: 25px 0; */
     font-size: 12px;
     text-align: left;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -359,10 +359,10 @@ th{
     width: 900px;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: -15px;
+    margin-bottom: 5px;
 }
 #connectToCommentAdmin{
-    background-color: #009879;
+    background-color: #eca50b;
     font-size: 13px;
     color: white;
     /* margin-left: 290px; */
@@ -373,4 +373,41 @@ th{
 
 #connectToCommentAdmin:hover{
     cursor:pointer;
+}
+
+/* *************************************************************** */
+
+#commentAdminPageBox{
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#commentAdminPageBox h1{
+    font-size: 30px;
+    font-family: 'TheJamsil5Bold';
+    width: 900px;
+    min-width: 760px
+}
+
+.connectToDeclareAdmin-btn{
+    width: 900px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
+#connectToDeclareAdmin{
+    background-color: #009879;
+    font-size: 13px;
+    color: white;
+    /* margin-left: 290px; */
+    border-radius: 5px;
+    height: 26px;
+    border: none;
+    cursor: pointer;
 }
