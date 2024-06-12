@@ -140,12 +140,7 @@
     </form>
 
     <script th:inline="javascript">
-        const message =  /*[[${message}]]*/ "전달 받은 message";
-        // message가 없다면 null
-
         const hireNo = /*[[${hireInfo.hireNo}]]*/ "게시글 번호";
-
-        if (message != null) alert(message);
     </script>
     <script src="/js/hire/hire-apply.js"></script>
 </body>
