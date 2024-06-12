@@ -17,7 +17,7 @@ public interface CommentDeclareMapper {
 	 * @param declareBoardCode
 	 * @return
 	 */
-	int getDeclareCount(int declareBoardCode);
+	int getCommentDeclareCount(int declareBoardCode);
 
 	
 	/** 신고댓글 목록 출력
@@ -59,5 +59,17 @@ public interface CommentDeclareMapper {
 	 * @return
 	 */
 	int completeDeclare(int commentDeclareNo);
+
+	/** 신고당한 회원 상태 변경
+	 * @param commentDeclareNo
+	 * @return
+	 */
+	int changeMemberCondition(int commentDeclareNo);
+
+	/**신고확정된 댓글 삭제
+	 * @param commentDeclareNo
+	 * @return
+	 */
+	int updateCommentDelete(int commentDeclareNo);
 
 }

@@ -48,16 +48,14 @@
     
     <form action="/commentDeclare/insert" method="POST" class="commentDeclareFrm" id="commentDeclareFrm">
         <div id="commentDeclarePopup-Content">
-
-
-        <textarea name="boardCommentDeclareContent" id="commentDeclarePopupContent" maxlength="300" placeholder="신고 사유를 입력하세요(최대 300자)"></textarea>
-    </div>
+            <textarea name="commentDeclareContent" id="commentDeclarePopupContent" maxlength="300" placeholder="신고 사유를 입력하세요(최대 300자)"></textarea>
+        </div>
 
         <div id="commentDeclareBtn-area">
             <button type="submit" id="commentDeclareBtn" class="commentDeclareBtn" >신고하기</button>
         </div>
 
-        <input type="hidden" name="reviewBoardNo" th:value="${param.reviewBoardNo}">
+        <input type="hidden" name="commentNo" th:value="${param.commentNo}">
     </form>
     
 </body>
