@@ -256,16 +256,16 @@ th{
  }
 
 
- #adminTitle{
+ /* #adminTitle{
 
-    /* margin-left:290px; */
+    margin-left:290px;
  }
 
 
  .pagination-area{
 
-    /* margin-left : 290px; */
- }
+    margin-left : 290px;
+ } */
 
 
 
@@ -421,11 +421,13 @@ th{
     height: 26px;
     border: none;
     cursor: pointer;
+}
 
 .boardDeclareContent{
     max-height: 62.55px; 
     overflow-y: auto; 
-    width: 630px; 
+    max-width: 630px; 
+    display:block;
     white-space: pre-wrap; 
     word-break: break-word; 
     box-sizing: border-box; 
