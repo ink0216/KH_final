@@ -39,10 +39,14 @@ public interface MemberMapper {
 	int checkEmail(String memberEmail);
 
 	int checkTel(String memberPhoneNumber);
+	
+	int checkPw(String memberEmail, String storedEncPwd);
 
-	int checkPw(String encPwd);
+	String getStoredPwd(String memberEmail);
 
-	String getCheckPw();
+
+	int updateMember();
+
 
 
 	

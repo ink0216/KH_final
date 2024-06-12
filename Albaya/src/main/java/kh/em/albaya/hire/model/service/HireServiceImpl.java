@@ -15,6 +15,7 @@ import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
 import kh.em.albaya.member.model.dto.Member;
+import kh.em.albaya.resume.model.dto.Resume;
 import kh.em.albaya.shop.model.dto.Shop;
 import lombok.RequiredArgsConstructor;
 @Transactional
@@ -251,6 +252,12 @@ public class HireServiceImpl implements HireService{
 		return mapper.hireApplyCheck(map);
 	}
 	
+	// 수정 화면 화면 처음 로딩 시의 시도 시군구 동이름 넣기
+	@Override
+	public Dong initLocation(int dongNo) {
+		return mapper.initLocation(dongNo);
+	}
+	
 	//공고 수정
 	@Override
 	public int hireUpdate(Hire hire) {
@@ -258,28 +265,31 @@ public class HireServiceImpl implements HireService{
 		int typeNo = mapper.hireTypeNo(typeName);
 		hire.setTypeNo(typeNo);
 		
-		String dosiName = hire.getDosiName();
-		if(dosiName.equals("경북")) dosiName = "경상북도";
-		if(dosiName.equals("경남")) dosiName = "경상남도";
+		if(hire.getDosiName() !=null) {
+			String dosiName = hire.getDosiName();
+			if(dosiName.equals("경북")) dosiName = "경상북도";
+			if(dosiName.equals("경남")) dosiName = "경상남도";
+			
+			if(dosiName.equals("충북")) dosiName = "충청북도";
+			if(dosiName.equals("충남")) dosiName = "충청남도";
+			
+			if(dosiName.equals("전북특별자치도")) dosiName = "전라북도";
+			if(dosiName.equals("전남")) dosiName = "전라남도";
+			String sigunguName = hire.getSigunguName();
+			String dongName=hire.getDongName();
+			
+			Map<String, String> hireLocation = new HashMap<>();
+			
+			hireLocation.put("dosiName", dosiName);
+			hireLocation.put("sigunguName", sigunguName);
+			hireLocation.put("dongName", dongName);
+			
+			
+			//dongNo 세팅
+			int dongNo = mapper.hireDongNo(hireLocation);
+			hire.setDongNo(dongNo);
+		}
 		
-		if(dosiName.equals("충북")) dosiName = "충청북도";
-		if(dosiName.equals("충남")) dosiName = "충청남도";
-		
-		if(dosiName.equals("전북특별자치도")) dosiName = "전라북도";
-		if(dosiName.equals("전남")) dosiName = "전라남도";
-		String sigunguName = hire.getSigunguName();
-		String dongName=hire.getDongName();
-		
-		Map<String, String> hireLocation = new HashMap<>();
-		
-		hireLocation.put("dosiName", dosiName);
-		hireLocation.put("sigunguName", sigunguName);
-		hireLocation.put("dongName", dongName);
-		
-		
-		//dongNo 세팅
-		int dongNo = mapper.hireDongNo(hireLocation);
-		hire.setDongNo(dongNo);
 		
 		//INSERT
 		int result = mapper.hireUpdate(hire);
@@ -290,5 +300,16 @@ public class HireServiceImpl implements HireService{
 		
 		//수정 실패 시
 		return 0;
+	}
+	// 모집 마감일과 현재 비교해서 모집마감/지원하기 보이기
+	@Override
+	public int hireOpen(int hireNo) {
+		return mapper.hireOpen(hireNo); //마감됐으면 1, 마감 안됐으면 0
+	}
+	
+	//저장한 이력서 목록 얻어오기
+	@Override
+	public List<Resume> resumeList(int memberNo) {
+		return mapper.resumeList(memberNo);
 	}
 }

@@ -41,4 +41,8 @@ public interface MyPageMapper {
 	String loginShopAddress(int dongNo);
 
 	int shopInfoUpdate(Shop shop);
+
+	Map<String, Object> applyList(int memberNo);
+
+	int applyCount(int memberNo);
 }

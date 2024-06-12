@@ -134,4 +134,13 @@ public class ResumeController {
 		ra.addFlashAttribute("message", "이력서 저장에 실패하였습니다.");
 		return "redirect:/";
 	}
+	@GetMapping("resumeList")
+	public String getResumeList() {
+		return "member/resumeList";
+	}
+	
+	@GetMapping("resumeProfile")
+	public String getResumeProfile() {
+		return "member/resumeProfile";
+	}
 }

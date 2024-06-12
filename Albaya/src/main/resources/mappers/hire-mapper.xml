@@ -40,11 +40,11 @@
 
 
 		FROM "HIRE" A
-		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
-		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
-		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
-		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
-		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+		LEFT JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
+		LEFT JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
+		LEFT JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
+		LEFT JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
+		LEFT JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
 		WHERE HIRE_STATUS = 0
 		ORDER BY HIRE_NO DESC
 	</select>
@@ -131,11 +131,11 @@
     ADDRESS,
 	ADDRESS_DETAIL, SHOP_OWNER, SHOP_TEL, SHOP_EMAIL, ROAD_ADDRESS
 	FROM "HIRE" A
-	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
-	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
-	JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
-	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
-	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
+	LEFT JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
+	LEFT JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
+	LEFT JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
+	LEFT JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
+	LEFT JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
 	WHERE HIRE_NO = #{hireNo}
 	</select>
 	<!--  
@@ -279,7 +279,7 @@
 	
 	<insert id="hireApply">
 		INSERT INTO "APPLY_HIRE"
-		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent}, SYSDATE)
+		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent},DEFAULT)
 	</insert>
 	
 	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->
@@ -288,11 +288,11 @@
 	A.HIRE_COUNT, A.HIRE_TERM, A.HIRE_GENDER,A.HIRE_STATUS,A.WORK_DAY,A.PAY_INPUT,A.DONG_NO,A.ADDRESS_DETAIL,A.WORK_START,
 	A.WORK_END, A.SHOP_OWNER, A.SHOP_EMAIL, A.SHOP_TEL, A.SHOP_NAME, A.ROAD_ADDRESS, TYPE_NAME
 	FROM "HIRE" A
-	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
-	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
-	JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
-	JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
-	JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
+	LEFT JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
+	LEFT JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
+	LEFT JOIN "DONG" D ON (D.DONG_NO=A.DONG_NO)
+	LEFT JOIN "SIGUNGU" E ON (E.SIGUNGU_NO=D.SIGUNGU_NO)
+	LEFT JOIN "DOSI" F ON (F.DOSI_NO=E.DOSI_NO)
 	WHERE HIRE_NO = #{hireNo}
 	</select>
 	<!-- 
@@ -332,6 +332,15 @@
 		AND HIRE_NO = #{hireNo}
 	</select>
 	
+	<!-- 수정 화면 화면 처음 로딩 시의 시도 시군구 동이름 넣기 -->
+	<select id="initLocation">
+		SELECT DOSI_NAME, SIGUNGU_NAME, DONG_NAME
+		FROM "DONG"
+		JOIN "SIGUNGU" USING (SIGUNGU_NO)
+		JOIN "DOSI" USING (DOSI_NO)
+		WHERE DONG_NO = #{dongNo}
+	
+	</select>
 	<!-- 
 	<insert id="insertWrite" useGeneratedKeys="true" parameterType="Hire">
 		<selectKey order="BEFORE" resultType="_int" keyProperty="hireNo">
@@ -371,7 +380,10 @@
 		WORK_START = #{workStart},
 		WORK_END = #{workEnd},
 		PAY_NO = #{payNo},
+		<if test='dongNo != null'>
 		DONG_NO = #{dongNo},
+		</if>
+		
 		PAY_INPUT = #{payInput},
 		HIRE_GENDER = #{hireGender},
 		ADDRESS_DETAIL = #{addressDetail},
@@ -383,4 +395,18 @@
 		HIRE_STATUS = 0
 		WHERE HIRE_NO = #{hireNo}
 	</update>
+	
+	<!-- 모집 마감일과 현재 비교해서 모집마감/지원하기 보이기 -->
+	<select id="hireOpen">
+		SELECT COUNT(*) FROM "HIRE"
+		WHERE SYSDATE > HIRE_END 
+		AND HIRE_NO=#{hireNo}
+	</select>
+	
+	<!-- 저장한 이력서 목록 얻어오기 -->
+	<select id="resumeList">
+	 	SELECT * FROM "RESUME"
+	 	WHERE RESUME_STATUS = 0
+	 	AND MEMBER_NO=#{memberNo}
+	</select>
 </mapper>

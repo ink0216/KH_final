@@ -131,6 +131,12 @@ hr{
 
 }
 
+#days{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 
 /* 이미지 글씨 부분 */
 .hireTitleImg{
@@ -150,14 +156,14 @@ hr{
     font-family: 'WAGURITTF';
     position: absolute;
     width: 400px;
-    height: 40px;
+    height: 60px;
     resize: none;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
     border: none;
-    font-size: 30px;
+    font-size: 15px;
     outline: none;
     text-align: center;
 }
