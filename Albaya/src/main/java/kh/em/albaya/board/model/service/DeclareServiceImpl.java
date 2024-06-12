@@ -54,14 +54,6 @@ public class DeclareServiceImpl implements DeclareService{
 	}
 	
 	
-	//비동기 게시글 신고 목록 조회
-	@Override
-	public List<Declare> selectDeclareList() {
-		return mapper.selectDeclareList();
-	}
-		
-	
-	
 
 	
 	

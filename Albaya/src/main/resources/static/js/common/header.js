@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const resumeRedirect = document.querySelector("#resumeRedirect");
 if(resumeRedirect != null){
     resumeRedirect.addEventListener("click", ()=>{
-        location.href = "/resume/resumeWrite";
+        location.href = "/resume/resumeList";
     })
 }
 });
@@ -43,7 +43,7 @@ goHireLocation.addEventListener("click",()=>{
 
 const goReview2 = document.getElementById('goReview2');
 goReview2.addEventListener("click",()=>{
-    location.href='/reviewBoard/2';
+    location.href='/reviewBoard/2?cp=1';
 });
 
 
@@ -224,6 +224,8 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
     })
 
 }
+
+
 
 
 

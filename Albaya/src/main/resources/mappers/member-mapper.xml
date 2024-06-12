@@ -78,9 +78,9 @@
 		SELECT COUNT(*) FROM MEMBER
 		WHERE MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
 	</select>
-	
-	<select id="getCheckPw">
-		SELECT * FROM MEMBER
-		WHERE MEMBER_PW = #{memberPw}
+
+	<select id="getStoredPwd" resultType="string">
+		SELECT MEMBER_PW FROM MEMBER
+		WHERE MEMBER_EMAIL = #{memberEmail}
 	</select>
 </mapper>

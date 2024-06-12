@@ -32,9 +32,10 @@
             <th:block th:each="declare : ${declareList}" th:object="${declare}">
                 <tr>
                     <td th:text="${declare.reviewBoardDeclareNo}"></td>
-                    <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${declare.reviewBoardNo}"></a> </td>
+                    <td><a th:unless="${param.key}" class="connectToReviewBoard" th:href = "@{/reviewBoard/2/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${declare.reviewBoardNo}"></a> </td>
                     <td th:text="${declare.memberNo}"></td>
-                    <td th:text="${declare.boardDeclareContent}"></td>
+                    <!-- <td class="boardDeclareContent" th:text="${declare.boardDeclareContent}"></td> -->
+                    <td><div class="boardDeclareContent" th:text="${declare.boardDeclareContent}"></div></td>
                     <td th:text="${declare.reviewBoardCondition}"></td>
                     <td th:text="${declare.boardDeclareDate}"></td>
                     <td th:text="${declare.reportedMemberNo}"></td>
@@ -57,10 +58,10 @@
     <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">    
 
         <!-- 첫 페이지로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=1)}">&lt;&lt;</a></li>
+        <li><span class="page-link" data-cp="1">&lt;&lt;</span></li>
 
         <!-- 이전 목록 마지막 번호로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{prevPage})}">&lt;</a></li>
+        <li><span class="page-link" th:data-cp="*{prevPage}">&lt;</span></li>
 
         <!-- 특정 페이지로 이동 -->
         
@@ -69,15 +70,12 @@
             
             <!-- 현재 보고있는 페이지 -->
             <li th:if="${i} == *{currentPage}">
-            
-                <a class="current" th:text="${i}">현재 페이지</a>
+                <span class="current" th:text="${i}">현재 페이지</span>
             </li>
 
             <!-- 보고있지 않은 페이지 -->
             <li th:unless="${i} == *{currentPage}"> 
-            
-                <a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=${i})}" 
-                     th:text="${i}">이동할 페이지</a> 
+                <span class="page-link" th:data-cp="${i}" th:text="${i}">이동할 페이지</span>
             </li>
 
         </th:block>
@@ -85,10 +83,11 @@
 
 
         <!-- 다음 목록 시작 번호로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{nextPage})}">&gt;</a></li>
+        <li><span class="page-link" th:data-cp="*{nextPage}">&gt;</span></li>
 
         <!-- 끝 페이지로 이동 -->
-        <li><a th:href="@{/declare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
+        <li><span class="page-link" th:data-cp="*{maxPage}">&gt;&gt;</span></li>
+
     </ul>
 
 
