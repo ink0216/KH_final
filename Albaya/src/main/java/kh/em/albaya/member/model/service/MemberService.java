@@ -39,5 +39,7 @@ public interface MemberService {
 
 	boolean checkPw(String memberPw);
 
+//	boolean checkPw(String memberEmail, String memberPw);
+
 
 }

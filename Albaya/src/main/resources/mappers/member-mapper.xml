@@ -68,7 +68,7 @@
 	</select>
 	
 	<select id="getCheckPw">
-		SELECT * FROM MEMBER
-		WHERE MEMBER_PW = #{memberPw}
+		SELECT MEMBER_PW FROM MEMBER
+		WHERE MEMBER_PW =(SELECT MEMBER_PW FROM MEMBER WHERE MEMBER_EMAIL = #{memberEmail})
 	</select>
 </mapper>

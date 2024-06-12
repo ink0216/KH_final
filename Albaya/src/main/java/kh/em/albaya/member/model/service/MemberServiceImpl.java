@@ -117,5 +117,11 @@ public class MemberServiceImpl implements MemberService{
 		return bcrypt.matches(memberPw, getCheckPw);
 		
 	}
+
+//	@Override
+//	public boolean checkPw(String memberEmail, String memberPw) {
+//		String encPwd =  bcrypt.encode(memberPw);
+//		if(BCryptPasswordEncoder.matches(encPwd,mapper.checkPw(memberEmail) );
+//	}
 	
 }
