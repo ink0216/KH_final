@@ -241,7 +241,7 @@
 	</select>
 	
 	<select id="hireInfo" resultType="Hire">
-	    SELECT HIRE_TITLE, s.SHOP_NAME
+	    SELECT HIRE_NO, HIRE_TITLE, s.SHOP_NAME
 	    FROM "HIRE" h
 	    JOIN SHOP s ON h.SHOP_NO = s.SHOP_NO
 	    WHERE h.HIRE_NO = #{hireNo}
@@ -279,7 +279,7 @@
 	
 	<insert id="hireApply">
 		INSERT INTO "APPLY_HIRE"
-		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent})
+		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent}, SYSDATE)
 	</insert>
 	
 	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->

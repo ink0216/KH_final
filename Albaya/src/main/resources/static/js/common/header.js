@@ -61,7 +61,7 @@ let selectNotificationFn;  //비동기로 알림을 조회하는 함수
 let notReadCheckFn;        //비동기로 읽지 않은 알림 개수 채크하는 함수
 
 if(notificationLoginCheck){//로그인 된 상태인 경우
-    noticationSock = new SockJs("/notification/send");
+    noticationSock = new SockJS("/notification/send");
 
     /* 웹소켓을 이용해 알림을 전달하는 함수 */
     sendNotificationFn = (type,url,pkNo) =>{
