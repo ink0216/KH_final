@@ -683,6 +683,8 @@ hireWrtieForm.addEventListener("submit",e=>{
         hireStatus.value=0;
         const hireWrtieForm = document.querySelector("#hireWrtieForm");
         hireWrtieForm.append(hireStatus);
+
+        
     });
 
 })

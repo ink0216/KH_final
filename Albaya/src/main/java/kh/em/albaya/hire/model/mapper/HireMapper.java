@@ -11,6 +11,7 @@ import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
 import kh.em.albaya.member.model.dto.Member;
+import kh.em.albaya.resume.model.dto.Resume;
 import kh.em.albaya.shop.model.dto.Shop;
 
 /**
@@ -164,12 +165,38 @@ public interface HireMapper {
 	int hireApplyCheck(Map<String, Object> map);
 
 
-
+	/**수정 화면 화면 처음 로딩 시의 시도 시군구 동이름 넣기
+	 * @param dongNo
+	 * @return
+	 */
+	Dong initLocation(int dongNo);
+	
+	
 	/**공고 수정하기
 	 * @param hire
 	 * @return
 	 */
 	int hireUpdate(Hire hire);
+
+
+
+	/**모집 마감일과 현재 비교해서 모집마감/지원하기 보이기
+	 * @param hireNo
+	 * @return
+	 */
+	int hireOpen(int hireNo);
+
+
+
+	/**저장한 이력서 목록 얻어오기
+	 * @param memberNo
+	 * @return
+	 */
+	List<Resume> resumeList(int memberNo);
+
+
+
+	
 
 	
 }
