@@ -112,6 +112,9 @@ const selectList = () => {
 
 
 
+
+
+
 // 반려 버튼 
 const attachEventListeners = () => {
     const rejectButtons = document.querySelectorAll('.reject');
@@ -253,9 +256,10 @@ document.getElementById('searchBtn').addEventListener("click", () => {
 })
 
 
-
+// 댓글 신고를 모아둔 페이지로 이동
 const connectToCommentAdmin = document.getElementById('connectToCommentAdmin');
 connectToCommentAdmin.addEventListener('click', () => {
     
-    alert("클릭 테스트");
+    
+    location.href = "/commentDeclare/1";
 });  

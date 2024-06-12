@@ -30,8 +30,8 @@ public class CommentDeclareController {
 	//------- 댓글 신고 목록 ---------
 	
 	// 댓글 신고 목록 조회
-	@GetMapping("{declareBoardCode:[2]}")
-	public String selectCommentDecalreList(
+	@GetMapping("{declareBoardCode:[0-9]+}")
+	public String selectCommentDeclareList(
 			@PathVariable("declareBoardCode")int declareBoardCode,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
 			@RequestParam Map<String, Object> paramMap,
@@ -43,7 +43,7 @@ public class CommentDeclareController {
 		model.addAttribute("pagination", map.get("pagination"));
 		model.addAttribute("commentDeclareList", map.get("commentDeclareList"));
 		
-		return "commentDeclare/admin";
+		return "commentDeclare/commentAdmin";
 	}
 	
 	
