@@ -37,7 +37,7 @@ public interface MemberService {
 
 	int checkTel(String memberPhoneNumber);
 
-	boolean checkPw(String memberPw);
+	int checkPw(String memberEmail, String memberPw);
 
 
 }
