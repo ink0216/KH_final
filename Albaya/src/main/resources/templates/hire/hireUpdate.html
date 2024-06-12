@@ -238,15 +238,18 @@
                         <dt>모집 성별</dt>
                         <dd>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender0" value="A" class="hireGender" th:value="${hire.hireGender}">
+                                <input type="radio" name="hireGender" id="gender0" value="A" class="hireGender" th:value="${hire.hireGender}"
+                                th:checked="${hire.hireGender} == 'A'">
                                 <label for="gender0">성별무관</label>
                             </div>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender1" value="M" class="hireGender" th:value="${hire.hireGender}">
+                                <input type="radio" name="hireGender" id="gender1" value="M" class="hireGender" th:value="${hire.hireGender}"
+                                th:checked="${hire.hireGender} == 'M'">
                                 <label for="gender1">남</label>
                             </div>
                             <div class="gender-input">
-                                <input type="radio" name="hireGender" id="gender2" value="F" class="hireGender" th:value="${hire.hireGender}">
+                                <input type="radio" name="hireGender" id="gender2" value="F" class="hireGender" th:value="${hire.hireGender}"
+                                th:checked="${hire.hireGender} == 'F'">
 
                                 <label for="gender2">여</label>
                             </div>
@@ -272,6 +275,7 @@
                             th:value="${hire.roadAddress}">
                             <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"
                                 id="addSearchBtn"><br>
+                            
                         </dd>
                     </dl>
 
@@ -353,8 +357,7 @@
             </div>
 
             <div class="btnArea">
-                <button id="submitBtn">등록하기</button>
-                <button id="semiSaveBtn">임시저장</button>
+                <button id="submitBtn">저장하기</button>
             </div>
         </form>
     </div>

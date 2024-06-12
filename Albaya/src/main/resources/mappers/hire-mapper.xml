@@ -284,7 +284,9 @@
 	
 	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->
 	<select id="allHire">
-	SELECT *
+	SELECT A.HIRE_NO, A.SHOP_NO, A.TYPE_NO,A.PAY_NO,A.HIRE_TITLE, A.HIRE_CONTENT,TO_CHAR(A.HIRE_END,'YYYY-MM-DD') HIRE_END,
+	A.HIRE_COUNT, A.HIRE_TERM, A.HIRE_GENDER,A.HIRE_STATUS,A.WORK_DAY,A.PAY_INPUT,A.DONG_NO,A.ADDRESS_DETAIL,A.WORK_START,
+	A.WORK_END, A.SHOP_OWNER, A.SHOP_EMAIL, A.SHOP_TEL, A.SHOP_NAME, A.ROAD_ADDRESS, TYPE_NAME
 	FROM "HIRE" A
 	JOIN "WORK_TYPE" B ON (B.TYPE_NO = A.TYPE_NO)
 	JOIN PAY_TYPE C ON (C.PAY_NO=A.PAY_NO)
@@ -329,4 +331,56 @@
 		WHERE MEMBER_NO = #{memberNo}
 		AND HIRE_NO = #{hireNo}
 	</select>
+	
+	<!-- 
+	<insert id="insertWrite" useGeneratedKeys="true" parameterType="Hire">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="hireNo">
+		SELECT SEQ_HIRE_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO "HIRE" 
+		VALUES(
+		#{hireNo},#{shopNo},#{typeNo},
+		#{payNo},#{hireTitle},#{hireContent},
+		DEFAULT,TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),#{hireCount},
+		#{hireTerm},#{hireGender},
+		<if test='hireStatus == null'>
+		DEFAULT
+		</if>
+		<if test='hireStatus != null'>
+		#{hireStatus}
+		</if>
+		,
+		#{workDay},#{payInput},#{dongNo},
+		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
+		,#{shopEmail},#{shopTel},#{shopName},#{address}
+				)
+	</insert>
+	
+	 -->
+	<!-- 공고 수정하기 -->
+	<update id="hireUpdate">
+		UPDATE "HIRE" SET
+		HIRE_TITLE=#{hireTitle},
+		TYPE_NO=#{typeNo},
+		HIRE_COUNT = #{hireCount},
+		HIRE_END = TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),
+		HIRE_CONTENT = #{hireContent},
+		HIRE_TERM = #{hireTerm},
+		WORK_DAY = #{workDay},
+		WORK_START = #{workStart},
+		WORK_END = #{workEnd},
+		PAY_NO = #{payNo},
+		DONG_NO = #{dongNo},
+		PAY_INPUT = #{payInput},
+		HIRE_GENDER = #{hireGender},
+		ADDRESS_DETAIL = #{addressDetail},
+		SHOP_NAME = #{shopName},
+		SHOP_OWNER = #{shopOwner},
+		SHOP_TEL = #{shopTel},
+		SHOP_EMAIL = #{shopEmail},
+		ROAD_ADDRESS = #{address},
+		HIRE_STATUS = 0
+		WHERE HIRE_NO = #{hireNo}
+	</update>
 </mapper>

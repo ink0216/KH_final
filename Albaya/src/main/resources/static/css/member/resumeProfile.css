@@ -1,8 +1,39 @@
+.popupContainer{
+    width:100%;
+    height:100%;
+    background-color: rgb(255,255,255,0.5);
+    position:absolute;
+    z-index:2000;
+}
+.imgEditPopup{
+    margin-left:35%;
+    margin-top:10%;
+    display:flex;
+    flex-direction:column; 
+    width:500px;
+    height:250px;
+    border:1px solid black;
+    background-color: white;
+    padding:20px;
+    padding-bottom:0px;
+    border-radius:10px;
+    position:absolute;
+    z-index:3000;
+}
+.show{
+    display:block;
+}
+.hide{
+    display:none;
+}
 #container{
     display: flex;
     margin: auto;
     justify-content: center;
     margin-top:50px;    
+}
+#container>div{
+    margin-right:20px;
 }
 
 
@@ -21,7 +52,11 @@
     border:1px solid lightgray;
     margin-bottom: 20px;
     position:relative;
+    
+    
 }
+
+
 #imgEditBtn{
     height:40px;
     width:40px;
@@ -62,9 +97,7 @@
 #heaingContainer>p{
     margin-right:10px;
 }
-img{
-    margin-left:70px;
-}
+
 #title{
     display:flex;
     position:relative;
@@ -80,10 +113,11 @@ img{
     margin-top:10px;
     margin-right:10px;
     font-size: large;
-    color:lightgray;;
+    color:lightgray;
     right:0;
     border:1px solid white;
     background-color: white;
+    
 }
 #editInfo:hover{
     color:gray;

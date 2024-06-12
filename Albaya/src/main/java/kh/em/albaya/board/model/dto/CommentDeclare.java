@@ -18,6 +18,7 @@ public class CommentDeclare {
 	private String commentDeclareCondition; // 댓글 신고 처리
 	private String commentDeclareDate; 		// 댓글 신고일
 	private int reportedMemberNo; 			// 신고 당한 회원번호
+	private String declareBoardCode; 		// 댓글 신고 유형
 	
 
 }

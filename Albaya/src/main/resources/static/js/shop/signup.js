@@ -249,12 +249,6 @@ function sample5_execDaumPostcode() {
                 addr = data.autoJibunAddress; 
             }
 
-
-            console.log(data);
-            console.log("data.autoJibunAddress : ",data.autoJibunAddress);
-            console.log("addr : ",addr);
-
-
             //-----------------------------------------------------------------------
             //input 요소 추가        
             const dd = document.querySelector('.address-dd'); //dd태그

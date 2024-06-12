@@ -101,4 +101,44 @@
 		LAST_MODIFIED_DATE = SYSDATE
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<select id="findDongNo" parameterType="map" resultType="int">
+	    SELECT DONG_NO
+	    FROM "DONG"
+	    JOIN "SIGUNGU" USING (SIGUNGU_NO)
+	    JOIN "DOSI" USING (DOSI_NO)
+	    WHERE REPLACE(DONG_NAME, ' ', '') LIKE '%' || REPLACE(#{dongName}, ' ', '') || '%'
+	    AND REPLACE(SIGUNGU_NAME, ' ', '') LIKE '%' || REPLACE(#{sigunguName}, ' ', '') || '%'
+	    AND REPLACE(DOSI_NAME, ' ', '') LIKE '%' || REPLACE(#{dosiName}, ' ', '') || '%'
+	</select>
+	
+	<select id="loginShopAddress" resultType="string">
+        SELECT 
+            DOSI_NAME || ' ' || 
+            (CASE 
+                WHEN LENGTH(SIGUNGU_NAME) >= 5 THEN 
+                    SUBSTR(SIGUNGU_NAME, 1, 3) || ' ' || SUBSTR(SIGUNGU_NAME, 4) 
+                ELSE 
+                    SIGUNGU_NAME 
+            END) || ' ' || 
+            DONG_NAME
+        FROM "DONG"
+        JOIN "SIGUNGU" USING (SIGUNGU_NO)
+        JOIN "DOSI" USING (DOSI_NO)
+        WHERE DONG_NO = #{dongNo}
+	</select>
+	
+	<update id="shopInfoUpdate">
+		UPDATE "SHOP"
+		SET SHOP_NAME = #{shopName},
+		SHOP_OWNER = #{shopOwner},
+		SHOP_TEL = #{shopTel},
+		<if test="dongName != null">
+			DONG_NO = #{dongNo},
+		</if>
+		ADDRESS_DETAIL = #{addressDetail},
+		LAST_MODIFIED_DATE = SYSDATE
+		WHERE SHOP_NO = #{shopNo}
+	</update>
+	
 </mapper>

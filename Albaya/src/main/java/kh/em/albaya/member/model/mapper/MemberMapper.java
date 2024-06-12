@@ -36,6 +36,14 @@ public interface MemberMapper {
 
 	Member findMemberByNo(int memberNo);
 
+	int checkEmail(String memberEmail);
+
+	int checkTel(String memberPhoneNumber);
+
+	int checkPw(String encPwd);
+
+	String getCheckPw();
+
 
 	
 	
