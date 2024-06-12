@@ -341,7 +341,7 @@ const addCertificate = () => {
                                                
                 <div class = "issueDetail">
                     <span>취득일</span>
-                    <input type="date" name="issueDate" class="issueDate"  required>
+                    <input type="date" name="licenseDate" class="issueDate"  required>
                     <button type="button" class = "certMinus">-</button>
                 </div>
             </div>

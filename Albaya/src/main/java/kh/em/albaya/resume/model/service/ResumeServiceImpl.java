@@ -76,21 +76,25 @@ public class ResumeServiceImpl implements ResumeService {
 		 * ------------------------------------------------------------------------------
 		 * 
 		 * */
-		Integer educationStatusNo = resume.getEducationStatusNo();
-		resume.setEducationStatusNo(educationStatusNo);
 		
 		int memberNo = loginMember.getMemberNo();
 		resume.setMemberNo(memberNo);
 		
-		resume.setImgPath(webPath);
+		if(!resume.getImage().isEmpty()) {
+			//프로필 이미지가 있을 때에만
+			String imgOriginalName = resume.getImage().getOriginalFilename();
+			resume.setImgOriginalName(imgOriginalName);
+			
+			String rename = Utility.fileRename(imgOriginalName);
+			resume.setImgRename(rename);
+			
+			
+			resume.setImgPath(webPath+rename);
+			//성공시
+			resume.getImage().transferTo(new File(folderPath+rename));
+		}
 		
-		String imgOriginalName = resume.getImage().getOriginalFilename();
-		resume.setImgOriginalName(imgOriginalName);
-		
-		String rename = Utility.fileRename(imgOriginalName);
-		resume.setImgRename(rename);
-		
-		int result = mapper.resume(resume); //사진 제외한 것만 INSERT
+		int result = mapper.resume(resume); //RESUME 테이블에 INSERT
 		if(result==0) {
 			return 0; //실패한 경우
 		}
@@ -156,8 +160,7 @@ public class ResumeServiceImpl implements ResumeService {
 		
 		if(result==0) throw new RuntimeException("resumeEducation insert error");
 		if(result==0) return 0;
-		//성공시
-		resume.getImage().transferTo(new File(folderPath+rename));
+		
 		return 1;
 	}
 }
