@@ -20,14 +20,14 @@ body{
  }  
 
 
-#adminPageBox{
+#commentAdminPageBox{
     width: 1900px;
     height:100%;
     margin-top:80px;
 
 }
 
-#declareExplain{
+#commentDeclareExplain{
     margin-top:60px;
     font-family:'SUIT-Regular';
     font-size: 25px;
@@ -224,7 +224,7 @@ th{
  }
 
 
- #adminTitle{
+ #commentAdminTitle{
 
     margin-left:290px;
  }
@@ -309,7 +309,8 @@ th{
 }
 
 
-#connectToCommentAdmin{
+#connectToDeclareAdmin{
+    
     background-color : #014C73;
     font-size:1.2em;
     color : white;
@@ -319,6 +320,7 @@ th{
     border:none;
 }
 
-#connectToCommentAdmin:hover{
+#connectToDeclareAdmin:hover{
     cursor:pointer;
-}
+}   
+

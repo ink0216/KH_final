@@ -182,3 +182,7 @@ button:hover{
     background-color: rgb(200, 200, 200);
     color: black;
 }
+
+.hidden{
+    display: none;
+}

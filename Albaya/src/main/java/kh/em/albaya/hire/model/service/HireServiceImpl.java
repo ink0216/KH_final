@@ -240,11 +240,6 @@ public class HireServiceImpl implements HireService{
 		return mapper.allHire(hireNo);
 	}
 	
-	@Override
-	public int hireApply(Member loginMember, Hire hire) {
-		// TODO Auto-generated method stub
-		return 0;
-  }
 	
 	@Override
 	public int hireApplyCheck(int hireNo, int memberNo) {
@@ -254,5 +249,46 @@ public class HireServiceImpl implements HireService{
 		map.put("memberNo", memberNo);
 		
 		return mapper.hireApplyCheck(map);
+	}
+	
+	//공고 수정
+	@Override
+	public int hireUpdate(Hire hire) {
+		String typeName = hire.getTypeName();
+		int typeNo = mapper.hireTypeNo(typeName);
+		hire.setTypeNo(typeNo);
+		
+		String dosiName = hire.getDosiName();
+		if(dosiName.equals("경북")) dosiName = "경상북도";
+		if(dosiName.equals("경남")) dosiName = "경상남도";
+		
+		if(dosiName.equals("충북")) dosiName = "충청북도";
+		if(dosiName.equals("충남")) dosiName = "충청남도";
+		
+		if(dosiName.equals("전북특별자치도")) dosiName = "전라북도";
+		if(dosiName.equals("전남")) dosiName = "전라남도";
+		String sigunguName = hire.getSigunguName();
+		String dongName=hire.getDongName();
+		
+		Map<String, String> hireLocation = new HashMap<>();
+		
+		hireLocation.put("dosiName", dosiName);
+		hireLocation.put("sigunguName", sigunguName);
+		hireLocation.put("dongName", dongName);
+		
+		
+		//dongNo 세팅
+		int dongNo = mapper.hireDongNo(hireLocation);
+		hire.setDongNo(dongNo);
+		
+		//INSERT
+		int result = mapper.hireUpdate(hire);
+		if(result>0) { //수정 성공 시
+			int hireNo = hire.getHireNo();
+			return hireNo;
+		}
+		
+		//수정 실패 시
+		return 0;
 	}
 }

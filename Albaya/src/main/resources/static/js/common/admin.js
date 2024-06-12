@@ -10,11 +10,7 @@ const reportedMemberNo = document.querySelector("#reportedMemberNo");
 const tbody = document.querySelector(".tbody");
 
 
-
-
-
-
-//표 다시 조회하기
+// 표 조회
 const selectList = () => {
 
     fetch("/declare/selectList")
@@ -112,6 +108,12 @@ const selectList = () => {
             attachEventListeners();
         });
 }
+
+
+
+
+
+
 
 // 반려 버튼 
 const attachEventListeners = () => {
@@ -252,3 +254,12 @@ document.getElementById('searchBtn').addEventListener("click", () => {
     
 
 })
+
+
+// 댓글 신고를 모아둔 페이지로 이동
+const connectToCommentAdmin = document.getElementById('connectToCommentAdmin');
+connectToCommentAdmin.addEventListener('click', () => {
+    
+    
+    location.href = "/commentDeclare/1";
+});  

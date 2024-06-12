@@ -62,4 +62,10 @@ public class Resume {
 	private String startDate;
 	private String endDate;
 	
+	//프로필이미지
+	private String imgPath;
+	private String imgOriginalName;
+	private String imgRename;
+	
+	private int dongNo;
 }

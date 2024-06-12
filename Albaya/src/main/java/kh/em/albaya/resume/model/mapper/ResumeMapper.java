@@ -1,6 +1,7 @@
 package kh.em.albaya.resume.model.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -29,6 +30,50 @@ public interface ResumeMapper {
 	 * @return
 	 */
 	List<Resume> statusList();
+
+	/**하나만 들어가는 것만 insert
+	 * @param resume
+	 * @return
+	 */
+	int resume(Resume resume);
+
+	/**CAREER 테이블 INSERT
+	 * @param resume
+	 * @return
+	 */
+	int career(Resume resume);
+
+	/**LICENSE 테이블 INSERT
+	 * @param resume
+	 * @return
+	 */
+	int license(Resume resume);
+
+	/**RESUME_LOCATION 테이블에 INSERT
+	 * @param resume
+	 * @return
+	 */
+	int resumeLocation(Resume resume);
+
+	/**typeName으로 typeNo 찾기
+	 * @param typeName
+	 * @return
+	 */
+	int typeNo(String typeName);
+
+	/**RESUME_WORK 테이블에 INSERT
+	 * @param resume
+	 * @return
+	 */
+	int resumeWork(Resume resume);
+
+	/**RESUME_EDUCATION 테이블에 INSERT
+	 * @param resume
+	 * @return
+	 */
+	int resumeEducation(Resume resume);
+
+	
 
 	
 }

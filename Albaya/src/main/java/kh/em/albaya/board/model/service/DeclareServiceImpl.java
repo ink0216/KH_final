@@ -86,17 +86,7 @@ public class DeclareServiceImpl implements DeclareService{
 		return result;
 	}
 	
-	
-	
-//	// 중복 신고 게시물
-//	@Override
-//	public int duplicateDeclare(String reviewBoardCondition) {
-//		
-//		int result = mapper.duplicateDeclare(reviewBoardCondition);
-//		
-//		return result;
-//	}
-	
+
 
 	
 	

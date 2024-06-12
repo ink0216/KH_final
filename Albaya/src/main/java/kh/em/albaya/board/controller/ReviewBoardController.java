@@ -44,7 +44,6 @@ public class ReviewBoardController {
     */
       
    
-//   @GetMapping("{reviewBoardCode:[0-9]{2}}")
    @GetMapping("{reviewBoardCode:[0-9]+}")
    public String selectBoardList(
       @PathVariable("reviewBoardCode") int reviewBoardCode, // 공지, 일반게시판 코드
@@ -179,7 +178,6 @@ public class ReviewBoardController {
 			
 			path = "reviewBoard/reviewBoardDetail";
 			model.addAttribute("reviewBoard",reviewBoard);
-			// 조회수 관련 코드 추가예정
 		}
 		
 		

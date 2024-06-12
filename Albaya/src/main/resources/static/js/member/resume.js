@@ -42,12 +42,15 @@
     const dosies = document.querySelectorAll(".dosies");
     const sigunguList = document.querySelector(".sigunguList");
     const dong = document.querySelector(".dong");
+    const locationSelectContainer =  document.querySelector(".locationSelectContainer");
     const locationContentArr = [];
+    const dongObj ={};
     dosies.forEach(btn => {
         btn.addEventListener("click", () => {
             sigunguList.innerHTML = "";
             dong.innerHTML = "";
             const dosiName = btn.textContent;
+           
             fetch("/hire/selectSigungu?dosiName="+dosiName)
             .then(resp=>resp.json())
             .then(
@@ -61,6 +64,7 @@
                         div.addEventListener("click", () => {
                             dong.innerHTML="";
                             const sigunguName = div.textContent;
+                            const form =document.querySelector("form")
                             fetch("/hire/selectDong?dosiName="+dosiName+"&sigunguName="+sigunguName)
                             .then(resp=>resp.json())
                             .then(
@@ -70,7 +74,9 @@
                                         dongdiv.innerHTML = dongItem.dongName;
                                         dongdiv.classList.add("dongs");
                                         dong.append(dongdiv);
+                                        console.log(dongItem.dongNo)
                                         dongdiv.addEventListener("click",()=>{
+                                            
                                             
                                             for(let i=0; i<locationContentArr.length; i++){
                                                 
@@ -79,27 +85,47 @@
                                                     return;
                                                 }
                                             }
-                                            if(document.querySelectorAll(".selectDong>span").length > 4){
+                                            if(document.querySelectorAll(".selectDong").length > 4){
                                                 alert("최대 5가지만 선택할 수 있습니다");
                                                 return;
                                             }
-                                            
-                                                const selectLocationInnerHtml = `
-                                                <span class = "selectDong">
-                                                    ${dongItem.dongName}
-                                                    <span>&times;</span>
-                                                </span>`;
-
-                                            locationSelectContainer.innerHTML += selectLocationInnerHtml;
-                                            locationContentArr.push(dongItem.dongNo);
+                                                
                                             const input = document.createElement("input");
                                             input.type = "hidden";
                                             input.name = "dongNo";
                                             input.value = dongItem.dongNo;
                                             form.append(input);
+
+                                            // 화면에 보여지는 동 요소
+                                            const selectDong = document.createElement("span");
+                                            selectDong.className = "selectDong";
+                                            
+                                            const dongName = document.createTextNode(`${dongItem.dongName}`);
+
+                                            const xBtn = document.createElement("span");
+                                            xBtn.innerHTML = "&times;";
+                                            
+                                            xBtn.addEventListener("click", () => {
+                                                selectDong.remove();
+                                                input.remove();
+                                            });
+                                            
+                                            const hide = document.createElement("span");
+                                            hide.className = "hide";
+                                            hide.innerText = `${dongItem.dongNo}`;
+                                            
+                                            selectDong.appendChild(dongName);
+                                            selectDong.appendChild(xBtn);
+                                            selectDong.appendChild(hide);
+
+                                            locationSelectContainer.append(selectDong);
+
+                                           
                                         });
                                         
+                                        
                                     })
+                                 
                                 }
                             );
                         });
@@ -109,52 +135,40 @@
     });
 //city dropdown
 
-const dongs = document.querySelectorAll(".dongs");
-const locationSelectContainer =  document.querySelector(".locationSelectContainer");
-const selectCont = document.querySelectorAll(".selectDong");
+// const dongs = document.querySelectorAll(".dong");
+// const locationSelectContainer =  document.querySelector(".locationSelectContainer");
+// const selectCont = document.querySelectorAll(".selectDong");
 
 
-dongs.forEach(btn => {
-    btn.addEventListener("click", () => {
+// dongs.forEach(btn => {
+//     btn.addEventListener("click", () => {
        
        
-        for(let i=0; i<locationContentArr.length; i++){
-            if(btn.textContent == locationContentArr[i]){
-                alert("중복 선택은 가능하지 않습니다");
-                return;
-            }
-        } 
-        locationContentArr.push(btn.textContent);
+//         for(let i=0; i<locationContentArr.length; i++){
+//             if(btn.textContent == locationContentArr[i]){
+//                 alert("중복 선택은 가능하지 않습니다");
+//                 return;
+//             }
+//         } 
+//         // locationContentArr.push(btn.textContent);
 
 
-        if(document.querySelectorAll(".selectDong>span").length > 5){
-            alert("최대 5가지만 선택할 수 있습니다");
-            return;
-        }
+//         if(document.querySelectorAll(".selectDong>span").length > 5){
+//             alert("최대 5가지만 선택할 수 있습니다");
+//             return;
+//         }
 
-        const selectLocationInnerHtml = `
-            <span class = "selectDong">
-                ${btn.textContent}
-                <span>&times;</span>
-            </span>`;
+//         const selectLocationInnerHtml = `
+//             <span class = "selectDong">
+//                 ${btn.textContent}
+//                 <span>&times;</span>
+//             </span>`;
 
-        locationSelectContainer.innerHTML += selectLocationInnerHtml;
+//         locationSelectContainer.innerHTML += selectLocationInnerHtml;
 
-        const selectDong = document.querySelectorAll(".selectDong>span");
-        for (let i =0; i < selectDong.length;i++) {
-            selectDong[i].addEventListener("click", e => {
-                if(document.querySelectorAll(".selectDong")[i].innerText.substring(0,document.querySelectorAll(".selectDong")[i].innerText.lastIndexOf("\n")) 
-                    == locationContentArr[i]){
-                    locationContentArr.splice(i,1);
-                    const element =  document.querySelectorAll(".selectDong")[i].closest(".selectDong");
-                    if(element){
-                        element.parentNode.removeChild(element);
-                    }
-                }
-            })
-        }
-    })
-})
+        
+//     })
+// })
 
 
 // const sidoId = document.querySelector("#sido");
@@ -327,7 +341,7 @@ const addCertificate = () => {
                                                
                 <div class = "issueDetail">
                     <span>취득일</span>
-                    <input type="date" name="issueDate" class="issueDate"  required>
+                    <input type="date" name="licenseDate" class="issueDate"  required>
                     <button type="button" class = "certMinus">-</button>
                 </div>
             </div>
@@ -447,6 +461,8 @@ jobsOfDesireBtn.forEach(btn => {
     })
 })
 
+
+//사진 추가하기
 const editProfile = document.querySelector("#editProfile");
 const container = document.querySelector(".container");
 const cancel = document.querySelector("#cancel");
@@ -455,6 +471,7 @@ editProfile.addEventListener("click",() => {
     container.classList.remove("hide");
     container.classList.add("show");
     document.body.style.overflowY = "hidden"
+    document.body.style.overflowX = "hidden"
 })
 
 cancel.addEventListener("click", () => {
@@ -476,9 +493,9 @@ const picFile = document.querySelector("#picFile");
             // const innerhtml = `<img src="${img}" alt="Upload File">` 
             // setImg.innerHTML = innerhtml;
             setImg.style.backgroundImage = `url(${img})`;
-            setImg.style.backgroundSize = "150%";
+            setImg.style.backgroundSize = "150% auto";
             setImg.style.backgroundRepeat = "no-repeat";
-            setImg.style.backgroundPosition = "left"; 
+            setImg.style.backgroundPosition = "center"; 
         }
 
         reader.readAsDataURL(file);
@@ -494,12 +511,14 @@ const picFile = document.querySelector("#picFile");
     const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer");
     //저장 버튼
     const applyBtn = document.querySelector("#applyBtn");
+    const form  = document.querySelector("#form");
     applyBtn.addEventListener("click", () => {
         const input = document.createElement("input");
         input.setAttribute("type","hidden");
         input.setAttribute("name","resumeStatus");
         input.value=0;
         validatingBtnsContainer.append(input);
+        form.submit();
     });
 
     //임시저장 버튼
@@ -510,5 +529,6 @@ const picFile = document.querySelector("#picFile");
         input.setAttribute("name","resumeStatus");
         input.value=1;
         validatingBtnsContainer.append(input);
+        form.submit();
     });
 

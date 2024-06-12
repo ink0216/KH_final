@@ -33,5 +33,11 @@ public interface MemberService {
 
 	Member findMemberByNo(int memberNo);
 
+	int checkEmail(String memberEmail);
+
+	int checkTel(String memberPhoneNumber);
+
+	boolean checkPw(String memberPw);
+
 
 }

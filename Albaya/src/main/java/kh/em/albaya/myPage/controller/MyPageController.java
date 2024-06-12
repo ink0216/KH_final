@@ -95,7 +95,7 @@ public class MyPageController {
 		
 		if(result == 1) {
 			ra.addFlashAttribute("message", message);
-			return "/main";
+			return "redirect:/myPage/myPageInfoUpdate";
 		}
 		else {
 			message = "비밀번호가 일치하지 않습니다.";
@@ -256,11 +256,7 @@ public class MyPageController {
     		return "redirect:/myPage/myPageInfo";
     	}
 	}
-    
-    
-    
-    
-    
+  
     //지원한 공고 리스트 보러가기 링크
     @GetMapping("myApplyList")
     public String myApplyList() {
@@ -286,22 +282,22 @@ public class MyPageController {
     
     @GetMapping("myPageInfoUpdate")
     public String myPageInfoUpdate(
-    		@SessionAttribute("loginMember") Member loginMember,
-    		Model model) {
-    	
-    	if(loginMember.getMemberAddress() != null) {
-    		String[] arr = loginMember.getMemberAddress().split("\\^\\^\\^");
-    		  
-			model.addAttribute("postCode", arr[0]);
-			model.addAttribute("addr", arr[1]);	
-    		if(arr.length == 3) {		
-    			model.addAttribute("detail", arr[2]);
-    		}
-    	}
-    	
-    	
-    	return "/myPage/myPageInfoUpdate";
+            @SessionAttribute(value = "loginMember", required = false) Member loginMember,
+            Model model) {
+
+        if (loginMember != null && loginMember.getMemberAddress() != null) {
+            String[] arr = loginMember.getMemberAddress().split("\\^\\^\\^");
+
+            model.addAttribute("postCode", arr[0]);
+            model.addAttribute("addr", arr[1]);    
+            if(arr.length == 3) {        
+                model.addAttribute("detail", arr[2]);
+            }
+        }
+
+        return "/myPage/myPageInfoUpdate";
     }
+
     
     @PostMapping("memberInfoUpdate")
     public String memberInfoUpdate(
@@ -335,6 +331,41 @@ public class MyPageController {
 			message = "변경 실패.;;;";
 			ra.addFlashAttribute("message", message);
 			return "redirect:/myPage/myPageInfoUpdate";
+		}
+	}
+    
+    @PostMapping("shopInfoUpdate")
+    public String shopInfoUpdate(
+    		Shop shop,
+    		Model model,
+			@SessionAttribute("loginShop") Shop loginShop,
+			RedirectAttributes ra) {
+    	
+    	int shopNo = loginShop.getShopNo();
+    	    
+    	shop.setShopNo(shopNo);
+    	
+		int result = service.shopInfoUpdate(shop);
+		
+		String message = null;
+		
+		if(result == 1) {
+			message = "정보가 변경되었습니다.";
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			loginShop.setLastModifiedDate(sdf.format(new Date()));
+			loginShop.setShopName(shop.getShopName());
+			loginShop.setShopTel(shop.getShopTel());
+			loginShop.setFullAddress(shop.getFullAddress());
+			loginShop.setAddressDetail(shop.getAddressDetail());
+			
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/myPageInfo";
+		}
+		else {
+			message = "변경 실패.;;;";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/myPage/myPageShopUpdate";
 		}
 	}
 }
