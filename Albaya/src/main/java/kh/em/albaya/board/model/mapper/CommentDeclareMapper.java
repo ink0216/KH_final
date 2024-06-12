@@ -72,4 +72,9 @@ public interface CommentDeclareMapper {
 	 */
 	int updateCommentDelete(int commentDeclareNo);
 
+	/** 비동기
+	 * @return
+	 */
+	List<CommentDeclare> selectCommentDeclareList();
+
 }

@@ -65,10 +65,14 @@ cancelBtn.addEventListener("click",() => {
 
     if(confirm("뒤로가기를 하시면 지금까지 작성했던 내용이 모두 사라집니다. 정말 뒤로가시겠습니까?")){
         
-      
+        let url = location.pathname;
+        url = url.substring(0, url.lastIndexOf("/"));
+
+        // 쿼리스트링
+        location.href = url + location.search;
     
 
-        location.href = '/reviewBoard/2';
+        // location.href = '/reviewBoard/2/';
 
     } else{
 

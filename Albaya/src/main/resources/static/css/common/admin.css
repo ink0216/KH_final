@@ -90,7 +90,11 @@ body{
     cursor:pointer;
 }
 
-
+table{
+    border-collapse: collapse;
+    width: 100%;
+ 
+}
 
 .table-container {
     width: 900px;
@@ -149,13 +153,15 @@ body{
 
     
 .styled-table tr > *:nth-of-type(3){
-    width:10%;
+    width:6%;
     text-align:center;
 }
 .styled-table tr > *:nth-of-type(4){
     width: 30%;
     overflow-y: auto;
     font-weight: bold;
+   
+   
 }
 .styled-table tr > *:nth-of-type(5){
     width:5%;
@@ -218,9 +224,11 @@ th{
   
  }
  
- .pagination a{
+ .pagination span{
     display: block;
     height: 100%;
+    cursor: pointer;
+    user-select: none;
  }
  
  .current{
@@ -241,10 +249,10 @@ th{
  }
 
 
- #connectToReviewBoard {
+ .connectToReviewBoard {
     color : blue;
-    font-size:1.5em;
-    text-decoration-line: underline;
+    font-size:1.3em;
+    
  }
 
 
@@ -413,4 +421,12 @@ th{
     height: 26px;
     border: none;
     cursor: pointer;
+
+.boardDeclareContent{
+    max-height: 62.55px; 
+    overflow-y: auto; 
+    width: 630px; 
+    white-space: pre-wrap; 
+    word-break: break-word; 
+    box-sizing: border-box; 
 }
