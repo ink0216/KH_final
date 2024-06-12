@@ -36,6 +36,11 @@ public interface DeclareMapper {
 	 */
 	List<Declare> selectDeclareList(int declareBoardCode, RowBounds rowBounds);
 
+	/** 비동기 게시글 신고 목록 조회
+	 * @return
+	 */
+	List<Declare> selectDeclareList();
+
 	
 	//------ 게시글 신고 하기 ------
 	
@@ -103,9 +108,6 @@ public interface DeclareMapper {
 	 */
 	int updateReviewBoard(int reviewBoardDeclareNo);
 	
-
-
-	List<Declare> selectDeclareList();
 
 
 

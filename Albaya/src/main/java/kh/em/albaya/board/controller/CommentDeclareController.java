@@ -1,5 +1,6 @@
 package kh.em.albaya.board.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,16 @@ public class CommentDeclareController {
 		model.addAttribute("commentDeclareList", map.get("commentDeclareList"));
 		
 		return "commentDeclare/commentAdmin";
+	}
+	
+	// 비동기 댓글신고 조회
+	@ResponseBody
+	@GetMapping("selectList")
+	public List<CommentDeclare> selectList() {
+		
+		List<CommentDeclare> commentDeclareList = service.selectCommentDeclareList();
+		
+		return commentDeclareList;
 	}
 	
 	
