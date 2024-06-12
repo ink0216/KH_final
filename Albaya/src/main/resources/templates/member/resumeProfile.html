@@ -9,28 +9,29 @@
 </head>
 <body>
     <th:block th:replace="~{common/header}"></th:block>
-    <div class="popupContainer hide">
-        <div class="imgEditPopup">
-            <div class = "heading"> 
-                <h2>사진 업데이트</h2>
-            </div>
-            <div class = "selectFileSpan"> 
-                <span>사진 업데이트:</span>
-            </div><br>
-            <div class="imageResizePanel">
-
-            </div><br>
-            <div class = "fileInput"> 
-                <input type=file id="picFile" name="image"></input>
-            </div>
-            <br><br>
-            <div class="finalizingBtns">
-                <button type="button"  class = "cancel">취소</button>
-                <button type="button" class = "update">업데이트</button>
+    
+    <div id="container">
+        <div class="popupContainer hide">
+            <div class="imgEditPopup">
+                <div class = "heading"> 
+                    <h2>사진 업데이트</h2>
+                </div>
+                <div class = "selectFileSpan"> 
+                    <span>사진 업데이트:</span>
+                </div><br>
+                <div class="imageResizePanel">
+    
+                </div><br>
+                <div class = "fileInput"> 
+                    <input type=file id="picFile" name="image"></input>
+                </div>
+                <br><br>
+                <div class="finalizingBtns">
+                    <button type="button"  class = "cancel">취소</button>
+                    <button type="button" class = "update">업데이트</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="container">
         <div id="resumeProfileInfo">
             <div id="profImg">
                 <img src="" >
