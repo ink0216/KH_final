@@ -205,7 +205,7 @@
         fetch("/member/checkPwRedundancy",{
             method: "POST",
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(inputPw.value)
+            body: inputEmail.value
         })
         .then(resp => resp.text())
         .then(result => {
