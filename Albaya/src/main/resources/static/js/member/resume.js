@@ -532,3 +532,37 @@ const picFile = document.querySelector("#picFile");
         form.submit();
     });
 
+/* 유효성 검사 */
+
+const resumeTitle = document.querySelector("#title");
+const introduce = document.querySelector("#introduce");
+const educationShow = education.querySelector(".show");
+
+
+
+const obj = {
+    "image": false,
+    "resumeTitle":false,
+    "introduce" : false,
+    "educationNo": false,
+    "schoolName" : false,
+    "locationSelectContainer": false,
+    "experienced" : false,
+    "certificate" : false
+}
+
+//사진 유효성 검사
+picFile.addEventListener("input", e => {
+    if(e.target.value.trim().length === 0){
+        e.target.value="";
+        obj.image = false;
+    }
+});
+
+
+
+
+
+
+
+
