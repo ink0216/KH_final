@@ -26,6 +26,7 @@ import kh.em.albaya.location.dto.Dong;
 import kh.em.albaya.location.dto.Dosi;
 import kh.em.albaya.location.dto.Sigungu;
 import kh.em.albaya.member.model.dto.Member;
+import kh.em.albaya.resume.model.dto.Resume;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -106,6 +107,9 @@ public class HireController {
 		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
 		
+		//모집 마감일과 비교해서 지원하기/모집 마감 보이기
+		int hireOpen = service.hireOpen(hireNo);
+		model.addAttribute("hireOpen", hireOpen); //마감됐으면 1, 마감 안됐으면 0
 		return "/hire/hireDetail";
 	}
 	
@@ -187,12 +191,15 @@ public class HireController {
 	@GetMapping("hireApply/{hireNo}")
 	public String hireApply(
 			@PathVariable("hireNo") int hireNo,
-			Model model) {
+			Model model,
+			@SessionAttribute("loginMember") Member loginMember) {
 		Hire hireInfo = service.hireInfo(hireNo);
 		
 		if(hireInfo != null) {
 			model.addAttribute("hireInfo", hireInfo);
 		}
+		List<Resume> resumeList = service.resumeList(loginMember.getMemberNo());
+		model.addAttribute("resumeList", resumeList); 
 	    return "/hire/hireApply"; // 이동할 URL로 포워딩
 	}
 
@@ -273,6 +280,10 @@ public class HireController {
 		model.addAttribute("hire", hire);
 		model.addAttribute("dayList", dayList);
 		
+		int dongNo = hire.getDongNo();
+		//해당 DONG_NO의 시도 시군구 동 이름 얻어오기
+		Dong dong = service.initLocation(dongNo);
+		model.addAttribute("dong", dong);
 		return "hire/hireUpdate";
 	}
 	

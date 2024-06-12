@@ -3,6 +3,7 @@ package kh.em.albaya.myPage.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.em.albaya.common.util.Utility;
+import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.myPage.model.mapper.MyPageMapper;
 import kh.em.albaya.shop.model.dto.Shop;
@@ -205,6 +207,16 @@ public class MyPageServiceImpl implements myPageService{
 		}
 		
 		return mapper.shopInfoUpdate(shop);
+	}
+	@Override
+	public Map<String, Object> applyList(int memberNo) {
+		Map<String, Object> applyList = mapper.applyList(memberNo);
+		int applyCount = mapper.applyCount(memberNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("applyList", applyList);
+		map.put("applyCount", applyCount);
+		return map;
 	}
 	
 }

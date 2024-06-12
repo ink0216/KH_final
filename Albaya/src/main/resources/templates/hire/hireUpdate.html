@@ -359,9 +359,13 @@
             <div class="btnArea">
                 <button id="submitBtn">저장하기</button>
             </div>
+            <input type="hidden" th:value="${hire.hireNo}" name="hireNo">
         </form>
     </div>
-
+    <script th:inline="javascript">
+        const pathHireNo = /*[[${hire.hireNo}]]*/"hireNo";
+        console.log(hireNo);
+    </script>
 
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
