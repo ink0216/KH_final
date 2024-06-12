@@ -252,12 +252,15 @@ public class MemberController {
     	return service.checkTel(memberPhoneNumber);
     }
     
-//    @PostMapping("checkPwRedundancy")
-//    @ResponseBody
-//    public boolean checkPw(@RequestBody String memberEmail, 
-//    		@RequestParam("memberPw") String memberPw) {
-//    	return service.checkPw(memberEmail, memberPw);
-//    }
+
+    @PostMapping("checkPwRedundancy")
+    @ResponseBody
+    public int checkPw(@RequestBody Member member) {
+    	String memberEmail =  member.getMemberEmail();
+    	String memberPw = member.getMemberPw();
+    	
+    	return service.checkPw(memberEmail, memberPw);
+    }
     
     
 

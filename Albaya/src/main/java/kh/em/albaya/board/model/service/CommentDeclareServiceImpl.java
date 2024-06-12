@@ -49,6 +49,13 @@ public class CommentDeclareServiceImpl implements CommentDeclareService {
 				return map;
 	}
 	
+	// 비동기
+	@Override
+	public List<CommentDeclare> selectCommentDeclareList() {
+		return mapper.selectCommentDeclareList();
+	}
+	
+	
 	// 댓글 신고 하기
 	@Override
 	public int insertDeclare(CommentDeclare commentDeclare) {

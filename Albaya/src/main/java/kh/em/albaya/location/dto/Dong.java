@@ -19,4 +19,6 @@ public class Dong {
 	private int dongNo;
 	private int sigunguNo;
 	private String dongName;
+	private String sigunguName;
+	private String dosiName;
 }

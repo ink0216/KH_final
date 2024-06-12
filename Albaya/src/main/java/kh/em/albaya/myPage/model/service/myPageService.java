@@ -1,6 +1,7 @@
 package kh.em.albaya.myPage.model.service;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,4 +29,6 @@ public interface myPageService {
 	int memberInfoUpdate(Member member, String[] memberAddress);
 
 	int shopInfoUpdate(Shop shop);
+
+	Map<String, Object> applyList(int memberNo);
 }

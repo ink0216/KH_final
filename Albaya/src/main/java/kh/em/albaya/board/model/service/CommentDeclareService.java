@@ -45,4 +45,11 @@ public interface CommentDeclareService {
 	 */
 	int completeDeclare(int commentDeclareNo);
 
+
+
+	/**비동기 댓글신고 목록 조회
+	 * @return
+	 */
+	List<CommentDeclare> selectCommentDeclareList();
+
 }

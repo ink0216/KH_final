@@ -39,6 +39,10 @@ changePwBtn.addEventListener("click", () => {
     location.href = "/myPage/changePw";
 });
 
+managerBtn.addEventListener("click", () => {
+    location.href = "/declare/1?cp=1";
+})
+
 const uploadBtn = document.querySelector("#uploadBtn");
 let imageInput = document.querySelector("#imageInput");
 const profileImg = document.querySelector('#profileImg');
