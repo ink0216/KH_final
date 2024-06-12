@@ -380,7 +380,7 @@
 		WORK_START = #{workStart},
 		WORK_END = #{workEnd},
 		PAY_NO = #{payNo},
-		<if test='dongNo != null'>
+		<if test='dongNo != 0'>
 		DONG_NO = #{dongNo},
 		</if>
 		
