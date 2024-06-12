@@ -18,6 +18,8 @@ imgEditBtn.addEventListener("click", () => {
     cancel.addEventListener("click", () => {
         popupContainer.classList.add("hide");
         popupContainer.classList.remove("show")
+        document.body.style.overflowY = "auto";
+        document.body.style.overflowX = "auto";
     });
 
 
@@ -37,6 +39,9 @@ imgEditBtn.addEventListener("click", () => {
             popupContainer.classList.add("hide");
             popupContainer.classList.remove("show");
         }
+
+        document.body.style.overflowY = "auto";
+        document.body.style.overflowX = "auto";
         
     })
 

@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <th:block th:replace="~{common/header}"></th:block>
     <div class="popupContainer hide">
         <div class="imgEditPopup">
             <div class = "heading"> 
@@ -139,10 +140,12 @@
             </div>
 
         </div>
-
+        
         
     </div>
-
+   
+    <th:block th:replace="~{common/footer}"></th:block>
     <script src = "/js/member/resumeProfile.js"></script>
+    
 </body>
 </html>
