@@ -252,6 +252,7 @@ public class MemberController {
     	return service.checkTel(memberPhoneNumber);
     }
     
+
     @PostMapping("checkPwRedundancy")
     @ResponseBody
     public int checkPw(@RequestBody Member member) {

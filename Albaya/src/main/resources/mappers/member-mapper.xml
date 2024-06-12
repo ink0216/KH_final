@@ -58,7 +58,7 @@
 	<update id="changePw">
 		UPDATE "MEMBER"
 		SET MEMBER_PW = #{encPw},
-		SET LAST_MODIFIED_PW_DATE = SYSDATE
+		LAST_MODIFIED_PW_DATE = SYSDATE
 		WHERE MEMBER_EMAIL = #{memberEmail}
 	</update>
 	
@@ -78,6 +78,7 @@
 		SELECT COUNT(*) FROM MEMBER
 		WHERE MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
 	</select>
+
 
 	<select id="getStoredPwd" resultType="string">
 		SELECT MEMBER_PW FROM MEMBER

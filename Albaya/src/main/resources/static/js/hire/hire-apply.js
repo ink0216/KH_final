@@ -40,7 +40,6 @@ applyBtn.addEventListener("click",e=>{
         return;
     }
 
-    setTimeout(() => {
-        window.close();
-    }, 300);
+    sendNotificationFn("hireApply", location.pathname, hireNo);
+
 })

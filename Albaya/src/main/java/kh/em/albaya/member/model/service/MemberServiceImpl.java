@@ -125,6 +125,7 @@ public int checkPw(String memberEmail, String memberPw) {
 	if(storedEncPwd!=null && bcrypt.matches(memberPw, storedEncPwd)) {
 		return 1;
 	}
+
 	return 0;
 	
 }
