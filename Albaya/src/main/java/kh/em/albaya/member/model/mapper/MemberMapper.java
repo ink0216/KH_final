@@ -44,6 +44,9 @@ public interface MemberMapper {
 
 	String getCheckPw();
 
+	int updateMember();
+
+
 
 	
 	

@@ -107,6 +107,8 @@ public interface DeclareMapper {
 	 * @return
 	 */
 	int updateReviewBoard(int reviewBoardDeclareNo);
+
+	int stopMember(int reviewBoardDeclareNo);
 	
 
 

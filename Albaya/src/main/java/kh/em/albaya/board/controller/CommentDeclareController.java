@@ -36,7 +36,6 @@ public class CommentDeclareController {
 	public String selectCommentDeclareList(
 			@PathVariable("declareBoardCode")int declareBoardCode,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
-			@RequestParam Map<String, Object> paramMap,
 			Model model) {
 
 		Map<String, Object> map = null; 
