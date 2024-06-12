@@ -1,4 +1,7 @@
 .popupContainer{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
     width:100%;
     height:100%;
     background-color: rgb(255,255,255,0.5);
@@ -6,8 +9,7 @@
     z-index:2000;
 }
 .imgEditPopup{
-    margin-left:35%;
-    margin-top:10%;
+   
     display:flex;
     flex-direction:column; 
     width:500px;
@@ -17,7 +19,7 @@
     padding:20px;
     padding-bottom:0px;
     border-radius:10px;
-    position:absolute;
+    position:fixed;
     z-index:3000;
 }
 .show{
@@ -41,7 +43,7 @@
     display:flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: -90px;
+    margin-top: -120px;
     
     
 }

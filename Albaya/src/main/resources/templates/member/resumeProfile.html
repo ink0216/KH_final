@@ -8,28 +8,30 @@
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="popupContainer hide">
-        <div class="imgEditPopup">
-            <div class = "heading"> 
-                <h2>사진 업데이트</h2>
-            </div>
-            <div class = "selectFileSpan"> 
-                <span>사진 업데이트:</span>
-            </div><br>
-            <div class="imageResizePanel">
-
-            </div><br>
-            <div class = "fileInput"> 
-                <input type=file id="picFile" name="image"></input>
-            </div>
-            <br><br>
-            <div class="finalizingBtns">
-                <button type="button"  class = "cancel">취소</button>
-                <button type="button" class = "update">업데이트</button>
+    <th:block th:replace="~{common/header}"></th:block>
+    
+    <div id="container">
+        <div class="popupContainer hide">
+            <div class="imgEditPopup">
+                <div class = "heading"> 
+                    <h2>사진 업데이트</h2>
+                </div>
+                <div class = "selectFileSpan"> 
+                    <span>사진 업데이트:</span>
+                </div><br>
+                <div class="imageResizePanel">
+    
+                </div><br>
+                <div class = "fileInput"> 
+                    <input type=file id="picFile" name="image"></input>
+                </div>
+                <br><br>
+                <div class="finalizingBtns">
+                    <button type="button"  class = "cancel">취소</button>
+                    <button type="button" class = "update">업데이트</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="container">
         <div id="resumeProfileInfo">
             <div id="profImg">
                 <img src="" >
@@ -139,10 +141,12 @@
             </div>
 
         </div>
-
+        
         
     </div>
-
+   
+    <th:block th:replace="~{common/footer}"></th:block>
     <script src = "/js/member/resumeProfile.js"></script>
+    
 </body>
 </html>

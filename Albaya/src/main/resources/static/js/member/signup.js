@@ -62,7 +62,7 @@
         "memberPw":false,
         "memberPhoneNumber":false,
         "memberName":false,
-        "memberGender":false,
+    
         "memberAddress":false,
         "authState":false
     };
@@ -385,7 +385,7 @@
                     case "memberPw":str="비밀번호를 올바르게 입력하세요"; break;
                     case "memberPhoneNumber":str="전화번호를 올바르게 입력하세요"; break;
                     case "memberName":str="이름을 올바르게 입력하세요"; break;
-                    case "memberGender":str="성별을 올바르게 입력하세요"; break;
+               
                     case "memberAddress":str="주소를 올바르게 입력하세요"; break;
                     case "authState":str="인증번호를 올바르게 입력하세요"; break;
                 }

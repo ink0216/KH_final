@@ -14,10 +14,14 @@ imgEditBtn.addEventListener("click", () => {
 
     document.body.style.overflowY = "hidden";
     document.body.style.overflowX = "hidden";
+    popupContainer.style.marginRight="10px";
 
     cancel.addEventListener("click", () => {
         popupContainer.classList.add("hide");
         popupContainer.classList.remove("show")
+        
+        document.body.style.overflowY = "auto";
+        document.body.style.overflowX = "auto";
     });
 
 
@@ -37,6 +41,9 @@ imgEditBtn.addEventListener("click", () => {
             popupContainer.classList.add("hide");
             popupContainer.classList.remove("show");
         }
+
+        document.body.style.overflowY = "auto";
+        document.body.style.overflowX = "auto";
         
     })
 
