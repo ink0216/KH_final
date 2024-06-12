@@ -21,7 +21,7 @@ public class Notification {
 	private String notificationDate;
 	private String notificationUrl;
 	private int sendMemberNo; //알림을 보낸 사람의 번호
-	private int receiveMemberNo; // 알림을 받는 사람의 번호 ***이게 더 중요하다
+	private int receiveShopNo; // 알림을 받는 사람의 번호 ***이게 더 중요하다
 	
 	//로직 구성을 위한 필드
 	private String notificationType; //타입 따라서 알림의 내용이 달라지게 코드 짰다(알림 내용을 구분하기 위한 구분값 역할이다)

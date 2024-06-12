@@ -4,7 +4,7 @@
 	
 	<select id="selectNotification" resultType="Notification">
 		SELECT NOTIFICATION_NO, NOTIFICATION_CONTENT, NOTIFICATION_CHECK,
-			NOTIFICATION_URL, SEND_MEMBER_PROFILE_IMG, 
+			NOTIFICATION_URL,
 			<![CDATA[
 			CASE
 					 WHEN CURRENT_DATE - NOTIFICATION_DATE < 1 / 24 / 60 
@@ -21,7 +21,7 @@
 				 END NOTIFICATION_DATE 
 		 ]]>
 		FROM "NOTIFICATION"
-		WHERE RECEIVE_MEMBER_NO = #{receiveMemberNo}
+		WHERE RECEIVE_SHOP_NO = #{receiveShopNo}
 		ORDER BY NOTIFICATION_NO DESC
 	</select>
 	
@@ -53,7 +53,7 @@
 	<select id="notReadCheck">
 		SELECT COUNT(*) 
 		FROM "NOTIFICATION"
-		WHERE RECEIVE_MEMBER_NO = #{memberNo}
+		WHERE RECEIVE_SHOP_NO = #{shopNo}
 		AND NOTIFICATION_CHECK = 'N'
 	</select>
 	

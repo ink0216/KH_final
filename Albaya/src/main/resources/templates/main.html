@@ -22,7 +22,9 @@
     <!-- <a href="/reviewBoard/2">알바 후기 게시판으로 이동</a> -->
     <!--     <br>
     <a href="/hire/hireWrite">공고문 작성</a> -->
-    <a href="/hire/hireApplyDetail" onclick="window.open(this.href, width=600, height=650,left=300,top=100)">지원서
+    <!-- <a href="/hire/hireApplyDetail" onclick="window.open(this.href, width=600, height=650,left=300,top=100)">지원서
+        상세조회</a> -->
+    <a href="/hire/hireApplyDetail" >지원서
         상세조회</a>
 
     <a href="/myPage/myApplyList">지원한 공고 리스트</a>
@@ -102,14 +104,9 @@
     </section>
 
     <th:block th:replace="~{common/footer}"></th:block>
-    <script th:inline="javascript">
-        const message =  /*[[${message}]]*/ "전달 받은 message";
-        // message가 없다면 null
 
-        if (message != null) alert(message);
-    </script>
-    <script src="/js/common/header.js"></script>
     <script src="/js/common/main.js"></script>
+    <script src="/js/common/testsock.js"></script>
 </body>
 
 </html>

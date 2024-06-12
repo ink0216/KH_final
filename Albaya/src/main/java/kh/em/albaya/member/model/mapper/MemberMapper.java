@@ -45,6 +45,9 @@ public interface MemberMapper {
 	String getStoredPwd(String memberEmail);
 
 
+	int updateMember();
+
+
 
 	
 	

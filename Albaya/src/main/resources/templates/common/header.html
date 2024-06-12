@@ -7,6 +7,8 @@
     <title>이력서</title>
     <link rel="stylesheet" href="/css/common/header.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
+    <!-- SockJS 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 </head>
 
 <header>
@@ -41,9 +43,9 @@
                     <!-- 알림 버튼 영역 -->
                     <div class="loginMember notification-container">
                         <!-- 알림 버튼 -->
-                        <button class=" notification-btn fa-regular fa-bell" id="my-element"></button>
+                        <button class="notification-btn fa-regular fa-bell" id="my-element"></button>
 
-                        <ul class="notification-list">
+                        <ul class="notification-list notification-showx">
                             <li class="notification-item">
                                 <div class="notification-text">
                                     <img src="" alt="">
@@ -136,8 +138,11 @@
         });
     }
 
-    
+
 </script>
+
+
 <script src="/js/common/header.js"></script>
+<script src="/js/testsock.js"></script>
 
 </html>

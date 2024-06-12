@@ -6,7 +6,7 @@
       INSERT INTO "MEMBER"
       VALUES(SEQ_MEMBER_NO.NEXTVAL, DEFAULT, #{memberEmail}, #{memberPw}, 
       #{memberPhoneNumber}, DEFAULT, #{memberName}, DEFAULT,
-      #{memberGender}, #{memberAddress}, NULL, NULL)
+      #{memberGender}, #{memberAddress}, NULL, NULL,NULL)
    </insert>
 	
 	<select id="login" resultType="Member">
@@ -16,10 +16,22 @@
 		TO_CHAR(LAST_MODIFIED_DATE, 'YYYY-MM-DD') LAST_MODIFIED_DATE,
 		TO_CHAR(LAST_MODIFIED_PW_DATE, 'YYYY-MM-DD') LAST_MODIFIED_PW_DATE
 		FROM "MEMBER"
-		WHERE "MEMBER_EMAIL" = #{memberEmail}
-		AND MEMBER_STATUS != 5
-		AND MEMBER_STATUS != 3
+		WHERE (
+			"MEMBER_EMAIL" = #{memberEmail}
+			AND (MEMBER_STATUS = 3  AND SYSDATE > SUSPEND_PERIOD )
+				)
+			OR ("MEMBER_EMAIL" = #{memberEmail}
+			  	AND MEMBER_STATUS NOT IN (3,5)
+			  )
 	</select>
+	
+	<!-- 회원상태 정상으로 변경 -->
+	<update id="updateMember">
+		UPDATE "MEMBER" SET 
+		MEMBER_STATUS = 4,
+		SUSPEND_PERIOD IS NULL
+		WHERE MEMBER_STATUS = 3
+	</update>
 	
 	<select id="memberCount" resultType="_int">
 		SELECT COUNT(*)
@@ -46,7 +58,7 @@
 	<update id="changePw">
 		UPDATE "MEMBER"
 		SET MEMBER_PW = #{encPw},
-		SET LAST_MODIFIED_PW_DATE = SYSDATE
+		LAST_MODIFIED_PW_DATE = SYSDATE
 		WHERE MEMBER_EMAIL = #{memberEmail}
 	</update>
 	
@@ -66,6 +78,7 @@
 		SELECT COUNT(*) FROM MEMBER
 		WHERE MEMBER_PHONE_NUMBER = #{memberPhoneNumber}
 	</select>
+
 
 	<select id="getStoredPwd" resultType="string">
 		SELECT MEMBER_PW FROM MEMBER

@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     //이력서 작성 버튼
+
 const resumeRedirect = document.querySelector("#resumeRedirect");
 if(resumeRedirect != null){
     resumeRedirect.addEventListener("click", ()=>{
@@ -43,7 +44,7 @@ goHireLocation.addEventListener("click",()=>{
 
 const goReview2 = document.getElementById('goReview2');
 goReview2.addEventListener("click",()=>{
-    location.href='/reviewBoard/2';
+    location.href='/reviewBoard/2?cp=1';
 });
 
 
@@ -60,8 +61,11 @@ let sendNotificationFn;  //웹소켓을 이용해 알림을 보내는 함수
 let selectNotificationFn;  //비동기로 알림을 조회하는 함수
 let notReadCheckFn;        //비동기로 읽지 않은 알림 개수 채크하는 함수
 
+// const notificationBtn= document.querySelector('.notification-btn');
+
+
 if(notificationLoginCheck){//로그인 된 상태인 경우
-    noticationSock = new SockJs("/notification/send");
+    noticationSock = new SockJS("/notification/send");
 
     /* 웹소켓을 이용해 알림을 전달하는 함수 */
     sendNotificationFn = (type,url,pkNo) =>{
@@ -193,37 +197,41 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
         })
     }
 
+}
 
-    document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
-        //알림 버튼
-        const notificationBtn = document.querySelector('.notification-btn');
+    //알림 버튼
+    const notificationBtn = document.querySelector(".notification-btn");
+    console.log(notificationBtn);
 
-
-        notReadCheckFn().then(notReadCount => {
-            if(notReadCount > 0){
-                notificationBtn.classList.remove("fa-regular");
-                notificationBtn.classList.add("fa-solid");
-            }
-        })
-
-        /* 알립 버튼 클릭 */
-        notificationBtn.addEventListener("click",e=>{
-            const notiList=document.querySelector('.notification-list');
-
-              // 보이는 상태일 때
-              if(notiList.classList.contains("notification-show")){
-                notiList.classList.remove("notification-show");
-                return;
-            }
-
-            /* 로그인 상태인 경우 알림 목록을 바로 비동기로 조회 */
-            selectNotificationFn();
-            notiList.classList.add("notification-show");
-        })
+    notReadCheckFn().then(notReadCount => {
+        if(notReadCount > 0){
+            notificationBtn.classList.remove("fa-regular");
+            notificationBtn.classList.add("fa-solid");
+        }
     })
 
-}
+    /* 알립 버튼 클릭 */
+    notificationBtn.addEventListener("click",e=>{
+        console.log("클릭됨");
+        const notiList=document.querySelector('.notification-list');
+
+          // 보이는 상태일 때
+          if(notiList.classList.contains("notification-show")){
+            notiList.classList.remove("notification-show");
+            notiList.classList.add("notification-showx")
+            return;
+        }
+
+        /* 로그인 상태인 경우 알림 목록을 바로 비동기로 조회 */
+        selectNotificationFn();
+        notiList.classList.remove("notification-showx");
+        notiList.classList.add("notification-show");
+    })
+})
+
+
 
 
 

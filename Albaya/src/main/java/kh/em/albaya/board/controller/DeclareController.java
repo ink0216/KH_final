@@ -44,8 +44,7 @@ public class DeclareController {
 	public String selectDeclareList(
 			@PathVariable("declareBoardCode") int declareBoardCode,
 			Model model,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
-			@RequestParam Map<String, Object> paramMap) {
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 		
 		
 		Map<String, Object> map = null; 
@@ -64,10 +63,13 @@ public class DeclareController {
 	 */
 	@ResponseBody
 	@GetMapping("selectList")
-	public List<Declare> selectDeclareList() {
+	public Map<String, Object> selectDeclareList(
+			@RequestParam ("cp") int cp) {
 		
-		List<Declare> declareList = service.selectDeclareList();		
-		return declareList;
+		Map<String, Object> map = null; 
+		map = service.selectDeclareList(1,cp);
+		
+		return map;
 	}
 	
 	

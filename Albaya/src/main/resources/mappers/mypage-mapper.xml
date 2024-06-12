@@ -141,4 +141,16 @@
 		WHERE SHOP_NO = #{shopNo}
 	</update>
 	
+	<select id="applyList">
+		SELECT * FROM "APPLY_HIRE"
+		LEFT JOIN "HIRE" USING (HIRE_NO)
+		WHERE MEMBER_NO=#{memberNo}
+		ORDER BY HIRE_NO DESC
+	</select>
+	
+	<select id="applyCount">
+		SELECT COUNT(*) FROM "APPLY_HIRE"
+		LEFT JOIN "HIRE" USING (HIRE_NO)
+		WHERE MEMBER_NO=#{memberNo}
+	</select>
 </mapper>
