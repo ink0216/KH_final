@@ -34,10 +34,10 @@
                         <tr>
                             <td th:text="${declare.reviewBoardDeclareNo}"></td>
                             <td><a th:unless="${param.key}" id="connectToReviewBoard"
-                                    th:href="@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}"
+                                    th:href="@{/reviewBoard/2/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}"
                                     th:text="${declare.reviewBoardNo}"></a> </td>
                             <td th:text="${declare.memberNo}"></td>
-                            <td th:text="${declare.boardDeclareContent}"></td>
+                            <td><div class="boardDeclareContent" th:text="${declare.boardDeclareContent}"></div></td>
                             <td th:text="${declare.reviewBoardCondition}"></td>
                             <td th:text="${declare.boardDeclareDate}"></td>
                             <td th:text="${declare.reportedMemberNo}"></td>
@@ -62,54 +62,43 @@
 
 
     <div class="pagination-area">
+        <div class="pagination-area">
 
-        <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">
-
-
-        <!-- 첫 페이지로 이동 -->
-        <li><span class="page-link" data-cp="1">&lt;&lt;</span></li>
-
-        <!-- 이전 목록 마지막 번호로 이동 -->
-        <li><span class="page-link" th:data-cp="*{prevPage}">&lt;</span></li>
-
-        <!-- 특정 페이지로 이동 -->
-        
-        <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-        <!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
-            
-            <!-- 현재 보고있는 페이지 -->
-            <li th:if="${i} == *{currentPage}">
-                <span class="current" th:text="${i}">현재 페이지</span>
-            </li>
-
-            <!-- 보고있지 않은 페이지 -->
-            <li th:unless="${i} == *{currentPage}"> 
-                <span class="page-link" th:data-cp="${i}" th:text="${i}">이동할 페이지</span>
-            </li>
-
-                <!-- 현재 보고있는 페이지 -->
-                <li th:if="${i} == *{currentPage}">
-                    <span class="current" th:text="${i}">현재 페이지</span>
-                </li>
-
-                <!-- 보고있지 않은 페이지 -->
-                <li th:unless="${i} == *{currentPage}">
-                    <span class="page-link" th:data-cp="${i}" th:text="${i}">이동할 페이지</span>
-                </li>
-
-            </th:block>
-
- 
-
-
-            <!-- 다음 목록 시작 번호로 이동 -->
-            <li><span class="page-link" th:data-cp="*{nextPage}">&gt;</span></li>
-
-            <!-- 끝 페이지로 이동 -->
-            <li><span class="page-link" th:data-cp="*{maxPage}">&gt;&gt;</span></li>
-
-        </ul>
-
+            <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">
+    
+                <!-- 첫 페이지로 이동 -->
+                <li><span class="page-link" data-cp="1">&lt;&lt;</span></li>
+    
+                <!-- 이전 목록 마지막 번호로 이동 -->
+                <li><span class="page-link" th:data-cp="*{prevPage}">&lt;</span></li>
+    
+                <!-- 특정 페이지로 이동 -->
+    
+                <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
+                    <!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
+    
+                    <!-- 현재 보고있는 페이지 -->
+                    <li th:if="${i} == *{currentPage}">
+                        <span class="current" th:text="${i}">현재 페이지</span>
+                    </li>
+    
+                    <!-- 보고있지 않은 페이지 -->
+                    <li th:unless="${i} == *{currentPage}">
+                        <span class="page-link" th:data-cp="${i}" th:text="${i}">이동할 페이지</span>
+                    </li>
+    
+                </th:block>
+    
+    
+    
+                <!-- 다음 목록 시작 번호로 이동 -->
+                <li><span class="page-link" th:data-cp="*{nextPage}">&gt;</span></li>
+    
+                <!-- 끝 페이지로 이동 -->
+                <li><span class="page-link" th:data-cp="*{maxPage}">&gt;&gt;</span></li>
+    
+            </ul>
+    
 
 
         <div id="declareExplain" class="explain">

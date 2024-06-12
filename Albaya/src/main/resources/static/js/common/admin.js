@@ -73,6 +73,7 @@ const selectList = (cp) => {
                         link.innerText = declare[key];
 
                         link.classList.add("connectToReviewBoard");
+                        
 
                         td.appendChild(link);
 
@@ -86,6 +87,7 @@ const selectList = (cp) => {
 
 
                 }
+
 
 
 
