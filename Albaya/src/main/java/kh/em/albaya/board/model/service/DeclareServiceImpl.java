@@ -54,14 +54,6 @@ public class DeclareServiceImpl implements DeclareService{
 	}
 	
 	
-	//비동기 게시글 신고 목록 조회
-	@Override
-	public List<Declare> selectDeclareList() {
-		return mapper.selectDeclareList();
-	}
-		
-	
-	
 
 	
 	
@@ -86,17 +78,7 @@ public class DeclareServiceImpl implements DeclareService{
 		return result;
 	}
 	
-	
-	
-//	// 중복 신고 게시물
-//	@Override
-//	public int duplicateDeclare(String reviewBoardCondition) {
-//		
-//		int result = mapper.duplicateDeclare(reviewBoardCondition);
-//		
-//		return result;
-//	}
-	
+
 
 	
 	
@@ -119,6 +101,8 @@ public class DeclareServiceImpl implements DeclareService{
 		
 		// 신고횟수 누적
 		int result3 = mapper.changeMemberCondition(reviewBoardDeclareNo);
+		
+		mapper.stopMember(reviewBoardDeclareNo);
 		
 		
 		if(result>0 && result2>0 && result3>0) {

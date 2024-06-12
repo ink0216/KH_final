@@ -45,6 +45,8 @@
 
     const inputGender = document.querySelectorAll(".inputGender");
 
+    const signupForm = document.querySelector("#signupForm");
+
 
     const postcode = document.querySelector("#postcode");
     const address = document.querySelector("#address");
@@ -165,7 +167,7 @@
         })
         .then(resp => resp.text())
         .then(result => {               
-            if(result == 1){
+            if(result > 0){
                 emailVerify.classList.add("fail");
                 emailVerify.classList.remove("success");
                 emailVerify.innerText = "이미 존재하는 이메일입니다";
@@ -187,6 +189,12 @@
     /* 비밀번호 유효검사 */
     
     inputPw.addEventListener("input", () => {
+
+        const member = {
+            "memberPw":inputPw.value,
+            "memberEmail":inputEmail.value
+
+        };
         
         const regExp = /^[a-zA-Z0-9!@#_-]{8,20}$/;
         if(inputPw.value.trim().length === 0){
@@ -205,18 +213,26 @@
         fetch("/member/checkPwRedundancy",{
             method: "POST",
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(inputPw.value)
+            body: JSON.stringify(member)
         })
-        .then(resp => resp.text())
+        .then(resp => resp.json())
         .then(result => {
-            console.log(result);
+            if(result==1){
+                passwordVerify.classList.add("fail");
+                passwordVerify.classList.remove("success");
+                passwordVerify.innerText = "기존과 다른 비밀번호를 입력하세요";
+                obj.memberPw = false;
+                return;
+            }
+            passwordVerify.classList.add("success");
+            passwordVerify.classList.remove("fail");
+            passwordVerify.innerText = "사용 가능한 비밀번호 입니다";
+            obj.memberPw = true;
+
         })
        
         
-        passwordVerify.classList.add("success");
-        passwordVerify.classList.remove("fail");
-        passwordVerify.innerText = "올바른 비밀번호 형식입니다";
-        obj.memberPw = true;
+       
     })
 
     /*전화번호 유효검사*/
@@ -344,6 +360,44 @@
         }
         validation();
     });
+
+    signupForm.addEventListener("submit", () => {
+
+    })
+
+    /* const obj = {
+        "memberEmail":false,
+        "memberPw":false,
+        "memberPhoneNumber":false,
+        "memberName":false,
+        "memberGender":false,
+        "memberAddress":false,
+        "authState":false
+    };
+ */
+
+    signupForm.addEventListener("submit", e => {
+        for(let key in obj){
+            if(!obj[key]){
+                let str;
+                switch(key){
+                    case "memberEmail":str="이메일을 올바르게 입력하세요"; break;
+                    case "memberPw":str="비밀번호를 올바르게 입력하세요"; break;
+                    case "memberPhoneNumber":str="전화번호를 올바르게 입력하세요"; break;
+                    case "memberName":str="이름을 올바르게 입력하세요"; break;
+                    case "memberGender":str="성별을 올바르게 입력하세요"; break;
+                    case "memberAddress":str="주소를 올바르게 입력하세요"; break;
+                    case "authState":str="인증번호를 올바르게 입력하세요"; break;
+                }
+                alert(str);
+                e.preventDefault();
+                return;
+            }
+        }
+
+    })
+  
+    
 
     
 

@@ -56,6 +56,14 @@ public class MemberServiceImpl implements MemberService{
 		
 		loginMember.setMemberPw(null);
 		
+		// 로그인 성공 했는데 memberStatus 3(정지)인 경우
+		// == 정지 기간이 지나서 로그인 할 수있는 회원
+		// -> 3번을 4번으로 수정
+		if(loginMember.getMemberStatus().equals("3")) {
+			// 수정
+			int result = mapper.updateMember();
+		}
+		
 		return loginMember;
 	}
 	
@@ -111,11 +119,14 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.checkTel(memberPhoneNumber);
 	}
 	
-	@Override
-	public boolean checkPw(String memberPw) {
-		String getCheckPw = mapper.getCheckPw();
-		return bcrypt.matches(memberPw, getCheckPw);
-		
+@Override
+public int checkPw(String memberEmail, String memberPw) {
+	String storedEncPwd =  mapper.getStoredPwd(memberEmail);
+	if(storedEncPwd!=null && bcrypt.matches(memberPw, storedEncPwd)) {
+		return 1;
 	}
+	return 0;
+	
+}
 	
 }

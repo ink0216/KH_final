@@ -131,6 +131,12 @@ hr{
 
 }
 
+#days{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 
 /* 이미지 글씨 부분 */
 .hireTitleImg{

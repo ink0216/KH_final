@@ -127,5 +127,13 @@
 	</update>
 	
 	
+	<update id="stopMember">
+		UPDATE "MEMBER" SET 
+		SUSPEND_PERIOD = CURRENT_DATE + 7
+		WHERE MEMBER_NO = (SELECT REPORTED_MEMBER_NO
+		  FROM BOARD_DECLARE
+		  WHERE REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo})
+		AND MEMBER_STATUS = 3
+	</update>
 	
 </mapper>

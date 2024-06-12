@@ -4,7 +4,7 @@ const commentDeclareBtn = document.querySelector("#commentDeclareBtn");
 
 document.querySelector("#commentDeclareFrm").addEventListener("submit", e => {
 
-    const commentDeclareContent = document.querySelector("[name='boardCommentDeclareContent']");
+    const commentDeclareContent = document.querySelector("[name='commentDeclareContent']");
     
 
     // 테스트용

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kh.em.albaya.board.model.dto.CommentDeclare;
 import kh.em.albaya.board.model.dto.Declare;
@@ -14,6 +15,7 @@ import kh.em.albaya.board.model.mapper.CommentDeclareMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class CommentDeclareServiceImpl implements CommentDeclareService {
 	
@@ -29,7 +31,7 @@ public class CommentDeclareServiceImpl implements CommentDeclareService {
 	@Override
 	public Map<String, Object> selectCommentDeclareList(int declareBoardCode, int cp) {
 		// 처리중인 신고 게시물 수
-		int listCount = mapper.getDeclareCount(declareBoardCode);
+		int listCount = mapper.getCommentDeclareCount(declareBoardCode);
 				
 		Pagination pagination = new Pagination(cp, listCount);
 				
@@ -46,6 +48,13 @@ public class CommentDeclareServiceImpl implements CommentDeclareService {
 				
 				return map;
 	}
+	
+	// 비동기
+	@Override
+	public List<CommentDeclare> selectCommentDeclareList() {
+		return mapper.selectCommentDeclareList();
+	}
+	
 	
 	// 댓글 신고 하기
 	@Override
@@ -79,7 +88,21 @@ public class CommentDeclareServiceImpl implements CommentDeclareService {
 	// 댓글 신고 확정
 	@Override
 	public int completeDeclare(int commentDeclareNo) {
-		return mapper.completeDeclare(commentDeclareNo);
+		
+		// 신고확정
+		int result = mapper.completeDeclare(commentDeclareNo);
+		
+		// 회원상태 변경
+		int condition = mapper.changeMemberCondition(commentDeclareNo);
+		
+		// 댓글 삭제
+		int member = mapper.updateCommentDelete(commentDeclareNo);
+		
+		if(result > 0 && condition > 0 && member > 0) {
+			return  1;
+		}else {
+			throw new RuntimeException();
+		}
 	}
 	
 	

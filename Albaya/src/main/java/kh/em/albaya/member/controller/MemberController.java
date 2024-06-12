@@ -254,8 +254,11 @@ public class MemberController {
     
     @PostMapping("checkPwRedundancy")
     @ResponseBody
-    public boolean checkPw(@RequestBody Member member) {
-    	return service.checkPw(member.getMemberPw());
+    public int checkPw(@RequestBody Member member) {
+    	String memberEmail =  member.getMemberEmail();
+    	String memberPw = member.getMemberPw();
+    	
+    	return service.checkPw(memberEmail, memberPw);
     }
     
     
