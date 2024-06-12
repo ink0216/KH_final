@@ -1,6 +1,6 @@
 body{
     font-family:'TheJamsil5Bold';
-    background-color: rgb(228, 242, 238);
+    background-color: #f2f7f7;
 
 }
 
@@ -21,45 +21,63 @@ body{
 
 
 #adminPageBox{
-    width: 1900px;
-    height:100%;
-    margin-top:80px;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
-#declareExplain{
-    margin-top:60px;
-    font-family:'SUIT-Regular';
-    font-size: 25px;
-    margin-bottom:100px;
+#adminPageBox h1{
+    font-size: 30px;
+    font-family: 'TheJamsil5Bold';
+    width: 900px;
+    min-width: 760px
+}
+
+.explain{
+    border: 0.5px solid #ddd;
+    width: 900px;
+    min-width: 760px;
+    margin-top: 60px;
+    font-family: 'SUIT-Regular';
+    font-size: 15px;
+    margin-bottom: 100px;
+    color: rgb(14 14 14);
+    border-radius: 15px;
+    padding: 15px;
+    background: white;
 }
 
 
 .reject{
-    font-family:'SUIT-Regular';
-    width:90px;
-    height:40px;
-    font-size:20px;
-    margin:7px;
+    font-family: 'SUIT-Regular';
+    width: 50px;
+    height: 20px;
+    font-size: 20px;
+    margin: 7px;
     background-color: green;
-    color:white;
-    font-size:20px;
-    border-radius:15px;
-    border:none;
+    color: white;
+    font-size: 12px;
+    border-radius: 15px;
+    border: none;
 }
 
 
 .accept{
-    font-family:'SUIT-Regular';
-    width:90px;
-    height:40px;
-    font-size:20px;
-    margin:7px;
+    font-family: 'SUIT-Regular';
+    width: 50px;
+    height: 20px;
+    font-size: 20px;
+    margin: 7px;
     background-color: rgb(247, 25, 25);
-    color:white;
-    font-size:20px;
-    border-radius:15px;
-    border:none;
+    color: white;
+    font-size: 12px;
+    border-radius: 15px;
+    border: none;
 }
 
 
@@ -79,16 +97,17 @@ table{
 }
 
 .table-container {
-    width: 80%;
-    overflow-x: auto;
-    margin-left:290px;
+    width: 900px;
+    /* overflow-x: auto;
+    margin-left:290px; */
 }
 
 .styled-table {
     width: 100%;
+    min-width: 765px;
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 18px;
+    /* margin: 25px 0; */
+    font-size: 12px;
     text-align: left;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     
@@ -102,7 +121,7 @@ table{
 
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+    padding: 5px 5px;
 }
 
 .styled-table tbody tr {
@@ -123,13 +142,13 @@ table{
 }
 
 .styled-table tr > *:nth-of-type(1){
-    width:4%;
+    width:5%;
     text-align:center;
 }
     
 .styled-table tr > *:nth-of-type(2){
-    width:7%;
-    text-align:center; 
+    width: 10%;
+    text-align: center;
 }
 
     
@@ -138,12 +157,14 @@ table{
     text-align:center;
 }
 .styled-table tr > *:nth-of-type(4){
-    width:43%;
+    width: 30%;
+    overflow-y: auto;
+    font-weight: bold;
    
    
 }
 .styled-table tr > *:nth-of-type(5){
-    width:4%;
+    width:5%;
     text-align:center;
 }
 .styled-table tr > *:nth-of-type(6){
@@ -157,6 +178,11 @@ table{
 .styled-table tr > *:nth-of-type(8){
     width:20%;
 }
+
+.buttonArea{
+    display: flex;
+    justify-content: center;
+}
     
 
 th{
@@ -169,20 +195,21 @@ th{
 
 
 .pagination{
+    
     list-style: none;
-    margin-top:40px;
+    /* margin-top: 40px; */
     display: flex;
     justify-content: center;
     padding: 0;
-    font-family: 'SUIT-Regular';
-    text-decoration: none;
-    font-size:22px;
-    margin-right:450px;
+    /* font-family: 'SUIT-Regular'; */
+    /* text-decoration: none; */
+    /* font-size: 22px; */
+    /* margin-right: 450px;*/
  }
  
  .pagination li{
-    width: 50px;
-    margin: 0 5px;
+    width: 20px;
+    margin: 0px 10px;
     text-align: center;
     
  }
@@ -199,7 +226,6 @@ th{
  
  .pagination span{
     display: block;
- 
     height: 100%;
     cursor: pointer;
     user-select: none;
@@ -208,9 +234,12 @@ th{
  .current{
     font-weight: bold;
     background-color: #014C73;
-    border-radius: 10px;
+    border-radius: 50%;
     color: white !important;
     letter-spacing: 0 !important;
+    padding: 1px 8px;
+    user-select: none;
+    cursor: pointer;
  }
  
 
@@ -229,36 +258,36 @@ th{
 
  #adminTitle{
 
-    margin-left:290px;
+    /* margin-left:290px; */
  }
 
 
  .pagination-area{
 
-    margin-left : 290px;
+    /* margin-left : 290px; */
  }
 
 
 
 
  #checkMemberStatus{
-    margin-left : 290px;
+    /* margin-left : 290px; */
+    width: 900px;
+    min-width: 760px;
  }
 
 
  #checkMemberStatusTitle {
-
     font-family: 'TheJamsil5Bold';
-    font-size : 58px;
-    margin-bottom:27px;
+    font-size: 20px;
+    /* margin-bottom: 27px;*/
  }
 
 
  #checkMemberStatusContent {
-
     font-family: 'TheJamsil5Bold';
-    font-size:32px;
-    margin-bottom:20px;
+    font-size: 15px;
+    /* margin-bottom: 20px;*/
  }
 
 
@@ -269,27 +298,53 @@ th{
     color : #014C73;
  }
 
+ .checkMember-div{
+    display: flex;
+    /* margin: 0px; */
+    font-size: 15px;
+    align-items: center;
+    height: 35px;
+ }
+
+ .cmsc-p{
+    width: 100px;
+ }
+.cmsc-p2{
+    color: red;
+    font-weight: bold;
+    width: 15px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+
+.search-container{
+    margin-top: 20px;
+}
 
  #inputMemberNo {
-    margin-top:30px;
-    width:100px;
-    height:30px;
-    font-size:25px;
+       /* margin-top: 30px; */
+       width: 50px;
+       height: 15px;
+       font-size: 15px;
+       padding: 3px;
  }
 
 
 
  #searchBtn {
-
-    margin-left:15px;
-    width:90px;
-    height:30px;
-    background-color: #014C73;
-    border : none;
+    margin-left: 5px;
+    width: 40px;
+    height: 20px;
+    background-color: #071821;
+    border: none;
     color: white;
-    font-size:20px;
+    font-size: 12px;
     font-family: 'SUIT-Regular';
-    border-radius:5px;
+    border-radius: 5px;
  }
 
  #searchBtn:hover {
@@ -311,21 +366,61 @@ th{
     margin: 0;
 }
 
-
+.connectToCommentAdmin-btn{
+    width: 900px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
 #connectToCommentAdmin{
-    background-color : #014C73;
-    font-size:1.2em;
-    color : white;
-    margin-left: 290px;
-    border-radius: 10px;
-    height:40px;
-    border:none;
+    background-color: #eca50b;
+    font-size: 13px;
+    color: white;
+    /* margin-left: 290px; */
+    border-radius: 5px;
+    height: 26px;
+    border: none;
 }
 
 #connectToCommentAdmin:hover{
     cursor:pointer;
 }
 
+/* *************************************************************** */
+
+#commentAdminPageBox{
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#commentAdminPageBox h1{
+    font-size: 30px;
+    font-family: 'TheJamsil5Bold';
+    width: 900px;
+    min-width: 760px
+}
+
+.connectToDeclareAdmin-btn{
+    width: 900px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
+#connectToDeclareAdmin{
+    background-color: #009879;
+    font-size: 13px;
+    color: white;
+    /* margin-left: 290px; */
+    border-radius: 5px;
+    height: 26px;
+    border: none;
+    cursor: pointer;
 
 .boardDeclareContent{
     max-height: 62.55px; 

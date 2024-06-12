@@ -92,7 +92,8 @@ const selectList = (cp) => {
 
                 const buttonTd = document.createElement("td");
 
-
+                const div = document.createElement("div");
+                div.classList.add("buttonArea");
 
                 const reject = document.createElement("button");
                 reject.innerText = "반려";
@@ -105,8 +106,8 @@ const selectList = (cp) => {
                 accept.classList.add("accept");
 
 
-
-                buttonTd.append(reject, accept);
+                div.append(reject,accept);
+                buttonTd.append(div);
                 tr.append(buttonTd);
 
 
