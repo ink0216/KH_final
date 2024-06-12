@@ -43,7 +43,7 @@ goHireLocation.addEventListener("click",()=>{
 
 const goReview2 = document.getElementById('goReview2');
 goReview2.addEventListener("click",()=>{
-    location.href='/reviewBoard/2';
+    location.href='/reviewBoard/2?cp=1';
 });
 
 

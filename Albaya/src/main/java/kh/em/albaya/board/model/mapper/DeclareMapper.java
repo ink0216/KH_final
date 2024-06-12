@@ -104,12 +104,6 @@ public interface DeclareMapper {
 	int updateReviewBoard(int reviewBoardDeclareNo);
 	
 
-
-	List<Declare> selectDeclareList();
-
-
-
-
 	
 
 }

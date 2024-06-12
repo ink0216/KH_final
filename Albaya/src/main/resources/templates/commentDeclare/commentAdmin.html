@@ -29,10 +29,9 @@
             <th:block th:each="commentDeclare : ${commentDeclareList}" th:object="${commentDeclare}">
                 <tr>
                     <td th:text="${commentDeclare.commentDeclareNo}"></td>
-                    <!-- <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${commentDeclare.commentNo}"></a> </td> -->
-                    <td th:text="${commentDeclare.commentNo}"> </td>
+                    <td th:text="${commentDeclare.commentNo}"> </td>               
                     <td th:text="${commentDeclare.memberNo}"></td>
-                    <td th:text="${commentDeclare.commentDeclareContent}"></td>
+                    <td><div class="commentDeclareContent" th:text="${commentDeclare.commentDeclareContent}"></div></td>
                     <td th:text="${commentDeclare.commentDeclareCondition}"></td>
                     <td th:text="${commentDeclare.commentDeclareDate}"></td>
                     <td th:text="${commentDeclare.reportedMemberNo}"></td>
@@ -55,10 +54,10 @@
     <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">    
 
         <!-- 첫 페이지로 이동 -->
-        <li><a th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=1)}">&lt;&lt;</a></li>
+        <li span class="page-link" data-cp="1">&lt;&lt;</span></li>
 
         <!-- 이전 목록 마지막 번호로 이동 -->
-        <li><a th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{prevPage})}">&lt;</a></li>
+        <li span class="page-link" th:data-cp="*{prevPage}">&lt;&lt;</span></li>
 
         <!-- 특정 페이지로 이동 -->
         
@@ -68,14 +67,13 @@
             <!-- 현재 보고있는 페이지 -->
             <li th:if="${i} == *{currentPage}">
             
-                <a class="current" th:text="${i}">현재 페이지</a>
-            <!-- </li> -->
+                <span class="current" th:text="${i}">현재 페이지</span>
+            </li>
 
             <!-- 보고있지 않은 페이지 -->
             <li th:unless="${i} == *{currentPage}"> 
             
-                <a th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=${i})}" 
-                      th:text="${i}">이동할 페이지</a> 
+                <span class="page-link" th:data-cp="${i}" th:text="${i}">이동할 페이지</span> 
             </li>
 
         </th:block>
@@ -83,10 +81,10 @@
 
 
         <!-- 다음 목록 시작 번호로 이동 -->
-        <li><a th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{nextPage})}">&gt;</a></li>
+        <li><span class="page-link" th:data-cp="*{nextPage}">&gt;</span></li>
 
         <!-- 끝 페이지로 이동 -->
-        <li><a th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
+        <li><span class="page-link" data-cp="*{maxPage}">&gt;&gt;</span></li>
     </ul>
 
 
@@ -137,6 +135,8 @@
 <!-- <script src="/js/common/admin.js"></script> -->
 <script th:inline="javascript">
     const currentPage = /*[[${pagination.currentPage}]]*/"페이지번호";
+    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입"; 
+
 </script>
 
 
