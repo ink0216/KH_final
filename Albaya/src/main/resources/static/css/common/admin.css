@@ -226,9 +226,12 @@ th{
  .current{
     font-weight: bold;
     background-color: #014C73;
-    border-radius: 10px;
+    border-radius: 50%;
     color: white !important;
     letter-spacing: 0 !important;
+    padding: 1px 8px;
+    user-select: none;
+    cursor: pointer;
  }
  
 

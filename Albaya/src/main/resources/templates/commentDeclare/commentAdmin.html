@@ -60,18 +60,13 @@
 
         <div class="pagination-area">
 
-            <!-- 일반 목록 조회 ( 검색 X ) -->
             <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">
 
                 <!-- 첫 페이지로 이동 -->
-                <li><a
-                        th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=1)}">&lt;&lt;</a>
-                </li>
+                <li><span class="page-link" data-cp="1">&lt;&lt;</span></li>
 
                 <!-- 이전 목록 마지막 번호로 이동 -->
-                <li><a
-                        th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{prevPage})}">&lt;</a>
-                </li>
+                <li><span class="page-link" th:data-cp="*{prevPage}">&lt;</span></li>
 
                 <!-- 특정 페이지로 이동 -->
 
@@ -80,15 +75,12 @@
 
                     <!-- 현재 보고있는 페이지 -->
                     <li th:if="${i} == *{currentPage}">
+                        <span class="current" th:text="${i}">현재 페이지</span>
+                    </li>
 
-                        <a class="current" th:text="${i}">현재 페이지</a>
-                        <!-- </li> -->
-
-                        <!-- 보고있지 않은 페이지 -->
+                    <!-- 보고있지 않은 페이지 -->
                     <li th:unless="${i} == *{currentPage}">
-
-                        <a th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=${i})}"
-                            th:text="${i}">이동할 페이지</a>
+                        <span class="page-link" th:data-cp="${i}" th:text="${i}">이동할 페이지</span>
                     </li>
 
                 </th:block>
@@ -96,16 +88,12 @@
 
 
                 <!-- 다음 목록 시작 번호로 이동 -->
-                <li><a
-                        th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{nextPage})}">&gt;</a>
-                </li>
+                <li><span class="page-link" th:data-cp="*{nextPage}">&gt;</span></li>
 
                 <!-- 끝 페이지로 이동 -->
-                <li><a
-                        th:href="@{/commentDeclare/{declareBoardCode}(declareBoardCode=${declareBoardCode}, cp=*{maxPage})}">&gt;&gt;</a>
-                </li>
-            </ul>
+                <li><span class="page-link" th:data-cp="*{maxPage}">&gt;&gt;</span></li>
 
+            </ul>
 
 
             <div id="commentDeclareExplain" class="explain">
