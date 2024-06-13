@@ -10,53 +10,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import kh.em.albaya.member.model.dto.Member;
+import kh.em.albaya.shop.model.dto.Shop;
 import kh.em.albaya.websocket.model.dto.Notification;
 import kh.em.albaya.websocket.model.service.NotificationService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("notification")
 @RequiredArgsConstructor
+@Slf4j
 public class NotificationController {
 
 	private final NotificationService service;
-	
-	/** 읽지 않은 알림 개수 조회
-	 * @param loginMember
-	 * @return
-	 */
+
 	@GetMapping("notReadCheck")
-	public int notReadCheck(@SessionAttribute("loginMember") Member loginMember) {
-		return service.notReadCheck(loginMember.getMemberNo());
+	public int notReadCheck(@SessionAttribute("loginShop") Shop loginShop) {
+		return service.notReadCheck(loginShop.getShopNo());
 	}
 	
-	/** 알림 목록 조회
-	 * @param loginMember
-	 * @return
-	 */
 	@GetMapping("")
-	public List<Notification> selectNotification(@SessionAttribute("loginMember") Member loginMember) {
-		int receiveMemberNo = loginMember.getMemberNo();
-		return service.selectNotification(receiveMemberNo);
+	public List<Notification> selectNotification(@SessionAttribute("loginShop") Shop loginShop) {
+		int receiveShopNo = loginShop.getShopNo();
+		return service.selectNotification(receiveShopNo);
 	}
 	
-	
-	/** 알림 읽음으로 변경
-	 * @param notificationNo
-	 */
 	@PutMapping("")
 	public void updateNotification(@RequestBody int notificationNo) {
 		service.updateNotification(notificationNo);
+        log.info("Updated notification with notificationNo: {}", notificationNo);
+
 	}
 	
-	
-	/** 알림 삭제
-	 * @param notificationNo
-	 * @return 읽지 않은 알림 개수
-	 */
 	@DeleteMapping("")
-	public int deleteNotification(@RequestBody int notificationNo, @SessionAttribute("loginMember") Member loginMember) {
-		return service.deleteNotification(notificationNo, loginMember.getMemberNo());
+	public int deleteNotification(@RequestBody int notificationNo, @SessionAttribute("loginShop") Shop loginShop) {
+		return service.deleteNotification(notificationNo, loginShop.getShopNo());
 	}	
 }

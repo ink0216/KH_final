@@ -338,11 +338,14 @@ header * {
   }
   
   .notification-content-container{
+    display: flex;
+    align-items: center;
     height: 90%;
   }
   
   .notification-date{
     font-size: 12px;
+    margin-left: 15px;
     color: gray;
   }
   
@@ -354,6 +357,7 @@ header * {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    margin-left: 30px;
   }
   
   .notidication-delete{
@@ -365,8 +369,9 @@ header * {
     font-size: 18px;
     font-weight: bold;
   }
-  
+
   .notidication-delete:hover{
+    cursor: pointer;
     color: red;
   }
   
