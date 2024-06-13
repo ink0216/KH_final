@@ -536,7 +536,7 @@ const picFile = document.querySelector("#picFile");
 
 const resumeTitle = document.querySelector("#title");
 const introduce = document.querySelector("#introduce");
-const educationShow = education.querySelector(".show");
+const educationShow = document.querySelector(".show");
 
 
 
@@ -553,11 +553,26 @@ const obj = {
 
 //사진 유효성 검사
 picFile.addEventListener("input", e => {
-    if(e.target.value.trim().length === 0){
-        e.target.value="";
+    if(e.target.value.length === 0){
         obj.image = false;
+        return;
     }
+    obj.image=true;
 });
+
+resumeTitle.addEventListener("input", e => {
+    if(e.target.value.trim().length === 0){
+       
+        e.target.value = "";
+        obj.resumeTitle=false
+        return;
+    }
+    obj.resumeTitle=true;
+});
+
+introduce.addEventListener("mousedown", () => {
+    
+})
 
 
 
