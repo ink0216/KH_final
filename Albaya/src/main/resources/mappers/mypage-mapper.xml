@@ -145,7 +145,7 @@
 		SELECT * FROM "APPLY_HIRE"
 		LEFT JOIN "HIRE" USING (HIRE_NO)
 		WHERE MEMBER_NO=#{memberNo}
-		ORDER BY HIRE_NO DESC
+		ORDER BY APPLY_DATE DESC
 	</select>
 	
 	<select id="applyCount">
