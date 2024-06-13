@@ -1,4 +1,3 @@
-
 const regExp = /^[a-zA-Z0-9!@#_\-\^]{8,20}$/;
 const changeBtn = document.querySelector("#changeBtn");
 let regExpStatus = false;
@@ -43,3 +42,11 @@ changeBtn.addEventListener("click", e => {
     regExpStatus = true;
 });
 
+
+/* 취소 버튼 클릭 */
+const cancelBtn = document.getElementById("cancelBtn");
+
+cancelBtn.addEventListener("click",()=>{
+    let url = "/myPage/myPageInfo";
+    location.href = url;
+})

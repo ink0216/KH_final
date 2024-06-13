@@ -1,11 +1,11 @@
 <form action="/myPage/memberInfoUpdate" method="POST">
     <main class="main-container-wrapper">
         <div class="main-container">
-            
+
             <div class="h1-area">
                 <h1>회원 정보 수정</h1>
             </div>
-            
+
             <div class="notice-area-container">
                 <div class="notice-area">
                     <ul class="notice">
@@ -22,8 +22,8 @@
                         <span>이메일</span>
                     </div>
                     <div class="info-row-right2">
-                        <input type="text" name="memberEmail"
-                        th:value="${session.loginMember.memberEmail}" id="memberEmail" readonly>
+                        <input type="text" name="memberEmail" th:value="${session.loginMember.memberEmail}"
+                            id="memberEmail" readonly>
                     </div>
                 </div>
                 <div class="info-row">
@@ -31,8 +31,7 @@
                         <span>이름</span>
                     </div>
                     <div class="info-row-right2">
-                        <input type="text" name="memberName"
-                        th:value="${session.loginMember.memberName}">
+                        <input type="text" name="memberName" th:value="${session.loginMember.memberName}">
                     </div>
                 </div>
                 <div class="info-row">
@@ -40,8 +39,10 @@
                         <span>성별</span>
                     </div>
                     <div class="info-row-right2">
-                        <input type="text" id="memberGender" th:value="${session.loginMember.memberGender == 1 ? '남자' : '여자'}" readonly>
-                        <input type="hidden" name="memberGender" id="memberGender" th:value="${session.loginMember.memberGender }">
+                        <input type="text" id="memberGender"
+                            th:value="${session.loginMember.memberGender == 1 ? '남자' : '여자'}" readonly>
+                        <input type="hidden" name="memberGender" id="memberGender"
+                            th:value="${session.loginMember.memberGender }">
                     </div>
                 </div>
                 <div class="info-row">
@@ -50,7 +51,8 @@
                     </div>
                     <div class="info-row-right">
 
-                        <input type="text" name="memberPhoneNumber" class="memberTel" id="memberTel" th:value="${session.loginMember.memberPhoneNumber}" readonly>
+                        <input type="text" name="memberPhoneNumber" class="memberTel" id="memberTel"
+                            th:value="${session.loginMember.memberPhoneNumber}" readonly>
                     </div>
                     <div class="info-row-btn-area">
                         <button type="button" id="changeTelBtn">변경하기</button>
@@ -92,6 +94,3 @@
     </main>
 
 </form>
-
-
-

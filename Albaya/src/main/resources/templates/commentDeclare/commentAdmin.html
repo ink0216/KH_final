@@ -61,38 +61,40 @@
         <div class="pagination-area">
 
             <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">
-    
+
+
                 <!-- 첫 페이지로 이동 -->
-                <li><span class="page-link" data-cp="1">&lt;&lt;</span></li>
-    
+                <li span class="page-link" data-cp="1">&lt;&lt;</span></li>
+
                 <!-- 이전 목록 마지막 번호로 이동 -->
-                <li><span class="page-link" th:data-cp="*{prevPage}">&lt;</span></li>
-    
+                <li span class="page-link" th:data-cp="*{prevPage}">&lt;&lt;</span></li>
+
                 <!-- 특정 페이지로 이동 -->
-    
+
                 <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
                     <!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
-    
+
                     <!-- 현재 보고있는 페이지 -->
                     <li th:if="${i} == *{currentPage}">
+
                         <span class="current" th:text="${i}">현재 페이지</span>
                     </li>
-    
+
                     <!-- 보고있지 않은 페이지 -->
                     <li th:unless="${i} == *{currentPage}">
+
                         <span class="page-link" th:data-cp="${i}" th:text="${i}">이동할 페이지</span>
                     </li>
-    
+
                 </th:block>
-    
-    
-    
+
                 <!-- 다음 목록 시작 번호로 이동 -->
                 <li><span class="page-link" th:data-cp="*{nextPage}">&gt;</span></li>
-    
+
                 <!-- 끝 페이지로 이동 -->
-                <li><span class="page-link" th:data-cp="*{maxPage}">&gt;&gt;</span></li>
-    
+                <li><span class="page-link" data-cp="*{maxPage}">&gt;&gt;</span></li>
+
+
             </ul>
 
             <div id="commentDeclareExplain" class="explain">
@@ -107,7 +109,6 @@
 
       
   
-    </ul>
 
 
         <div id="checkMemberStatus">
@@ -166,7 +167,7 @@
 <!-- <script src="/js/common/admin.js"></script> -->
 <script th:inline="javascript">
     const currentPage = /*[[${pagination.currentPage}]]*/"페이지번호";
-    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입"; 
+    const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입";
 
 </script>
 

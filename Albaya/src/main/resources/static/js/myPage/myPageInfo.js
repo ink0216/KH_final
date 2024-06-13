@@ -2,6 +2,9 @@ const updateMemberInfo = document.querySelector("#updateMemberInfo");
 const deleteMember = document.querySelector("#deleteBtn");
 const changePwBtn = document.querySelector("#changePwBtn");
 const hireApplyListBtn = document.querySelector("#hireApplyListBtn");
+const closeBtn = document.getElementById("close-btn");
+
+
 
 let shopProfileStatus = false;
 
@@ -38,6 +41,10 @@ deleteMember.addEventListener("click", () => {
 changePwBtn.addEventListener("click", () => {
     location.href = "/myPage/changePw";
 });
+
+closeBtn.addEventListener("click", ()=>{
+    location.href="/";
+})
 
 managerBtn.addEventListener("click", () => {
     location.href = "/declare/1?cp=1";
@@ -99,4 +106,7 @@ submitBtn.addEventListener("click", e => {
         return;
     }
 });
+
+
+
 
