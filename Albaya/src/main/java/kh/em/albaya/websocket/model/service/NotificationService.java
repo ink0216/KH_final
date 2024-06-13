@@ -11,7 +11,7 @@ public interface NotificationService {
 	 * @param receiveMemberNo
 	 * @return
 	 */
-	List<Notification> selectNotification(int receiveMemberNo);
+	List<Notification> selectNotification(int receiveShopNo);
 
 	/** 알림을 보낼 때 필요한 게시글 관련 값  조회
 	 * @param pkNo
@@ -35,12 +35,12 @@ public interface NotificationService {
 	 * @param memberNo
 	 * @return
 	 */
-	int notReadCheck(int memberNo);
+	int notReadCheck(int shopNo);
 
 	/** 알림 삭제
 	 * @param notificationNo
 	 * @param memberNo
 	 * @return 읽지 않은 알림 개수
 	 */
-	int deleteNotification(int notificationNo, int memberNo);
+	int deleteNotification(int notificationNo, int shopNo);
 }
