@@ -65,6 +65,6 @@ applyBtn.addEventListener("click",e=>{
         return;
     }
 
-    sendNotificationFn("hireApply", location.pathname, hireNo);
+    sendNotificationFn("hireApply", `/hire/hireApplyDetail/${memberNo}/${hireNo}`, hireNo);
 
 })

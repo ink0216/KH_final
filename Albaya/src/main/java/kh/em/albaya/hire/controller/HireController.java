@@ -239,7 +239,7 @@ public class HireController {
 	@PostMapping("hireApply/{hireNo}")
 	public void hireApply(
 	        @PathVariable("hireNo") int hireNo,
-	        @SessionAttribute("loginMember") Member loginMember,
+	        @SessionAttribute(value = "loginMember", required = false) Member loginMember,
 	        Hire hire,
 	        RedirectAttributes ra,
 	        Model model,
@@ -265,8 +265,12 @@ public class HireController {
 	
 
 	//지원서 상세조회(인서-테스트)
-	@GetMapping("hireApplyDetail")
-	public String hireApplyDetail() {
+	@GetMapping("hireApplyDetail/{memberNo:[0-9]+}/{hireNo:[0-9]+}")
+	public String hireApplyDetail(
+			@PathVariable("memberNo") int memberNo,
+			@PathVariable("hireNo") int hireNo) {
+//		Hire
+		
 		return "hire/hireApplyDetail";
 	}
 
