@@ -37,7 +37,7 @@
 	<insert id="insertNotification">
 		INSERT INTO "NOTIFICATION" VALUES
 		(SEQ_NOTI_NO.NEXTVAL, #{notificationContent}, DEFAULT, DEFAULT, 
-		#{notificationUrl}, #{sendMemberNo}, #{receiveMemberNo})
+		#{notificationUrl}, #{sendMemberNo}, #{receiveShopNo})
 	</insert>
 	
 	

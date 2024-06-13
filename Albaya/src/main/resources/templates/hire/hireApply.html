@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>알바 지원하기</title>
     <link rel="stylesheet" href="/css/hire/hire-apply.css">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
 </head>
 
 <body>
@@ -140,12 +142,7 @@
     </form>
 
     <script th:inline="javascript">
-        const message =  /*[[${message}]]*/ "전달 받은 message";
-        // message가 없다면 null
-
         const hireNo = /*[[${hireInfo.hireNo}]]*/ "게시글 번호";
-
-        if (message != null) alert(message);
     </script>
     <script src="/js/hire/hire-apply.js"></script>
 </body>
