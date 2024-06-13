@@ -39,7 +39,9 @@ document.querySelector("#reviewBoardWriteFrm").addEventListener("submit", e => {
         return;
     }
 
-    alert("게시글 작성이 완료되었습니다.");
+    
+
+    // alert("게시글 작성이 완료되었습니다.");
 })
 
 
@@ -69,10 +71,10 @@ cancelBtn.addEventListener("click",() => {
         url = url.substring(0, url.lastIndexOf("/"));
 
         // 쿼리스트링
-        location.href = url + location.search;
+        // location.href = url + location.search;
     
-
-        // location.href = '/reviewBoard/2/';
+        
+        location.href = '/reviewBoard/2';
 
     } else{
 

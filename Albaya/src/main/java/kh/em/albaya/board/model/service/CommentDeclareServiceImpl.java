@@ -46,7 +46,7 @@ public class CommentDeclareServiceImpl implements CommentDeclareService {
 		map.put("pagination", pagination);
 		map.put("commentDeclareList", commentDeclareList);
 				
-				return map;
+		return map;
 	}
 	
 	// 비동기

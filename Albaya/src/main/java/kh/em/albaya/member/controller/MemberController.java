@@ -121,6 +121,7 @@ public class MemberController {
 			return "redirect:/member/login";
 		}
 		
+		
 		if(loginMember != null) {
 			model.addAttribute("loginMember", loginMember);
 			

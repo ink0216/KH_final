@@ -68,11 +68,7 @@ public class MainController {
 	}	
 	
    
-   // 댓글 관리 페이지 임시용
-   @GetMapping("/declare/commentAdmin")
-   public String adminPage() {
-	   return "/declare/commentAdmin";
-   }
+ 
    
    
 }
