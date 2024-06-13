@@ -73,5 +73,7 @@ public class Hire {
 	private String memberEmail;
 	
 	private String hireDelFl;
+	
+	private int memberCount;
 
 }

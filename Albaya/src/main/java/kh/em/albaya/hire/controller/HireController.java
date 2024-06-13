@@ -120,12 +120,17 @@ public class HireController {
 		Hire hire = service.detailHire(hireNo);
 		String workDay1 = hire.getWorkDay(); //다 합쳐져있는 버전
 		
+		List<Hire> hireList = service.hireList(hireNo);
+		
+		int memberCount = service.memberCount(hireNo);
 		String[] workDayList = workDay1.split(",");
 		String workDay = null;
 		log.debug("workDay : "+workDay);
 		hire.setWorkDay(workDay);
 		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
+		model.addAttribute("hireList", hireList);
+		model.addAttribute("memberCount", memberCount);
 		
 		//모집 마감일과 비교해서 지원하기/모집 마감 보이기
 		int hireOpen = service.hireOpen(hireNo);

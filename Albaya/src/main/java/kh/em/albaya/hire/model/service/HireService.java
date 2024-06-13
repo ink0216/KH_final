@@ -133,11 +133,25 @@ public interface HireService {
 	 */
 	int hireDelete(int hireNo);
 
+
+	/** 지원한 사람들 조회
+	 * @param hireNo
+	 * @return
+	 */
+	List<Hire> hireList(int hireNo);
+
+	/** 지원한 사람 수 조회
+	 * @param hireNo
+	 * @return
+	 */
+	int memberCount(int hireNo);
+
 	/**해당 기업이 작성한 공고 모두 얻어오기
 	 * @param shopNo
 	 * @return
 	 */
 	List<Hire> myHireList(int shopNo);
+
 
 
 	
