@@ -312,4 +312,10 @@ public class HireServiceImpl implements HireService{
 	public List<Resume> resumeList(int memberNo) {
 		return mapper.resumeList(memberNo);
 	}
+	
+	//공고 삭제
+	@Override
+	public int hireDelete(int hireNo) {
+		return mapper.hireDelete(hireNo);
+	}
 }

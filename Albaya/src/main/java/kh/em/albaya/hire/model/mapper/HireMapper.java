@@ -196,6 +196,14 @@ public interface HireMapper {
 
 
 
+	/**공고 삭제
+	 * @param hireNo
+	 * @return
+	 */
+	int hireDelete(int hireNo);
+
+
+
 	
 
 	

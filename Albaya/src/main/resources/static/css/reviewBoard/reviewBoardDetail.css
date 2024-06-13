@@ -64,6 +64,8 @@ main{
     margin-bottom: 10px;
     border-top:2px solid rgb(168, 164, 164);
     padding-top:14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 #updateBtn{

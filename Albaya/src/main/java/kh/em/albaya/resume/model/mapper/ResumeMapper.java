@@ -73,6 +73,12 @@ public interface ResumeMapper {
 	 */
 	int resumeEducation(Resume resume);
 
+	/**해당 회원의 모든 이력서 조회하기(저장,임시저장 모두)
+	 * @param memberNo
+	 * @return
+	 */
+	List<Resume> allResumeList(int memberNo);
+
 	
 
 	

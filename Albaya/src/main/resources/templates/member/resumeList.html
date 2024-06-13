@@ -27,7 +27,7 @@
                     <h4>이력서 제목</h4>
                 </div>
                 <div class="recentUpdateDate">
-                    <h4>최종 수정일</h4>
+                    <h4>작성일</h4>
                 </div>
                 <div class="manage">
                     <h4>관리</h4>
@@ -41,35 +41,69 @@
                 <div><h3>맞춤알바</h3></div> -->
             </div>
 
-           
+           <th:block th:each=" resume: ${doneList}" th:object="${resume}">
             <div class="listContents">
                 <div class="check">
                     <input type="checkbox" class="tick">
                 </div>
                 <div class="resumeTitle">
-                    <h3>나의 이력서</h3><span>30% 작성됨(임시저장)</span>
+                    <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>저장</span>
                 </div>
 
                 <div class="recentUpdateDate">
-                    <p>12/06/2024 14:31</p>
+                    <p th:text="*{resumeDate}">12/06/2024 14:31</p>
                 </div>
                 <div class="manage">
                     <div id="buttons">
-                        <button type="button" id="update">작성</button>
+                        <button type="button" id="update">수정</button>
                         <button type="button" id="delete">삭제</button>
                     </div>
                 </div>
                 <div class="preferences">
-                    <p>고양동/서비스</p>
+                    <div>
+                        <p>고양동/서비스</p>
+                        <p>고양동/서비스</p>
+                    </div>
+                    
                 </div>
                
             </div>
+           </th:block>
+
+           <th:block th:each=" resume: ${semiList}" th:object="${resume}">
+            <div class="listContents">
+                <div class="check">
+                    <input type="checkbox" class="tick">
+                </div>
+                <div class="resumeTitle">
+                    <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>임시저장</span>
+                </div>
+
+                <div class="recentUpdateDate">
+                    <p th:text="*{resumeDate}">12/06/2024 14:31</p>
+                </div>
+                <div class="manage">
+                    <div id="buttons">
+                        <button type="button" id="update">수정</button>
+                        <button type="button" id="delete">삭제</button>
+                    </div>
+                </div>
+                <div class="preferences">
+                    <div>
+                        <p>고양동/서비스</p>
+                        <p>고양동/서비스</p>
+                    </div>
+                    
+                </div>
+               
+            </div>
+           </th:block>
+            
 
             
     
         </div>
     </div>
-    <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/member/resumeList.js"></script>
 </body>
 </html>

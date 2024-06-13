@@ -39,7 +39,7 @@ const selectCommentList = () => {
                 // 삭제된 댓글인데, 대댓글이 존재하는 경우 부모 댓글만 안보이게 하게 설정
             if(comment.commentDelFl == 'Y'){
 
-                    commentRow.innerText = "* 삭제된 댓글입니다 *";
+                    commentRow.innerText = "삭제된 댓글입니다.";
 
             } else {
                     // 부모 댓글이 삭제되지 않은 댓글일 경우 작성자, 날짜 감싸는 요소가 표시

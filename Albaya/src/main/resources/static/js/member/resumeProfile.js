@@ -5,6 +5,7 @@ const imgEditBtn = document.querySelector("#imgEditBtn");
 const picFile = document.querySelector("#picFile");
 const img = document.querySelector("img");
 const profImg = document.querySelector("#profImg")
+const backBtn = document.querySelector("#backBtn");
 
 //프로필 이미지 지정
 
@@ -48,3 +49,10 @@ imgEditBtn.addEventListener("click", () => {
     })
 
 })
+
+
+    backBtn.addEventListener("click", () => {
+        location.href = "/resume/resumeList"
+    });
+
+

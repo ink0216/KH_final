@@ -205,3 +205,48 @@ hr{
 }
 
 
+/* 공고 지원 회원 리스트 */
+.hireMember-list-div{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    flex-direction: column;
+    background-color: #f2faff;
+}
+
+.hireMember-count-area{padding: 10px 40px;}
+.hireMember-count{
+    width: 100%;
+    padding: 10px;
+    color: red;
+    font-weight: bold;
+}
+
+.hireMember-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hireMember-item{
+    margin: 3px 10px;
+    list-style: none;
+    width: 190px;
+}
+
+.memberEmail{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #009649;
+}
+
+.memberName{
+    margin: 2px;
+    font-size: 13px;
+    color: gray;
+}
+
+
+
