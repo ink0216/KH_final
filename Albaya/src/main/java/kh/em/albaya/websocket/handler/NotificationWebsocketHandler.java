@@ -103,6 +103,10 @@ public class NotificationWebsocketHandler extends TextWebSocketHandler{
     // afterConnectionClosed - 클라이언트와 연결이 종료되면 실행된다.
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+    	HttpSession currentSession =  (HttpSession)session.getAttributes().get("session");
+    	Member sendMember = ((Member)currentSession.getAttribute("loginMember"));
+
+    	log.info("{} 얘임", sendMember);
         sessions.remove(session);
         log.info("{}연결끊김",session.getId());
     }
