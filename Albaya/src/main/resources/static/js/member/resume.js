@@ -534,9 +534,9 @@ const picFile = document.querySelector("#picFile");
 
 /* 유효성 검사 */
 
-const resumeTitle = document.querySelector("#title");
 const introduce = document.querySelector("#introduce");
-const educationShow = document.querySelector(".show");
+const inputText = document.querySelectorAll(`input[type="text"]`);
+const inputDate = document.querySelectorAll(`input[type="date"]`);
 
 
 
@@ -560,23 +560,47 @@ picFile.addEventListener("input", e => {
     obj.image=true;
 });
 
-resumeTitle.addEventListener("input", e => {
-    if(e.target.value.trim().length === 0){
-       
-        e.target.value = "";
-        obj.resumeTitle=false
-        return;
-    }
-    obj.resumeTitle=true;
-});
 
-let isResizing = false;
+//input 요소 유효성 검사
 
+//input:text 요소 유효성 검사
+inputText.forEach((texts) => {
+    texts.addEventListener("input", () => {
+        if(texts.value.trim().length === 0){
+            switch(texts.id){
+                case "title":  obj.resumeTitle=false; break;
+                case "primarySchoolName":  obj.schoolName=false; break;
+                case "middleSchoolName":  obj.schoolName=false; break;
+                case "schoolName":  obj.schoolName=false; break;
+                case "companyName": obj.experienced=false; break;
+                case "searchCertificate": obj.certificate=false; break;
+                case "organization": obj.certificate=false; break;
+            }
+            texts.value = "";
+            return;
+        }
+        obj.resumeTitle=true;
+        obj.experienced=true;
+        obj.certificate=true;
+
+    });
+   
+})
+
+//textArea 사이즈 유효성 검사
+//
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
-           
+           if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
+            introduce.style.resize = "none";
+           }
     });
 });
+
+
+
+
+
 
 
 
