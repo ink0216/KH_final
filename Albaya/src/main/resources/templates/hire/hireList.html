@@ -24,7 +24,7 @@
 
                 </div>
                 <div class="resumeTitle">
-                    <h4>이력서 제목</h4>
+                    <h4>공고 제목</h4>
                 </div>
                 <div class="recentUpdateDate">
                     <h4>작성일</h4>
@@ -33,7 +33,7 @@
                     <h4>관리</h4>
                 </div>
                 <div class="preferences">
-                    <h4>맞춤알바</h4>
+                    <h4>모집 마감일</h4>
                 </div>
                
               <!--   <div><h3>최종 수정일</h3></div>
@@ -41,17 +41,17 @@
                 <div><h3>맞춤알바</h3></div> -->
             </div>
 
-           <th:block th:each=" resume: ${doneList}" th:object="${resume}">
+           <th:block th:each=" hire: ${hire0}" th:object="${hire}">
             <div class="listContents">
                 <div class="check">
                     <input type="checkbox" class="tick">
                 </div>
                 <div class="resumeTitle">
-                    <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>저장</span>
+                    <h3 th:text="*{hireTitle}">공고제목</h3><span>저장</span>
                 </div>
 
                 <div class="recentUpdateDate">
-                    <p th:text="*{resumeDate}">12/06/2024 14:31</p>
+                    <p th:text="*{hireStart}">12/06/2024 14:31</p>
                 </div>
                 <div class="manage">
                     <div id="buttons">
@@ -70,17 +70,17 @@
             </div>
            </th:block>
 
-           <th:block th:each=" resume: ${semiList}" th:object="${resume}">
+           <th:block th:each=" hire: ${hire1}" th:object="${hire}">
             <div class="listContents">
                 <div class="check">
                     <input type="checkbox" class="tick">
                 </div>
                 <div class="resumeTitle">
-                    <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>임시저장</span>
+                    <h3 th:text="*{hireTitle}">공고제목</h3><span>임시저장</span>
                 </div>
 
                 <div class="recentUpdateDate">
-                    <p th:text="*{resumeDate}">12/06/2024 14:31</p>
+                    <p th:text="*{hireStart}">12/06/2024 14:31</p>
                 </div>
                 <div class="manage">
                     <div id="buttons">
