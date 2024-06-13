@@ -163,4 +163,10 @@ public class ResumeServiceImpl implements ResumeService {
 		
 		return 1;
 	}
+	
+	//해당 회원의 모든 이력서 조회하기(저장,임시저장 모두)
+	@Override
+	public List<Resume> allResumeList(int memberNo) {
+		return mapper.allResumeList(memberNo);
+	}
 }
