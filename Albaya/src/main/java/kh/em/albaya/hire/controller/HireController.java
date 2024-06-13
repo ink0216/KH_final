@@ -35,7 +35,16 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class HireController {
 	private final HireService service;
-	
+	@GetMapping("hireList")
+	public String hireList(
+			@SessionAttribute("loginShop") Shop loginShop,
+			Model model
+			) {
+		int shopNo = loginShop.getShopNo();
+		List<Hire> hireList = service.myHireList(shopNo);
+		model.addAttribute("hireList",hireList);
+		return "/hire/hireList";
+	}
 	/**공고 등록 페이지로 이동
 	 * @return
 	 */
@@ -242,12 +251,13 @@ public class HireController {
 	        @SessionAttribute(value = "loginMember", required = false) Member loginMember,
 	        Hire hire,
 	        RedirectAttributes ra,
+	        @RequestParam("resumeNo") int resumeNo,
 	        Model model,
 	        HttpServletResponse response
 	) throws IOException{        
 	    int memberNo = loginMember.getMemberNo();
 	    
-	    int result = service.hireApply(memberNo, hire, hireNo);
+	    int result = service.hireApply(memberNo, hire, hireNo,resumeNo);
 	    
 	    String message = "지원이 완료되었습니다.";
 	    ra.addFlashAttribute("message", message);

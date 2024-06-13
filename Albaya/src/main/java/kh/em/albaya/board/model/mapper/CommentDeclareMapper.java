@@ -77,7 +77,11 @@ public interface CommentDeclareMapper {
 	 */
 	List<CommentDeclare> selectCommentDeclareList();
 	
-	int stopMember(int reviewBoardDeclareNo);
+	/** 일주일 정지
+	 * @param commentDeclareNo
+	 * @return
+	 */
+	int stopMember(int commentDeclareNo);
 
 	int selectManager(int memberNo);
 	

@@ -21,31 +21,43 @@ if(resumeRedirect != null){
 });
 
 
-const hireWriteBtn = document.getElementById('hireWriteBtn');
+const hireListBtn = document.getElementById('hireListBtn');
 const loginShop = /*[[${session.shopMember}]]*/'기업 회원'
+if(hireListBtn !=null){
+    hireListBtn.addEventListener("click",()=>{
+        // if(!loginShop){
+        //     alert("기업 회원만 공고문 작성이 가능합니다. ");
+        //     return;
+        // }
+        location.href='/hire/hireList';
+    })
+}
 
-hireWriteBtn?.addEventListener("click",()=>{
-    // if(!loginShop){
-    //     alert("기업 회원만 공고문 작성이 가능합니다. ");
-    //     return;
-    // }
-    location.href='/hire/hireWrite';
-})
+
 
 const goHireKind = document.getElementById('goHireKind');
-goHireKind.addEventListener("click",()=>{
-    location.href='/hire/hireKind';
-});
+if(goHireKind !=null){
+    goHireKind.addEventListener("click",()=>{
+        location.href='/hire/hireKind';
+    });
+}
+
 
 const goHireLocation = document.getElementById('goHireLocation');
-goHireLocation.addEventListener("click",()=>{
-    location.href='/hire/hireLocation';
-});
+if(goHireLocation !=null){
+    goHireLocation.addEventListener("click",()=>{
+        location.href='/hire/hireLocation';
+    });
+}
+
 
 const goReview2 = document.getElementById('goReview2');
-goReview2.addEventListener("click",()=>{
-    location.href='/reviewBoard/2?cp=1';
-});
+if(goReview2 !=null){
+    goReview2.addEventListener("click",()=>{
+        location.href='/reviewBoard/2?cp=1';
+    });
+}
+
 
 
 

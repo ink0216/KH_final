@@ -15,6 +15,7 @@ import kh.em.albaya.common.util.Utility;
 import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.myPage.model.mapper.MyPageMapper;
+import kh.em.albaya.resume.model.dto.Resume;
 import kh.em.albaya.shop.model.dto.Shop;
 import lombok.RequiredArgsConstructor;
 
@@ -210,7 +211,7 @@ public class MyPageServiceImpl implements myPageService{
 	}
 	@Override
 	public Map<String, Object> applyList(int memberNo) {
-		Map<String, Object> applyList = mapper.applyList(memberNo);
+		List<Hire> applyList = mapper.applyList(memberNo);
 		int applyCount = mapper.applyCount(memberNo);
 		
 		Map<String, Object> map = new HashMap<>();
