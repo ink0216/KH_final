@@ -39,7 +39,8 @@
             <div class="header-buttons">
 
                 <th:block th:if="${session.loginMember != null or session.loginShop !=null}">
-
+                <!-- 둘 중 하나로 로그인 한 경우 -->
+                
                     <!-- 알림 버튼 영역 -->
                     <div class="loginMember notification-container">
                         <!-- 알림 버튼 -->
@@ -53,12 +54,11 @@
                             <li class="notification-item">
                                 <div class="notification-text">
                                     <div class="notification-content-container">
-                                        <p class="notification-date">20분 전</p>
+                                        <p class="notification-date"></p>
 
                                         <!-- 개인 회원의 경우 -->
                                         <p class="notification-content">
-                                            <b>[쿠팡]</b>에서
-                                            <b>홍길동</b>님의 이력서를 조회하였습니다.
+
                                         </p>
 
                                         <!-- 기업 회원의 경우 -->
@@ -75,6 +75,7 @@
                             </ul>
                     </div>
                 </th:block>
+
 
 
 
@@ -104,12 +105,13 @@
                 <!-- </th:block> -->
 
                 <th:block th:if="${session.loginMember == null and session.loginShop ==null}">
+
                     <div id="divdiv">
                         <a href="/member/login" class="login">로그인</a> &nbsp;
                         &nbsp;
                         <a href="/member/selectSignup" class="login">회원가입</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn" id="resumeRedirect">이력서 관리</button>
-                        &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
+                        &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 관리</button>
                     </div>
                 </th:block>
 

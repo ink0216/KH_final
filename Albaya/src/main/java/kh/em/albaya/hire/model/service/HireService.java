@@ -120,11 +120,18 @@ public interface HireService {
 	 */
 	List<Resume> resumeList(int memberNo);
 
+	/** 지원서 상세보기
+	 * @param memberNo
+	 * @param hireNo
+	 * @return
+	 */
+	Hire hireApplyDetail(int memberNo, int hireNo);
 	/**공고 삭제
 	 * @param hireNo
 	 * @return
 	 */
 	int hireDelete(int hireNo);
+
 
 	
 
