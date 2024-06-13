@@ -24,7 +24,7 @@ if(resumeRedirect != null){
 const hireWriteBtn = document.getElementById('hireWriteBtn');
 const loginShop = /*[[${session.shopMember}]]*/'기업 회원'
 
-hireWriteBtn.addEventListener("click",()=>{
+hireWriteBtn?.addEventListener("click",()=>{
     // if(!loginShop){
     //     alert("기업 회원만 공고문 작성이 가능합니다. ");
     //     return;
