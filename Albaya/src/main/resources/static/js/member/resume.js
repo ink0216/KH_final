@@ -536,7 +536,7 @@ const picFile = document.querySelector("#picFile");
 
 const introduce = document.querySelector("#introduce");
 const inputText = document.querySelectorAll(`input[type="text"]`);
-const inputDate = document.querySelectorAll(`input[type="date"]`);
+const inputDate = document.querySelectorAll('input[type="date"]');
 
 
 
@@ -578,14 +578,25 @@ inputText.forEach((texts) => {
             }
             texts.value = "";
             return;
+            
         }
-        obj.resumeTitle=true;
-        obj.experienced=true;
-        obj.certificate=true;
+
+        switch(texts.id){
+            case "title":  obj.resumeTitle=true; break;
+            case "primarySchoolName":  obj.schoolName=true; break;
+            case "middleSchoolName":  obj.schoolName=true; break;
+            case "schoolName":  obj.schoolName=true; break;
+            case "companyName": obj.experienced=true; break;
+            case "searchCertificate": obj.certificate=true; break;
+            case "organization": obj.certificate=true; break;
+        }
+        
 
     });
    
-})
+});
+
+
 
 //textArea 사이즈 유효성 검사
 //
