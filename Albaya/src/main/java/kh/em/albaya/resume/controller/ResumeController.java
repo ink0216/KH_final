@@ -1,6 +1,7 @@
 package kh.em.albaya.resume.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -135,7 +136,27 @@ public class ResumeController {
 		return "redirect:/";
 	}
 	@GetMapping("resumeList")
-	public String getResumeList() {
+	public String getResumeList(
+			@SessionAttribute("loginMember") Member loginMember,
+			Model model
+			) {
+		int memberNo = loginMember.getMemberNo();
+		List<Resume> resumeList = service.allResumeList(memberNo);
+		List<Resume> semiList = new ArrayList<>();
+		List<Resume> doneList = new ArrayList<>();
+		for(int i=0;i<resumeList.size();i++) {
+			if(resumeList.get(i).getResumeStatus() == 1) {
+				semiList.add(resumeList.get(i));
+			}else {
+				doneList.add(resumeList.get(i));
+			}
+			
+		}
+		for(int i=0;i<semiList.size();i++) {
+			
+		}
+		model.addAttribute("semiList", semiList);
+		model.addAttribute("doneList", doneList);
 		return "member/resumeList";
 	}
 	

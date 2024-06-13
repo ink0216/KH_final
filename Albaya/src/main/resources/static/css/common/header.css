@@ -1,5 +1,6 @@
 * {
     font-family: 'SUIT-Regular';
+    /* border: 1px solid black; */
 }
 header * {
     margin: 0px;
@@ -11,7 +12,16 @@ header * {
     color: #014C73;
     text-decoration: none;
 }
-
+#divdiv{
+    display: flex;
+    align-items: center;
+}
+#account{
+    margin-bottom: 5px;
+}
+#account:hover{
+    cursor:pointer;
+}
 /*  전체 폰트 */
 @font-face {
     font-family: 'SUIT-Regular';

@@ -192,18 +192,24 @@
 
             <div class="btnArea marginContainal">
                 <button type="button" id="closeBtn">닫기</button>
-                <th:block th:if="${hireOpen ==0}">
-                    <th:block th:if="${session.loginMember != null }">
-                        <button type="button" id="applyBtn" th:hire-no="${hire.hireNo}">지원하기</button>
-                    </th:block>
-                    <th:block th:if="${session.loginShop}">
-                        <th:block th:if="${session.loginShop.shopNo == hire.shopNo}">
-                            <button type="button" id="updateBtn" th:hire-no="${hire.hireNo}">수정하기</button>
+                <th:block th:if="${hire.hireDelFl}=='N'">
+                    <th:block th:if="${hireOpen ==0}">
+                        <th:block th:if="${session.loginMember != null }">
+                            <button type="button" id="applyBtn" th:hire-no="${hire.hireNo}">지원하기</button>
+                        </th:block>
+                        <th:block th:if="${session.loginShop}">
+                            <th:block th:if="${session.loginShop.shopNo == hire.shopNo}">
+                                <button type="button" id="updateBtn" th:hire-no="${hire.hireNo}">수정하기</button>
+                                <button type="button" id="deleteBtn" th:hire-no="${hire.hireNo}">삭제하기</button>
+                            </th:block>
                         </th:block>
                     </th:block>
+                    <th:block th:if="${hireOpen ==1}">
+                        <button type="button" >마감된 공고입니다.</button>
+                    </th:block>
                 </th:block>
-                <th:block th:if="${hireOpen ==1}">
-                    <button type="button" >마감된 공고입니다.</button>
+                <th:block th:if="${hire.hireDelFl}=='Y'">
+                    <button type="button" >삭제된 공고입니다.</button>
                 </th:block>
                 
 
