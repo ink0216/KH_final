@@ -333,9 +333,20 @@ public class HireServiceImpl implements HireService{
 
 	}
 	
+	@Override
+	public List<Hire> hireList(int hireNo) {
+		return mapper.hireList(hireNo);
+	}
+	
+	@Override
+	public int memberCount(int hireNo) {
+		return mapper.memberCount(hireNo);
+	}
+	
 	//해당 기업이 작성한 공고 모두 얻어오기
 	@Override
 	public List<Hire> myHireList(int shopNo) {
 		return mapper.myHireList(shopNo);
+
 	}
 }

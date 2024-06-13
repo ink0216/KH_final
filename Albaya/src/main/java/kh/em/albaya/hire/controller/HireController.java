@@ -2,6 +2,7 @@ package kh.em.albaya.hire.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,17 @@ public class HireController {
 			) {
 		int shopNo = loginShop.getShopNo();
 		List<Hire> hireList = service.myHireList(shopNo);
-		model.addAttribute("hireList",hireList);
+		List<Hire> hire0 = new ArrayList<>(); //저장
+		List<Hire> hire1 = new ArrayList<>(); //임시저장
+		for(int i=0;i<hireList.size();i++) {
+			if(hireList.get(i).getHireStatus()==0) {
+				hire0.add(hireList.get(i));
+			}else if(hireList.get(i).getHireStatus()==1) {
+				hire1.add(hireList.get(i));
+			}
+		}
+		model.addAttribute("hire0",hire0);
+		model.addAttribute("hire1",hire1);
 		return "/hire/hireList";
 	}
 	/**공고 등록 페이지로 이동
@@ -109,12 +120,17 @@ public class HireController {
 		Hire hire = service.detailHire(hireNo);
 		String workDay1 = hire.getWorkDay(); //다 합쳐져있는 버전
 		
+		List<Hire> hireList = service.hireList(hireNo);
+		
+		int memberCount = service.memberCount(hireNo);
 		String[] workDayList = workDay1.split(",");
 		String workDay = null;
 		log.debug("workDay : "+workDay);
 		hire.setWorkDay(workDay);
 		model.addAttribute("workDayList", workDayList);
 		model.addAttribute("hire", hire);
+		model.addAttribute("hireList", hireList);
+		model.addAttribute("memberCount", memberCount);
 		
 		//모집 마감일과 비교해서 지원하기/모집 마감 보이기
 		int hireOpen = service.hireOpen(hireNo);

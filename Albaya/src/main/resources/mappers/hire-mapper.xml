@@ -443,6 +443,15 @@
 	
 	</delete>
 	
+
+	<select id="hireList" resultType="Hire">
+		SELECT MEMBER_NO, HIRE_NO, MEMBER_NAME, MEMBER_EMAIL
+		FROM "APPLY_HIRE"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		JOIN "HIRE" h USING(HIRE_NO)
+		WHERE HIRE_NO = #{hireNo}
+	</select>
+
 	<!-- 해당 기업이 작성한 공고 모두 얻어오기 -->
 	<select id="myHireList">
 		SELECT * FROM "HIRE"
@@ -450,4 +459,9 @@
 		ORDER BY HIRE_START DESC
 	</select>
 
+	<select id="memberCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM "APPLY_HIRE"
+		WHERE HIRE_NO = #{hireNo}
+	</select>
 </mapper>
