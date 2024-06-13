@@ -3,7 +3,7 @@ const deleteMember = document.querySelector("#deleteBtn");
 const changePwBtn = document.querySelector("#changePwBtn");
 const hireApplyListBtn = document.querySelector("#hireApplyListBtn");
 const closeBtn = document.getElementById("close-btn");
-
+const managerBtn = document.querySelector("#managerBtn");
 
 
 let shopProfileStatus = false;
@@ -46,9 +46,12 @@ closeBtn.addEventListener("click", ()=>{
     location.href="/";
 })
 
+
+if(managerBtn != null){
 managerBtn.addEventListener("click", () => {
     location.href = "/declare/1?cp=1";
 })
+}
 //--------------------------------------------------------------------
 const uploadBtn = document.querySelector("#uploadBtn"); //버튼
 let imageInput = document.querySelector("#imageInput"); //input태그

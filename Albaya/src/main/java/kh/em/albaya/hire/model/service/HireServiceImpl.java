@@ -223,13 +223,14 @@ public class HireServiceImpl implements HireService{
 	
 	@Override
 	// 지원서 작성하기
-	public int hireApply(int memberNo, Hire hire, int hireNo) {
+	public int hireApply(int memberNo, Hire hire, int hireNo,int resumeNo) {
 		Map<String, Object> map = new HashMap<>();
 		
 		map.put("memberNo", memberNo);
 		map.put("hireNo", hireNo);
 		map.put("applyTitle", hire.getApplyTitle());
 		map.put("applyContent", hire.getApplyContent());
+		map.put("resumeNo", resumeNo);
 		
 		int result = mapper.hireApply(map);
 		return result;
@@ -340,5 +341,12 @@ public class HireServiceImpl implements HireService{
 	@Override
 	public int memberCount(int hireNo) {
 		return mapper.memberCount(hireNo);
+	}
+	
+	//해당 기업이 작성한 공고 모두 얻어오기
+	@Override
+	public List<Hire> myHireList(int shopNo) {
+		return mapper.myHireList(shopNo);
+
 	}
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.myPage.model.service.myPageService;
 import kh.em.albaya.resume.model.dto.Resume;
@@ -379,7 +380,7 @@ public class MyPageController {
     		
     	int memberNo = loginMember.getMemberNo();
     	Map<String, Object> map = service.applyList(memberNo);
-    	List<Resume> applyList=(List<Resume>)map.get("applyList");
+    	List<Hire> applyList=(List<Hire>)map.get("applyList");
     	int applyCount=(int)map.get("applyCount");
     	
     	model.addAttribute("applyList",applyList);

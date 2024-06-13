@@ -289,7 +289,7 @@
 	
 	<insert id="hireApply">
 		INSERT INTO "APPLY_HIRE"
-		VALUES(#{memberNo}, #{hireNo}, NULL, #{applyTitle}, #{applyContent},DEFAULT)
+		VALUES(#{memberNo}, #{hireNo}, #{resumeNo}, #{applyTitle}, #{applyContent},DEFAULT)
 	</insert>
 	
 	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->
@@ -443,12 +443,20 @@
 	
 	</delete>
 	
+
 	<select id="hireList" resultType="Hire">
 		SELECT MEMBER_NO, HIRE_NO, MEMBER_NAME, MEMBER_EMAIL
 		FROM "APPLY_HIRE"
 		JOIN "MEMBER" USING(MEMBER_NO)
 		JOIN "HIRE" h USING(HIRE_NO)
 		WHERE HIRE_NO = #{hireNo}
+	</select>
+
+	<!-- 해당 기업이 작성한 공고 모두 얻어오기 -->
+	<select id="myHireList">
+		SELECT * FROM "HIRE"
+		WHERE SHOP_NO = #{shopNo}
+		ORDER BY HIRE_START DESC
 	</select>
 
 	<select id="memberCount" resultType="_int">

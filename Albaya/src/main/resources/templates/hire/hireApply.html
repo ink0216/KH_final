@@ -59,7 +59,7 @@
                     <div class="radio-area">
                         <th:block th:each=" resume: ${resumeList}" th:object="${resume}">
                             <div class="resume-radio">
-                                <input type="radio" name="resumeNo" id="resuemNo1">
+                                <input type="radio" name="resumeNo" id="resuemNo1" th:value="*{resumeNo}">
                                 <label for="resuemNo1">
                                     <a href="/" target="_blank"
                                         onclick="window.open(this.href, width=600, height=650,left=300,top=100)" th:text="*{resumeTitle}">아르바이트

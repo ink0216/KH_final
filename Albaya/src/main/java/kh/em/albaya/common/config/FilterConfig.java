@@ -26,7 +26,7 @@ public class FilterConfig {
 		filter.setFilter(new ShopFilter()); //로그인 필터를 만들어서 필터를 껴넣는다
 		//로그인 필터 == 로그인이 안되어있는 경우 특정 페이지로 돌아가게 하는 필터
 		
-		String[] filteringURL = {"/hire/hireWrite"}; //  /myPage로 시작하는 모든 요청이 온 경우 이 필터가 동작함!!
+		String[] filteringURL = {"/hire/hireWrite","/hire/hireList"}; //  /myPage로 시작하는 모든 요청이 온 경우 이 필터가 동작함!!
 		//이용 못하게 하는 url을 추가하고 싶으면 추가 가능하도록 배열로 함
 		//수정도 로그인 돼있어야 가능하도록!! -> 로그인 안돼있으면 메인페이지로 날리기
 		
