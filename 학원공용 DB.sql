@@ -1184,4 +1184,24 @@ SELECT COUNT(*) FROM "HIRE"
 SELECT * FROM RESUME 
 WHERE RESUME_STATUS =0
 AND MEMBER_NO =100;
+
+
+	BEGIN
+		FOR I IN 1..20 LOOP
+			INSERT INTO "HIRE" 
+			VALUES (SEQ_HIRE_NO.NEXTVAL,
+			100,
+			3,
+			1,
+							SEQ_HIRE_NO.CURRVAL ||'번째 공고',
+						SEQ_HIRE_NO.CURRVAL ||'번째 공고 내용입니다.',
+						DEFAULT,TO_DATE('2024-07-07','YYYY-MM-DD'),20,365,
+						'M',0,'mom,tue',14444,328,'상세주소','15:00','21:30','담당자명',
+						'kind@navr.ecom','01020304050','회사이름','서울 광진구 중곡동 118-38'
+					);
+		END LOOP;
 		
+	END;
+COMMIT;
+ALTER TABLE RESUME ADD RESUME_DATE DATE
+DEFAULT SYSDATE NOT NULL;

@@ -27,10 +27,10 @@
 	
 	<!-- 알림을 보낼 때 필요한 게시글 관련 값 조회 -->
 	<select id="selectBoardData" resultType="Hire">
-		SELECT BOARD_TITLE, MEMBER_NO, MEMBER_NICKNAME
-		FROM "BOARD"
-		JOIN "MEMBER" USING(MEMBER_NO)
-		WHERE BOARD_NO = #{pkNo}
+	    SELECT h.HIRE_TITLE, s.SHOP_NO, s.SHOP_NAME
+	    FROM "HIRE" h
+	    JOIN "SHOP" s ON h.SHOP_NO = s.SHOP_NO
+	    WHERE h.HIRE_NO = #{pkNo}
 	</select>
 	
 	<!-- 알림 추가 -->

@@ -239,7 +239,7 @@ public class HireController {
 	@PostMapping("hireApply/{hireNo}")
 	public void hireApply(
 	        @PathVariable("hireNo") int hireNo,
-	        @SessionAttribute("loginMember") Member loginMember,
+	        @SessionAttribute(value = "loginMember", required = false) Member loginMember,
 	        Hire hire,
 	        RedirectAttributes ra,
 	        Model model,
@@ -265,8 +265,12 @@ public class HireController {
 	
 
 	//지원서 상세조회(인서-테스트)
-	@GetMapping("hireApplyDetail")
-	public String hireApplyDetail() {
+	@GetMapping("hireApplyDetail/{memberNo:[0-9]+}/{hireNo:[0-9]+}")
+	public String hireApplyDetail(
+			@PathVariable("memberNo") int memberNo,
+			@PathVariable("hireNo") int hireNo) {
+//		Hire
+		
 		return "hire/hireApplyDetail";
 	}
 
@@ -336,6 +340,30 @@ public class HireController {
 		}
 		
 		return 0;
+	}
+	
+	//공고 삭제
+	@PostMapping("delete/{hireNo:[0-9]+}")
+	public String hireDelete(
+			@PathVariable("hireNo") int hireNo,
+			@SessionAttribute("loginShop") Shop loginShop,
+			RedirectAttributes ra
+			) {
+		Hire hire = service.detailHire(hireNo);
+		if(hire.getShopNo() == loginShop.getShopNo()) {
+			//같을 때에만
+			int result = service.hireDelete(hireNo);
+			if(result > 0) {
+				ra.addFlashAttribute("message", "공고가 삭제되었습니다.");
+				return "redirect:/";
+			}else {
+				//실패 시
+				ra.addFlashAttribute("message", "공고 삭제를 실패하였습니다.");
+				return "redirect:/hire/"+hireNo;
+			}
+		}
+		return "redirect:/";
+		
 	}
 }
 

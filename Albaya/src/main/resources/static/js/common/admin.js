@@ -28,7 +28,7 @@ const createPageLink = (pageNo, text) => {
 // 표 조회
 const selectList = (cp) => {
 
-    fetch("/declare/selectList?cp="+cp)
+    fetch(`/declare/selectList?cp=${cp}`)
 
         .then(response => response.json())
 
@@ -72,10 +72,16 @@ const selectList = (cp) => {
 
                         link.innerText = declare[key];
 
-                        link.classList.add("connectToReviewBoard");
+                        // link.classList.add("connectToReviewBoard");
                         
 
                         td.appendChild(link);
+
+                    } else if (key === 'boardDeclareContent') {
+                        const div = document.createElement("div");
+                        div.innerText = declare[key];
+                        div.classList.add("boardDeclareContent");
+                        td.appendChild(div);
 
                     } else {
 
@@ -326,12 +332,10 @@ document.getElementById('searchBtn').addEventListener("click", () => {
         const resultDiv = document.getElementById('result');
         if (data) {
             resultDiv.innerHTML = `회원 번호 : ${data.memberNo} <br> 회원 계정 : ${data.memberEmail} <br> 회원 상태 : ${data.memberStatus}`;
-        } else {
-            resultDiv.innerHTML = '회원이 존재하지 않습니다.';
-        }
+        } 
     })
     .catch(error => {
-        console.error('Error:', error);
+       
         document.getElementById('result').innerHTML = '존재하지 않은 회원 번호입니다.';
     });
 

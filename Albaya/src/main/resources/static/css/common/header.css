@@ -1,5 +1,6 @@
 * {
     font-family: 'SUIT-Regular';
+    /* border: 1px solid black; */
 }
 header * {
     margin: 0px;
@@ -11,7 +12,16 @@ header * {
     color: #014C73;
     text-decoration: none;
 }
-
+#divdiv{
+    display: flex;
+    align-items: center;
+}
+#account{
+    margin-bottom: 5px;
+}
+#account:hover{
+    cursor:pointer;
+}
 /*  전체 폰트 */
 @font-face {
     font-family: 'SUIT-Regular';
@@ -338,11 +348,14 @@ header * {
   }
   
   .notification-content-container{
+    display: flex;
+    align-items: center;
     height: 90%;
   }
   
   .notification-date{
     font-size: 12px;
+    margin-left: 15px;
     color: gray;
   }
   
@@ -354,6 +367,7 @@ header * {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    margin-left: 30px;
   }
   
   .notidication-delete{
@@ -365,8 +379,9 @@ header * {
     font-size: 18px;
     font-weight: bold;
   }
-  
+
   .notidication-delete:hover{
+    cursor: pointer;
     color: red;
   }
   

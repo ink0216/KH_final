@@ -66,4 +66,6 @@ public class Hire {
 	private int memberNo;
 	private String applyTitle;
 	private String applyContent;
+	
+	private String hireDelFl;
 }

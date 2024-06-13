@@ -19,85 +19,101 @@ body{
 
 
 #alba{
-    margin-bottom : 40px;
-    position:relative;
-    right:350px;
+    width: 800px;
+    margin-bottom: 30px;
+    /* position: relative; */
 }
 #reviewBoardWriteFrm{
-    margin-top:90px;
+    margin-top:50px;
     display:flex;
     flex-direction: column;
     align-items:center;
 }
 
 #writeBox{
-    width:1100px;
-    height:600px;
-    border:1px solid black;
-    margin-bottom:250px;
+    width: 800px;
+    height: 600px;
+    border: 1px solid #ddd;
+    /* margin-bottom: 250px; */
+    border-radius: 10px;
 }
 
 #reviewTitle-area{
-    font-size:30px;
+    font-size: 20px;
     justify-content: space-evenly;
     display: flex;
-    margin:40px;
+    margin: 40px;
+    align-items: center;
     
 }
 
 #reviewTitle{
-    width:800px;
-    height:25px;
-    border-radius:10px;
-    border-color:rgb(184, 171, 171);
-    font-family : "inherit";
+    width: 600px;
+    height: 25px;
+    border-radius: 10px;
+    border-color: rgb(184, 171, 171);
+    font-family: "inherit";
 }
 
 #reviewBoardContent-area{
-    font-size:30px;
+    font-size: 20px;
     justify-content: space-evenly;
     display: flex;
-    margin:40px;
-    border-top : 1px solid grey;
-    padding-top:40px;
+    margin: 40px;
+    border-top: 1px solid grey;
+    padding-top: 40px;
+
+
 }
 
 textarea {
-    width:800px;
-    height:380px;
-    border-radius:10px;
-    border-color:rgb(184, 171, 171);
-    resize:none;
-    padding:8px;
+    width: 600px;
+    height: 380px;
+    border-radius: 10px;
+    border-color: rgb(184, 171, 171);
+    resize: none;
+    padding: 8px;
+}
+
+.writeBtn-area{
+    display: flex;
+    width: 800px;
+    justify-content: flex-end;
+}
+
+.cancelBtn-area{
+    display: flex;
+    width: 800px;
+    justify-content: flex-end;
 }
 
 
 
 
 #writeBtn{
-    width:120px;
-    height:40px;
+    width: 80px;
+    height: 30px;
     background-color: #014C73;
-    font-size:18px;
-    color:white;
-    font-weight:bold;
-    border:none;
-    margin-left:960px;
-    margin-top:20px;
-    border-radius:15px;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    /* margin-left: 960px; */
+    margin-top: 20px;
+    border-radius: 5px;
 
 }
 #cancelBtn{
-    width:120px;
-    height:40px;
+    width: 80px;
+    height: 30px;
     background-color: #014C73;
-    font-size:18px;
-    color:white;
-    font-weight:bold;
-    border:none;
-    margin-left:960px;
-    margin-top:20px;
-    border-radius:15px;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    /* margin-left: 960px; */
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 #writeBtn:hover{
@@ -121,11 +137,13 @@ textarea {
 
 #reviewBoardWritePage{
     font-family : 'TheJamsil5Bold';
-    font-size:45px;
+    font-size:40px;
+    margin-top: 0px;
 
 }
 
 
 #reviewBoardWriteRule{
-    margin-right:350px;
+     /* margin-right: 350px; */
+     width: 800px;
 }

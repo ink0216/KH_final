@@ -43,12 +43,14 @@
                     <!-- 알림 버튼 영역 -->
                     <div class="loginMember notification-container">
                         <!-- 알림 버튼 -->
-                        <button class="notification-btn fa-regular fa-bell" id="my-element"></button>
+                        <th:block th:if="${session.loginShop != null}">
+                            
+                            <button class="notification-btn fa-regular fa-bell" id="my-element"></button>
+                        </th:block>
 
                         <ul class="notification-list notification-showx">
                             <li class="notification-item">
                                 <div class="notification-text">
-                                    <img src="" alt="">
                                     <div class="notification-content-container">
                                         <p class="notification-date">20분 전</p>
 
@@ -65,10 +67,12 @@
                                             <b>[쿠팡]</b>에 지원하셨습니다.
                                         </p> -->
 
+
                                     </div>
+                                    <span class="notification-delete">&times;</span>
                                 </div>
 
-                                <span class="notification-delete">&times;</span>
+
                             </li>
                         </ul>
                     </div>
@@ -76,9 +80,13 @@
 
 
                     <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;<button  class="loggedIn" id="resumeRedirect">이력서 관리</button>
-                    &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
+                        <th:block th:if="${session.loginMember != null}">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<button  class="loggedIn" id="resumeRedirect">이력서 관리</button>
+                        </th:block>
+                    <th:block th:if="${session.loginShop != null}">
+                        &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
+                    </th:block>
+                
 
 
                     <th:block th:if="${session.loginMember != null}">
@@ -92,13 +100,13 @@
                 </th:block>
 
                 <th:block th:if="${session.loginMember == null and session.loginShop ==null}">
-
-                    <a href="/member/login" class="login">로그인</a> &nbsp;
-                    |&nbsp;
-                    <a href="/member/selectSignup" class="login">회원가입</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn" id="resumeRedirect">이력서 관리</button>
-                    &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
-
+                    <div id="divdiv">
+                        <a href="/member/login" class="login">로그인</a> &nbsp;
+                        &nbsp;
+                        <a href="/member/selectSignup" class="login">회원가입</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn" id="resumeRedirect">이력서 관리</button>
+                        &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
+                    </div>
                 </th:block>
 
                 <!-- <button></button> -->

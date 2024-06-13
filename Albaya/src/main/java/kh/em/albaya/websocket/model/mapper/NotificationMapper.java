@@ -10,7 +10,7 @@ import kh.em.albaya.websocket.model.dto.Notification;
 @Mapper
 public interface NotificationMapper {
 
-	List<Notification> selectNotification(int receiveMemberNo);
+	List<Notification> selectNotification(int receiveShopNo);
 
 	/** 알림을 보낼 때 필요한 게시글 관련 값 조회
 	 * @param pkNo
@@ -27,7 +27,7 @@ public interface NotificationMapper {
 	void updateNotification(int notificationNo);
 
 	// 읽지 않은 알림 개수 조회
-	int notReadCheck(int memberNo);
+	int notReadCheck(int shopNo);
 
 	/** 알림 삭제
 	 * @param notificationNo

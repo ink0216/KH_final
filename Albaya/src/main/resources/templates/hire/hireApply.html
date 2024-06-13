@@ -143,6 +143,8 @@
 
     <script th:inline="javascript">
         const hireNo = /*[[${hireInfo.hireNo}]]*/ "게시글 번호";
+        const memberNo = /*[[${session.loginMember.memberNo}]]*/ "게시글 번호";
+
     </script>
     <script src="/js/hire/hire-apply.js"></script>
 </body>
