@@ -79,28 +79,24 @@ const selectList = (cp) => {
                 for (let key of arr) {
                     const td = document.createElement("td");
 
-
-                    // if (key === 'reviewBoardNo') {
-
-                    //     const link = document.createElement("a");
-
-                    //     link.href = `/reviewBoard/2/${declare[key]}?reviewBoardCode=2&reviewBoardNo=${declare[key]}&cp=${currentPage}`;
-
-                    //     link.innerText = declare[key];
-
-                    //     link.classList.add("connectToReviewBoard");
-                        
-
-                    //     td.appendChild(link);
-
-                    // } 
+ 
                     if (key === 'commentDeclareContent') {
                         const div = document.createElement("div");
                         div.innerText = commentDeclare[key];
                         div.classList.add("commentDeclareContent");
                         td.appendChild(div);
 
-                    } else {
+                    } else 
+
+                    if (key === 'commentContent') {
+
+                        const div = document.createElement("div");
+                        div.innerText = commentDeclare[key];
+                        div.classList.add("commentContent");
+                        td.appendChild(div);
+                    }
+                    else
+                    {
 
                         td.innerText = commentDeclare[key];
 
