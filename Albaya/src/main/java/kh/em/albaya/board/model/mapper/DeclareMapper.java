@@ -109,6 +109,8 @@ public interface DeclareMapper {
 	int updateReviewBoard(int reviewBoardDeclareNo);
 
 	int stopMember(int reviewBoardDeclareNo);
+
+	int selectManager(int memberNo);
 	
 
 

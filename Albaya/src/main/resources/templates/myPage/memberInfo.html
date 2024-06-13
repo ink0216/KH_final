@@ -124,7 +124,26 @@
                 </div>    
             </div>
             </th:block>
-
+            
+            <th:block th:unless="${session.loginMember.authorityNo == 1}">
+            <div class="declare-count-container">
+                <div class="manager-page-header">
+                    <h3>신고 누적횟수</h3>
+                </div>
+                <div class="manager-page-p-area">
+                    <p>회원님의 신고 누적 횟수는 아래와 같습니다. 3회 누적시 일주일간 활동 정지 됩니다.</p>
+                </div>
+                <div class="member-changePw-status">
+                    <div class="member-changePw-left">
+                        <span>신고 누적 횟수</span>
+                    </div>
+                    <div class="member-changePw-right">
+                        <p id="hireApplyCount"th:text="${session.loginMember.memberStatus}"></p>회
+                    </div>
+                </div>
+            </div>    
+            </div>
+            </th:block>
 
             <div class="member-withdraw-container">
                 <div class="member-withdraw-header">

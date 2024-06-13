@@ -106,6 +106,22 @@
 			FROM COMMENT_DECLARE
 			WHERE COMMENT_DECLARE_NO = #{commentDeclareNo })
 	</update>
+	
+	<update id="stopMember">
+		UPDATE "MEMBER" SET 
+		SUSPEND_PERIOD = CURRENT_DATE + 7
+		WHERE MEMBER_NO = (SELECT REPORTED_MEMBER_NO
+		  FROM COMMENT_DECLARE
+		  WHERE COMMENT_DECLARE_NO = #{commentDeclareNo})
+		AND MEMBER_STATUS = 3
+	</update>
+	
+	<select id="selectManager">
+		SELECT *
+		FROM "MEMBER"
+		WHERE AUTHORITY_NO = 1
+		AND MEMBER_NO #{memberNo}
+	</select>
 
 
 </mapper>
