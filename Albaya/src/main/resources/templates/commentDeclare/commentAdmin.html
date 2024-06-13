@@ -33,7 +33,7 @@
                     <th:block th:each="commentDeclare : ${commentDeclareList}" th:object="${commentDeclare}">
                         <tr>
                             <td th:text="${commentDeclare.commentDeclareNo}"></td>
-                            <!-- <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${commentDeclare.commentNo}"></a> </td> -->
+
                             <td th:text="${commentDeclare.commentContent}"> </td>
                             <td th:text="${commentDeclare.memberNo}"></td>
                             <td><div class="commentDeclareContent" th:text="${commentDeclare.commentDeclareContent}"></div></td>
@@ -67,7 +67,7 @@
                 <li span class="page-link" data-cp="1">&lt;&lt;</span></li>
 
                 <!-- 이전 목록 마지막 번호로 이동 -->
-                <li span class="page-link" th:data-cp="*{prevPage}">&lt;&lt;</span></li>
+                <li span class="page-link" th:data-cp="*{prevPage}">&lt;</span></li>
 
                 <!-- 특정 페이지로 이동 -->
 
