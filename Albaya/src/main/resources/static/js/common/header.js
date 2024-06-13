@@ -21,16 +21,18 @@ if(resumeRedirect != null){
 });
 
 
-const hireWriteBtn = document.getElementById('hireWriteBtn');
+const hireListBtn = document.getElementById('hireListBtn');
 const loginShop = /*[[${session.shopMember}]]*/'기업 회원'
+if(hireListBtn !=null){
+    hireListBtn.addEventListener("click",()=>{
+        // if(!loginShop){
+        //     alert("기업 회원만 공고문 작성이 가능합니다. ");
+        //     return;
+        // }
+        location.href='/hire/hireList';
+    })
+}
 
-hireWriteBtn.addEventListener("click",()=>{
-    // if(!loginShop){
-    //     alert("기업 회원만 공고문 작성이 가능합니다. ");
-    //     return;
-    // }
-    location.href='/hire/hireWrite';
-})
 
 const goHireKind = document.getElementById('goHireKind');
 goHireKind.addEventListener("click",()=>{

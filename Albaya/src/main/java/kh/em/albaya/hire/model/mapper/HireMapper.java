@@ -207,4 +207,12 @@ public interface HireMapper {
 	 * @return
 	 */
 	int hireDelete(int hireNo);
+
+
+
+	/**해당 기업이 작성한 공고 모두 얻어오기
+	 * @param shopNo
+	 * @return
+	 */
+	List<Hire> myHireList(int shopNo);
 }
