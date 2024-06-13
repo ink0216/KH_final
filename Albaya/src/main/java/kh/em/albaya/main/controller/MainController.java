@@ -20,20 +20,20 @@ public class MainController {
 	private final MainService service;
 	
 	
-   @RequestMapping("")
-   public String mainPage(
-		   Model model
-		   ) {
-	  List<Hire> hireList = service.hireList();
-	  
-	  //box 모양으로 나올 12개의 공고
-	  List<Hire> boxList = new ArrayList<>();
-	  for(int i=0; i<12; i++) {
-		  Hire hire = hireList.get(i);
-		  boxList.add(hire);	  }
-	  model.addAttribute("boxList", boxList);
-      return "/main";
-   }
+	@RequestMapping("")
+	public String mainPage(Model model) {
+	    List<Hire> hireList = service.hireList();
+
+	    // box 모양으로 나올 최대 12개의 공고
+	    List<Hire> boxList = new ArrayList<>();
+	    for(int i = 0; i < Math.min(12, hireList.size()); i++) {
+	        Hire hire = hireList.get(i);
+	        boxList.add(hire);
+	    }
+
+	    model.addAttribute("boxList", boxList);
+	    return "/main";
+	}
    
 
 
