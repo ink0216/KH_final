@@ -46,18 +46,18 @@
                         <th:block th:if="${session.loginShop != null}">
                             
                             <button class="notification-btn fa-regular fa-bell" id="my-element"></button>
+
                         </th:block>
 
                         <ul class="notification-list notification-showx">
                             <li class="notification-item">
                                 <div class="notification-text">
                                     <div class="notification-content-container">
-                                        <p class="notification-date">20분 전</p>
+                                        <p class="notification-date"></p>
 
                                         <!-- 개인 회원의 경우 -->
                                         <p class="notification-content">
-                                            <b>[쿠팡]</b>에서
-                                            <b>홍길동</b>님의 이력서를 조회하였습니다.
+
                                         </p>
 
                                         <!-- 기업 회원의 경우 -->
@@ -69,35 +69,38 @@
 
 
                                     </div>
-                                    <span class="notification-delete">&times;</span>
-                                </div>
 
-
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
                     </div>
+                </th:block>
 
 
-
-                    <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
-                        <th:block th:if="${session.loginMember != null}">
-                            &nbsp;&nbsp;&nbsp;&nbsp;<button  class="loggedIn" id="resumeRedirect">이력서 관리</button>
-                        </th:block>
-                    <th:block th:if="${session.loginShop != null}">
-                        &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
-                    </th:block>
-                
-
-
-                    <th:block th:if="${session.loginMember != null}">
-                        <a href="/member/logout" class="login logout">로그아웃</a>
-                    </th:block>
-
-                    <th:block th:if="${session.loginShop != null}">
-                        <a href="/shop/logout" class="login logout">로그아웃</a>
-                    </th:block>
 
                 </th:block>
+
+
+
+                <button class="loginMember" id="account"><i class="fa-solid fa-user"></i></button>
+
+                <th:block th:if="${session.loginMember != null}">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button class="loggedIn" id="resumeRedirect">이력서 관리</button>
+                </th:block>
+                <th:block th:if="${session.loginShop != null}">
+                    &nbsp;&nbsp;<button class="loggedIn" id="hireWriteBtn">공고 등록</button>
+                </th:block>
+
+
+
+                <th:block th:if="${session.loginMember != null}">
+                    <a href="/member/logout" class="login logout">로그아웃</a>
+                </th:block>
+
+                <th:block th:if="${session.loginShop != null}">
+                    <a href="/shop/logout" class="login logout">로그아웃</a>
+                </th:block>
+
+                <!-- </th:block> -->
 
                 <th:block th:if="${session.loginMember == null and session.loginShop ==null}">
                     <div id="divdiv">
@@ -109,10 +112,12 @@
                     </div>
                 </th:block>
 
-                <!-- <button></button> -->
             </div>
 
+            <!-- <button></button> -->
         </div>
+
+    </div>
     </div>
 
     <div id="container"></div>
