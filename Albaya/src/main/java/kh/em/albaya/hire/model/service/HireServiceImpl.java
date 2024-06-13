@@ -312,4 +312,17 @@ public class HireServiceImpl implements HireService{
 	public List<Resume> resumeList(int memberNo) {
 		return mapper.resumeList(memberNo);
 	}
+	
+	// 지원서 상세보기
+	@Override
+	public Hire hireApplyDetail(int memberNo, int hireNo) {
+		Map <String, Object> map = new HashMap<>();
+		
+		map.put("memberNo", memberNo);
+		map.put("hireNo", hireNo);
+		
+		Hire hireApplyDetail = mapper.hireApplyDetail(map);
+
+		return hireApplyDetail;
+	}
 }

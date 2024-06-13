@@ -268,8 +268,12 @@ public class HireController {
 	@GetMapping("hireApplyDetail/{memberNo:[0-9]+}/{hireNo:[0-9]+}")
 	public String hireApplyDetail(
 			@PathVariable("memberNo") int memberNo,
-			@PathVariable("hireNo") int hireNo) {
-//		Hire
+			@PathVariable("hireNo") int hireNo,
+			Model model) {
+		
+		Hire applyInfo = service.hireApplyDetail(memberNo, hireNo);
+		
+		model.addAttribute("applyInfo", applyInfo);
 		
 		return "hire/hireApplyDetail";
 	}

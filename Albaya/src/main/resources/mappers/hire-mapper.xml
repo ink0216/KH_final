@@ -409,4 +409,17 @@
 	 	WHERE RESUME_STATUS = 0
 	 	AND MEMBER_NO=#{memberNo}
 	</select>
+	
+	<!-- 지원서 상세보기 -->
+	<select id="hireApplyDetail" resultType="Hire">
+		SELECT MEMBER_NO, HIRE_NO, RESUME_NO, APPLY_TITLE,
+		APPLY_CONTENT, APPLY_DATE, h.SHOP_NAME, HIRE_TITLE,
+		MEMBER_NAME, MEMBER_PHONE_NUMBER, MEMBER_EMAIL
+		FROM "APPLY_HIRE"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		JOIN "HIRE" h USING(HIRE_NO)
+	    JOIN SHOP s ON h.SHOP_NO = s.SHOP_NO
+		WHERE MEMBER_NO = #{memberNo}
+		AND HIRE_NO = #{hireNo}
+	</select>
 </mapper>

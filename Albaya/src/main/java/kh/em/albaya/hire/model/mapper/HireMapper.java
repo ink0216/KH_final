@@ -196,7 +196,9 @@ public interface HireMapper {
 
 
 
-	
-
-	
+	/** 지원서 상세보기
+	 * @param map
+	 * @return
+	 */
+	Hire hireApplyDetail(Map<String, Object> map);
 }
