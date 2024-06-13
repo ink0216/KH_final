@@ -97,7 +97,7 @@ span{
 
 }
 
-#resumeWriteBtn{
+#hireWriteBtn{
     right:0;
     bottom:0;
     position:absolute;
@@ -108,7 +108,7 @@ span{
     background-color: black;
 
 }
-#resumeWriteBtn:hover{
+#hireWriteBtn:hover{
     cursor:pointer;
     color:gray;
 }
