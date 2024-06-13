@@ -9,6 +9,8 @@ const commentDeclareDate = document.querySelector("#commentDeclareDate");
 const commentCondition = document.querySelector("#commentCondition");
 const tbody = document.querySelector(".tbody");
 
+const commentContent = document.querySelector("#commentContent");
+
 
 
 // 게시글 신고 페이지 이동 버튼
@@ -65,7 +67,7 @@ const selectList = (cp) => {
 
                 const arr = [
                     'commentDeclareNo',
-                    'commentNo',
+                    'commentContent',
                     'memberNo',
                     'commentDeclareContent',
                     'commentDeclareCondition',

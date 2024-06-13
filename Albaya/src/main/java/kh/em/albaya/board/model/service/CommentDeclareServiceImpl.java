@@ -98,6 +98,9 @@ public class CommentDeclareServiceImpl implements CommentDeclareService {
 		// 댓글 삭제
 		int member = mapper.updateCommentDelete(commentDeclareNo);
 		
+		// 회원 일주일 정지
+		mapper.stopMember(commentDeclareNo);
+		
 		if(result > 0 && condition > 0 && member > 0) {
 			return  1;
 		}else {

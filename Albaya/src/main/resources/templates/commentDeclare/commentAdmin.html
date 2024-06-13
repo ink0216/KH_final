@@ -21,7 +21,7 @@
             <table border="1" class="styled-table">
                 <thead>
                     <th>번호</th>
-                    <th>댓글 번호</th>
+                    <th>댓글 내용</th>
                     <th>신고자</th>
                     <th>내용</th>
                     <th>상태</th>
@@ -34,7 +34,7 @@
                         <tr>
                             <td th:text="${commentDeclare.commentDeclareNo}"></td>
                             <!-- <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${commentDeclare.commentNo}"></a> </td> -->
-                            <td th:text="${commentDeclare.commentNo}"> </td>
+                            <td th:text="${commentDeclare.commentContent}"> </td>
                             <td th:text="${commentDeclare.memberNo}"></td>
                             <td><div class="commentDeclareContent" th:text="${commentDeclare.commentDeclareContent}"></div></td>
                             <td th:text="${commentDeclare.commentDeclareCondition}"></td>

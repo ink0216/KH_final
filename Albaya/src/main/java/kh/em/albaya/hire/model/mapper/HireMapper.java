@@ -196,6 +196,12 @@ public interface HireMapper {
 
 
 
+	/** 지원서 상세보기
+	 * @param map
+	 * @return
+	 */
+	Hire hireApplyDetail(Map<String, Object> map);
+	
 	/**공고 삭제
 	 * @param hireNo
 	 * @return
@@ -204,7 +210,9 @@ public interface HireMapper {
 
 
 
-	
-
-	
+	/**해당 기업이 작성한 공고 모두 얻어오기
+	 * @param shopNo
+	 * @return
+	 */
+	List<Hire> myHireList(int shopNo);
 }

@@ -79,9 +79,10 @@ public interface HireService {
 	/** 지원서 작성하기
 	 * @param loginMember
 	 * @param hire
+	 * @param resumeNo 
 	 * @return
 	 */
-	int hireApply(int memberNo, Hire hire, int hireNo);
+	int hireApply(int memberNo, Hire hire, int hireNo, int resumeNo);
 	
 	/**공고 내용 모두 조회해오기
 	 * @param hireNo
@@ -120,11 +121,24 @@ public interface HireService {
 	 */
 	List<Resume> resumeList(int memberNo);
 
+	/** 지원서 상세보기
+	 * @param memberNo
+	 * @param hireNo
+	 * @return
+	 */
+	Hire hireApplyDetail(int memberNo, int hireNo);
 	/**공고 삭제
 	 * @param hireNo
 	 * @return
 	 */
 	int hireDelete(int hireNo);
+
+	/**해당 기업이 작성한 공고 모두 얻어오기
+	 * @param shopNo
+	 * @return
+	 */
+	List<Hire> myHireList(int shopNo);
+
 
 	
 
