@@ -237,7 +237,7 @@ th{
     border-radius: 50%;
     color: white !important;
     letter-spacing: 0 !important;
-    padding: 1px 8px;
+    /* padding: 1px 8px; */
     user-select: none;
     cursor: pointer;
  }
