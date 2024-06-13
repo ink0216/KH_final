@@ -136,4 +136,11 @@
 		AND MEMBER_STATUS = 3
 	</update>
 	
+	<select id="selectManager">
+		SELECT *
+		FROM "MEMBER"
+		WHERE AUTHORITY_NO = 1
+		AND MEMBER_NO #{memberNo}
+	</select>
+	
 </mapper>

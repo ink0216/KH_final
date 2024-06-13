@@ -48,4 +48,10 @@ public interface ResumeService {
 			List<String> licenseDateList, List<Integer> dongNoList, List<String> typeNameList, Member loginMember)
 					throws IllegalStateException, IOException;
 
+	/**해당 회원의 모든 이력서 조회하기(저장,임시저장 모두)
+	 * @param memberNo
+	 * @return
+	 */
+	List<Resume> allResumeList(int memberNo);
+
 }

@@ -43,6 +43,10 @@ reviewBoardUpdateFrm.addEventListener("submit", e => {
 
 });
 
+// 뒤로가기
+function goBack() {
+    window.history.back();
+}
 
 /* 뒤로가기 버튼 */
 
@@ -52,10 +56,10 @@ cancelBtn.addEventListener("click",() => {
 
     if(confirm("뒤로가기를 하시면 지금까지 작성했던 내용이 모두 사라집니다. 정말 뒤로가시겠습니까?")){
         
-      
+        
+        goBack();
     
-
-        location.href = '/reviewBoard/2';
+        // location.href = '/reviewBoard/2';
 
     } else{
 

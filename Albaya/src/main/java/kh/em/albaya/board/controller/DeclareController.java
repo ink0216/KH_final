@@ -134,6 +134,7 @@ public class DeclareController {
 	@ResponseBody
 	@PutMapping("complete")
 	public int completeDeclare(
+			@SessionAttribute("loginMember") Member loginMember,
 			@RequestBody int reviewBoardDeclareNo,
 			RedirectAttributes ra) {
 	

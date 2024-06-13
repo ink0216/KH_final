@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지/댓글</title>
     <th:block th:replace="~{common/header}"></th:block>
-    <link rel="stylesheet" href="/css/common/admin.css">
+    <link rel="stylesheet" href="/css/common/commentAdmin.css">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                             <!-- <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${commentDeclare.commentNo}"></a> </td> -->
                             <td th:text="${commentDeclare.commentNo}"> </td>
                             <td th:text="${commentDeclare.memberNo}"></td>
-                            <td th:text="${commentDeclare.commentDeclareContent}"></td>
+                            <td><div class="commentDeclareContent" th:text="${commentDeclare.commentDeclareContent}"></div></td>
                             <td th:text="${commentDeclare.commentDeclareCondition}"></td>
                             <td th:text="${commentDeclare.commentDeclareDate}"></td>
                             <td th:text="${commentDeclare.reportedMemberNo}"></td>
@@ -94,6 +94,7 @@
                 <!-- 끝 페이지로 이동 -->
                 <li><span class="page-link" data-cp="*{maxPage}">&gt;&gt;</span></li>
 
+
             </ul>
 
             <div id="commentDeclareExplain" class="explain">
@@ -104,6 +105,10 @@
 
             </div>
         </div>
+
+
+      
+  
 
 
         <div id="checkMemberStatus">
