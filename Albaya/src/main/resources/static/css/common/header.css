@@ -17,7 +17,7 @@ header * {
     align-items: center;
 }
 #account{
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 }
 #account:hover{
     cursor:pointer;
@@ -156,13 +156,16 @@ header * {
 }
 
 .loginMember{
-    height:32px;
+    display: flex;
+    height: 32px;
     width: 35px;
-    margin-left:2%;
+    margin-left: 2%;
     margin-right: 5px;
-    border-radius:100%;
+    border-radius: 100%;
     border: 1px solid white;
-    background:white;
+    background: white;
+    align-items: center;
+    justify-content: center;
 }
 
 .logout{
@@ -261,6 +264,28 @@ header * {
     #menus{
         margin-left: -4px;
     }
+
+    .notification-list{
+    position: absolute;
+    top: 40px;
+    right: -350px;
+    width: 380px;
+    height: 400px;
+    padding: 10px;
+    list-style: none;
+    z-index: 2000;
+    background: #f0f3fa;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px #eee, 0 4px 8px 0 rgba(0, 0, 0, .3);
+    /* display: none;*/
+    }
+
+    .logout{
+        margin-left: 8px;
+    }
+    
 }
 
 
@@ -270,15 +295,15 @@ header * {
 /********************************** 알람 ***********************************/
 
 .notification-container{
-       position: relative;
+       /* position: relative; */
 
   }
   
   .notification-btn{
-    font-size: 20px;
-    position: absolute;
-    top: 7px;
-    left: 20px;
+        font-size: 20px;
+    /* position: absolute; */
+    /* top: 7px; */
+    /* left: 20px; */
     cursor: pointer;
     background-color: rgba(255, 255, 255, 1);
     border: none;
