@@ -126,6 +126,12 @@ public interface HireService {
 	 * @return
 	 */
 	Hire hireApplyDetail(int memberNo, int hireNo);
+	/**공고 삭제
+	 * @param hireNo
+	 * @return
+	 */
+	int hireDelete(int hireNo);
+
 
 	
 

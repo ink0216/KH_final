@@ -1,32 +1,32 @@
 <main class="main-layout-wrapper">
     <form action="/myPage/changeProfile" method="POST" enctype="multipart/form-data">
-    <div class="profile-img-container">
-        <div class="profile-img-area">
-            <div class="span-area">
-               <span>기업/점포 대표 이미지를 설정할 수 있습니다.</span>
-            </div>
-            <div class="img-area">
-                <div class="img-container">
-                    <input type="file" id="imageInput" style="display:none" name="profileImg" accept="image/*"/>
-                    <img th:src="${session.loginShop.shopProfile}" id="profileImg" alt=""/>
-                    <input type="hidden" name="shopNo" th:value="${session.loginShop.shopNo}"/>
+        <div class="profile-img-container">
+            <div class="profile-img-area">
+                <div class="span-area">
+                    <span>기업/점포 대표 이미지를 설정할 수 있습니다.</span>
+                </div>
+                <div class="img-area">
+                    <div class="img-container">
+                        <input type="file" id="imageInput" style="display:none" name="profileImg" accept="image/*" />
+                        <img th:src="${session.loginShop.shopProfile}" id="profileImg" alt="" />
+                        <input type="hidden" name="shopNo" th:value="${session.loginShop.shopNo}" />
+                    </div>
+                </div>
+                <div class="btn-area">
+                    <button id="uploadBtn" type="button">이미지 선택</button>
+                    <button id="submitBtn">변경하기</button>
                 </div>
             </div>
-            <div class="btn-area">
-                <button id="uploadBtn" type="button">이미지 선택</button>
-                <button id="submitBtn">변경하기</button>
-            </div>
         </div>
-    </div>
     </form>
     <div class="main-container-wrapper">
         <div class="h1-wrapper">
             <h2><span th:text="${session.loginShop.shopOwner}" style="color: black;"></span>
                 님의<br>
-            Albaya 기업 회원 정보</h2>
+                Albaya 기업 회원 정보</h2>
         </div>
         <div class="main-content-wrapper">
-            
+
             <div class="member-info-container">
                 <div class="member-info-header">
                     <h3>회원 정보</h3>
@@ -47,7 +47,7 @@
                                 안전을 위해 정보를 수정해주세요!!
                             </th:block>
                             <th:block th:if="${session.loginShop.lastModifiedDate != null}"
-                             th:text="${session.loginShop.lastModifiedDate}">
+                                th:text="${session.loginShop.lastModifiedDate}">
                             </th:block>
                         </div>
                     </div>
@@ -57,10 +57,9 @@
                             <span>연락처</span>
                         </div>
                         <div class="info-row-right">
-                            <th:block th:text=
-                            "${#strings.concat(#strings.substring(session.loginShop.shopTel, 0, 3),
+                            <th:block th:text="${#strings.concat(#strings.substring(session.loginShop.shopTel, 0, 3),
                                 '-', #strings.substring(session.loginShop.shopTel, 3, 7),
-                                '-', #strings.substring(session.loginShop.shopTel, 7))}">                
+                                '-', #strings.substring(session.loginShop.shopTel, 7))}">
                             </th:block>
                         </div>
                     </div>
@@ -86,7 +85,7 @@
 
                 </div>
             </div>
-            
+
             <div class="member-changePw-container">
 
                 <div class="member-changePw-header">
@@ -107,7 +106,7 @@
                                 안전을 위해 정보를 수정해주세요!!
                             </th:block>
                             <th:block th:if="${session.loginShop.lastModifiedPwDate}"
-                            th:text="${session.loginShop.lastModifiedPwDate}">
+                                th:text="${session.loginShop.lastModifiedPwDate}">
                             </th:block>
                         </div>
 
@@ -121,6 +120,12 @@
                     <button id="deleteBtn">탈퇴</button>
                 </div>
             </div>
+
+
+            <div class="button-area">
+                <button type="button" id="close-btn">닫기</button>
+            </div>
+
         </div>
     </div>
 </main>

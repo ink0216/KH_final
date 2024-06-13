@@ -1,4 +1,3 @@
-
 <form action="/myPage/shopInfoUpdate" method="POST">
     <main class="main-container-wrapper">
         <div class="main-container">
@@ -7,7 +6,7 @@
             <div class="h1-area">
                 <h1>회원 정보 수정</h1>
             </div>
-            
+
             <div class="notice-area-container">
                 <div class="notice-area">
                     <ul class="notice">
@@ -24,8 +23,8 @@
                         <span>이메일</span>
                     </div>
                     <div class="info-row-right2">
-                        <input type="text" name="shopEmail"
-                        th:value="${session.loginShop.shopEmail}" id="memberEmail" readonly>
+                        <input type="text" name="shopEmail" th:value="${session.loginShop.shopEmail}" id="memberEmail"
+                            readonly>
                     </div>
                 </div>
                 <div class="info-row">
@@ -33,8 +32,7 @@
                         <span>이름</span>
                     </div>
                     <div class="info-row-right2">
-                        <input type="text" name="shopOwner"
-                        th:value="${session.loginShop.shopOwner}">
+                        <input type="text" name="shopOwner" th:value="${session.loginShop.shopOwner}">
                     </div>
                 </div>
                 <div class="info-row">
@@ -42,8 +40,7 @@
                         <span>기업 이름</span>
                     </div>
                     <div class="info-row-right2">
-                        <input type="text" name="shopName"
-                        th:value="${session.loginShop.shopName}">
+                        <input type="text" name="shopName" th:value="${session.loginShop.shopName}">
                     </div>
                 </div>
                 <div class="info-row">
@@ -59,7 +56,8 @@
                         <span>휴대폰 번호</span>
                     </div>
                     <div class="info-row-right">
-                        <input type="text" name="shopTel" class="memberTel" id="memberTel" th:value="${session.loginShop.shopTel}" readonly>
+                        <input type="text" name="shopTel" class="memberTel" id="memberTel"
+                            th:value="${session.loginShop.shopTel}" readonly>
                     </div>
                     <div class="info-row-btn-area">
                         <button type="button" id="changeTelBtn">변경하기</button>
@@ -70,7 +68,8 @@
                         <span>주소</span>
                     </div>
                     <div class="info-row-right">
-                        <input type="text" name="fullAddress" id="address" th:value="${session.loginShop.fullAddress}" readonly>
+                        <input type="text" name="fullAddress" id="address" th:value="${session.loginShop.fullAddress}"
+                            readonly>
                     </div>
                     <div class="info-row-btn-area">
                         <button type="button" id="searchAddress">검색</button>
@@ -81,7 +80,8 @@
                         <span>상세 주소</span>
                     </div>
                     <div class="info-row-right2 address-dd">
-                        <input type="text" name="addressDetail" th:value="${session.loginShop.addressDetail}" placeholder="상세 주소">
+                        <input type="text" name="addressDetail" th:value="${session.loginShop.addressDetail}"
+                            placeholder="상세 주소">
                     </div>
                 </div>
                 <div class="submit-area">

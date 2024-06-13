@@ -59,11 +59,11 @@
 }
 .preferences{
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
     width:21%;
     height:auto;
-    flex:1;
 }
 .listContents{
     display: flex;

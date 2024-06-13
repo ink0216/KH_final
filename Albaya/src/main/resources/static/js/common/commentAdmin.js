@@ -18,144 +18,172 @@ connectToDeclareAdmin.addEventListener("click", () => {
 
 
 
+
+const createPageLink = (pageNo, text) => {
+    const li = document.createElement("li");
+
+    const span = document.createElement("span");
+    span.className = "page-link";
+
+    span.dataset.cp = pageNo; // 이동할 페이지 번호
+
+    span.innerText = text; // 화면에 보여질 기호(<< ,>>)/숫자(1,2,3)
+
+    li.append(span);
+
+    return li;
+}
+
+
+
+
 // 댓글 신고 표 조회
-// const selectList = (cp) => {
+const selectList = (cp) => {
 
-//     fetch("/commentDeclare/selectList?cp="+cp)
+    console.log("Current page:", cp);
 
-//         .then(response => response.json())
+    fetch(`/commentDeclare/selectList?cp=${cp}`)
 
-//         .then(result => {
+        .then(response => response.json())
+
+        .then(result => {
   
 
-           
-//             const commentDeclareList = result.commentDeclareList;
-//             const pagination = result.pagination;
+            // const declareList = JSON.parse(result);
+            const commentDeclareList = result.commentDeclareList;
+            const pagination = result.pagination;
 
-//             console.log(pagination)
-
-
-//             tbody.innerHTML = "";
+            console.log(pagination)
 
 
-//             for (let commentDeclare of commentDeclareList) {
+            tbody.innerHTML = "";
+
+
+            for (let commentDeclare of commentDeclareList) {
                 
-//                 const tr = document.createElement("tr");
+                const tr = document.createElement("tr");
 
-//                 const arr = [
-//                     'commentDeclareNo',
-//                     'commentNo',
-//                     'memberNo',
-//                     'commentDeclareContent',
-//                     'commentDeclareCondition',
-//                     'commentDeclareDate',
-//                     'reportedMemberNo'
-//                 ];
-
-
-//                 for (let key of arr) {
-//                     const td = document.createElement("td");
+                const arr = [
+                    'commentDeclareNo',
+                    'commentNo',
+                    'memberNo',
+                    'commentDeclareContent',
+                    'commentDeclareCondition',
+                    'commentDeclareDate',
+                    'reportedMemberNo'
+                ];
 
 
-//                     // if (key === 'commentNo') {
-
-//                     //     const link = document.createElement("a");
-
-//                     //     link.href = `/reviewBoard/2/${commentDeclare[key]}?reviewBoardCode=2&reviewBoardNo=${declare[key]}&cp=${currentPage}`;
-
-//                     //     link.innerText = declare[key];
-
-//                     //     link.classList.add("connectToReviewBoard");
-
-//                     //     td.appendChild(link);
-
-//                     // } else {
-
-//                         td.innerText = declare[key];
-
-//                     // }
-
-//                     tr.append(td);
+                for (let key of arr) {
+                    const td = document.createElement("td");
 
 
-//                 }
+                    // if (key === 'reviewBoardNo') {
+
+                    //     const link = document.createElement("a");
+
+                    //     link.href = `/reviewBoard/2/${declare[key]}?reviewBoardCode=2&reviewBoardNo=${declare[key]}&cp=${currentPage}`;
+
+                    //     link.innerText = declare[key];
+
+                    //     link.classList.add("connectToReviewBoard");
+                        
+
+                    //     td.appendChild(link);
+
+                    // } 
+                    if (key === 'commentDeclareContent') {
+                        const div = document.createElement("div");
+                        div.innerText = commentDeclare[key];
+                        div.classList.add("commentDeclareContent");
+                        td.appendChild(div);
+
+                    } else {
+
+                        td.innerText = commentDeclare[key];
+
+                    }
+
+                    tr.append(td);
 
 
-
-
-//                 const buttonTd = document.createElement("td");
-
-
-
-//                 const reject = document.createElement("button");
-//                 reject.innerText = "반려";
-//                 reject.classList.add("reject");
+                }
 
 
 
-//                 const accept = document.createElement("button");
-//                 accept.innerText = "확정";
-//                 accept.classList.add("accept");
+
+
+                const buttonTd = document.createElement("td");
+
+                const div = document.createElement("div");
+                div.classList.add("buttonArea");
+
+                const reject = document.createElement("button");
+                reject.innerText = "반려";
+                reject.classList.add("reject");
 
 
 
-//                 buttonTd.append(reject, accept);
-//                 tr.append(buttonTd);
+                const accept = document.createElement("button");
+                accept.innerText = "확정";
+                accept.classList.add("accept");
+
+
+                div.append(reject,accept);
+                buttonTd.append(div);
+                tr.append(buttonTd);
 
 
 
-//                 tbody.append(tr);
-//             }
+                tbody.append(tr);
+            }
 
 
-//             /* pagination 만들기 */
-//             const ul =  document.querySelector(".pagination");
-//             ul.innerHTML = ""; // 이전 내용 삭제
+            /* pagination 만들기 */
+            const ul =  document.querySelector(".pagination");
+            ul.innerHTML = ""; // 이전 내용 삭제
 
-//             // 첫 페이지
-//             const firstPage = createPageLink(1, "<<");
-//             ul.append(firstPage);
+            // 첫 페이지
+            const firstPage = createPageLink(1, "<<");
+            ul.append(firstPage);
 
-//             // 이전 페이지
-//             const prevPage = createPageLink(pagination.prevPage, "<");
-//             ul.append(prevPage);
+            // 이전 페이지
+            const prevPage = createPageLink(pagination.prevPage, "<");
+            ul.append(prevPage);
 
-//             for(let i= pagination.startPage ; i <= pagination.endPage ; i++) {
+            for(let i= pagination.startPage ; i <= pagination.endPage ; i++) {
 
-//                 // 현재 페이지 == cp
-//                 if(i === pagination.currentPage) {
-//                     const li = document.createElement("li");
-//                     const span = document.createElement("span");
-//                     span.className = "current";
-//                     span.innerText = i; 
+                // 현재 페이지 == cp
+                if(i === pagination.currentPage) {
+                    const li = document.createElement("li");
+                    const span = document.createElement("span");
+                    span.className = "current";
+                    span.innerText = i; 
                 
-//                     li.append(span);
-//                     ul.append(li);
+                    li.append(span);
+                    ul.append(li);
 
-//                 } else {
-//                     const page = createPageLink(i, i);
-//                     ul.append(page);
-//                 }
+                } else {
+                    const page = createPageLink(i, i);
+                    ul.append(page);
+                }
 
-//             }
+            }
 
 
-//             // 다음 페이지
-//             const nextPage = createPageLink(pagination.nextPage, ">");
-//             ul.append(nextPage);
+            // 다음 페이지
+            const nextPage = createPageLink(pagination.nextPage, ">");
+            ul.append(nextPage);
             
-//             // 마지막 페이지
-//             const endPage = createPageLink(pagination.maxPage, ">>");
-//             ul.append(endPage);
+            // 마지막 페이지
+            const endPage = createPageLink(pagination.maxPage, ">>");
+            ul.append(endPage);
 
 
      
-//             attachEventListeners();
-//         });
-// }
-
-
-
+            attachEventListeners();
+        });
+}
 
 
 const attachEventListeners = () => {
@@ -187,7 +215,16 @@ const attachEventListeners = () => {
 
                             alert("해당 신고가 반려 처리되었습니다.");
 
-                            selectList();
+                            let cp = document.querySelector(".current").innerText;  
+
+                            if(document.querySelectorAll(".tbody > tr").length ===1){
+
+                                if(cp > 1 ){
+                                    cp = cp-1;
+                                }
+                            }
+
+                            selectList(cp);
                         }
                     });
 
@@ -234,7 +271,16 @@ const attachEventListeners = () => {
 
                             alert("신고 확정 처리되었습니다.");
 
-                            selectList();
+                            let cp = document.querySelector(".current").innerText;  
+
+                            if(document.querySelectorAll(".tbody > tr").length ===1){
+
+                                if(cp > 1 ){
+                                    cp = cp-1;
+                                }   
+                            }
+
+                            selectList(cp);
                         }
                     });
             } else {
@@ -248,7 +294,21 @@ const attachEventListeners = () => {
             }
         });
     });
+
+
+    /* 페이지네이션 버튼 클릭 동작 추가 */
+    const pageLinks = document.querySelectorAll(".page-link");
+
+
+    pageLinks.forEach(link => {
+        link.addEventListener("click", e => {
+            selectList(link.dataset.cp);
+        })
+    })
 }
+
+
+
 
 
 
@@ -298,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     attachEventListeners();
     
-    selectList();
+  
 });
 
 

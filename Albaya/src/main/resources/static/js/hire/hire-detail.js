@@ -125,3 +125,20 @@ if(updateBtn != null){
         location.href = location.pathname.replace("hire","hire/update");
     });
 }
+/* 공고 삭제 버튼 */
+const deleteBtn = document.querySelector("#deleteBtn");
+if(deleteBtn != null){
+
+    deleteBtn.addEventListener("click", () => {
+        if(!confirm("해당 공고를 정말 삭제하시겠습니까?")){
+            alert("공고 삭제를 취소하였습니다.");
+            return;
+        }
+        const form = document.createElement("form");
+        form.action=location.pathname.replace("hire","hire/delete");
+        console.log(form.action);
+        form.method="POST";
+        document.querySelector("body").append(form);
+        form.submit();
+    });
+}

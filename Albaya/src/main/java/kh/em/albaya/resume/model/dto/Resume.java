@@ -68,4 +68,5 @@ public class Resume {
 	private String imgRename;
 	
 	private int dongNo;
+	private String resumeDate;
 }

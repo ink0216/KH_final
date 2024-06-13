@@ -2,6 +2,9 @@ const updateMemberInfo = document.querySelector("#updateMemberInfo");
 const deleteMember = document.querySelector("#deleteBtn");
 const changePwBtn = document.querySelector("#changePwBtn");
 const hireApplyListBtn = document.querySelector("#hireApplyListBtn");
+const closeBtn = document.getElementById("close-btn");
+
+
 
 let shopProfileStatus = false;
 
@@ -39,13 +42,18 @@ changePwBtn.addEventListener("click", () => {
     location.href = "/myPage/changePw";
 });
 
+closeBtn.addEventListener("click", ()=>{
+    location.href="/";
+})
+
 managerBtn.addEventListener("click", () => {
     location.href = "/declare/1?cp=1";
 })
+//--------------------------------------------------------------------
+const uploadBtn = document.querySelector("#uploadBtn"); //버튼
+let imageInput = document.querySelector("#imageInput"); //input태그
+const profileImg = document.querySelector('#profileImg'); //사진 img 태그
 
-const uploadBtn = document.querySelector("#uploadBtn");
-let imageInput = document.querySelector("#imageInput");
-const profileImg = document.querySelector('#profileImg');
 const originalImageSrc = profileImg.src;
 const submitBtn = document.querySelector("#submitBtn");
 
@@ -98,4 +106,7 @@ submitBtn.addEventListener("click", e => {
         return;
     }
 });
+
+
+
 

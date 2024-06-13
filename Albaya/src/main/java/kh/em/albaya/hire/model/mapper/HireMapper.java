@@ -201,4 +201,10 @@ public interface HireMapper {
 	 * @return
 	 */
 	Hire hireApplyDetail(Map<String, Object> map);
+	
+	/**공고 삭제
+	 * @param hireNo
+	 * @return
+	 */
+	int hireDelete(int hireNo);
 }

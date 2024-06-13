@@ -50,11 +50,13 @@ public class CommentDeclareController {
 	// 비동기 댓글신고 조회
 	@ResponseBody
 	@GetMapping("selectList")
-	public List<CommentDeclare> selectList() {
+	public Map<String, Object> selectDeclareList(
+			@RequestParam("cp") int cp) {
 		
-		List<CommentDeclare> commentDeclareList = service.selectCommentDeclareList();
+		Map<String, Object> map = null;
 		
-		return commentDeclareList;
+		map = service.selectCommentDeclareList(1,cp);
+		return map;
 	}
 	
 	

@@ -325,4 +325,10 @@ public class HireServiceImpl implements HireService{
 
 		return hireApplyDetail;
 	}
+	//공고 삭제
+	@Override
+	public int hireDelete(int hireNo) {
+		return mapper.hireDelete(hireNo);
+
+	}
 }

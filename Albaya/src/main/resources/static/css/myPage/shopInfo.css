@@ -80,3 +80,23 @@ form{
     height: 100%;
     object-fit: cover;
 }
+
+.button-area{
+    display: flex;
+    height: 10%;
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+#close-btn{
+    width: 100px;
+    height: 30px;
+    border: none;
+    background-color: #014C73;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+}
