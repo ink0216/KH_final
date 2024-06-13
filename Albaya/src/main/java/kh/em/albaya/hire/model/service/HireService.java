@@ -132,6 +132,18 @@ public interface HireService {
 	 */
 	int hireDelete(int hireNo);
 
+	/** 지원한 사람들 조회
+	 * @param hireNo
+	 * @return
+	 */
+	List<Hire> hireList(int hireNo);
+
+	/** 지원한 사람 수 조회
+	 * @param hireNo
+	 * @return
+	 */
+	int memberCount(int hireNo);
+
 
 	
 

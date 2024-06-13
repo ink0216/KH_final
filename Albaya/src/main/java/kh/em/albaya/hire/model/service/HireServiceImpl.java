@@ -331,4 +331,14 @@ public class HireServiceImpl implements HireService{
 		return mapper.hireDelete(hireNo);
 
 	}
+	
+	@Override
+	public List<Hire> hireList(int hireNo) {
+		return mapper.hireList(hireNo);
+	}
+	
+	@Override
+	public int memberCount(int hireNo) {
+		return mapper.memberCount(hireNo);
+	}
 }

@@ -197,57 +197,33 @@
                 
               </th:block> -->
 
-            <div class="hireMember-container marginContainal">
-
-                <h3>해당 공고 지원자 Email</h3>
-
-                <div class="hireMember-list-div">
-
-                    <div class="hireMember-count-area">
-                        <span class="hireMember-count">총 8명</span>
+            <th:block th:if="${session.loginShop != null }">
+                <th:block th:if="${session.loginShop.shopNo == hire.shopNo}">
+                    <div class="hireMember-container marginContainal">
+        
+                        <h3>해당 공고 지원자 Email</h3>
+        
+                        <div class="hireMember-list-div">
+        
+                            <div class="hireMember-count-area">
+                                <span class="hireMember-count counted">총</span><span class="counted" th:text="${memberCount}">총 8명</span><span class="counted"> 명</span>
+                            </div>
+        
+                            <ul class="hireMember-list">
+                                <li class="hireMember-item" th:each="member : ${hireList}">
+                                    <a th:href="@{/hire/hireApplyDetail/{memberNo}/{hireNo}(memberNo=${member.memberNo}, hireNo=${member.hireNo})}"
+                                     class="memberEmail" name="memberEmail" id="memberEmail"
+                                     th:text="${member.memberEmail}"  target="_blank">hong@naver.com</a>
+                                    <p class="memberName" th:text="(${member.memberName})">(홍*동)</p>
+                                </li>
+                            </ul>
+                            <!-- <a th:href="@{/hire/{hireNo}(hireNo=${applyInfo.hireNo})}" -->
+        
+                        </div>
+        
                     </div>
-
-                    <ul class="hireMember-list">
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong1@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong2@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong3@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong4@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong5@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong6@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong7@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                        <li class="hireMember-item"><a href="#" class="memberEmail"
-                                name="memberEmail">hong8@naver.com</a>
-                            <p class="memberName">(홍*동)</p>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
+                </th:block>
+            </th:block>
 
 
             <div class="btnArea marginContainal">
