@@ -264,27 +264,6 @@ header * {
     #menus{
         margin-left: -4px;
     }
-
-    .notification-list{
-    position: absolute;
-    top: 40px;
-    right: -350px;
-    width: 380px;
-    height: 400px;
-    padding: 10px;
-    list-style: none;
-    z-index: 2000;
-    background: #f0f3fa;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 0 1px #eee, 0 4px 8px 0 rgba(0, 0, 0, .3);
-    /* display: none;*/
-    }
-
-    .logout{
-        margin-left: 8px;
-    }
     
 }
 
@@ -295,7 +274,7 @@ header * {
 /********************************** 알람 ***********************************/
 
 .notification-container{
-       /* position: relative; */
+       position: relative;
 
   }
   
@@ -318,20 +297,19 @@ header * {
   
   .notification-list{
     position: absolute;
-    top: 30px;
-    right: -30px;
+    top: 50px;
+    right: -200px;
     width: 380px;
     height: 400px;
     padding: 10px;
     list-style: none;
     z-index: 2000;
-    background: #f0f3fa;
+    background: rgb(242 242 242);;
     overflow-y: auto;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 0 1px #eee, 0 4px 8px 0 rgba(0, 0, 0, .3);
-    /* display: none;  */
-    /* 처음에 알림 창이 보이지 않게 함 */
+    /* display: none;*/
   }
 
   .notification-showx{
@@ -397,12 +375,13 @@ header * {
   
   .notidication-delete{
     position: absolute;
-    top: -5px;
-    right: 2px;
+    top: 24px;
+    right: 13px;
     user-select: none;
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
+    color: rgb(255, 1, 1);
   }
 
   .notidication-delete:hover{
@@ -413,4 +392,31 @@ header * {
   .notification-item:hover > .notification-text{
     text-decoration: underline;
   }
+
+  @media screen and (max-width:995px){
+
+    .logout{
+        margin-left: 8px;
+    }
+    .notification-list{
+        position: absolute;
+        top: 50px;
+        right: -330px;
+        width: 380px;
+        height: 400px;
+        padding: 10px;
+        list-style: none;
+        z-index: 2000;
+        background: rgb(242 242 242);;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 0 1px #eee, 0 4px 8px 0 rgba(0, 0, 0, .3);
+        /* display: none;*/
+    }
+
+  }
+  
+  .bname{color:darksalmon}
+  .bhier{color:#2e00c2;}
 
