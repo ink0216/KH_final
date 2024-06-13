@@ -570,9 +570,18 @@ resumeTitle.addEventListener("input", e => {
     obj.resumeTitle=true;
 });
 
+let isResizing = false;
+
 introduce.addEventListener("mousedown", () => {
-    
-})
+        introduce.addEventListener("mousemove", () => {
+           
+    });
+});
+
+
+
+
+
 
 
 
