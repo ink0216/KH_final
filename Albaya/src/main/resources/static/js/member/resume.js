@@ -596,6 +596,15 @@ inputText.forEach((texts) => {
    
 });
 
+//input:date 요소 유효성 검사
+inputDate.forEach((dates) => {
+    if(dates.value == null){
+        switch(dates.className.closest){
+
+        }
+    }
+})
+
 
 
 //textArea 사이즈 유효성 검사
@@ -607,6 +616,7 @@ introduce.addEventListener("mousedown", () => {
            }
     });
 });
+
 
 
 
