@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서 상세 조회</title>
-    <link rel="stylesheet" href="../../static/css/member/resumeProfile.css">
+    <link rel="stylesheet" href="/css/member/resumeProfile.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div id="resumeProfileInfo">
+     <!--    <div id="resumeProfileInfo">
             
 
             <div class="info">프로필</div>
@@ -42,24 +42,29 @@
             <div class="info">희망직무</div>
             <div class="info">희망직무</div>
             
-        </div>
+        </div> -->
 
         <div id="profileDetail">
+            <br><br>
             <div id="heading">
                 <div id="headingContainer">
                     <div id="profImg">
                         <img src="" >
                         <button id="imgEditBtn" type="button"><i class="fa-solid fa-pencil"></i></button>
                     </div>
-                    <div  class="info" id="name">
-                        <span><h3>황진관</h3></span>
+                    <div id="pesonalInfo">
+                        <div  class="info" id="name">
+                            <span><h3>황진관</h3></span>
+                        </div>
+                        <div class="info" id="email">
+                            <span>jkhwang58@gmail.com</span>
+                        </div>
+                        <div class="info" id="telNo">
+                            <span>01057823394</span>
+                        </div><br><br>
                     </div>
-                    <div class="info" id="email">
-                        <span>jkhwang58@gmail.com</span>
-                    </div>
-                    <div class="info" id="telNo">
-                        <span>01057823394</span>
-                    </div><br><br>
+                    <hr>
+                    <button id="backBtn">목록으로&nbsp;<i class="fa-solid fa-arrow-left"></i></button>
                     <!-- <h1>프로필</h1>
                     <p>고용 정보와 인구통계를 관리하여 더 나은 경험을 구축하세요.</p> -->
                 </div>
@@ -68,58 +73,83 @@
                 </div> -->
                 
             </div>
-            <div id="title">
-                <h2>나의 이력서</h2>
-                <button id="editInfo"><i class="fa-solid fa-pencil"></i></button>
-            </div>
-            <div class="detail" id="introduction">
-                <span>자기소개</span>
-                <div>dsfdsfdsfsdfdsfsd</div>
-            </div>
-            <div class="detail" id="qualifications">
-                <span>최종학력</span>
-                <div>대학교</div>
-            </div>
-            <div class="detail" id="loactionPreferences">
-                <span>희망근무지</span>
-                <div>
-                    <div>경기도 파주시 조리읍</div>
-                    <div>서울특별시 강서구</div>
-                    <div>경기도 파주시</div>
-                    <div>경기도 파주시</div>
-                    <div>경기도 파주시</div>
+            <div id="certInfo">
+                <br>
+                <div id="title">
+                    
+                    <h2>나의 이력서</h2>
+                    <button id="editInfo"><i class="fa-solid fa-pencil"></i></button>
                 </div>
-            </div>
-            <div class="detail" id="jobPreferences">
-                <span>희망 업직종</span>
-                <div>
-                    <div>음식 음료</div>
-                    <div>매장관리/판매</div>
-                    <div>고객상담</div>
-                    <div>병원/간호/연구</div>
-                    <div>서비스</div>
+               <div id="applicantDetail">
+                    <div class="detail" id="introduction">
+                        <span>자기소개</span>
+                        <div>dsfdsfdsfsdfdsfsd</div>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="detail" id="qualifications">
+                        <span>최종학력</span>
+                        <div>대학교</div>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="detail" id="loactionPreferences">
+                        <span>희망근무지</span>
+                        <div>
+                            <div>경기도 파주시 조리읍</div>
+                            <div>서울특별시 강서구</div>
+                            <div>경기도 파주시</div>
+                            <div>경기도 파주시</div>
+                            <div>경기도 파주시</div>
+                            <!-- <div id="headingImg">
+                                <img src="/images/jazz-bend.jpg" width="300px" height="250px">
+                            </div> -->
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="detail" id="jobPreferences">
+                        <span>희망 업직종</span>
+                        <div>
+                            <div>음식 음료</div>
+                            <div>매장관리/판매</div>
+                            <div>고객상담</div>
+                            <div>병원/간호/연구</div>
+                            <div>서비스</div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="detail" id="careers">
+                        <span>경력사항</span>
+                        <br>
+                        <div>신입</div>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="detail" id="certificate">
+                        <span>자격증</span>
+                        <div id="certificateName" class="certificate" style="display:flex;">
+                            <span>자격증명</span>
+                            <div>:&nbsp;정보처리기사</div>
+                        </div>
+                        <div id="certificateOrg" class="certificate" style="display:flex;">
+                            <span>발행기관</span>
+                            <div>:&nbsp;CompTIA</div>
+                        </div>
+                        <div id="certificateScore" class="certificate" style="display:flex;">
+                            <span>점수</span>
+                            <div>:&nbsp;79</div>
+                        </div>
+                       
+               </div>
+             
+                   
                 </div>
+                <br>
             </div>
-            <div class="detail" id="careers">
-                <span>경력사항</span>
-                <div>신입</div>
-            </div>
-            <div class="detail" id="certificate">
-                <span>자격증</span>
-                <div id="certificateName" style="display:flex;">
-                    <span>자격증명:</span>
-                    <div>&nbsp;정보처리기사</div>
-                </div>
-                <div id="certificateOrg" style="display:flex;">
-                    <span>발행기관:</span>
-                    <div>&nbsp;CompTIA</div>
-                </div>
-                <div id="certificateScore" style="display:flex;">
-                    <span>점수:</span>
-                    <div>&nbsp;79</div>
-                </div>
-               
-            </div>
+            <br>
 
         </div>
         <!-- <div id="hireList">
@@ -165,7 +195,7 @@
     </div>
    
     <th:block th:replace="~{common/footer}"></th:block>
-    <script src = "../../static/js/member/resumeProfile.js"></script>
+    <script src = "/js/member/resumeProfile.js"></script>
     
 </body>
 </html>
