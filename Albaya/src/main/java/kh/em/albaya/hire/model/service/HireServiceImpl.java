@@ -123,6 +123,31 @@ public class HireServiceImpl implements HireService{
 
 	    return map;
 	}	 
+	public Map<String,Object> selectHireList(int cp) {
+		// 전체 공고 수 조회
+		int listCount = mapper.selectListCount();
+		
+		Pagination pagination = new 
+				Pagination(cp, listCount, 10, 8, 12);
+				//현재 페이지 번호, 전체 글 수, 한 페이지 게시글 수(limit)
+		//보여질 페이지 번호 개수(pageSize), offset(페이지 당 건너뛰는 글 수)
+		// 13번째 부터 1페이지
+		// 1p == 13 ~ 22
+		// 2p == 23 ~ 32
+		int offset = 12 + (cp-1) * 10; 
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		List<Hire> hireList = mapper.selectHireList(null, rowBounds);
+		
+		
+		Map<String, Object> map = Map.of("hireList", hireList, "pagination", pagination);
+		
+		return map;
+		//
+	}
+	
+	
+	
 	
 
 	//시도 조회하기

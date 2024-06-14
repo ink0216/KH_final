@@ -8,6 +8,17 @@
     const selectSchoolName = document.querySelector("#selectSchoolName");
     const selectUniversityName = document.querySelector("#selectUniversityName");
 
+    const obj = {
+        "image": false,
+        "resumeTitle":false,
+        "introduce" : false,
+        "schoolName" : false,
+        "desiredJobs": false,
+        "experienced" : false,
+        "certificate" : false
+    }
+    
+
     
 
     const eduObj = {
@@ -42,9 +53,10 @@
     const dosies = document.querySelectorAll(".dosies");
     const sigunguList = document.querySelector(".sigunguList");
     const dong = document.querySelector(".dong");
+    
+    
     const locationSelectContainer =  document.querySelector(".locationSelectContainer");
     const locationContentArr = [];
-    const dongObj ={};
     dosies.forEach(btn => {
         btn.addEventListener("click", () => {
             sigunguList.innerHTML = "";
@@ -69,6 +81,7 @@
                             .then(resp=>resp.json())
                             .then(
                                 list=>{
+                                    console.log(list)
                                     list.forEach(dongItem=>{
                                         const dongdiv = document.createElement("div");
                                         dongdiv.innerHTML = dongItem.dongName;
@@ -76,11 +89,18 @@
                                         dong.append(dongdiv);
                                         console.log(dongItem.dongNo)
                                         dongdiv.addEventListener("click",()=>{
-                                            
-                                            
-                                            for(let i=0; i<locationContentArr.length; i++){
-                                                
-                                                if(dongItem.dongNo == locationContentArr[i]){
+
+                                            // 화면에 보여지는 동 요소2
+
+                                            const input = document.createElement("input");
+                                            input.type = "hidden";
+                                            input.name = "dongNo";
+                                            input.value = dongItem.dongNo;
+                                            form.append(input);
+                                           
+
+                                            for(let i=0; i<locationContentArr.length; i++){  
+                                                if(input.value == locationContentArr[i]){
                                                     alert("중복 선택은 가능하지 않습니다");
                                                     return;
                                                 }
@@ -88,39 +108,36 @@
                                             if(document.querySelectorAll(".selectDong").length > 4){
                                                 alert("최대 5가지만 선택할 수 있습니다");
                                                 return;
-                                            }
-                                                
-                                            const input = document.createElement("input");
-                                            input.type = "hidden";
-                                            input.name = "dongNo";
-                                            input.value = dongItem.dongNo;
-                                            form.append(input);
+                                            } 
 
-                                            // 화면에 보여지는 동 요소
+                                            locationContentArr.push(dongItem.dongNo);
+
+
+                                            const dongName = document.createTextNode(`${dongItem.dongName}`);
+        
+                                                    
                                             const selectDong = document.createElement("span");
                                             selectDong.className = "selectDong";
-                                            
-                                            const dongName = document.createTextNode(`${dongItem.dongName}`);
+                                                  
 
                                             const xBtn = document.createElement("span");
-                                            xBtn.innerHTML = "&times;";
-                                            
+                                            xBtn.innerHTML = "&times;"; 
                                             xBtn.addEventListener("click", () => {
-                                                selectDong.remove();
+                                            selectDong.remove();
                                                 input.remove();
                                             });
-                                            
+
                                             const hide = document.createElement("span");
                                             hide.className = "hide";
-                                            hide.innerText = `${dongItem.dongNo}`;
-                                            
+                                            hide.innerText = `${dongItem.dongNo}`; 
+                                                 
                                             selectDong.appendChild(dongName);
                                             selectDong.appendChild(xBtn);
-                                            selectDong.appendChild(hide);
+                                            selectDong.appendChild(hide); 
 
                                             locationSelectContainer.append(selectDong);
-
-                                           
+                                                  
+                                                  
                                         });
                                         
                                         
@@ -319,7 +336,7 @@ const addExperience = () => {
 
 
 
-const fifthResume = document.querySelector(".resumeElement:nth-child(15)")
+const fifthResume = document.querySelector(".resumeElement:nth-child(17)")
 const addCertificate = () => {
     
     const certificateDetailHTML = `
@@ -426,8 +443,6 @@ jobsOfDesireBtn.forEach(btn => {
             }
         } 
         
-
-
         if(document.querySelectorAll(".addJobCategory>span").length > 4){
             alert("최대 5가지만 선택할 수 있습니다");
             return;
@@ -438,11 +453,20 @@ jobsOfDesireBtn.forEach(btn => {
         jobinput.setAttribute("name","typeName");
         jobinput.setAttribute("value",btn.textContent);
         addDesiredJobs.appendChild(jobinput);
-        const addJobDiv = `
+        const addJobDiv = /* `
             <span class = "addJobCategory">
                 ${btn.textContent}
                 <span>&times;</span>
-            </span>`;
+            </span>` */
+            () => {
+                const span = document.createElement("span");
+                span.className = "addJobCategory";
+                span.createTextNode = btn.textContent;
+
+                const times =  document.createElement("span");
+                
+
+            };
 
         addDesiredJobs.innerHTML += addJobDiv;
 
@@ -518,6 +542,35 @@ const picFile = document.querySelector("#picFile");
         input.setAttribute("name","resumeStatus");
         input.value=0;
         validatingBtnsContainer.append(input);
+        
+        
+    /* const obj = {
+        "image": false,
+        "resumeTitle":false,
+        "introduce" : false,
+        "schoolName" : false,
+        "desiredJobs": false,
+        "experienced" : false,
+        "certificate" : false
+    } */
+    
+
+        for(let key in obj ){
+            if(!obj[key]){
+                let str;
+                switch(key){
+                    case "image": str="사진을 입력해주세요"; break;
+                    case "resumeTitle": str="이력서 제목을 입력해주세요"; break;
+                    case "introduce": str="자기소개서를 작성해주세요"; break;
+                    case "schoolName": str="학력을 입력해주세요"; break;
+                    case "desiredJobs": str="희망 업직종을 선택해주세요"; break;
+                    case "experienced": str="경력을 입력해주세요"; break;
+                    case "certificate": str="자격증을 입력해주세요"; break;
+                }
+                alert(str);
+                return;
+            }
+        }
         form.submit();
     });
 
@@ -532,7 +585,12 @@ const picFile = document.querySelector("#picFile");
         form.submit();
     });
 
-/* 유효성 검사 */
+
+
+
+
+
+/***********  유효성 검사 ***********/
 
 const introduce = document.querySelector("#introduce");
 const inputText = document.querySelectorAll(`input[type="text"]`);
@@ -541,16 +599,6 @@ const endDate = document.querySelectorAll(".endDate");
 
 
 
-const obj = {
-    "image": false,
-    "resumeTitle":false,
-    "introduce" : false,
-    "educationNo": false,
-    "schoolName" : false,
-    "locationSelectContainer": false,
-    "experienced" : false,
-    "certificate" : false
-}
 
 //사진 유효성 검사
 picFile.addEventListener("input", e => {
@@ -566,6 +614,7 @@ picFile.addEventListener("input", e => {
 
 //input:text 요소 유효성 검사
 inputText.forEach((texts) => {
+    
     texts.addEventListener("input", () => {
         if(texts.value.trim().length === 0){
             switch(texts.id){
@@ -584,7 +633,10 @@ inputText.forEach((texts) => {
 
         switch(texts.id){
             case "title":  obj.resumeTitle=true; break;
-            case "primarySchoolName":  obj.schoolName=true; break;
+            case "primarySchoolName":
+                const inputs = document.querySelectorAll("#primarySchoolName>input")  
+                 obj.schoolName=true;
+                 break;
             case "middleSchoolName":  obj.schoolName=true; break;
             case "schoolName":  obj.schoolName=true; break;
             case "companyName": obj.experienced=true; break;
@@ -614,7 +666,9 @@ const formattedDate = date.toLocaleDateString('en-GB', option);
 
 
 //textArea 사이즈 유효성 검사
-
+introduce.addEventListener("input", () => {
+    obj.introduce=true;
+})
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
            if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
@@ -622,6 +676,7 @@ introduce.addEventListener("mousedown", () => {
            }
     });
 });
+
 
 
 

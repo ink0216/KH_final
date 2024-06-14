@@ -484,6 +484,7 @@
 	<select id="myHireList">
 		SELECT * FROM "HIRE"
 		WHERE SHOP_NO = #{shopNo}
+		AND HIRE_DEL_FL='N'
 		ORDER BY HIRE_START DESC
 	</select>
 

@@ -200,27 +200,28 @@
             <th:block th:if="${session.loginShop != null }">
                 <th:block th:if="${session.loginShop.shopNo == hire.shopNo}">
                     <div class="hireMember-container marginContainal">
-        
+
                         <h3>해당 공고 지원자 Email</h3>
-        
+
                         <div class="hireMember-list-div">
-        
+
                             <div class="hireMember-count-area">
-                                <span class="hireMember-count counted">총</span><span class="counted" th:text="${memberCount}">총 8명</span><span class="counted"> 명</span>
+                                <span class="hireMember-count counted">총</span><span class="counted"
+                                    th:text="${memberCount}">총 8명</span><span class="counted"> 명</span>
                             </div>
-        
+
                             <ul class="hireMember-list">
                                 <li class="hireMember-item" th:each="member : ${hireList}">
                                     <a th:href="@{/hire/hireApplyDetail/{memberNo}/{hireNo}(memberNo=${member.memberNo}, hireNo=${member.hireNo})}"
-                                     class="memberEmail" name="memberEmail" id="memberEmail"
-                                     th:text="${member.memberEmail}"  target="_blank">hong@naver.com</a>
+                                        class="memberEmail" name="memberEmail" id="memberEmail"
+                                        th:text="${member.memberEmail}" target="_blank">hong@naver.com</a>
                                     <p class="memberName" th:text="(${member.memberName})">(홍*동)</p>
                                 </li>
                             </ul>
                             <!-- <a th:href="@{/hire/{hireNo}(hireNo=${applyInfo.hireNo})}" -->
-        
+
                         </div>
-        
+
                     </div>
                 </th:block>
             </th:block>
@@ -241,14 +242,14 @@
                         </th:block>
                     </th:block>
                     <th:block th:if="${hireOpen ==1}">
-                        <button type="button" >마감된 공고입니다.</button>
+                        <button type="button">마감된 공고입니다.</button>
                     </th:block>
                 </th:block>
                 <th:block th:if="${hireOpen ==1}">
                     <button type="button">마감된 공고입니다.</button>
-                <th:block th:if="${hire.hireDelFl}=='Y'">
-                    <button type="button" >삭제된 공고입니다.</button>
-                </th:block>
+                    <th:block th:if="${hire.hireDelFl}=='Y'">
+                        <button type="button">삭제된 공고입니다.</button>
+                    </th:block>
 
             </div>
 

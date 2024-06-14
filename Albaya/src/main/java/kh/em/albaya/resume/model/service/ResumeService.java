@@ -2,6 +2,7 @@ package kh.em.albaya.resume.model.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import kh.em.albaya.member.model.dto.Member;
 import kh.em.albaya.resume.model.dto.Resume;
@@ -53,5 +54,23 @@ public interface ResumeService {
 	 * @return
 	 */
 	List<Resume> allResumeList(int memberNo);
+
+	/**한 회원이 작성한 이력서 개수 얻어오기
+	 * @param memberNo
+	 * @return
+	 */
+	int resumeCount(int memberNo);
+
+	/**이력서 삭제
+	 * @param resumeNo
+	 * @return
+	 */
+	int resumeDelete(int resumeNo);
+
+	/**이력서 상세 조회
+	 * @param resumeNo
+	 * @return
+	 */
+	Map<String, Object> resumeDetail(int resumeNo);
 
 }

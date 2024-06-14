@@ -2,7 +2,9 @@ package kh.em.albaya.resume.model.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -89,7 +91,7 @@ public class ResumeServiceImpl implements ResumeService {
 			resume.setImgRename(rename);
 			
 			
-			resume.setImgPath(webPath+rename);
+			resume.setImgPath(webPath);
 			//성공시
 			resume.getImage().transferTo(new File(folderPath+rename));
 		}
@@ -168,5 +170,51 @@ public class ResumeServiceImpl implements ResumeService {
 	@Override
 	public List<Resume> allResumeList(int memberNo) {
 		return mapper.allResumeList(memberNo);
+	}
+	
+	//한 회원이 작성한 이력서 개수 얻어오기
+	@Override
+	public int resumeCount(int memberNo) {
+		return mapper.resumeCount(memberNo);
+	}
+	
+	//이력서 삭제
+	@Override
+	public int resumeDelete(int resumeNo) {
+		return mapper.resumeDelete(resumeNo);
+	}
+	
+	//이력서 상세 조회
+	@Override
+	public Map<String, Object> resumeDetail(int resumeNo) {
+		//RESUME 테이블에서 조회
+		Resume resume = mapper.resumeDetail(resumeNo);
+		
+		//CAREER, LICENSE
+		// RESUME_LOCATION, RESUME_WORK, RESUME_EDUCATION
+		
+		//CAREER 테이블에서 조회
+		List<Resume> careerList = mapper.careerDetail(resumeNo);
+		
+		//LICENSE 테이블에서 조회
+		List<Resume> licenseList = mapper.licenseDetail(resumeNo);
+		
+		//RESUME_LOCATION 테이블에서 조회
+		List<Resume> locationList = mapper.locationDetail(resumeNo);
+		
+		//RESUME_WORK 테이블에서 조회
+		List<Resume> workList = mapper.workDetail(resumeNo);
+		
+		//RESUME_EDUCATION 테이블에서 조회
+		Resume educationDetail = mapper.educationDetail(resumeNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("resume", resume);
+		map.put("careerList", careerList);
+		map.put("licenseList", licenseList);
+		map.put("locationList", locationList);
+		map.put("workList", workList);
+		map.put("educationDetail", educationDetail);
+		return map;
 	}
 }

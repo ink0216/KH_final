@@ -399,3 +399,16 @@ signupBtn.addEventListener("click", e => {
         }
     }
 })
+
+
+/* 뒤로 가기 버튼 */
+/* 뒤로가기 버튼 클릭 */
+const goBackBtn = document.getElementById("go-back-btn");
+goBackBtn.addEventListener("click",()=>{
+
+    if( confirm("가입을 취소하시겠습니까?")){
+        let url = "/member/selectSignup";
+        location.href = url;
+    }
+   
+})
