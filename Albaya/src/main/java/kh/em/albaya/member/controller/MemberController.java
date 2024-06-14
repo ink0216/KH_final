@@ -128,8 +128,6 @@ public class MemberController {
 		if(loginMember != null) {
 			
 			
-			
-			
 			model.addAttribute("loginMember", loginMember);
 			
 			Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
