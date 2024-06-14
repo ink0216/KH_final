@@ -19,9 +19,10 @@ public class Member {
 	private String memberPhoneNumber;
 	private String enrollDate;
 	private String memberName;
-	private String memberStatus;
+	private int memberStatus;
 	private int memberGender;
 	private String memberAddress;
 	private String 	lastModifiedDate;
 	private String lastModifiedPwDate;
+	private String suspendPeriod;
 }

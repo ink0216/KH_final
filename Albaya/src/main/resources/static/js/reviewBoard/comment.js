@@ -56,10 +56,8 @@ const selectCommentList = () => {
                     let maskedNickname = "";
                     maskedNickname = emailPart[0] + emailPart.slice(1, -1).replace(/./g, "*") + emailPart[emailPart.length - 1];
                     nickname.innerText=maskedNickname;
-                    // nickname.innerText = comment.memberEmail.split("@")[0];
-                    // nickname.innerText = comment.memberEmail.split("@")[0].replace(/.(?=.*.)/g, "*");
                     commentWriter.append(nickname); 
-                
+
 
 
                     // 날짜(작성일)
@@ -79,6 +77,10 @@ const selectCommentList = () => {
                     
                     // 댓글 행에 작성자 영역 추가
                     commentRow.append(commentWriter);
+                    
+
+                    
+                    
 
 
                     // 댓글 내용
@@ -94,6 +96,13 @@ const selectCommentList = () => {
                     commentBtnArea.classList.add("comment-btn-area");
 
 
+                    // 신고 버튼 추가
+                    const commentDeclare = document.createElement("button");
+                    commentDeclare.innerText = "신고";
+                    commentDeclare.setAttribute("onclick",`showDeclarePopup(${comment.commentNo})`);
+                    commentBtnArea.append(commentDeclare);
+
+
                     // 답글 버튼
                     const childCommentBtn = document.createElement("button");
                     childCommentBtn.innerText = "답글";
@@ -106,12 +115,7 @@ const selectCommentList = () => {
                     commentBtnArea.append(childCommentBtn);
 
 
-                    // 신고 버튼 추가
-                    const commentDeclare = document.createElement("button");
-                    commentDeclare.innerText = "신고";
-                    commentDeclare.setAttribute("onclick",`showDeclarePopup(${comment.commentNo})`);
-                    commentBtnArea.append(commentDeclare);
-
+                    
 
                     // 현재 로그인한 사람이 있으면서 로그인한 회원 번호와 댓글 작성자의 번호와 같으면 댓글 수정/삭제 버튼도 출력
                     if(loginMemberNo != null && loginMemberNo == comment.memberNo){
@@ -627,11 +631,24 @@ const updateComment = (commentNo, btn) => {
 
 
 // 댓글 신고 버튼 동작
-const showDeclarePopup = (commentNo) => {
-    
+const showDeclarePopup = (commentNo, memberNo) => {
+
+    if(loginMemberNo == null){
+
+        alert("일반 회원 로그인 후 신고 서비스를 이용할 수 있습니다.");
+        return;
+    }
+
+    if (loginMemberNo == memberNo) {
+        alert("자기 자신을 신고할 수 없습니다.");
+        return;
+    }
+ 
     window.open('/commentDeclarePopup?commentNo='+commentNo, 
     'popupWindow', 'width=770, height=1200, left=150, resizable = no');
 
+   
+    
 }
 
 
