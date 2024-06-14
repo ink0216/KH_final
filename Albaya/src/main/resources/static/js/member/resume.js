@@ -534,9 +534,10 @@ const picFile = document.querySelector("#picFile");
 
 /* 유효성 검사 */
 
-const resumeTitle = document.querySelector("#title");
 const introduce = document.querySelector("#introduce");
-const educationShow = document.querySelector(".show");
+const inputText = document.querySelectorAll(`input[type="text"]`);
+const startDate = document.querySelectorAll(".startDate");
+const endDate = document.querySelectorAll(".endDate");
 
 
 
@@ -560,19 +561,78 @@ picFile.addEventListener("input", e => {
     obj.image=true;
 });
 
-resumeTitle.addEventListener("input", e => {
-    if(e.target.value.trim().length === 0){
-       
-        e.target.value = "";
-        obj.resumeTitle=false
-        return;
-    }
-    obj.resumeTitle=true;
+
+//input 요소 유효성 검사
+
+//input:text 요소 유효성 검사
+inputText.forEach((texts) => {
+    texts.addEventListener("input", () => {
+        if(texts.value.trim().length === 0){
+            switch(texts.id){
+                case "title":  obj.resumeTitle=false; break;
+                case "primarySchoolName":  obj.schoolName=false; break;
+                case "middleSchoolName":  obj.schoolName=false; break;
+                case "schoolName":  obj.schoolName=false; break;
+                case "companyName": obj.experienced=false; break;
+                case "searchCertificate": obj.certificate=false; break;
+                case "organization": obj.certificate=false; break;
+            }
+            texts.value = "";
+            return;
+            
+        }
+
+        switch(texts.id){
+            case "title":  obj.resumeTitle=true; break;
+            case "primarySchoolName":  obj.schoolName=true; break;
+            case "middleSchoolName":  obj.schoolName=true; break;
+            case "schoolName":  obj.schoolName=true; break;
+            case "companyName": obj.experienced=true; break;
+            case "searchCertificate": obj.certificate=true; break;
+            case "organization": obj.certificate=true; break;
+        }
+        
+
+    });
+   
 });
 
+//input:date 요소 유효성 검사
+const date = new Date();
+const option = {
+    day:'2-digit',
+    month:'2-digit',
+    year:'numeric'
+}
+const formattedDate = date.toLocaleDateString('en-GB', option);
+// startDate.forEach((strtDate) => {
+//     strtDate.addEventListener("input", e => {
+        
+//     });
+
+// })
+
+
+//textArea 사이즈 유효성 검사
+
 introduce.addEventListener("mousedown", () => {
-    
-})
+        introduce.addEventListener("mousemove", () => {
+           if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
+            introduce.style.resize = "none";
+           }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

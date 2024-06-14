@@ -139,8 +139,8 @@
                                                 
                                                 <div class="innerDateContainer">
                                                     <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="date" required>
-                                                    <input type="date" name="schoolEndDate" class="date" required>
+                                                    <input type="date" name="schoolStartDate" class="startDate" required>
+                                                    <input type="date" name="schoolEndDate" class="endDate" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,8 +163,8 @@
                                                 
                                                 <div class = "innerDateContainer">
                                                     <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="date" required>
-                                                    <input type="date" name="schoolEndDate" class="date" required>
+                                                    <input type="date" name="schoolStartDate" class="startDate" required>
+                                                    <input type="date" name="schoolEndDate" class="endDate" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -186,8 +186,8 @@
                                                 
                                                 <div class = "innerDateContainer">
                                                     <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="date" required>
-                                                    <input type="date" name="schoolEndDate" class="date" required>
+                                                    <input type="date" name="schoolStartDate" class="startDate" required>
+                                                    <input type="date" name="schoolEndDate" class="endDate" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,9 +213,9 @@
                                                     
                                                     <div class="innerDateContainer">
                                                         <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate" class="date" id = "startDate" required>
+                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" required>
                                                         ~
-                                                        <input type="date" name="schoolEndDate" class="date" id = "endDate" required>
+                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,9 +244,9 @@
                                                     
                                                     <div class="innerDateContainer">
                                                         <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate" class="date" id = "startDate" required>
+                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" required>
                                                         ~
-                                                        <input type="date" name="schoolEndDate" class="date" id = "endDate" required>
+                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,9 +275,9 @@
                                                     
                                                     <div class="innerDateContainer">
                                                         <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate" class="date" id = "startDate" required>
+                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" required>
                                                         ~
-                                                        <input type="date" name="schoolEndDate" class="date" id = "endDate" required>
+                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -407,12 +407,12 @@
                                         <div class = "experiencedContainer">
                                                 <div id = "companyName">
                                                     <span>회사이름</span>
-                                                    <input type="text" name="companyName"> 
+                                                    <input type="text" name="companyName" id="companyName"> 
                                                 </div>
         
                                 
                                                 <div class = "dateInput">
-                                                    <input type="date" name="startDate" id="startDate">~<input type="date" name="endDate" id="endDate">
+                                                    <input type="date" name="startDate" class="startDate">~<input type="date" name="endDate" class="endDate">
                                                     <button type = "button" id = "chuga">+</button>
                                                 </div>
                                                 
@@ -436,14 +436,14 @@
                             
                                     <div id="certificate" class = "certificate">
                                         <span>자격증명</span>&nbsp;&nbsp;
-                                        <input type="text" name="licenseName" class="searchCertificate" required><br><br>
+                                        <input type="text" name="licenseName" class="searchCertificate" id="searchCertifcate" required><br><br>
                                     
                                     
                                             <div class = "certificateDetail">
                     
                                                 <div class="organizationDetail">
                                                     <span>발행기관</span>&nbsp;&nbsp;
-                                                    <input type="text" name="licenseFrom" class = "organization" required>
+                                                    <input type="text" name="licenseFrom" class = "organization" id="organization" required>
                                                 </div>
                 
                                                 <div class="scoreDetail">
@@ -451,10 +451,12 @@
                                                     <input type="number" name="licenseScore" class = "score" max="100" required>&nbsp;/100
                                                 </div>
                                                 
-                                                <div class = "issueDetail">
-                                                    <span>취득일</span>
-                                                    <input type="date" name="licenseDate" class="issueDate"  required>
-                                                    <button type="button" id = "certAdd">+</button>
+                                                <div>
+                                                    <div class = "issueDetail">
+                                                        <span>취득일</span>
+                                                        <input type="date" name="licenseDate" class="issueDate"  required>
+                                                        <button type="button" id = "certAdd">+</button>
+                                                    </div>
                                                 </div>
             
                                             
