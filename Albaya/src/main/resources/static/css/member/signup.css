@@ -194,16 +194,20 @@ button:hover{
     /* margin-top: -25px; */
 }
 
-#register{
-    margin:auto;
-    margin-top:30px;
+.btn-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    margin: 20px;
     width:200px;
     height:50px;
     background:#014C73;
     color:white;
 }
 
-#register:hover{
+#btn:hover{
     cursor:pointer;
 }
 
