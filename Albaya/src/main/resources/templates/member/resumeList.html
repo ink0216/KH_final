@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서 테이블</title>
     <link rel="stylesheet" href="/css/member/resumeList.css">
 </head>
-<body>  
+
+<body>
     <th:block th:replace="~{common/header}"></th:block>
-    
-    <div id = "containerss">
+
+    <div id="containerss">
         <h1>이력서 관리</h1>
 
-            <!--임시 저장 한 이력서 작성 페이지로 가기  -->
-            <div id="resumeWrite">
-                    <button id="resumeWriteBtn">작성하기</button>
-            </div>
-        
+        <!--임시 저장 한 이력서 작성 페이지로 가기  -->
+        <div id="resumeWrite">
+            <button id="resumeWriteBtn">작성하기</button>
+        </div>
+
         <div class="resumeTable">
             <div class="tableHeading">
                 <div class="check">
-                    <input type="checkbox" class="tick" >
+                    <input type="checkbox" class="tick">
 
                 </div>
                 <div class="resumeTitle">
@@ -35,75 +37,78 @@
                 <div class="preferences">
                     <h4>맞춤알바</h4>
                 </div>
-               
-              <!--   <div><h3>최종 수정일</h3></div>
+
+                <!--   <div><h3>최종 수정일</h3></div>
                 <div><h3>관리</h3></div>
                 <div><h3>맞춤알바</h3></div> -->
             </div>
 
-           <th:block th:each=" resume: ${doneList}" th:object="${resume}">
-            <div class="listContents">
-                <div class="check">
-                    <input type="checkbox" class="tick">
-                </div>
-                <div class="resumeTitle">
-                    <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>저장</span>
-                </div>
-
-                <div class="recentUpdateDate">
-                    <p th:text="*{resumeDate}">12/06/2024 14:31</p>
-                </div>
-                <div class="manage">
-                    <div id="buttons">
-                        <button type="button" id="update">수정</button>
-                        <button type="button" id="delete">삭제</button>
+            <th:block th:each=" resume: ${doneList}" th:object="${resume}">
+                <div class="listContents">
+                    <div class="check">
+                        <input type="checkbox" class="tick">
                     </div>
-                </div>
-                <div class="preferences">
-                    <div>
-                        <p>고양동/서비스</p>
-                        <p>고양동/서비스</p>
+                    <div class="resumeTitle">
+                        <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>저장</span>
                     </div>
-                    
-                </div>
-               
-            </div>
-           </th:block>
 
-           <th:block th:each=" resume: ${semiList}" th:object="${resume}">
-            <div class="listContents">
-                <div class="check">
-                    <input type="checkbox" class="tick">
-                </div>
-                <div class="resumeTitle">
-                    <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>임시저장</span>
-                </div>
-
-                <div class="recentUpdateDate">
-                    <p th:text="*{resumeDate}">12/06/2024 14:31</p>
-                </div>
-                <div class="manage">
-                    <div id="buttons">
-                        <button type="button" id="update">수정</button>
-                        <button type="button" id="delete">삭제</button>
+                    <div class="recentUpdateDate">
+                        <p th:text="*{resumeDate}">12/06/2024 14:31</p>
                     </div>
-                </div>
-                <div class="preferences">
-                    <div>
-                        <p>고양동/서비스</p>
-                        <p>고양동/서비스</p>
+                    <div class="manage">
+                        <div id="buttons">
+                            <button type="button" id="update">수정</button>
+                            <button type="button" id="delete">삭제</button>
+                        </div>
                     </div>
-                    
-                </div>
-               
-            </div>
-           </th:block>
-            
+                    <div class="preferences">
+                        <div>
+                            <p>고양동/서비스</p>
+                            <p>고양동/서비스</p>
+                        </div>
 
-            
-    
+                    </div>
+
+                </div>
+            </th:block>
+
+            <th:block th:each=" resume: ${semiList}" th:object="${resume}">
+                <div class="listContents">
+                    <div class="check">
+                        <input type="checkbox" class="tick">
+                    </div>
+                    <div class="resumeTitle">
+                        <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>임시저장</span>
+                    </div>
+
+                    <div class="recentUpdateDate">
+                        <p th:text="*{resumeDate}">12/06/2024 14:31</p>
+                    </div>
+                    <div class="manage">
+                        <div id="buttons">
+                            <button type="button" id="update">수정</button>
+                            <button type="button" id="delete">삭제</button>
+                        </div>
+                    </div>
+                    <div class="preferences">
+                        <div>
+                            <p>고양동/서비스</p>
+                            <p>고양동/서비스</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </th:block>
+
+
+
+
         </div>
     </div>
+
+    <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/member/resumeList.js"></script>
 </body>
+
 </html>
