@@ -59,7 +59,7 @@
 				#{imgPath},
 				#{imgOriginalName},
 				#{imgRename},
-				DEFAULT
+				DEFAULT,DEFAULT
 				)
 	 
 	 </insert>
