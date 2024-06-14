@@ -14,6 +14,7 @@
         "introduce" : false,
         "schoolName" : false,
         "desiredJobs": false,
+        "location" : false,
         "experienced" : false,
         "certificate" : false
     }
@@ -56,7 +57,6 @@
     
     
     const locationSelectContainer =  document.querySelector(".locationSelectContainer");
-    const locationContentArr = [];
     dosies.forEach(btn => {
         btn.addEventListener("click", () => {
             sigunguList.innerHTML = "";
@@ -82,15 +82,20 @@
                             .then(
                                 list=>{
                                     console.log(list)
+                                    
                                     list.forEach(dongItem=>{
+                                       
                                         const dongdiv = document.createElement("div");
                                         dongdiv.innerHTML = dongItem.dongName;
                                         dongdiv.classList.add("dongs");
                                         dong.append(dongdiv);
                                         console.log(dongItem.dongNo)
+                                        let count = 0;
                                         dongdiv.addEventListener("click",()=>{
 
                                             // 화면에 보여지는 동 요소2
+                                            obj.location = true;
+                                            count++;
 
                                             const input = document.createElement("input");
                                             input.type = "hidden";
@@ -99,18 +104,17 @@
                                             form.append(input);
                                            
 
-                                            for(let i=0; i<locationContentArr.length; i++){  
-                                                if(input.value == locationContentArr[i]){
-                                                    alert("중복 선택은 가능하지 않습니다");
-                                                    return;
-                                                }
+                                        
+                                            if(count>1){
+                                                 alert("중복 선택은 가능하지 않습니다");
+                                                return;
                                             }
+                                            
                                             if(document.querySelectorAll(".selectDong").length > 4){
                                                 alert("최대 5가지만 선택할 수 있습니다");
                                                 return;
                                             } 
 
-                                            locationContentArr.push(dongItem.dongNo);
 
 
                                             const dongName = document.createTextNode(`${dongItem.dongName}`);
@@ -123,6 +127,7 @@
                                             const xBtn = document.createElement("span");
                                             xBtn.innerHTML = "&times;"; 
                                             xBtn.addEventListener("click", () => {
+                                                count--;
                                             selectDong.remove();
                                                 input.remove();
                                             });
@@ -431,52 +436,66 @@ const addDesiredJobs =  document.querySelector("#addDesiredJobs");
 
 
 //희망 정직 선택하기(최대 5개)
+
 let textContentArr = [];
 jobsOfDesireBtn.forEach(btn => {
-    btn.addEventListener("click", () => {
-    
-    
-        for(let i=0; i<textContentArr.length; i++){
-            if(btn.textContent == textContentArr[i]){
-                alert("중복 선택은 가능하지 않습니다");
-                return;
-            }
-        } 
+    let count = 0;
+    btn.addEventListener("click", (e) => {
         
 
-
+        count++;
+        obj.desiredJobs=true;
+       
+        if(count>1){
+            alert("중복 선택은 가능하지 않습니다");
+            return;
+        }
+        
+        
         if(document.querySelectorAll(".addJobCategory>span").length > 4){
             alert("최대 5가지만 선택할 수 있습니다");
             return;
         }
+
         textContentArr.push(btn.textContent);
         const jobinput = document.createElement("input");
         jobinput.setAttribute("type","hidden");
         jobinput.setAttribute("name","typeName");
         jobinput.setAttribute("value",btn.textContent);
         addDesiredJobs.appendChild(jobinput);
-        const addJobDiv = `
-            <span class = "addJobCategory">
-                ${btn.textContent}
-                <span>&times;</span>
-            </span>`;
+       
+        const span = document.createElement("span");
+        span.className = "addJobCategory";
+        span.createTextNode = btn.textContent;
 
-        addDesiredJobs.innerHTML += addJobDiv;
+        const times =  document.createElement("span");
+        const timesTextNode = document.createTextNode('\u00D7');
 
-        const addJobCategory = document.querySelectorAll(".addJobCategory>span");
-        for (let i =0; i < addJobCategory.length;i++) {
-            addJobCategory[i].addEventListener("click", e => {
-                if(document.querySelectorAll(".addJobCategory")[i].innerText.substring(0,document.querySelectorAll(".addJobCategory")[i].innerText.lastIndexOf("\n")) == textContentArr[i]){
-                    textContentArr.splice(i,1);
-                    const element =  document.querySelectorAll(".addJobCategory")[i].closest(".addJobCategory");
-                    if(element){
-                        element.parentNode.removeChild(element);
-                    }
-                }
-            })
+        span.append(span.createTextNode);
+        times.append(timesTextNode);
+        span.append(times);
+
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "dongNo";
+        input.className = "hidden"
+        input.value = btn.textContent;
+        addDesiredJobs.append(input);
+
+        addDesiredJobs.append(span);   
+        if(input.value == btn.textContent.substring(0,span.textContent.lastIndexOf("×"))){
+            span.remove();
+            input.remove();
         }
     })
-})
+
+    
+    
+});
+
+
+
+
 
 
 //사진 추가하기
@@ -657,10 +676,15 @@ const formattedDate = date.toLocaleDateString('en-GB', option);
 
 // })
 
-
+ 
+if(document.querySelectorAll(".selectDong").length!=0){
+    obj.location=true;
+}
 //textArea 사이즈 유효성 검사
 introduce.addEventListener("input", () => {
-    obj.introduce=true;
+    if(introduce.value.trim().length != 0) obj.introduce=true;
+
+    
 })
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
