@@ -86,6 +86,40 @@ public class HireServiceImpl implements HireService{
 	}
 	
 	@Override
+	public Map<String, Object> selectHireList(int cp, String query) {
+	    int listCount = 0;
+	    int offset = 0;
+
+	    // query = 검색어
+	    if (query != null) {
+	        listCount = mapper.selectListCount2(query);
+	        offset = 0;
+	    }
+	    else {
+	        listCount = mapper.selectListCount();
+	        offset = 12 + (cp - 1) * 10;
+	    }
+
+	    Pagination pagination = new Pagination(cp, listCount, 10, 8, 12);
+
+
+	    RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+
+	    List<Hire> hireList = null;
+	    if (query != null) {
+	        hireList = mapper.selectHireList2(query, rowBounds);
+	    }
+	    else {
+	        hireList = mapper.selectHireList(null, rowBounds);
+	    }
+
+	    Map<String, Object> map = new HashMap<>();
+	    
+	    map.put("hireList", hireList);
+	    map.put("pagination", pagination);
+
+	    return map;
+	}	 
 	public Map<String,Object> selectHireList(int cp) {
 		// 전체 공고 수 조회
 		int listCount = mapper.selectListCount();
@@ -112,6 +146,7 @@ public class HireServiceImpl implements HireService{
 	
 	
 	
+
 	//시도 조회하기
 	@Override
 	public List<Dosi> selectDosi() {
