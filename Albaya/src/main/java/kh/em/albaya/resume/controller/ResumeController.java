@@ -3,6 +3,7 @@ package kh.em.albaya.resume.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -54,8 +55,18 @@ public class ResumeController {
 	@GetMapping("resumeWrite")
 	public String resumeWrite(
 			@SessionAttribute("loginMember") Member loginMember,
-			Model model
+			Model model,
+			RedirectAttributes ra
 			) {
+		//그 회원이 몇 개의 이력서 작성했는지 조회해서 5개라면 막기
+		int memberNo = loginMember.getMemberNo();
+		int resumeCount = service.resumeCount(memberNo);
+		if(resumeCount >= 5) {
+			ra.addFlashAttribute("message", "회원 당 최대 5개의 이력서만 작성 가능합니다. ");
+			return "redirect:/resume/resumeList";
+			//이력서 목록 페이지
+		}
+		//이력서 작성
 		String[] addressList = loginMember.getMemberAddress().split("\\^\\^\\^");
 		String address = addressList[1];
 		model.addAttribute("address", address);
@@ -162,6 +173,34 @@ public class ResumeController {
 	
 	@GetMapping("resumeProfile")
 	public String getResumeProfile() {
+		return "member/resumeProfile";
+	}
+	
+	//이력서 삭제
+	@GetMapping("resumeDelete")
+	public String resumeDelete(
+			@RequestParam("resumeNo") int resumeNo,
+			RedirectAttributes ra) {
+		int result = service.resumeDelete(resumeNo);
+		if(result>0) ra.addFlashAttribute("message", "이력서가 삭제되었습니다.");
+		else ra.addFlashAttribute("message", "이력서 삭제가 실패하였습니다.");
+		return "redirect:/resume/resumeList";
+		
+	}
+	
+	//이력서 상세 조회
+	@GetMapping("resumeDetail")
+	public String resumeDetail(
+			@RequestParam("resumeNo") int resumeNo,
+			Model model
+			) {
+		Map<String, Object> map = service.resumeDetail(resumeNo);
+		model.addAttribute("resume", (Resume)map.get("resume"));
+		model.addAttribute("careerList", (List<Resume>)map.get("careerList"));
+		model.addAttribute("licenseList", (List<Resume>)map.get("licenseList"));
+		model.addAttribute("locationList", (List<Resume>)map.get("locationList"));
+		model.addAttribute("workList", (List<Resume>)map.get("workList"));
+		model.addAttribute("educationDetail", (Resume)map.get("educationDetail"));
 		return "member/resumeProfile";
 	}
 }
