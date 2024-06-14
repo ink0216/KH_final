@@ -131,8 +131,10 @@ const getPagination =(pagination, type)=>{
     const prevButton = document.querySelector('.prev-button');
     prevButton.dataset.pageNo = pagination.prevPage;
 
+
     const nextButton = document.querySelector('.next-button');
     nextButton.dataset.pageNo = pagination.nextPage;
+
 }
 
 
@@ -140,7 +142,7 @@ const getPagination =(pagination, type)=>{
 //******이전 버튼이 눌렸을 경우***********//
 const prevButton = document.querySelector('.prev-button');
 prevButton.addEventListener("click",(e)=>{
-    reloadTable(e.target.dataset.pageNo);
+    reloadTable(e.target.dataset.pageNo);  
 })
 
 //******다음 버튼이 눌렸을 경우***********//

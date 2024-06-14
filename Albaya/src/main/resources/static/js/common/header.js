@@ -250,6 +250,10 @@ query.addEventListener("keydown", e => {
         fetch(`/hire/selectHireList?cp=1&query=${query.value}`)
         .then(resp => resp.json())
         .then(map => {  
+            if (!map || !map.hireList || map.hireList.length === 0) {
+                alert("검색된 결과가 없습니다.");
+                return;
+            }
             console.log(map);
             const { hireList, pagination } = map;
 
@@ -259,6 +263,8 @@ query.addEventListener("keydown", e => {
 
             setPageOf(hireList);
             getPagination(pagination);
+
+            query.value = "";
         });
     }
 });
