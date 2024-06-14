@@ -310,7 +310,7 @@ function setType(type) {
 const checkObj={
     "hireTitle" : false, //공고문 제목
     "selectedType" : false, //업직종 선택
-    "hrieCount" : false, //모집인원
+    "hireCount" : false, //모집인원
     "hireEnd"   : false, //모집 종료
     "shopTel"   : false, //연락처
     "shopEmail" : false,  //이메일 
@@ -371,7 +371,7 @@ hireCount.addEventListener("input",e=>{
         countMessage.innerHTML="모집 인원 수를 입력해주세요";
         countMessage.classList.remove("blue");
         countMessage.classList.add("red");
-        checkObj.hrieCount=false;
+        checkObj.hireCount=false;
         return;
     }
 
@@ -379,14 +379,14 @@ hireCount.addEventListener("input",e=>{
         countMessage.innerHTML="숫자만 입력해주세요";
         countMessage.classList.remove("blue");
         countMessage.classList.add("red");
-        checkObj.hrieCount=false;
+        checkObj.hireCount=false;
         return;
     }
 
     countMessage.innerHTML="모집 인원 작성 완료";
     countMessage.classList.remove("red");
     countMessage.classList.add("blue");
-    checkObj.hrieCount=true;
+    checkObj.hireCount=true;
 })
 
 
@@ -506,7 +506,7 @@ hireWrtieForm.addEventListener("submit",e=>{
                 case "selectedType":
                     str="업직종을 선택하세요"; break;
 
-                case "hrieCount":
+                case "hireCount":
                     str="모집인원이 유효하지 않습니다."; break;
 
                 case "hireEnd":

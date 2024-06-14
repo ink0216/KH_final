@@ -39,14 +39,16 @@ body {
    display:flex;
    flex-direction: column;
    justify-content: center;
-   margin-top : 150px;
-   align-items:center;   
+   margin-top : 50px;
+   align-items:center;  
+   width: 1100px; 
 
 }
 
 /* 게시판 컨테이너 스타일 */
 .list-table {
 max-width: 1300px;
+width: 1100px;
 background-color:white;
 padding: 20px;
 border-radius: 8px;
@@ -63,7 +65,7 @@ width:8%;
 
 
 .list-table tr > *:nth-of-type(2){
-width: 40%; 
+width: 43%; 
 text-align: center;
 padding-left: 50px;
 text-decoration: none;
@@ -91,17 +93,17 @@ a{
 background-color: #014C73;
 color: white;
 font-weight: bold;
-padding: 10px;
+padding: 0px;
 border-bottom: none;
 height:40px;
-font-family:'TheJamsil5Bold';
+/* font-family:'TheJamsil5Bold'; */
 
 
 }
 
 /* 테이블 바디 스타일 */
 .list-table td {
-padding: 15px;
+padding: 10px 15px;
 border-bottom: 1px solid #BDBDBD;
 text-align: center;
 text-decoration: none;
@@ -196,7 +198,7 @@ cursor:pointer;
    display: flex;
    flex-direction: row;
    /* margin-right: 530px; */
-   width: 800px;
+   width: 1100px;
    height: 30px;
    margin-bottom: 10px;
    justify-content: flex-start;
@@ -245,18 +247,17 @@ cursor:pointer;
  
 .pagination{
    list-style: none;
-   margin-top:45px;
+   margin-top: 45px;
    display: flex;
    justify-content: center;
    padding: 0;
    font-family: 'SUIT-Regular';
    text-decoration: none;
-   font-size:22px;
-   
+   font-size: 15px;
 }
 
 .pagination li{
-   width: 50px;
+   width: 20px;
    margin: 0 5px;
    text-align: center;
    
@@ -281,7 +282,7 @@ cursor:pointer;
 .current{
    font-weight: bold;
    background-color: #014C73;
-   border-radius: 10px;
+   border-radius: 50%;
    color: white !important;
    letter-spacing: 0 !important;
 }
