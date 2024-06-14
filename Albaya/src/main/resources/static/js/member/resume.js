@@ -536,7 +536,8 @@ const picFile = document.querySelector("#picFile");
 
 const introduce = document.querySelector("#introduce");
 const inputText = document.querySelectorAll(`input[type="text"]`);
-const inputDate = document.querySelectorAll('input[type="date"]');
+const startDate = document.querySelectorAll(".startDate");
+const endDate = document.querySelectorAll(".endDate");
 
 
 
@@ -597,18 +598,23 @@ inputText.forEach((texts) => {
 });
 
 //input:date 요소 유효성 검사
-inputDate.forEach((dates) => {
-    if(dates.value == null){
-        switch(dates.className.closest){
+const date = new Date();
+const option = {
+    day:'2-digit',
+    month:'2-digit',
+    year:'numeric'
+}
+const formattedDate = date.toLocaleDateString('en-GB', option);
+// startDate.forEach((strtDate) => {
+//     strtDate.addEventListener("input", e => {
+        
+//     });
 
-        }
-    }
-})
-
+// })
 
 
 //textArea 사이즈 유효성 검사
-//
+
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
            if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
