@@ -137,12 +137,14 @@
                 </div>
                 <div class="member-changePw-status">
                     <div class="member-changePw-left">
-                        <span>신고 누적 횟수</span>
+                        <span class="singo">신고 누적 횟수</span>
                     </div>
                     <div class="member-changePw-right">
-                         <th:block th:if="${session.loginMember.memberStatus} == 4">0회</th:block>
-                         <th:block th:if="${session.loginMember.memberStatus} == 1">1회</th:block>
-                         <th:block th:if="${session.loginMember.memberStatus} == 2">2회</th:block>
+                        <div class="singo2">
+                             <th:block th:if="${session.loginMember.memberStatus} == 4">0회</th:block>
+                             <th:block th:if="${session.loginMember.memberStatus} == 1">1회</th:block>
+                             <th:block th:if="${session.loginMember.memberStatus} == 2">2회</th:block>
+                        </div>
                     </div>
                 </div>
             </div>    

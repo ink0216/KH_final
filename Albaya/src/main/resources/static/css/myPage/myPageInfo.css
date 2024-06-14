@@ -47,7 +47,7 @@ button:hover{
 .main-layout-wrapper{
     display: flex;
     width: 100%;
-    height: 1080px;
+    height: 1200px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -191,7 +191,7 @@ button:hover{
 
 .member-withdraw-container{
     display: flex;
-    height: 30%;
+    height: 15%;
     width: 100%;
     padding: 15px;
     background-color: white;
@@ -200,7 +200,7 @@ button:hover{
 .member-withdraw-header{
     display: flex;
     justify-content: space-between;
-    height: 25%;
+    height: 40%;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -260,4 +260,17 @@ button:hover{
     justify-content: space-between;
     height: 25%;
     margin-bottom: 10px;
+}
+
+.member-changePw-status{
+    background-color: #f8f8f8;
+    
+}
+
+.manager-page-p-area{
+    margin-bottom: 15px;
+}
+
+.singo, .singo2{
+    padding-left: 15px;
 }
