@@ -119,6 +119,17 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
             const notiList = document.querySelector(".notification-list");
             notiList.innerHTML = '';
 
+            const noticeAreaTitle  = document.createElement("div");
+            noticeAreaTitle.className='notice-title';
+
+            const h1 = document.createElement("h3");
+            h1.innerText="공고 지원 알림";
+
+            noticeAreaTitle.append(h1);
+
+            notiList.append(noticeAreaTitle);
+
+
             for(let data of selectList){
 
                 const notiItem = document.createElement("li");

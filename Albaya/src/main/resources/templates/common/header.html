@@ -39,18 +39,19 @@
             <div class="header-buttons">
 
                 <th:block th:if="${session.loginMember != null or session.loginShop !=null}">
-                <!-- 둘 중 하나로 로그인 한 경우 -->
-                
+                    <!-- 둘 중 하나로 로그인 한 경우 -->
+
                     <!-- 알림 버튼 영역 -->
                     <div class="loginMember notification-container">
                         <!-- 알림 버튼 -->
                         <th:block th:if="${session.loginShop != null}">
-                            
+
                             <button class="notification-btn fa-regular fa-bell" id="my-element"></button>
 
                         </th:block>
 
                         <ul class="notification-list notification-showx">
+
                             <li class="notification-item">
                                 <div class="notification-text">
                                     <div class="notification-content-container">
@@ -71,8 +72,8 @@
 
                                     </div>
 
-                                </li>
-                            </ul>
+                            </li>
+                        </ul>
                     </div>
                 </th:block>
 
