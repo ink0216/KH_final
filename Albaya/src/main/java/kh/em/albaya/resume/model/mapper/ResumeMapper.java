@@ -79,6 +79,56 @@ public interface ResumeMapper {
 	 */
 	List<Resume> allResumeList(int memberNo);
 
+	/**한 회원이 작성한 이력서 개수 얻어오기
+	 * @param memberNo
+	 * @return
+	 */
+	int resumeCount(int memberNo);
+
+	/**이력서 삭제
+	 * @param resumeNo
+	 * @return
+	 */
+	int resumeDelete(int resumeNo);
+
+	//상세 조회-----------------------------------------------------
+	
+	/**RESUME 테이블에서 조회
+	 * @param resumeNo
+	 * @return
+	 */
+	Resume resumeDetail(int resumeNo);
+
+	/**CAREER 테이블에서 조회
+	 * @param resumeNo
+	 * @return
+	 */
+	List<Resume> careerDetail(int resumeNo);
+
+	/**LICENSE 테이블에서 조회
+	 * @param resumeNo
+	 * @return
+	 */
+	List<Resume> licenseDetail(int resumeNo);
+
+	/**RESUME_LOCATION 테이블에서 조회
+	 * @param resumeNo
+	 * @return
+	 */
+	List<Resume> locationDetail(int resumeNo);
+
+	/**RESUME_WORK 테이블에서 조회
+	 * @param resumeNo
+	 * @return
+	 */
+	List<Resume> workDetail(int resumeNo);
+
+	/**RESUME_EDUCATION 테이블에서 조회
+	 * @param resumeNo
+	 * @return
+	 */
+	Resume educationDetail(int resumeNo);
+
 	
 
 	

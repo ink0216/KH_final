@@ -51,7 +51,7 @@
 .comment-writer {
     font-weight: bold;
     margin-left : 10px;
-	font-size:20px;
+	font-size:15px;
 	
 }
 
@@ -122,6 +122,7 @@
 .comment-content{
 	white-space: pre-wrap; /* 작성된 문자열 모양 그대로(공백 유지) */
 	margin-left:10px;
+    font-size: 14px;
 }
 
 

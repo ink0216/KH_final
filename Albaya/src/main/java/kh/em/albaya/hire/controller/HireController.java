@@ -146,8 +146,11 @@ public class HireController {
 	 */
 	@GetMapping("selectHireList")
 	@ResponseBody
-	public Map<String,Object> selectHireList(@RequestParam("cp") int cp){
-		return service.selectHireList(cp);
+	public Map<String,Object> selectHireList(
+			@RequestParam("cp") int cp,
+			@RequestParam(value="query", required = false) String query){
+ 
+		return service.selectHireList(cp, query);
 	}
 	
 	/*const index3
@@ -385,7 +388,7 @@ public class HireController {
 			int result = service.hireDelete(hireNo);
 			if(result > 0) {
 				ra.addFlashAttribute("message", "공고가 삭제되었습니다.");
-				return "redirect:/";
+				return "redirect:/hire/hireList";
 			}else {
 				//실패 시
 				ra.addFlashAttribute("message", "공고 삭제를 실패하였습니다.");

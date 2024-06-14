@@ -7,7 +7,7 @@ const siren = document.querySelector("#declare-area");
 
         if(loginMemberNo == null){
 
-            alert("로그인 후 신고 서비스를 이용할 수 있습니다.");
+            alert("일반 회원 로그인 후 신고 서비스를 이용할 수 있습니다.");
             return;
         }
 

@@ -25,7 +25,7 @@ public interface HireService {
 	 */
 	Hire detailHire(int hireNo);
 
-	Map<String,Object> selectHireList(int cp);
+	Map<String,Object> selectHireList(int cp, String query);
 
 	
 	/**

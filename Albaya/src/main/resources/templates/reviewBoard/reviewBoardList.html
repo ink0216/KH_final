@@ -72,14 +72,13 @@
                                         th:href="@{/reviewBoard/{reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage}, key=${param.key}, query=${param.query})}"
                                         th:text="*{reviewTitle}">게시글 제목</a>
                                     <th:block id="commentCount" th:text="|[*{commentCount}]|"></th:block>
-                                    <!-- <p id="commentCount">총 <span th:text="${#lists.size(reviewBoard.commentList)}">0</span> 개의 댓글이 있습니다.</p> -->
+                                    
                                 </td>
 
                                 <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
-                                    <!-- 토크 게시판에서는 회원 닉네임 중간부분이 다 가려짐. 공지 게시판은 제외 -->
-                                    <td th:unless="${reviewBoardCode == 2}" th:text="${temp}"></td>
-                                    <td th:if="${reviewBoardCode == 2}" th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}">이메일</td>
-                                    <!-- <td th:text="${temp.substring(0,1)} + '**' + ${temp.substring(3)}">이메일</td> -->
+                                    
+                                    <td th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}">이메일</td>
+                                  
 
                                     <td th:text="*{reviewBoardWriteDate}">작성일</td>
 

@@ -10,10 +10,7 @@
         
         
 
-        <!-- <pre>
-            <p id="commentCount" th:if="${#lists.size(reviewBoard.commentList) == 0}">현재 게시글에 댓글이 존재하지 않습니다.</p>
-            <p id="commentCount" th:if="${#lists.size(reviewBoard.commentList) != 0}"><i class="fa-regular fa-comment-dots"></i> <span th:text="${#lists.size(reviewBoard.commentList)}"> &nbsp;&nbsp; </span></p>
-        </pre> -->
+       
         <ul id="commentList">
 
             
@@ -21,7 +18,7 @@
             <li class="comment-row" 
                 th:classappend="${comment.parentCommentNo} != 0 ? child-comment" 
                 th:each="comment : ${reviewBoard.commentList}" 
-                th:object="${comment}">
+                th:object="${comment}" th:data-member-no="${comment.memberNo}">
 
             
 
@@ -35,13 +32,18 @@
             <p class="comment-writer">
                 <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
                     <span th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}">닉네임</span>
+                        <!-- 댓글 작성자와 게시글 작성자가 같다면 따로 표시 -->
+                        <!-- <th:block th:if="${comment.memberNo == reviewBoard.memberNo}">
+                        &nbsp;<i class="fa-solid fa-pen fa-sm"></i>
+                        </th:block> -->
                 </th:block>
                 <span class="comment-date" th:text="*{commentWriteDate}" style="font-size: 0.65em; margin-left:10px;
                 color:#014C73;">작성일</span>
+                
             </p>
             <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
             <div class="comment-btn-area">
-                <button th:onclick="|showDeclarePopup(*{commentNo})|" id="comment-btn" th:unless="${session.loginMember?.memberNo == comment.memberNo}">신고</button>
+                <button th:onclick="|showDeclarePopup(*{commentNo},*{memberNo})|" id="comment-btn">신고</button>
                 <button th:onclick="|showInsertComment(*{commentNo}, this)|" id="comment-btn">답글</button>   
                 <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo or session.loginMember?.authorityNo == 1}">
                     <!-- 로그인한 사람과 댓글 쓴 사람의 회원 번호가 같을 때만 수정 삭제 버튼 보이게 하기 -->
