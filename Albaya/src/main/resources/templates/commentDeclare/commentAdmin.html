@@ -21,9 +21,9 @@
             <table border="1" class="styled-table">
                 <thead>
                     <th>번호</th>
-                    <th>댓글 번호</th>
+                    <th>댓글 내용</th>
                     <th>신고자</th>
-                    <th>내용</th>
+                    <th>신고 내용</th>
                     <th>상태</th>
                     <th>신고 날짜</th>
                     <th>신고받은 사람</th>
@@ -33,8 +33,7 @@
                     <th:block th:each="commentDeclare : ${commentDeclareList}" th:object="${commentDeclare}">
                         <tr>
                             <td th:text="${commentDeclare.commentDeclareNo}"></td>
-                            <!-- <td><a th:unless="${param.key}" id="connectToReviewBoard" th:href = "@{/reviewBoard/${reviewBoardCode}/{reviewBoardNo}(reviewBoardCode = ${reviewBoardCode},reviewBoardNo=*{reviewBoardNo}, cp = ${pagination.currentPage})}" th:text="${commentDeclare.commentNo}"></a> </td> -->
-                            <td th:text="${commentDeclare.commentNo}"> </td>
+                            <td><div class="commentContent" th:text="${commentDeclare.commentContent}"></div></td>
                             <td th:text="${commentDeclare.memberNo}"></td>
                             <td><div class="commentDeclareContent" th:text="${commentDeclare.commentDeclareContent}"></div></td>
                             <td th:text="${commentDeclare.commentDeclareCondition}"></td>
@@ -67,7 +66,7 @@
                 <li span class="page-link" data-cp="1">&lt;&lt;</span></li>
 
                 <!-- 이전 목록 마지막 번호로 이동 -->
-                <li span class="page-link" th:data-cp="*{prevPage}">&lt;&lt;</span></li>
+                <li span class="page-link" th:data-cp="*{prevPage}">&lt;</span></li>
 
                 <!-- 특정 페이지로 이동 -->
 

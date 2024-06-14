@@ -21,6 +21,7 @@ public class CommentDeclare {
 	private String commentDeclareDate; 		// 댓글 신고일
 	private int reportedMemberNo; 			// 신고 당한 회원번호
 	private String declareBoardCode; 		// 댓글 신고 유형
+	private String commentContent; 			// 댓글 내용
 	
 
 }

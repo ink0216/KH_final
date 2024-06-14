@@ -66,11 +66,14 @@ public class Hire {
 	private int memberNo;
 	private String applyTitle;
 	private String applyContent;
+	private String applyDate;
 
 	private String memberName;
 	private String memberPhoneNumber;
 	private String memberEmail;
 	
 	private String hireDelFl;
+	
+	private int memberCount;
 
 }

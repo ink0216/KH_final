@@ -34,6 +34,15 @@
 		AND MEMBER_NO = #{memberNo}
 	</update>
 	
+	
+	<!-- 관리자 권한으로 게시글 삭제 -->
+	<update id= "adminReviewBoardDelete">
+		UPDATE REVIEW_BOARD SET 
+		BOARD_DEL_FL = 'Y'
+		WHERE REVIEW_BOARD_CODE = #{reviewBoardCode}
+		AND REVIEW_BOARD_NO = #{reviewBoardNo}
+	</update>
+	
 	<!-- 게시글 수정 -->
 	<update id="reviewBoardUpdate">
 		UPDATE REVIEW_BOARD SET 

@@ -41,7 +41,7 @@
             </p>
             <p class="comment-content" th:text="*{commentContent}">댓글 내용</p>
             <div class="comment-btn-area">
-                <button th:onclick="|showDeclarePopup(*{commentNo})|" id="comment-btn" th:if="${session.loginMember?.memberNo != comment.memberNo}">신고</button>
+                <button th:onclick="|showDeclarePopup(*{commentNo})|" id="comment-btn" th:unless="${session.loginMember?.memberNo == comment.memberNo}">신고</button>
                 <button th:onclick="|showInsertComment(*{commentNo}, this)|" id="comment-btn">답글</button>   
                 <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo or session.loginMember?.authorityNo == 1}">
                     <!-- 로그인한 사람과 댓글 쓴 사람의 회원 번호가 같을 때만 수정 삭제 버튼 보이게 하기 -->

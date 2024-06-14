@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -46,10 +46,10 @@
                                 <td>
                                     <div class="titles-area">
                                         <p id="hireTitle" th:text="*{hireTitle}">버거킹에서 함께 일할 알바생을 찾습니다‼️🤓🍔</p>
-                                        <p id="resumeTitle" th:text="*{applyTitle}">몸도 마음도 건강한 인재입니다.</p>
+                                        <p id="resumeTitle" th:text="|이력서 명 : *{applyTitle}|">몸도 마음도 건강한 인재입니다.</p>
                                     </div>
                                 </td>
-                                <td class="td">2024-06-05</td>
+                                <td class="td" th:text="*{applyDate}">2024-06-05</td>
                                 <td class="td">버거킹</td>
                                 <td class="td">2024-06-10</td>
                                 <td class="td">강서구</td>
@@ -57,35 +57,6 @@
                             </tr>
                         </th:block>
                         
-
-                        <tr class="tbody-tr">
-                            <td>
-                                <div class="titles-area">
-                                    <p id="hireTitle">버거킹에서 함께 일할 알바생을 찾습니다‼️🤓🍔</p>
-                                    <p id="resumeTitle">몸도 마음도 건강한 인재입니다.</p>
-                                </div>
-                            </td>
-                            <td class="td">2024-06-05</td>
-                            <td class="td">버거킹</td>
-                            <td class="td">2024-06-10</td>
-                            <td class="td">강서구</td>
-                            <td class="td">외식/음료</td>
-                        </tr>
-
-                        <tr class="tbody-tr">
-                            <td>
-                                <div class="titles-area">
-                                    <p id="hireTitle">버거킹에서 함께 일할 알바생을 찾습니다‼️🤓🍔</p>
-                                    <p id="resumeTitle">몸도 마음도 건강한 인재입니다.</p>
-                                </div>
-                            </td>
-                            <td class="td">2024-06-05</td>
-                            <td class="td">버거킹</td>
-                            <td class="td">2024-06-10</td>
-                            <td class="td">강서구</td>
-                            <td class="td">외식/음료</td>
-                        </tr>
-
 
 
                     </tbody>

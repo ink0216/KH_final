@@ -21,17 +21,19 @@ if(resumeRedirect != null){
 });
 
 
-const hireWriteBtn = document.getElementById('hireWriteBtn');
-const loginShop = /*[[${session.shopMember}]]*/'기업 회원';
+const hireListBtn = document.getElementById('hireListBtn');
+const loginShop = /*[[${session.shopMember}]]*/'기업 회원'
+if(hireListBtn !=null){
+    hireListBtn.addEventListener("click",()=>{
+        // if(!loginShop){
+        //     alert("기업 회원만 공고문 작성이 가능합니다. ");
+        //     return;
+        // }
+        location.href='/hire/hireList';
+    })
+}
 
-/* 안전탐색연산자 '?' : 'hireWriteBtn이 있을 때에만 이 코드를 실행하겠다' -> 타임리프에서만 되는 줄 알았는데 js에서도 된다! */
-hireWriteBtn?.addEventListener("click",()=>{
-    // if(!loginShop){
-    //     alert("기업 회원만 공고문 작성이 가능합니다. ");
-    //     return;
-    // }
-    location.href='/hire/hireWrite';
-})
+
 
 const goHireKind = document.getElementById('goHireKind');
 if(goHireKind !=null){

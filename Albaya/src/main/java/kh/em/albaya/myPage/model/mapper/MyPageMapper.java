@@ -1,10 +1,13 @@
 package kh.em.albaya.myPage.model.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kh.em.albaya.hire.model.dto.Hire;
 import kh.em.albaya.member.model.dto.Member;
+import kh.em.albaya.resume.model.dto.Resume;
 import kh.em.albaya.shop.model.dto.Shop;
 
 @Mapper
@@ -42,7 +45,7 @@ public interface MyPageMapper {
 
 	int shopInfoUpdate(Shop shop);
 
-	Map<String, Object> applyList(int memberNo);
+	List<Hire> applyList(int memberNo);
 
 	int applyCount(int memberNo);
 }

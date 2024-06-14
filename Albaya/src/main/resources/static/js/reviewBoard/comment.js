@@ -127,7 +127,7 @@ const selectCommentList = () => {
                         deleteBtn.innerText = "삭제";
                         deleteBtn.setAttribute("onclick",`deleteComment(${comment.commentNo})`);
 
-
+                         
 
                         // 버튼 영역에 수정, 삭제 버튼 추가
                         commentBtnArea.append(updateBtn, deleteBtn);

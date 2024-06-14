@@ -224,6 +224,11 @@ hr{
     font-weight: bold;
 }
 
+.counted{
+    color: red;
+    font-weight: bold;
+}
+
 .hireMember-list{
     display: flex;
     flex-wrap: wrap;

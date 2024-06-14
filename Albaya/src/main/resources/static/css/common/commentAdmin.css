@@ -147,8 +147,8 @@ table{
 }
     
 .styled-table tr > *:nth-of-type(2){
-    width: 10%;
-    text-align: center;
+    width: 20%;
+    font-weight:bold;
 }
 
     
@@ -156,8 +156,9 @@ table{
     width:6%;
     text-align:center;
 }
+
 .styled-table tr > *:nth-of-type(4){
-    width: 30%;
+    width: 20%;
     overflow-y: auto;
     font-weight: bold;
    
@@ -426,7 +427,17 @@ th{
 .commentDeclareContent{
     max-height: 34px; 
     overflow-y: auto; 
-    max-width: 630px; 
+    max-width: 187px; 
+    display:block;
+    white-space: pre-wrap; 
+    word-break: break-word; 
+    box-sizing: border-box; 
+}
+
+.commentContent{
+    max-height: 34px; 
+    overflow-y: auto; 
+    max-width: 187px; 
     display:block;
     white-space: pre-wrap; 
     word-break: break-word; 
