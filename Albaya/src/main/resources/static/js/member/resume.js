@@ -443,8 +443,6 @@ jobsOfDesireBtn.forEach(btn => {
             }
         } 
         
-
-
         if(document.querySelectorAll(".addJobCategory>span").length > 4){
             alert("최대 5가지만 선택할 수 있습니다");
             return;
@@ -455,11 +453,20 @@ jobsOfDesireBtn.forEach(btn => {
         jobinput.setAttribute("name","typeName");
         jobinput.setAttribute("value",btn.textContent);
         addDesiredJobs.appendChild(jobinput);
-        const addJobDiv = `
+        const addJobDiv = /* `
             <span class = "addJobCategory">
                 ${btn.textContent}
                 <span>&times;</span>
-            </span>`;
+            </span>` */
+            () => {
+                const span = document.createElement("span");
+                span.className = "addJobCategory";
+                span.createTextNode = btn.textContent;
+
+                const times =  document.createElement("span");
+                
+
+            };
 
         addDesiredJobs.innerHTML += addJobDiv;
 
