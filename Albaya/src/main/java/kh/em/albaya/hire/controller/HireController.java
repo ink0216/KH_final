@@ -385,7 +385,7 @@ public class HireController {
 			int result = service.hireDelete(hireNo);
 			if(result > 0) {
 				ra.addFlashAttribute("message", "공고가 삭제되었습니다.");
-				return "redirect:/";
+				return "redirect:/hire/hireList";
 			}else {
 				//실패 시
 				ra.addFlashAttribute("message", "공고 삭제를 실패하였습니다.");

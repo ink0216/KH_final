@@ -139,6 +139,60 @@
 	 <select id="allResumeList">
 	 	SELECT * FROM "RESUME"
 	 	WHERE MEMBER_NO=#{memberNo}
+	 	AND RESUME_DEL_FL='N'
 	 	ORDER BY RESUME_NO DESC
+	 </select>
+	 
+	 <!-- 한 회원이 작성한 이력서 개수 얻어오기 -->
+	 <select id="resumeCount">
+	 	SELECT COUNT(*) FROM "RESUME"
+	 	WHERE MEMBER_NO=#{memberNo}
+	 	AND RESUME_DEL_FL='N'
+	 
+	 </select>
+	 
+	 <!-- 이력서 삭제 -->
+	 <update id="resumeDelete">
+	 	UPDATE "RESUME" SET
+	 	RESUME_DEL_FL='Y'
+	 	WHERE RESUME_NO=#{resumeNo}
+	 </update>
+	 
+	 <!-- ***********상세 조회 ************************* -->
+	 
+	 <!-- RESUME 테이블에서 조회 -->
+	 <select id="resumeDetail">
+	 	SELECT * FROM "RESUME"
+	 	WHERE RESUME_NO=#{resumeNo}
+	 </select>
+	 
+	 <!-- CAREER 테이블에서 조회 -->
+	 <select id="careerDetail">
+	 	SELECT * FROM "CAREER"
+	 	WHERE RESUME_NO=#{resumeNo}
+	 </select>
+	 
+	 <!-- LICENSE 테이블에서 조회 -->
+	 <select id="licenseDetail">
+	 	SELECT * FROM "LICENSE"
+	 	WHERE RESUME_NO=#{resumeNo}
+	 </select>
+	 
+	 <!-- RESUME_LOCATION 테이블에서 조회 -->
+	 <select id="locationDetail">
+	 	SELECT * FROM "RESUME_LOCATION"
+	 	WHERE RESUME_NO=#{resumeNo}
+	 </select>
+	 
+	 <!-- RESUME_WORK 테이블에서 조회 -->
+	 <select id="workDetail">
+	 	SELECT * FROM "RESUME_WORK"
+	 	WHERE RESUME_NO=#{resumeNo}
+	 </select>
+	 
+	 <!-- RESUME_EDUCATION 테이블에서 조회 -->
+	 <select id="educationDetail">
+	 	SELECT * FROM "RESUME_EDUCATION"
+	 	WHERE RESUME_NO=#{resumeNo}
 	 </select>
 </mapper>

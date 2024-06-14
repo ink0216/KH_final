@@ -106,7 +106,7 @@ public class HireServiceImpl implements HireService{
 		Map<String, Object> map = Map.of("hireList", hireList, "pagination", pagination);
 		
 		return map;
-		 
+		//
 	}
 	
 	

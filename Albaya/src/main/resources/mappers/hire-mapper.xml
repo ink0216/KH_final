@@ -32,6 +32,7 @@
 		SELECT COUNT(*) FROM "HIRE"
 		WHERE HIRE_STATUS = 0
 		AND HIRE_DEL_FL='N'
+		AND HIRE_END >(SELECT SYSDATE FROM "DUAL")
 	</select>
 	
 	<!-- 기업명, 공고제목, 근무시간, 근무지역, 급여-->
@@ -456,6 +457,7 @@
 	<select id="myHireList">
 		SELECT * FROM "HIRE"
 		WHERE SHOP_NO = #{shopNo}
+		AND HIRE_DEL_FL='N'
 		ORDER BY HIRE_START DESC
 	</select>
 
