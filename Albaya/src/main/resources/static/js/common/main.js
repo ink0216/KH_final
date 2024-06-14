@@ -117,7 +117,7 @@ const getPagination =(pagination, type)=>{
         //******페이징 버튼이 눌렸을 경우***********//
         button.addEventListener("click",e=>{
             console.log(button + "클릭됨");
-            if(type===2) reloadTable2(e.target.innerHTML)
+            if(type===2) reloadTable(e.target.innerHTML)
             else reloadTable(e.target.innerHTML);
         })
 
@@ -165,7 +165,6 @@ function reloadTable(cp) {
 
         setPageOf(hireList);
         getPagination(pagination);
-
     })
 }
 

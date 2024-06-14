@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서 테이블</title>
     <link rel="stylesheet" href="/css/member/resumeList.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
 </head>
 
 <body>
@@ -44,7 +45,7 @@
             </div>
 
             <th:block th:each=" resume: ${doneList}" th:object="${resume}">
-                <div class="listContents">
+                <div class="listContents" th:data-resume-no="*{resumeNo}">
                     <div class="check">
                         <input type="checkbox" class="tick">
                     </div>
@@ -57,23 +58,17 @@
                     </div>
                     <div class="manage">
                         <div id="buttons">
-                            <button type="button" id="update">수정</button>
-                            <button type="button" id="delete">삭제</button>
+                            <button type="button" class="update" th:data-resume-no="*{resumeNo}">수정</button>
+                            <button type="button" class="delete" th:data-resume-no="*{resumeNo}">삭제</button>
+                        </div>
+                        <div class="resumeTitle">
+                            <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>저장</span>
                         </div>
                     </div>
-                    <div class="preferences">
-                        <div>
-                            <p>고양동/서비스</p>
-                            <p>고양동/서비스</p>
-                        </div>
-
-                    </div>
-
                 </div>
             </th:block>
-
             <th:block th:each=" resume: ${semiList}" th:object="${resume}">
-                <div class="listContents">
+                <div class="listContents" th:data-resume-no="*{resumeNo}">
                     <div class="check">
                         <input type="checkbox" class="tick">
                     </div>
@@ -88,25 +83,32 @@
                         <div id="buttons">
                             <button type="button" id="update">수정</button>
                             <button type="button" id="delete">삭제</button>
+                            >>>>>>> origin/validateResume
                         </div>
-                    </div>
-                    <div class="preferences">
-                        <div>
-                            <p>고양동/서비스</p>
-                            <p>고양동/서비스</p>
+                        <div class="manage">
+                            <div id="buttons">
+                                <button type="button" id="update">수정</button>
+                                <button type="button" id="delete">삭제</button>
+                            </div>
+                        </div>
+                        <div class="preferences">
+                            <div>
+                                <p>고양동/서비스</p>
+                                <p>고양동/서비스</p>
+                            </div>
+
                         </div>
 
                     </div>
-
-                </div>
             </th:block>
+
 
 
 
 
         </div>
     </div>
-
+    </th:block>
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/member/resumeList.js"></script>
 </body>

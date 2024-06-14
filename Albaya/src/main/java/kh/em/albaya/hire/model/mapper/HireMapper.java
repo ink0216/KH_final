@@ -229,4 +229,23 @@ public interface HireMapper {
 	 * @return
 	 */
 	List<Hire> myHireList(int shopNo);
+
+
+
+	/** 검색어를 포함한 공고문 개수 조회
+	 * @param query
+	 * @return
+	 */
+	int selectListCount2(String query);
+
+
+
+	/** 검색어를 포함한 공고문 리스트 조회
+	 * @param query
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Hire> selectHireList2(String query, RowBounds rowBounds);
+	
+	
 }

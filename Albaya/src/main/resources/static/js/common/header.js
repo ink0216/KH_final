@@ -86,7 +86,6 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
             "notificationUrl" : url,
             "pkNo" : pkNo 
         }
-        console.log(notification);
         noticationSock.send(JSON.stringify(notification));
     }
 
@@ -105,7 +104,6 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
     notReadCheckFn = async () =>{
         const resp = await fetch("/notification/notReadCheck");
         const notReadCount = await resp.text();
-        console.log(notReadCount);
         return notReadCount; //안읽은 알림 개수가 Promise 객체에 담겨 반환
     }
 
@@ -115,7 +113,6 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
         .then(resp=>resp.json())
         .then(selectList =>{
 
-            // console.log(selectList);
             const notiList = document.querySelector(".notification-list");
             notiList.innerHTML = '';
 
@@ -151,8 +148,6 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
                             headers:{"Content-Type": "application/json"},
                             body: data.notificationNo
                         })
-                        console.log(data.notificationNo);
-
                     }
 
                     let url = data.notificationUrl;
@@ -222,7 +217,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     //알림 버튼
     const notificationBtn = document.querySelector(".notification-btn");
-    console.log(notificationBtn);
 
     notReadCheckFn().then(notReadCount => {
         if(notReadCount > 0){
@@ -233,7 +227,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     /* 알립 버튼 클릭 */
     notificationBtn.addEventListener("click",e=>{
-        console.log("클릭됨");
         const notiList=document.querySelector('.notification-list');
 
           // 보이는 상태일 때
@@ -249,6 +242,26 @@ document.addEventListener("DOMContentLoaded",()=>{
         notiList.classList.add("notification-show");
     })
 })
+
+const query = document.querySelector("#searchField");
+
+query.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+        fetch(`/hire/selectHireList?cp=1&query=${query.value}`)
+        .then(resp => resp.json())
+        .then(map => {  
+            console.log(map);
+            const { hireList, pagination } = map;
+
+            // 여기서 테이블과 페이징을 업데이트 합니다.
+            tbody.innerHTML = '';
+            numberButtonWrapper.innerHTML = '';
+
+            setPageOf(hireList);
+            getPagination(pagination);
+        });
+    }
+});
 
 
 
