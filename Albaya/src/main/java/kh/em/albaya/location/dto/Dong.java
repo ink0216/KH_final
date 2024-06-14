@@ -22,3 +22,4 @@ public class Dong {
 	private String sigunguName;
 	private String dosiName;
 }
+

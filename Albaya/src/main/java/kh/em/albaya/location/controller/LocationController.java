@@ -186,7 +186,7 @@ public class LocationController {
         	
     		// 조회된 데이터에서 읍면동이 바뀐 경우
         	if(currentDong == null || !currentDong.getDongName().equals(map.get("읍면동명"))) {
-        		currentDong = new Dong(++dongNo, sigunguNo, map.get("읍면동명"));
+        		//currentDong = new Dong(++dongNo, sigunguNo, map.get("읍면동명"));
         		
         		dongList.add(currentDong);
         	}
