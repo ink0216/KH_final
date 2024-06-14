@@ -31,7 +31,15 @@ public class EditBoardServiceImpl implements EditBoardService {
 	// 게시글 삭제
 	@Override
 	public int reviewBoardDelete(Map<String, Integer> map) {
+		
+		Integer memberNo = map.get("memberNo");
+		
+		if(memberNo == null) {
+			return mapper.adminReviewBoardDelete(map);
+		}
+		else {
 		return mapper.reviewBoardDelete(map) ;
+		}
 	}
 	
 	

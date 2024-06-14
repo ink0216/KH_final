@@ -88,7 +88,14 @@ public class EditBoardController {
 		Map<String, Integer> map = new HashMap<>();
 		map.put("reviewBoardCode", reviewBoardCode);
 		map.put("reviewBoardNo", reviewBoardNo);
-		map.put("memberNo", loginMember.getMemberNo());
+//		map.put("memberNo", loginMember.getMemberNo());
+		
+		
+		if(loginMember.getAuthorityNo() == 1) {
+			map.put("memberNo", null);
+		} else {
+			map.put("memberNo", loginMember.getMemberNo());
+		}
 		
 		int result = service.reviewBoardDelete(map);
 		

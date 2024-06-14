@@ -19,5 +19,7 @@ public interface EditBoardMapper {
 	// 게시글 수정
 	int reviewBoardUpdate(ReviewBoard inputBoard);
 
+	int adminReviewBoardDelete(Map<String, Integer> map);
+
 
 }
