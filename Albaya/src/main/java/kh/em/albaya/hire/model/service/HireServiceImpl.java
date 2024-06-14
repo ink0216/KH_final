@@ -90,17 +90,20 @@ public class HireServiceImpl implements HireService{
 	    int listCount = 0;
 	    int offset = 0;
 
+	    Pagination pagination;
 	    // query = 검색어
 	    if (query != null) {
 	        listCount = mapper.selectListCount2(query);
-	        offset = 0;
+	        offset = (cp - 1) * 10;
+	        pagination = new Pagination(cp, listCount, 10, 8);
 	    }
 	    else {
 	        listCount = mapper.selectListCount();
 	        offset = 12 + (cp - 1) * 10;
+	        pagination = new Pagination(cp, listCount, 10, 8, 12);
 	    }
 
-	    Pagination pagination = new Pagination(cp, listCount, 10, 8, 12);
+	    
 
 
 	    RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
