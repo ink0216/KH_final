@@ -127,11 +127,6 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			
-			if(loginMember.getMemberStatus() == 3) {
-				message = "정지회원";
-				ra.addFlashAttribute("message",message);
-				return "redirect:/member/login";
-			}
 			
 			
 			
@@ -155,6 +150,7 @@ public class MemberController {
 		}
 		return "redirect:/";
     }
+    
     
     @GetMapping("logout")
     public String logout(
