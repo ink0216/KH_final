@@ -36,6 +36,7 @@
                             <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
                             <span th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}"></span>
                             </th:block>
+                          
                         </p>
                     </div>
                     <div id="readCount">
