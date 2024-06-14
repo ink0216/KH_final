@@ -127,7 +127,6 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			
-		
 			
 			model.addAttribute("loginMember", loginMember);
 			
@@ -149,6 +148,7 @@ public class MemberController {
 		}
 		return "redirect:/";
     }
+    
     
     @GetMapping("logout")
     public String logout(
