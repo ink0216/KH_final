@@ -24,4 +24,5 @@ public class Member {
 	private String memberAddress;
 	private String 	lastModifiedDate;
 	private String lastModifiedPwDate;
+	private String suspendPeriod;
 }

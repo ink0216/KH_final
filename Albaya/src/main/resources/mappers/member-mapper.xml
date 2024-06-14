@@ -29,7 +29,7 @@
 	<update id="updateMember">
 		UPDATE "MEMBER" SET 
 		MEMBER_STATUS = 4,
-		SUSPEND_PERIOD IS NULL
+		SUSPEND_PERIOD = NULL
 		WHERE MEMBER_STATUS = 3
 	</update>
 	
