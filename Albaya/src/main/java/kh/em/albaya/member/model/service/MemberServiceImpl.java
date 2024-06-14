@@ -44,7 +44,11 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public Member login(Member inputMember) {
+		
 		Member loginMember = mapper.login(inputMember.getMemberEmail());
+		
+		
+		
 		
 		if(loginMember == null) {
 			return null;
@@ -59,7 +63,7 @@ public class MemberServiceImpl implements MemberService{
 		// 로그인 성공 했는데 memberStatus 3(정지)인 경우
 		// == 정지 기간이 지나서 로그인 할 수있는 회원
 		// -> 3번을 4번으로 수정
-		if(loginMember.getMemberStatus().equals("3")) {
+		if(loginMember.getMemberStatus() == 3) {
 			// 수정
 			int result = mapper.updateMember();
 		}

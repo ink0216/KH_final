@@ -21,7 +21,7 @@
 			AND (MEMBER_STATUS = 3  AND SYSDATE > SUSPEND_PERIOD )
 				)
 			OR ("MEMBER_EMAIL" = #{memberEmail}
-			  	AND MEMBER_STATUS NOT IN (3,5)
+			  	AND MEMBER_STATUS NOT IN 5
 			  )
 	</select>
 	

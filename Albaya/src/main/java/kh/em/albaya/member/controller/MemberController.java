@@ -114,7 +114,10 @@ public class MemberController {
 
 		String message = null;
 		
+		
 		if(loginMember == null) {
+			
+			
 			message = "아이디 또는 비밀번호가 일치하지 않습니다";
 			ra.addFlashAttribute("message", message);
 			ra.addFlashAttribute("message", message);
@@ -123,6 +126,15 @@ public class MemberController {
 		
 		
 		if(loginMember != null) {
+			
+			if(loginMember.getMemberStatus() == 3) {
+				message = "정지회원";
+				ra.addFlashAttribute("message",message);
+				return "redirect:/member/login";
+			}
+			
+			
+			
 			model.addAttribute("loginMember", loginMember);
 			
 			Cookie cookie = new Cookie("saveId", loginMember.getMemberEmail());
