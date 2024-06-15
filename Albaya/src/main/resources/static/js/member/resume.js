@@ -253,7 +253,9 @@ const nonBreakingSpace = document.createTextNode("\u00A0");
 
 
 const experiencedDetail = document.querySelector(".experiencedDetail");
+
 newHire.addEventListener("click", () => {
+    
     experiencedDetail.classList.remove("show");
     experiencedDetail.classList.add("hide")
 
@@ -266,7 +268,18 @@ newHire.addEventListener("click", () => {
     input.type="hidden";
     experiencedDetail.appendChild(input);
 
-})
+    obj.experienced = true;
+
+    
+});
+if(newHire.classList.contains("selectedBtn")){
+    obj.experienced = true;
+   
+}
+    
+
+
+
 
 
 
@@ -283,11 +296,17 @@ experienced.addEventListener("click", () => {
     input.setAttribute("name", "career");
     input.value=2;
     input.type="hidden";
-    experiencedDetail.appendChild(input);
-   
-
+    experiencedDetail.appendChild(input); 
+    validateExperienced();
+    if(!newHire.classList.contains("selectedBtn")){
+        obj.experienced = false;
+        return;
+    }
     
 });
+
+
+
 //경력 추가하기 버튼
 
 const addExperience = () => {
@@ -297,7 +316,7 @@ const addExperience = () => {
     experienceDetailDiv.appendChild(experienceContainerDiv);
 
         const companyNameDiv = document.createElement("div");
-        companyNameDiv.setAttribute("id","companyName");
+        companyNameDiv.className = "companyNames";
         experienceContainerDiv.append(companyNameDiv);
 
             const companyNameSpan = document.createElement("span");
@@ -306,13 +325,13 @@ const addExperience = () => {
 
             const inputCompanyName =  document.createElement("input");
             inputCompanyName.setAttribute("type","text");
-            inputCompanyName.setAttribute("name","companyName");
+            inputCompanyName.className = "companyName";
             companyNameDiv.appendChild(inputCompanyName);
 
             career.appendChild(nonBreakingSpace);
 
         const dateInputDiv =  document.createElement("div");
-        dateInputDiv.classList.add("dateInput");
+        dateInputDiv.className = "dateInput";
         experienceContainerDiv.appendChild(dateInputDiv);
 
             const inputDate = document.createElement("input");
@@ -321,9 +340,9 @@ const addExperience = () => {
             
 
             inputDate.setAttribute("type","date");
-            inputDate.setAttribute("name","startDate");
+            inputDate.className ="startDate";
             inputDate2.setAttribute("type","date");
-            inputDate2.setAttribute("name","endDate");
+            inputDate2.className = "endDate";
             dateInputDiv.appendChild(inputDate);
             dateInputDiv.append("~");
             dateInputDiv.appendChild(inputDate2);
@@ -337,9 +356,124 @@ const addExperience = () => {
             removeBtn.classList.add("remove");
             removeBtn.setAttribute("type","button")
             dateInputDiv.appendChild(removeBtn);
+            
 }
+let count=0;    
+const validateExperienced = () => {
+    
+//         // experience.addEventListener("input", () => {    
+//         //     const input = document.querySelectorAll(".experiencedContainer>input");
+//         //     input.forEach(input => {
+//         //         if(experience.value.trim().length===0){
+//         //         experience.value = "";
+//         //         obj.experienced = false;
+            
+//         //     }
+//         //     })
+            
+//         //     obj.experienced = true;
+//         // })
+//         // const companyNames = document.querySelectorAll(".companyNames>input");
+//         // companyNames.forEach((companies) => {
+//         //     companies.addEventListener("input", () => {
+//         //         if(companies.value.trim().length === 0){
+//         //             // companies.value = "";
+//         //             obj.experienced=false;
+//         //             return;
+//         //         }
+                
+//         //     });
+//         // });
 
+//         //  const dateInput =  document.querySelectorAll(".dateInput>input");
+//         //  dateInput.forEach((dateInputs) => {
+//         //     dateInputs.addEventListener("input", () => {
+//         //         if(dateInputs.value.trim().length === 0){
+//         //             // dateInputs.value="";
+//         //             obj.experienced=false;
+//         //             return;
+//         //         }
+               
+//         //     })
+//         //  })
+//         //  obj.experienced=true;
+        const experiencedContainer = document.querySelectorAll(".experiencedContainer>div>input");
+       
+        let allFilled = false;
+        experiencedContainer.forEach((inputsEvent) => {
+           
+            
+            
+            inputsEvent.addEventListener("input", () => {
+                
+                
+                
+                if(inputsEvent.value.trim().length === 0){
+                    allFilled=false;
+                    inputsEvent.value = "";
+                    obj.experienced = false;
+                    return;
+                }
+                allFilled=true;
+               
+              
+            
+            });
+           
+            inputsEvent.addEventListener("click", () => {
+                
+               
+                console.log(count);
+                // if(inputsEvent.className){
+                //     count--;
+                // }
+                
+                if (inputsEvent.dataset.clicked === "true") {
+                    inputsEvent.dataset.clicked = "false";
+                 
+                } else {
+                    inputsEvent.dataset.clicked = "true";
+             
+                }
+              
+                
+                if(allFilled ){
+                    if(count==experiencedContainer.length){
+                        obj.experienced=true;   
+                    }
+                    
+                    
+                }
+                    
+                
+               
+               
+                
+                else{
+                    obj.experienced=false;
+                }
+            });
+            if(inputsEvent.type == "date"){
 
+                inputsEvent.addEventListener("input", () => {
+                    if(allFilled){
+                        count++;
+                    }
+                    
+                });
+           }
+
+           
+                
+            
+          
+        })
+        
+        
+        
+        
+    
+};
 
 const fifthResume = document.querySelector(".resumeElement:nth-child(17)")
 const addCertificate = () => {
@@ -381,6 +515,9 @@ const addCertificate = () => {
 const chuga = document.querySelector("#chuga");
 chuga.addEventListener("click" , () => {
     addExperience();
+    validateExperienced();
+    
+    
     //삭제버튼 작성
     const removeBtns = document.querySelectorAll(".remove");
     for(let i = 0; i < removeBtns.length; i++){
@@ -483,10 +620,20 @@ jobsOfDesireBtn.forEach(btn => {
         addDesiredJobs.append(input);
 
         addDesiredJobs.append(span);   
-        if(input.value == btn.textContent.substring(0,span.textContent.lastIndexOf("×"))){
-            span.remove();
-            input.remove();
+        // if(input.value == btn.textContent.substring(0,span.textContent.lastIndexOf("×"))){
+        //     span.remove();
+        //     input.remove();
+        // }
+
+        const removeBtn =  document.querySelectorAll(".addJobCategory>span");
+        times.addEventListener("click",() => {
+            if(input.value == btn.textContent.substring(0,span.textContent.lastIndexOf("×"))){
+                count--;
+                span.remove();
+                input.remove();
         }
+        })
+        obj.desiredJobs=true;
     })
 
     
@@ -605,7 +752,7 @@ const picFile = document.querySelector("#picFile");
 /***********  유효성 검사 ***********/
 
 const introduce = document.querySelector("#introduce");
-const inputText = document.querySelectorAll(`input[type="text"]`);
+const inputElement = document.querySelectorAll("input");
 const startDate = document.querySelectorAll(".startDate");
 const endDate = document.querySelectorAll(".endDate");
 
@@ -625,36 +772,34 @@ picFile.addEventListener("input", e => {
 //input 요소 유효성 검사
 
 //input:text 요소 유효성 검사
-inputText.forEach((texts) => {
+inputElement.forEach((elements) => {
     
-    texts.addEventListener("input", () => {
-        if(texts.value.trim().length === 0){
-            switch(texts.id){
-                case "title":  obj.resumeTitle=false; break;
-                case "primarySchoolName":  obj.schoolName=false; break;
-                case "middleSchoolName":  obj.schoolName=false; break;
+    elements.addEventListener("input", () => {
+        if(elements.value.trim().length === 0){
+            switch(elements.className){
+                case "image": obj.image=false;break;
+                case "resumeTitle":  obj.resumeTitle=false; break;
                 case "schoolName":  obj.schoolName=false; break;
-                case "companyName": obj.experienced=false; break;
+            
                 case "searchCertificate": obj.certificate=false; break;
-                case "organization": obj.certificate=false; break;
+                case "organizationDetail": obj.certificate=false; break;
             }
-            texts.value = "";
+            elements.value = "";
             return;
             
         }
 
-        switch(texts.id){
-            case "title":  obj.resumeTitle=true; break;
-            case "primarySchoolName":
-                const inputs = document.querySelectorAll("#primarySchoolName>input")  
-                 obj.schoolName=true;
-                 break;
-            case "middleSchoolName":  obj.schoolName=true; break;
+        switch(elements.className){
+            case "image": obj.image=true;break;
+            case "resumeTitle":  obj.resumeTitle=true; break;
             case "schoolName":  obj.schoolName=true; break;
-            case "companyName": obj.experienced=true; break;
+          
             case "searchCertificate": obj.certificate=true; break;
-            case "organization": obj.certificate=true; break;
+            case "organizationDetail": obj.certificate=true; break;
+
         }
+
+        
         
 
     });

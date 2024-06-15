@@ -21,7 +21,7 @@
                     <span value="12">사진 업데이트:</span>
                 </div><br>
                 <div class = "fileInput"> 
-                    <input type=file id="picFile" name="image" required accept="image/*"></input>
+                    <input type=file id="picFile" name="image" class="image" required accept="image/*"></input>
                 </div>
                 <br><br>
                 <div class="finalizingBtns">
@@ -83,7 +83,7 @@
                     <div class="resumeElement">
                         <h3>이력서 제목<span class="required">*</span></h3>
                         <ul>
-                            <li><input type="text" id = "title" required name="resumeTitle"></li>
+                            <li><input type="text" id = "title" required name="resumeTitle" class = "resumeTitle"></li>
                         </ul>
                         
                     </div>
@@ -94,7 +94,7 @@
         
                         <ul>
                             <li>
-                                <textarea id="introduce" name="introduce"></textarea>
+                                <textarea id="introduce" name="introduce" class="introduce"></textarea>
                             </li>
                         </ul>
         
@@ -127,7 +127,7 @@
                                     <div  name="selectPrimarySchoolName" id="selectPrimarySchoolName" class="hide">
                                     
                                         <span>초등학교</span>
-                                        <input type="text" name="schoolName" id="primarySchoolName" placeholder="초등학교" required><br><br>
+                                        <input type="text" name="schoolName" class = "schoolName" id="primarySchoolName" placeholder="초등학교" required><br><br>
                                         <div class="term">
                                             <span>졸업여부</span>
                                             <select name="educationStatusNo" class="graduationDropDown" required>
@@ -151,7 +151,7 @@
                                     <div name="selectMiddleSchoolName" id="selectMiddleSchoolName" class="hide">
                                     
                                         <span>중학교</span>
-                                        <input type="text" name="schoolName" id="middleSchoolName" placeholder="중학교" required><br><br>
+                                        <input type="text" name="schoolName" class = "schoolName" id="middleSchoolName" placeholder="중학교" required><br><br>
                                         <div class="term">
                                             <span>졸업여부</span>
                                             <select name="educationStatusNo" class="graduationDropDown" required>
@@ -175,7 +175,7 @@
                                     <div name="selectSchoolName" id="selectSchoolName" class="hide">
                                     
                                         <span>고등학교</span>
-                                        <input type="text" name="schoolName" id="schoolName" placeholder="고등학교" required><br><br>
+                                        <input type="text" name="schoolName" class = "schoolName" id="schoolName" placeholder="고등학교" required><br><br>
                                         <div class="term">
                                             <span>졸업여부</span>
                                             <select name="educationStatusNo" class="graduationDropDown" required>
@@ -195,7 +195,7 @@
                                     </div>
                                     
                                     <!--2,3년제 대학교 -->
-                                    <div name = "schoolName" id = "twoUniversityName" class="hide">
+                                    <div name = "schoolName"   id = "twoUniversityName" class="hide">
                                         <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
                                         <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
                                         <div><br>
@@ -226,7 +226,7 @@
             
                                     </div>
                                     <!-- 4년제 대학교 -->
-                                    <div name = "schoolName" id = "fourUniversityName" class="hide">
+                                    <div name = "schoolName"  id = "fourUniversityName" class="hide">
                                         <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
                                         <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
                                         <div><br>
@@ -257,7 +257,7 @@
             
                                     </div>
                                     <!-- 대학원 이상 -->
-                                    <div name = "graduateUniversityName" id = "graduateUniversityName" class="hide">
+                                    <div name = "graduateUniversityName"  id = "graduateUniversityName" class="hide">
                                         <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
                                         <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
                                         <div><br>
@@ -406,9 +406,9 @@
                                         
                                         
                                         <div class = "experiencedContainer">
-                                                <div id = "companyName">
+                                                <div class = "companyNames">
                                                     <span>회사이름</span>
-                                                    <input type="text" name="companyName" id="companyName"> 
+                                                    <input type="text" name="companyName" class="companyName"> 
                                                 </div>
         
                                 
