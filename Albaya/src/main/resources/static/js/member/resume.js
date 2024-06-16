@@ -446,7 +446,7 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
                 obj.experienced = false;
             }
         }
-        
+       
         experiencedContainer.forEach(input => {
             input.addEventListener("input", () => {
                 if (input.value.trim().length === 0) {
@@ -458,13 +458,46 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
         
                
                 checkAllInputs(input.closest(".experiencedContainer"));
+
+             
         
                 if (input.type === "text" && input.value.length > 1) {
                     return;
                 }
+
+                
                 
                 
             });
+            if(input.className==="startDate"){
+                input.addEventListener("input", () => {
+                    if(input.value > formattedDate){
+                        alert("시작 날짜가 오늘 날짜보다 클수 없습니다");
+                        input.value = "";
+                       return;
+                    }
+                    else if(input.value > document.querySelector(".dateInput>.endDate").value && 
+                    document.querySelector(".dateInput>.endDate").value.trim().length !=0){
+                        alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
+                        input.value = "";
+                        return;
+                    }
+                })
+            }
+            if(input.className==="endDate"){
+                input.addEventListener("input", () => {
+                    if(input.value < document.querySelector(".dateInput>.startDate").value && 
+                    document.querySelector(".dateInput>.startDate").value.trim().length !=0){
+                        alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
+                        input.value = "";
+                        return;
+                    }
+                })
+            }
+
+            
+
+            
         });
         
         
@@ -493,7 +526,7 @@ const addCertificate = () => {
             </div>
             <div class="issueDetail">
                 <span>취득일</span>
-                <input type="date" name="licenseDate" class="issueDate" required>
+                <input type="date" name="licenseDate" class="issueDate" >
                 <button type="button" class="certMinus">-</button>
             </div>
         </div>
@@ -620,7 +653,7 @@ jobsOfDesireBtn.forEach(btn => {
 
         const input = document.createElement("input");
         input.type = "hidden";
-        input.name = "dongNo";
+        input.name = "typeName";
         input.className = "hidden"
         input.value = btn.textContent;
         addDesiredJobs.append(input);
@@ -659,8 +692,7 @@ const update = document.querySelector("#update");
 editProfile.addEventListener("click",() => {
     container.classList.remove("hide");
     container.classList.add("show");
-    document.body.style.overflowY = "hidden"
-    document.body.style.overflowX = "hidden"
+
 })
 
 cancel.addEventListener("click", () => {
