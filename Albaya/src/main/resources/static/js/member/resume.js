@@ -34,9 +34,9 @@
     const date = new Date();
     const year = String(date.getFullYear());
     const month = String(date.getMonth()+1).padStart(2,0);  
-    let dayGap = 16
+    
     const day = String(date.getDate()).padStart(2,0);   
-    dayGap = setTimeout(() => {},) 
+   
     const formattedDate = `${year}-${month}-${day}`;
 
 
