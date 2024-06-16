@@ -16,9 +16,7 @@
         "desiredJobs": false,
         "location" : false,
         "experienced" : false,
-        
         "certificate" : false,
-       
     }
     
 
@@ -34,24 +32,51 @@
     };
 
 
-    dropDown.addEventListener("change" , () => {
+    dropDown.addEventListener("change", () => {
         let selectedVal = dropDown.value;
-        for(key in eduObj){
-            let element = document.querySelector("#"+eduObj[key]);
-            if(element){
-                if(selectedVal == key){
+        if (selectedVal == "선택") {
+            obj.schoolName = false;
+            return;
+        }
+    
+        for (let key in eduObj) {
+            let element = document.querySelector("#" + eduObj[key]);
+            if (element) {
+                if (selectedVal == key) {
                     element.classList.add("show");
                     element.classList.remove("hide");
-                }else{
+                    const show = document.querySelector("#schoolContainer");
+                    const showInput = show.querySelectorAll(".show input");
+    
+                    // Set up input event listeners for validation
+                    showInput.forEach(input => {
+                        input.addEventListener("input", () => {
+                            // Check all inputs each time any input changes
+                            let allFilled = Array.from(showInput).every(input => input.value.trim().length > 0);
+                            if (allFilled) {
+                                obj.schoolName = true;
+                            } else {
+                                obj.schoolName = false;
+                            }
+                            console.log("School name validation status:", obj.schoolName);
+                        });
+                    });
+    
+                    // Initial check in case inputs are already filled
+                    let initialAllFilled = Array.from(showInput).every(input => input.value.trim().length > 0);
+                    obj.schoolName = initialAllFilled;
+                    console.log("Initial school name validation status:", obj.schoolName);
+    
+                } else {
                     element.classList.remove("show");
                     element.classList.add("hide");
                 }
             }
         }
-        
-    
-    
     });
+    
+
+
     //비동기로 위치정보 얻어와 화면 만들기
     const dosies = document.querySelectorAll(".dosies");
     const sigunguList = document.querySelector(".sigunguList");
@@ -408,46 +433,60 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
 
 const fifthResume = document.querySelector(".resumeElement:nth-child(17)")
 const addCertificate = () => {
-    
-    const certificateDetailHTML = `
-        <li><br><br>
-            <div class="certificateDetail">
-                <div>
-                    <span>자격증명&nbsp;&nbsp;</span>
-                    <input type="text" class="certName" name="licenseName">
-                    <br><br>
-                </div>
-                <div class="organizationDetail">
-                    <span>발행기관&nbsp;&nbsp;</span>
-                    <input type="text" class="organization" name="licenseFrom">
-                </div>
-
-
-                <div class="scoreDetail">
-                    <span>점수</span>&nbsp;&nbsp;
-                    <input type="number" name="licenseScore" class = "score" max="100" >&nbsp;/100
-                </div>
-                                               
-                <div class = "issueDetail">
-                    <span>취득일</span>
-                    <input type="date" name="licenseDate" class="issueDate"  required>
-                    <button type="button" class = "certMinus">-</button>
-                </div>
+    const certificateContainer = document.createElement('li');
+    certificateContainer.innerHTML = `
+        <br><br>
+        <div class="certificateDetail">
+            <div>
+                <span>자격증명&nbsp;&nbsp;</span>
+                <input type="text" class="certName" name="licenseName">
+                <br><br>
             </div>
-        </li><br><br>
+            <div class="organizationDetail">
+                <span>발행기관&nbsp;&nbsp;</span>
+                <input type="text" class="organization" name="licenseFrom">
+            </div>
+            <div class="scoreDetail">
+                <span>점수</span>&nbsp;&nbsp;
+                <input type="number" name="licenseScore" class="score" max="100">&nbsp;/100
+            </div>
+            <div class="issueDetail">
+                <span>취득일</span>
+                <input type="date" name="licenseDate" class="issueDate" required>
+                <button type="button" class="certMinus">-</button>
+            </div>
+        </div>
+        <br><br>
     `;
 
-    const ul = document.createElement("ul");
-    const certificateDetail = document.querySelector(".certificateDetail")
-    ul.innerHTML = certificateDetailHTML;
-    fifthResume.appendChild(ul);
+    
+    
+    fifthResume.appendChild(certificateContainer);
 
+   
+    const inputs = certificateContainer.querySelectorAll("input");
+    inputs.forEach(input => {
+        input.addEventListener("input", () => {
+            checkCertInputs(certificateContainer.querySelector(".certificateDetail"));
+        });
+    });
 
-    const input = certificateDetail.querySelectorAll("input");
-    input.forEach(input => {
-        checkCertInputs(certificateDetail);
-    })
-    checkCertInputs(certificateDetail);
+    
+    const removeBtn = certificateContainer.querySelector(".certMinus");
+    removeBtn.addEventListener("click", () => {
+        const container = removeBtn.closest("li");
+        if (container) {
+            const hr = container.nextElementSibling; 
+            if (hr && hr.tagName === 'HR') {
+                hr.parentNode.removeChild(hr); 
+            }
+            container.parentNode.removeChild(container); 
+            checkAllCertificates(); 
+        }
+    });
+
+   
+    checkCertInputs(certificateContainer.querySelector(".certificateDetail"));
 };
 
 
@@ -457,10 +496,7 @@ const chuga = document.querySelector("#chuga");
 chuga.addEventListener("click" , () => {
     addExperience();
     validateExperienced();
-    checkCertInputs(certInputs.closest(".certificateDetail"));
 
-    
-    
     //삭제버튼 작성
     const removeBtns = document.querySelectorAll(".remove");
     for(let i = 0; i < removeBtns.length; i++){
@@ -605,7 +641,13 @@ const picFile = document.querySelector("#picFile");
             setImg.style.backgroundSize = "150% auto";
             setImg.style.backgroundRepeat = "no-repeat";
             setImg.style.backgroundPosition = "center"; 
+            
         }
+        if(picFile.value.trim().length === 0){
+            obj.image=false;
+            return;
+        }
+        obj.image = true;
 
         reader.readAsDataURL(file);
         container.classList.remove("show");
@@ -677,10 +719,11 @@ const picFile = document.querySelector("#picFile");
 
 /***********  유효성 검사 ***********/
 
-const introduce = document.querySelector("#introduce");
+const introduce = document.querySelector(".introduce");
 const inputElement = document.querySelectorAll("input");
 const startDate = document.querySelectorAll(".startDate");
 const endDate = document.querySelectorAll(".endDate");
+
 
 
 
@@ -695,9 +738,21 @@ picFile.addEventListener("input", e => {
 });
 
 
-//input 요소 유효성 검사
+//이력서 제목 유효성 검사
+const resumeTitle = document.querySelector(".resumeTitle");
+resumeTitle.addEventListener("input", () => {
+    if(resumeTitle.value.trim().length === 0){
+        resumeTitle.value = "";
+        obj.resumeTitle=false;
+        return;
+    }
+    obj.resumeTitle = true;
+})
 
 //input:text 요소 유효성 검사
+
+
+
 
 
 //input:date 요소 유효성 검사
@@ -721,7 +776,12 @@ if(document.querySelectorAll(".selectDong").length!=0){
 }
 //textArea 사이즈 유효성 검사
 introduce.addEventListener("input", () => {
-    if(introduce.value.trim().length != 0) obj.introduce=true;    
+    if(introduce.value.trim().length === 0){
+        introduce.value = "";
+        obj.introduce=false;
+        return;
+    } 
+    obj.introduce=true;    
 })
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
@@ -732,61 +792,62 @@ introduce.addEventListener("mousedown", () => {
 });
 
 //certificate 유효성 검사
-const certificateDetailInputs = document.querySelectorAll(".certificateDetail>div>input");
-let count1 = 0;     
-let allFilled = false;
+let count1 = 0;
 
+// Function to check if all inputs in a container are filled
 const checkCertInputs = (container) => {
-    const inputs = container.querySelectorAll("input")
-    console.log(inputs.length)
-    let allFilled = Array.from(inputs).every(certInputs => certInputs.value.trim().length > 0);
-    if(allFilled){
+    const inputs = container.querySelectorAll("input");
+    let allFilled = Array.from(inputs).every(certInput => certInput.value.trim().length > 0);
+
+    if (allFilled) {
         count1 = inputs.length;
-        console.log(count1);
+    } else {
+        count1 = 0; // Reset count if any input is not filled
     }
-    if(count1 == inputs.length ){
+
+    if (count1 === inputs.length) {
         obj.certificate = true;
-    }else{
+    } else {
         obj.certificate = false;
     }
-}
 
-certificateDetailInputs.forEach( certInputs => {
-    certInputs.addEventListener("input", () => {
-        if(certInputs.value.trim().length === 0){
-            allFilled =false;
-            certInputs.value = "";
-            obj.certificate = false;
-            return;
+    console.log("Certificate validation status:", obj.certificate);
+};
+
+
+const checkAllCertificates = () => {
+    const allContainers = document.querySelectorAll(".certificateDetail");
+    let allValid = true;
+
+    allContainers.forEach(container => {
+        const inputs = container.querySelectorAll("input");
+        const allFilled = Array.from(inputs).every(certInput => certInput.value.trim().length > 0);
+        if (!allFilled) {
+            allValid = false;
         }
+    });
 
-        checkCertInputs(certInputs.closest(".certificateDetail"));
+    obj.certificate = allValid;
+    console.log("Overall certificate validation status:", obj.certificate);
+};
 
-        if(certInputs.type === "text" || certInputs.type === "number" && certInputs.value.length > 0 ){
-            return;
-        }
-    })   
-})
-
-
-//자격증 추가 버튼 작성
+// Initial event listener for the "Add Certificate" button
 const certAdd = document.querySelector("#certAdd");
-
 certAdd.addEventListener("click", () => {
     addCertificate();
-    const removeBtns = document.querySelectorAll(".certMinus");
-        
-    for(let i = 0; i < removeBtns.length; i++){
-        checkCertInputs(removeBtns[i].closest(".certificateDetail"));
-        removeBtns[i].addEventListener("click", () => {
-            const container = removeBtns[i].closest("ul");
-            if(container){
-                container.parentNode.removeChild(container);
-                fifthResume.removeChild(document.createElement("hr"))
-            }
-        });
-    }
 });
+
+// Attach input event listeners to existing certificate inputs (if any)
+const certificateDetailInputs = document.querySelectorAll(".certificateDetail>div>input");
+
+certificateDetailInputs.forEach(certInput => {
+    certInput.addEventListener("input", () => {
+        checkCertInputs(certInput.closest(".certificateDetail"));
+    });
+});
+
+
+
 
 
 

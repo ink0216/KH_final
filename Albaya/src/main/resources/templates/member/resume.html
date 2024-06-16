@@ -37,7 +37,7 @@
                 <div id = "innerProfileContainer">
                     <div id="profileImg">
                         <img src="" alt="">
-                        <button id="editProfile"><i class="fa-solid fa-camera"></i></button>
+                        <button id="editProfile" type="button"><i class="fa-solid fa-camera"></i></button>
                     </div>
                     <div id="info">
                         <div id="name">
@@ -127,10 +127,10 @@
                                     <div  name="selectPrimarySchoolName" id="selectPrimarySchoolName" class="hide">
                                     
                                         <span>초등학교</span>
-                                        <input type="text" name="schoolName" class = "schoolName" id="primarySchoolName" placeholder="초등학교" required><br><br>
+                                        <input type="text" name="schoolName" class = "schoolName" id="primarySchoolName" placeholder="초등학교"><br><br>
                                         <div class="term">
                                             <span>졸업여부</span>
-                                            <select name="educationStatusNo" class="graduationDropDown" required>
+                                            <select name="educationStatusNo" class="graduationDropDown" >
                                                 <th:block th:each=" status:${statusList}" th:object="${status}">
                                                     <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
                                                 </th:block>
@@ -140,8 +140,8 @@
                                                 
                                                 <div class="innerDateContainer">
                                                     <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="startDate" required>
-                                                    <input type="date" name="schoolEndDate" class="endDate" required>
+                                                    <input type="date" name="schoolStartDate" class="startDate">
+                                                    <input type="date" name="schoolEndDate" class="endDate" >
                                                 </div>
                                             </div>
                                         </div>
@@ -151,10 +151,10 @@
                                     <div name="selectMiddleSchoolName" id="selectMiddleSchoolName" class="hide">
                                     
                                         <span>중학교</span>
-                                        <input type="text" name="schoolName" class = "schoolName" id="middleSchoolName" placeholder="중학교" required><br><br>
+                                        <input type="text" name="schoolName" class = "schoolName" id="middleSchoolName" placeholder="중학교" ><br><br>
                                         <div class="term">
                                             <span>졸업여부</span>
-                                            <select name="educationStatusNo" class="graduationDropDown" required>
+                                            <select name="educationStatusNo" class="graduationDropDown" >
                                                 <th:block th:each=" status:${statusList}" th:object="${status}">
                                                     <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
                                                 </th:block>
@@ -164,8 +164,8 @@
                                                 
                                                 <div class = "innerDateContainer">
                                                     <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="startDate" required>
-                                                    <input type="date" name="schoolEndDate" class="endDate" required>
+                                                    <input type="date" name="schoolStartDate" class="startDate" >
+                                                    <input type="date" name="schoolEndDate" class="endDate" >
                                                 </div>
                                             </div>
                                         </div>
@@ -175,10 +175,10 @@
                                     <div name="selectSchoolName" id="selectSchoolName" class="hide">
                                     
                                         <span>고등학교</span>
-                                        <input type="text" name="schoolName" class = "schoolName" id="schoolName" placeholder="고등학교" required><br><br>
+                                        <input type="text" name="schoolName" class = "schoolName" id="schoolName" placeholder="고등학교" ><br><br>
                                         <div class="term">
                                             <span>졸업여부</span>
-                                            <select name="educationStatusNo" class="graduationDropDown" required>
+                                            <select name="educationStatusNo" class="graduationDropDown" >
                                                 <th:block th:each=" status:${statusList}" th:object="${status}">
                                                     <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
                                                 </th:block>
@@ -187,8 +187,8 @@
                                                 
                                                 <div class = "innerDateContainer">
                                                     <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="startDate" required>
-                                                    <input type="date" name="schoolEndDate" class="endDate" required>
+                                                    <input type="date" name="schoolStartDate" class="startDate">
+                                                    <input type="date" name="schoolEndDate" class="endDate" >
                                                 </div>
                                             </div>
                                         </div>
@@ -214,9 +214,9 @@
                                                     
                                                     <div class="innerDateContainer">
                                                         <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" required>
+                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" >
                                                         ~
-                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" required>
+                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -245,9 +245,9 @@
                                                     
                                                     <div class="innerDateContainer">
                                                         <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" required>
+                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" >
                                                         ~
-                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" required>
+                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -276,9 +276,9 @@
                                                     
                                                     <div class="innerDateContainer">
                                                         <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" required>
+                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" >
                                                         ~
-                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" required>
+                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" >
                                                     </div>
                                                 </div>
                                             </div>
