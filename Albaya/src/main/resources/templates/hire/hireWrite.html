@@ -55,7 +55,7 @@
                             <dd>
                                 <input type="text" placeholder="업직종을 선택해 주세요" name="typeName" id="selectedType"
                                     readonly>
-                                <input type="hidden" name="typeNo" id="typeNo">
+                                <input type="hidden" name="typeNo" id="typeNo" value="0">
                                 <button id="typeBtn" type="button">선택</button>
                             </dd>
                         </dl>
@@ -66,7 +66,7 @@
                             모집인원
                         </dt>
                         <dd>
-                            <input type="number" name="hireCount" id="hireCount" placeholder="모집인원을 등록해주세요">
+                            <input type="number" name="hireCount" id="hireCount" placeholder="모집인원을 등록해주세요" value="0">
                             <span class="inputConfirm" id="countMessage"></span>
                         </dd>
                     </dl>
@@ -208,7 +208,7 @@
                             </select>
 
 
-                            <input type="number" id="payInput" name="payInput" placeholder="급여">
+                            <input type="number" id="payInput" name="payInput" placeholder="급여" value="0">
                             <span class="inputConfirm" id="payMessage"></span>
 
 

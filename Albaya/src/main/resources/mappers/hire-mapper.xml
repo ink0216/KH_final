@@ -22,7 +22,7 @@
  -->
  
  	<!-- typeName에 따른 typeNo 조회 -->
-	<select id="hireTypeNo">
+	<select id="hireTypeNo" resultType="java.lang.Integer">
 		SELECT TYPE_NO FROM "WORK_TYPE"
 		WHERE TYPE_NAME = #{typeName}
 	</select>
@@ -99,7 +99,7 @@
 		#{hireStatus}
 		</if>
 		,
-		#{workDay},#{payInput},#{dongNo},
+		#{workDay},#{payInput}, #{dongNo},
 		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
 		,#{shopEmail},#{shopTel},#{shopName},#{address},DEFAULT
 				)
@@ -316,8 +316,21 @@
 	</select>
 	
 	<insert id="hireApply">
-		INSERT INTO "APPLY_HIRE"
-		VALUES(#{memberNo}, #{hireNo}, #{resumeNo}, #{applyTitle}, #{applyContent},DEFAULT)
+	    INSERT INTO "APPLY_HIRE"
+	    VALUES
+	    (
+	        #{memberNo},
+	        #{hireNo},
+	        <if test="resumeNo != null">
+	            #{resumeNo}
+	        </if>
+	        <if test="resumeNo == null">
+	            null
+	        </if>,
+	        #{applyTitle},
+	        #{applyContent},
+	        DEFAULT
+	    )
 	</insert>
 	
 	<!-- 공고 수정 시 공고 내용 모두 얻어오기 -->

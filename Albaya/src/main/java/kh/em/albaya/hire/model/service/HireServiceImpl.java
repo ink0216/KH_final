@@ -42,18 +42,20 @@ public class HireServiceImpl implements HireService{
 		
 		//typeNo 세팅
 		String typeName = hire.getTypeName();
-		int typeNo = mapper.hireTypeNo(typeName);
-		hire.setTypeNo(typeNo);
+		Integer typeNo = mapper.hireTypeNo(typeName);
+		if(typeNo != null) {
+			hire.setTypeNo(typeNo);
+		}
 		
 		String dosiName = hire.getDosiName();
-		if(dosiName.equals("경북")) dosiName = "경상북도";
-		if(dosiName.equals("경남")) dosiName = "경상남도";
+		if(dosiName != null && dosiName.equals("경북")) dosiName = "경상북도";
+		if(dosiName != null && dosiName.equals("경남")) dosiName = "경상남도";
 		
-		if(dosiName.equals("충북")) dosiName = "충청북도";
-		if(dosiName.equals("충남")) dosiName = "충청남도";
+		if(dosiName != null && dosiName.equals("충북")) dosiName = "충청북도";
+		if(dosiName != null && dosiName.equals("충남")) dosiName = "충청남도";
 		
-		if(dosiName.equals("전북특별자치도")) dosiName = "전라북도";
-		if(dosiName.equals("전남")) dosiName = "전라남도";
+		if(dosiName != null && dosiName.equals("전북특별자치도")) dosiName = "전라북도";
+		if(dosiName != null &&dosiName.equals("전남")) dosiName = "전라남도";
 		String sigunguName = hire.getSigunguName();
 		String dongName=hire.getDongName();
 		
@@ -261,7 +263,7 @@ public class HireServiceImpl implements HireService{
 	
 	@Override
 	// 지원서 작성하기
-	public int hireApply(int memberNo, Hire hire, int hireNo,int resumeNo) {
+	public int hireApply(int memberNo, Hire hire, int hireNo, Integer resumeNo) {
 		Map<String, Object> map = new HashMap<>();
 		
 		map.put("memberNo", memberNo);
@@ -301,8 +303,10 @@ public class HireServiceImpl implements HireService{
 	@Override
 	public int hireUpdate(Hire hire) {
 		String typeName = hire.getTypeName();
-		int typeNo = mapper.hireTypeNo(typeName);
-		hire.setTypeNo(typeNo);
+		Integer typeNo = mapper.hireTypeNo(typeName);
+		if(typeNo != null) {
+			hire.setTypeNo(typeNo);
+		}
 		
 		if(hire.getDosiName() !=null) {
 			String dosiName = hire.getDosiName();

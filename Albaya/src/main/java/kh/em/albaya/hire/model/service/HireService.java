@@ -82,7 +82,7 @@ public interface HireService {
 	 * @param resumeNo 
 	 * @return
 	 */
-	int hireApply(int memberNo, Hire hire, int hireNo, int resumeNo);
+	int hireApply(int memberNo, Hire hire, int hireNo, Integer resumeNo);
 	
 	/**공고 내용 모두 조회해오기
 	 * @param hireNo

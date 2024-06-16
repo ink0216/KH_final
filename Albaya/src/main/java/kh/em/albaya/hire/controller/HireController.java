@@ -263,7 +263,7 @@ public class HireController {
 	        @SessionAttribute(value = "loginMember", required = false) Member loginMember,
 	        Hire hire,
 	        RedirectAttributes ra,
-	        @RequestParam("resumeNo") int resumeNo,
+	        @RequestParam(value="resumeNo", required = false) Integer resumeNo,
 	        Model model,
 	        HttpServletResponse response
 	) throws IOException{        
@@ -296,6 +296,9 @@ public class HireController {
 		Hire applyInfo = service.hireApplyDetail(memberNo, hireNo);
 		
 		model.addAttribute("applyInfo", applyInfo);
+		
+		List<Resume> resumeList = service.resumeList(memberNo);
+		model.addAttribute("resumeList", resumeList); 
 		
 		return "hire/hireApplyDetail";
 	}
