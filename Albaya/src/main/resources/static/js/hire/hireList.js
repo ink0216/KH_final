@@ -32,8 +32,8 @@ update.forEach(i=>{
         location.href = "/hire/update/"+hireNo;
     });
 })
-const listContents = document.querySelectorAll(".listContents");
-listContents.forEach(i=>{
+const hireTitle = document.querySelectorAll("#hireTitle");
+hireTitle.forEach(i=>{
     i.addEventListener("click", ()=>{
         let hireNo = i.dataset.hireNo;
         console.log(hireNo);

@@ -53,19 +53,24 @@
 
                 <div class="resume-select-area">
                     <span class="span1">이력서 보기</span>
-                    <th:block th:if="${#lists.isEmpty(resumeList)}">
+                    <th:block th:if="${applyInfo.resumeNo == null}">
                         &nbsp;&nbsp;&nbsp;해당 지원자는 이력서를 제출하지 않았습니다.
                     </th:block>
                     <div class="radio-area">
-                        <th:block th:unless="${#lists.isEmpty(resumeList)}">
-                            <th:block th:each="resume, stat: ${resumeList}" th:object="${resume}">
+                        <th:block th:unless="${applyInfo.resumeNo == null}">
+                            <th:block th:object="${applyInfo}">
                                 <div class="resume-radio">
-                                    <input type="radio" name="resumeNo" th:id="'resumeNo' + ${stat.index}" th:value="*{resumeNo}">
-                                    <label th:for="'resumeNo' + ${stat.index}">
-                                        <a th:href="@{'/resume/resumeDetail?resumeNo=' + *{resumeNo}}" target="_blank" th:text="*{resumeTitle}">
+                                    <!-- <input type="radio" name="resumeNo" th:id="'resumeNo' + ${stat.index}" th:value="*{resumeNo}"> -->
+                                    <label>
+                                        <a th:href="@{'/resume/resumeProfile?resumeNo=' + *{resumeNo}}" target="_blank" th:text="*{resumeTitle}">
                                             아르바이트 경험이 많아 믿고 맡기실 수 있습니다.
                                         </a>
                                     </label>
+                                    <!-- <label th:for="'resumeNo' + ${stat.index}">
+                                        <a th:href="@{'/resume/resumeProfile?resumeNo=' + *{resumeNo}}" target="_blank" th:text="*{resumeTitle}">
+                                            아르바이트 경험이 많아 믿고 맡기실 수 있습니다.
+                                        </a>
+                                    </label> -->
                                 </div>
                             </th:block>
                         </th:block>
@@ -113,9 +118,11 @@
 
                 <div class="user-info">
                     <span class="memberTel span1">휴대폰</span>
+                    
                     <span th:text="${#strings.concat(#strings.substring(applyInfo.memberPhoneNumber, 0, 3),
                         '-', #strings.substring(applyInfo.memberPhoneNumber, 3, 7),
                         '-', #strings.substring(applyInfo.memberPhoneNumber, 7))}">
+                    </span>
                 </div>
 
                 <div class="user-info">

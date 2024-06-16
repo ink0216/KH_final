@@ -67,10 +67,18 @@ public interface ResumeService {
 	 */
 	int resumeDelete(int resumeNo);
 
-	/**이력서 상세 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	Map<String, Object> resumeDetail(int resumeNo);
+	//상세조회
+	Resume resumeTable(int resumeNo);
 
+	Resume schoolTable(int resumeNo);
+
+	List<Resume> locationTable(int resumeNo);
+
+	List<String> workTable(int resumeNo);
+
+	List<Resume> careerTable(int resumeNo);
+
+	List<Resume> licenseTable(int resumeNo);
+
+	
 }

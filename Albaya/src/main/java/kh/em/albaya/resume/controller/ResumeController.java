@@ -169,43 +169,41 @@ public class ResumeController {
 		return "member/resumeList";
 	}
 	
-	@GetMapping("resumeProfile")
+	@GetMapping("resumeDetail")
 	public String getResumeProfile(
 			@RequestParam("resumeNo") int resumeNo,
 			Model model
 			) {
 		//이력서 내용 다 조회
 		//학력,희망근무지(시도군구동), 희망업직종, 경력사항, 자격증
-		Map<String, Object> map = service.resumeDetail(resumeNo);
-		/*map.put("resume", resume);
-		map.put("careerList", careerList);
-		map.put("licenseList", licenseList);
-		map.put("locationList", locationList);
-		map.put("workList", workList);
-		map.put("educationDetail", educationDetail);
-		 * 
-		 * 
-		 * */
-		model.addAttribute("resume", (Resume)map.get("resume"));
-		model.addAttribute("careerList", (List<Resume>)map.get("careerList"));
-		model.addAttribute("licenseList", (List<Resume>)map.get("licenseList"));
-		model.addAttribute("locationList", (List<Resume>)map.get("locationList"));
-		model.addAttribute("workList", (List<Resume>)map.get("workList"));
-		Resume educationInfo = (Resume)map.get("educationDetail");
-		//,로 잘랐을 때 여섯 번째(5번 인덱스)에 ~이 있다.
-		//2일 때에는 2,7
-		//4이면 3,8번 인덱스
-		String education = null;
-		for(int i=1;i<7;i++) {
-			if(((Resume)map.get("educationDetail")).getEducationNo().equals(String.valueOf(i))) {
-				 education = ((Resume)map.get("educationDetail")).getSchoolPeriod().split(",")[i-1]
-						+ " ~ " + ((Resume)map.get("educationDetail")).getSchoolPeriod().split(",")[i+4];
-			}
-		}
-		 String fullImagePath = ((Resume)map.get("resume")).getImgPath() + ((Resume)map.get("resume")).getImgRename();
-	        model.addAttribute("fullImagePath", fullImagePath);
-		model.addAttribute("education", education);
-		model.addAttribute("educationDetail", (Resume)map.get("workList"));
+		
+		//RESUME 테이블에서 조회
+				//CAREER, LICENSE
+				// RESUME_LOCATION, RESUME_WORK, RESUME_EDUCATION
+		//----------------------------------------------
+		//imgPath, imgRename, resumeTitle, introduce,
+		Resume resume = service.resumeTable(resumeNo);
+		model.addAttribute("resume", resume);
+		
+		//대학교 졸업 기간~기간
+		Resume school = service.schoolTable(resumeNo);
+		model.addAttribute("school", school);
+		
+		//희망 근무지 나열 서울시 강서구 동
+		List<Resume> locationList = service.locationTable(resumeNo);
+		model.addAttribute("locationList", locationList);
+		
+		//희망 업직종명 나열
+		List<String> typeNameList = service.workTable(resumeNo);
+		model.addAttribute("typeNameList", typeNameList);
+		
+		//신입 경력사항
+		List<Resume> careerList = service.careerTable(resumeNo);
+		model.addAttribute("careerList", careerList);
+		
+		//자격증명, 발행기관명, 점수
+		List<Resume> licenseList = service.licenseTable(resumeNo);
+		model.addAttribute("licenseList", licenseList);
 		return "member/resumeProfile";
 	}
 	
@@ -221,19 +219,13 @@ public class ResumeController {
 		
 	}
 	
-	//이력서 상세 조회
-	@GetMapping("resumeDetail")
-	public String resumeDetail(
-			@RequestParam("resumeNo") int resumeNo,
-			Model model
+	//이력서 수정
+	@GetMapping("resumeUpdate")
+	public String resumeUpdate(
+			@RequestParam("resumeNo") int resumeNo
 			) {
-		Map<String, Object> map = service.resumeDetail(resumeNo);
-		model.addAttribute("resume", (Resume)map.get("resume"));
-		model.addAttribute("careerList", (List<Resume>)map.get("careerList"));
-		model.addAttribute("licenseList", (List<Resume>)map.get("licenseList"));
-		model.addAttribute("locationList", (List<Resume>)map.get("locationList"));
-		model.addAttribute("workList", (List<Resume>)map.get("workList"));
-		model.addAttribute("educationDetail", (Resume)map.get("educationDetail"));
-		return "member/resumeProfile";
+		Resume resume = service.resumeDetail(resumeNo);
+		
 	}
+
 }

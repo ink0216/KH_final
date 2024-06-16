@@ -297,8 +297,6 @@ public class HireController {
 		
 		model.addAttribute("applyInfo", applyInfo);
 		
-		List<Resume> resumeList = service.resumeList(memberNo);
-		model.addAttribute("resumeList", resumeList); 
 		
 		return "hire/hireApplyDetail";
 	}

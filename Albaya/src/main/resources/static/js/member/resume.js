@@ -82,7 +82,7 @@
     const sigunguList = document.querySelector(".sigunguList");
     const dong = document.querySelector(".dong");
     
-    
+    const dongList = [];
     const locationSelectContainer =  document.querySelector(".locationSelectContainer");
     dosies.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -124,16 +124,16 @@
                                             obj.location = true;
                                             count++;
 
-                                            const input = document.createElement("input");
-                                            input.type = "hidden";
-                                            input.name = "dongNo";
-                                            input.value = dongItem.dongNo;
-                                            form.append(input);
-                                           
+                                            // const input = document.createElement("input");
+                                            // input.type = "hidden";
+                                            // input.name = "dongNo";
+                                            // input.value = dongItem.dongNo;
+                                            // form.append(input);
+                                        
 
                                         
                                             if(count>1){
-                                                 alert("중복 선택은 가능하지 않습니다");
+                                                alert("중복 선택은 가능하지 않습니다");
                                                 return;
                                             }
                                             
@@ -141,15 +141,19 @@
                                                 alert("최대 5가지만 선택할 수 있습니다");
                                                 return;
                                             } 
-
-
+                                            dongList.push(dongItem.dongNo);
+                                            const dongInput = document.createElement("input");
+                                            dongInput.setAttribute("type","hidden");
+                                            dongInput.setAttribute("name","dongNo");
+                                            dongInput.setAttribute("value",dongItem.dongNo);
+                                            form.append(dongInput);
 
                                             const dongName = document.createTextNode(`${dongItem.dongName}`);
         
                                                     
                                             const selectDong = document.createElement("span");
                                             selectDong.className = "selectDong";
-                                                  
+                                                
 
                                             const xBtn = document.createElement("span");
                                             xBtn.innerHTML = "&times;"; 
@@ -162,19 +166,19 @@
                                             const hide = document.createElement("span");
                                             hide.className = "hide";
                                             hide.innerText = `${dongItem.dongNo}`; 
-                                                 
+                                                
                                             selectDong.appendChild(dongName);
                                             selectDong.appendChild(xBtn);
                                             selectDong.appendChild(hide); 
 
                                             locationSelectContainer.append(selectDong);
-                                                  
-                                                  
+                                                
+                                                
                                         });
                                         
                                         
                                     })
-                                 
+                                
                                 }
                             );
                         });
@@ -557,11 +561,17 @@ jobsOfDesireBtn.forEach(btn => {
         }
 
         textContentArr.push(btn.textContent);
-        const jobinput = document.createElement("input");
-        jobinput.setAttribute("type","hidden");
-        jobinput.setAttribute("name","typeName");
-        jobinput.setAttribute("value",btn.textContent);
-        addDesiredJobs.appendChild(jobinput);
+        const typeInput = document.createElement("input");
+        typeInput.setAttribute("type","hidden");
+        typeInput.setAttribute("name","typeName");
+        typeInput.setAttribute("value",btn.textContent);
+        form.append(typeInput);
+
+        // const jobinput = document.createElement("input");
+        // jobinput.setAttribute("type","hidden");
+        // jobinput.setAttribute("name","typeName");
+        // jobinput.setAttribute("value",btn.textContent);
+        // addDesiredJobs.appendChild(jobinput);
        
         const span = document.createElement("span");
         span.className = "addJobCategory";

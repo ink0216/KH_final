@@ -184,37 +184,29 @@ public class ResumeServiceImpl implements ResumeService {
 		return mapper.resumeDelete(resumeNo);
 	}
 	
-	//이력서 상세 조회
+	//상세조회
 	@Override
-	public Map<String, Object> resumeDetail(int resumeNo) {
-		//RESUME 테이블에서 조회
-		Resume resume = mapper.resumeDetail(resumeNo);
-		
-		//CAREER, LICENSE
-		// RESUME_LOCATION, RESUME_WORK, RESUME_EDUCATION
-		
-		//CAREER 테이블에서 조회
-		List<Resume> careerList = mapper.careerDetail(resumeNo);
-		
-		//LICENSE 테이블에서 조회
-		List<Resume> licenseList = mapper.licenseDetail(resumeNo);
-		
-		//RESUME_LOCATION 테이블에서 조회
-		List<Resume> locationList = mapper.locationDetail(resumeNo);
-		
-		//RESUME_WORK 테이블에서 조회
-		List<Resume> workList = mapper.workDetail(resumeNo);
-		
-		//RESUME_EDUCATION 테이블에서 조회
-		Resume educationDetail = mapper.educationDetail(resumeNo);
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("resume", resume);
-		map.put("careerList", careerList);
-		map.put("licenseList", licenseList);
-		map.put("locationList", locationList);
-		map.put("workList", workList);
-		map.put("educationDetail", educationDetail);
-		return map;
+	public Resume resumeTable(int resumeNo) {
+		return mapper.resumeTable(resumeNo);
+	}
+	@Override
+	public Resume schoolTable(int resumeNo) {
+		return mapper.schoolTable(resumeNo);
+	}
+	@Override
+	public List<Resume> locationTable(int resumeNo) {
+		return mapper.locationTable(resumeNo);
+	}
+	@Override
+	public List<String> workTable(int resumeNo) {
+		return mapper.workTable(resumeNo);
+	}
+	@Override
+	public List<Resume> careerTable(int resumeNo) {
+		return mapper.careerTable(resumeNo);
+	}
+	@Override
+	public List<Resume> licenseTable(int resumeNo) {
+		return mapper.licenseTable(resumeNo);
 	}
 }

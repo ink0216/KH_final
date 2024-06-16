@@ -177,39 +177,46 @@
 	 <!-- ***********상세 조회 ************************* -->
 	 <!-- 작성하는 것은 제목, 자기소개, 학력사항,근무지,업직종,경력사항,자격증이다. -->
 	 <!-- RESUME 테이블에서 조회 -->
-	 <select id="resumeDetail">
-	 	SELECT * FROM "RESUME"
-	 	WHERE RESUME_NO=#{resumeNo}
-	 </select>
-	 
-	 <!-- CAREER 테이블에서 조회 -->
-	 <select id="careerDetail">
-	 	SELECT * FROM "CAREER"
-	 	WHERE RESUME_NO=#{resumeNo}
-	 </select>
-	 
-	 <!-- LICENSE 테이블에서 조회 -->
-	 <select id="licenseDetail">
-	 	SELECT * FROM "LICENSE"
-	 	WHERE RESUME_NO=#{resumeNo}
-	 </select>
-	 
-	 <!-- RESUME_LOCATION 테이블에서 조회 -->
-	 <select id="locationDetail">
-	 	SELECT * FROM "RESUME_LOCATION"
-	 	WHERE RESUME_NO=#{resumeNo}
-	 </select>
-	 
-	 <!-- RESUME_WORK 테이블에서 조회 -->
-	 <select id="workDetail">
-	 	SELECT * FROM "RESUME_WORK"
-	 	WHERE RESUME_NO=#{resumeNo}
-	 </select>
-	 
-	 <!-- RESUME_EDUCATION 테이블에서 조회 -->
-	 <select id="educationDetail">
-	 	SELECT * FROM "RESUME_EDUCATION"
-	 	JOIN "EDUCATION" USING (EDUCATION_NO)
-	 	WHERE RESUME_NO=#{resumeNo}
-	 </select>
+	<select id="resumeTable">
+		SELECT IMG_PATH , IMG_RENAME , RESUME_TITLE ,INTRODUCE , CAREER
+		FROM RESUME
+		WHERE RESUME_NO =#{resumeNo}
+	
+	</select>
+	<select id="schoolTable">
+		SELECT C.EDUCATION_NAME, B.EDUCATION_STATUS_NAME, A.SCHOOL_PERIOD
+		FROM "RESUME_EDUCATION" A
+		JOIN "EDUCATION_STATUS" B ON (A.EDUCATION_STATUS_NO=B.EDUCATION_STATUS_NO)
+		JOIN "EDUCATION" C ON (A.EDUCATION_NO=C.EDUCATION_NO)
+		WHERE RESUME_NO=#{resumeNo}
+	
+	
+	</select>
+	<select id="locationTable">
+		SELECT DOSI_NAME,SIGUNGU_NAME,DONG_NAME
+		FROM "RESUME_LOCATION" A
+		LEFT JOIN "DONG" B ON (A.DONG_NO=B.DONG_NO)
+		LEFT JOIN "SIGUNGU" C ON (B.SIGUNGU_NO=C.SIGUNGU_NO)
+		LEFT JOIN "DOSI" D ON (D.DOSI_NO=C.DOSI_NO)
+		WHERE RESUME_NO=#{resumeNo}
+	</select>
+	<select id="workTable">
+		SELECT TYPE_NAME
+		FROM RESUME_WORK A
+		JOIN WORK_TYPE B ON (A.TYPE_NO=B.TYPE_NO)
+		WHERE RESUME_NO=#{resumeNo}
+	
+	</select>
+	<select id="careerTable">
+		SELECT COMPANY_NAME, TO_CHAR(START_DATE,'YYYY-MM-DD') START_DATE,
+		TO_CHAR(END_DATE,'YYYY-MM-DD') END_DATE
+		FROM "CAREER" A
+		JOIN "RESUME" B ON (A.RESUME_NO=B.RESUME_NO) 
+		WHERE B.RESUME_NO=#{resumeNo}
+	</select>
+	<select id="licenseTable">
+		SELECT LICENSE_NAME ,LICENSE_FROM , LICENSE_SCORE 
+		FROM "LICENSE"
+		WHERE RESUME_NO=#{resumeNo}
+	</select>
 </mapper>

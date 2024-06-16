@@ -51,18 +51,19 @@
                     <!-- <div id="profImg">
                         <img th:src="|${resume.imgPath}${resume.imgRename}|" >
                     </div> -->
-                        <img id="profImg" th:src="|${resume.imgPath}${resume.imgRename}|" >
                     <div id="pesonalInfo">
                         <div  class="info" id="name">
-                            <span><h3>황진관</h3></span>
+                            <span><h3 th:text="${session.loginMember.memberName}">황진관</h3></span>
                         </div>
                         <div class="info" id="email">
-                            <span>jkhwang58@gmail.com</span>
+                            <span th:text="${session.loginMember.memberEmail}">jkhwang58@gmail.com</span>
                         </div>
                         <div class="info" id="telNo">
-                            <span>01057823394</span>
+                            <span th:text="${session.loginMember.memberPhoneNumber}">01057823394</span>
                         </div><br><br>
                     </div>
+                        <img id="profImg" th:src="|${resume.imgPath}${resume.imgRename}|" >
+                    
                     <hr>
                     <button id="backBtn">목록으로&nbsp;<i class="fa-solid fa-arrow-left"></i></button>
                     <!-- <h1>프로필</h1>
@@ -81,25 +82,30 @@
                 </div>
                <div id="applicantDetail">
                     <div class="detail" id="introduction">
-                        <span>자기소개</span>
-                        <div>dsfdsfdsfsdfdsfsd</div>
+                        <span >자기소개</span>
+                        <div th:text="${resume.introduce}">dsfdsfdsfsdfdsfsd</div>
                     </div>
                     <br>
                     <hr>
                     <div class="detail" id="qualifications">
                         <span>최종학력</span>
-                        <div>대학교</div>
+                        <div th:text="${school.educationName}">대학교</div>
+                        <div th:text="${school.educationStatusName}">대학교</div>
+                        <!-- <div th:text="|${school.schoolPeriod.replaceAll('[^\\d—-]', '').replace('—', '-').replace(' - ', ' ~ ')}|">대학교</div> -->
+                        <!-- 
+                        th:text="|${school.schoolPeriod.replaceAll('[^\\d-]', '').replace(' - ', ' ~ ')}|"
+                        -->
                     </div>
                     <br>
                     <hr>
                     <div class="detail" id="loactionPreferences">
                         <span>희망근무지</span>
                         <div>
-                            <div>경기도 파주시 조리읍</div>
-                            <div>서울특별시 강서구</div>
-                            <div>경기도 파주시</div>
-                            <div>경기도 파주시</div>
-                            <div>경기도 파주시</div>
+                            <th:block th:each="location : ${locationList}">
+                                <div th:text="|${location.dosiName}  ${location.sigunguName}  ${location.dongName}|">경기도 파주시 조리읍</div>
+                            </th:block>
+                        
+                            
                             <!-- <div id="headingImg">
                                 <img src="/images/jazz-bend.jpg" width="300px" height="250px">
                             </div> -->
@@ -111,11 +117,10 @@
                     <div class="detail" id="jobPreferences">
                         <span>희망 업직종</span>
                         <div>
-                            <div>음식 음료</div>
-                            <div>매장관리/판매</div>
-                            <div>고객상담</div>
-                            <div>병원/간호/연구</div>
-                            <div>서비스</div>
+                            <th:block th:each="type : ${typeNameList}">
+                                <div th:text="${type}">음식 음료</div>
+                            </th:block>
+                            
                         </div>
                     </div>
                     <br>
@@ -123,28 +128,43 @@
                     <div class="detail" id="careers">
                         <span>경력사항</span>
                         <br>
-                        <div>신입</div>
+                        <th:block th:if="${resume.career==0}">
+                            <div>신입</div>
+                        </th:block>
+
+                        <th:block th:if="${resume.career==2}">
+                            <div>경력</div>
+                            <th:block th:each=" career: ${careerList}">
+                                <div th:text="|${career.companyName}             ${career.startDate}~${career.endDate}|">신입</div>
+                            </th:block>
+                        </th:block>
+                        
                     </div>
                     <br>
                     <hr>
+                   
+                        
+                    
                     <div class="detail" id="certificate">
                         <span>자격증</span>
+                        <th:block th:each=" license: ${licenseList}" th:object="${license}">
                         <div id="certificateName" class="certificate" style="display:flex;">
-                            <span>자격증명</span>
-                            <div>:&nbsp;정보처리기사</div>
+                            <span>자격증명 : </span>
+                            <div th:text="*{licenseName}">:&nbsp;정보처리기사</div>
                         </div>
                         <div id="certificateOrg" class="certificate" style="display:flex;">
-                            <span>발행기관</span>
-                            <div>:&nbsp;CompTIA</div>
+                            <span>발행기관 : </span>
+                            <div th:text="*{licenseFrom}">:&nbsp;CompTIA</div>
                         </div>
                         <div id="certificateScore" class="certificate" style="display:flex;">
-                            <span>점수</span>
-                            <div>:&nbsp;79</div>
+                            <span>점수 : </span>
+                            <div th:text="*{licenseScore}">:&nbsp;79</div>
+                        </th:block>
                         </div>
-                       
-               </div>
-             
-                   
+                    
+                    </div>
+            
+                
                 </div>
                 <br>
             </div>
