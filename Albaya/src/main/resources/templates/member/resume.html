@@ -435,33 +435,34 @@
                         <ul>
                             <li>
                             
-                                    <div id="certificate" class = "certificate">
-                                        <span>자격증명</span>&nbsp;&nbsp;
-                                        <input type="text" name="licenseName" class="searchCertificate" id="searchCertifcate" required><br><br>
+                                    <div id="certificate" class = "certificateDetail">
+                                        <div>
+                                            <span>자격증명</span>&nbsp;&nbsp;&nbsp;
+                                            <input type="text" name="licenseName" class="certName" id="searchCertifcate" required><br><br><br>   
+                                        </div>
+                                        
                                     
-                                    
-                                            <div class = "certificateDetail">
+                                           
                     
-                                                <div class="organizationDetail">
-                                                    <span>발행기관</span>&nbsp;&nbsp;
-                                                    <input type="text" name="licenseFrom" class = "organization" id="organization" required>
-                                                </div>
+                                        <div class="organizationDetail">
+                                            <span>발행기관</span>&nbsp;&nbsp;
+                                            <input type="text" name="licenseFrom" class = "organization" id="organization" required>
+                                        </div>
                 
-                                                <div class="scoreDetail">
-                                                    <span>점수</span>&nbsp;&nbsp;
-                                                    <input type="number" name="licenseScore" class = "score" max="100" required>&nbsp;/100
-                                                </div>
+                                        <div class="scoreDetail">
+                                            <span>점수</span>&nbsp;&nbsp;
+                                            <input type="number" name="licenseScore" class = "score" max="100" required>&nbsp;/100
+                                        </div>
                                                 
-                                                <div>
-                                                    <div class = "issueDetail">
-                                                        <span>취득일</span>
-                                                        <input type="date" name="licenseDate" class="issueDate"  required>
-                                                        <button type="button" id = "certAdd">+</button>
-                                                    </div>
-                                                </div>
+                                      
+                                        <div class = "issueDetail">
+                                            <span>취득일</span>
+                                            <input type="date" name="licenseDate" class="issueDate"  required>
+                                            <button type="button" id = "certAdd">+</button>
+                                        </div>
+                                       
             
-                                            
-                                            </div>
+                                      
                                     
                                     </div>
                                 
@@ -475,7 +476,7 @@
                 
             
                 <div id="validatingBtnsContainer">
-                    <button class = "resume" id="applyBtn">지원하기</button>
+                    <button class = "resume submit"  id="applyBtn" >지원하기</button>
                     <button class = "resume" id="semiBtn">임시저장</button>
                 </div>
     

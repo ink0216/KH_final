@@ -16,7 +16,9 @@
         "desiredJobs": false,
         "location" : false,
         "experienced" : false,
-        "certificate" : false
+        
+        "certificate" : false,
+       
     }
     
 
@@ -361,115 +363,44 @@ const addExperience = () => {
 let count=0;    
 const validateExperienced = () => {
     
-//         // experience.addEventListener("input", () => {    
-//         //     const input = document.querySelectorAll(".experiencedContainer>input");
-//         //     input.forEach(input => {
-//         //         if(experience.value.trim().length===0){
-//         //         experience.value = "";
-//         //         obj.experienced = false;
-            
-//         //     }
-//         //     })
-            
-//         //     obj.experienced = true;
-//         // })
-//         // const companyNames = document.querySelectorAll(".companyNames>input");
-//         // companyNames.forEach((companies) => {
-//         //     companies.addEventListener("input", () => {
-//         //         if(companies.value.trim().length === 0){
-//         //             // companies.value = "";
-//         //             obj.experienced=false;
-//         //             return;
-//         //         }
-                
-//         //     });
-//         // });
-
-//         //  const dateInput =  document.querySelectorAll(".dateInput>input");
-//         //  dateInput.forEach((dateInputs) => {
-//         //     dateInputs.addEventListener("input", () => {
-//         //         if(dateInputs.value.trim().length === 0){
-//         //             // dateInputs.value="";
-//         //             obj.experienced=false;
-//         //             return;
-//         //         }
-               
-//         //     })
-//         //  })
-//         //  obj.experienced=true;
-        const experiencedContainer = document.querySelectorAll(".experiencedContainer>div>input");
+const experiencedContainer = document.querySelectorAll(".experiencedContainer>div>input");
+        let count=0;    
        
         let allFilled = false;
-        experiencedContainer.forEach((inputsEvent) => {
-           
-            
-            
-            inputsEvent.addEventListener("input", () => {
-                
-                
-                
-                if(inputsEvent.value.trim().length === 0){
-                    allFilled=false;
-                    inputsEvent.value = "";
+        function checkAllInputs(container) {
+            const inputs = container.querySelectorAll("input");
+
+            allFilled = Array.from(experiencedContainer).every(input => input.value.trim().length > 0);
+            if (allFilled) {
+                count=inputs.length;
+                console.log(count);
+            }
+            if (count === inputs.length) {
+                obj.experienced = true;
+            } else {
+                obj.experienced = false;
+            }
+        }
+        
+        experiencedContainer.forEach(input => {
+            input.addEventListener("input", () => {
+                if (input.value.trim().length === 0) {
+                    allFilled = false;
+                    input.value = "";
                     obj.experienced = false;
                     return;
                 }
-                allFilled=true;
-               
-              
-            
-            });
-           
-            inputsEvent.addEventListener("click", () => {
-                
-               
-                console.log(count);
-                // if(inputsEvent.className){
-                //     count--;
-                // }
-                
-                if (inputsEvent.dataset.clicked === "true") {
-                    inputsEvent.dataset.clicked = "false";
-                 
-                } else {
-                    inputsEvent.dataset.clicked = "true";
-             
-                }
-              
-                
-                if(allFilled ){
-                    if(count==experiencedContainer.length){
-                        obj.experienced=true;   
-                    }
-                    
-                    
-                }
-                    
-                
-               
-               
-                
-                else{
-                    obj.experienced=false;
-                }
-            });
-            if(inputsEvent.type == "date"){
-
-                inputsEvent.addEventListener("input", () => {
-                    if(allFilled){
-                        count++;
-                    }
-                    
-                });
-           }
-
-           
-                
-            
-          
-        })
         
+               
+                checkAllInputs(input.closest(".experiencedContainer"));
         
+                if (input.type === "text" && input.value.length > 1) {
+                    return;
+                }
+                
+                
+            });
+        });
         
         
     
@@ -481,10 +412,12 @@ const addCertificate = () => {
     const certificateDetailHTML = `
         <li><br><br>
             <div class="certificateDetail">
-                <div class="organizationDetail">
+                <div>
                     <span>자격증명&nbsp;&nbsp;</span>
                     <input type="text" class="certName" name="licenseName">
                     <br><br>
+                </div>
+                <div class="organizationDetail">
                     <span>발행기관&nbsp;&nbsp;</span>
                     <input type="text" class="organization" name="licenseFrom">
                 </div>
@@ -505,8 +438,16 @@ const addCertificate = () => {
     `;
 
     const ul = document.createElement("ul");
+    const certificateDetail = document.querySelector(".certificateDetail")
     ul.innerHTML = certificateDetailHTML;
     fifthResume.appendChild(ul);
+
+
+    const input = certificateDetail.querySelectorAll("input");
+    input.forEach(input => {
+        checkCertInputs(certificateDetail);
+    })
+    checkCertInputs(certificateDetail);
 };
 
 
@@ -516,6 +457,8 @@ const chuga = document.querySelector("#chuga");
 chuga.addEventListener("click" , () => {
     addExperience();
     validateExperienced();
+    checkCertInputs(certInputs.closest(".certificateDetail"));
+
     
     
     //삭제버튼 작성
@@ -549,23 +492,6 @@ chuga.addEventListener("click" , () => {
         })
     }
 
-//자격증 추가 버튼 작성
-const certAdd = document.querySelector("#certAdd");
-
-certAdd.addEventListener("click", () => {
-    addCertificate();
-    //삭제버튼 작성
-    const removeBtns = document.querySelectorAll(".certMinus");
-    for(let i = 0; i < removeBtns.length; i++){
-        removeBtns[i].addEventListener("click", () => {
-            const container = removeBtns[i].closest("ul");
-            if(container){
-                container.parentNode.removeChild(container);
-                fifthResume.removeChild(document.createElement("hr"))
-            }
-        });
-    }
-});
 
 
 const jobsOfDesireBtn =  document.querySelectorAll(".jobsOfDesireBtn");
@@ -772,39 +698,7 @@ picFile.addEventListener("input", e => {
 //input 요소 유효성 검사
 
 //input:text 요소 유효성 검사
-inputElement.forEach((elements) => {
-    
-    elements.addEventListener("input", () => {
-        if(elements.value.trim().length === 0){
-            switch(elements.className){
-                case "image": obj.image=false;break;
-                case "resumeTitle":  obj.resumeTitle=false; break;
-                case "schoolName":  obj.schoolName=false; break;
-            
-                case "searchCertificate": obj.certificate=false; break;
-                case "organizationDetail": obj.certificate=false; break;
-            }
-            elements.value = "";
-            return;
-            
-        }
 
-        switch(elements.className){
-            case "image": obj.image=true;break;
-            case "resumeTitle":  obj.resumeTitle=true; break;
-            case "schoolName":  obj.schoolName=true; break;
-          
-            case "searchCertificate": obj.certificate=true; break;
-            case "organizationDetail": obj.certificate=true; break;
-
-        }
-
-        
-        
-
-    });
-   
-});
 
 //input:date 요소 유효성 검사
 const date = new Date();
@@ -827,9 +721,7 @@ if(document.querySelectorAll(".selectDong").length!=0){
 }
 //textArea 사이즈 유효성 검사
 introduce.addEventListener("input", () => {
-    if(introduce.value.trim().length != 0) obj.introduce=true;
-
-    
+    if(introduce.value.trim().length != 0) obj.introduce=true;    
 })
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
@@ -838,6 +730,64 @@ introduce.addEventListener("mousedown", () => {
            }
     });
 });
+
+//certificate 유효성 검사
+const certificateDetailInputs = document.querySelectorAll(".certificateDetail>div>input");
+let count1 = 0;     
+let allFilled = false;
+
+const checkCertInputs = (container) => {
+    const inputs = container.querySelectorAll("input")
+    console.log(inputs.length)
+    let allFilled = Array.from(inputs).every(certInputs => certInputs.value.trim().length > 0);
+    if(allFilled){
+        count1 = inputs.length;
+        console.log(count1);
+    }
+    if(count1 == inputs.length ){
+        obj.certificate = true;
+    }else{
+        obj.certificate = false;
+    }
+}
+
+certificateDetailInputs.forEach( certInputs => {
+    certInputs.addEventListener("input", () => {
+        if(certInputs.value.trim().length === 0){
+            allFilled =false;
+            certInputs.value = "";
+            obj.certificate = false;
+            return;
+        }
+
+        checkCertInputs(certInputs.closest(".certificateDetail"));
+
+        if(certInputs.type === "text" || certInputs.type === "number" && certInputs.value.length > 0 ){
+            return;
+        }
+    })   
+})
+
+
+//자격증 추가 버튼 작성
+const certAdd = document.querySelector("#certAdd");
+
+certAdd.addEventListener("click", () => {
+    addCertificate();
+    const removeBtns = document.querySelectorAll(".certMinus");
+        
+    for(let i = 0; i < removeBtns.length; i++){
+        checkCertInputs(removeBtns[i].closest(".certificateDetail"));
+        removeBtns[i].addEventListener("click", () => {
+            const container = removeBtns[i].closest("ul");
+            if(container){
+                container.parentNode.removeChild(container);
+                fifthResume.removeChild(document.createElement("hr"))
+            }
+        });
+    }
+});
+
 
 
 
