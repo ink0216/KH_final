@@ -1,7 +1,6 @@
 package kh.em.albaya.resume.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -153,26 +152,60 @@ public class ResumeController {
 			) {
 		int memberNo = loginMember.getMemberNo();
 		List<Resume> resumeList = service.allResumeList(memberNo);
-		List<Resume> semiList = new ArrayList<>();
-		List<Resume> doneList = new ArrayList<>();
-		for(int i=0;i<resumeList.size();i++) {
-			if(resumeList.get(i).getResumeStatus() == 1) {
-				semiList.add(resumeList.get(i));
-			}else {
-				doneList.add(resumeList.get(i));
-			}
-			
-		}
-		for(int i=0;i<semiList.size();i++) {
-			
-		}
-		model.addAttribute("semiList", semiList);
-		model.addAttribute("doneList", doneList);
+//		List<Resume> semiList = new ArrayList<>();
+//		List<Resume> doneList = new ArrayList<>();
+//		for(int i=0;i<resumeList.size();i++) {
+//			if(resumeList.get(i).getResumeStatus() == 1) {
+//				semiList.add(resumeList.get(i));
+//			}else {
+//				doneList.add(resumeList.get(i));
+//			}
+//			
+//		}
+//		for(int i=0;i<semiList.size();i++) {
+//			
+//		}
+		model.addAttribute("resumeList", resumeList);
 		return "member/resumeList";
 	}
 	
 	@GetMapping("resumeProfile")
-	public String getResumeProfile() {
+	public String getResumeProfile(
+			@RequestParam("resumeNo") int resumeNo,
+			Model model
+			) {
+		//이력서 내용 다 조회
+		//학력,희망근무지(시도군구동), 희망업직종, 경력사항, 자격증
+		Map<String, Object> map = service.resumeDetail(resumeNo);
+		/*map.put("resume", resume);
+		map.put("careerList", careerList);
+		map.put("licenseList", licenseList);
+		map.put("locationList", locationList);
+		map.put("workList", workList);
+		map.put("educationDetail", educationDetail);
+		 * 
+		 * 
+		 * */
+		model.addAttribute("resume", (Resume)map.get("resume"));
+		model.addAttribute("careerList", (List<Resume>)map.get("careerList"));
+		model.addAttribute("licenseList", (List<Resume>)map.get("licenseList"));
+		model.addAttribute("locationList", (List<Resume>)map.get("locationList"));
+		model.addAttribute("workList", (List<Resume>)map.get("workList"));
+		Resume educationInfo = (Resume)map.get("educationDetail");
+		//,로 잘랐을 때 여섯 번째(5번 인덱스)에 ~이 있다.
+		//2일 때에는 2,7
+		//4이면 3,8번 인덱스
+		String education = null;
+		for(int i=1;i<7;i++) {
+			if(((Resume)map.get("educationDetail")).getEducationNo().equals(String.valueOf(i))) {
+				 education = ((Resume)map.get("educationDetail")).getSchoolPeriod().split(",")[i-1]
+						+ " ~ " + ((Resume)map.get("educationDetail")).getSchoolPeriod().split(",")[i+4];
+			}
+		}
+		 String fullImagePath = ((Resume)map.get("resume")).getImgPath() + ((Resume)map.get("resume")).getImgRename();
+	        model.addAttribute("fullImagePath", fullImagePath);
+		model.addAttribute("education", education);
+		model.addAttribute("educationDetail", (Resume)map.get("workList"));
 		return "member/resumeProfile";
 	}
 	

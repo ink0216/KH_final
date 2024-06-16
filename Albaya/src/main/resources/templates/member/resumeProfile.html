@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,10 +48,10 @@
             <br><br>
             <div id="heading">
                 <div id="headingContainer">
-                    <div id="profImg">
-                        <img src="|${resume.imgPath}${resume.imgRename}|" >
-                        <!-- <button id="imgEditBtn" type="button"><i class="fa-solid fa-pencil"></i></button> -->
-                    </div>
+                    <!-- <div id="profImg">
+                        <img th:src="|${resume.imgPath}${resume.imgRename}|" >
+                    </div> -->
+                        <img id="profImg" th:src="|${resume.imgPath}${resume.imgRename}|" >
                     <div id="pesonalInfo">
                         <div  class="info" id="name">
                             <span><h3>황진관</h3></span>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -54,12 +54,11 @@
                 <div class="resume-select-area">
                     <span class="span1">이력서 보기</span>
 
-                    <div class="radio-area">
+                    <div class="radio-area" id="resumeLink">
                         <div class="resume-link">
-                            <a href="/" target="_blank"
-                                onclick="window.open(this.href, width=600, height=650,left=300,top=100)">아르바이트
-                                경험이 많아 믿고 맡기실 수
-                                있습니다.</a>
+                            <a th:href="@{/resume/resumeProfile(resumeNo=${applyInfo.resumeNo})}" target="_blank"
+                                th:text="${applyInfo.resumeTitle}"
+                                onclick="window.open(this.href, width=600, height=650,left=300,top=100)"></a>
                         </div>
                     </div>
 
@@ -124,6 +123,12 @@
         btn.addEventListener("click", () => {
             window.close();
         })
+
+        // const resumeLink = document.querySelector("#resumeLink");
+        // resumeLink.addEventListener("click", () => {
+        //     let resumeNo = resumeLink.dataset.resumeNo;
+        //     location.href="/resume/resumeProfile?resumeNo="+resumeNo;
+        // });
     </script>
 </body>
 
