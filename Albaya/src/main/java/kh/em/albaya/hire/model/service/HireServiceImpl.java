@@ -55,7 +55,7 @@ public class HireServiceImpl implements HireService{
 		if(dosiName != null && dosiName.equals("충남")) dosiName = "충청남도";
 		
 		if(dosiName != null && dosiName.equals("전북특별자치도")) dosiName = "전라북도";
-		if(dosiName != null && dosiName.equals("전남")) dosiName = "전라남도";
+		if(dosiName != null &&dosiName.equals("전남")) dosiName = "전라남도";
 		String sigunguName = hire.getSigunguName();
 		String dongName=hire.getDongName();
 		

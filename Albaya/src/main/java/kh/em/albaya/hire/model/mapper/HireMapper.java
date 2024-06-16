@@ -40,7 +40,7 @@ public interface HireMapper {
 	 * @param hireLocation
 	 * @return
 	 */
-	int hireDongNo(Map<String, String> hireLocation);
+	Integer hireDongNo(Map<String, String> hireLocation);
 
 
 

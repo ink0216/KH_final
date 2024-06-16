@@ -99,7 +99,7 @@
 		#{hireStatus}
 		</if>
 		,
-		#{workDay},#{payInput},#{dongNo},
+		#{workDay},#{payInput}, #{dongNo},
 		#{addressDetail},#{workStart},#{workEnd},#{shopOwner}
 		,#{shopEmail},#{shopTel},#{shopName},#{address},DEFAULT
 				)
