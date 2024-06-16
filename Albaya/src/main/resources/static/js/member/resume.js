@@ -594,6 +594,7 @@ const picFile = document.querySelector("#picFile");
         input.setAttribute("name","resumeStatus");
         input.value=1;
         validatingBtnsContainer.append(input);
+       
         form.submit();
     });
 

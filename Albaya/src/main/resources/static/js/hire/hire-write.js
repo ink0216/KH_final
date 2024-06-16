@@ -307,7 +307,7 @@ function setType(type) {
 
 /* -------------------------------------------------------------- */
 /* 유효성 검사 */
-const checkObj={
+let checkObj={
     "hireTitle" : false, //공고문 제목
     "selectedType" : false, //업직종 선택
     "hireCount" : false, //모집인원
@@ -487,13 +487,15 @@ shopEmail.addEventListener("input",e=>{
 /* (공고문 등록) */
 const hireWrtieForm = document.getElementById("hireWrtieForm"); //form
 
-hireWrtieForm.addEventListener("submit",e=>{
+submitBtn.addEventListener("click", ()=>{
+
     /* 공고문 내용 유효성 검사 */
     const hireContent = document.querySelector("#hireContent");
 
     if(hireContent.value.trim().length>0){
         checkObj.hireContent=true;
     }
+
     for(let key in checkObj){
         if(!checkObj[key]){
             let str;
@@ -554,49 +556,45 @@ hireWrtieForm.addEventListener("submit",e=>{
 
     let dayCount=0;
 
-     hireDays.forEach(day=>{
+    hireDays.forEach(day=>{
         if(day.checked){
             dayCount++
         }
-     })
+    })
 
-     if(dayCount==0){
+    if(dayCount==0){
         alert("근무 요일을 하나 이상 체크하세요.");
         e.preventDefault();
         return;
-     }
+    }
+
+    /* 근무 시간 유효성 검사*/
+    const workStart = document.getElementById("workStart"); //시작 시간
+    const workEnd = document.getElementById("workEnd"); //시작 시간
+
+    const startTime = Number(workStart.value.replace(":",""));
+    const endTime = Number(workEnd.value.replace(":",""))
 
 
-     /* 근무 시간 유효성 검사*/
-     const workStart = document.getElementById("workStart"); //시작 시간
-     const workEnd = document.getElementById("workEnd"); //시작 시간
-
-     const startTime = Number(workStart.value.replace(":",""));
-     const endTime = Number(workEnd.value.replace(":",""))
-
-
-     if(workStart.value==''){
+    if(workStart.value==''){
         alert("시작 시간을 입력하세요");
         e.preventDefault();
         return;
-     }
+    }
 
     if(workEnd.value==''){
         alert("종료 시간을 입력하세요");
         e.preventDefault();
         return;
-     }
+    }
 
     if(startTime-endTime>0){
         alert('올바른 시간을 입력하세요');
         e.preventDefault();
         return;
-     }
+    }
 
-
-
-
- /* 모집 성별 유효성 검사 */
+    /* 모집 성별 유효성 검사 */
     const hireGender = document.querySelectorAll(".hireGender");
 
     let genderCount =0;
@@ -613,8 +611,6 @@ hireWrtieForm.addEventListener("submit",e=>{
         return;
     }
 
-
-
     /* 급여 유효성 검사 */
     const payInput = document.getElementById("payInput");
 
@@ -623,7 +619,6 @@ hireWrtieForm.addEventListener("submit",e=>{
         e.preventDefault();
         return;
     }
-
 
     /* 근무지 주소 유효성 검사 */
     const address = document.getElementById("address");
@@ -665,20 +660,22 @@ hireWrtieForm.addEventListener("submit",e=>{
         e.preventDefault();
         return;
     }
+    
     const submitBtn = document.querySelector("#submitBtn");
-    submitBtn.addEventListener("click", ()=>{
-        const hireStatus = document.createElement("input");
-        hireStatus.classList.add("hidden");
-        hireStatus.setAttribute("name", "hireStatus");
-        //저장 : 0 // 임시저장 : 1
-        hireStatus.value=0;
-        const hireWrtieForm = document.querySelector("#hireWrtieForm");
-        hireWrtieForm.append(hireStatus);
-    });
+    
+    const hireStatus = document.createElement("input");
+    hireStatus.classList.add("hidden");
+    hireStatus.setAttribute("name", "hireStatus");
+    //저장 : 0 // 임시저장 : 1
+    hireStatus.value=0;
+    const hireWrtieForm = document.querySelector("#hireWrtieForm");
+    hireWrtieForm.append(hireStatus);
 
-})
+});
+
 const semiSaveBtn = document.querySelector("#semiSaveBtn");
 semiSaveBtn.addEventListener("click", ()=>{
+    checkObj = true;
     const hireStatus = document.createElement("input");
     hireStatus.classList.add("hidden");
     hireStatus.setAttribute("name", "hireStatus");
@@ -687,5 +684,4 @@ semiSaveBtn.addEventListener("click", ()=>{
     const hireWrtieForm = document.querySelector("#hireWrtieForm");
     hireWrtieForm.append(hireStatus);
 });
-
 

@@ -24,7 +24,7 @@ public interface HireMapper {
 	 * @param typeName
 	 * @return
 	 */
-	int hireTypeNo(String typeName);
+	Integer hireTypeNo(String typeName);
 
 	
 
