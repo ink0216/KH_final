@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -69,6 +69,13 @@
                                 </div>
                             </th:block>
                         </th:block>
+
+<!--                     <div class="radio-area" id="resumeLink">
+                        <div class="resume-link">
+                            <a th:href="@{/resume/resumeProfile(resumeNo=${applyInfo.resumeNo})}" target="_blank"
+                                th:text="${applyInfo.resumeTitle}"
+                                onclick="window.open(this.href, width=600, height=650,left=300,top=100)"></a>
+                        </div> -->
                     </div>
 
                 </div>
@@ -132,6 +139,12 @@
         btn.addEventListener("click", () => {
             window.close();
         })
+
+        // const resumeLink = document.querySelector("#resumeLink");
+        // resumeLink.addEventListener("click", () => {
+        //     let resumeNo = resumeLink.dataset.resumeNo;
+        //     location.href="/resume/resumeProfile?resumeNo="+resumeNo;
+        // });
     </script>
 </body>
 

@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         notiList.classList.add("notification-show");
     })
 })
-
+//------------------------------------------------------------------------------------
 const query = document.querySelector("#searchField");
 
 query.addEventListener("keydown", e => {
@@ -265,6 +265,7 @@ query.addEventListener("keydown", e => {
             getPagination(pagination);
 
             query.value = "";
+        
         });
     }
 });

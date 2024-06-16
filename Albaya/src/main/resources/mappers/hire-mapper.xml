@@ -464,15 +464,16 @@
 
 	<!-- 지원서 상세보기 -->
 	<select id="hireApplyDetail" resultType="Hire">
-		SELECT MEMBER_NO, HIRE_NO, RESUME_NO, APPLY_TITLE,
-		APPLY_CONTENT, APPLY_DATE, h.SHOP_NAME, HIRE_TITLE,
-		MEMBER_NAME, MEMBER_PHONE_NUMBER, MEMBER_EMAIL
-		FROM "APPLY_HIRE"
-		JOIN "MEMBER" USING(MEMBER_NO)
-		JOIN "HIRE" h USING(HIRE_NO)
-	    JOIN SHOP s ON h.SHOP_NO = s.SHOP_NO
-		WHERE MEMBER_NO = #{memberNo}
-		AND HIRE_NO = #{hireNo}
+		SELECT A.MEMBER_NO, h.HIRE_NO, C.RESUME_NO, C.RESUME_TITLE,A.APPLY_TITLE,
+		A.APPLY_CONTENT, A.APPLY_DATE, h.SHOP_NAME, h.HIRE_TITLE,
+		B.MEMBER_NAME, B.MEMBER_PHONE_NUMBER, B.MEMBER_EMAIL
+		FROM "APPLY_HIRE" A 
+		JOIN "MEMBER" B ON (A.MEMBER_NO=B.MEMBER_NO)
+		JOIN "RESUME" C ON (A.MEMBER_NO=C.MEMBER_NO)
+		JOIN "HIRE" h ON (A.HIRE_NO=h.HIRE_NO)
+	    JOIN SHOP s ON (h.SHOP_NO = s.SHOP_NO)
+		WHERE A.MEMBER_NO = #{memberNo}
+		AND h.HIRE_NO = #{hireNo}
 	</select>
 
 	
@@ -493,17 +494,27 @@
 		WHERE HIRE_NO = #{hireNo}
 	</select>
 
-	<!-- 해당 기업이 작성한 공고 모두 얻어오기 -->
-	<select id="myHireList">
-		SELECT * FROM "HIRE"
-		WHERE SHOP_NO = #{shopNo}
-		AND HIRE_DEL_FL='N'
-		ORDER BY HIRE_START DESC
-	</select>
+	
 
 	<select id="memberCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM "APPLY_HIRE"
 		WHERE HIRE_NO = #{hireNo}
+	</select>
+	
+	<!-- 작성한 공고 개수 조회 -->
+	<select id="hireCount">
+		SELECT COUNT(*) FROM "HIRE"
+		WHERE SHOP_NO=#{shopNo}
+		AND HIRE_DEL_FL='N'
+	
+	</select>
+	
+	<!-- 작성한 공고 목록 조회 -->
+	<select id="finalList">
+		SELECT * FROM "HIRE"
+		WHERE HIRE_DEL_FL='N'
+		AND SHOP_NO=#{shopNo}
+		ORDER BY HIRE_NO DESC
 	</select>
 </mapper>

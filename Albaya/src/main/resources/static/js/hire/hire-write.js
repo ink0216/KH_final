@@ -682,4 +682,3 @@ semiSaveBtn.addEventListener("click", ()=>{
     const hireWrtieForm = document.querySelector("#hireWrtieForm");
     hireWrtieForm.append(hireStatus);
 });
-
