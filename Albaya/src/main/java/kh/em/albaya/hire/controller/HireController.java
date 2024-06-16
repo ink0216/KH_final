@@ -39,21 +39,14 @@ public class HireController {
 	@GetMapping("hireList")
 	public String hireList(
 			@SessionAttribute("loginShop") Shop loginShop,
-			Model model
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp
 			) {
 		int shopNo = loginShop.getShopNo();
-		List<Hire> hireList = service.myHireList(shopNo);
-		List<Hire> hire0 = new ArrayList<>(); //저장
-		List<Hire> hire1 = new ArrayList<>(); //임시저장
-		for(int i=0;i<hireList.size();i++) {
-			if(hireList.get(i).getHireStatus()==0) {
-				hire0.add(hireList.get(i));
-			}else if(hireList.get(i).getHireStatus()==1) {
-				hire1.add(hireList.get(i));
-			}
-		}
-		model.addAttribute("hire0",hire0);
-		model.addAttribute("hire1",hire1);
+		Map<String, Object> map = service.finalList(cp, shopNo);
+		
+		model.addAttribute("finalList", map.get("finalList"));
+		model.addAttribute("pagination", map.get("pagination"));
 		return "/hire/hireList";
 	}
 	/**공고 등록 페이지로 이동

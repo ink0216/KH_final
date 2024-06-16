@@ -224,12 +224,7 @@ public interface HireMapper {
 	 * @return
 	 */
 	int memberCount(int hireNo);
-	/**해당 기업이 작성한 공고 모두 얻어오기
-	 * @param shopNo
-	 * @return
-	 */
-	List<Hire> myHireList(int shopNo);
-
+	
 
 
 	/** 검색어를 포함한 공고문 개수 조회
@@ -246,6 +241,23 @@ public interface HireMapper {
 	 * @return
 	 */
 	List<Hire> selectHireList2(String query, RowBounds rowBounds);
+
+
+
+	/**작성한 공고 개수 조회
+	 * @param shopNo
+	 * @return
+	 */
+	int hireCount(int shopNo);
+
+
+
+	/**작성한 공고 목록 조회
+	 * @param shopNo
+	 * @param rowBounds
+	 * @return
+	 */
+	List<Hire> finalList(int shopNo, RowBounds rowBounds);
 	
 	
 }

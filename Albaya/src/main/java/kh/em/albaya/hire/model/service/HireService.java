@@ -146,13 +146,14 @@ public interface HireService {
 	 */
 	int memberCount(int hireNo);
 
-	/**해당 기업이 작성한 공고 모두 얻어오기
+	/**작성한 공고 리스트 조회
+	 * @param cp
 	 * @param shopNo
 	 * @return
 	 */
-	List<Hire> myHireList(int shopNo);
+	Map<String, Object> finalList(int cp, int shopNo);
 
-
+	
 
 	
 

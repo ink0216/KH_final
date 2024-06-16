@@ -641,13 +641,7 @@ const picFile = document.querySelector("#picFile");
             setImg.style.backgroundSize = "150% auto";
             setImg.style.backgroundRepeat = "no-repeat";
             setImg.style.backgroundPosition = "center"; 
-            
         }
-        if(picFile.value.trim().length === 0){
-            obj.image=false;
-            return;
-        }
-        obj.image = true;
 
         reader.readAsDataURL(file);
         container.classList.remove("show");
@@ -845,7 +839,6 @@ certificateDetailInputs.forEach(certInput => {
         checkCertInputs(certInput.closest(".certificateDetail"));
     });
 });
-
 
 
 
