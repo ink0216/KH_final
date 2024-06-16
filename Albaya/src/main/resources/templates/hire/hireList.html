@@ -22,10 +22,10 @@
 
         <div class="resumeTable">
             <div class="tableHeading">
-                <div class="check">
+                <!-- <div class="check">
                     <input type="checkbox" class="tick">
 
-                </div>
+                </div> -->
                 <div class="resumeTitle">
                     <h4>공고 제목</h4>
                 </div>
@@ -48,12 +48,12 @@
             </th:block>
             <th:block th:unless="${#lists.size(finalList)==0}">
                 <th:block th:each=" hire: ${finalList}" th:object="${hire}">
-                    <div class="listContents" th:data-hire-no="*{hireNo}">
-                        <div class="check">
+                    <div class="listContents" >
+                        <!-- <div class="check">
                             <input type="checkbox" class="tick">
-                        </div>
+                        </div> -->
                         <div class="resumeTitle">
-                            <h3 th:text="*{hireTitle}">공고제목</h3>
+                            <h3 th:text="*{hireTitle}" th:data-hire-no="*{hireNo}" id="hireTitle">공고제목</h3>
                             <span th:text="*{hireStatus ==0 ? '저장' : '임시저장'}">임저장</span>
                         </div>
     

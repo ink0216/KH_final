@@ -47,12 +47,12 @@
                 <p>작성된 이력서가 없습니다.</p>
             </th:block>
             <th:block th:each=" resume: ${resumeList}" th:object="${resume}">
-                <div class="listContents" th:data-resume-no="*{resumeNo}">
-                    <div class="check">
+                <div class="listContents" >
+                    <!-- <div class="check">
                         <input type="checkbox" class="tick">
-                    </div>
+                    </div> -->
                     <div class="resumeTitle">
-                        <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>저장</span>
+                        <h3 th:text="*{resumeTitle}" th:data-resume-no="*{resumeNo}" id="resumeTitle">나의 이력서</h3><span>저장</span>
                     </div>
 
                     <div class="recentUpdateDate">

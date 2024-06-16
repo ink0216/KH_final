@@ -5,6 +5,9 @@
     margin:auto;
     
 }
+#hireTitle:hover{
+    cursor:pointer;
+}
 .resumeTable{
     /* margin-top:100px; */
    width:100%;

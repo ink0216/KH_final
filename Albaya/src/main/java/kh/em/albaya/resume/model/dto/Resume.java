@@ -73,4 +73,8 @@ public class Resume {
 	
 	//희망 직종명
 	List<Work> workList;
+	
+	private String dosiName;
+	private String sigunguName;
+	private String dongName;
 }
