@@ -381,10 +381,21 @@ public class HireServiceImpl implements HireService{
 		return mapper.memberCount(hireNo);
 	}
 	
-	//해당 기업이 작성한 공고 모두 얻어오기
+	//작성한 공고 리스트 조회
 	@Override
-	public List<Hire> myHireList(int shopNo) {
-		return mapper.myHireList(shopNo);
-
+	public Map<String, Object> finalList(int cp, int shopNo) {
+		//map에 pagination이랑 finalList 묶어서 보내기
+		int listCount = mapper.hireCount(shopNo);
+		Pagination pagination = new Pagination(cp,listCount);
+		int limit = pagination.getLimit();
+		int offset = (cp-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		List<Hire> finalList = mapper.finalList(shopNo, rowBounds);
+		Map<String, Object> map = new HashMap<>();
+		map.put("finalList", finalList);
+		map.put("pagination", pagination);
+		
+		return map;
 	}
 }

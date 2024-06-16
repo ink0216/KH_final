@@ -17,7 +17,7 @@ public class Hire {
 	// HIRE 테이블 
 	private int hireNo; //공고문 번호 
 	private int shopNo; //상점 번호
-	private int typeNo; //직종 번호AAA
+	private Integer typeNo; //직종 번호AAA
 	private String typeName; //직종 이름(여기도 들어오나 확인해보기)
 	private int payNo; //시급 / 주급AAAA
 	private String payName;
@@ -25,14 +25,14 @@ public class Hire {
 	private String hireContent; //주요 근무 내용AAAA
 	private String hireStart; //모집 시작 날짜AAA
 	private String hireEnd; //모집 종료 날짜AAA
-	private int hireCount; //모집인원AAA
+	private Integer hireCount; //모집인원AAA
 	private int hireTerm; //근무 기간 하루 / 일주일 ....AAAA
 	private String hireTerm2; //근무 기간 하루 / 일주일 ....AAAA
 	private String hireGender; //남 여 성별무관AAAAA
 	private int applyCount; //지원자 수
 	private int hireStatus; //공고 상태 미저장 저장 임시저장
 	private String workDay; //근무 요일AAAA
-	private int payInput; //급여 숫자AAAA
+	private Integer payInput; //급여 숫자AAAA
 	private String roadAddress;
 	//HIRE_PERIOD 테이블 JOIN(HIRE_NO컬럼으로)
 	private String workStart; //근무 시작 시간AAAA
@@ -62,7 +62,7 @@ public class Hire {
 	private int dongNo;
 	
 	// 지원한 공고 내용
-	private String resumeNo;
+	private int resumeNo;
 	private int memberNo;
 	private String applyTitle;
 	private String applyContent;

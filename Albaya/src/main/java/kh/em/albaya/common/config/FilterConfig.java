@@ -70,7 +70,7 @@ public class FilterConfig {
 		filter.setFilter(new MemberFilter());
 		
 		
-		String[] filteringURL = {"/resume/*","/hire/hireApply/*"};
+		String[] filteringURL = {"/resume/resumeWrite","/hire/hireApply/*"};
 		
 		filter.setUrlPatterns(Arrays.asList(filteringURL));
 		

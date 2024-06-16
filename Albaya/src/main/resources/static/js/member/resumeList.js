@@ -27,3 +27,4 @@ listContents.forEach(i=>{
         location.href = "/resume/resumeDetail?resumeNo="+resumeNo;
     })
 });
+

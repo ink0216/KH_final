@@ -43,69 +43,79 @@
                 <div><h3>관리</h3></div>
                 <div><h3>맞춤알바</h3></div> -->
             </div>
-
-            <th:block th:each=" hire: ${hire0}" th:object="${hire}">
-                <div class="listContents">
-                    <div class="check">
-                        <input type="checkbox" class="tick">
-                    </div>
-                    <div class="resumeTitle">
-                        <h3 th:text="*{hireTitle}">공고제목</h3><span>저장</span>
-                    </div>
-
-                    <div class="recentUpdateDate">
-                        <p th:text="*{hireStart}">12/06/2024 14:31</p>
-                    </div>
-                    <div class="manage">
-                        <div id="buttons">
-                            <button type="button" class="update" th:data-hire-no="*{hireNo}">수정</button>
-                            <button type="button" class="delete" th:data-hire-no="*{hireNo}">삭제</button>
-                        </div>
-                    </div>
-                    <div class="preferences">
-                        <div>
-                            <p>고양동/서비스</p>
-                            <p>고양동/서비스</p>
-                        </div>
-
-                    </div>
-
-                </div>
+            <th:block th:if="${#lists.size(finalList)==0}">
+                <p>작성된 공고가 없습니다.</p>
             </th:block>
-
-            <th:block th:each=" hire: ${hire1}" th:object="${hire}">
-                <div class="listContents">
-                    <div class="check">
-                        <input type="checkbox" class="tick">
-                    </div>
-                    <div class="resumeTitle">
-                        <h3 th:text="*{hireTitle}">공고제목</h3><span>임시저장</span>
-                    </div>
-
-                    <div class="recentUpdateDate">
-                        <p th:text="*{hireStart}">12/06/2024 14:31</p>
-                    </div>
-                    <div class="manage">
-                        <div id="buttons">
-                            <button type="button" id="update">수정</button>
-                            <button type="button" id="delete">삭제</button>
+            <th:block th:unless="${#lists.size(finalList)==0}">
+                <th:block th:each=" hire: ${finalList}" th:object="${hire}">
+                    <div class="listContents" th:data-hire-no="*{hireNo}">
+                        <div class="check">
+                            <input type="checkbox" class="tick">
                         </div>
-                    </div>
-                    <div class="preferences">
-                        <div>
-                            <p>고양동/서비스</p>
-                            <p>고양동/서비스</p>
+                        <div class="resumeTitle">
+                            <h3 th:text="*{hireTitle}">공고제목</h3>
+                            <span th:text="*{hireStatus ==0 ? '저장' : '임시저장'}">임저장</span>
                         </div>
-
+    
+                        <div class="recentUpdateDate">
+                            <p th:text="*{hireStart}">12/06/2024 14:31</p>
+                        </div>
+                        <div class="manage">
+                            <div id="buttons">
+                                <button type="button" class="update" th:data-hire-no="*{hireNo}">수정</button>
+                                <button type="button" class="delete" th:data-hire-no="*{hireNo}">삭제</button>
+                            </div>
+                        </div>
+                        <div class="preferences">
+                            <div>
+                                <p th:text="*{hireEnd}">종료날짜</p>
+                            </div>
+    
+                        </div>
+    
                     </div>
-
-                </div>
+                </th:block>
             </th:block>
-
-
-
-
+    
         </div>
+    </div>
+    <div class="pagination-area">
+
+        <ul class="pagination" th:unless="${param.key}" th:object="${pagination}">
+        
+            <!-- 첫 페이지로 이동 -->
+            <li><a th:href="@{/hire/hireList(cp=1)}">&lt;&lt;</a></li>
+
+            <!-- 이전 목록의 마지막 번호로 이동 -->
+            <li><a th:href="@{/hire/hireList(cp=*{prevPage})}">&lt;</a></li>
+            <!-- 특정 페이지로 이동 -->
+            <th:block th:each=" i : *{#numbers.sequence(startPage,endPage)}">
+                <!-- 현재 보고있는 페이지 -->
+                <li th:if="${i == pagination.currentPage}">
+                    <a class="current" th:text="${i}">현재 페이지</a>
+                </li>
+
+                <!-- 보고있지 않은 페이지 -->                    
+                <li th:unless="${i == pagination.currentPage}"> 
+                    <a th:href="@{/hire/hireList(cp=${i})}" 
+                    th:text="${i}">이동할 페이지</a> 
+                </li>
+            </th:block>
+
+                    <!-- 일치하는 게시글이 없을 경우 -->
+            <th:block th:unless="*{startPage lt endPage}">
+                <li>
+                    <a class="current">1</a>
+                </li>
+            </th:block>
+            
+            <!-- 다음 목록 시작 번호로 이동 -->
+            <li><a th:href="@{/hire/hireList(cp=*{nextPage})}">&gt;</a></li>
+
+            <!-- 끝 페이지로 이동 -->
+            <li><a th:href="@{/hire/hireList(cp=*{endPage})}">&gt;&gt;</a></li>
+        </ul>
+
     </div>
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/hire/hireList.js"></script>

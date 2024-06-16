@@ -112,3 +112,46 @@
 button:hover{
     cursor:pointer;
 }
+/* //-------------- */
+.pagination{
+    list-style: none;
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    font-family: 'SUIT-Regular';
+    text-decoration: none;
+    font-size: 15px;
+ }
+ 
+ .pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+    
+ }
+ 
+ .pagination li:hover{
+    background-color: #80c7ee;
+    transition-duration: 500ms;
+    letter-spacing: 0 !important;
+    border-radius:10px;
+  
+   
+  
+ }
+ 
+ .pagination a{
+    display: block;
+ 
+    height: 100%;
+ }
+ 
+ .current{
+    font-weight: bold;
+    background-color: #014C73;
+    border-radius: 50%;
+    color: white !important;
+    letter-spacing: 0 !important;
+ }
+ 

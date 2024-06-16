@@ -21,6 +21,7 @@ public class Resume {
 	//RESUME 테이블 컬럼
 	private int resumeNo;
 	private int memberNo;
+	private int memberName;
 	private int career; //1: 신입 / 2: 경력
 	private String resumeTitle;
 	private String introduce;
@@ -69,4 +70,7 @@ public class Resume {
 	
 	private int dongNo;
 	private String resumeDate;
+	
+	//희망 직종명
+	List<Work> workList;
 }

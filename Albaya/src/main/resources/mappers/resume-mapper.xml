@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kh.em.albaya.resume.model.mapper.ResumeMapper">
-
+	<resultMap type="Resume" id="resume_rm">
+		<id property="resumeNo" column="RESUME_NO"/>
+		<collection property="workList"
+			select="workInfo"
+			column="RESUME_NO"
+			javaType="java.util.ArrayList"
+			ofType="kh.em.albaya.resume.model.dto.Work"
+		/>
+	</resultMap>
+	<select id="workInfo" resultType="kh.em.albaya.resume.model.dto.Work">
+	SELECT RESUME_NO , TYPE_NO, TYPE_NAME
+	FROM RESUME 
+	JOIN RESUME_WORK USING (RESUME_NO)
+	JOIN WORK_TYPE USING (TYPE_NO)
+	WHERE RESUME_NO=#{resumeNo}
+	</select>
 	<!-- 해당 회원이 임시저장했던 이력서 조회해오기 -->
 	<select id="semiResumeList">
 		SELECT * FROM RESUME
@@ -136,12 +151,13 @@
 	 </insert>
 	 
 	 <!-- 해당 회원의 모든 이력서 조회하기(저장,임시저장 모두) -->
-	 <select id="allResumeList">
+	 <select id="allResumeList" resultMap = "resume_rm">
 	 	SELECT * FROM "RESUME"
 	 	WHERE MEMBER_NO=#{memberNo}
 	 	AND RESUME_DEL_FL='N'
 	 	ORDER BY RESUME_NO DESC
 	 </select>
+	 <!-- 한 행이 검색돼서 생길 때마다 resume_rm에 가서 하나의 컬럼값을 더 받아옴 -->
 	 
 	 <!-- 한 회원이 작성한 이력서 개수 얻어오기 -->
 	 <select id="resumeCount">
@@ -159,7 +175,7 @@
 	 </update>
 	 
 	 <!-- ***********상세 조회 ************************* -->
-	 
+	 <!-- 작성하는 것은 제목, 자기소개, 학력사항,근무지,업직종,경력사항,자격증이다. -->
 	 <!-- RESUME 테이블에서 조회 -->
 	 <select id="resumeDetail">
 	 	SELECT * FROM "RESUME"
@@ -193,6 +209,7 @@
 	 <!-- RESUME_EDUCATION 테이블에서 조회 -->
 	 <select id="educationDetail">
 	 	SELECT * FROM "RESUME_EDUCATION"
+	 	JOIN "EDUCATION" USING (EDUCATION_NO)
 	 	WHERE RESUME_NO=#{resumeNo}
 	 </select>
 </mapper>

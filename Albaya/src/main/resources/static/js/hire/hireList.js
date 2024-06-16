@@ -23,3 +23,20 @@ deleteBtn.forEach(i=>{
         form.submit();
     })
 });
+//공고 수정 버튼
+const update = document.querySelectorAll(".update");
+update.forEach(i=>{
+    i.addEventListener("click", ()=>{
+        const hireNo = i.dataset.hireNo;
+        console.log(hireNo);
+        location.href = "/hire/update/"+hireNo;
+    });
+})
+const listContents = document.querySelectorAll(".listContents");
+listContents.forEach(i=>{
+    i.addEventListener("click", ()=>{
+        let hireNo = i.dataset.hireNo;
+        console.log(hireNo);
+        location.href = "/hire/"+hireNo;
+    })
+});
