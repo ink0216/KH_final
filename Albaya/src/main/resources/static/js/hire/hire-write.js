@@ -486,8 +486,8 @@ shopEmail.addEventListener("input",e=>{
 /* ---------------------------------------------------------------------- */
 /* (공고문 등록) */
 const hireWrtieForm = document.getElementById("hireWrtieForm"); //form
-
-submitBtn.addEventListener("click", ()=>{
+const submitBtn = document.getElementById("submitBtn"); //submit
+submitBtn.addEventListener("click", e=>{
 
     /* 공고문 내용 유효성 검사 */
     const hireContent = document.querySelector("#hireContent");
@@ -660,9 +660,7 @@ submitBtn.addEventListener("click", ()=>{
         e.preventDefault();
         return;
     }
-    
-    const submitBtn = document.querySelector("#submitBtn");
-    
+        
     const hireStatus = document.createElement("input");
     hireStatus.classList.add("hidden");
     hireStatus.setAttribute("name", "hireStatus");
