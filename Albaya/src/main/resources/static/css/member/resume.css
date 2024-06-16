@@ -4,18 +4,9 @@ body{
     margin: 0px;
     background-color: rgb(214, 232, 239);
     position:relative;
-}
-.container{
-    display:flex;
-    justify-content: center;
-    width:100%;
-    position:absolute;
-    z-index:1000;
-    margin-top:0;
-    margin-left:0;
     
-
 }
+
 #cont{
  
     top:0;
@@ -649,9 +640,19 @@ input[type="date"]{
 }
 
 .container{
-    height:100vh;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
+    position: fixed;
+    width:100%;
+    height:100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--colors-background-overlay, rgba(0, 12, 2, .376));
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
     
    
 }
@@ -668,8 +669,8 @@ input[type="date"]{
    padding:20px;
    padding-bottom:0px;
    border-radius:10px;
-   position:absolute;
-   z-index:3000;
+   position:relative;
+   z-index:1100;
 }
 
 .finalizingBtns{

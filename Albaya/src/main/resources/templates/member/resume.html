@@ -21,7 +21,7 @@
                     <span value="12">사진 업데이트:</span>
                 </div><br>
                 <div class = "fileInput"> 
-                    <input type=file id="picFile" name="image" class="image" required accept="image/*"></input>
+                    <input type=file id="picFile" name="image" class="image"  accept="image/*"></input>
                 </div>
                 <br><br>
                 <div class="finalizingBtns">
@@ -83,7 +83,7 @@
                     <div class="resumeElement">
                         <h3>이력서 제목<span class="required">*</span></h3>
                         <ul>
-                            <li><input type="text" id = "title" required name="resumeTitle" class = "resumeTitle"></li>
+                            <li><input type="text" id = "title"  name="resumeTitle" class = "resumeTitle"></li>
                         </ul>
                         
                     </div>
@@ -109,7 +109,7 @@
                                 <div id = "dropdownContainer">
                                     <div>
                                         <span>최종학력</span>
-                                        <select name="educationNo" id="dropDown" required>
+                                        <select name="educationNo" id="dropDown" >
                                             <option value="">선택</option>
                                             <th:block th:each=" education: ${educationList}" th:object="${education}">
                                                 <option th:value="*{educationNo}" th:text="*{educationName}"></option>
@@ -438,7 +438,7 @@
                                     <div id="certificate" class = "certificateDetail">
                                         <div>
                                             <span>자격증명</span>&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="licenseName" class="certName" id="searchCertifcate" required><br><br><br>   
+                                            <input type="text" name="licenseName" class="certName" id="searchCertifcate" ><br><br><br>   
                                         </div>
                                         
                                     
@@ -446,18 +446,18 @@
                     
                                         <div class="organizationDetail">
                                             <span>발행기관</span>&nbsp;&nbsp;
-                                            <input type="text" name="licenseFrom" class = "organization" id="organization" required>
+                                            <input type="text" name="licenseFrom" class = "organization" id="organization" >
                                         </div>
-                
+                                        
                                         <div class="scoreDetail">
-                                            <span>점수</span>&nbsp;&nbsp;
-                                            <input type="number" name="licenseScore" class = "score" max="100" required>&nbsp;/100
+                                            <span>점수</span>   
+                                            <input type="number" name="licenseScore" class = "score" max="100" >&nbsp;/100
                                         </div>
                                                 
                                     
                                         <div class = "issueDetail">
                                             <span>취득일</span>
-                                            <input type="date" name="licenseDate" class="issueDate"  required>
+                                            <input type="date" name="licenseDate" class="issueDate"  >
                                             <button type="button" id = "certAdd">+</button>
                                         </div>
                                     

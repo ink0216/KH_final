@@ -30,6 +30,14 @@
         "5":"fourUniversityName", //4년제
         "6":"graduateUniversityName" //대학원 이상
     };
+    //input:date 요소 유효성 검사
+    const date = new Date();
+    const year = String(date.getFullYear());
+    const month = String(date.getMonth()+1).padStart(2,0);  
+    
+    const day = String(date.getDate()).padStart(2,0);   
+   
+    const formattedDate = `${year}-${month}-${day}`;
 
 
     dropDown.addEventListener("change", () => {
@@ -55,11 +63,43 @@
                             let allFilled = Array.from(showInput).every(input => input.value.trim().length > 0);
                             if (allFilled) {
                                 obj.schoolName = true;
+                                
                             } else {
                                 obj.schoolName = false;
                             }
                             console.log("School name validation status:", obj.schoolName);
+                            
                         });
+                        let isGreater = false
+                        if(input.type==="date"&&input.className === "startDate"){
+                            input.addEventListener("input", e => {
+                                isGreater =e.target.value > formattedDate;
+                                if(!isGreater){
+                                    alert("올바른 날짜 형식 입니다");
+                                    isGreater = true;
+                                    return;
+                                }
+                                
+                                alert("시작 날짜가 오늘 날짜보다 클수 없습니다");
+                                    e.target.value="";
+                                    obj.schoolName=false;
+                                    
+                                
+                            })
+                        }
+                        if(input.type==="date"&&input.className === "endDate"){
+                            input.addEventListener("input", e => {
+                                isGreater =e.target.value > document.querySelector('input[type="date"].startDate').value;
+                                if(!isGreater){
+                                    alert("끝나는 날짜가 시작하는 날짜보다 작을수 없습니다");
+                                    e.target.value="";
+                                    obj.schoolName=false;
+                                    return;
+                                }
+                                isGreater = true;
+                                
+                            })
+                        }
                     });
     
                     // Initial check in case inputs are already filled
@@ -189,7 +229,7 @@
 //city dropdown
 
 // const dongs = document.querySelectorAll(".dong");
-// const locationSelectContainer =  document.querySelector(".locationSelectContainer");
+
 // const selectCont = document.querySelectorAll(".selectDong");
 
 
@@ -410,7 +450,7 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
                 obj.experienced = false;
             }
         }
-        
+       
         experiencedContainer.forEach(input => {
             input.addEventListener("input", () => {
                 if (input.value.trim().length === 0) {
@@ -422,13 +462,46 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
         
                
                 checkAllInputs(input.closest(".experiencedContainer"));
+
+             
         
                 if (input.type === "text" && input.value.length > 1) {
                     return;
                 }
+
+                
                 
                 
             });
+            if(input.className==="startDate"){
+                input.addEventListener("input", () => {
+                    if(input.value > formattedDate){
+                        alert("시작 날짜가 오늘 날짜보다 클수 없습니다");
+                        input.value = "";
+                       return;
+                    }
+                    else if(input.value > document.querySelector(".dateInput>.endDate").value && 
+                    document.querySelector(".dateInput>.endDate").value.trim().length !=0){
+                        alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
+                        input.value = "";
+                        return;
+                    }
+                })
+            }
+            if(input.className==="endDate"){
+                input.addEventListener("input", () => {
+                    if(input.value < document.querySelector(".dateInput>.startDate").value && 
+                    document.querySelector(".dateInput>.startDate").value.trim().length !=0){
+                        alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
+                        input.value = "";
+                        return;
+                    }
+                })
+            }
+
+            
+
+            
         });
         
         
@@ -438,6 +511,7 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
 const fifthResume = document.querySelector(".resumeElement:nth-child(17)")
 const addCertificate = () => {
     const certificateContainer = document.createElement('li');
+
     certificateContainer.innerHTML = `
         <br><br>
         <div class="certificateDetail">
@@ -450,18 +524,21 @@ const addCertificate = () => {
                 <span>발행기관&nbsp;&nbsp;</span>
                 <input type="text" class="organization" name="licenseFrom">
             </div>
-            <div class="scoreDetail">
+            <div class="scoreDetail" >
                 <span>점수</span>&nbsp;&nbsp;
                 <input type="number" name="licenseScore" class="score" max="100">&nbsp;/100
             </div>
             <div class="issueDetail">
                 <span>취득일</span>
-                <input type="date" name="licenseDate" class="issueDate" required>
+                <input type="date" name="licenseDate" class="issueDate" >
                 <button type="button" class="certMinus">-</button>
             </div>
         </div>
         <br><br>
     `;
+    certificateContainer.style.marginLeft="40px";
+    certificateContainer.style.listStyle="none";
+
 
     
     
@@ -586,7 +663,7 @@ jobsOfDesireBtn.forEach(btn => {
 
         const input = document.createElement("input");
         input.type = "hidden";
-        input.name = "dongNo";
+        input.name = "typeName";
         input.className = "hidden"
         input.value = btn.textContent;
         addDesiredJobs.append(input);
@@ -625,8 +702,7 @@ const update = document.querySelector("#update");
 editProfile.addEventListener("click",() => {
     container.classList.remove("hide");
     container.classList.add("show");
-    document.body.style.overflowY = "hidden"
-    document.body.style.overflowX = "hidden"
+
 })
 
 cancel.addEventListener("click", () => {
@@ -760,20 +836,8 @@ resumeTitle.addEventListener("input", () => {
 
 
 
-//input:date 요소 유효성 검사
-const date = new Date();
-const option = {
-    day:'2-digit',
-    month:'2-digit',
-    year:'numeric'
-}
-const formattedDate = date.toLocaleDateString('en-GB', option);
-// startDate.forEach((strtDate) => {
-//     strtDate.addEventListener("input", e => {
-        
-//     });
 
-// })
+
 
  
 if(document.querySelectorAll(".selectDong").length!=0){
