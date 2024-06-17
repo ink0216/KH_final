@@ -111,18 +111,17 @@ background-color: #faafaf
 
 
 .btn-area > button{
-width:120px;
-height:40px;
-background-color:#014C73;
-font-size:15px;
-color:white;
-font-weight:bold;
-border:none;
-margin-left:700px;
-margin-top:30px;
-border-radius:15px;
-margin-left:570px;
 
+   width: 100px;
+   height: 30px;
+   background-color: #ddd;
+   font-size: 17px;
+   color: rgb(50, 50, 50);
+   font-weight: bold;
+   border: none;
+   margin-left: 920px;
+   margin-top: 20px;
+   border-radius: 5px;
 
 }
 

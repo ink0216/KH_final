@@ -19,12 +19,22 @@ deleteBtn.forEach(i=>{
     })
 });
 //이력서 상세 조회 페이지로 이동
-const listContents = document.querySelectorAll(".listContents");
-listContents.forEach(i=>{
+const resumeTitle = document.querySelectorAll("#resumeTitle");
+resumeTitle.forEach(i=>{
     i.addEventListener("click", ()=>{
         let resumeNo = i.dataset.resumeNo;
         console.log(resumeNo);
         location.href = "/resume/resumeDetail?resumeNo="+resumeNo;
+    })
+});
+
+//수정 버튼
+const update = document.querySelectorAll(".update");
+update.forEach(i=>{
+    i.addEventListener("click", ()=>{
+        let resumeNo = i.dataset.resumeNo;
+        console.log(resumeNo);
+        location.href = "/resume/resumeUpdate?resumeNo="+resumeNo;
     })
 });
 

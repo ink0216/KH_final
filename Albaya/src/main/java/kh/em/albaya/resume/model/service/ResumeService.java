@@ -67,10 +67,25 @@ public interface ResumeService {
 	 */
 	int resumeDelete(int resumeNo);
 
-	/**이력서 상세 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	Map<String, Object> resumeDetail(int resumeNo);
+	//상세조회
+	Resume resumeTable(int resumeNo);
 
+	Resume schoolTable(int resumeNo);
+
+	List<Resume> locationTable(int resumeNo);
+
+	List<String> workTable(int resumeNo);
+
+	List<Resume> careerTable(int resumeNo);
+
+	List<Resume> licenseTable(int resumeNo);
+	///이력서 작성 시에만 CAREER 테이블 다르게 조회
+	List<Resume> careerTableResume(int resumeNo);
+
+	int resumeUpdate(Resume resume, List<String> companyNameList, List<String> startDateList, List<String> endDateList,
+			List<String> licenseNameList, List<String> licenseFromList, List<Integer> licenseScoreList,
+			List<String> licenseDateList, List<Integer> dongNoList, List<String> typeNameList, int memberNo)
+					throws IllegalStateException, IOException;
+
+	
 }

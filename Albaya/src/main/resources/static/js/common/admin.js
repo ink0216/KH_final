@@ -3,7 +3,6 @@ const accept = document.querySelector("#accept");
 const reviewBoardDeclareNo = document.querySelector("#reviewBoardDeclareNo");
 const reviewBoardNo = document.querySelector("#reviewBoardNo");
 const memberNo = document.querySelector("#memberNo");
-const reviewBoardCondition = document.querySelector("#reviewBoardCondition");
 const boardDeclareDate = document.querySelector("#boardDeclareDate");
 const reportedMemberNo = document.querySelector("#reportedMemberNo");
 const tbody = document.querySelector(".tbody");
@@ -54,7 +53,6 @@ const selectList = (cp) => {
                     'reviewBoardNo',
                     'memberNo',
                     'boardDeclareContent',
-                    'reviewBoardCondition',
                     'boardDeclareDate',
                     'reportedMemberNo'
                 ];
@@ -71,9 +69,7 @@ const selectList = (cp) => {
                         link.href = `/reviewBoard/2/${declare[key]}?reviewBoardCode=2&reviewBoardNo=${declare[key]}&cp=${currentPage}`;
 
                         link.innerText = declare[key];
-
-                        // link.classList.add("connectToReviewBoard");
-                        
+                
 
                         td.appendChild(link);
 
@@ -331,11 +327,31 @@ document.getElementById('searchBtn').addEventListener("click", () => {
     .then(data => {
         const resultDiv = document.getElementById('result');
         if (data) {
-            resultDiv.innerHTML = `회원 번호 : ${data.memberNo} <br> 회원 계정 : ${data.memberEmail} <br> 회원 상태 : ${data.memberStatus}`;
+            let memberStatusText;
+            switch (data.memberStatus) {
+                case 1:
+                    memberStatusText = "1회 경고";
+                    break;
+                case 2:
+                    memberStatusText = "2회 경고";
+                    break;
+                case 3:
+                    memberStatusText = "정지 상태";
+                    break;
+                case 4:
+                    memberStatusText = "정상 회원";
+                    break;
+                case 5:
+                    memberStatusText = "탈퇴 회원";
+                    break;
+                default:
+                    memberStatusText = "존재하지 않은 회원 번호입니다.";
+            }
+
+            resultDiv.innerHTML = `회원 번호 : ${data.memberNo} <br> 회원 계정 : ${data.memberEmail} <br> 회원 상태 : ${memberStatusText}`;
         } 
     })
     .catch(error => {
-       
         document.getElementById('result').innerHTML = '존재하지 않은 회원 번호입니다.';
     });
 

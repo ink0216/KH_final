@@ -107,6 +107,7 @@ public class ResumeServiceImpl implements ResumeService {
 		 * List<Integer> dongNoList,
 			List<String> typeNameList,
 		 * */
+		resume.setResumeNo(resumeNo);
 		// CAREER테이블 INSERT
 		for(int i=0;i<companyNameList.size();i++) {
 			resume.setCompanyName(companyNameList.get(i));
@@ -134,25 +135,37 @@ public class ResumeServiceImpl implements ResumeService {
 		//성공시
 		
 		//RESUME_LOCATION 테이블 INSERT
-		for(int i=0;i<dongNoList.size();i++) {
-			resume.setDongNo(dongNoList.get(i));
-			
-			result = mapper.resumeLocation(resume);
-			if(result==0) throw new RuntimeException("resumeLocation insert error");
+
+		if (dongNoList != null && !dongNoList.isEmpty()) {
+		    for (int i = 0; i < dongNoList.size(); i++) {
+		        resume.setDongNo(dongNoList.get(i));
+
+		        result = mapper.resumeLocation(resume);
+		        if (result == 0) {
+		            throw new RuntimeException("resumeLocation insert error");
+		        }
+		    }
+		    if (result == 0) {
+		        return 0;
+		    }
 		}
-		if(result==0) return 0;
+
+		
 		//성공시
 		
 		//RESUME_WORK 테이블에 INSERT
-		for(int i=0;i<typeNameList.size();i++) {
-			String typeName = typeNameList.get(i);
-			int typeNo = mapper.typeNo(typeName);
-			resume.setTypeNo(typeNo);
-			
-			result = mapper.resumeWork(resume);
-			if(result==0) throw new RuntimeException("resumeWork insert error");
+		if(typeNameList !=null&&!typeNameList.isEmpty()) {
+			for(int i=0;i<typeNameList.size();i++) {
+				String typeName = typeNameList.get(i);
+				int typeNo = mapper.typeNo(typeName);
+				resume.setTypeNo(typeNo);
+				
+				result = mapper.resumeWork(resume);
+				if(result==0) throw new RuntimeException("resumeWork insert error");
+			}
+			if(result==0) return 0;
 		}
-		if(result==0) return 0;
+		
 		//성공시
 		
 		//RESUME_EDUCATION 테이블에 INSERT
@@ -184,37 +197,156 @@ public class ResumeServiceImpl implements ResumeService {
 		return mapper.resumeDelete(resumeNo);
 	}
 	
-	//이력서 상세 조회
+	//상세조회
 	@Override
-	public Map<String, Object> resumeDetail(int resumeNo) {
-		//RESUME 테이블에서 조회
-		Resume resume = mapper.resumeDetail(resumeNo);
+	public Resume resumeTable(int resumeNo) {
+		return mapper.resumeTable(resumeNo);
+	}
+	@Override
+	public Resume schoolTable(int resumeNo) {
+		return mapper.schoolTable(resumeNo);
+	}
+	@Override
+	public List<Resume> locationTable(int resumeNo) {
+		return mapper.locationTable(resumeNo);
+	}
+	@Override
+	public List<String> workTable(int resumeNo) {
+		return mapper.workTable(resumeNo);
+	}
+	@Override
+	public List<Resume> careerTable(int resumeNo) {
+		return mapper.careerTable(resumeNo);
+	}
+	@Override
+	public List<Resume> licenseTable(int resumeNo) {
+		return mapper.licenseTable(resumeNo);
+	}
+	
+	///이력서 작성 시에만 CAREER 테이블 다르게 조회
+	@Override
+	public List<Resume> careerTableResume(int resumeNo) {
+		return mapper.careerTableResume(resumeNo);
+	}
+	
+	//이력서 수정
+	@Override
+	public int resumeUpdate(Resume resume, List<String> companyNameList, List<String> startDateList,
+			List<String> endDateList, List<String> licenseNameList, List<String> licenseFromList,
+			List<Integer> licenseScoreList, List<String> licenseDateList, List<Integer> dongNoList,
+			List<String> typeNameList, int memberNo) throws IllegalStateException, IOException {
+		/*넘어오는 모든 name값들:
+		 * image, resumeTitle, introduce, educationNo, 
+		 * //초 : schoolName, educationStatusNo, schoolStartDate, schoolEndDate
+		//중 : 동일
+		//고 : 동일
+		//대 : schoolStartDate, schoolEndDate
+		 * 경력 : companyName*, startDate*, endDate* ****0
+		 * 자격증 : licenseName*, licenseFrom*, licenseScore*, licenseDate* ****0
+		 * dongNo(여러 개 또는 0)* ****0
+		 * career (신입1, 경력2)
+		 * typeName(직종명)* ****0
+		 * resumeStatus(0저장, 1임시저장)
+		 * ------------------------------------------------------------------------------
+		 * 
+		 * */
+
+		resume.setMemberNo(memberNo);
 		
-		//CAREER, LICENSE
-		// RESUME_LOCATION, RESUME_WORK, RESUME_EDUCATION
+		if(!resume.getImage().isEmpty()) {
+			//프로필 이미지가 있을 때에만
+			String imgOriginalName = resume.getImage().getOriginalFilename();
+			resume.setImgOriginalName(imgOriginalName);
+			
+			String rename = Utility.fileRename(imgOriginalName);
+			resume.setImgRename(rename);
+			
+			
+			resume.setImgPath(webPath);
+			//성공시
+			resume.getImage().transferTo(new File(folderPath+rename));
+		}
 		
-		//CAREER 테이블에서 조회
-		List<Resume> careerList = mapper.careerDetail(resumeNo);
+		int result = mapper.resume(resume); //RESUME 테이블에 INSERT
+		if(result==0) {
+			return 0; //실패한 경우
+		}
+		int resumeNo = resume.getResumeNo(); //위에서 삽입 성공 시 resume의 얕은복사여서 
+		//삽입 성공된 resume의 resumeNo값도 세팅된다.
+		/*List<String> companyNameList, List<String> startDateList, List<String> endDateList, 
+		 * List<String> licenseNameList, List<String> licenseFromList, List<Integer> licenseScoreList, List<String> licenseDateList, 
+		 * List<Integer> dongNoList,
+			List<String> typeNameList,
+		 * */
+		resume.setResumeNo(resumeNo);
+		// CAREER테이블 INSERT
+		for(int i=0;i<companyNameList.size();i++) {
+			resume.setCompanyName(companyNameList.get(i));
+			resume.setStartDate(startDateList.get(i));
+			resume.setEndDate(endDateList.get(i));
+			
+			result=mapper.career(resume);
+			if(result==0) throw new RuntimeException("career insert error");
+		}
 		
-		//LICENSE 테이블에서 조회
-		List<Resume> licenseList = mapper.licenseDetail(resumeNo);
+		if(result==0) return 0;
+		//성공시
 		
-		//RESUME_LOCATION 테이블에서 조회
-		List<Resume> locationList = mapper.locationDetail(resumeNo);
+		// LICENSE 테이블 INSERT
+		for(int i=0;i<licenseNameList.size();i++) {
+			resume.setLicenseName(licenseNameList.get(i));
+			resume.setLicenseFrom(licenseFromList.get(i));
+			resume.setLicenseScore(licenseScoreList.get(i));
+			resume.setLicenseDate(licenseDateList.get(i));
+			
+			result = mapper.license(resume);
+			if(result==0) throw new RuntimeException("license insert error");
+		}
+		if(result==0) return 0;
+		//성공시
 		
-		//RESUME_WORK 테이블에서 조회
-		List<Resume> workList = mapper.workDetail(resumeNo);
+		//RESUME_LOCATION 테이블 INSERT
+
+		if (dongNoList != null && !dongNoList.isEmpty()) {
+		    for (int i = 0; i < dongNoList.size(); i++) {
+		        resume.setDongNo(dongNoList.get(i));
+
+		        result = mapper.resumeLocation(resume);
+		        if (result == 0) {
+		            throw new RuntimeException("resumeLocation insert error");
+		        }
+		    }
+		    if (result == 0) {
+		        return 0;
+		    }
+		}
+
 		
-		//RESUME_EDUCATION 테이블에서 조회
-		Resume educationDetail = mapper.educationDetail(resumeNo);
+		//성공시
 		
-		Map<String, Object> map = new HashMap<>();
-		map.put("resume", resume);
-		map.put("careerList", careerList);
-		map.put("licenseList", licenseList);
-		map.put("locationList", locationList);
-		map.put("workList", workList);
-		map.put("educationDetail", educationDetail);
-		return map;
+		//RESUME_WORK 테이블에 INSERT
+		if(typeNameList !=null&&!typeNameList.isEmpty()) {
+			for(int i=0;i<typeNameList.size();i++) {
+				String typeName = typeNameList.get(i);
+				int typeNo = mapper.typeNo(typeName);
+				resume.setTypeNo(typeNo);
+				
+				result = mapper.resumeWork(resume);
+				if(result==0) throw new RuntimeException("resumeWork insert error");
+			}
+			if(result==0) return 0;
+		}
+		
+		//성공시
+		
+		//RESUME_EDUCATION 테이블에 INSERT
+		String schoolPeriod = resume.getSchoolStartDate()+" ~ "+resume.getSchoolEndDate();
+		resume.setSchoolPeriod(schoolPeriod);
+			result = mapper.resumeEducation(resume);
+		
+		if(result==0) throw new RuntimeException("resumeEducation insert error");
+		if(result==0) return 0;
+		
+		return 1;
 	}
 }

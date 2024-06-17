@@ -91,44 +91,23 @@ public interface ResumeMapper {
 	 */
 	int resumeDelete(int resumeNo);
 
+	
+
 	//상세 조회-----------------------------------------------------
 	
-	/**RESUME 테이블에서 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	Resume resumeDetail(int resumeNo);
+	Resume resumeTable(int resumeNo);
 
-	/**CAREER 테이블에서 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	List<Resume> careerDetail(int resumeNo);
+	Resume schoolTable(int resumeNo);
 
-	/**LICENSE 테이블에서 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	List<Resume> licenseDetail(int resumeNo);
+	List<Resume> locationTable(int resumeNo);
 
-	/**RESUME_LOCATION 테이블에서 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	List<Resume> locationDetail(int resumeNo);
+	List<String> workTable(int resumeNo);
 
-	/**RESUME_WORK 테이블에서 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	List<Resume> workDetail(int resumeNo);
+	List<Resume> careerTable(int resumeNo);
 
-	/**RESUME_EDUCATION 테이블에서 조회
-	 * @param resumeNo
-	 * @return
-	 */
-	Resume educationDetail(int resumeNo);
-
+	List<Resume> licenseTable(int resumeNo);
+	///이력서 작성 시에만 CAREER 테이블 다르게 조회
+	List<Resume> careerTableResume(int resumeNo);
 	
 
 	

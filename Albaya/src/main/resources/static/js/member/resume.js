@@ -36,7 +36,7 @@
     const month = String(date.getMonth()+1).padStart(2,0);  
     
     const day = String(date.getDate()).padStart(2,0);   
-   
+
     const formattedDate = `${year}-${month}-${day}`;
 
 
@@ -102,7 +102,6 @@
                         }
                     });
     
-                    // Initial check in case inputs are already filled
                     let initialAllFilled = Array.from(showInput).every(input => input.value.trim().length > 0);
                     obj.schoolName = initialAllFilled;
                     console.log("Initial school name validation status:", obj.schoolName);
@@ -122,7 +121,7 @@
     const sigunguList = document.querySelector(".sigunguList");
     const dong = document.querySelector(".dong");
     
-    
+    const dongList = [];
     const locationSelectContainer =  document.querySelector(".locationSelectContainer");
     dosies.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -151,7 +150,7 @@
                                     console.log(list)
                                     
                                     list.forEach(dongItem=>{
-                                       
+                                    
                                         const dongdiv = document.createElement("div");
                                         dongdiv.innerHTML = dongItem.dongName;
                                         dongdiv.classList.add("dongs");
@@ -164,16 +163,9 @@
                                             obj.location = true;
                                             count++;
 
-                                            const input = document.createElement("input");
-                                            input.type = "hidden";
-                                            input.name = "dongNo";
-                                            input.value = dongItem.dongNo;
-                                            form.append(input);
-                                           
-
                                         
                                             if(count>1){
-                                                 alert("중복 선택은 가능하지 않습니다");
+                                                alert("중복 선택은 가능하지 않습니다");
                                                 return;
                                             }
                                             
@@ -181,15 +173,19 @@
                                                 alert("최대 5가지만 선택할 수 있습니다");
                                                 return;
                                             } 
-
-
+                                            dongList.push(dongItem.dongNo);
+                                            const dongInput = document.createElement("input");
+                                            dongInput.setAttribute("type","hidden");
+                                            dongInput.setAttribute("name","dongNo");
+                                            dongInput.setAttribute("value",dongItem.dongNo);
+                                            form.append(dongInput);
 
                                             const dongName = document.createTextNode(`${dongItem.dongName}`);
         
                                                     
                                             const selectDong = document.createElement("span");
                                             selectDong.className = "selectDong";
-                                                  
+                                                
 
                                             const xBtn = document.createElement("span");
                                             xBtn.innerHTML = "&times;"; 
@@ -202,19 +198,19 @@
                                             const hide = document.createElement("span");
                                             hide.className = "hide";
                                             hide.innerText = `${dongItem.dongNo}`; 
-                                                 
+                                                
                                             selectDong.appendChild(dongName);
                                             selectDong.appendChild(xBtn);
                                             selectDong.appendChild(hide); 
 
                                             locationSelectContainer.append(selectDong);
-                                                  
-                                                  
+                                                
+                                                
                                         });
                                         
                                         
                                     })
-                                 
+                                
                                 }
                             );
                         });
@@ -222,82 +218,6 @@
                 });
         });
     });
-//city dropdown
-
-// const dongs = document.querySelectorAll(".dong");
-
-// const selectCont = document.querySelectorAll(".selectDong");
-
-
-// dongs.forEach(btn => {
-//     btn.addEventListener("click", () => {
-       
-       
-//         for(let i=0; i<locationContentArr.length; i++){
-//             if(btn.textContent == locationContentArr[i]){
-//                 alert("중복 선택은 가능하지 않습니다");
-//                 return;
-//             }
-//         } 
-//         // locationContentArr.push(btn.textContent);
-
-
-//         if(document.querySelectorAll(".selectDong>span").length > 5){
-//             alert("최대 5가지만 선택할 수 있습니다");
-//             return;
-//         }
-
-//         const selectLocationInnerHtml = `
-//             <span class = "selectDong">
-//                 ${btn.textContent}
-//                 <span>&times;</span>
-//             </span>`;
-
-//         locationSelectContainer.innerHTML += selectLocationInnerHtml;
-
-        
-//     })
-// })
-
-
-// const sidoId = document.querySelector("#sido");
-// const sidoClass = document.querySelectorAll(".sido");
-// const sigungu = {
-//     "I000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "B000" : ["city10","city11","city12","city13","city14","city15","city16","city17","city18"],
-//     "K000" : ["city19","city20","city21","city22","city23","city24","city25","city26","city27"],
-//     "A000" : ["city28","city29","city30","city31","city32","city33","city34","city35","city36"],
-//     "G000" : ["city37","city38","city39","city40","city41","city42","city43","city44","city45"],
-//     "1000" : ["city46","city47","city48","city49","city50","city6","city7","city8","city9"],
-//     "O000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "P000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "H000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "J000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "C000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"], 
-//     "D000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "F000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "E000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "L000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "M000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "N000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"]
-// };
-
-
-// const sigunguId = document.querySelector("#sigungu");
-
-// sidoId.addEventListener("change", e => {
-//     console.log(sigungu[e.target.options[e.target.selectedIndex].value]);
-//     let s =e.target.options[e.target.selectedIndex].value
-
-//     sigunguId.replaceChildren();
-    
-//     for(let i =0; i<sigungu[s].length; i++){
-//         const option = document.createElement("option");
-//         option.classList.add("siguu"); 
-//         option.innerHTML = sigungu[s][i];   
-//         sigunguId.appendChild(option);
-//     }
-// })
 
 //score validation
 //점수 유효성 검사
@@ -341,7 +261,7 @@ newHire.addEventListener("click", () => {
 });
 if(newHire.classList.contains("selectedBtn")){
     obj.experienced = true;
-   
+
 }
     
 
@@ -446,7 +366,7 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
                 obj.experienced = false;
             }
         }
-        
+       
         experiencedContainer.forEach(input => {
             input.addEventListener("input", () => {
                 if (input.value.trim().length === 0) {
@@ -458,13 +378,46 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
         
                
                 checkAllInputs(input.closest(".experiencedContainer"));
+
+             
         
                 if (input.type === "text" && input.value.length > 1) {
                     return;
                 }
+
+                
                 
                 
             });
+            if(input.className==="startDate"){
+                input.addEventListener("input", () => {
+                    if(input.value > formattedDate){
+                        alert("시작 날짜가 오늘 날짜보다 클수 없습니다");
+                        input.value = "";
+                       return;
+                    }
+                    else if(input.value > document.querySelector(".dateInput>.endDate").value && 
+                    document.querySelector(".dateInput>.endDate").value.trim().length !=0){
+                        alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
+                        input.value = "";
+                        return;
+                    }
+                })
+            }
+            if(input.className==="endDate"){
+                input.addEventListener("input", () => {
+                    if(input.value < document.querySelector(".dateInput>.startDate").value && 
+                    document.querySelector(".dateInput>.startDate").value.trim().length !=0){
+                        alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
+                        input.value = "";
+                        return;
+                    }
+                })
+            }
+
+            
+
+            
         });
         
         
@@ -493,7 +446,7 @@ const addCertificate = () => {
             </div>
             <div class="issueDetail">
                 <span>취득일</span>
-                <input type="date" name="licenseDate" class="issueDate" required>
+                <input type="date" name="licenseDate" class="issueDate" >
                 <button type="button" class="certMinus">-</button>
             </div>
         </div>
@@ -556,15 +509,7 @@ chuga.addEventListener("click" , () => {
 //삭제버튼 작성
     const removeBtns = document.querySelectorAll(".remove");
 
-    // removeBtns.forEach(btns => {
-    //     btns.addEventListener("click", () => {
-    //         const container = btns.closest(".experiencedContainer");
-    //         if (container) {
-    //             container.parentNode.removeChild(container);
-    //         }
-    //     })
-        
-    //  })
+
     for(let i = 0; i<removeBtns.length; i++){
         removeBtns[i].addEventListener("click", () => {
             const container =  removeBtns[i].closest(".experiencedContainer");
@@ -588,7 +533,7 @@ jobsOfDesireBtn.forEach(btn => {
 
         count++;
         obj.desiredJobs=true;
-       
+    
         if(count>1){
             alert("중복 선택은 가능하지 않습니다");
             return;
@@ -599,14 +544,8 @@ jobsOfDesireBtn.forEach(btn => {
             alert("최대 5가지만 선택할 수 있습니다");
             return;
         }
-
         textContentArr.push(btn.textContent);
-        const jobinput = document.createElement("input");
-        jobinput.setAttribute("type","hidden");
-        jobinput.setAttribute("name","typeName");
-        jobinput.setAttribute("value",btn.textContent);
-        addDesiredJobs.appendChild(jobinput);
-       
+
         const span = document.createElement("span");
         span.className = "addJobCategory";
         span.createTextNode = btn.textContent;
@@ -620,16 +559,13 @@ jobsOfDesireBtn.forEach(btn => {
 
         const input = document.createElement("input");
         input.type = "hidden";
-        input.name = "dongNo";
+        input.name = "typeName";
         input.className = "hidden"
         input.value = btn.textContent;
         addDesiredJobs.append(input);
 
         addDesiredJobs.append(span);   
-        // if(input.value == btn.textContent.substring(0,span.textContent.lastIndexOf("×"))){
-        //     span.remove();
-        //     input.remove();
-        // }
+    
 
         const removeBtn =  document.querySelectorAll(".addJobCategory>span");
         times.addEventListener("click",() => {
@@ -659,8 +595,7 @@ const update = document.querySelector("#update");
 editProfile.addEventListener("click",() => {
     container.classList.remove("hide");
     container.classList.add("show");
-    document.body.style.overflowY = "hidden"
-    document.body.style.overflowX = "hidden"
+
 })
 
 cancel.addEventListener("click", () => {
@@ -669,87 +604,86 @@ cancel.addEventListener("click", () => {
     document.body.style.overflowY = "auto"
 })
 const picFile = document.querySelector("#picFile");
-    const setImg =  document.querySelector("#profileImg");
+const setImg =  document.querySelector("#profileImg");
 
+
+update.addEventListener("click",e => {
     
-    update.addEventListener("click",e => {
-       
-        const file = picFile.files[0];
-        if(file) {
-            const reader = new FileReader();
-            reader.onload = function(e)  {
-            const img = e.target.result;
-            // const innerhtml = `<img src="${img}" alt="Upload File">` 
-            // setImg.innerHTML = innerhtml;
-            setImg.style.backgroundImage = `url(${img})`;
-            setImg.style.backgroundSize = "150% auto";
-            setImg.style.backgroundRepeat = "no-repeat";
-            setImg.style.backgroundPosition = "center"; 
-        }
+    const file = picFile.files[0];
+    if(file) {
+        const reader = new FileReader();
+        reader.onload = function(e)  {
+        const img = e.target.result;
+        setImg.style.backgroundImage = `url(${img})`;
+        setImg.style.backgroundSize = "150% auto";
+        setImg.style.backgroundRepeat = "no-repeat";
+        setImg.style.backgroundPosition = "center"; 
+    }
 
-        reader.readAsDataURL(file);
-        container.classList.remove("show");
-    container.classList.add("hide");
-    document.body.style.overflowY = "auto"
+    reader.readAsDataURL(file);
+    container.classList.remove("show");
+container.classList.add("hide");
+document.body.style.overflowY = "auto"
 
-        }
-        
-
-    })
-
-    const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer");
-    //저장 버튼
-    const applyBtn = document.querySelector("#applyBtn");
-    const form  = document.querySelector("#form");
-    applyBtn.addEventListener("click", () => {
-        const input = document.createElement("input");
-        input.setAttribute("type","hidden");
-        input.setAttribute("name","resumeStatus");
-        input.value=0;
-        validatingBtnsContainer.append(input);
-        
-        
-    /* const obj = {
-        "image": false,
-        "resumeTitle":false,
-        "introduce" : false,
-        "schoolName" : false,
-        "desiredJobs": false,
-        "experienced" : false,
-        "certificate" : false
-    } */
+    }
     
 
-        for(let key in obj ){
-            if(!obj[key]){
-                let str;
-                switch(key){
-                    case "image": str="사진을 입력해주세요"; break;
-                    case "resumeTitle": str="이력서 제목을 입력해주세요"; break;
-                    case "introduce": str="자기소개서를 작성해주세요"; break;
-                    case "schoolName": str="학력을 입력해주세요"; break;
-                    case "desiredJobs": str="희망 업직종을 선택해주세요"; break;
-                    case "experienced": str="경력을 입력해주세요"; break;
-                    case "certificate": str="자격증을 입력해주세요"; break;
-                }
-                alert(str);
-                return;
+})
+
+const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer");
+//저장 버튼
+const applyBtn = document.querySelector("#applyBtn");
+const form  = document.querySelector("#form");
+applyBtn.addEventListener("click", e => {
+    const input = document.createElement("input");
+    input.setAttribute("type","hidden");
+    input.setAttribute("name","resumeStatus");
+    input.value=0;
+    validatingBtnsContainer.append(input);
+    
+
+
+    for(let key in obj ){
+        if(!obj[key]){
+            let str;
+            switch(key){
+                case "image": str="사진을 입력해주세요"; break;
+                case "resumeTitle": str="이력서 제목을 입력해주세요"; break;
+                case "introduce": str="자기소개서를 작성해주세요"; break;
+                case "schoolName": str="학력을 입력해주세요"; break;
+                case "desiredJobs": str="희망 업직종을 선택해주세요"; break;
+                case "experienced": str="경력을 입력해주세요"; break;
+                case "certificate": str="자격증을 입력해주세요"; break;
             }
+            alert(str);
+            e.target.preventDefault();
+            return;
         }
-        form.submit();
-    });
+    }
+    form.submit();
+});
 
-    //임시저장 버튼
-    const semiBtn = document.querySelector("#semiBtn");
-    semiBtn.addEventListener("click", () => {
-        const input = document.createElement("input");
-        input.setAttribute("type","hidden");
-        input.setAttribute("name","resumeStatus");
-        input.value=1;
-        validatingBtnsContainer.append(input);
-       
-        form.submit();
+//임시저장 버튼
+const semiBtn = document.querySelector("#semiBtn");
+semiBtn.addEventListener("click", () => {
+    for(let key in obj ) obj[key] = true;
+    
+    const input = document.createElement("input");
+    input.setAttribute("type","hidden");
+    input.setAttribute("name","resumeStatus");
+    input.value=1;
+    const scoreList = document.querySelectorAll(".score");
+    scoreList.forEach(i=>{
+        if(i.value==""){
+            i.value=0;
+        }
     });
+    validatingBtnsContainer.append(input);
+    if(score.value==""){
+        score.value=0;
+    }
+    form.submit();
+});
 
 
 
@@ -797,7 +731,7 @@ resumeTitle.addEventListener("input", () => {
 
 
 
- 
+
 if(document.querySelectorAll(".selectDong").length!=0){
     obj.location=true;
 }
@@ -812,9 +746,9 @@ introduce.addEventListener("input", () => {
 })
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
-           if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
+            if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
             introduce.style.resize = "none";
-           }
+            }
     });
 });
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,63 +8,66 @@
     <link rel="stylesheet" href="/css/member/resume.css">
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <th:block th:replace="~{common/header}"></th:block>
     <!-- 이력서  -->
     <!-- 사진 업데이트 팝업창 -->
-    <form action ="/resume/resumeWrite" method="POST" id="form" enctype="multipart/form-data">
-        <div class = "container hide" >
-            <div class = "innerContainer ">
-                <div class = "heading"> 
+    <form action="/resume/resumeWrite" method="POST" id="form" enctype="multipart/form-data">
+        <div class="container hide">
+            <div class="innerContainer ">
+                <div class="heading">
                     <h2>사진 업데이트</h2>
                 </div>
-                <div class = "selectFileSpan"> 
+                <div class="selectFileSpan">
                     <span value="12">사진 업데이트:</span>
                 </div><br>
-                <div class = "fileInput"> 
-                    <input type=file id="picFile" name="image" class="image"  accept="image/*"></input>
+                <div class="fileInput">
+                    <input type=file id="picFile" name="image" class="image" accept="image/*"></input>
                 </div>
                 <br><br>
                 <div class="finalizingBtns">
-                    <button type="button"  id = "cancel">취소</button>
-                    <button type="button" id = "update">업데이트</button>
+                    <button type="button" id="cancel">취소</button>
+                    <button type="button" id="update">업데이트</button>
                 </div>
             </div>
         </div>
 
 
-        <div id = "cont">
-            <div  class = "profileInfo">
-                <div id = "innerProfileContainer">
+        <div id="cont">
+            <div class="profileInfo">
+                <div id="innerProfileContainer">
                     <div id="profileImg">
                         <img src="" alt="">
                         <button id="editProfile" type="button"><i class="fa-solid fa-camera"></i></button>
                     </div>
                     <div id="info">
                         <div id="name">
-                            <span id="key" >이름</span>
+                            <span id="key" class="input-span">이름</span>
                             <span id="value" th:text="${session.loginMember.memberName}"><b>황진관</b></span>
 
                         </div>
                         <div id="addNtel">
                             <div class="credentials">
-                                <span>주소</span>
-                                <span id = "address" th:text="${address}">경기도 파주시 조리읍</span>
+                                <span class="input-span">주소</span>
+                                <span id="address" th:text="${address}">경기도 파주시 조리읍</span>
                             </div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <div class = "credentials">
-                                <span id="telNo">휴대폰</span>
-                                <span th:text="${session.loginMember.memberPhoneNumber}">010-5782-3394</span>
-                            </div>
+                            <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                         </div>
+
+                        <div class="credentials">
+                            <span id="telNo" class="input-span">휴대폰</span>
+                            <span th:text="${session.loginMember.memberPhoneNumber}">010-5782-3394</span>
+                        </div>
+
                         <div>
-                            <span>이메일</span>
+                            <span class="input-span">이메일</span>
                             <span id="email" th:text="${session.loginMember.memberEmail}">jkhwang58@gmail.com</span>
                         </div>
-            
+
                     </div><br><br>
-                </div >
-                <div id="loadResume">
+                </div>
+                <!-- <div id="loadResume">
                     <div><i class="fa-solid fa-file"></i></div>
                     <th:block th:each=" semi: ${semiResumeList}">
                     <div><b th:text="${semi.resumeTitle}">2024년 05월 22일 13:21:36에</b> 임시저장된 이력서가 있습니다.</div>
@@ -72,248 +76,263 @@
                         <button>삭제</button>
                     </div>
                 </th:block>
-                </div>
+                </div> -->
             </div>
-        
+
             <!-- 이력서 작성 section -->
-                <div id="resumeDisplay">
-                    <br><br>
-                    <h3>나의 이력서</h3>
-                    <hr>
-                    <div class="resumeElement">
-                        <h3>이력서 제목<span class="required">*</span></h3>
-                        <ul>
-                            <li><input type="text" id = "title"  name="resumeTitle" class = "resumeTitle"></li>
-                        </ul>
-                        
-                    </div>
-                    <hr>
-    
-                    <div class = "resumeElement">
-                        <h3>자기소개</h3>
-        
-                        <ul>
-                            <li>
-                                <textarea id="introduce" name="introduce" class="introduce"></textarea>
-                            </li>
-                        </ul>
-        
-                    </div>
-                    <hr>
-            
-                    <div class="resumeElement">
-                        <h3>학력 사항<span class="required">*</span></h3>
-                        <ul>
-                    
-                            <li>
-                                <div id = "dropdownContainer">
-                                    <div>
-                                        <span>최종학력</span>
-                                        <select name="educationNo" id="dropDown" >
-                                            <option value="">선택</option>
-                                            <th:block th:each=" education: ${educationList}" th:object="${education}">
-                                                <option th:value="*{educationNo}" th:text="*{educationName}"></option>
-                                        
+            <div id="resumeDisplay">
+                <br><br>
+                <h3>나의 이력서</h3>
+                <hr>
+                <div class="resumeElement">
+                    <h3>이력서 제목<span class="required">*</span></h3>
+                    <ul>
+                        <li><input type="text" id="title" name="resumeTitle" class="resumeTitle"></li>
+                    </ul>
+
+                </div>
+                <hr>
+
+                <div class="resumeElement">
+                    <h3>자기소개</h3>
+
+                    <ul>
+                        <li>
+                            <textarea id="introduce" name="introduce" class="introduce"></textarea>
+                        </li>
+                    </ul>
+
+                </div>
+                <hr>
+
+                <div class="resumeElement">
+                    <h3>학력 사항<span class="required">*</span></h3>
+                    <ul>
+
+                        <li>
+                            <div id="dropdownContainer">
+                                <div>
+                                    <span>최종학력</span>
+                                    <select name="educationNo" id="dropDown">
+                                        <option value="">선택</option>
+                                        <th:block th:each=" education: ${educationList}" th:object="${education}">
+                                            <option th:value="*{educationNo}" th:text="*{educationName}"></option>
+
                                         </th:block>
-                                        </select>
-                                    </div>
+                                    </select>
                                 </div>
-                            </li>
-            
-                            <li><br><br>
-                                <div id="schoolContainer">
-    
-                                    <!-- 초등학교 -->
-                                    <div  name="selectPrimarySchoolName" id="selectPrimarySchoolName" class="hide">
-                                    
-                                        <span>초등학교</span>
-                                        <input type="text" name="schoolName" class = "schoolName" id="primarySchoolName" placeholder="초등학교"><br><br>
-                                        <div class="term">
-                                            <span>졸업여부</span>
-                                            <select name="educationStatusNo" class="graduationDropDown" >
-                                                <th:block th:each=" status:${statusList}" th:object="${status}">
-                                                    <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
-                                                </th:block>
-                                            </select>
-    
-                                            <div>
-                                                
-                                                <div class="innerDateContainer">
-                                                    <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="startDate">
-                                                    <input type="date" name="schoolEndDate" class="endDate" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                    <!-- 중학교 -->
-                                    <div name="selectMiddleSchoolName" id="selectMiddleSchoolName" class="hide">
-                                    
-                                        <span>중학교</span>
-                                        <input type="text" name="schoolName" class = "schoolName" id="middleSchoolName" placeholder="중학교" ><br><br>
-                                        <div class="term">
-                                            <span>졸업여부</span>
-                                            <select name="educationStatusNo" class="graduationDropDown" >
-                                                <th:block th:each=" status:${statusList}" th:object="${status}">
-                                                    <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
-                                                </th:block>
-                                            </select>
-    
-                                            <div>
-                                                
-                                                <div class = "innerDateContainer">
-                                                    <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="startDate" >
-                                                    <input type="date" name="schoolEndDate" class="endDate" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                    <!-- 고등학교 -->
-                                    <div name="selectSchoolName" id="selectSchoolName" class="hide">
-                                    
-                                        <span>고등학교</span>
-                                        <input type="text" name="schoolName" class = "schoolName" id="schoolName" placeholder="고등학교" ><br><br>
-                                        <div class="term">
-                                            <span>졸업여부</span>
-                                            <select name="educationStatusNo" class="graduationDropDown" >
-                                                <th:block th:each=" status:${statusList}" th:object="${status}">
-                                                    <option th:value="*{educationStatusNo}" th:text="*{educationStatusName}"></option>
-                                                </th:block>
-                                            </select>
-                                            <div>
-                                                
-                                                <div class = "innerDateContainer">
-                                                    <span>재학기간</span>
-                                                    <input type="date" name="schoolStartDate" class="startDate">
-                                                    <input type="date" name="schoolEndDate" class="endDate" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!--2,3년제 대학교 -->
-                                    <div name = "schoolName"   id = "twoUniversityName" class="hide">
-                                        <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
-                                        <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
-                                        <div><br>
-            
-                                            
-                                                <!-- <span>졸업여부</span>
-                                                <select name="graduationStatus" class="graduationDropDown" required>
-                                                    <option value = "1">졸업</option>
-                                                    <option value = "2">재학</option>
-                                                    <option value = "3">휴학</option>
-                                                    <option value = "4">중퇴</option>
-                                                    <option value = "5">수교</option>
-                                                </select> -->
-            
-                                                <div id="dateContainer">
-                                                    
-                                                    <div class="innerDateContainer">
-                                                        <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" >
-                                                        ~
-                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                            
-            
-                                    
-            
-                                    </div>
-                                    <!-- 4년제 대학교 -->
-                                    <div name = "schoolName"  id = "fourUniversityName" class="hide">
-                                        <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
-                                        <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
-                                        <div><br>
-            
-                                            
-                                                <!-- <span>졸업여부</span>
-                                                <select name="graduationStatus" class="graduationDropDown" required>
-                                                    <option value = "1">졸업</option>
-                                                    <option value = "2">재학</option>
-                                                    <option value = "3">휴학</option>
-                                                    <option value = "4">중퇴</option>
-                                                    <option value = "5">수교</option>
-                                                </select> -->
-            
-                                                <div id="dateContainer">
-                                                    
-                                                    <div class="innerDateContainer">
-                                                        <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" >
-                                                        ~
-                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                            
-            
-                                    
-            
-                                    </div>
-                                    <!-- 대학원 이상 -->
-                                    <div name = "graduateUniversityName"  id = "graduateUniversityName" class="hide">
-                                        <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
-                                        <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
-                                        <div><br>
-            
-                                            
-                                                <!-- <span>졸업여부</span>
-                                                <select name="graduationStatus" class="graduationDropDown" required>
-                                                    <option value = "1">졸업</option>
-                                                    <option value = "2">재학</option>
-                                                    <option value = "3">휴학</option>
-                                                    <option value = "4">중퇴</option>
-                                                    <option value = "5">수교</option>
-                                                </select> -->
-            
-                                                <div id="dateContainer">
-                                                    
-                                                    <div class="innerDateContainer">
-                                                        <span>재학기간</span>
-                                                        <input type="date" name="schoolStartDate"  id = "startDate" class="startDate" >
-                                                        ~
-                                                        <input type="date" name="schoolEndDate"  id = "endDate" class="endDate" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                            
-            
-                                    
-            
-                                    </div>
-                                </div>
-            
-                            </li>
-                        </ul>
-                        
-                    </div>
-                    <hr>
-            
-                    <div class="resumeElement">
-                        <h3>희망 근무지</h3>
-        
-                        <ul>
-                            <li>
-                                <div class = "locationContainer">
-                                    <div class = "locationHeading">
-                                        <div><h3>도시</h3></div>
-                                        <div><h3>시군구</h3></div>
-                                        <div><h3>동</h3></div>
-                                    </div>
-                                    <div class="innerLocationContainer">
-                                        <div class = "dosiList" >
-                                            <th:block th:each=" dosi: ${dosiList}" th:object="${dosi}">
-                                                <div class = "dosies" th:text="*{dosiName}"></div>
+                            </div>
+                        </li>
+
+                        <li><br><br>
+                            <div id="schoolContainer">
+
+                                <!-- 초등학교 -->
+                                <div name="selectPrimarySchoolName" id="selectPrimarySchoolName" class="hide">
+
+                                    <span>초등학교</span>
+                                    <input type="text" name="schoolName" class="schoolName" id="primarySchoolName"
+                                        placeholder="초등학교"><br><br>
+                                    <div class="term">
+                                        <span>졸업여부</span>
+                                        <select name="educationStatusNo" class="graduationDropDown">
+                                            <th:block th:each=" status:${statusList}" th:object="${status}">
+                                                <option th:value="*{educationStatusNo}"
+                                                    th:text="*{educationStatusName}"></option>
                                             </th:block>
+                                        </select>
+
+                                        <div>
+
+                                            <div class="innerDateContainer">
+                                                <span>재학기간</span>
+                                                <input type="date" name="schoolStartDate" class="startDate">
+                                                <input type="date" name="schoolEndDate" class="endDate">
+                                            </div>
                                         </div>
-                                        <div class = "sigunguList" >
-                                            <!-- <div class = "sigungus">강서구</div>
+                                    </div>
+                                </div>
+
+                                <!-- 중학교 -->
+                                <div name="selectMiddleSchoolName" id="selectMiddleSchoolName" class="hide">
+
+                                    <span>중학교</span>
+                                    <input type="text" name="schoolName" class="schoolName" id="middleSchoolName"
+                                        placeholder="중학교"><br><br>
+                                    <div class="term">
+                                        <span>졸업여부</span>
+                                        <select name="educationStatusNo" class="graduationDropDown">
+                                            <th:block th:each=" status:${statusList}" th:object="${status}">
+                                                <option th:value="*{educationStatusNo}"
+                                                    th:text="*{educationStatusName}"></option>
+                                            </th:block>
+                                        </select>
+
+                                        <div>
+
+                                            <div class="innerDateContainer">
+                                                <span>재학기간</span>
+                                                <input type="date" name="schoolStartDate" class="startDate">
+                                                <input type="date" name="schoolEndDate" class="endDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 고등학교 -->
+                                <div name="selectSchoolName" id="selectSchoolName" class="hide">
+
+                                    <span>고등학교</span>
+                                    <input type="text" name="schoolName" class="schoolName" id="schoolName"
+                                        placeholder="고등학교"><br><br>
+                                    <div class="term">
+                                        <span>졸업여부</span>
+                                        <select name="educationStatusNo" class="graduationDropDown">
+                                            <th:block th:each=" status:${statusList}" th:object="${status}">
+                                                <option th:value="*{educationStatusNo}"
+                                                    th:text="*{educationStatusName}"></option>
+                                            </th:block>
+                                        </select>
+                                        <div>
+
+                                            <div class="innerDateContainer">
+                                                <span>재학기간</span>
+                                                <input type="date" name="schoolStartDate" class="startDate">
+                                                <input type="date" name="schoolEndDate" class="endDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--2,3년제 대학교 -->
+                                <div name="schoolName" id="twoUniversityName" class="hide">
+                                    <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
+                                    <div><br>
+
+
+                                        <!-- <span>졸업여부</span>
+                                                <select name="graduationStatus" class="graduationDropDown" required>
+                                                    <option value = "1">졸업</option>
+                                                    <option value = "2">재학</option>
+                                                    <option value = "3">휴학</option>
+                                                    <option value = "4">중퇴</option>
+                                                    <option value = "5">수교</option>
+                                                </select> -->
+
+                                        <div id="dateContainer">
+
+                                            <div class="innerDateContainer">
+                                                <span>재학기간</span>
+                                                <input type="date" name="schoolStartDate" id="startDate"
+                                                    class="startDate">
+                                                ~
+                                                <input type="date" name="schoolEndDate" id="endDate" class="endDate">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                                <!-- 4년제 대학교 -->
+                                <div name="schoolName" id="fourUniversityName" class="hide">
+                                    <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
+                                    <div><br>
+
+
+                                        <!-- <span>졸업여부</span>
+                                                <select name="graduationStatus" class="graduationDropDown" required>
+                                                    <option value = "1">졸업</option>
+                                                    <option value = "2">재학</option>
+                                                    <option value = "3">휴학</option>
+                                                    <option value = "4">중퇴</option>
+                                                    <option value = "5">수교</option>
+                                                </select> -->
+
+                                        <div id="dateContainer">
+
+                                            <div class="innerDateContainer">
+                                                <span>재학기간</span>
+                                                <input type="date" name="schoolStartDate" id="startDate"
+                                                    class="startDate">
+                                                ~
+                                                <input type="date" name="schoolEndDate" id="endDate" class="endDate">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                                <!-- 대학원 이상 -->
+                                <div name="graduateUniversityName" id="graduateUniversityName" class="hide">
+                                    <!-- <span>대학교</span>&nbsp;&nbsp;&nbsp;
+                                        <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
+                                    <div><br>
+
+
+                                        <!-- <span>졸업여부</span>
+                                                <select name="graduationStatus" class="graduationDropDown" required>
+                                                    <option value = "1">졸업</option>
+                                                    <option value = "2">재학</option>
+                                                    <option value = "3">휴학</option>
+                                                    <option value = "4">중퇴</option>
+                                                    <option value = "5">수교</option>
+                                                </select> -->
+
+                                        <div id="dateContainer">
+
+                                            <div class="innerDateContainer">
+                                                <span>재학기간</span>
+                                                <input type="date" name="schoolStartDate" id="startDate"
+                                                    class="startDate">
+                                                ~
+                                                <input type="date" name="schoolEndDate" id="endDate" class="endDate">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <hr>
+
+                <div class="resumeElement">
+                    <h3>희망 근무지</h3>
+
+                    <ul>
+                        <li>
+                            <div class="locationContainer">
+                                <div class="locationHeading">
+                                    <div>
+                                        <h3>도시</h3>
+                                    </div>
+                                    <div>
+                                        <h3>시군구</h3>
+                                    </div>
+                                    <div>
+                                        <h3>동</h3>
+                                    </div>
+                                </div>
+                                <div class="innerLocationContainer">
+                                    <div class="dosiList">
+                                        <th:block th:each=" dosi: ${dosiList}" th:object="${dosi}">
+                                            <div class="dosies" th:text="*{dosiName}"></div>
+                                        </th:block>
+                                    </div>
+                                    <div class="sigunguList">
+                                        <!-- <div class = "sigungus">강서구</div>
                                             <div class = "sigungus">강남</div>
                                             <div class = "sigungus">여의도</div>
                                             <div class = "sigungus">광화문</div>
@@ -326,9 +345,9 @@
                                             <div class = "sigungus">강남</div>
                                             <div class = "sigungus">여의도</div>
                                             <div class = "sigungus">광화문</div> -->
-                                        </div>
-                                        <div class = "dong" >
-                                            <!-- <div class = "dongs">강서구</div>
+                                    </div>
+                                    <div class="dong">
+                                        <!-- <div class = "dongs">강서구</div>
                                             <div class = "dongs">강남</div>
                                             <div class = "dongs">여의도</div>
                                             <div class = "dongs">광화문</div>
@@ -341,153 +360,159 @@
                                             <div class = "dongs">강남</div>
                                             <div class = "dongs">여의도</div>
                                             <div class = "dongs">광화문</div> -->
-                                        </div>
-                                    
                                     </div>
-                                    <div class = "locationSelectContainer" name="locationSelectContainer">
-    
-                                    </div>
+
                                 </div>
-                            </li>
-                        </ul>
-                        
-                    </div>
-                    <hr>
-    
-                    <div class="resumeElement">
-                        <h3>희망 업직종<span class="required">*</span></h3>
-    
-                    <ul>
-                            <li>
-                                <div id="buttonContainer">
-                                
-                                    <div class = "jobsOfDesire">
-                                        <th:block th:each=" a : ${workList1}">
-                                            <button type = "button" class = "jobsOfDesireBtn" th:text="${a.typeName}">외식/음료</button>
-                                        </th:block>
-                                        
-                                    </div>
-                                    <div class = "jobsOfDesire">
-                                        <th:block th:each=" a : ${workList2}">
-                                            <button type = "button" class = "jobsOfDesireBtn" th:text="${a.typeName}">외식/음료</button>
-                                        </th:block>
-                                    </div>
-                                    <div class = "jobsOfDesire">
-                                        <th:block th:each=" a : ${workList3}">
-                                            <button type = "button" class = "jobsOfDesireBtn" th:text="${a.typeName}">외식/음료</button>
-                                        </th:block>
-                                    </div>
+                                <div class="locationSelectContainer" name="locationSelectContainer">
+
                                 </div>
-                            
-                                <div id="addDesiredJobs" name = "desiredJobs">
-    
-                                </div>
-                                
-                                
-                            </li>
+                            </div>
+                        </li>
                     </ul>
-                    
-    
-                    </div>
-                    <hr>
-    
-                    <div class = "resumeElement">
-                        <h3>경력사항<span class="required">*</span></h3>
-                        <br>
-                        <ul>
-                            <li>
-                                <div id="career" >
-                                    <span>경력구분<span class="required">*</span></span>
-                                    <div id="careerSelect">
-                                        <button id="newHire" type="button" class="selectedBtn">신입</button>
-                                        <button id="experienced" type="button">경력</button><br>
-                                    </div><br><br>
-                                    <div class = "experiencedDetail hide" >
-                                        
-                                        
-                                        <div class = "experiencedContainer">
-                                                <div class = "companyNames">
-                                                    <span>회사이름</span>
-                                                    <input type="text" name="companyName" class="companyName"> 
-                                                </div>
-        
-                                
-                                                <div class = "dateInput">
-                                                    <input type="date" name="startDate" class="startDate">~<input type="date" name="endDate" class="endDate">
-                                                    <button type = "button" id = "chuga">+</button>
-                                                </div>
-                                                
-                                                
-                                            
-                                        </div>
-    
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-            
-                    </div>
-                    <hr>
-            
-                    <div class = "resumeElement">
-                        <h3>자격증</h3>
-                        <br>
-                        <ul>
-                            <li>
-                            
-                                    <div id="certificate" class = "certificateDetail">
-                                        <div>
-                                            <span>자격증명</span>&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="licenseName" class="certName" id="searchCertifcate" ><br><br><br>   
-                                        </div>
-                                        
-                                    
-                                           
-                    
-                                        <div class="organizationDetail">
-                                            <span>발행기관</span>&nbsp;&nbsp;
-                                            <input type="text" name="licenseFrom" class = "organization" id="organization" >
-                                        </div>
-                                        
-                                        <div class="scoreDetail">
-                                            <span>점수</span>   
-                                            <input type="number" name="licenseScore" class = "score" max="100" >&nbsp;/100
-                                        </div>
-                                                
-                                      
-                                        <div class = "issueDetail">
-                                            <span>취득일</span>
-                                            <input type="date" name="licenseDate" class="issueDate"  >
-                                            <button type="button" id = "certAdd">+</button>
-                                        </div>
-                                       
-            
-                                      
-                                    
-                                    </div>
-                                
-                            </li><br><br>
-                        </ul>
-                        
-            
-                    </div><br>
-                <hr>
-    
-                
-            
-                <div id="validatingBtnsContainer">
-                    <button class = "resume submit"  id="applyBtn" >지원하기</button>
-                    <button class = "resume" id="semiBtn">임시저장</button>
+
                 </div>
-    
-                
-    
+                <hr>
+
+                <div class="resumeElement">
+                    <h3>희망 업직종<span class="required">*</span></h3>
+
+                    <ul>
+                        <li>
+                            <div id="buttonContainer">
+
+                                <div class="jobsOfDesire">
+                                    <th:block th:each=" a : ${workList1}">
+                                        <button type="button" class="jobsOfDesireBtn"
+                                            th:text="${a.typeName}">외식/음료</button>
+                                    </th:block>
+
+                                </div>
+                                <div class="jobsOfDesire">
+                                    <th:block th:each=" a : ${workList2}">
+                                        <button type="button" class="jobsOfDesireBtn"
+                                            th:text="${a.typeName}">외식/음료</button>
+                                    </th:block>
+                                </div>
+                                <div class="jobsOfDesire">
+                                    <th:block th:each=" a : ${workList3}">
+                                        <button type="button" class="jobsOfDesireBtn"
+                                            th:text="${a.typeName}">외식/음료</button>
+                                    </th:block>
+                                </div>
+                            </div>
+
+                            <div id="addDesiredJobs" name="desiredJobs">
+
+                            </div>
+
+
+                        </li>
+                    </ul>
+
+
+                </div>
+                <hr>
+
+                <div class="resumeElement">
+                    <h3>경력사항<span class="required">*</span></h3>
+                    <br>
+                    <ul>
+                        <li>
+                            <div id="career">
+                                <span>경력구분<span class="required">*</span></span>
+                                <div id="careerSelect">
+                                    <button id="newHire" type="button" class="selectedBtn">신입</button>
+                                    <button id="experienced" type="button">경력</button><br>
+                                </div><br><br>
+                                <div class="experiencedDetail hide">
+
+
+                                    <div class="experiencedContainer">
+                                        <div class="companyNames">
+                                            <span>회사이름</span>
+                                            <input type="text" name="companyName" class="companyName">
+                                        </div>
+
+
+                                        <div class="dateInput">
+                                            <input type="date" name="startDate" class="startDate">~<input type="date"
+                                                name="endDate" class="endDate">
+                                            <button type="button" id="chuga">+</button>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <hr>
+
+                <div class="resumeElement">
+                    <h3>자격증</h3>
+                    <br>
+                    <ul>
+                        <li>
+
+                            <div id="certificate" class="certificateDetail">
+                                <div>
+                                    <span>자격증명</span>&nbsp;&nbsp;&nbsp;
+                                    <input type="text" name="licenseName" class="certName"
+                                        id="searchCertifcate"><br><br><br>
+                                </div>
+
+
+
+
+                                <div class="organizationDetail">
+                                    <span>발행기관</span>&nbsp;&nbsp;
+                                    <input type="text" name="licenseFrom" class="organization" id="organization">
+                                </div>
+
+                                <div class="scoreDetail">
+                                    <span>점수</span>
+                                    <input type="number" name="licenseScore" class="score" max="100">&nbsp;/100
+                                </div>
+
+
+                                <div class="issueDetail">
+                                    <span>취득일</span>
+                                    <input type="date" name="licenseDate" class="issueDate">
+                                    <button type="button" id="certAdd">+</button>
+                                </div>
+
+
+
+
+                            </div>
+
+                        </li><br><br>
+                    </ul>
+
+
+                </div><br>
+                <hr>
+
+
+
+                <div id="validatingBtnsContainer">
+                    <button class="resume submit" id="applyBtn">저장</button>
+                    <button class="resume" id="semiBtn" type="button">임시저장</button>
+                </div>
+
+
+
             </div>
-            
-    
+
+
         </div>
     </form>
-    <script src = "/js/member/resume.js"> </script>
+    <script src="/js/member/resume.js"> </script>
     <th:block th:replace="~{common/footer}"></th:block>
 </body>
+
 </html>

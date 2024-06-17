@@ -24,7 +24,6 @@
                     <th>게시글 번호</th>
                     <th>신고자</th>
                     <th>신고 내용</th>
-                    <th>상태</th>
                     <th>신고 날짜</th>
                     <th>신고받은 사람</th>
                     <th>신고 처리</th>
@@ -38,7 +37,6 @@
                                     th:text="${declare.reviewBoardNo}"></a> </td>
                             <td th:text="${declare.memberNo}"></td>
                             <td><div class="boardDeclareContent" th:text="${declare.boardDeclareContent}"></div></td>
-                            <td th:text="${declare.reviewBoardCondition}"></td>
                             <td th:text="${declare.boardDeclareDate}"></td>
                             <td th:text="${declare.reportedMemberNo}"></td>
                             <td>
@@ -120,33 +118,7 @@
 
         <div id="checkMemberStatusContent">회원 번호를 입력하여 회원의 계정 및 경고 횟수를 확인하세요.</div>
         <div id="checkMemberStatusContent2">
-            <div class="checkMember-div">
-                <p class="cmsc-p">경고 1회 누적 &nbsp; : </p>
-                <p class="cmsc-p2">1</p>
-            </div>
-
-            <div class="checkMember-div">
-                <p class="cmsc-p">경고 2회 누적 &nbsp;:</p>
-                <p class="cmsc-p2">2</p>
-            </div>
-
-
-            <div class="checkMember-div">
-                <p class="cmsc-p">정지 상태 회원 : </p>
-                <p class="cmsc-p2">3</p>
-            </div>
-
-
-            <div class="checkMember-div">
-                <p class="cmsc-p">경고 0회 누적 : </p>
-                <p class="cmsc-p2 ">4</p>
-            </div>
-
-
-            <div class="checkMember-div">
-                <p class="cmsc-p">탈퇴한 회원 &nbsp;&nbsp; : </p>
-                <p class="cmsc-p2">5</p>
-            </div>
+            
 
         </div>
 
@@ -157,7 +129,7 @@
         </div>
 
         <div id="result">
-
+            
         </div>
 
     </div>

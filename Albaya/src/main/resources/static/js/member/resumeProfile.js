@@ -9,50 +9,12 @@ const backBtn = document.querySelector("#backBtn");
 
 //프로필 이미지 지정
 
-imgEditBtn.addEventListener("click", () => {
-    popupContainer.classList.add("show");
-    popupContainer.classList.remove("hide");
-
-    document.body.style.overflowY = "hidden";
-    document.body.style.overflowX = "hidden";
-    popupContainer.style.marginRight="10px";
-
-    cancel.addEventListener("click", () => {
-        popupContainer.classList.add("hide");
-        popupContainer.classList.remove("show")
-        
-        document.body.style.overflowY = "auto";
-        document.body.style.overflowX = "auto";
-    });
-
-
-    update.addEventListener("click", () => {
-        const file = picFile.files[0];
-        if(file){
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const image = e.target.result;
-                profImg.style.backgroundImage = `url(${image})`;
-                profImg.style.backgroundSize = "302px auto";
-                
-                profImg.style.backgroundPosition = "center";
-                profImg.style.backgroundRepeat = "no-repeat";
-            }
-            reader.readAsDataURL(file)
-            popupContainer.classList.add("hide");
-            popupContainer.classList.remove("show");
-        }
-
-        document.body.style.overflowY = "auto";
-        document.body.style.overflowX = "auto";
-        
-    })
-
-})
 
 
     backBtn.addEventListener("click", () => {
-        location.href = "/resume/resumeList"
+        location.href = "/resume/resumeList";
     });
 
-
+//form.addEventListener("click", () => {}); 했을 때
+//e.target == 버튼
+//e.currentTarget == form (이벤트핸들러 함수가 연결된 것)

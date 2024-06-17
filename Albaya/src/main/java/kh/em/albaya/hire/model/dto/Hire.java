@@ -63,6 +63,7 @@ public class Hire {
 	
 	// 지원한 공고 내용
 	private int resumeNo;
+	private String resumeTitle;
 	private int memberNo;
 	private String applyTitle;
 	private String applyContent;

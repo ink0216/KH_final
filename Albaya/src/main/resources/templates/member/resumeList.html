@@ -47,26 +47,33 @@
                 <p>작성된 이력서가 없습니다.</p>
             </th:block>
             <th:block th:each=" resume: ${resumeList}" th:object="${resume}">
-                <div class="listContents" th:data-resume-no="*{resumeNo}">
-                    <div class="check">
+                <div class="listContents" >
+                    <!-- <div class="check">
                         <input type="checkbox" class="tick">
-                    </div>
+                    </div> -->
                     <div class="resumeTitle">
-                        <h3 th:text="*{resumeTitle}">나의 이력서</h3><span>저장</span>
+                        <th:block th:if="*{resumeTitle}">
+                            <h3 th:text="*{resumeTitle}" >나의 이력서</h3><span>저장</span>
+                        </th:block>
+                        <th:block th:unless="*{resumeTitle}">
+                            <h3>제목없음</h3><span>저장</span>
+                        </th:block>
+                        
                     </div>
 
                     <div class="recentUpdateDate">
-                        <p th:text="*{resumeDate}">12/06/2024 14:31</p>
+                        <p th:text="*{resumeDate}" th:data-resume-no="*{resumeNo}" id="resumeTitle">12/06/2024 14:31</p>
                     </div>
                     <div class="manage">
                         <div id="buttons">
-                            <button type="button" class="update" th:data-resume-no="*{resumeNo}">수정</button>
+                            <!-- <button type="button" class="update" th:data-resume-no="*{resumeNo}">수정</button> -->
                             <button type="button" class="delete" th:data-resume-no="*{resumeNo}">삭제</button>
                         </div>
                     
                     </div>
                     <div class="preferences">
                         <div>
+                        
                             <p th:each="work:*{workList}" th:text="${work.typeName}">고양동/서비스</p>
                         </div>
                     </div>
