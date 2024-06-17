@@ -605,75 +605,85 @@ cancel.addEventListener("click", () => {
     document.body.style.overflowY = "auto"
 })
 const picFile = document.querySelector("#picFile");
-    const setImg =  document.querySelector("#profileImg");
+const setImg =  document.querySelector("#profileImg");
 
+
+update.addEventListener("click",e => {
     
-    update.addEventListener("click",e => {
-       
-        const file = picFile.files[0];
-        if(file) {
-            const reader = new FileReader();
-            reader.onload = function(e)  {
-            const img = e.target.result;
-            setImg.style.backgroundImage = `url(${img})`;
-            setImg.style.backgroundSize = "150% auto";
-            setImg.style.backgroundRepeat = "no-repeat";
-            setImg.style.backgroundPosition = "center"; 
-        }
+    const file = picFile.files[0];
+    if(file) {
+        const reader = new FileReader();
+        reader.onload = function(e)  {
+        const img = e.target.result;
+        setImg.style.backgroundImage = `url(${img})`;
+        setImg.style.backgroundSize = "150% auto";
+        setImg.style.backgroundRepeat = "no-repeat";
+        setImg.style.backgroundPosition = "center"; 
+    }
 
-        reader.readAsDataURL(file);
-        container.classList.remove("show");
-    container.classList.add("hide");
-    document.body.style.overflowY = "auto"
+    reader.readAsDataURL(file);
+    container.classList.remove("show");
+container.classList.add("hide");
+document.body.style.overflowY = "auto"
 
-        }
-        
+    }
+    
 
-    })
+})
 
-    const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer");
-    //저장 버튼
-    const applyBtn = document.querySelector("#applyBtn");
-    const form  = document.querySelector("#form");
-    applyBtn.addEventListener("click", () => {
-        const input = document.createElement("input");
-        input.setAttribute("type","hidden");
-        input.setAttribute("name","resumeStatus");
-        input.value=0;
-        validatingBtnsContainer.append(input);
-        
+const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer");
+//저장 버튼
+const applyBtn = document.querySelector("#applyBtn");
+const form  = document.querySelector("#form");
+applyBtn.addEventListener("click", () => {
+    const input = document.createElement("input");
+    input.setAttribute("type","hidden");
+    input.setAttribute("name","resumeStatus");
+    input.value=0;
+    validatingBtnsContainer.append(input);
+    
 
 
-        for(let key in obj ){
-            if(!obj[key]){
-                let str;
-                switch(key){
-                    case "image": str="사진을 입력해주세요"; break;
-                    case "resumeTitle": str="이력서 제목을 입력해주세요"; break;
-                    case "introduce": str="자기소개서를 작성해주세요"; break;
-                    case "schoolName": str="학력을 입력해주세요"; break;
-                    case "desiredJobs": str="희망 업직종을 선택해주세요"; break;
-                    case "experienced": str="경력을 입력해주세요"; break;
-                    case "certificate": str="자격증을 입력해주세요"; break;
-                }
-                alert(str);
-                return;
+    for(let key in obj ){
+        if(!obj[key]){
+            let str;
+            switch(key){
+                case "image": str="사진을 입력해주세요"; break;
+                case "resumeTitle": str="이력서 제목을 입력해주세요"; break;
+                case "introduce": str="자기소개서를 작성해주세요"; break;
+                case "schoolName": str="학력을 입력해주세요"; break;
+                case "desiredJobs": str="희망 업직종을 선택해주세요"; break;
+                case "experienced": str="경력을 입력해주세요"; break;
+                case "certificate": str="자격증을 입력해주세요"; break;
             }
+            alert(str);
+            return;
         }
-        form.submit();
-    });
+    }
+    form.submit();
+});
 
-    //임시저장 버튼
-    const semiBtn = document.querySelector("#semiBtn");
-    semiBtn.addEventListener("click", () => {
-        const input = document.createElement("input");
-        input.setAttribute("type","hidden");
-        input.setAttribute("name","resumeStatus");
-        input.value=1;
-        validatingBtnsContainer.append(input);
+//임시저장 버튼
+const semiBtn = document.querySelector("#semiBtn");
+semiBtn.addEventListener("click", () => {
+    for(let key in obj ) obj[key] = true;
     
-        form.submit();
+    const input = document.createElement("input");
+    input.setAttribute("type","hidden");
+    input.setAttribute("name","resumeStatus");
+    input.value=1;
+    const scoreList = document.querySelectorAll(".score");
+    scoreList.forEach(i=>{
+        if(i.value==""){
+            i.value=0;
+        }
     });
+    validatingBtnsContainer.append(input);
+    if(score.value==""){
+        score.value=0;
+    }
+    form.submit();
+});
 
 
 
