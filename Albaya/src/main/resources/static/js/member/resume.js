@@ -634,7 +634,7 @@ const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer
 //저장 버튼
 const applyBtn = document.querySelector("#applyBtn");
 const form  = document.querySelector("#form");
-applyBtn.addEventListener("click", () => {
+applyBtn.addEventListener("click", e => {
     const input = document.createElement("input");
     input.setAttribute("type","hidden");
     input.setAttribute("name","resumeStatus");
@@ -656,6 +656,7 @@ applyBtn.addEventListener("click", () => {
                 case "certificate": str="자격증을 입력해주세요"; break;
             }
             alert(str);
+            e.target.preventDefault();
             return;
         }
     }
