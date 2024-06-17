@@ -117,8 +117,8 @@ const selectCommentList = () => {
 
                     
 
-                    // 현재 로그인한 사람이 있으면서 로그인한 회원 번호와 댓글 작성자의 번호와 같으면 댓글 수정/삭제 버튼도 출력
-                    if(loginMemberNo != null && loginMemberNo == comment.memberNo){
+                    // 현재 로그인한 사람이 있으면서 로그인한 회원 번호와 댓글 작성자의 번호와 같거나 관리자이면 댓글 수정/삭제 버튼도 출력
+                    if(loginMemberNo != null && loginMemberNo == comment.memberNo || authorityNo=='1'){
 
                         // 수정 버튼
                         const updateBtn = document.createElement("button");

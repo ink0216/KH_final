@@ -33,7 +33,16 @@ document.querySelector("#commentDeclareFrm").addEventListener("submit", e => {
 
 
 
-    alert("신고 처리가 완료되었습니다.");
+    if(confirm("정말 신고를 하시겠습니까?")){
+
+        alert("신고 처리가 완료되었습니다.");
+
+    } else {
+
+        e.preventDefault();
+        return;
+        
+    }
 
 })
 

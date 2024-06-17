@@ -31,38 +31,18 @@ const talk = document.getElementById('talk');
 
 
 
-// notice.addEventListener("click",() => {
-    
-//     location.href = "/reviewBoard/1";
-//     notice.classList.add("active");
-//     talk.classList.remove("active");
-   
-    
-    
-    
-// });
-
-// talk.addEventListener("click",() => {
-    
-//     location.href = "/reviewBoard/2";
-//     talk.classList.add("active");
-//     notice.classList.remove("active");
-    
-  
-    
-// });
-
 
 
 /* 현재 게시판 위치에 따라 버튼 효과 넣기  */
 
 
-function toggleColor(boxId,url){
+
+function toggleColor(boxId, url) {
     var box = document.getElementById(boxId);
     var otherBoxId = boxId === 'talk' ? 'notice' : 'talk';
     var otherBox = document.getElementById(otherBoxId);
 
-    if(!box.classList.contains('active')){
+    if (!box.classList.contains('active')) {
         box.classList.add('active');
         otherBox.classList.remove('active');
     }
@@ -70,16 +50,19 @@ function toggleColor(boxId,url){
     localStorage.setItem('highlightedBox', boxId);
 
     window.location.href = url;
-
 }
-    function restoreColor() {
-        var highlightedBox = localStorage.getItem('highlightedBox');
-        if (highlightedBox) {
-            document.getElementById(highlightedBox).classList.add('active');
-        }
-    }
-window.onload = restoreColor;
 
+function restoreColor() {
+    var highlightedBox = localStorage.getItem('highlightedBox');
+    if (highlightedBox) {
+        document.getElementById(highlightedBox).classList.add('active');
+    } else {
+        // 기본으로 'talk'를 활성화합니다.
+        document.getElementById('talk').classList.add('active');
+    }
+}
+
+window.onload = restoreColor;
 
 
 
@@ -105,11 +88,6 @@ const options = document.querySelectorAll("#searchKey > option");
 
 
 
-// 즉시 실행 함수
-// (() => {})();
-
-// 함수가 정의되자마자 바로 실행함
-/* 변수명 중복을 해결, 함수를 선언하고 호출하는데 최소 2줄이 필요한 상황을 풀어주고 속도가 상승함 */
 
 
 // 쿼리스트링 값을 key, value 구분해서 저장하는 객체 반환
