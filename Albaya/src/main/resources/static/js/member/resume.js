@@ -225,6 +225,7 @@ const score = document.querySelector(".score");
 score.addEventListener("input", () => {
     if(score.value > 100){
         alert("점수가 100보다는 클수가 없습니다");
+        score.value="";
         return;
     }
 });
@@ -544,7 +545,7 @@ jobsOfDesireBtn.forEach(btn => {
             alert("최대 5가지만 선택할 수 있습니다");
             return;
         }
-
+        textContentArr.push(btn.textContent);
 
         const span = document.createElement("span");
         span.className = "addJobCategory";
@@ -634,7 +635,7 @@ const validatingBtnsContainer = document.querySelector("#validatingBtnsContainer
 //저장 버튼
 const applyBtn = document.querySelector("#applyBtn");
 const form  = document.querySelector("#form");
-applyBtn.addEventListener("click", () => {
+applyBtn.addEventListener("click", e => {
     const input = document.createElement("input");
     input.setAttribute("type","hidden");
     input.setAttribute("name","resumeStatus");
@@ -656,6 +657,7 @@ applyBtn.addEventListener("click", () => {
                 case "certificate": str="자격증을 입력해주세요"; break;
             }
             alert(str);
+            e.preventDefault();
             return;
         }
     }
@@ -674,7 +676,7 @@ semiBtn.addEventListener("click", () => {
     const scoreList = document.querySelectorAll(".score");
     scoreList.forEach(i=>{
         if(i.value==""){
-            i.value=0;
+            i.value=0;  
         }
     });
     validatingBtnsContainer.append(input);

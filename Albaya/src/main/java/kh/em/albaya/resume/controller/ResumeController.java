@@ -1,6 +1,7 @@
 package kh.em.albaya.resume.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -222,10 +224,148 @@ public class ResumeController {
 	//이력서 수정
 	@GetMapping("resumeUpdate")
 	public String resumeUpdate(
+			Model model,
+			@SessionAttribute("loginMember") Member loginMember,
 			@RequestParam("resumeNo") int resumeNo
 			) {
-		Resume resume = service.resumeDetail(resumeNo);
+		//상세조회에서 썼던 것
+		Resume resume = service.resumeTable(resumeNo);
+		model.addAttribute("resume", resume);
 		
-	}
+		//대학교 졸업 기간~기간
+		Resume school = service.schoolTable(resumeNo);
+		model.addAttribute("school", school);
+		
+		//희망 근무지 나열 서울시 강서구 동
+		List<Resume> locationList = service.locationTable(resumeNo);
+		model.addAttribute("locationList", locationList);
+		
+		//희망 업직종명 나열
+		List<String> typeNameList = service.workTable(resumeNo);
+		model.addAttribute("typeNameList", typeNameList);
+		
+		//신입 경력사항
+		List<Resume> careerList = service.careerTableResume(resumeNo);
+		model.addAttribute("careerList", careerList);
+		
+		//자격증명, 발행기관명, 점수
+		List<Resume> licenseList = service.licenseTable(resumeNo);
+		model.addAttribute("licenseList", licenseList);
+		//-----------------------------------------------
 
+		//학력 사항 조회해서 화면 만들기
+		List<Resume> educationList = service.educationList();
+		model.addAttribute("educationList",educationList);
+		
+		//시도 조회해서 화면 만들기
+		List<Dosi> dosiList = hireService.selectDosi();
+		model.addAttribute("dosiList", dosiList);
+		
+		//직종 조회해서 화면 만들기
+		List<Resume> workList = service.workList();
+			List<Resume> workList1 = workList.subList(0, 3);
+			List<Resume> workList2 = workList.subList(3, 6);
+			List<Resume> workList3 = workList.subList(6, workList.size());
+		model.addAttribute("workList1", workList1);
+		model.addAttribute("workList2", workList2);
+		model.addAttribute("workList3", workList3);
+		
+		//학력 상태 조회해서 화면 만들기
+		List<Resume> statusList = service.statusList();
+		model.addAttribute("statusList", statusList);
+		//educationStatusNo, educationStatusName
+		
+		//주소
+		String address = loginMember.getMemberAddress().split("\\^\\^\\^")[1];
+		model.addAttribute("address", address);
+		model.addAttribute("resumeNo", resumeNo);
+		return "member/resumeUpdate";
+	}
+	@GetMapping("resumeInfo")
+	@ResponseBody
+	public Map<String, Object> resumeInfo(
+			@RequestParam("resumeNo") int resumeNo,
+			Model model,
+			@SessionAttribute("loginMember") Member loginMember
+			){
+		//상세조회에서 썼던 것
+				Resume resume = service.resumeTable(resumeNo);
+				model.addAttribute("resume", resume);
+				
+				//대학교 졸업 기간~기간
+				Resume school = service.schoolTable(resumeNo);
+				model.addAttribute("school", school);
+				
+				//희망 근무지 나열 서울시 강서구 동
+				List<Resume> locationList = service.locationTable(resumeNo);
+				model.addAttribute("locationList", locationList);
+				
+				//희망 업직종명 나열
+				List<String> typeNameList = service.workTable(resumeNo);
+				model.addAttribute("typeNameList", typeNameList);
+				
+				//신입 경력사항
+				List<Resume> careerList = service.careerTableResume(resumeNo);
+				model.addAttribute("careerList", careerList);
+				
+				//자격증명, 발행기관명, 점수
+				List<Resume> licenseList = service.licenseTable(resumeNo);
+				model.addAttribute("licenseList", licenseList);
+				
+				Map<String, Object> map = new HashMap<>();
+				map.put("resume", resume);
+				map.put("school", school);
+				map.put("locationList", locationList);
+				map.put("typeNameList", typeNameList);
+				map.put("careerList", careerList);
+				map.put("licenseList", licenseList);
+				return map;
+	}
+	@PostMapping("resumeUpdate")
+	public String resumeUpdate(
+			/*------------------------------------------------------------------------------
+			/*넘어오는 모든 name값들:
+			 * image, resumeTitle, introduce, educationNo, 
+			 * //초 : schoolName, educationStatusNo, schoolStartDate, schoolEndDate
+			//중 : 동일
+			//고 : 동일
+			//대 : schoolStartDate, schoolEndDate
+			 * 경력 : companyName*, startDate*, endDate* ****0
+			 * 자격증 : licenseName*, licenseFrom*, licenseScore*, licenseDate* ****0
+			 * dongNo(여러 개 또는 0)* ****0
+			 * career (신입1, 경력2)
+			 * typeName(직종명)* ****0
+			 * resumeStatus(0저장, 1임시저장)
+			 * ------------------------------------------------------------------------------
+			 * 
+			 * */
+			Resume resume, //하나씩만 들어오는 것들
+			@RequestParam(value="companyName", required=false) List<String> companyNameList,
+			@RequestParam(value="startDate", required=false) List<String> startDateList,
+			@RequestParam(value="endDate", required=false) List<String> endDateList,
+			
+			@RequestParam(value="licenseName", required=false) List<String> licenseNameList,
+			@RequestParam(value="licenseFrom", required=false) List<String> licenseFromList,
+			@RequestParam(value="licenseScore", required=false) List<Integer> licenseScoreList,
+			@RequestParam(value="licenseDate", required=false) List<String> licenseDateList,
+			
+			@RequestParam(value="dongNo", required=false) List<Integer> dongNoList,
+			@RequestParam(value="typeName", required=false) List<String> typeNameList,
+			RedirectAttributes ra,
+			@SessionAttribute("loginMember") Member loginMember
+			) throws IllegalStateException, IOException {
+		int memberNo = loginMember.getMemberNo();
+		int result = service.resumeUpdate(
+				resume, 	companyNameList, startDateList, endDateList,
+				licenseNameList, licenseFromList, licenseScoreList, licenseDateList,
+				dongNoList, typeNameList, memberNo
+				);
+		if(result>0) {
+			int resumeNo = resume.getResumeNo();
+			ra.addFlashAttribute("message", "이력서가 성공적으로 수정되었습니다.");
+			return "redirect:/resume/resumeDetail?resumeNo="+resumeNo; 
+		}
+		ra.addFlashAttribute("message", "이력서 수정을 실패하였습니다.");
+		return "redirect:/resume/resumeList";
+	}
 }

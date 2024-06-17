@@ -178,13 +178,13 @@
 	 <!-- 작성하는 것은 제목, 자기소개, 학력사항,근무지,업직종,경력사항,자격증이다. -->
 	 <!-- RESUME 테이블에서 조회 -->
 	<select id="resumeTable">
-		SELECT IMG_PATH , IMG_RENAME , RESUME_TITLE ,INTRODUCE , CAREER
+		SELECT *
 		FROM RESUME
 		WHERE RESUME_NO =#{resumeNo}
 	
 	</select>
 	<select id="schoolTable">
-		SELECT C.EDUCATION_NAME, B.EDUCATION_STATUS_NAME, A.SCHOOL_PERIOD
+		SELECT *
 		FROM "RESUME_EDUCATION" A
 		JOIN "EDUCATION_STATUS" B ON (A.EDUCATION_STATUS_NO=B.EDUCATION_STATUS_NO)
 		JOIN "EDUCATION" C ON (A.EDUCATION_NO=C.EDUCATION_NO)
@@ -193,7 +193,7 @@
 	
 	</select>
 	<select id="locationTable">
-		SELECT DOSI_NAME,SIGUNGU_NAME,DONG_NAME
+		SELECT *
 		FROM "RESUME_LOCATION" A
 		LEFT JOIN "DONG" B ON (A.DONG_NO=B.DONG_NO)
 		LEFT JOIN "SIGUNGU" C ON (B.SIGUNGU_NO=C.SIGUNGU_NO)
@@ -201,7 +201,7 @@
 		WHERE RESUME_NO=#{resumeNo}
 	</select>
 	<select id="workTable">
-		SELECT TYPE_NAME
+		SELECT *
 		FROM RESUME_WORK A
 		JOIN WORK_TYPE B ON (A.TYPE_NO=B.TYPE_NO)
 		WHERE RESUME_NO=#{resumeNo}
@@ -217,6 +217,12 @@
 	<select id="licenseTable">
 		SELECT LICENSE_NAME ,LICENSE_FROM , LICENSE_SCORE 
 		FROM "LICENSE"
+		WHERE RESUME_NO=#{resumeNo}
+	</select>
+	
+	<!-- 이력서 수정 시에만 CAREER 테이블 다르게 조회 -->
+	<select id="careerTableResume">
+		SELECT * FROM "CAREER" 
 		WHERE RESUME_NO=#{resumeNo}
 	</select>
 </mapper>

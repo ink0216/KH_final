@@ -226,21 +226,24 @@ document.addEventListener("DOMContentLoaded",()=>{
     })
 
     /* 알립 버튼 클릭 */
-    notificationBtn.addEventListener("click",e=>{
-        const notiList=document.querySelector('.notification-list');
-
-          // 보이는 상태일 때
-          if(notiList.classList.contains("notification-show")){
-            notiList.classList.remove("notification-show");
-            notiList.classList.add("notification-showx")
-            return;
-        }
-
-        /* 로그인 상태인 경우 알림 목록을 바로 비동기로 조회 */
-        selectNotificationFn();
-        notiList.classList.remove("notification-showx");
-        notiList.classList.add("notification-show");
-    })
+    if(notificationBtn !=null){
+        notificationBtn.addEventListener("click",e=>{
+            const notiList=document.querySelector('.notification-list');
+    
+              // 보이는 상태일 때
+            if(notiList.classList.contains("notification-show")){
+                notiList.classList.remove("notification-show");
+                notiList.classList.add("notification-showx")
+                return;
+            }
+    
+            /* 로그인 상태인 경우 알림 목록을 바로 비동기로 조회 */
+            selectNotificationFn();
+            notiList.classList.remove("notification-showx");
+            notiList.classList.add("notification-show");
+        })
+    }
+    
 })
 //------------------------------------------------------------------------------------
 const query = document.querySelector("#searchField");

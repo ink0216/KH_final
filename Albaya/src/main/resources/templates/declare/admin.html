@@ -24,7 +24,6 @@
                     <th>게시글 번호</th>
                     <th>신고자</th>
                     <th>신고 내용</th>
-                    <th>상태</th>
                     <th>신고 날짜</th>
                     <th>신고받은 사람</th>
                     <th>신고 처리</th>
@@ -38,7 +37,6 @@
                                     th:text="${declare.reviewBoardNo}"></a> </td>
                             <td th:text="${declare.memberNo}"></td>
                             <td><div class="boardDeclareContent" th:text="${declare.boardDeclareContent}"></div></td>
-                            <td th:text="${declare.reviewBoardCondition}"></td>
                             <td th:text="${declare.boardDeclareDate}"></td>
                             <td th:text="${declare.reportedMemberNo}"></td>
                             <td>
