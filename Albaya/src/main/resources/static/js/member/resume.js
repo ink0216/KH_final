@@ -102,7 +102,6 @@
                         }
                     });
     
-                    // Initial check in case inputs are already filled
                     let initialAllFilled = Array.from(showInput).every(input => input.value.trim().length > 0);
                     obj.schoolName = initialAllFilled;
                     console.log("Initial school name validation status:", obj.schoolName);
