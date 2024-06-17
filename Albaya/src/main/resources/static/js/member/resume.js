@@ -225,6 +225,7 @@ const score = document.querySelector(".score");
 score.addEventListener("input", () => {
     if(score.value > 100){
         alert("점수가 100보다는 클수가 없습니다");
+        score.value="";
         return;
     }
 });
@@ -656,7 +657,7 @@ applyBtn.addEventListener("click", e => {
                 case "certificate": str="자격증을 입력해주세요"; break;
             }
             alert(str);
-            e.target.preventDefault();
+            e.preventDefault();
             return;
         }
     }
@@ -675,7 +676,7 @@ semiBtn.addEventListener("click", () => {
     const scoreList = document.querySelectorAll(".score");
     scoreList.forEach(i=>{
         if(i.value==""){
-            i.value=0;
+            i.value=0;  
         }
     });
     validatingBtnsContainer.append(input);
