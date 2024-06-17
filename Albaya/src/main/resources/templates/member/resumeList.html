@@ -52,11 +52,11 @@
                         <input type="checkbox" class="tick">
                     </div> -->
                     <div class="resumeTitle">
-                        <h3 th:text="*{resumeTitle}" th:data-resume-no="*{resumeNo}" id="resumeTitle">나의 이력서</h3><span>저장</span>
+                        <h3 th:text="*{resumeTitle}" >나의 이력서</h3><span>저장</span>
                     </div>
 
                     <div class="recentUpdateDate">
-                        <p th:text="*{resumeDate}">12/06/2024 14:31</p>
+                        <p th:text="*{resumeDate}" th:data-resume-no="*{resumeNo}" id="resumeTitle">12/06/2024 14:31</p>
                     </div>
                     <div class="manage">
                         <div id="buttons">
