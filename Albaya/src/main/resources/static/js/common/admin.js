@@ -3,7 +3,6 @@ const accept = document.querySelector("#accept");
 const reviewBoardDeclareNo = document.querySelector("#reviewBoardDeclareNo");
 const reviewBoardNo = document.querySelector("#reviewBoardNo");
 const memberNo = document.querySelector("#memberNo");
-const reviewBoardCondition = document.querySelector("#reviewBoardCondition");
 const boardDeclareDate = document.querySelector("#boardDeclareDate");
 const reportedMemberNo = document.querySelector("#reportedMemberNo");
 const tbody = document.querySelector(".tbody");
@@ -54,7 +53,6 @@ const selectList = (cp) => {
                     'reviewBoardNo',
                     'memberNo',
                     'boardDeclareContent',
-                    'reviewBoardCondition',
                     'boardDeclareDate',
                     'reportedMemberNo'
                 ];
