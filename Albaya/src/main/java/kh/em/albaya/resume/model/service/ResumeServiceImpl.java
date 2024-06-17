@@ -228,4 +228,125 @@ public class ResumeServiceImpl implements ResumeService {
 	public List<Resume> careerTableResume(int resumeNo) {
 		return mapper.careerTableResume(resumeNo);
 	}
+	
+	//이력서 수정
+	@Override
+	public int resumeUpdate(Resume resume, List<String> companyNameList, List<String> startDateList,
+			List<String> endDateList, List<String> licenseNameList, List<String> licenseFromList,
+			List<Integer> licenseScoreList, List<String> licenseDateList, List<Integer> dongNoList,
+			List<String> typeNameList, int memberNo) throws IllegalStateException, IOException {
+		/*넘어오는 모든 name값들:
+		 * image, resumeTitle, introduce, educationNo, 
+		 * //초 : schoolName, educationStatusNo, schoolStartDate, schoolEndDate
+		//중 : 동일
+		//고 : 동일
+		//대 : schoolStartDate, schoolEndDate
+		 * 경력 : companyName*, startDate*, endDate* ****0
+		 * 자격증 : licenseName*, licenseFrom*, licenseScore*, licenseDate* ****0
+		 * dongNo(여러 개 또는 0)* ****0
+		 * career (신입1, 경력2)
+		 * typeName(직종명)* ****0
+		 * resumeStatus(0저장, 1임시저장)
+		 * ------------------------------------------------------------------------------
+		 * 
+		 * */
+
+		resume.setMemberNo(memberNo);
+		
+		if(!resume.getImage().isEmpty()) {
+			//프로필 이미지가 있을 때에만
+			String imgOriginalName = resume.getImage().getOriginalFilename();
+			resume.setImgOriginalName(imgOriginalName);
+			
+			String rename = Utility.fileRename(imgOriginalName);
+			resume.setImgRename(rename);
+			
+			
+			resume.setImgPath(webPath);
+			//성공시
+			resume.getImage().transferTo(new File(folderPath+rename));
+		}
+		
+		int result = mapper.resume(resume); //RESUME 테이블에 INSERT
+		if(result==0) {
+			return 0; //실패한 경우
+		}
+		int resumeNo = resume.getResumeNo(); //위에서 삽입 성공 시 resume의 얕은복사여서 
+		//삽입 성공된 resume의 resumeNo값도 세팅된다.
+		/*List<String> companyNameList, List<String> startDateList, List<String> endDateList, 
+		 * List<String> licenseNameList, List<String> licenseFromList, List<Integer> licenseScoreList, List<String> licenseDateList, 
+		 * List<Integer> dongNoList,
+			List<String> typeNameList,
+		 * */
+		resume.setResumeNo(resumeNo);
+		// CAREER테이블 INSERT
+		for(int i=0;i<companyNameList.size();i++) {
+			resume.setCompanyName(companyNameList.get(i));
+			resume.setStartDate(startDateList.get(i));
+			resume.setEndDate(endDateList.get(i));
+			
+			result=mapper.career(resume);
+			if(result==0) throw new RuntimeException("career insert error");
+		}
+		
+		if(result==0) return 0;
+		//성공시
+		
+		// LICENSE 테이블 INSERT
+		for(int i=0;i<licenseNameList.size();i++) {
+			resume.setLicenseName(licenseNameList.get(i));
+			resume.setLicenseFrom(licenseFromList.get(i));
+			resume.setLicenseScore(licenseScoreList.get(i));
+			resume.setLicenseDate(licenseDateList.get(i));
+			
+			result = mapper.license(resume);
+			if(result==0) throw new RuntimeException("license insert error");
+		}
+		if(result==0) return 0;
+		//성공시
+		
+		//RESUME_LOCATION 테이블 INSERT
+
+		if (dongNoList != null && !dongNoList.isEmpty()) {
+		    for (int i = 0; i < dongNoList.size(); i++) {
+		        resume.setDongNo(dongNoList.get(i));
+
+		        result = mapper.resumeLocation(resume);
+		        if (result == 0) {
+		            throw new RuntimeException("resumeLocation insert error");
+		        }
+		    }
+		    if (result == 0) {
+		        return 0;
+		    }
+		}
+
+		
+		//성공시
+		
+		//RESUME_WORK 테이블에 INSERT
+		if(typeNameList !=null&&!typeNameList.isEmpty()) {
+			for(int i=0;i<typeNameList.size();i++) {
+				String typeName = typeNameList.get(i);
+				int typeNo = mapper.typeNo(typeName);
+				resume.setTypeNo(typeNo);
+				
+				result = mapper.resumeWork(resume);
+				if(result==0) throw new RuntimeException("resumeWork insert error");
+			}
+			if(result==0) return 0;
+		}
+		
+		//성공시
+		
+		//RESUME_EDUCATION 테이블에 INSERT
+		String schoolPeriod = resume.getSchoolStartDate()+" ~ "+resume.getSchoolEndDate();
+		resume.setSchoolPeriod(schoolPeriod);
+			result = mapper.resumeEducation(resume);
+		
+		if(result==0) throw new RuntimeException("resumeEducation insert error");
+		if(result==0) return 0;
+		
+		return 1;
+	}
 }

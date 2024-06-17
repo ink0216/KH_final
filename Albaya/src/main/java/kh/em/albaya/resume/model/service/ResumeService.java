@@ -82,5 +82,10 @@ public interface ResumeService {
 	///이력서 작성 시에만 CAREER 테이블 다르게 조회
 	List<Resume> careerTableResume(int resumeNo);
 
+	int resumeUpdate(Resume resume, List<String> companyNameList, List<String> startDateList, List<String> endDateList,
+			List<String> licenseNameList, List<String> licenseFromList, List<Integer> licenseScoreList,
+			List<String> licenseDateList, List<Integer> dongNoList, List<String> typeNameList, int memberNo)
+					throws IllegalStateException, IOException;
+
 	
 }
