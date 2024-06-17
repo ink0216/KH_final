@@ -290,39 +290,47 @@
 	</select>
 
 	
+	
 	<!-- 해당 업직종의 공고 수 찾기 -->
-	<select id="kindListCount">
-	SELECT COUNT(*) FROM "HIRE"
-		WHERE TYPE_NO IN 
-		<foreach collection="list" item="item" open="(" close=")" separator=",">
-			#{item}
-		</foreach>
-		AND HIRE_STATUS = 0
-		AND  HIRE_END >(SELECT SYSDATE FROM "DUAL")
-		AND HIRE_DEL_FL='N'
-	</select>
-	
-	
-	<!-- 직종별 공고 조회해오기 -->
-	<select id="kindHireList">
-		SELECT A.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
-		WORK_END, DOSI_NAME, SIGUNGU_NAME, F.PAY_NAME, PAY_INPUT
-		 FROM "HIRE" A
-		JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
-		JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
-		JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
-		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
-		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
 
-		WHERE A.HIRE_STATUS = 0
-		AND A.TYPE_NO IN 
-		<foreach collection="list" item="item" open="(" close=")" separator=",">
-			#{item}
-		</foreach>
-		AND A.HIRE_DEL_FL='N'
-		AND  A.HIRE_END >(SELECT SYSDATE FROM "DUAL")
-		ORDER BY A.HIRE_NO DESC
+	<select id="kindListCount" resultType="java.lang.Integer">
+	    SELECT COUNT(*) FROM "HIRE"
+	    WHERE 1=1
+	    <if test="list != null and list.size > 0"> 
+		    AND TYPE_NO IN 
+		    <foreach collection="list" item="item" open="(" close=")" separator=",">
+		        #{item}
+		    </foreach>
+	    </if>
+	    AND HIRE_STATUS = 0
+	    AND HIRE_END > (SELECT SYSDATE FROM "DUAL")
+	    AND HIRE_DEL_FL = 'N'
 	</select>
+
+
+   
+   <!-- 직종별 공고 조회해오기 -->
+   <select id="kindHireList">
+      SELECT A.SHOP_NAME, HIRE_TITLE, WORK_START,HIRE_NO,
+      WORK_END, DOSI_NAME, SIGUNGU_NAME, F.PAY_NAME, PAY_INPUT
+       FROM "HIRE" A
+      JOIN "SHOP" B ON (B.SHOP_NO=A.SHOP_NO)
+      JOIN "DONG" C ON (C.DONG_NO=A.DONG_NO)
+      JOIN "SIGUNGU" D ON (D.SIGUNGU_NO=C.SIGUNGU_NO)
+      JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
+      JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
+
+      WHERE A.HIRE_STATUS = 0
+      <if test="list != null and list.size > 0"> 
+		    AND A.TYPE_NO IN 
+		    <foreach collection="list" item="item" open="(" close=")" separator=",">
+		        #{item}
+		    </foreach>
+	    </if>
+      AND A.HIRE_DEL_FL='N'
+      AND  A.HIRE_END >(SELECT SYSDATE FROM "DUAL")
+      ORDER BY A.HIRE_NO DESC
+   	</select>
 	
 	<insert id="hireApply">
 	    INSERT INTO "APPLY_HIRE"

@@ -6,7 +6,6 @@ const commentNo = document.querySelector("#commentNo");
 const connectToDeclareAdmin = document.querySelector("#connectToDeclareAdmin");
 const reportedMemberNo = document.querySelector("#reportedMemberNo");
 const commentDeclareDate = document.querySelector("#commentDeclareDate");
-const commentCondition = document.querySelector("#commentCondition");
 const tbody = document.querySelector(".tbody");
 
 const commentContent = document.querySelector("#commentContent");
@@ -70,7 +69,6 @@ const selectList = (cp) => {
                     'commentContent',
                     'memberNo',
                     'commentDeclareContent',
-                    'commentDeclareCondition',
                     'commentDeclareDate',
                     'reportedMemberNo'
                 ];

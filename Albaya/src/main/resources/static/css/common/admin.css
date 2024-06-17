@@ -157,14 +157,14 @@ table{
     text-align:center;
 }
 .styled-table tr > *:nth-of-type(4){
-    width: 30%;
+    width: 35%;
     overflow-y: auto;
     font-weight: bold;
    
    
 }
 .styled-table tr > *:nth-of-type(5){
-    width:5%;
+    width:10%;
     text-align:center;
 }
 .styled-table tr > *:nth-of-type(6){
@@ -172,11 +172,8 @@ table{
     text-align:center;
 }
 .styled-table tr > *:nth-of-type(7){
-    width:10%;
-    text-align:center;
-}
-.styled-table tr > *:nth-of-type(8){
     width:20%;
+    text-align:center;
 }
 
 .buttonArea{
