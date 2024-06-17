@@ -180,6 +180,7 @@
 	<select id="resumeTable">
 		SELECT *
 		FROM RESUME
+		JOIN "MEMBER" USING (MEMBER_NO)
 		WHERE RESUME_NO =#{resumeNo}
 	
 	</select>
