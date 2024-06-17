@@ -79,6 +79,8 @@ public interface ResumeService {
 	List<Resume> careerTable(int resumeNo);
 
 	List<Resume> licenseTable(int resumeNo);
+	///이력서 작성 시에만 CAREER 테이블 다르게 조회
+	List<Resume> careerTableResume(int resumeNo);
 
 	
 }

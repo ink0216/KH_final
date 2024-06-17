@@ -294,9 +294,11 @@
 	<select id="kindListCount">
 	SELECT COUNT(*) FROM "HIRE"
 		WHERE TYPE_NO IN 
-		<foreach collection="list" item="item" open="(" close=")" separator=" , ">
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
+		AND HIRE_STATUS = 0
+		AND  HIRE_END >(SELECT SYSDATE FROM "DUAL")
 		AND HIRE_DEL_FL='N'
 	</select>
 	
@@ -312,13 +314,14 @@
 		JOIN "DOSI" E ON (E.DOSI_NO=D.DOSI_NO)
 		JOIN "PAY_TYPE" F ON (F.PAY_NO=A.PAY_NO)
 
-		WHERE HIRE_STATUS = 0
+		WHERE A.HIRE_STATUS = 0
 		AND A.TYPE_NO IN 
-		<foreach collection="list" item="item" open="(" close=")" separator=" , ">
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
-		AND HIRE_DEL_FL='N'
-		ORDER BY HIRE_NO DESC
+		AND A.HIRE_DEL_FL='N'
+		AND  A.HIRE_END >(SELECT SYSDATE FROM "DUAL")
+		ORDER BY A.HIRE_NO DESC
 	</select>
 	
 	<insert id="hireApply">

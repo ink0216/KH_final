@@ -544,7 +544,7 @@ jobsOfDesireBtn.forEach(btn => {
             alert("최대 5가지만 선택할 수 있습니다");
             return;
         }
-
+        textContentArr.push(btn.textContent);
 
         const span = document.createElement("span");
         span.className = "addJobCategory";
