@@ -292,6 +292,7 @@
 	
 	
 	<!-- 해당 업직종의 공고 수 찾기 -->
+
 	<select id="kindListCount" resultType="java.lang.Integer">
 	    SELECT COUNT(*) FROM "HIRE"
 	    WHERE 1=1
@@ -306,7 +307,7 @@
 	    AND HIRE_DEL_FL = 'N'
 	</select>
 
-   
+
    
    <!-- 직종별 공고 조회해오기 -->
    <select id="kindHireList">

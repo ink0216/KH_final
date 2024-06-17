@@ -90,8 +90,8 @@
                     <hr>
                     <div class="detail" id="qualifications">
                         <span>최종학력</span>
-                        <div th:text="${school.educationName}">대학교</div>
-                        <div th:text="${school.educationStatusName}">대학교</div>
+                        <div th:text="${school?.educationName}">대학교</div>
+                        <div th:text="${school?.educationStatusName}">대학교</div>
                         <!-- <div th:text="|${school.schoolPeriod.replaceAll('[^\\d—-]', '').replace('—', '-').replace(' - ', ' ~ ')}|">대학교</div> -->
                         <!-- 
                         th:text="|${school.schoolPeriod.replaceAll('[^\\d-]', '').replace(' - ', ' ~ ')}|"
@@ -213,7 +213,6 @@
          -->
         
     </div>
-   
     <th:block th:replace="~{common/footer}"></th:block>
     <script src = "/js/member/resumeProfile.js"></script>
     

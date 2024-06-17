@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이력서 수정</title>
     <link rel="stylesheet" href="/css/member/resume.css">
+    <style>
+        
+#profImg{
+    width:150px;
+    height:150px;
+    border-radius: 100%;
+    border:1px solid lightgray;
+    margin-bottom: 20px;
+    
+}
+    </style>
     <script src="https://kit.fontawesome.com/ccebd17005.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,14 +30,30 @@
                 </div>
                 <div class = "selectFileSpan"> 
                     <span value="12">사진 업데이트:</span>
+                    <span id="picName" th:text="${resume.imgOriginalName}"></span>
                 </div><br>
                 <div class = "fileInput"> 
-                    <input type=file id="picFile" name="image" class="image" required accept="image/*"></input>
+                    <label for="picFile" style="background-color: pink; border: 2px solid black; border-radius: 3px;">이미지 파일 선택</label>
+                    <input type=file id="picFile" name="image" class="image" required accept="image/*" style="display: none"></input>
+
+                    <script>
+                        document.getElementById("picFile").addEventListener("change", e => {
+                            console.log(e.target.files);  
+                            const files = e.target.files;
+
+                            // 취소 또는 이미지 변경 X
+                            if(files.length == 0) return;
+
+                            const image = files[0];
+
+                            document.querySelector("#picName").textContent = image.name;
+                        })
+                    </script>
                 </div>
                 <br><br>
                 <div class="finalizingBtns">
                     <button type="button"  id = "cancel">취소</button>
-                    <button type="button" id = "update">업데이트</button>
+                    <button type="button" id = "update">입력</button>
                 </div>
             </div>
         </div>
@@ -35,8 +62,8 @@
         <div id = "cont">
             <div  class = "profileInfo">
                 <div id = "innerProfileContainer">
-                    <div id="profileImg">
-                        <img src="" alt="">
+                    <div id="profileImg" >
+                        <img th:src="|${resume.imgPath}${resume.imgRename}|" alt="" id="profImg">
                         <button id="editProfile" type="button"><i class="fa-solid fa-camera"></i></button>
                     </div>
                     <div id="info">
@@ -83,7 +110,8 @@
                     <div class="resumeElement">
                         <h3>이력서 제목<span class="required">*</span></h3>
                         <ul>
-                            <li><input type="text" id = "title" required name="resumeTitle" class = "resumeTitle"></li>
+                            <li><input th:value="${resume.resumeTitle}" 
+                                type="text" id = "title" required name="resumeTitle" class = "resumeTitle"></li>
                         </ul>
                         
                     </div>
@@ -94,7 +122,8 @@
         
                         <ul>
                             <li>
-                                <textarea id="introduce" name="introduce" class="introduce"></textarea>
+                                <textarea th:text="${resume.introduce}"
+                                id="introduce" name="introduce" class="introduce"></textarea>
                             </li>
                         </ul>
         
@@ -200,15 +229,7 @@
                                         <input type="text" name="universityName" id="universityName" placeholder = "대학교" reqiured> -->
                                         <div><br>
             
-                                            
-                                                <!-- <span>졸업여부</span>
-                                                <select name="graduationStatus" class="graduationDropDown" required>
-                                                    <option value = "1">졸업</option>
-                                                    <option value = "2">재학</option>
-                                                    <option value = "3">휴학</option>
-                                                    <option value = "4">중퇴</option>
-                                                    <option value = "5">수교</option>
-                                                </select> -->
+                                        
             
                                                 <div id="dateContainer">
                                                     
@@ -404,7 +425,8 @@
                                     </div><br><br>
                                     <div class = "experiencedDetail hide" >
                                         
-                                        
+                                        <!-- <th:block th:each=""
+                                        ></th:block> -->
                                         <div class = "experiencedContainer">
                                                 <div class = "companyNames">
                                                     <span>회사이름</span>
@@ -416,8 +438,6 @@
                                                     <input type="date" name="startDate" class="startDate">~<input type="date" name="endDate" class="endDate">
                                                     <button type = "button" id = "chuga">+</button>
                                                 </div>
-                                                
-                                                
                                             
                                         </div>
     
@@ -442,7 +462,7 @@
                                         </div>
                                         
                                     
-                                           
+                                        
                     
                                         <div class="organizationDetail">
                                             <span>발행기관</span>&nbsp;&nbsp;
@@ -454,15 +474,15 @@
                                             <input type="number" name="licenseScore" class = "score" max="100" required>&nbsp;/100
                                         </div>
                                                 
-                                      
+                                    
                                         <div class = "issueDetail">
                                             <span>취득일</span>
                                             <input type="date" name="licenseDate" class="issueDate"  required>
                                             <button type="button" id = "certAdd">+</button>
                                         </div>
-                                       
+                                    
             
-                                      
+                                    
                                     
                                     </div>
                                 
@@ -477,7 +497,6 @@
             
                 <div id="validatingBtnsContainer">
                     <button class = "resume submit"  id="applyBtn" >저장</button>
-                    <button class = "resume" id="semiBtn">임시저장</button>
                 </div>
     
                 
@@ -487,7 +506,7 @@
     
         </div>
     </form>
-    <script src = "/js/member/resume.js"> </script>
+    <script src = "/js/member/resumeUpdate.js"> </script>
     <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
