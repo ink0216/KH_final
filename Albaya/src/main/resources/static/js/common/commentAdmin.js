@@ -337,13 +337,31 @@ document.getElementById('searchBtn').addEventListener("click", () => {
     .then(data => {
         const resultDiv = document.getElementById('result');
         if (data) {
-            resultDiv.innerHTML = `회원 번호 : ${data.memberNo} <br> 회원 계정 : ${data.memberEmail} <br> 회원 상태 : ${data.memberStatus}`;
-        } else {
-            resultDiv.innerHTML = '회원이 존재하지 않습니다.';
-        }
+            let memberStatusText;
+            switch (data.memberStatus) {
+                case 1:
+                    memberStatusText = "1회 경고";
+                    break;
+                case 2:
+                    memberStatusText = "2회 경고";
+                    break;
+                case 3:
+                    memberStatusText = "정지 상태";
+                    break;
+                case 4:
+                    memberStatusText = "정상 회원";
+                    break;
+                case 5:
+                    memberStatusText = "탈퇴 회원";
+                    break;
+                default:
+                    memberStatusText = "알 수 없는 상태";
+            }
+
+            resultDiv.innerHTML = `회원 번호 : ${data.memberNo} <br> 회원 계정 : ${data.memberEmail} <br> 회원 상태 : ${memberStatusText}`;
+        } 
     })
     .catch(error => {
-        console.error('Error:', error);
         document.getElementById('result').innerHTML = '존재하지 않은 회원 번호입니다.';
     });
 
