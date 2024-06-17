@@ -51,6 +51,7 @@
                     <!-- <div id="profImg">
                         <img th:src="|${resume.imgPath}${resume.imgRename}|" >
                     </div> -->
+                    <img id="profImg" th:src="|${resume.imgPath}${resume.imgRename}|" >
                     <div id="pesonalInfo">
                         <div  class="info" id="name">
                             <span><h3 th:text="${session.loginMember.memberName}">황진관</h3></span>
@@ -62,7 +63,7 @@
                             <span th:text="${session.loginMember.memberPhoneNumber}">01057823394</span>
                         </div><br><br>
                     </div>
-                        <img id="profImg" th:src="|${resume.imgPath}${resume.imgRename}|" >
+                        
                     
                     <hr>
                     <button id="backBtn">목록으로&nbsp;<i class="fa-solid fa-arrow-left"></i></button>
