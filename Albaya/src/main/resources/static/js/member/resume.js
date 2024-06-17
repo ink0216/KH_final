@@ -656,7 +656,7 @@ applyBtn.addEventListener("click", e => {
                 case "certificate": str="자격증을 입력해주세요"; break;
             }
             alert(str);
-            e.target.preventDefault();
+            e.preventDefault();
             return;
         }
     }
@@ -675,7 +675,7 @@ semiBtn.addEventListener("click", () => {
     const scoreList = document.querySelectorAll(".score");
     scoreList.forEach(i=>{
         if(i.value==""){
-            i.value=0;
+            i.value=0;  
         }
     });
     validatingBtnsContainer.append(input);
