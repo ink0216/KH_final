@@ -112,14 +112,15 @@
 	</insert>
 	
 	<!-- 시군구동이 모두 일치하는 동 번호 조회 -->
+
 	<select id="hireDongNo">
 	       SELECT DONG_NO
        FROM "DONG"
        JOIN "SIGUNGU" USING (SIGUNGU_NO)
        JOIN "DOSI" USING (DOSI_NO)
-       WHERE REPLACE(DONG_NAME, ' ', '') LIKE '%' || REPLACE(#{dongName}, ' ', '') || '%'
-       AND REPLACE(SIGUNGU_NAME, ' ', '') LIKE '%' || REPLACE(#{sigunguName}, ' ', '') || '%'
-       AND REPLACE(DOSI_NAME, ' ', '') LIKE '%' || REPLACE(#{dosiName}, ' ', '') || '%'
+       WHERE DONG_NAME LIKE '%' || #{dongName} || '%'
+       AND SIGUNGU_NAME LIKE '%' || #{sigunguName} || '%'
+       AND DOSI_NAME LIKE '%' || #{dosiName} || '%'
 	</select>
 	
 	

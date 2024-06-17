@@ -46,7 +46,7 @@ payInput.addEventListener("input",e=>{
     const diffMSec =  new Date(0+' '+workEnd.value) - new Date(0+' '+workStart.value)
     const workTime = diffMSec / (60 * 60 * 1000);
     console.log(`근무 시간:  ${workTime}`);
-    console.log(value);
+    // console.log(value);
 
     const weekWorkTime = dayCount * workTime;
     let weekPay = 0;
@@ -88,7 +88,7 @@ payInput.addEventListener("input",e=>{
                 weekPay = 9860 * workTime * dayCount;
             }
             console.log(Number(pay)<weekPay);
-            console.log("weekPay : ", weekPay);
+            console.log("최저 주급 : ", weekPay);
             if(Number(pay)<weekPay){
                 payMessage.innerHTML="최저 주급 이상 입력하세요";
                 payMessage.classList.remove("blue");
@@ -111,7 +111,7 @@ payInput.addEventListener("input",e=>{
             }
 
             monthPay = weekPay * 4;
-            console.log("monthPay : ", monthPay);
+            console.log("최저 월급 : ", monthPay);
 
             if(pay<monthPay){
                 // alert("최저 월급 이상 입력하세요");
@@ -137,7 +137,7 @@ payInput.addEventListener("input",e=>{
 
             monthPay = weekPay * 4;
             yearPay = monthPay*365; 
-            console.log("monthPay : ", monthPay);
+            console.log("최저 연봉 : ", yearPay);
 
             if(pay<yearPay){
                 // alert("최저 연봉 이상 입력하세요");
@@ -324,6 +324,7 @@ const titleMessage = document.getElementById("titleMessage");
 
 hireTitle.addEventListener("input",e=>{
     const inputTitle = e.target.value;
+
 
     if(inputTitle.trim().length===0){
         titleMessage.innerHTML="공고 제목을 입력해주세요";
@@ -682,3 +683,4 @@ semiSaveBtn.addEventListener("click", ()=>{
     const hireWrtieForm = document.querySelector("#hireWrtieForm");
     hireWrtieForm.append(hireStatus);
 });
+

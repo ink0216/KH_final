@@ -127,15 +127,17 @@
 	</update>
 	
 	
+	<!-- 정지회원 7일 정지 구문 (발표위해 1분으로 변경) -->
 	<update id="stopMember">
 		UPDATE "MEMBER" SET 
-		SUSPEND_PERIOD = CURRENT_DATE + 7
+		SUSPEND_PERIOD = CURRENT_DATE + 1/24/60 
 		WHERE MEMBER_NO = (SELECT REPORTED_MEMBER_NO
 		  FROM BOARD_DECLARE
 		  WHERE REVIEW_BOARD_DECLARE_NO = #{reviewBoardDeclareNo})
 		AND MEMBER_STATUS = 3
 	</update>
 	
+	<!-- 관리자 회원 -->
 	<select id="selectManager">
 		SELECT *
 		FROM "MEMBER"
