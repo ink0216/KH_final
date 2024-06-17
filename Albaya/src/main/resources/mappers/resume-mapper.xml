@@ -201,7 +201,7 @@
 		WHERE RESUME_NO=#{resumeNo}
 	</select>
 	<select id="workTable">
-		SELECT *
+		SELECT B.TYPE_NAME, A.TYPE_NO
 		FROM RESUME_WORK A
 		JOIN WORK_TYPE B ON (A.TYPE_NO=B.TYPE_NO)
 		WHERE RESUME_NO=#{resumeNo}
