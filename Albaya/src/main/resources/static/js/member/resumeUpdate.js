@@ -1,4 +1,7 @@
-
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/resume/resumeInfo")
+    .then
+});
 //최종학력 선택(고등학교/대학교) 선택시 팝업
 
 const dropDown = document.querySelector("#dropDown");
