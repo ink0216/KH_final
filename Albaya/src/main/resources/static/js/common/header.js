@@ -263,8 +263,6 @@ query.addEventListener("keydown", e => {
 
             setPageOf(hireList);
             getPagination(pagination);
-
-            query.value = "";
         
         });
     }
