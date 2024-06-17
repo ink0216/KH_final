@@ -21,7 +21,9 @@ public class Resume {
 	//RESUME 테이블 컬럼
 	private int resumeNo;
 	private int memberNo;
-	private int memberName;
+	private String memberName;
+	private String memberEmail;
+	private String memberPhoneNumber;
 	private int career; //1: 신입 / 2: 경력
 	private String resumeTitle;
 	private String introduce;

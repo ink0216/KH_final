@@ -245,11 +245,13 @@
                         <button type="button">마감된 공고입니다.</button>
                     </th:block>
                 </th:block>
-                <th:block th:if="${hireOpen ==1}">
-                    <button type="button">마감된 공고입니다.</button>
-                    <th:block th:if="${hire.hireDelFl}=='Y'">
+                <th:block th:if="${hire.hireDelFl}=='Y'">
                         <button type="button">삭제된 공고입니다.</button>
-                    </th:block>
+                        <th:block th:if="${hireOpen ==1}">
+                            <button type="button">마감된 공고입니다.</button>
+                        </th:block>
+                </th:block>
+                
 
             </div>
 

@@ -54,13 +54,13 @@
                     <img id="profImg" th:src="|${resume.imgPath}${resume.imgRename}|" >
                     <div id="pesonalInfo">
                         <div  class="info" id="name">
-                            <span><h3 th:text="${session.loginMember.memberName}">황진관</h3></span>
+                            <span><h3 th:text="${resume.memberName}">황진관</h3></span>
                         </div>
                         <div class="info" id="email">
-                            <span th:text="${session.loginMember.memberEmail}">jkhwang58@gmail.com</span>
+                            <span th:text="${resume.memberEmail}">jkhwang58@gmail.com</span>
                         </div>
                         <div class="info" id="telNo">
-                            <span th:text="${session.loginMember.memberPhoneNumber}">01057823394</span>
+                            <span th:text="${resume.memberPhoneNumber}">01057823394</span>
                         </div><br><br>
                     </div>
                         
