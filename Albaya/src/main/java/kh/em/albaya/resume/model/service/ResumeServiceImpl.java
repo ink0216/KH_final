@@ -107,6 +107,7 @@ public class ResumeServiceImpl implements ResumeService {
 		 * List<Integer> dongNoList,
 			List<String> typeNameList,
 		 * */
+		resume.setResumeNo(resumeNo);
 		// CAREER테이블 INSERT
 		for(int i=0;i<companyNameList.size();i++) {
 			resume.setCompanyName(companyNameList.get(i));
@@ -134,13 +135,16 @@ public class ResumeServiceImpl implements ResumeService {
 		//성공시
 		
 		//RESUME_LOCATION 테이블 INSERT
-		for(int i=0;i<dongNoList.size();i++) {
-			resume.setDongNo(dongNoList.get(i));
-			
-			result = mapper.resumeLocation(resume);
-			if(result==0) throw new RuntimeException("resumeLocation insert error");
+		if(!dongNoList.isEmpty() || dongNoList != null) {
+			for(int i=0;i<dongNoList.size();i++) {
+				resume.setDongNo(dongNoList.get(i));
+				
+				result = mapper.resumeLocation(resume);
+				if(result==0) throw new RuntimeException("resumeLocation insert error");
+			}
+			if(result==0) return 0;
 		}
-		if(result==0) return 0;
+		
 		//성공시
 		
 		//RESUME_WORK 테이블에 INSERT

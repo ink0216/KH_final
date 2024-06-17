@@ -82,6 +82,13 @@ public class HireController {
 		 * int ) hireCount, hireTerm, payNo, payInput, hireGender
 		 * */
 		
+		if(hire.getHireStatus() == 1) {
+			message = "임시저장되었습니다.";
+			path="/hire/"+hireNo; //등록 성공한 공고 상세조회 페이지로 
+			ra.addFlashAttribute("message", message);
+			return "redirect:"+path; 
+		}
+		
 		if(hireNo>0) {
 			//공고 등록 성공 시
 			message="공고가 성공적으로 등록되었습니다.";
@@ -106,30 +113,39 @@ public class HireController {
 	 */
 	@GetMapping("{hireNo:[0-9]+}")
 	public String hireDetail(
-			@PathVariable("hireNo") int hireNo,
-			@RequestParam(value="cp",required = false, defaultValue="1") int cp, 
-			Model model
-			) {
-		Hire hire = service.detailHire(hireNo);
-		String workDay1 = hire.getWorkDay(); //다 합쳐져있는 버전
-		
-		List<Hire> hireList = service.hireList(hireNo);
-		
-		int memberCount = service.memberCount(hireNo);
-		String[] workDayList = workDay1.split(",");
-		String workDay = null;
-		log.debug("workDay : "+workDay);
-		hire.setWorkDay(workDay);
-		model.addAttribute("workDayList", workDayList);
-		model.addAttribute("hire", hire);
-		model.addAttribute("hireList", hireList);
-		model.addAttribute("memberCount", memberCount);
-		
-		//모집 마감일과 비교해서 지원하기/모집 마감 보이기
-		int hireOpen = service.hireOpen(hireNo);
-		model.addAttribute("hireOpen", hireOpen); //마감됐으면 1, 마감 안됐으면 0
-		return "/hire/hireDetail";
+	        @PathVariable("hireNo") int hireNo,
+	        @RequestParam(value="cp", required = false, defaultValue="1") int cp,
+	        Model model
+	) {
+	    Hire hire = service.detailHire(hireNo);
+	    String workDay1 = hire.getWorkDay(); // 다 합쳐져있는 버전
+
+	    List<Hire> hireList = service.hireList(hireNo);
+
+	    int memberCount = service.memberCount(hireNo);
+
+	    String[] workDayList;
+	    if (workDay1 != null) {
+	        workDayList = workDay1.split(",");
+	    } else {
+	        // workDay1이 null인 경우, 기본값으로 빈 배열 사용
+	        workDayList = new String[0];
+	    }
+
+	    String workDay = null;
+	    log.debug("workDay : " + workDay);
+	    hire.setWorkDay(workDay);
+	    model.addAttribute("workDayList", workDayList);
+	    model.addAttribute("hire", hire);
+	    model.addAttribute("hireList", hireList);
+	    model.addAttribute("memberCount", memberCount);
+
+	    // 모집 마감일과 비교해서 지원하기/모집 마감 보이기
+	    int hireOpen = service.hireOpen(hireNo);
+	    model.addAttribute("hireOpen", hireOpen); // 마감됐으면 1, 마감 안됐으면 0
+	    return "/hire/hireDetail";
 	}
+
 	
 	
 	
@@ -301,22 +317,29 @@ public class HireController {
 		return "hire/hireApplyDetail";
 	}
 
-	//공고 수정 버튼 클릭 시 화면 이동
+	// 공고 수정 버튼 클릭 시 화면 이동
 	@GetMapping("update/{hireNo:[0-9]+}")
 	public String hireUpdate(
-			@PathVariable("hireNo") int hireNo,
-			Model model) {
-		Hire hire = service.allHire(hireNo);
-		List<String> dayList = Arrays.asList(hire.getWorkDay().split(","));
-		model.addAttribute("hire", hire);
-		model.addAttribute("dayList", dayList);
-		
-		int dongNo = hire.getDongNo();
-		//해당 DONG_NO의 시도 시군구 동 이름 얻어오기
-		Dong dong = service.initLocation(dongNo);
-		model.addAttribute("dong", dong);
-		return "hire/hireUpdate";
+	        @PathVariable("hireNo") int hireNo,
+	        Model model) {
+	    Hire hire = service.allHire(hireNo);
+	    
+	    List<String> dayList = new ArrayList<>();
+	    if (hire.getWorkDay() != null) {
+	        dayList = Arrays.asList(hire.getWorkDay().split(","));
+	    }
+	    
+	    model.addAttribute("hire", hire);
+	    model.addAttribute("dayList", dayList);
+	    
+	    int dongNo = hire.getDongNo();
+	    // 해당 DONG_NO의 시도 시군구 동 이름 얻어오기
+	    Dong dong = service.initLocation(dongNo);
+	    model.addAttribute("dong", dong);
+	    
+	    return "hire/hireUpdate";
 	}
+
 	
 	//공고 수정
 	@PostMapping("hireUpdate")

@@ -88,7 +88,13 @@
 	
 		INSERT INTO "HIRE" 
 		VALUES(
-		#{hireNo},#{shopNo},#{typeNo},
+		#{hireNo},#{shopNo},
+		<if test= "typeNo == 0">
+			NULL
+		</if>
+		<if test= "typeNo != 0">
+			#{typeNo}
+		</if>,
 		#{payNo},#{hireTitle},#{hireContent},
 		DEFAULT,TO_DATE(#{hireEnd}, 'YYYY-MM-DD'),#{hireCount},
 		#{hireTerm},#{hireGender},
