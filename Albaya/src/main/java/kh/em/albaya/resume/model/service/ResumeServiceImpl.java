@@ -107,6 +107,7 @@ public class ResumeServiceImpl implements ResumeService {
 		 * List<Integer> dongNoList,
 			List<String> typeNameList,
 		 * */
+		resume.setResumeNo(resumeNo);
 		// CAREER테이블 INSERT
 		for(int i=0;i<companyNameList.size();i++) {
 			resume.setCompanyName(companyNameList.get(i));

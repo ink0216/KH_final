@@ -36,7 +36,7 @@
     const month = String(date.getMonth()+1).padStart(2,0);  
     
     const day = String(date.getDate()).padStart(2,0);   
-   
+
     const formattedDate = `${year}-${month}-${day}`;
 
 
@@ -150,7 +150,7 @@
                                     console.log(list)
                                     
                                     list.forEach(dongItem=>{
-                                       
+                                    
                                         const dongdiv = document.createElement("div");
                                         dongdiv.innerHTML = dongItem.dongName;
                                         dongdiv.classList.add("dongs");
@@ -162,13 +162,6 @@
                                             // 화면에 보여지는 동 요소2
                                             obj.location = true;
                                             count++;
-
-                                            // const input = document.createElement("input");
-                                            // input.type = "hidden";
-                                            // input.name = "dongNo";
-                                            // input.value = dongItem.dongNo;
-                                            // form.append(input);
-                                        
 
                                         
                                             if(count>1){
@@ -225,82 +218,6 @@
                 });
         });
     });
-//city dropdown
-
-// const dongs = document.querySelectorAll(".dong");
-
-// const selectCont = document.querySelectorAll(".selectDong");
-
-
-// dongs.forEach(btn => {
-//     btn.addEventListener("click", () => {
-       
-       
-//         for(let i=0; i<locationContentArr.length; i++){
-//             if(btn.textContent == locationContentArr[i]){
-//                 alert("중복 선택은 가능하지 않습니다");
-//                 return;
-//             }
-//         } 
-//         // locationContentArr.push(btn.textContent);
-
-
-//         if(document.querySelectorAll(".selectDong>span").length > 5){
-//             alert("최대 5가지만 선택할 수 있습니다");
-//             return;
-//         }
-
-//         const selectLocationInnerHtml = `
-//             <span class = "selectDong">
-//                 ${btn.textContent}
-//                 <span>&times;</span>
-//             </span>`;
-
-//         locationSelectContainer.innerHTML += selectLocationInnerHtml;
-
-        
-//     })
-// })
-
-
-// const sidoId = document.querySelector("#sido");
-// const sidoClass = document.querySelectorAll(".sido");
-// const sigungu = {
-//     "I000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "B000" : ["city10","city11","city12","city13","city14","city15","city16","city17","city18"],
-//     "K000" : ["city19","city20","city21","city22","city23","city24","city25","city26","city27"],
-//     "A000" : ["city28","city29","city30","city31","city32","city33","city34","city35","city36"],
-//     "G000" : ["city37","city38","city39","city40","city41","city42","city43","city44","city45"],
-//     "1000" : ["city46","city47","city48","city49","city50","city6","city7","city8","city9"],
-//     "O000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "P000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "H000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "J000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "C000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"], 
-//     "D000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "F000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "E000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "L000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "M000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"],
-//     "N000" : ["city1","city2","city3","city4","city5","city6","city7","city8","city9"]
-// };
-
-
-// const sigunguId = document.querySelector("#sigungu");
-
-// sidoId.addEventListener("change", e => {
-//     console.log(sigungu[e.target.options[e.target.selectedIndex].value]);
-//     let s =e.target.options[e.target.selectedIndex].value
-
-//     sigunguId.replaceChildren();
-    
-//     for(let i =0; i<sigungu[s].length; i++){
-//         const option = document.createElement("option");
-//         option.classList.add("siguu"); 
-//         option.innerHTML = sigungu[s][i];   
-//         sigunguId.appendChild(option);
-//     }
-// })
 
 //score validation
 //점수 유효성 검사
@@ -344,7 +261,7 @@ newHire.addEventListener("click", () => {
 });
 if(newHire.classList.contains("selectedBtn")){
     obj.experienced = true;
-   
+
 }
     
 
@@ -592,15 +509,7 @@ chuga.addEventListener("click" , () => {
 //삭제버튼 작성
     const removeBtns = document.querySelectorAll(".remove");
 
-    // removeBtns.forEach(btns => {
-    //     btns.addEventListener("click", () => {
-    //         const container = btns.closest(".experiencedContainer");
-    //         if (container) {
-    //             container.parentNode.removeChild(container);
-    //         }
-    //     })
-        
-    //  })
+
     for(let i = 0; i<removeBtns.length; i++){
         removeBtns[i].addEventListener("click", () => {
             const container =  removeBtns[i].closest(".experiencedContainer");
@@ -624,7 +533,7 @@ jobsOfDesireBtn.forEach(btn => {
 
         count++;
         obj.desiredJobs=true;
-       
+    
         if(count>1){
             alert("중복 선택은 가능하지 않습니다");
             return;
@@ -636,19 +545,7 @@ jobsOfDesireBtn.forEach(btn => {
             return;
         }
 
-        textContentArr.push(btn.textContent);
-        const typeInput = document.createElement("input");
-        typeInput.setAttribute("type","hidden");
-        typeInput.setAttribute("name","typeName");
-        typeInput.setAttribute("value",btn.textContent);
-        form.append(typeInput);
 
-        // const jobinput = document.createElement("input");
-        // jobinput.setAttribute("type","hidden");
-        // jobinput.setAttribute("name","typeName");
-        // jobinput.setAttribute("value",btn.textContent);
-        // addDesiredJobs.appendChild(jobinput);
-       
         const span = document.createElement("span");
         span.className = "addJobCategory";
         span.createTextNode = btn.textContent;
@@ -668,10 +565,7 @@ jobsOfDesireBtn.forEach(btn => {
         addDesiredJobs.append(input);
 
         addDesiredJobs.append(span);   
-        // if(input.value == btn.textContent.substring(0,span.textContent.lastIndexOf("×"))){
-        //     span.remove();
-        //     input.remove();
-        // }
+    
 
         const removeBtn =  document.querySelectorAll(".addJobCategory>span");
         times.addEventListener("click",() => {
@@ -720,8 +614,6 @@ const picFile = document.querySelector("#picFile");
             const reader = new FileReader();
             reader.onload = function(e)  {
             const img = e.target.result;
-            // const innerhtml = `<img src="${img}" alt="Upload File">` 
-            // setImg.innerHTML = innerhtml;
             setImg.style.backgroundImage = `url(${img})`;
             setImg.style.backgroundSize = "150% auto";
             setImg.style.backgroundRepeat = "no-repeat";
@@ -749,17 +641,7 @@ const picFile = document.querySelector("#picFile");
         input.value=0;
         validatingBtnsContainer.append(input);
         
-        
-    /* const obj = {
-        "image": false,
-        "resumeTitle":false,
-        "introduce" : false,
-        "schoolName" : false,
-        "desiredJobs": false,
-        "experienced" : false,
-        "certificate" : false
-    } */
-    
+
 
         for(let key in obj ){
             if(!obj[key]){
@@ -788,7 +670,7 @@ const picFile = document.querySelector("#picFile");
         input.setAttribute("name","resumeStatus");
         input.value=1;
         validatingBtnsContainer.append(input);
-       
+    
         form.submit();
     });
 
@@ -838,7 +720,7 @@ resumeTitle.addEventListener("input", () => {
 
 
 
- 
+
 if(document.querySelectorAll(".selectDong").length!=0){
     obj.location=true;
 }
@@ -853,9 +735,9 @@ introduce.addEventListener("input", () => {
 })
 introduce.addEventListener("mousedown", () => {
         introduce.addEventListener("mousemove", () => {
-           if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
+            if(introduce.clientWidth>=700 || introduce.clientHeight>=500){
             introduce.style.resize = "none";
-           }
+            }
     });
 });
 
