@@ -75,17 +75,15 @@
                             input.addEventListener("input", e => {
                                 isGreater =e.target.value > formattedDate;
                                 if(!isGreater){
-                                    alert("올바른 날짜 형식 입니다");
                                     isGreater = true;
                                     return;
                                 }
-                                
                                 alert("시작 날짜가 오늘 날짜보다 클수 없습니다");
-                                    e.target.value="";
-                                    obj.schoolName=false;
-                                    
-                                
+                            e.target.value="";
+                            obj.schoolName=false;
+                            return;
                             })
+                            
                         }
                         if(input.type==="date"&&input.className === "endDate"){
                             input.addEventListener("input", e => {
@@ -407,13 +405,14 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
             }
             if(input.className==="endDate"){
                 input.addEventListener("input", () => {
-                    if(input.value < document.querySelector(".dateInput>.startDate").value && 
+                    if(input.value > document.querySelector(".dateInput>.startDate").value && 
                     document.querySelector(".dateInput>.startDate").value.trim().length !=0){
+                    }else{
                         alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
                         input.value = "";
-                        return;
                     }
                 })
+                
             }
 
             
