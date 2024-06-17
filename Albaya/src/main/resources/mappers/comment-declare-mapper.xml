@@ -111,10 +111,10 @@
 			WHERE COMMENT_DECLARE_NO = #{commentDeclareNo })
 	</update>
 	
-	<!-- 일주일 정지 -->
+	<!-- 일주일 정지 	(발표위해 1분으로 변경) -->
 	<update id="stopMember">
 		UPDATE "MEMBER" SET 
-		SUSPEND_PERIOD = CURRENT_DATE + 7
+		SUSPEND_PERIOD = CURRENT_DATE + 1/24/60
 		WHERE MEMBER_NO = (SELECT REPORTED_MEMBER_NO
 		  FROM COMMENT_DECLARE
 		  WHERE COMMENT_DECLARE_NO = #{commentDeclareNo})

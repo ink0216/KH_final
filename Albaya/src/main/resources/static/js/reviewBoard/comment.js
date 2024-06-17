@@ -97,11 +97,12 @@ const selectCommentList = () => {
 
 
                     // 신고 버튼 추가
+                    if(loginMemberNo != null && loginMemberNo != comment.memberNo){
                     const commentDeclare = document.createElement("button");
                     commentDeclare.innerText = "신고";
                     commentDeclare.setAttribute("onclick",`showDeclarePopup(${comment.commentNo})`);
                     commentBtnArea.append(commentDeclare);
-
+                    }
 
                     // 답글 버튼
                     const childCommentBtn = document.createElement("button");

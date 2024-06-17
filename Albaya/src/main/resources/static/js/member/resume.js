@@ -75,15 +75,17 @@
                             input.addEventListener("input", e => {
                                 isGreater =e.target.value > formattedDate;
                                 if(!isGreater){
+                                    alert("올바른 날짜 형식 입니다");
                                     isGreater = true;
                                     return;
                                 }
+                                
                                 alert("시작 날짜가 오늘 날짜보다 클수 없습니다");
-                            e.target.value="";
-                            obj.schoolName=false;
-                            return;
+                                    e.target.value="";
+                                    obj.schoolName=false;
+                                    
+                                
                             })
-                            
                         }
                         if(input.type==="date"&&input.className === "endDate"){
                             input.addEventListener("input", e => {
@@ -347,79 +349,87 @@ const addExperience = () => {
 let count=0;    
 const validateExperienced = () => {
     
-const experiencedContainer = document.querySelectorAll(".experiencedContainer>div>input");
-        let count=0;    
-       
-        let allFilled = false;
-        function checkAllInputs(container) {
-            const inputs = container.querySelectorAll("input");
-
-            allFilled = Array.from(experiencedContainer).every(input => input.value.trim().length > 0);
-            if (allFilled) {
-                count=inputs.length;
-                console.log(count);
-            }
-            if (count === inputs.length) {
-                obj.experienced = true;
-            } else {
-                obj.experienced = false;
-            }
+    const experiencedContainer = document.querySelectorAll(".experiencedContainer>div>input");
+    let count = 0;
+    let allFilled = false;
+    let startDateAlertTimeout = null;
+    let endDateAlertTimeout = null;
+    
+    function checkAllInputs(container) {
+        const inputs = container.querySelectorAll("input");
+    
+        allFilled = Array.from(experiencedContainer).every(input => input.value.trim().length > 0);
+        if (allFilled) {
+            count = inputs.length;
+            console.log(count);
         }
-       
-        experiencedContainer.forEach(input => {
-            input.addEventListener("input", () => {
-                if (input.value.trim().length === 0) {
-                    allFilled = false;
-                    input.value = "";
-                    obj.experienced = false;
-                    return;
-                }
-        
-               
-                checkAllInputs(input.closest(".experiencedContainer"));
-
-             
-        
-                if (input.type === "text" && input.value.length > 1) {
-                    return;
-                }
-
-                
-                
-                
-            });
-            if(input.className==="startDate"){
-                input.addEventListener("input", () => {
-                    if(input.value > formattedDate){
+        if (count === inputs.length) {
+            obj.experienced = true;
+        } else {
+            obj.experienced = false;
+        }
+    }
+    
+    function debounce(func, delay) {
+        return function(...args) {
+            clearTimeout(this.timer);
+            this.timer = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+    
+    experiencedContainer.forEach(input => {
+        input.addEventListener("input", () => {
+            if (input.value.trim().length === 0) {
+                allFilled = false;
+                input.value = "";
+                obj.experienced = false;
+                return;
+            }
+    
+            checkAllInputs(input.closest(".experiencedContainer"));
+    
+            if (input.type === "text" && input.value.length > 1) {
+                return;
+            }
+        });
+    
+        if (input.className === "startDate") {
+            input.addEventListener("input", debounce((e) => {
+                clearTimeout(startDateAlertTimeout);
+                if (input.value > formattedDate) {
+                    startDateAlertTimeout = setTimeout(() => {
                         alert("시작 날짜가 오늘 날짜보다 클수 없습니다");
                         input.value = "";
-                       return;
-                    }
-                    else if(input.value > document.querySelector(".dateInput>.endDate").value && 
-                    document.querySelector(".dateInput>.endDate").value.trim().length !=0){
+                    }, 300);  
+                    obj.schoolName = false;
+                    return;
+                } else if (input.value > document.querySelector(".dateInput>.endDate").value &&
+                    document.querySelector(".dateInput>.endDate").value.trim().length != 0) {
+                    startDateAlertTimeout = setTimeout(() => {
                         alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
                         input.value = "";
-                        return;
-                    }
-                })
-            }
-            if(input.className==="endDate"){
-                input.addEventListener("input", () => {
-                    if(input.value > document.querySelector(".dateInput>.startDate").value && 
-                    document.querySelector(".dateInput>.startDate").value.trim().length !=0){
-                    }else{
+                    }, 300);  
+                    obj.schoolName = false;
+                    return;
+                }
+            }, 300)); 
+        }
+    
+        if (input.className === "endDate") {
+            input.addEventListener("input", debounce((e) => {
+                clearTimeout(endDateAlertTimeout);
+                if (input.value <= document.querySelector(".dateInput>.startDate").value &&
+                    document.querySelector(".dateInput>.startDate").value.trim().length != 0) {
+                    endDateAlertTimeout = setTimeout(() => {
                         alert("시작 날짜가 끝나는 날짜보다 클수 없습니다");
                         input.value = "";
-                    }
-                })
-                
-            }
-
+                    }, 300);  // delay of 300ms
+                    return;
+                }
+            }, 300));  // delay of 300ms
+        }
+    });
             
-
-            
-        });
-        
         
     
 };
@@ -622,8 +632,8 @@ update.addEventListener("click",e => {
 
     reader.readAsDataURL(file);
     container.classList.remove("show");
-container.classList.add("hide");
-document.body.style.overflowY = "auto"
+    container.classList.add("hide");
+    document.body.style.overflowY = "auto"
 
     }
     
