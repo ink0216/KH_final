@@ -222,10 +222,62 @@ public class ResumeController {
 	//이력서 수정
 	@GetMapping("resumeUpdate")
 	public String resumeUpdate(
-			@RequestParam("resumeNo") int resumeNo
+			@RequestParam("resumeNo") int resumeNo,
+			Model model,
+			@SessionAttribute("loginMember") Member loginMember
 			) {
-		Resume resume = service.resumeDetail(resumeNo);
+		//상세조회에서 썼던 것
+		Resume resume = service.resumeTable(resumeNo);
+		model.addAttribute("resume", resume);
 		
+		//대학교 졸업 기간~기간
+		Resume school = service.schoolTable(resumeNo);
+		model.addAttribute("school", school);
+		
+		//희망 근무지 나열 서울시 강서구 동
+		List<Resume> locationList = service.locationTable(resumeNo);
+		model.addAttribute("locationList", locationList);
+		
+		//희망 업직종명 나열
+		List<String> typeNameList = service.workTable(resumeNo);
+		model.addAttribute("typeNameList", typeNameList);
+		
+		//신입 경력사항
+		List<Resume> careerList = service.careerTableResume(resumeNo);
+		model.addAttribute("careerList", careerList);
+		
+		//자격증명, 발행기관명, 점수
+		List<Resume> licenseList = service.licenseTable(resumeNo);
+		model.addAttribute("licenseList", licenseList);
+		
+		//-----------------------------------------------
+
+		//학력 사항 조회해서 화면 만들기
+		List<Resume> educationList = service.educationList();
+		model.addAttribute("educationList",educationList);
+		
+		//시도 조회해서 화면 만들기
+		List<Dosi> dosiList = hireService.selectDosi();
+		model.addAttribute("dosiList", dosiList);
+		
+		//직종 조회해서 화면 만들기
+		List<Resume> workList = service.workList();
+			List<Resume> workList1 = workList.subList(0, 3);
+			List<Resume> workList2 = workList.subList(3, 6);
+			List<Resume> workList3 = workList.subList(6, workList.size());
+		model.addAttribute("workList1", workList1);
+		model.addAttribute("workList2", workList2);
+		model.addAttribute("workList3", workList3);
+		
+		//학력 상태 조회해서 화면 만들기
+		List<Resume> statusList = service.statusList();
+		model.addAttribute("statusList", statusList);
+		//educationStatusNo, educationStatusName
+		
+		//주소
+		String address = loginMember.getMemberAddress().split("\\^\\^\\^")[1];
+		model.addAttribute("address", address);
+		return "member/resumeUpdate";
 	}
 
 }

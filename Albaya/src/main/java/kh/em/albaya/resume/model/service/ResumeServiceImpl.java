@@ -135,28 +135,37 @@ public class ResumeServiceImpl implements ResumeService {
 		//성공시
 		
 		//RESUME_LOCATION 테이블 INSERT
-		if(!dongNoList.isEmpty() || dongNoList != null) {
-			for(int i=0;i<dongNoList.size();i++) {
-				resume.setDongNo(dongNoList.get(i));
-				
-				result = mapper.resumeLocation(resume);
-				if(result==0) throw new RuntimeException("resumeLocation insert error");
-			}
-			if(result==0) return 0;
+
+		if (dongNoList != null && !dongNoList.isEmpty()) {
+		    for (int i = 0; i < dongNoList.size(); i++) {
+		        resume.setDongNo(dongNoList.get(i));
+
+		        result = mapper.resumeLocation(resume);
+		        if (result == 0) {
+		            throw new RuntimeException("resumeLocation insert error");
+		        }
+		    }
+		    if (result == 0) {
+		        return 0;
+		    }
 		}
+
 		
 		//성공시
 		
 		//RESUME_WORK 테이블에 INSERT
-		for(int i=0;i<typeNameList.size();i++) {
-			String typeName = typeNameList.get(i);
-			int typeNo = mapper.typeNo(typeName);
-			resume.setTypeNo(typeNo);
-			
-			result = mapper.resumeWork(resume);
-			if(result==0) throw new RuntimeException("resumeWork insert error");
+		if(typeNameList !=null&&!typeNameList.isEmpty()) {
+			for(int i=0;i<typeNameList.size();i++) {
+				String typeName = typeNameList.get(i);
+				int typeNo = mapper.typeNo(typeName);
+				resume.setTypeNo(typeNo);
+				
+				result = mapper.resumeWork(resume);
+				if(result==0) throw new RuntimeException("resumeWork insert error");
+			}
+			if(result==0) return 0;
 		}
-		if(result==0) return 0;
+		
 		//성공시
 		
 		//RESUME_EDUCATION 테이블에 INSERT
@@ -212,5 +221,11 @@ public class ResumeServiceImpl implements ResumeService {
 	@Override
 	public List<Resume> licenseTable(int resumeNo) {
 		return mapper.licenseTable(resumeNo);
+	}
+	
+	///이력서 작성 시에만 CAREER 테이블 다르게 조회
+	@Override
+	public List<Resume> careerTableResume(int resumeNo) {
+		return mapper.careerTableResume(resumeNo);
 	}
 }

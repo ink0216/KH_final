@@ -156,7 +156,15 @@ nextButton.addEventListener("click",(e)=>{
 
 
 function reloadTable(cp) {
-    fetch("/hire/selectHireList?cp=" + cp)
+    let url;
+    if(query.value.trim().length === 0){
+        url = "/hire/selectHireList?cp=" + cp;
+    }
+    else{
+        url = "/hire/selectHireList?cp=" + cp + "&query=" + query.value;
+    }
+
+    fetch(url)
     .then(resp=>resp.json())
     .then(map => {
         console.log(map);

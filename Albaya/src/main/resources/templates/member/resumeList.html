@@ -52,7 +52,13 @@
                         <input type="checkbox" class="tick">
                     </div> -->
                     <div class="resumeTitle">
-                        <h3 th:text="*{resumeTitle}" >나의 이력서</h3><span>저장</span>
+                        <th:block th:if="*{resumeTitle}">
+                            <h3 th:text="*{resumeTitle}" >나의 이력서</h3><span>저장</span>
+                        </th:block>
+                        <th:block th:unless="*{resumeTitle}">
+                            <h3>제목없음</h3><span>저장</span>
+                        </th:block>
+                        
                     </div>
 
                     <div class="recentUpdateDate">
@@ -67,6 +73,7 @@
                     </div>
                     <div class="preferences">
                         <div>
+                        
                             <p th:each="work:*{workList}" th:text="${work.typeName}">고양동/서비스</p>
                         </div>
                     </div>

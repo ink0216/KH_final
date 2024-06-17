@@ -69,7 +69,7 @@ public class FilterConfig {
 		
 		filter.setFilter(new MemberFilter());
 		
-		
+	
 		String[] filteringURL = {"/resume/resumeWrite","/hire/hireApply/*",
 				"/resume/resumeList"};
 		
