@@ -67,7 +67,7 @@ public class HireServiceImpl implements HireService{
 		
 		
 		//dongNo 세팅
-		if(hire.getDongNo() > 0) {
+		if(hire.getDongName() != null) {
 			
 			int dongNo = mapper.hireDongNo(hireLocation);
 			hire.setDongNo(dongNo);
