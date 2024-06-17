@@ -42,6 +42,13 @@ public class FileConfig implements WebMvcConfigurer{
 	@Value("${my.board.resource-location}")
 	private String boardResourceLocation;
 	
+	@Value("${my.resume.resource-handler}")
+	private String ResumeResourceHandler;
+	
+	@Value("${my.resume.resource-location}")
+	private String ResumeResourceLocation;
+	
+	
 	
 	// 요청 주소에 따라
 	// 서버 컴퓨터의 어떤 경로에 접근할 지 설정
@@ -50,6 +57,10 @@ public class FileConfig implements WebMvcConfigurer{
 		registry
 		.addResourceHandler("/myPage/file/**") // 클라이언트 요청 주소 패턴
 		.addResourceLocations("file:///C:\\uploadFiles\\test\\");
+		
+		registry
+		.addResourceHandler(ResumeResourceHandler) // //myPage/resume
+		.addResourceLocations(ResumeResourceLocation);
 		
 		//프로필 이미지 요청 - 서버 폴더 연결 추가
 		registry
