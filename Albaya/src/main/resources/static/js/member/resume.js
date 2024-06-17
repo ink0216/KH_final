@@ -225,6 +225,7 @@ const score = document.querySelector(".score");
 score.addEventListener("input", () => {
     if(score.value > 100){
         alert("점수가 100보다는 클수가 없습니다");
+        score.value="";
         return;
     }
 });
