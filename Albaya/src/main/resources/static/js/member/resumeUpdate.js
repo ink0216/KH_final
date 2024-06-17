@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("/resume/resumeInfo")
-    .then
+    fetch("/resume/resumeInfo?resumeNo="+resumeNo)
+    .then(resp=>resp.json())
+    .then(map=>{
+        console.log(map.locationList);
+    });
 });
 //최종학력 선택(고등학교/대학교) 선택시 팝업
 

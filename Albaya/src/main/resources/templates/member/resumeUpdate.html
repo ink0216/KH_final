@@ -22,7 +22,7 @@
     <th:block th:replace="~{common/header}"></th:block>
     <!-- 이력서  -->
     <!-- 사진 업데이트 팝업창 -->
-    <form action ="/resume/resumeWrite" method="POST" id="form" enctype="multipart/form-data">
+    <form action ="/resume/resumeUpdate" method="POST" id="form" enctype="multipart/form-data">
         <div class = "container hide" >
             <div class = "innerContainer ">
                 <div class = "heading"> 
@@ -454,37 +454,43 @@
                         <br>
                         <ul>
                             <li>
-                            
-                                    <div id="certificate" class = "certificateDetail">
-                                        <div>
-                                            <span>자격증명</span>&nbsp;&nbsp;&nbsp;
-                                            <input type="text" name="licenseName" class="certName" id="searchCertifcate" required><br><br><br>   
-                                        </div>
+                                    <th:block th:each="license : ${licenseList}">
+                                        <div id="certificate" class = "certificateDetail">
+                                            <div>
+                                                <span>자격증명</span>&nbsp;&nbsp;&nbsp;
+                                                <input type="text" th:value="${license.licenseName}" 
+                                                name="licenseName" class="certName" id="searchCertifcate" required><br><br><br>   
+                                            </div>
+                                            
                                         
-                                    
-                                        
+                                            
+                        
+                                            <div class="organizationDetail">
+                                                <span>발행기관</span>&nbsp;&nbsp;
+                                                <input type="text"  th:value="${license.licenseFrom}"
+                                                name="licenseFrom" class = "organization" id="organization" required>
+                                            </div>
                     
-                                        <div class="organizationDetail">
-                                            <span>발행기관</span>&nbsp;&nbsp;
-                                            <input type="text" name="licenseFrom" class = "organization" id="organization" required>
-                                        </div>
+                                            <div class="scoreDetail">
+                                                <span>점수</span>&nbsp;&nbsp;
+                                                <input type="number" th:value="${license.licenseScore}"
+                                                name="licenseScore" class = "score" max="100" required>&nbsp;/100
+                                            </div>
+                                                    
+                                        
+                                            <div class = "issueDetail">
+                                                <span>취득일</span>
+                                                <input type="date" th:value="${license.licenseDate}"
+                                                 name="licenseDate" class="issueDate"  required>
+                                                <button type="button" id = "certAdd">+</button>
+                                            </div>
+                                        
                 
-                                        <div class="scoreDetail">
-                                            <span>점수</span>&nbsp;&nbsp;
-                                            <input type="number" name="licenseScore" class = "score" max="100" required>&nbsp;/100
+                                        
+                                        
                                         </div>
-                                                
+                                    </th:block>
                                     
-                                        <div class = "issueDetail">
-                                            <span>취득일</span>
-                                            <input type="date" name="licenseDate" class="issueDate"  required>
-                                            <button type="button" id = "certAdd">+</button>
-                                        </div>
-                                    
-            
-                                    
-                                    
-                                    </div>
                                 
                             </li><br><br>
                         </ul>
@@ -506,6 +512,9 @@
     
         </div>
     </form>
+    <script th:inline="javascript">
+        const resumeNo = /*[[${resumeNo}]]*/ "게시글 번호";
+    </script>
     <script src = "/js/member/resumeUpdate.js"> </script>
     <th:block th:replace="~{common/footer}"></th:block>
 </body>
