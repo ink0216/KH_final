@@ -214,7 +214,8 @@
                                 <li class="hireMember-item" th:each="member : ${hireList}">
                                     <a th:href="@{/hire/hireApplyDetail/{memberNo}/{hireNo}(memberNo=${member.memberNo}, hireNo=${member.hireNo})}"
                                         class="memberEmail" name="memberEmail" id="memberEmail"
-                                        th:text="${member.memberEmail}" target="_blank">hong@naver.com</a>
+                                        th:text="${member.memberEmail}" target="_blank"
+                                        onclick="window.open(this.href, '_blank', 'width=400' ,'height=600')">hong@naver.com</a>
                                     <p class="memberName" th:text="(${member.memberName})">(홍*동)</p>
                                 </li>
                             </ul>
@@ -246,12 +247,12 @@
                     </th:block>
                 </th:block>
                 <th:block th:if="${hire.hireDelFl}=='Y'">
-                        <button type="button">삭제된 공고입니다.</button>
-                        <th:block th:if="${hireOpen ==1}">
-                            <button type="button">마감된 공고입니다.</button>
-                        </th:block>
+                    <button type="button">삭제된 공고입니다.</button>
+                    <th:block th:if="${hireOpen ==1}">
+                        <button type="button">마감된 공고입니다.</button>
+                    </th:block>
                 </th:block>
-                
+
 
             </div>
 
