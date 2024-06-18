@@ -73,7 +73,6 @@ dropDown.addEventListener("change", () => {
                         } else {
                             obj.schoolName = false;
                         }
-                        console.log("School name validation status:", obj.schoolName);
                         
                     });
                     let isGreater = false
@@ -110,7 +109,6 @@ dropDown.addEventListener("change", () => {
 
                 let initialAllFilled = Array.from(showInput).every(input => input.value.trim().length > 0);
                 obj.schoolName = initialAllFilled;
-                console.log("Initial school name validation status:", obj.schoolName);
 
             } else {
                 element.classList.remove("show");
@@ -153,7 +151,6 @@ dosies.forEach(btn => {
                         .then(resp=>resp.json())
                         .then(
                             list=>{
-                                console.log(list)
                                 
                                 list.forEach(dongItem=>{
                                 
@@ -161,7 +158,6 @@ dosies.forEach(btn => {
                                     dongdiv.innerHTML = dongItem.dongName;
                                     dongdiv.classList.add("dongs");
                                     dong.append(dongdiv);
-                                    console.log(dongItem.dongNo)
                                     let count = 0;
                                     dongdiv.addEventListener("click",()=>{
 
@@ -364,7 +360,6 @@ const experiencedContainer = document.querySelectorAll(".experiencedContainer>di
         allFilled = Array.from(experiencedContainer).every(input => input.value.trim().length > 0);
         if (allFilled) {
             count=inputs.length;
-            console.log(count);
         }
         if (count === inputs.length) {
             obj.experienced = true;
@@ -757,7 +752,6 @@ if (count1 === inputs.length) {
     obj.certificate = false;
 }
 
-console.log("Certificate validation status:", obj.certificate);
 };
 
 
@@ -774,7 +768,6 @@ allContainers.forEach(container => {
 });
 
 obj.certificate = allValid;
-console.log("Overall certificate validation status:", obj.certificate);
 };
 
 // Initial event listener for the "Add Certificate" button
