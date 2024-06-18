@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", function() {
         if (email) {
             emailElement.textContent = maskEmail(email);
         } else {
-            console.error("Email attribute is missing.");
+            // console.error("Email attribute is missing.");
         }
     } else {
-        console.error("Element with id 'maskedEmail' not found.");
+        // console.error("Element with id 'maskedEmail' not found.");
     }
 });

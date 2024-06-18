@@ -91,7 +91,6 @@ const changeImageFn = e => {
         profileImg.setAttribute("src", url);
         profileImg.style.display = 'block';
         shopProfileStatus = true;
-        console.log(profileImg.src);
     };
 };
 

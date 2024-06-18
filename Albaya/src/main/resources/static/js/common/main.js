@@ -14,12 +14,10 @@ const elMargin = 40;
 const observer = new ResizeObserver(entries => {
     for (let entry of entries) {
         const {width, height} = entry.contentRect;
-        // console.log(`너비: ${width} 높이: ${height}`);
 
         let resultWidth = elWidth + elMargin;
 
         while(resultWidth < width){
-            // console.log(resultWidth, width);
             
             resultWidth += elWidth + elMargin;
 
@@ -29,7 +27,6 @@ const observer = new ResizeObserver(entries => {
             } 
             
         }
-        // console.log("resultWidth : ", resultWidth);
         imgListList.style.width = resultWidth + 'px';
     }
 });
@@ -64,7 +61,6 @@ const setPageOf=(hireList)=>{
             /* e.target == 이벤트가 발생한 대상(td태그)
             e.currentTarget == 클릭이벤트가 부여돼있는 대상(tr) */
             let hireNo = e.currentTarget.dataset.hireNo;
-            console.log(hireNo);
             location.href='/hire/'+hireNo; //상세조회
         });
         
@@ -116,7 +112,6 @@ const getPagination =(pagination, type)=>{
 
         //******페이징 버튼이 눌렸을 경우***********//
         button.addEventListener("click",e=>{
-            console.log(button + "클릭됨");
             if(type===2) reloadTable(e.target.innerHTML)
             else reloadTable(e.target.innerHTML);
         })
@@ -167,7 +162,6 @@ function reloadTable(cp) {
     fetch(url)
     .then(resp=>resp.json())
     .then(map => {
-        console.log(map);
         const {hireList, pagination} = map;
 
         tbody.innerHTML='';
@@ -193,7 +187,6 @@ const imgItem = document.querySelectorAll(".imgItem");
 imgItem.forEach(i=>{
     i.addEventListener("click", ()=>{
         let hireNo = i.dataset.hireNo;
-        console.log(hireNo);
         location.href='/hire/'+hireNo;
     })
 });

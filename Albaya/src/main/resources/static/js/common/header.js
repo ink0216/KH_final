@@ -257,7 +257,6 @@ query.addEventListener("keydown", e => {
                 alert("검색된 결과가 없습니다.");
                 return;
             }
-            console.log(map);
             const { hireList, pagination } = map;
 
             // 여기서 테이블과 페이징을 업데이트 합니다.

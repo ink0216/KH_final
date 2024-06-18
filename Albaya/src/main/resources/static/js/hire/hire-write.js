@@ -32,7 +32,6 @@ payInput.addEventListener("input",e=>{
 
     }) //workDat.forEach
 
-    console.log(`근무 요일 수 : ${dayCount}`); 
     //----------------------------------------------------------------------
 
 
@@ -45,15 +44,12 @@ payInput.addEventListener("input",e=>{
 
     const diffMSec =  new Date(0+' '+workEnd.value) - new Date(0+' '+workStart.value)
     const workTime = diffMSec / (60 * 60 * 1000);
-    console.log(`근무 시간:  ${workTime}`);
-    // console.log(value);
 
     const weekWorkTime = dayCount * workTime;
     let weekPay = 0;
     let monthPay =0;
     let yearPay =0;
 
-    console.log("weekWorkTime : ", weekWorkTime);
 
     //----------------------------------------------------------------------
 
@@ -87,8 +83,6 @@ payInput.addEventListener("input",e=>{
             else{
                 weekPay = 9860 * workTime * dayCount;
             }
-            console.log(Number(pay)<weekPay);
-            console.log("최저 주급 : ", weekPay);
             if(Number(pay)<weekPay){
                 payMessage.innerHTML="최저 주급 이상 입력하세요";
                 payMessage.classList.remove("blue");
@@ -111,7 +105,6 @@ payInput.addEventListener("input",e=>{
             }
 
             monthPay = weekPay * 4;
-            console.log("최저 월급 : ", monthPay);
 
             if(pay<monthPay){
                 // alert("최저 월급 이상 입력하세요");
@@ -137,7 +130,6 @@ payInput.addEventListener("input",e=>{
 
             monthPay = weekPay * 4;
             yearPay = monthPay*365; 
-            console.log("최저 연봉 : ", yearPay);
 
             if(pay<yearPay){
                 // alert("최저 연봉 이상 입력하세요");
@@ -228,9 +220,6 @@ function sample5_execDaumPostcode() {
             }
 
 
-            console.log(data);
-            console.log("data.autoJibunAddress : ",data.autoJibunAddress);
-            console.log("addr : ",addr);
 
 
             //-----------------------------------------------------------------------

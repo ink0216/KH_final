@@ -25,7 +25,6 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
             "notificationUrl" : url,
             "pkNo" : pkNo 
         }
-        console.log(notification);
         noticationSock.send(JSON.stringify(notification));
     }
 }

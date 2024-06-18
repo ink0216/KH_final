@@ -40,7 +40,6 @@ const selectList = (cp) => {
 
 
 
-
             tbody.innerHTML = "";
 
 

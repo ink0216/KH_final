@@ -42,7 +42,6 @@ const createPageLink = (pageNo, text) => {
 const selectList = (cp) => {
 
 
-
     fetch(`/commentDeclare/selectList?cp=${cp}`)
 
         .then(response => response.json())
@@ -53,7 +52,6 @@ const selectList = (cp) => {
             // const declareList = JSON.parse(result);
             const commentDeclareList = result.commentDeclareList;
             const pagination = result.pagination;
-
 
 
 

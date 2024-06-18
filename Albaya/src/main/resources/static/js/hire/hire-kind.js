@@ -60,7 +60,6 @@ const getPagination =(pagination,type)=>{
 
         //******페이징 버튼이 눌렸을 경우***********//
         button.addEventListener("click",e=>{
-            console.log(button + "클릭됨");
             if(type===2) reloadTable2(e.target.innerHTML)
             else reloadTable(e.target.innerHTML);
         })
@@ -112,7 +111,6 @@ function reloadTable(cp) {
     } )
     .then(resp=>resp.json())
     .then(map => {
-        console.log(map);
         const {hireList, pagination} = map;
 
         tbody.innerHTML='';
@@ -161,10 +159,8 @@ itemBtn.forEach(typeBtnItem=>{
             }
         }
         const kindNo = e.target.dataset.typeNo;
-        console.log("kindNo : ",kindNo);
 
         kindList.push(e.target.dataset.typeNo);
-        console.log("no는?",e.target.dataset.typeNo);
 
         reloadTable(1);
 
@@ -188,7 +184,6 @@ itemBtn.forEach(typeBtnItem=>{
             div.remove();
             reloadTable(1);
         })
-        console.log("kindList : ", kindList);
         
         })
 
