@@ -1,7 +1,7 @@
 /* 급여 확인 버튼 */
 const payConfirmBtn = document.getElementById('payConfirmBtn');
 const payInput = document.getElementById('payInput') 
-
+let dayCount = 0;
 payInput.addEventListener("input",e=>{
 
     const pay= e.target.value;
@@ -21,13 +21,13 @@ payInput.addEventListener("input",e=>{
 
     //-----------------------------------------------------------------
     /* 일하는 요일 수 얻어오기 */
-    let dayCount=0;//일하는 요일 수
+    dayCount=0;//일하는 요일 수
 
     workDays.forEach(day=>{
         dayCount++;
 
         if(day.value=='aa'){ //'협의가능' 체크 시 count 증가 x
-            dayCount-=1;
+            dayCount+=0;
         }
 
     }) //workDat.forEach
@@ -691,3 +691,12 @@ semiSaveBtn.addEventListener("click", ()=>{
     hireWrtieForm.append(hireStatus);
 });
 
+
+document.querySelector('#payNo').addEventListener("change",e=>{
+    const aa = document.querySelector("#aa");
+
+    if(dayCount==0 && e.target.value>1 && aa.checked){
+        alert("시급만 선택 가능합니다");
+        e.target.children[0].selected=true;
+    }
+})
