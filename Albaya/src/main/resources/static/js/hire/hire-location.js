@@ -59,7 +59,6 @@ const getPagination =(pagination, type)=>{
 
         //******페이징 버튼이 눌렸을 경우***********//
         button.addEventListener("click",e=>{
-            console.log(button + "클릭됨", type);
             if(type===2) reloadTable2(e.target.innerHTML)
             else reloadTable(e.target.innerHTML);
         })
@@ -108,7 +107,6 @@ function reloadTable(cp) {
     })
     .then(resp=>resp.json())
     .then(map => {
-        console.log(map);
         const {hireList, pagination} = map;
 
         tbody.innerHTML='';
@@ -132,7 +130,6 @@ function reloadTable2(cp) {
     })
     .then(resp=>resp.json())
     .then(map => {
-        console.log(map);
         const {hireList, pagination} = map;
 
         tbody.innerHTML='';
@@ -212,7 +209,6 @@ dosiNameList.forEach(dosiName=>{
 
                         //해당 시군구에 동이 하나도 없는 경우
                        if(list.length==0){ //*************************************** */
-                        console.log(sigunguItem.sigunguNo);
                             const locationItems = document.querySelectorAll('.location-item');
                             const dongName = document.querySelectorAll('.dong');
 
@@ -268,7 +264,6 @@ dosiNameList.forEach(dosiName=>{
 
                         dongBtn.addEventListener("click", ()=>{
                             sigunguNo = sigunguItem.sigunguNo;
-                            console.log(sigunguNo);
                             reloadTable2(1);
                         })
                         
@@ -334,7 +329,6 @@ dosiNameList.forEach(dosiName=>{
                                 
                                     locationItem.remove();
                                 })
-                                console.log("dongList : ", dongList);
                                 reloadTable(1);
                         })
 

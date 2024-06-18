@@ -67,7 +67,6 @@ if(applyBtn != null){
         .then(result => {
             if(result == 1){
                 alert("이미 지원한 공고입니다.");
-                console.log(result);
                 return;
             }
             else{
@@ -103,7 +102,6 @@ if(notificationLoginCheck){//로그인 된 상태인 경우
             "notificationUrl" : url,
             "pkNo" : pkNo 
         }
-        console.log(notification);
         noticationSock.send(JSON.stringify(notification));
     }
 }

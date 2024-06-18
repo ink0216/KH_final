@@ -14,7 +14,6 @@ deleteBtn.forEach(i=>{
             return;
         }
         let hireNo = i.dataset.hireNo;
-        console.log(hireNo);
         const form = document.createElement("form");
         form.action = "/hire/delete/"+hireNo;
         form.method = "POST";
@@ -28,7 +27,6 @@ const update = document.querySelectorAll(".update");
 update.forEach(i=>{
     i.addEventListener("click", ()=>{
         const hireNo = i.dataset.hireNo;
-        console.log(hireNo);
         location.href = "/hire/update/"+hireNo;
     });
 })
@@ -36,7 +34,6 @@ const hireTitle = document.querySelectorAll("#hireTitle");
 hireTitle.forEach(i=>{
     i.addEventListener("click", ()=>{
         let hireNo = i.dataset.hireNo;
-        console.log(hireNo);
         location.href = "/hire/"+hireNo;
     })
 });
