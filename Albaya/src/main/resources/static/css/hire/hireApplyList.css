@@ -90,5 +90,11 @@ table tr{
     color: rgb(88, 88, 88);
 }
 
+.title{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
 
 
