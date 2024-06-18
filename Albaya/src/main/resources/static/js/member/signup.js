@@ -84,7 +84,6 @@
             const randomNumber = Math.floor(100000 + Math.random() * 900000);
             const msg = randomNumber.toString();
     
-            console.log(msg);
             const authObj = {
                 "inputTel" : inputTel,
                 "msg" : msg
@@ -121,7 +120,6 @@
                 alert("인증번호가 전송되었습니다.");
     
                 authButton.addEventListener("click", () => {
-                    console.log(inputAuthField.value.trim().length)
                     if(inputAuthField.value.trim().length <= 0){
                         alert("인증번호를 입력해주세요.");
                         obj.authState = false;

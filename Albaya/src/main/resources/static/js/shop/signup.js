@@ -148,7 +148,6 @@ authBtn.addEventListener('click', e => {
         const randomNumber = Math.floor(100000 + Math.random() * 900000);
         const msg = randomNumber.toString();
 
-        console.log(msg);
         const authObj = {
             "inputTel" : inputTel.value,
             "msg" : msg
@@ -167,7 +166,6 @@ authBtn.addEventListener('click', e => {
             alert("인증번호가 전송되었습니다.");
 
             authCheckBtn.addEventListener("click", () => {
-                console.log(msg)
                 if(authKeyCheck.value.trim().length <= 0){
                     alert("인증번호를 입력해주세요.");
                     obj.authState = false;
@@ -217,7 +215,6 @@ shopBrn.addEventListener("input", () => {
         .then(resp => resp.text())
         .then(result => {
             if(result == 1){
-                console.log(result)
                 brnVerif.classList.add("fail");
                 brnVerif.classList.remove("success");
                 brnVerif.innerText = "이미 사용중인 사업자등록번호입니다.";
@@ -225,7 +222,6 @@ shopBrn.addEventListener("input", () => {
                 return;
             }
             else{
-                console.log(result)
 
                 brnVerif.classList.add("success");
                 brnVerif.classList.remove("fail");
@@ -326,7 +322,6 @@ const changeImageFn = e => {
         profileImg.style.display = 'block';
         originalImageSrc = url;
         obj.shopProfile = true;
-        console.log(profileImg.src);
     };
 
     profileImg.setAttribute("src", originalImageSrc);

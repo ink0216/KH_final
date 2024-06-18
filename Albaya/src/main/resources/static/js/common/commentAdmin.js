@@ -41,7 +41,6 @@ const createPageLink = (pageNo, text) => {
 // 댓글 신고 표 조회
 const selectList = (cp) => {
 
-    console.log("Current page:", cp);
 
     fetch(`/commentDeclare/selectList?cp=${cp}`)
 
@@ -54,7 +53,6 @@ const selectList = (cp) => {
             const commentDeclareList = result.commentDeclareList;
             const pagination = result.pagination;
 
-            console.log(pagination)
 
 
             tbody.innerHTML = "";
