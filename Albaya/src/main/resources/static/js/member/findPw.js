@@ -30,7 +30,6 @@ document.querySelector('#memberAuth').addEventListener('click', e => {
         "memberName" : memberName,
         "memberEmail" : memberEmail
     }
-    console.log(msg);
     const obj = {
         "inputTel" : inputTel,
         "msg" : msg
@@ -57,7 +56,6 @@ document.querySelector('#memberAuth').addEventListener('click', e => {
             .then(resp => {
                 alert('인증번호가 전송되었습니다.');
                 authBtn.addEventListener("click", () => {
-                    console.log(authKey.value.trim().length)
                     if(authKey.value.trim().length <= 0){
                         alert("인증번호를 입력해주세요.");
                         return;

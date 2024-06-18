@@ -11,7 +11,6 @@ const selectCommentList = () => {
     fetch("/comment?reviewBoardNo="+ reviewBoardNo) // GET 방식 요청
     .then(response => response.json())
     .then(commentList => {
-        console.log(commentList);
         
         // 화면에 존재하는 기존 댓글 목록 삭제 후 조회된 commentList를 이용해서 새로운 댓글 목록을 출력
 
@@ -491,7 +490,6 @@ const showUpdateComment = (commentNo, btn) => {
     // 부모중에서 가장 가까운 li태그를 찾음
     const commentRow = btn.closest("li");
 
-    // console.log(commentRow);
 
 
     /* 2. 수정 화면에서 취소버튼을 통해 돌아갈 때를 대비한 행 전체를 백업 */
@@ -499,7 +497,6 @@ const showUpdateComment = (commentNo, btn) => {
     beforeCommentRow = commentRow.cloneNode(true);
 
 
-    // console.log(beforeCommentRow);
 
 
     /* 3. 기존 댓글에 작성되어 있던 내용만 얻어오기 */

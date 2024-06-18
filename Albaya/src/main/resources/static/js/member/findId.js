@@ -29,7 +29,6 @@ document.querySelector('#memberAuth').addEventListener('click', e => {
         "memberName" : memberName
     }
 
-    console.log(msg);
     const obj = {
         "inputTel" : inputTel,
         "msg" : msg

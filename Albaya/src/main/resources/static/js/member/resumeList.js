@@ -14,7 +14,6 @@ deleteBtn.forEach(i=>{
             return;
         }
         let resumeNo = i.dataset.resumeNo;
-        console.log(resumeNo);
         location.href = "/resume/resumeDelete?resumeNo="+resumeNo;
     })
 });
@@ -23,7 +22,6 @@ const resumeTitle = document.querySelectorAll("#resumeTitle");
 resumeTitle.forEach(i=>{
     i.addEventListener("click", ()=>{
         let resumeNo = i.dataset.resumeNo;
-        console.log(resumeNo);
         location.href = "/resume/resumeDetail?resumeNo="+resumeNo;
     })
 });
@@ -33,7 +31,6 @@ const update = document.querySelectorAll(".update");
 update.forEach(i=>{
     i.addEventListener("click", ()=>{
         let resumeNo = i.dataset.resumeNo;
-        console.log(resumeNo);
         location.href = "/resume/resumeUpdate?resumeNo="+resumeNo;
     })
 });
