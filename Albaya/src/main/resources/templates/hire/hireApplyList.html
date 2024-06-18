@@ -45,7 +45,7 @@
                             <tr class="tbody-tr">
                                 <td>
                                     <div class="titles-area">
-                                        <a th:href="@{/hire/{hireNo}(hireNo=${hire.hireNo})}">
+                                        <a th:href="@{/hire/{hireNo}(hireNo=${hire.hireNo})}" class="title">
                                             <p id="hireTitle" th:text="${hire.hireTitle}">버거킹에서 함께 일할 알바생을 찾습니다‼️🤓🍔</p>
                                         </a>
                                         <th:block th:if="${hire.resumeTitle != null}">

@@ -145,9 +145,10 @@ button:hover{
  }
  
  .pagination a{
+    text-decoration: none;
     display: block;
- 
     height: 100%;
+    color: black;
  }
  
  .current{
