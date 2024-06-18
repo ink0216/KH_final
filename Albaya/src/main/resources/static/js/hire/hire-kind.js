@@ -139,7 +139,7 @@ const searchType = document.querySelector('.search-type'); /* 클릭된 버튼�
 
 itemBtn.forEach(typeBtnItem=>{
 
-   
+
 
     typeBtnItem.addEventListener("click",e=>{
         const typeName = e.target.innerText;
@@ -148,7 +148,7 @@ itemBtn.forEach(typeBtnItem=>{
 
          /* 5개 이상 선택된 경우 */
         if(kindItems.length>=5){
-            alert('희망하는 지역은 최대 5개까지 입력 가능합니다');
+            alert('희망하는 직종은 최대 5개까지 입력 가능합니다');
             return;
         }
 
