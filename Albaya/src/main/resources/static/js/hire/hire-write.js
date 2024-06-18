@@ -577,6 +577,13 @@ submitBtn.addEventListener("click", e=>{
     const endTime = Number(workEnd.value.replace(":",""))
 
 
+    if (startTime < 1200) {
+        startTime += 2400;
+    }
+    if (endTime < 1200) {
+        endTime += 2400;
+    }
+
     if(workStart.value==''){
         alert("시작 시간을 입력하세요");
         e.preventDefault();
@@ -589,7 +596,7 @@ submitBtn.addEventListener("click", e=>{
         return;
     }
 
-    if(startTime-endTime>0){
+    if(startTime>=endTime){
         alert('올바른 시간을 입력하세요');
         e.preventDefault();
         return;
