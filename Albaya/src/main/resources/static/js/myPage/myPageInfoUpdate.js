@@ -42,6 +42,12 @@ function sample5_execDaumPostcode() {
             //---------------------------------------------------------------------------
 
             // 주소 정보를 해당 필드에 넣는다.
+            const postcodeElement = document.getElementById('postcode');
+
+            if(postcodeElement){
+                postcodeElement.value = data.zonecode;
+            }
+
             document.getElementById("address").value = addr;
         }
     }).open();
