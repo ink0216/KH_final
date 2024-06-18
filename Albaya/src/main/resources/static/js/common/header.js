@@ -246,6 +246,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     
 })
 //------------------------------------------------------------------------------------
+
 const query = document.querySelector("#searchField");
 const searchBtn =  document.querySelector("#searchBtn");
 
@@ -282,13 +283,4 @@ query.addEventListener("keydown", e => {
         mainSearchFn();
     }
 });
-
-
-
-
-
-
-
-
-
 

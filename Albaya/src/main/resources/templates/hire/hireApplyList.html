@@ -46,10 +46,17 @@
                                 <td>
                                     <div class="titles-area">
                                         <a th:href="@{/hire/{hireNo}(hireNo=${hire.hireNo})}">
-                                            <p id="hireTitle" th:text="*{hireTitle}">버거킹에서 함께 일할 알바생을 찾습니다‼️🤓🍔</p>
+                                            <p id="hireTitle" th:text="${hire.hireTitle}">버거킹에서 함께 일할 알바생을 찾습니다‼️🤓🍔</p>
                                         </a>
-                                        <p id="resumeTitle" th:text="|이력서 명 : *{applyTitle}|">몸도 마음도 건강한 인재입니다.</p>
+                                        <th:block th:if="${hire.resumeTitle != null}">
+                                            <p id="resumeTitle" th:text="|이력서 명 : ${hire.resumeTitle}|">몸도 마음도 건강한 인재입니다.</p>
+                                        </th:block>
+                                        <th:block th:if="${hire.resumeTitle == null}">
+                                            <p id="resumeTitle" th:text="'해당 공고에 이력서를 제출하지 않았습니다.'">몸도 마음도 건강한 인재입니다.</p>
+                                        </th:block>
                                     </div>
+                                    
+                                    
                                 </td>
                                 <td class="td" th:text="${#strings.substring(hire.applyDate, 0, 10)}">2024-06-10</td>
                                 <td class="td" th:text="*{shopName}">버거킹</td>
