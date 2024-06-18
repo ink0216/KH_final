@@ -156,8 +156,8 @@ hr{
 .hireTitleImg pre {
     font-family: 'WAGURITTF';
     position: absolute;
-    width: 400px;
-    height: 60px;
+    width: 600px;
+    height: 80px;
     resize: none;
     top: 40%;
     left: 50%;
@@ -167,6 +167,8 @@ hr{
     font-size: 25px;
     outline: none;
     text-align: center;
+    overflow: auto;
+    white-space: pre-wrap;
 }
 
 /* 지도 */
