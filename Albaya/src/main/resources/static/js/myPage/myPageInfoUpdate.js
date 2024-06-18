@@ -124,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 const randomNumber = Math.floor(100000 + Math.random() * 900000);
                 const msg = randomNumber.toString();
 
-                console.log(msg);
                 const authObj = {
                     "inputTel" : memberTel.value,
                     "msg" : msg
@@ -148,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     document.querySelector("#authKeyCheckBtn").addEventListener("click", () => {
                         const authKeyInput = document.querySelector("#authKeyInput");
-                        console.log(msg)
                         if(authKeyInput.value.trim().length <= 0){
                             alert("인증번호를 입력해주세요.");
                             authState = false;
