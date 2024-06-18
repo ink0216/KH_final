@@ -11,8 +11,14 @@ types.forEach(item=>{
         const typeText = e.target.innerText;
 
         if (window.opener && !window.opener.closed) {
+            
             window.opener.setType(typeText);
             window.opener.document.getElementById("typeNo").value = e.target.dataset.typeNo;
+
+            typeSelect.addEventListener("click",()=>{
+                window.close();
+            })
+            
         } else {
             alert('부모 창이 닫혔거나 열려 있지 않습니다.');
         }
