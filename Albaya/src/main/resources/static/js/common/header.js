@@ -246,29 +246,38 @@ document.addEventListener("DOMContentLoaded",()=>{
     
 })
 //------------------------------------------------------------------------------------
-const query = document.querySelector("#searchField");
+document.addEventListener("DOMContentLoaded", function() {
+    const query = document.querySelector("#searchField");
 
-query.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
-        fetch(`/hire/selectHireList?cp=1&query=${query.value}`)
-        .then(resp => resp.json())
-        .then(map => {  
-            if (!map || !map.hireList || map.hireList.length === 0) {
-                alert("검색된 결과가 없습니다.");
-                return;
-            }
-            const { hireList, pagination } = map;
+    query.addEventListener("keydown", e => {
+        if (location.pathname !== "/") {
+            alert("공고 검색은 메인 페이지에서만 할 수 있습니다.");
+            return;
+        }
 
-            // 여기서 테이블과 페이징을 업데이트 합니다.
-            tbody.innerHTML = '';
-            numberButtonWrapper.innerHTML = '';
+        if (e.key === "Enter") {
+            fetch(`/hire/selectHireList?cp=1&query=${query.value}`)
+            .then(resp => resp.json())
+            .then(map => {  
+                if (!map || !map.hireList || map.hireList.length === 0) {
+                    alert("검색된 결과가 없습니다.");
+                    return;
+                }
+                const { hireList, pagination } = map;
 
-            setPageOf(hireList);
-            getPagination(pagination);
-        
-        });
-    }
+                // 여기서 테이블과 페이징을 업데이트 합니다.
+                tbody.innerHTML = '';
+                numberButtonWrapper.innerHTML = '';
+
+                setPageOf(hireList);
+                getPagination(pagination);
+            
+            });
+        }
+    });
 });
+
+
 
 
 
