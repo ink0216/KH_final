@@ -70,7 +70,7 @@
                 <!-- 특정 페이지로 이동 -->
 
                 <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-                    <!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
+                    
 
                     <!-- 현재 보고있는 페이지 -->
                     <li th:if="${i} == *{currentPage}">
@@ -134,7 +134,7 @@
 
 
 <script src="/js/common/commentAdmin.js"></script>
-<!-- <script src="/js/common/admin.js"></script> -->
+
 <script th:inline="javascript">
     const currentPage = /*[[${pagination.currentPage}]]*/"페이지번호";
     const reviewBoardCode = /*[[${reviewBoardCode}]]*/"보드타입";

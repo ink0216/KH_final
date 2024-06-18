@@ -32,10 +32,6 @@
             <p class="comment-writer">
                 <th:block th:with="temp = *{#strings.substringBefore(memberEmail,'@')} ">
                     <span th:text="${#strings.substring(temp,0,1)} + ${#strings.repeat('*',#strings.length(temp)-2)} + ${#strings.substring(temp,#strings.length(temp)-1)}">닉네임</span>
-                        <!-- 댓글 작성자와 게시글 작성자가 같다면 따로 표시 -->
-                        <!-- <th:block th:if="${comment.memberNo == reviewBoard.memberNo}">
-                        &nbsp;<i class="fa-solid fa-pen fa-sm"></i>
-                        </th:block> -->
                 </th:block>
                 <span class="comment-date" th:text="*{commentWriteDate}" style="font-size: 0.65em; margin-left:10px;
                 color:#014C73;">작성일</span>

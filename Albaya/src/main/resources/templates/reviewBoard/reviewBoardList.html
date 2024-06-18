@@ -94,8 +94,6 @@
             </div>
 
             <div class="btn-area">
-                <!-- 기업 회원이거나 비회원 유저는 게시글 조회만 가능하고 일반회원만 글쓰기를 허용함 -->
-                <!-- <button id="insertBtn" th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button>  -->
                 <button id="insertBtn"
                     th:if="${session.loginMember != null and reviewBoardCode == 2 and session.loginMember.authorityNo == 3}">글쓰기</button>
 
@@ -155,7 +153,7 @@
                     <!-- 특정 페이지로 이동 -->
 
                     <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage)}">
-                        <!-- <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}"> -->
+                     
 
                         <!-- 현재 보고있는 페이지 -->
                         <li th:if="${i} == *{currentPage}">
@@ -210,13 +208,13 @@
 
                         <!-- 현재 보고있는 페이지 -->
                         <li th:if="${i == pagination.currentPage}">
-                            <!-- <li th:if="${i} == *{currentPage}"> -->
+                            
                             <a class="current" th:text="${i}">현재 페이지</a>
 
                         </li>
 
                         <!-- 보고있지 않은 페이지 -->
-                        <!-- <li th:unless="${i == pagination.currentPage}">  -->
+                      
                         <li th:unless="${i} == *{currentPage}">
                             <a th:href="@{/reviewBoard/{reviewBoardCode} (reviewBoardCode=${reviewBoardCode}, cp=${i}, key=${param.key}, query=${param.query})}"
                                 th:text="${i}">이동할 페이지</a>
