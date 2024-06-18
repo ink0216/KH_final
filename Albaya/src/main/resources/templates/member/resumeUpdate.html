@@ -34,7 +34,7 @@
                 </div><br>
                 <div class = "fileInput"> 
                     <label for="picFile" style="background-color: pink; border: 2px solid black; border-radius: 3px;">이미지 파일 선택</label>
-                    <input type=file id="picFile" name="image" class="image" required accept="image/*" style="display: none"></input>
+                    <input type=file id="picFile" name="image" class="image"  accept="image/*" style="display: none"></input>
 
                     <script>
                         document.getElementById("picFile").addEventListener("change", e => {
@@ -111,7 +111,7 @@
                         <h3>이력서 제목<span class="required">*</span></h3>
                         <ul>
                             <li><input th:value="${resume.resumeTitle}" 
-                                type="text" id = "title" required name="resumeTitle" class = "resumeTitle"></li>
+                                type="text" id = "title"  name="resumeTitle" class = "resumeTitle"></li>
                         </ul>
                         
                     </div>
@@ -138,7 +138,7 @@
                                 <div id = "dropdownContainer">
                                     <div>
                                         <span>최종학력</span>
-                                        <select name="educationNo" id="dropDown" required>
+                                        <select name="educationNo" id="dropDown" >
                                             <option value="">선택</option>
                                             <th:block th:each=" education: ${educationList}" th:object="${education}">
                                                 <option th:value="*{educationNo}" th:text="*{educationName}"></option>
@@ -459,7 +459,7 @@
                                             <div>
                                                 <span>자격증명</span>&nbsp;&nbsp;&nbsp;
                                                 <input type="text" th:value="${license.licenseName}" 
-                                                name="licenseName" class="certName" id="searchCertifcate" required><br><br><br>   
+                                                name="licenseName" class="certName" id="searchCertifcate" ><br><br><br>   
                                             </div>
                                             
                                         
@@ -468,20 +468,20 @@
                                             <div class="organizationDetail">
                                                 <span>발행기관</span>&nbsp;&nbsp;
                                                 <input type="text"  th:value="${license.licenseFrom}"
-                                                name="licenseFrom" class = "organization" id="organization" required>
+                                                name="licenseFrom" class = "organization" id="organization" >
                                             </div>
                     
                                             <div class="scoreDetail">
                                                 <span>점수</span>&nbsp;&nbsp;
                                                 <input type="number" th:value="${license.licenseScore}"
-                                                name="licenseScore" class = "score" max="100" required>&nbsp;/100
+                                                name="licenseScore" class = "score" max="100" >&nbsp;/100
                                             </div>
                                                     
                                         
                                             <div class = "issueDetail">
                                                 <span>취득일</span>
                                                 <input type="date" th:value="${license.licenseDate}"
-                                                 name="licenseDate" class="issueDate"  required>
+                                                 name="licenseDate" class="issueDate"  >
                                                 <button type="button" id = "certAdd">+</button>
                                             </div>
                                         

@@ -649,7 +649,7 @@ validatingBtnsContainer.append(input);
 
 
 
-for(let key in obj ){
+/* for(let key in obj ){
     if(!obj[key]){
         let str;
         switch(key){
@@ -664,9 +664,9 @@ for(let key in obj ){
         alert(str);
         return;
     }
-}
+}*/
 form.submit();
-});
+}); 
 
 
 
