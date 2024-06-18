@@ -582,7 +582,13 @@ hireWrtieForm.addEventListener("submit",e=>{
 
      const startTime = Number(workStart.value.replace(":",""));
      const endTime = Number(workEnd.value.replace(":",""))
-
+     
+     if (startTime < 1200) {
+        startTime += 2400;
+    }
+    if (endTime < 1200) {
+        endTime += 2400;
+    }
 
      if(workStart.value==''){
         alert("시작 시간을 입력하세요");
