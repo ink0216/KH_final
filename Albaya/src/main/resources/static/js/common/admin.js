@@ -38,7 +38,7 @@ const selectList = (cp) => {
             const declareList = result.declareList;
             const pagination = result.pagination;
 
-            console.log(pagination)
+
 
 
             tbody.innerHTML = "";
